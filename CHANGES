@@ -1,3 +1,9 @@
+2001-04-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_X_FREETYPE: add XRENDERFONT ifdef
+
+	* AcSplit/CF_X_FREETYPE: ci-aclocal generated header
+
 2001-04-21  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_DIRNAME:
