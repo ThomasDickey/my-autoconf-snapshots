@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20041203
+MANIFEST for my-autoconf, version t20050101
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -55,6 +55,7 @@ AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> d
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
+AcSplit/CF_CHECK_TYPE           AC_CHECK_TYPE extended compatibly with 2.13
 AcSplit/CF_COLOR_CURSES         check if curses supports color
 AcSplit/CF_COMPTYPE             obtain qsort's compare-type
 AcSplit/CF_COREFILE             see if the application can dump a core file
@@ -139,6 +140,7 @@ AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
 AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
 AcSplit/CF_INHERIT_SCRIPT       inherit config-scripts from parent directory (ncurses)
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
+AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm

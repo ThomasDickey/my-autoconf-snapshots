@@ -1,0 +1,29 @@
+dnl CF_CHECK_TYPE version: 1 updated: 2005/01/01 12:49:48
+dnl -------------
+dnl Add a 3rd parameter to AC_CHECK_TYPE, working around autoconf 2.5x's
+dnl deliberate incompatibility.
+dnl	$1 = name of type to check for
+dnl	$2 = default type
+dnl	$3 = additional #include's and related preprocessor lines.
+AC_DEFUN([CF_CHECK_TYPE],
+[
+ifdef([m4_version_compare],[
+	AC_CHECK_TYPE([$1],ac_cv_type_$1=yes,ac_cv_type_$1=no,[$3])
+	],[
+	AC_MSG_CHECKING(for $1)
+	AC_TRY_COMPILE([
+#if STDC_HEADERS
+#include <stdlib.h>
+#include <stddef.h>
+#endif
+$3
+],[
+	static $1 dummy; if (sizeof(dummy)) return 0; else return 1;],
+	ac_cv_type_$1=yes,
+	ac_cv_type_$1=no)
+	AC_MSG_RESULT($ac_cv_type_$1)
+])dnl
+if test $ac_cv_type_$1 = no; then
+	AC_DEFINE($1, $2)
+fi
+])dnl
