@@ -1,0 +1,38 @@
+dnl CF_PROG_CC_C_O version: 1 updated: 2004/02/14 15:00:43
+dnl --------------
+dnl Analogous to AC_PROG_CC_C_O, but more useful: tests only $CC, ensures that
+dnl the output file can be renamed, and allows for a shell variable that can
+dnl be used later.  The parameter is either CC or CXX.  The result is the
+dnl cache variable:
+dnl	$cf_cv_prog_CC_c_o
+dnl	$cf_cv_prog_CXX_c_o
+AC_DEFUN([CF_PROG_CC_C_O],
+[AC_REQUIRE([AC_PROG_CC])dnl
+AC_MSG_CHECKING([whether [$]$1 understands -c and -o together])
+AC_CACHE_VAL(cf_cv_prog_$1_c_o,
+[
+cat > conftest.$ac_ext <<CF_EOF
+#include <stdio.h>
+int main()
+{
+	return 0;
+}
+CF_EOF
+# We do the test twice because some compilers refuse to overwrite an
+# existing .o file with -o, though they will create one.
+ac_try='[$]$1 -c conftest.$ac_ext -o conftest2.$ac_objext >&AC_FD_CC'
+if AC_TRY_EVAL(ac_try) &&
+  test -f conftest2.$ac_objext && AC_TRY_EVAL(ac_try);
+then
+  eval cf_cv_prog_$1_c_o=yes
+else
+  eval cf_cv_prog_$1_c_o=no
+fi
+rm -f conftest*
+])dnl
+if test $cf_cv_prog_$1_c_o = yes; then
+  AC_MSG_RESULT([yes])
+else
+  AC_MSG_RESULT([no])
+fi
+])dnl

@@ -1,3 +1,22 @@
+2004-02-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	don't use underscores in awk command-line variables
+
+	* AcSplit/CF_LIB_RULES:
+	modified to allow ncurses "--with-termlib" option to set the name of the
+	terminfo library.
+
+	* AcSplit/CF_SRC_MODULES:
+	"$with_termlib" can now have values other than yes/no.
+
+	* AcSplit/CF_PROG_CC_C_O: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES:
+	pass cc_c_o and cxx_c_o values to mk-2nd.awk, which uses those to decide
+	whether to use a cd-command or -c/-o options to get its result into the
+	object-directories
+
 2004-01-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_CACHE:

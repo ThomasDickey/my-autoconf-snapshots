@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 30 updated: 2004/01/10 15:50:50
+dnl CF_LIB_RULES version: 31 updated: 2004/02/14 15:00:43
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -131,6 +131,8 @@ do
 				subset=$cf_subset \
 				srcdir=$srcdir \
 				echo=$WITH_ECHO \
+				cc_c_o=$cf_cv_prog_CC_c_o \
+				cxx_c_o=$cf_cv_prog_CXX_c_o \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 			cf_subdirs="$cf_subdirs $cf_subdir"
 			done
