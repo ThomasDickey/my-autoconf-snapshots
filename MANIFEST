@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000722
+MANIFEST for my-autoconf, version t20000729
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -24,6 +24,7 @@ AcSplit/CF_ANSI_CPP             check for ANSI C-preprocessor (td_lib)
 AcSplit/CF_ANSI_QSORT           test for ANSI-style qsort parameters
 AcSplit/CF_ARG_DISABLE          utility for command-option disable
 AcSplit/CF_ARG_ENABLE           utility for command-option enable
+AcSplit/CF_ARG_MSG_ENABLE       verbose form of AC_ARG_ENABLE
 AcSplit/CF_ARG_OPTION           restricted form of AC_ARG_ENABLE
 AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no values
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
