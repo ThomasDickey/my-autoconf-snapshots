@@ -1,3 +1,15 @@
+1997-11-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_UNION_WAIT: correct type for the first test.
+	add some logging to see what's going on if it fails.
+
+1997-11-06  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ADD_INCDIR:
+	don't special-case /usr/local/include, since gcc 2.6.3 doesn't include it
+	anyway (and apparently it's possible to misinstall 2.7.2 so that doesn't
+	work either).
+
 1997-11-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SHARED_OPTS:
