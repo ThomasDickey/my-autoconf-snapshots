@@ -1,9 +1,11 @@
-dnl CF_X_FREETYPE version: 6 updated: 2003/12/13 07:47:09
+dnl CF_X_FREETYPE version: 7 updated: 2003/12/29 18:39:35
 dnl -------------
-dnl Check for X freetype libraries (XFree86 4.x)
+dnl Check for X freetype libraries (XFree86 4.x).
+dnl
+dnl FIXME: -lfontconfig may be needed.
 AC_DEFUN([CF_X_FREETYPE],
 [
-cf_freetype_libs="-lXft -lfontconfig -lfreetype -lXrender -lXrender"
+cf_freetype_libs="-lXft -lfreetype -lXrender"
 AC_CACHE_CHECK(for X FreeType libraries,cf_cv_x_freetype,[
 
 cf_save_LIBS="$LIBS"

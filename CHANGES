@@ -1,3 +1,17 @@
+2003-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	testing on OpenBSD 2.8 I found the _XOPEN_SOURCE and _POSIX_C_SOURCE fixes broke ncursesw and xterm.
+
+	* AcSplit/CF_X_FREETYPE: remove redundant -lXrender
+	take the -lfontconfig out again, leaving a note for when I have to revisit.
+
+	* AcSplit/CF_SYSV:
+	xterm - require CF_SYS_ERRLIST and ensure that sys_errlist is declared.
+	That's needed for HPUX which provides it but does not declare it.
+	Change the include to Intrinsic.h from Xos.h since it appears that I can
+	get Linux (Debian 3.0testing) to error on the redefinition of wchar_t.
+
 2003-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
