@@ -1,3 +1,16 @@
+2004-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add special case for NetBSD (hp-testdrive's 1.6 doesn't like _XOPEN_SOURCE).
+
+2004-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	lynx: for IRIX64 (e.g., "irix6.*"), use -D_SGI_SOURCE rather than _XOPEN_SOURCE,
+	since defining the latter makes the IPv6 code fail to compile.  I don't see
+	that its curses library really supports wide-characters anyway, though we
+	have something for mbstate_t.
+
 2004-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRC_MODULES:
