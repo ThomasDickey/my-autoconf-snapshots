@@ -1,7 +1,10 @@
+dnl CF_VARARGS version: 3 updated: 1998/12/10 20:06:29
+dnl ----------
 dnl Check for ANSI stdarg.h vs varargs.h.  Note that some systems include
 dnl <varargs.h> within <stdarg.h>.
 AC_DEFUN([CF_VARARGS],
 [
+AC_CHECK_HEADERS(stdarg.h varargs.h)
 AC_MSG_CHECKING(for standard varargs)
 AC_CACHE_VAL(cf_cv_ansi_varargs,[
 	AC_TRY_COMPILE([
