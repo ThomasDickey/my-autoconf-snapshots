@@ -1,3 +1,11 @@
+2003-09-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SLANG_CPPFLAGS: add check for slang-utf8 package.
+
+	* AcSplit/CF_BUNDLED_INTL:
+	list some of the environment variables (at least the ones I use directly).
+	allow override of CONFIG_H symbol (needed for lynx, which renames it).
+
 2003-09-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_INTL: change "head -1" to "sed -e '2,$d'"
