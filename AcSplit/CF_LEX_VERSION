@@ -1,0 +1,20 @@
+dnl CF_LEX_VERSION version: 1 updated: 2003/05/02 23:35:59
+dnl --------------
+dnl Check if "lex" is really "flex", and if so, set $LEX_VERSION to show its
+dnl version.
+AC_DEFUN([CF_LEX_VERSION],[
+AC_REQUIRE([AC_PROG_LEX])
+
+test -z "$LEX" && LEX=lex
+AC_MSG_CHECKING(if $LEX is really flex)
+if ( $LEX '-?' 2>&1 |fgrep flex >/dev/null )
+then
+	AC_MSG_RESULT(yes)
+	AC_MSG_CHECKING(version of $LEX)
+	LEX_VERSION=`$LEX --version 2>&1 | sed -e 's/^.* //;s/^[[^0-9]]*//'`
+	AC_MSG_RESULT($LEX_VERSION)
+else
+	AC_MSG_RESULT(no)
+fi
+
+])dnl
