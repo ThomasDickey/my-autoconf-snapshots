@@ -1,3 +1,10 @@
+1998-08-23  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_TGETENT:
+	allow for the case where we've already got a termcap/terminfo library in $LIBS
+
+	* AcSplit/CF_TERMCAP_LIBS: don't mention slang
+
 1998-08-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES:

@@ -1,4 +1,4 @@
-dnl Look for termcap libraries, needed by some versions of slang.
+dnl Look for termcap libraries
 AC_DEFUN([CF_TERMCAP_LIBS],
 [
 AC_CACHE_VAL(cf_cv_lib_termcap,[
