@@ -1,0 +1,16 @@
+dnl Check for existence of the given character-device
+AC_DEFUN([CF_CHAR_DEVICE],
+[
+AC_MSG_CHECKING(for /dev/tty)
+if test -c $1 ; then
+	cf_result=yes
+else
+	cf_result=no
+fi
+AC_MSG_RESULT($cf_result)
+if test "$cf_result" = yes ; then
+	cf_result=`echo $1 | sed -e s@/@_@g`
+	CF_UPPER(cf_result,$cf_result)
+	AC_DEFINE_UNQUOTED(HAVE$cf_result)
+fi
+])dnl

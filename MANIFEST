@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010105
+MANIFEST for my-autoconf, version t20010110
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -35,6 +35,7 @@ AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of u
 AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
 AcSplit/CF_CFG_DEFAULTS         determine the default "--prefix" (ncurses)
 AcSplit/CF_CGETENT              test for BSD 4.4 cgetent()
+AcSplit/CF_CHAR_DEVICE          check for /dev/tty, etc (vile)
 AcSplit/CF_CHECK_1_DECL         check one declaration
 AcSplit/CF_CHECK_CACHE          check for conflicting configure-cache
 AcSplit/CF_CHECK_DECL           check one or more missing-prototypes
