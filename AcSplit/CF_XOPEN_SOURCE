@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 9 updated: 2004/01/12 20:45:17
+dnl CF_XOPEN_SOURCE version: 10 updated: 2004/01/26 06:42:57
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality.
@@ -24,6 +24,9 @@ openbsd*) #(vi
 	;;
 osf[[45]]*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_OSF_SOURCE"
+	;;
+sco*) #(vi
+	# setting _XOPEN_SOURCE breaks Lynx on SCO Unix / OpenServer
 	;;
 solaris*) #(vi
 	CPPFLAGS="$CPPFLAGS -D__EXTENSIONS__"
