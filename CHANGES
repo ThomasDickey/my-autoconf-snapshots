@@ -1,3 +1,24 @@
+1998-10-10  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_WITH_PATHLIST: RCS_BASE
+
+	* AcSplit/CF_WITH_PATH: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_PATH:
+	split-out CF_PATH_SYNTAX to use in CF_WITH_PATHLIST macro
+
+	* AcSplit/CF_FUNC_MEMMOVE:
+	make this standalone (no need for AC_CHECK_FUNC(memmove bcopy)
+
+1998-10-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SOCKS5: define USE_SOCKS4_PREFIX if we're using socks4
+
+	* AcSplit/CF_MAKE_INCLUDE:
+	from lynx, put parentheses around cd&&make, to appease bash
+
+	* AcSplit/CF_PATH_PROG: special hack for OS/2 EMX to adjust $IFS
+
 1998-08-30  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TERMCAP_LIBS:
