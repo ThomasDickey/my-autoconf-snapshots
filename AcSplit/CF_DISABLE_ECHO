@@ -4,11 +4,17 @@ AC_DEFUN([CF_DISABLE_ECHO],[
 AC_MSG_CHECKING(if you want to see long compiling messages)
 CF_ARG_DISABLE(echo,
 	[  --disable-echo          test: display \"compiling\" commands],
-	[SHOW_CC='	@echo compiling [$]@'
-    ECHO_CC='@'],
-	[SHOW_CC='# compiling'
-    ECHO_CC=''])
+	[
+    ECHO_LD='@echo linking $@;'
+    SHOW_CC='	@echo compiling [$]@'
+    ECHO_CC='@'
+],[
+    ECHO_LD=''
+    SHOW_CC='# compiling'
+    ECHO_CC=''
+])
 AC_MSG_RESULT($enableval)
+AC_SUBST(ECHO_LD)
 AC_SUBST(SHOW_CC)
 AC_SUBST(ECHO_CC)
 ])dnl

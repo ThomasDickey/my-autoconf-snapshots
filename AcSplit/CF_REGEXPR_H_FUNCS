@@ -1,0 +1,31 @@
+dnl Tests for the <regexpr.h> include-file, and the functions associated with it.
+AC_DEFUN([CF_REGEXPR_H_FUNCS],
+[
+cf_save_libs="$LIBS"
+AC_CHECK_LIB(gen, compile)
+AC_MSG_CHECKING(compile/step functions)
+AC_CACHE_VAL(cf_cv_REGEXPR_H,[
+	AC_TRY_RUN([
+#include <sys/types.h>
+#include <regexpr.h>
+		int main() {
+			char *e;
+			char *p = "foo";
+			char *s = "foobar";
+			if ((e = (char *)compile(p, (char *)0, (char *)0)) == 0
+			 || step(s, e) == 0)
+		 		exit(1);
+			free(e);
+			exit(0);
+		} ],
+		[cf_cv_REGEXPR_H=yes],
+		[cf_cv_REGEXPR_H=no],
+		[cf_cv_REGEXPR_H=unknown])
+	])
+AC_MSG_RESULT($cf_cv_REGEXPR_H)
+if test $cf_cv_REGEXPR_H = yes; then
+	AC_DEFINE(HAVE_REGEXPR_H_FUNCS)
+else
+	LIBS="$cf_save_libs"
+fi
+])dnl

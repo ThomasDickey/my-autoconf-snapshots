@@ -1,0 +1,18 @@
+dnl CF_ADD_LIBDIR version: 2 updated: 1997/09/07 17:52:20
+dnl -------------
+dnl	Adds to the library-path
+dnl
+dnl	Some machines have trouble with multiple -L options.
+dnl
+AC_DEFUN([CF_ADD_LIBDIR],
+[
+for cf_path in $1
+do
+	if test -d $cf_path
+	then
+		AC_VERBOSE(adding $cf_path to library-path)
+		LIBS="$LIBS -L$cf_path"
+		CFLAGS="$CFLAGS -L$cf_path"
+	fi
+done
+])dnl

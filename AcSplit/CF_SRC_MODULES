@@ -23,7 +23,7 @@ do
 		# directory.  Ncurses is the only library that does not follow
 		# that pattern.
 		if test -f $srcdir/${cf_dir}/${cf_dir}.h; then
-			CF_UPPERCASE($cf_dir,cf_have_include)
+			CF_UPPER(cf_have_include,$cf_dir)
 			AC_DEFINE_UNQUOTED(HAVE_${cf_have_include}_H)
 			AC_DEFINE_UNQUOTED(HAVE_LIB${cf_have_include})
 			TEST_DEPS="${LIB_PREFIX}${cf_dir}${DFT_DEP_SUFFIX} $TEST_DEPS"

@@ -1,0 +1,8 @@
+dnl Test for curses data/types
+AC_DEFUN([CF_CURSES_DATA],
+[
+CF_CURSES_CHTYPE
+CF_CURSES_STYLE
+CF_STRUCT_SCREEN
+CF_TCAP_CURSOR
+])dnl
