@@ -3,7 +3,7 @@ dnl is found, add our own version of memmove to the list of objects.
 AC_DEFUN([CF_FUNC_MEMMOVE],
 [
 if test ".$ac_cv_func_memmove" != .yes ; then
-	if test $ac_cv_func_bcopy = yes ; then
+	if test ".$ac_cv_func_bcopy" = ".yes" ; then
 		AC_MSG_CHECKING(if bcopy does overlapping moves)
 		AC_CACHE_VAL(cf_cv_good_bcopy,[
 			AC_TRY_RUN([

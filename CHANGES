@@ -1,3 +1,12 @@
+1997-11-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_MEMMOVE: quoted a variable that needed it
+
+1997-11-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_NCURSES_LIBS:
+	reset $LIBS if we think we've found initscr in -lgpm
+
 1997-11-23  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_FUNCDECL: nope: double is bad here
