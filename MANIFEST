@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20041021
+MANIFEST for my-autoconf, version t20041025
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -127,6 +127,7 @@ AcSplit/CF_GNUTLS               check for GNU TLS ("SSL") library
 AcSplit/CF_GNU_SOURCE           check if _GNU_SOURCE is needed to define _XOPEN_SOURCE
 AcSplit/CF_GPP_LIBRARY          check for -lg++
 AcSplit/CF_GXX_VERSION          check for version of g++
+AcSplit/CF_GXX_WARNINGS         check for g++ warning options
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
 AcSplit/CF_HEADER_RESOURCE      test for sys/resource.h vs wait.h and time.h
