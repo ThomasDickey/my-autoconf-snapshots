@@ -148,7 +148,7 @@ cat >>man/edit_man.sh <<CF_EOF
 	fi
 	;;
 esac
-done 
+done
 CF_EOF
 changequote([,])dnl
 chmod 755 man/edit_man.sh
