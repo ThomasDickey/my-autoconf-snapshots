@@ -1,3 +1,5 @@
+dnl CF_FIND_TDLIB version: 5 updated: 2000/11/02 01:20:47
+dnl -------------
 dnl Locate TD_LIB, which is either installed, with headers, library and
 dnl include-file for make, or in a directory side-by-side with the current
 dnl program's configure script. Use the side-by-side version in preference
@@ -8,6 +10,7 @@ dnl	TD_LIB_rules - actual path of td_lib.mk
 dnl
 AC_DEFUN([CF_FIND_TDLIB],
 [
+AC_REQUIRE([CF_LIB_PREFIX])
 AC_MSG_CHECKING(for td_lib in side-by-side directory)
 AC_CACHE_VAL(cf_cv_tdlib_devel,[
 	cf_cv_tdlib_devel=no
@@ -16,7 +19,7 @@ AC_CACHE_VAL(cf_cv_tdlib_devel,[
 	test -d ../td_lib/include &&
 	test -f ../td_lib/include/td_config.h &&
 	test -d ../td_lib/lib &&
-	test -f ../td_lib/lib/libtd.a &&
+	test -f ../td_lib/lib/${LIB_PREFIX}td.a &&
 	cf_cv_tdlib_devel=yes
 
 	if test "$cf_cv_tdlib_devel" = yes ; then
@@ -36,7 +39,7 @@ if test "$cf_cv_tdlib_devel" = no ; then
     do
 	test -f $cf_incdir/td/td_config.h && CFLAGS="-I$cf_incdir $CFLAGS"
     done
-    CF_FIND_LIBRARY(td,[
+    CF_FIND_LIBRARY(td,td,[
 #define TESTING_CONFIG_H
 #include <td/ptypes.h>],[
         char *p = doalloc(0,1)],

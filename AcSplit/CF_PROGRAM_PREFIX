@@ -1,8 +1,11 @@
+dnl CF_PROGRAM_PREFIX version: 3 updated: 2000/11/02 01:26:33
+dnl -----------------
 dnl	Tests for a program given by name along the user's path, and sets a
 dnl	variable to the program's directory-prefix if found.  Don't match if
 dnl	the directory is ".", since we need an absolute path-reference.
 AC_DEFUN([CF_PROGRAM_PREFIX],
 [
+AC_REQUIRE([CF_PATHSEP])
 # Extract the first word of `$2', so it can be a program name with args.
 set cf_dummy $2; cf_word=[$]2
 AC_MSG_CHECKING(for $cf_word prefix ($1))
@@ -10,7 +13,7 @@ AC_CACHE_VAL([cf_cv_$1],[
 	# allow import from environment-variable
 	cf_cv_$1="[$]$1"
 	if test -z "[$]cf_cv_$1"; then
-		IFS="${IFS= 	}"; cf_save_ifs="$IFS"; IFS="${IFS}:"
+		IFS="${IFS= 	}"; cf_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
 		for cf_dir in $PATH; do
 			test -z "$cf_dir" && cf_dir=.
 			if test "$cf_dir" != "." && test -f $cf_dir/$cf_word && test -x $cf_dir/$cf_word; then
