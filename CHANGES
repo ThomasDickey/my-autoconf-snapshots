@@ -1,3 +1,26 @@
+1997-12-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	add logic to ensure we don't allow -nostdinc and -I/usr/include (used
+	on SGI to redirect the standard includes in the X build tree), because
+	it confuses gcc.
+
+	* AcSplit/CF_SYS_SELECT_TIMEVAL: ci-aclocal generated header
+
+	* AcSplit/CF_SYS_SELECT_TIMEVAL: oops: 'no' has to be zero
+
+	* AcSplit/CF_PROG_YACC: RCS_BASE
+
+	* AcSplit/CF_TYPE_OUTCHAR:
+	change the ifdef for curses.h in termcap-mode so we don't use it unless
+	we've verified (test-not-done!) that <curses.h> does contain prototypes
+	for termcap (or that it's needed in some sense)
+
+	* AcSplit/CF_PROG_YACC: ci-aclocal generated header
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	warn, don't error-out if we cannot find the imake program
+
 1997-12-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* mkdirs.sh: RCS_BASE
