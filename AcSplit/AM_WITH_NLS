@@ -104,7 +104,7 @@ AC_DEFUN(AM_WITH_NLS,
 		 CATOBJEXT=.cat
 		 INSTOBJEXT=.cat
 		 DATADIRNAME=lib
-		 INTLDEPS='../intl/libintl.a'
+		 INTLDEPS='$(top_builddir)/intl/libintl.a'
 		 INTLLIBS=$INTLDEPS
 		 LIBS=`echo $LIBS | sed -e 's/-lintl//'`
 		 nls_cv_header_intl=intl/libintl.h
@@ -133,7 +133,7 @@ AC_DEFUN(AM_WITH_NLS,
         CATOBJEXT=.gmo
         INSTOBJEXT=.mo
         DATADIRNAME=share
-	INTLDEPS='../intl/libintl.a'
+	INTLDEPS='$(top_builddir)/intl/libintl.a'
 	INTLLIBS=$INTLDEPS
 	LIBS=`echo $LIBS | sed -e 's/-lintl//'`
         nls_cv_header_intl=intl/libintl.h
