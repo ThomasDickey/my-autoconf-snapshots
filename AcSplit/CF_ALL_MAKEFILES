@@ -1,0 +1,14 @@
+dnl CF_ALL_MAKEFILES version: 2 updated: 1997/09/13 16:07:27
+dnl ----------------
+dnl List all makefiles, derived from the existing makefile.in files, saving as
+dnl a cache variable
+AC_DEFUN([CF_ALL_MAKEFILES],
+[
+AC_CACHE_VAL(cf_cv_all_makefiles,[
+cf_cf_all_makefiles=""
+for cf_makefile in `find $srcdir -type f -name makefile.in -print`
+do
+	cf_cv_all_makefiles="$cf_cv_all_makefiles `echo $cf_makefile | sed -e s@$srcdir/@[]@ -e 's@.in$[]@[]@'`"
+done
+])
+])dnl

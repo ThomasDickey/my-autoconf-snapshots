@@ -1,3 +1,5 @@
+dnl CF_SIZE_T version: 4 updated: 2000/01/22 00:19:54
+dnl ---------
 dnl	On both Ultrix and CLIX, I find size_t defined in <stdio.h>
 AC_DEFUN([CF_SIZE_T],
 [

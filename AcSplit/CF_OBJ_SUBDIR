@@ -1,0 +1,10 @@
+dnl Compute the object-directory name from the given model name
+AC_DEFUN([CF_OBJ_SUBDIR],
+[
+	case $1 in
+	normal)  $2='objects' ;;
+	debug)   $2='obj_g' ;;
+	profile) $2='obj_p' ;;
+	shared)  $2='obj_s' ;;
+	esac
+])dnl

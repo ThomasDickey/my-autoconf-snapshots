@@ -1,0 +1,52 @@
+dnl CF_PROG_YACC version: 2 updated: 1997/12/16 11:20:41
+dnl ------------
+dnl A better version of AC_PROC_YACC, verifies that we'll only choose bison if
+dnl we'll be able to compile with it.  Bison uses alloca, which isn't all that
+dnl portable.
+AC_DEFUN([CF_PROG_YACC],
+[
+AC_REQUIRE([AC_PROG_CC])
+AC_CACHE_VAL(cf_cv_prog_YACC,[
+if test -n "$YACC" ; then
+  cf_cv_prog_YACC="$YACC" # Let the user override the test.
+else
+cat >conftest.y <<EOF
+%{
+void yyerror(s) char *s; { }
+%}
+%token	NUMBER
+%%
+time	: NUMBER ':' NUMBER
+	;
+%%
+int yylex() { return NUMBER; }
+int main() { return yyparse(); }
+EOF
+  for cf_prog in 'bison -y' byacc yacc
+  do
+    rm -f y.tab.[ch]
+    AC_MSG_CHECKING(for $cf_prog)
+    cf_command="$cf_prog conftest.y"
+    cf_result=no
+    if AC_TRY_EVAL(cf_command) && test -s y.tab.c ; then
+      mv y.tab.c conftest.c
+      rm -f y.tab.h
+      if test "$cf_prog" = 'bison -y' ; then
+        if AC_TRY_EVAL(ac_link) && test -s conftest ; then
+          cf_result=yes
+        fi
+      else
+        cf_result=yes
+      fi
+    fi
+    AC_MSG_RESULT($cf_result)
+    if test $cf_result = yes ; then
+      cf_cv_prog_YACC="$cf_prog"
+      break
+    fi
+  done
+fi
+])
+YACC="$cf_cv_prog_YACC"
+AC_SUBST(YACC)dnl
+])dnl

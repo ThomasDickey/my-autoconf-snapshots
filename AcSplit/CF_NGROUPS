@@ -1,0 +1,33 @@
+dnl Check for the symbol NGROUPS
+AC_DEFUN([CF_NGROUPS],
+[
+AC_MSG_CHECKING(if NGROUPS is defined)
+AC_CACHE_VAL(cf_cv_ngroups,[
+AC_TRY_COMPILE([
+#if HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+#if HAVE_LIMITS_H
+#include <limits.h>
+#endif
+],[int x = NGROUPS],
+	[cf_cv_ngroups=yes],
+	[AC_TRY_COMPILE([
+#if HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+#if HAVE_LIMITS_H
+#include <limits.h>
+#endif
+],[int x = NGROUPS_MAX],
+		[cf_cv_ngroups=NGROUPS_MAX],
+		[cf_cv_ngroups=no])
+	])
+AC_MSG_RESULT($cf_cv_ngroups)
+if test "$cf_cv_ngroups" = no ; then
+	AC_DEFINE(NGROUPS,16)
+elif test "$cf_cv_ngroups" = NGROUPS_MAX ; then
+	AC_DEFINE(NGROUPS,NGROUPS_MAX)
+fi
+])
+])dnl

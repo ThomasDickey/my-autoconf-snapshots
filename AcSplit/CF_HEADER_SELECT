@@ -1,0 +1,28 @@
+dnl like AC_HEADER_TIME, check for conflicts:
+dnl on SCO v4, sys/time.h conflicts with select.h
+AC_DEFUN(CF_HEADER_SELECT,[
+AC_REQUIRE([AC_HEADER_TIME])
+AC_CACHE_CHECK(if we can include select.h with time.h,
+cf_cv_select_with_time,[
+AC_TRY_COMPILE([
+#include <sys/types.h>
+#if HAVE_SYS_TIME_H
+#include <sys/time.h>
+#ifdef TIME_WITH_SYS_TIME
+# include <time.h>
+#endif
+#else
+#include <time.h>
+#endif
+#if HAVE_SELECT
+# if HAVE_SELECT_H
+# include <select.h>
+# endif
+# if HAVE_SYS_SELECT_H
+# include <sys/select.h>
+# endif
+#endif
+],[],[cf_cv_select_with_time=yes],[cf_cv_select_with_time=no])
+])
+test $cf_cv_select_with_time = yes && AC_DEFINE(SELECT_WITH_TIME)
+])dnl

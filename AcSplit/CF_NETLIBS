@@ -1,0 +1,42 @@
+dnl CF_NETLIBS version: 4 updated: 1999/12/23 15:20:39
+dnl ----------
+dnl After checking for functions in the default $LIBS, make a further check
+dnl for the functions that are netlib-related (these aren't always in the
+dnl libc, etc., and have to be handled specially because there are conflicting
+dnl and broken implementations.
+dnl Common library requirements (in order):
+dnl	-lresolv -lsocket -lnsl
+dnl	-lnsl -lsocket
+dnl	-lsocket
+dnl	-lbsd
+AC_DEFUN([CF_NETLIBS],[
+cf_test_netlibs=no
+AC_MSG_CHECKING(for network libraries)
+AC_CACHE_VAL(cf_cv_netlibs,[
+AC_MSG_RESULT(working...)
+cf_cv_netlibs=""
+cf_test_netlibs=yes
+AC_CHECK_FUNCS(gethostname,,[
+	CF_RECHECK_FUNC(gethostname,nsl,cf_cv_netlibs,[
+		CF_RECHECK_FUNC(gethostname,socket,cf_cv_netlibs)])])
+#
+# FIXME:  sequent needs this library (i.e., -lsocket -linet -lnsl), but
+# I don't know the entrypoints - 97/7/22 TD
+# AC_HAVE_LIBRARY(inet,cf_cv_netlibs="-linet $cf_cv_netlibs")
+AC_CHECK_LIB(inet, main, cf_cv_netlibs="-linet $cf_cv_netlibs")
+#
+if test "$ac_cv_func_lsocket" != no ; then
+AC_CHECK_FUNCS(socket,,[
+	CF_RECHECK_FUNC(socket,socket,cf_cv_netlibs,[
+		CF_RECHECK_FUNC(socket,bsd,cf_cv_netlibs)])])
+fi
+#
+AC_CHECK_FUNCS(gethostbyname,,[
+	CF_RECHECK_FUNC(gethostbyname,nsl,cf_cv_netlibs)])
+#
+AC_CHECK_FUNCS(strcasecmp,,[
+	CF_RECHECK_FUNC(strcasecmp,resolv,cf_cv_netlibs)])
+])
+LIBS="$LIBS $cf_cv_netlibs"
+test $cf_test_netlibs = no && echo "$cf_cv_netlibs" >&AC_FD_MSG
+])dnl

@@ -1,0 +1,10 @@
+dnl Compute the string to append to -library from the given model name
+AC_DEFUN([CF_LIB_TYPE],
+[
+	case $1 in
+	normal)  $2=''   ;;
+	debug)   $2='_g' ;;
+	profile) $2='_p' ;;
+	shared)  $2=''   ;;
+	esac
+])dnl

@@ -1,0 +1,16 @@
+dnl Construct a search-list for a nonstandard header-file
+AC_DEFUN([CF_HEADER_PATH],
+[$1=""
+if test -d "$includedir"  ; then
+test "$includedir" != NONE       && $1="[$]$1 $includedir $includedir/$2"
+fi
+if test -d "$oldincludedir"  ; then
+test "$oldincludedir" != NONE    && $1="[$]$1 $oldincludedir $oldincludedir/$2"
+fi
+if test -d "$prefix"; then
+test "$prefix" != NONE           && $1="[$]$1 $prefix/include $prefix/include/$2"
+fi
+test "$prefix" != /usr/local     && $1="[$]$1 /usr/local/include /usr/local/include/$2"
+test "$prefix" != /usr           && $1="[$]$1 /usr/include /usr/include/$2"
+test "$prefix" != /opt           && $1="[$]$1 /opt/include /opt/include/$2"
+])dnl

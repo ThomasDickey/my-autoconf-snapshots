@@ -1,0 +1,65 @@
+dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
+dnl
+dnl For this check, and for CF_CURSES_TERMCAP, the $CHECK_DECL_HDRS variable
+dnl must point to a header file containing this (or equivalent):
+dnl
+dnl	#ifdef NEED_CURSES_H
+dnl	# if HAVE_NCURSES_H
+dnl	#  include <ncurses.h>
+dnl	# else
+dnl	#  include <curses.h>
+dnl	# endif
+dnl	#endif
+dnl	#if HAVE_TERM_H
+dnl	# include <term.h>
+dnl	#endif
+dnl	#if NEED_TERMCAP_H
+dnl	# include <termcap.h>
+dnl	#endif
+dnl
+AC_DEFUN([CF_TYPE_OUTCHAR],
+[
+AC_REQUIRE([CF_CURSES_TERMCAP])
+
+AC_MSG_CHECKING([declaration of tputs 3rd param])
+AC_CACHE_VAL(cf_cv_type_outchar,[
+
+cf_cv_type_outchar="int OutChar(int)"
+cf_cv_found=no
+cf_save_CFLAGS="$CFLAGS"
+CFLAGS="$CFLAGS $CHECK_DECL_FLAG"
+
+for P in int void; do
+for Q in int void; do
+for R in int char; do
+for S in "" const; do
+
+	AC_TRY_COMPILE([$CHECK_DECL_HDRS],
+	[extern $Q OutChar($R);
+	extern $P tputs ($S char *string, int nlines, $Q (*_f)($R));
+	tputs("", 1, OutChar)],
+	[cf_cv_type_outchar="$Q OutChar($R)"
+	 cf_cv_found=yes
+	 break])
+done
+	test $cf_cv_found = yes && break
+done
+	test $cf_cv_found = yes && break
+done
+	test $cf_cv_found = yes && break
+done
+	])
+AC_MSG_RESULT($cf_cv_type_outchar)
+case $cf_cv_type_outchar in
+int*)
+	AC_DEFINE(OUTC_RETURN)
+	;;
+esac
+case $cf_cv_type_outchar in
+*char*)
+	AC_DEFINE(OUTC_ARGS,char c)
+	;;
+esac
+
+CFLAGS="$cf_save_CFLAGS"
+])dnl

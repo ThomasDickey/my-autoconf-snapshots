@@ -1,0 +1,19 @@
+dnl Check if this is a SYSV flavor of UTMP
+AC_DEFUN([CF_SYSV_UTMP],
+[
+AC_REQUIRE([CF_UTMP])
+AC_CACHE_CHECK(if $cf_cv_have_utmp is SYSV flavor,cf_cv_sysv_utmp,[
+test "$cf_cv_have_utmp" = "utmp" && cf_prefix="ut" || cf_prefix="utx"
+AC_TRY_LINK([
+#include <sys/types.h>
+#include <${cf_cv_have_utmp}.h>],[
+struct $cf_cv_have_utmp x;
+	set${cf_prefix}ent ();
+	get${cf_prefix}id(&x);
+	put${cf_prefix}line(&x);
+	end${cf_prefix}ent();],
+	[cf_cv_sysv_utmp=yes],
+	[cf_cv_sysv_utmp=no])
+])
+test $cf_cv_sysv_utmp = yes && AC_DEFINE(USE_SYSV_UTMP)
+])dnl

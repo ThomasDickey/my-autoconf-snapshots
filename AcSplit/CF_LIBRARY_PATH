@@ -1,0 +1,17 @@
+dnl Construct a search-list for a nonstandard library-file
+AC_DEFUN([CF_LIBRARY_PATH],
+[$1=""
+if test -d "$libdir"  ; then
+test "$libdir" != NONE           && $1="[$]$1 $libdir $libdir/$2"
+fi
+if test -d "$exec_prefix"; then
+test "$exec_prefix" != NONE      && $1="[$]$1 $exec_prefix/lib $exec_prefix/lib/$2"
+fi
+if test -d "$prefix"; then
+test "$prefix" != NONE           && \
+test "$prefix" != "$exec_prefix" && $1="[$]$1 $prefix/lib $prefix/lib/$2"
+fi
+test "$prefix" != /usr/local     && $1="[$]$1 /usr/local/lib /usr/local/lib/$2"
+test "$prefix" != /usr           && $1="[$]$1 /usr/lib /usr/lib/$2"
+test "$prefix" != /opt           && $1="[$]$1 /opt/lib /opt/lib/$2"
+])dnl

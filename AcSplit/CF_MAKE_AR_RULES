@@ -1,0 +1,56 @@
+dnl Check if the 'make' program knows how to interpret archive rules.  Though
+dnl this is common practice since the mid-80's, there are some holdouts (1997).
+AC_DEFUN([CF_MAKE_AR_RULES],
+[
+AC_MSG_CHECKING(if ${MAKE-make} program knows about archives)
+AC_CACHE_VAL(cf_cv_ar_rules,[
+cf_dir=subd$$
+cf_cv_ar_rules=unknown
+mkdir $cf_dir
+cat >$cf_dir/makefile <<CF_EOF
+AR = ar crv
+CC = $CC
+
+.SUFFIXES:
+.SUFFIXES: .c .o .a
+
+all:  conf.a
+
+.c.a:
+	\$(CC) -c $<
+	\$(AR) \$[]@ \$[]*.o
+conf.a : conf.a(conftest.o)
+CF_EOF
+touch $cf_dir/conftest.c
+if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+then
+	cf_cv_ar_rules=yes
+else
+echo ... did not find archive >&AC_FD_CC
+rm -f $cf_dir/conftest.o
+cat >$cf_dir/makefile <<CF_EOF
+AR = ar crv
+CC = $CC
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+all:  conf.a
+
+.c.o:
+	\$(CC) -c $<
+
+conf.a : conftest.o
+	\$(AR) \$[]@ \$?
+CF_EOF
+if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+then
+	cf_cv_ar_rules=no
+else
+	AC_ERROR(I do not know how to construct a library)
+fi
+fi
+rm -rf $cf_dir
+])
+AC_MSG_RESULT($cf_cv_ar_rules)
+])dnl

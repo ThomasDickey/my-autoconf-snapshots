@@ -1,0 +1,9 @@
+dnl CF_AC_PREREQ version: 2 updated: 1997/09/06 13:24:56
+dnl ------------
+dnl Conditionally generate script according to whether we're using the release
+dnl version of autoconf, or a patched version (using the ternary component as
+dnl the patch-version).
+define(CF_AC_PREREQ,
+[CF_PREREQ_COMPARE(
+AC_PREREQ_CANON(AC_PREREQ_SPLIT(AC_ACVERSION)),
+AC_PREREQ_CANON(AC_PREREQ_SPLIT([$1])), [$1], [$2], [$3])])dnl
