@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19991005
+MANIFEST for my-autoconf, version t19991016
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -85,6 +85,7 @@ AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
+AcSplit/CF_GNU_SOURCE           check if _GNU_SOURCE is needed to define _XOPEN_SOURCE
 AcSplit/CF_GPP_LIBRARY          check for -lg++
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
@@ -98,6 +99,7 @@ AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
+AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
 AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
 AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
@@ -209,6 +211,7 @@ AcSplit/CF_UPPER                convert to uppercase
 AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTMP                 check for struct utmp (or similar)
 AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
+AcSplit/CF_UTMP_UT_XTIME        check for utmp.ut_xtime member
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_lib)
