@@ -1,3 +1,5 @@
+dnl CF_CURS_PERFORMANCE version: 3 updated: 1998/04/27 20:32:33
+dnl -------------------
 dnl Solaris 2.x curses provides a "performance" tradeoff according to whether
 dnl CURS_PERFORMANCE is defined.  If defined, the implementation defines macros
 dnl that access the WINDOW structure.  Otherwise, function calls are used.
@@ -7,7 +9,7 @@ AC_MSG_CHECKING([for curses performance tradeoff])
 AC_CACHE_VAL(cf_cv_curs_performance,[
     cf_cv_curs_performance=no
     AC_TRY_COMPILE([
-#include <$cf_cv_ncurses_header>],[
+#include <${cf_cv_ncurses_header-curses.h}>],[
 #if defined(wbkgdset) && defined(clearok) && defined(getbkgd)
 	int x = ERR;
 #else
@@ -16,7 +18,7 @@ AC_CACHE_VAL(cf_cv_curs_performance,[
 	],[
 	AC_TRY_COMPILE([
 #define CURS_PERFORMANCE
-#include <$cf_cv_ncurses_header>],[
+#include <${cf_cv_ncurses_header-curses.h}>],[
 #if defined(wbkgdset) && defined(clearok) && defined(getbkgd)
 	int x = ;	/* force an error */
 #else
