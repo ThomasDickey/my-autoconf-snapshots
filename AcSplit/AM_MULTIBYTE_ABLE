@@ -23,6 +23,8 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
       wchar_t format[3];
 
       putwc(0, 0);
+      fputwc(0, 0);
+      fwide(0, 0);
       mbtowc(wcb, icb, MB_CUR_MAX);
       mbstowcs(wcb, icb, 5);
       iswprint((wint_t) wcb[0]);
@@ -45,6 +47,8 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
         wchar_t format[3];
 
         putwc(0, 0);
+	fputwc(0, 0);
+        fwide(0, 0);
         mbtowc(wcb, icb, MB_CUR_MAX);
         mbstowcs(wcb, icb, 5);
         iswprint((wint_t) wcb[0]);
