@@ -14,11 +14,11 @@ AC_ARG_WITH(neXtaw,
 
 AC_CHECK_HEADERS(X11/$cf_x_athena/SimpleMenu.h)
 
-AC_CHECK_LIB(Xmu, XmuClientWindow,,[
-AC_CHECK_LIB(Xmu_s, XmuClientWindow)])
-
 AC_CHECK_LIB(Xext,XextCreateExtension,
 	[LIBS="-lXext $LIBS"])
+
+AC_CHECK_LIB(Xmu, XmuClientWindow,,[
+AC_CHECK_LIB(Xmu_s, XmuClientWindow)])
 
 AC_CHECK_LIB($cf_x_athena, XawSimpleMenuAddGlobalActions,
 	[LIBS="-l$cf_x_athena $LIBS"],[
