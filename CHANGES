@@ -1,3 +1,7 @@
+2003-05-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XKB_BELL_EXT: autoconf-252 reported misplaced parenthesis
+
 2003-05-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION:

@@ -1,4 +1,4 @@
-dnl CF_XKB_BELL_EXT version: 1 updated: 2003/03/23 02:01:38
+dnl CF_XKB_BELL_EXT version: 2 updated: 2003/05/18 17:28:57
 dnl ---------------
 dnl Check for XKB bell extension
 AC_DEFUN([CF_XKB_BELL_EXT],[
@@ -13,7 +13,7 @@ int x = XkbBI_Info
 	|XkbBI_TerminalBell
 	|XkbBI_MarginBell;
 ],[cf_cv_xkb_bell_ext=yes],[cf_cv_xkb_bell_ext=no])
+])
 
 test "$cf_cv_xkb_bell_ext" = yes && AC_DEFINE(HAVE_XKB_BELL_EXT)
-])
 ])
