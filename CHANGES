@@ -1,3 +1,17 @@
+2004-04-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL:
+	change a variable name to match CF_GNUTLS a little better
+
+	* AcSplit/CF_GNUTLS:
+	modified (like CF_SSL) to be a little more cautious about looking for
+	the <gnutls/openssl.h> file, and to accommodate recent change (11/2003)
+	to move the openssl-compatibile functions from gnutls-extra to gnutls-openssl
+
+	* AcSplit/CF_SSL:
+	fix a conflict with system-installed openssl library and private ssleay
+	(I was picking up the headers for the former when looking at the latter).
+
 2004-04-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:
