@@ -1,3 +1,14 @@
+2001-10-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_IPV6_TYPE: ci-aclocal generated header
+
+	* AcSplit/CF_DEFAULT_SHELL: tin: Urs' improvements
+
+	* AcSplit/CF_FIND_IPV6_TYPE:
+	tin: oops Andreas Metzler <tin-dev@downhill.at.eu.org>
+	noticed spurious dnl's in the output which have been there since this macro
+	was written
+
 2001-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MKSTEMP: RCS_BASE
