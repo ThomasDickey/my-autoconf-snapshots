@@ -1,3 +1,17 @@
+2002-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_ADD_CFLAGS, AcSplit/CF_INCLUDE_DIRS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS:
+	ncurses: when adding to $CPPFLAGS, put new -I stuff first
+
+	* AcSplit/CF_ADD_CFLAGS:
+	ncurses: when updating $CPPFLAGS, add new -I's at the beginning
+
+	* AcSplit/CF_INCLUDE_DIRS:
+	ncurses: when updating $CPPFLAGS, put new -I's at the beginning
+
 2002-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS: BCPP: apply this to g++ also
