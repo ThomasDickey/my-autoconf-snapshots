@@ -1,3 +1,8 @@
+2002-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	the edit_man.sed script lives in the man-directory
+
 2002-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2002-09-05 (from tin 1.5.15)
