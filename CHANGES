@@ -1,3 +1,9 @@
+2003-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	Charles Wilson - change prefix on cygwin dll's to "cyg" to avoid conflict
+	with other dll's that happen to have the same root name.
+
 2003-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CFG_DEFAULTS: Date: Tue, 8 Jul 2003 02:12:25 +0200
