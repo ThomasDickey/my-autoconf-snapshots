@@ -17,31 +17,34 @@ if test "$1" = ncurses; then
 fi
 ])
 if test "$cf_cv_termlib" = none; then
-	case $host_os in #(vi
-	freebsd*) #(vi
-		;;
-	*)
-		AC_CHECK_LIB(curses, tgetstr, [LIBS="$LIBS -lcurses" cf_cv_termlib=terminfo])
-		;;
-	esac
-fi
-# HP-UX 9.x terminfo has setupterm, but no tigetstr.
-if test "$cf_cv_termlib" = none; then
-	AC_CHECK_LIB(termlib, tigetstr, [LIBS="$LIBS -ltermlib" cf_cv_termlib=terminfo])
-fi
-if test "$cf_cv_termlib" = none; then
-	AC_CHECK_LIB(termlib, tgoto, [LIBS="$LIBS -ltermlib" cf_cv_termlib=termcap])
+	# FreeBSD's linker gives bogus results for AC_CHECK_LIB, saying that
+	# tgetstr lives in -lcurses when it is only an unsatisfied extern.
+	cf_save_LIBS="$LIBS"
+	for cf_lib in curses ncurses termlib termcap
+	do
+	LIBS="-l$cf_lib $cf_save_LIBS"
+	for cf_func in tigetstr tgetstr
+	do
+		AC_MSG_CHECKING(for $cf_func in -l$cf_lib)
+		AC_TRY_LINK([],[int x=$cf_func("")],[cf_result=yes],[cf_result=no])
+		AC_MSG_RESULT($cf_result)
+		if test "$cf_result" = yes ; then
+			if test "$cf_func" = tigetstr ; then
+				cf_cv_termlib=terminfo
+			else
+				cf_cv_termlib=termcap
+			fi
+			break
+		fi
+	done
+		test "$cf_result" = yes && break
+	done
+	test "$cf_result" = no && LIBS="$cf_save_LIBS"
 fi
 if test "$cf_cv_termlib" = none; then
 	# allow curses library for broken AIX system.
 	AC_CHECK_LIB(curses, initscr, [LIBS="$LIBS -lcurses" cf_cv_termlib=termcap])
 	AC_CHECK_LIB(termcap, tgoto, [LIBS="$LIBS -ltermcap" cf_cv_termlib=termcap])
-fi
-if test "$cf_cv_termlib" = none; then
-	AC_CHECK_LIB(termcap, tgoto, [LIBS="$LIBS -ltermcap" cf_cv_termlib=termcap])
-fi
-if test "$cf_cv_termlib" = none; then
-	AC_CHECK_LIB(ncurses, tgoto, [LIBS="$LIBS -lncurses" cf_cv_termlib=ncurses])
 fi
 ])
 if test "$cf_cv_termlib" = none; then
