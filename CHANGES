@@ -1,3 +1,19 @@
+2002-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	ncurses - remove conflicting files that may be gzip'd
+
+	* AcSplit/CF_CURSES_TERM_H: add check for <ncurses/term.h>
+
+	* AcSplit/CF_CURSES_TERMCAP:
+	changed $cf_cv_have_term_h variable to be normally a header filename, so
+	I can incorporate <ncurses/term.h>
+
+	* AcSplit/CF_CURSES_TERM_H: ci-aclocal generated header
+
+	* AcSplit/CF_TYPE_OUTCHAR:
+	expanded comment, added <ncurses/ncurses.h> and <ncurses/term.h>
+
 2002-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2002/1/2
