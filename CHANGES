@@ -1,3 +1,16 @@
+2001-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MKSTEMP: RCS_BASE
+
+2001-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PATH_SYNTAX:
+	vile: allow leading double-backslash for DOS-style pathnames
+
+	* AcSplit/CF_WITH_PATHLIST:
+	vile: fix an error in $IFS setting, and add an option to make it simpler
+	to force backslashes to be escaped when we're defining a string.
+
 2001-08-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND:
