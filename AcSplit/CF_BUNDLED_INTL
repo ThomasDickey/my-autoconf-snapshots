@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 9 updated: 2003/09/08 16:06:46
+dnl CF_BUNDLED_INTL version: 10 updated: 2003/09/14 18:49:13
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -13,6 +13,11 @@ dnl	SUB_MAKEFILE - list of makefiles in ./intl, ./po directories
 dnl Defines
 dnl	HAVE_LIBGETTEXT_H if we're using ./intl
 dnl
+dnl Environment:
+dnl	ALL_LINGUAS if set, lists the root names of the ".po" files.
+dnl	CONFIG_H assumed to be "config.h"
+dnl	VERSION may be set, otherwise extract from "VERSION" file.
+dnl
 AC_DEFUN([CF_BUNDLED_INTL],[
 cf_makefile=ifelse($1,,Makefile,$1)
 
@@ -21,8 +26,8 @@ dnl setting $LINGUAS overrides $ALL_LINGUAS.  Some environments set $LINGUAS
 dnl rather than $LC_ALL
 test -z "$ALL_LINGUAS" && ALL_LINGUAS=`test -d $srcdir/po && cd $srcdir/po && echo *.po|sed -e 's/\.po//g' -e 's/*//'`
 
-# variables used in lynx:
-CONFIG_H=config.h
+# Allow override of "config.h" definition:
+: ${CONFIG_H=config.h}
 AC_SUBST(CONFIG_H)
 
 if test -z "$VERSION" ; then
