@@ -1,3 +1,21 @@
+1998-05-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS: add special cases for HPUX 10.x, SCO 5
+
+	* AcSplit/CF_SED_CONFIG_H: ci-aclocal generated header
+
+	* AcSplit/CF_SRC_MODULES:
+	hack so HPUX gets the -L$(libdir) first, but no other systems.
+
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_MAN_PAGES, AcSplit/CF_SED_CONFIG_H, AcSplit/CF_SPEED_TYPE:
+	trim trailing blanks
+
+1998-05-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_TERMCAP: whitespace
+
+	* AcSplit/CF_COLOR_CURSES: whitespace.
+
 1998-05-06  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS: add logic to get IMAKE_LOADFLAGS

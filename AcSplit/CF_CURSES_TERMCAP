@@ -57,7 +57,7 @@ if test "$cf_cv_need_curses_h" != no ; then
 		cf_cv_need_curses_h=termcap.h
 	elif test "$cf_cv_have_term_h" = yes ; then
 		cf_cv_need_curses_h=term.h
-	else 
+	else
 		cf_cv_need_curses_h=no
 	fi
 fi
