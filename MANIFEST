@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000531
+MANIFEST for my-autoconf, version t20000610
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -123,6 +123,7 @@ AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
 AcSplit/CF_MANPAGE_FORMAT       determine (optionally) the manpage format
 AcSplit/CF_MANPAGE_RENAMES      determine (optionally) if we must rename manpage sections
+AcSplit/CF_MANPAGE_SYMLINKS     accept configure option for manpage symbolic links
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MATH_LIB             check if math libs are needed for math functions
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
