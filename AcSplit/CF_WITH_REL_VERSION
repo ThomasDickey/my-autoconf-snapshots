@@ -1,0 +1,24 @@
+dnl CF_WITH_REL_VERSION version: 1 updated: 2003/09/20 18:12:49
+dnl -------------------
+dnl Allow library's release-version to be overridden.  Generally this happens when a
+dnl packager has incremented the release-version past that used in the original package,
+dnl and wishes to keep doing this.
+dnl
+dnl $1 is the package name, if any, to derive corresponding {package}_MAJOR
+dnl and {package}_MINOR symbols
+dnl symbol.
+AC_DEFUN([CF_WITH_REL_VERSION],[
+test -z "$cf_cv_rel_version" && cf_cv_rel_version=0.0
+AC_ARG_WITH(rel-version,
+[  --with-rel-version=XXX  override derived release version],
+[AC_MSG_WARN(overriding release version $cf_cv_rel_version to $withval)
+ cf_cv_rel_version=$withval])
+ifelse($1,,[
+ CF_NUMBER_SYNTAX($cf_cv_rel_version,Release version)
+],[
+ $1_MAJOR=`echo "$cf_cv_rel_version" | sed -e 's/\..*//'`
+ $1_MINOR=`echo "$cf_cv_rel_version" | sed -e 's/^[[^.]]*//' -e 's/^\.//' -e 's/\..*//'`
+ CF_NUMBER_SYNTAX([$]$1_MAJOR,Release major-version)
+ CF_NUMBER_SYNTAX([$]$1_MINOR,Release minor-version)
+])
+])dnl

@@ -1,3 +1,17 @@
+2003-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NUMBER_SYNTAX, AcSplit/CF_WITH_ABI_VERSION, AcSplit/CF_WITH_REL_VERSION, AcSplit/CF_PROG_LDCONFIG:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MIXEDCASE_FILENAMES:
+	if cross-compiling, rely on known cases
+
+2003-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE:
+	add a couple of symbols needed as stubs to let xterm compile with slightly
+	different versions of Xft.
+
 2003-09-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SLANG_CPPFLAGS: add check for slang-utf8 package.
