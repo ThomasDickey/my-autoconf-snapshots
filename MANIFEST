@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990921
+MANIFEST for my-autoconf, version t19990924
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -177,6 +177,7 @@ AcSplit/CF_SUBST_NCURSES_VERSION  obtain ncurses version for use in substitution
 AcSplit/CF_SYSRELV              derive the system release-version
 AcSplit/CF_SYSTEM_MAIL_FLAGS    check for system mailer-flags
 AcSplit/CF_SYSTYPE              derive the system-type
+AcSplit/CF_SYSV_UTMP            check for utmp-related functions
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
 AcSplit/CF_SYS_SELECT_TIMEVAL   check for <sys/time.h> vs <sys/select.h> conflict
@@ -206,6 +207,7 @@ AcSplit/CF_UNSIGNED_LITERALS    test if the compiler allows unsigned literals
 AcSplit/CF_UPPER                convert to uppercase
 AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTMP                 check for struct utmp (or similar)
+AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_lib)

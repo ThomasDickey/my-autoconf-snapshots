@@ -1,0 +1,21 @@
+dnl Check if UTMP/UTMPX struct defines ut_host member
+AC_DEFUN([CF_UTMP_UT_HOST],
+[
+AC_REQUIRE([CF_UTMP])
+AC_MSG_CHECKING(if utmp.ut_host is declared)
+AC_CACHE_VAL(cf_cv_have_utmp_ut_host,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#ifdef UTMPX_FOR_UTMP
+#include <utmpx.h>
+#define utmp utmpx
+#else
+#include <utmp.h>
+#endif],
+	[struct utmp x; char *y = &x.ut_host[0]],
+	[cf_cv_have_utmp_ut_host=yes],
+	[cf_cv_have_utmp_ut_host=no])
+	])
+AC_MSG_RESULT($cf_cv_have_utmp_ut_host)
+test $cf_cv_have_utmp_ut_host != no && AC_DEFINE(HAVE_UTMP_UT_HOST)
+])

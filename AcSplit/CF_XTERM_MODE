@@ -33,23 +33,39 @@ changequote([,])dnl
 			XTERM_GRP=$cf_grp;
 		fi
 	fi
+	echo "derived user \"$XTERM_USR\", group \"$XTERM_GRP\" of previously-installed xterm" 1>&AC_FD_CC
 
 	echo "see if mode \"$cf_mode\" has s-bit set" 1>&AC_FD_CC
 	case ".$cf_mode" in #(vi
 	.???s*) #(vi
 		XTERM_MODE=4711
+		XTERM_GRP=
 		;;
 	.??????s*)
 		XTERM_MODE=2711
+		XTERM_USR=
 		;;
 	esac
 fi
-test "$XTERM_USR" = "root" && XTERM_USR=""
-test "$XTERM_GRP" = "root" && XTERM_GRP=""
-test "$XTERM_GRP" = "wheel" && XTERM_GRP=""
+
+if test -n "${XTERM_USR}${XTERM_GRP}" ; then
+changequote(,)dnl
+	cf_usr=`id | sed -e 's/^[^(]*(//' -e 's/).*$//'`
+	cf_grp=`id | sed -e 's/^.* gid=[^(]*(//' -e 's/).*$//'`
+changequote([,])dnl
+	echo "configuring as user \"$cf_usr\", group \"$cf_grp\" of previously-installed xterm" 1>&AC_FD_CC
+	test "$XTERM_USR" = "$cf_usr" && XTERM_USR=""
+	test "$XTERM_USR" = "root"    && XTERM_USR=""
+	test "$XTERM_GRP" = "$cf_grp" && XTERM_GRP=""
+	test "$XTERM_GRP" = "root"    && XTERM_GRP=""
+	test "$XTERM_GRP" = "wheel"   && XTERM_GRP=""
+fi
+
 AC_MSG_RESULT($XTERM_MODE $XTERM_USR $XTERM_GRP)
+
 test -n "$XTERM_USR" && XTERM_USR="-o $XTERM_USR"
 test -n "$XTERM_GRP" && XTERM_GRP="-g $XTERM_GRP"
+
 AC_SUBST(XTERM_MODE)
 AC_SUBST(XTERM_USR)
 AC_SUBST(XTERM_GRP)

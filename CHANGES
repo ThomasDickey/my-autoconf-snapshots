@@ -1,3 +1,14 @@
+1999-09-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TTY_GROUP, AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_HOST:
+	RCS_BASE
+
+	* AcSplit/CF_UTMP: add sub-tests for struct members and functions
+
+	* AcSplit/CF_XTERM_MODE:
+	more refinements - don't really want to use the -o and -g options if s-bit
+	isn't set, since they're also a portability concern.
+
 1999-09-21  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_XTERM_MODE: fixes for 'ls' that inverts the -g option
