@@ -1,3 +1,10 @@
+2000-07-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TYPE_OUTCHAR: add a log message
+
+	* AcSplit/CF_BUNDLED_INTL:
+	tin: add a clause for SUB_MAKEFILE if $nls_cv_use_gnu_gettext is set.
+
 2000-07-29  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS:

@@ -33,7 +33,7 @@ for P in int void; do
 for Q in int void; do
 for R in int char; do
 for S in "" const; do
-
+	CF_MSG_LOG(loop variables [P:[$]P, Q:[$]Q, R:[$]R, S:[$]S])
 	AC_TRY_COMPILE([$CHECK_DECL_HDRS],
 	[extern $Q OutChar($R);
 	extern $P tputs ($S char *string, int nlines, $Q (*_f)($R));

@@ -19,6 +19,8 @@ CF_OUR_MESSAGES
 if test "$USE_INCLUDED_LIBINTL" = yes ; then
         if test "$nls_cv_force_use_gnu_gettext" = yes ; then
 		SUB_MAKEFILE="intl/$cf_makefile"
+	elif test "$nls_cv_use_gnu_gettext" = yes ; then
+		SUB_MAKEFILE="intl/$cf_makefile"
 	else
 		INTLDIR_MAKE="#"
 	fi
