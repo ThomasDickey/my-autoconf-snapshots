@@ -1,3 +1,9 @@
+2003-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_INSTALL_PREFIX: RCS_BASE
+
+	* AcSplit/CF_WITH_INSTALL_PREFIX: ci-aclocal generated header
+
 2002-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SUBDIR_PATH:
