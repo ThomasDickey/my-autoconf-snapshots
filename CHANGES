@@ -1,3 +1,10 @@
+2003-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SYSV:
+	define SYSV during the test, and include <X11/Xos.h> so we'll get the
+	conflicting sys_errlist[].  Documented this for cygwin.  Will have to
+	re-test on older linux to be sure that the test breaks.
+
 2003-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES:
