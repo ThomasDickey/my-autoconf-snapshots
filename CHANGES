@@ -1,3 +1,7 @@
+2000-08-03  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess, config.sub: lynx2.8.4dev.7
+
 2000-07-30  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TYPE_OUTCHAR: add a log message
