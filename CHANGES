@@ -1,3 +1,8 @@
+2001-01-31  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_FUNCS:
+	braindead gcc 2.91.66 optimized away my test.  nail it down.
+
 2001-01-29  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_UPPER:
