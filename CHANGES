@@ -1,3 +1,15 @@
+1998-03-03  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FIND_LIBRARY:
+	add special case for Linux systems that don't put everything in /usr/lib
+
+	* AcSplit/CF_COLOR_CURSES:
+	must allow for this macro being used w/o setting $cf_cv_ncurses_header
+
+1998-03-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROG_EXT: RCS_BASE
+
 1998-02-24  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: from automake 1.3

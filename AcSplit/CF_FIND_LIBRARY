@@ -38,4 +38,9 @@ AC_DEFUN([CF_FIND_LIBRARY],
 if test $cf_cv_have_lib_$1 = no ; then
 	AC_ERROR(Cannot link $1 library)
 fi
+case $host_os in #(vi
+linux*) # Suse Linux does not follow /usr/lib convention
+	$1="[$]$1 /lib"
+	;;
+esac
 ])dnl

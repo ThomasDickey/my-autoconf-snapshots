@@ -1,0 +1,14 @@
+dnl Derive the 'PROG_EXT' variable, used for porting executables to OS/2 EMX
+dnl and other quasi-Unix layers on PC's.
+AC_DEFUN([CF_PROG_EXT],[
+PROG_EXT=
+case $cf_cv_system_name in
+os2*) # (vi
+    # We make sure -Zexe is not used -- it would interfere with @PROG_EXT@
+    CFLAGS="$CFLAGS -Zmt -D__ST_MT_ERRNO__"
+    LDFLAGS=`echo "$LDFLAGS -Zmt -Zcrtdll" | sed "s/-Zexe//g"`
+    PROG_EXT=".exe"
+    ;;
+esac
+AC_SUBST(PROG_EXT)
+])dnl

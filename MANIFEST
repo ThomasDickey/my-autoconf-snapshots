@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980224
+MANIFEST for my-autoconf, version t19980303
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -107,6 +107,7 @@ AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
+AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca
