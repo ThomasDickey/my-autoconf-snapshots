@@ -1,3 +1,11 @@
+1997-11-08  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	extend the rpath option to include Solaris (-R)
+
+	* AcSplit/CF_CGETENT, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS:
+	RCS_BASE
+
 1997-11-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_UNION_WAIT: correct type for the first test.
