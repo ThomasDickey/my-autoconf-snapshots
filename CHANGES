@@ -1,3 +1,11 @@
+2000-07-17  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub: lynx - os390 changes
+
+2000-07-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: lynx - os390 changes
+
 2000-07-15  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAN_PAGES: mods to make this work with program-prefix
