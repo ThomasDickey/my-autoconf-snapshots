@@ -25,7 +25,7 @@ AC_MSG_RESULT($prefix)
 
 if test "x$prefix" = "xNONE" ; then
 AC_MSG_CHECKING(for default include-directory)
-test -n "$verbose" && echo 1>&6
+test -n "$verbose" && echo 1>&AC_FD_MSG
 for cf_symbol in \
 	$includedir \
 	$includedir/ncurses \
@@ -40,11 +40,11 @@ do
 	if test -f $cf_dir/curses.h ; then
 	if ( fgrep NCURSES_VERSION $cf_dir/curses.h 2>&1 >/dev/null ) ; then
 		includedir="$cf_symbol"
-		test -n "$verbose"  && echo $ac_n "	found " 1>&6
+		test -n "$verbose"  && echo $ac_n "	found " 1>&AC_FD_MSG
 		break
 	fi
 	fi
-	test -n "$verbose"  && echo "	tested $cf_dir" 1>&6
+	test -n "$verbose"  && echo "	tested $cf_dir" 1>&AC_FD_MSG
 done
 AC_MSG_RESULT($includedir)
 fi

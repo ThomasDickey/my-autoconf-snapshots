@@ -11,6 +11,7 @@ dnl	lib<name>.so.<major>	->
 dnl	lib<name>.so.<maj>.<minor>
 AC_DEFUN([CF_LIB_RULES],
 [
+CF_LIB_PREFIX(cf_prefix)
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 for cf_dir in $SRC_SUBDIRS
 do
@@ -20,8 +21,19 @@ do
 		for cf_item in $CF_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
-			cf_libs_to_make="$cf_libs_to_make ../lib/lib${cf_dir}${cf_suffix}"
+			cf_libs_to_make="$cf_libs_to_make ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
 		done
+
+		if test $cf_dir = ncurses ; then
+			case "$LIB_SUBSETS" in
+			termlib+*) #(vi
+				;;
+			*) #(vi
+				cf_item=`echo $cf_libs_to_make |sed -e s/$LIB_NAME/$TINFO_NAME/g`
+				cf_libs_to_make="$cf_libs_to_make $cf_item"
+				;;
+			esac
+		fi
 
 		sed -e "s@\@LIBS_TO_MAKE\@@$cf_libs_to_make@" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
@@ -46,16 +58,22 @@ do
 			else
 				cf_reldir="\$(srcdir)"
 			fi
+
 			if test -f $srcdir/$cf_dir/$cf_dir.priv.h; then
 				cf_depend="$cf_depend $cf_reldir/$cf_dir.priv.h"
 			elif test -f $srcdir/$cf_dir/curses.priv.h; then
 				cf_depend="$cf_depend $cf_reldir/curses.priv.h"
 			fi
+
+			for cf_subset in $LIB_SUBSETS
+			do
 			$AWK -f $srcdir/mk-1st.awk \
 				name=$cf_dir \
 				MODEL=$CF_ITEM \
 				model=$cf_subdir \
+				prefix=$cf_prefix \
 				suffix=$cf_suffix \
+				subset=$cf_subset \
 				DoLinks=$cf_cv_do_symlinks \
 				rmSoLocs=$cf_cv_rm_so_locs \
 				ldconfig="$LDCONFIG" \
@@ -68,9 +86,11 @@ do
 				name=$cf_dir \
 				MODEL=$CF_ITEM \
 				model=$cf_subdir \
+				subset=$cf_subset \
 				srcdir=$srcdir \
 				echo=$WITH_ECHO \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+			done
 		done
 	fi
 
@@ -79,6 +99,16 @@ done
 
 for cf_dir in $SRC_SUBDIRS
 do
+	if test -f $cf_dir/Makefile ; then
+		case "$cf_dir" in
+		Ada95) #(vi
+			echo 'install.libs \' >> Makefile
+			echo 'uninstall.libs ::' >> Makefile
+			echo '	cd '$cf_dir' && $(MAKE) $(CF_MFLAGS) [$]@' >> Makefile
+			;;
+		esac
+	fi
+
 	if test -f $srcdir/$cf_dir/modules; then
 		echo >> Makefile
 		if test -f $srcdir/$cf_dir/headers; then
@@ -193,7 +223,7 @@ CF_EOF
 		echo "		$j" >>$cf_dir/Makefile
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
-			echo "	@ ../headers.sh \$(INSTALL_DATA) \$(INSTALL_PREFIX)\$(includedir) \$(srcdir) $i" >>$cf_dir/Makefile
+			echo "	@ (cd \$(INSTALL_PREFIX)\$(includedir) && rm -f `basename $i`) ; ../headers.sh \$(INSTALL_DATA) \$(INSTALL_PREFIX)\$(includedir) \$(srcdir) $i" >>$cf_dir/Makefile
 			test $i = curses.h && echo "	@ (cd \$(INSTALL_PREFIX)\$(includedir) && rm -f ncurses.h && \$(LN_S) curses.h ncurses.h)" >>$cf_dir/Makefile
 		done
 
@@ -206,8 +236,8 @@ CF_EOF
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
 			i=`basename $i`
-			echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/$i" >>$cf_dir/Makefile
-			test $i = curses.h && echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/ncurses.h" >>$cf_dir/Makefile
+			echo "	-@ (cd \$(INSTALL_PREFIX)\$(includedir) && rm -f $i)" >>$cf_dir/Makefile
+			test $i = curses.h && echo "	-@ (cd \$(INSTALL_PREFIX)\$(includedir) && rm -f ncurses.h)" >>$cf_dir/Makefile
 		done
 	fi
 done

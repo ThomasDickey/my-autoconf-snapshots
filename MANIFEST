@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980202
+MANIFEST for my-autoconf, version t19980207
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -72,8 +72,10 @@ AcSplit/CF_HELP_MESSAGE         divert text for help-message headers
 AcSplit/CF_IMAKE_CFLAGS         check for imake's CFLAGS (IMAKE_CFLAGS)
 AcSplit/CF_INCLUDE_DIRS         construct a list of -I options
 AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
+AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
+AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
 AcSplit/CF_LIB_RULES            append library-rules (ncurses)
 AcSplit/CF_LIB_SUFFIX           derive the library-suffix from the model
 AcSplit/CF_LIB_TYPE             derive the library type (suffix) from the model
@@ -140,6 +142,7 @@ AcSplit/CF_SYSTYPE              derive the system-type
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
 AcSplit/CF_SYS_SELECT_TIMEVAL   check for <sys/time.h> vs <sys/select.h> conflict
+AcSplit/CF_SYS_TIME_SELECT      test for conflict between sys/time.h and sys/select.h
 AcSplit/CF_TCAP_CURSOR          check if curses defines KD, KU, etc. (td_lib)
 AcSplit/CF_TD_CONFIG            script that finds or makes a copy of td_config
 AcSplit/CF_TD_CURSES_LIBS       renamed to avoid conflict
@@ -160,6 +163,7 @@ AcSplit/CF_TYPE_FD_SET          check for a header that will define fd_set.
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()
 AcSplit/CF_TYPE_SIGACTION       check for type sigaction_t
 AcSplit/CF_UNION_WAIT           check for union wait
+AcSplit/CF_UNSIGNED_LITERALS    test if the compiler allows unsigned literals
 AcSplit/CF_UPPER                convert to uppercase
 AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTMP                 check for struct utmp (or similar)

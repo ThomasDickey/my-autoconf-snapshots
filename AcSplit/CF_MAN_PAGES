@@ -47,12 +47,7 @@ changequote([,])dnl
 
   # Construct a sed-script to perform renaming within man-pages
   if test -n "$cf_rename" ; then
-    fgrep -v \# $cf_rename | \
-    sed -e 's/^/s\//' \
-        -e 's/\./\\./' \
-        -e 's/	/ /g' \
-        -e 's/[ ]\+/\//' \
-        -e s/\$/\\\/g/ >man/edit_man.sed
+    $srcdir/man/make_sed.sh $cf_rename >man/edit_man.sed
   fi
   if test $cf_format = yes ; then
     cf_subdir='$mandir/cat'
@@ -103,7 +98,7 @@ cat >>man/edit_man.sh <<CF_EOF
 		target="\$source"
 	fi
 	target="$cf_subdir\$section/\$target"
-	sed -e 's,@DATADIR@,\$datadir,' < \$i | sed -f edit_man.sed >\$TMP
+	test \$verb = installing && sed -e "s,@DATADIR@,\$datadir," < \$i | sed -f edit_man.sed >\$TMP
 CF_EOF
 fi
 if test \$verb = installing ; then
