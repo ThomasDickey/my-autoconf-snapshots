@@ -1,3 +1,15 @@
+1998-04-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ARG_WITH: New file.
+
+	* AcSplit/CF_PATH_MAILBOX, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_VALUE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PROGRAM: use AC_ERROR
+
+	* AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER, AcSplit/CF_WITH_VALUE:
+	use CF_ARG_WITH
+
 1998-03-21  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SPEED_TYPE: mods to check for headers that define speed_t
