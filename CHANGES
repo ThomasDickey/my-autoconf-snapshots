@@ -1,3 +1,11 @@
+2000-10-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS: add -rpath support for IRIX
+
+	* AcSplit/CF_CURSES_CHTYPE: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_CHTYPE: use $cf_cv_ncurses_header variable
+
 2000-10-04  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAKE_TAGS, AcSplit/CF_MIXEDCASE_FILENAMES: RCS_BASE
