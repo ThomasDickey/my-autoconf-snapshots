@@ -1,3 +1,17 @@
+2004-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_TRY_LINK: RCS_BASE
+
+	* AcSplit/CF_GNAT_TRY_RUN: add $ADAFLAGS to test
+	add comments for parameters
+
+2004-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FCNTL_VS_IOCTL:
+	change parameter type of ioctl(f,FIONREAD,p) to an int, since that's what
+	works for IRIX64 64-bit (and other platforms, based on discussion on netbsd
+	seem to agree)
+
 2004-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:

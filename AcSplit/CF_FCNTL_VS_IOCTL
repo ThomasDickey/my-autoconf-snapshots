@@ -1,4 +1,4 @@
-dnl CF_FCNTL_VS_IOCTL version: 2 updated: 1997/09/07 17:25:40
+dnl CF_FCNTL_VS_IOCTL version: 3 updated: 2004/08/03 20:29:33
 dnl -----------------
 dnl Test if we have a usable ioctl with FIONREAD, or if fcntl.h is preferred.
 AC_DEFUN([CF_FCNTL_VS_IOCTL],
@@ -10,7 +10,7 @@ AC_CACHE_VAL(cf_cv_use_fionread,[
 #  include <sys/filio.h>	/* FIONREAD */
 #endif
 	],[
-long l1;
+int l1;
 ioctl (0, FIONREAD, &l1);
 	],
 	[cf_cv_use_fionread=yes],
