@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000218
+MANIFEST for my-autoconf, version t20000326
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -85,6 +85,7 @@ AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
 AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
 AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
+AcSplit/CF_GETOPT_HEADER        check for getopt variables in header file
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
@@ -136,6 +137,7 @@ AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory
 AcSplit/CF_PATH_MAILER          tin script to find default mailer-program
 AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PATH symbol
 AcSplit/CF_PATH_SYNTAX          check pathname syntax for CF_WITH_PATH and CF_WITH_PATHLIST
+AcSplit/CF_PDCURSES_X11         check for PDCurses' XCurses library
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_JC             check for POSIX-style sigaction
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)

@@ -11,9 +11,14 @@ do
 		eval cf_result='$ac_cv_func_'$cf_func
 		if test ".$cf_result" != ".no"; then
 			AC_TRY_LINK([
+#ifdef HAVE_XCURSES
+#include <xcurses.h>
+char * XCursesProgramName = "test";
+#else
 #include <curses.h>
 #ifdef HAVE_TERM_H
 #include <term.h>
+#endif
 #endif],
 			[
 #ifndef ${cf_func}

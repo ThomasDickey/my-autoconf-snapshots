@@ -1,0 +1,28 @@
+dnl CF_GETOPT_HEADER version: 2 updated: 2000/02/19 01:46:34
+dnl ----------------
+dnl Check for getopt's variables which are commonly defined in stdlib.h or
+dnl (nonstandard) in getopt.h
+AC_DEFUN([CF_GETOPT_HEADER],
+[
+AC_CACHE_CHECK(for header declaring getopt variables,cf_cv_getopt_header,[
+cf_cv_getopt_header=none
+for cf_header in stdio.h stdlib.h getopt.h
+do
+AC_TRY_COMPILE([
+#include <$cf_header>],
+[int x = optind; char *y = optarg],
+[cf_cv_getopt_header=$cf_header
+ break])
+done
+])
+case $cf_cv_getopt_header in #(vi
+getopt.h) #(vi
+	AC_DEFINE(HAVE_GETOPT_H)
+	AC_DEFINE(HAVE_GETOPT_HEADER)
+	;;
+stdlib.h) #(vi
+	AC_DEFINE(HAVE_STDLIB_H)
+	AC_DEFINE(HAVE_GETOPT_HEADER)
+	;;
+esac
+])dnl
