@@ -1,3 +1,14 @@
+2003-05-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION:
+	use $cf_cv_ncurses_header
+
+2003-05-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WCTYPE:
+	don't define HAVE_WCTYPE until we've also found wctype() in a library.
+	cygwin has the header files, but no working code.
+
 2003-05-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_VERSION: ci-aclocal generated header
