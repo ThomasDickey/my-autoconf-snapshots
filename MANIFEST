@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010519
+MANIFEST for my-autoconf, version t20010526
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -126,6 +126,7 @@ AcSplit/CF_LIB_TYPE             derive the library type (suffix) from the model
 AcSplit/CF_LINK_DATAONLY        test for linker that doesn't link data-only references
 AcSplit/CF_LINK_FUNCS           macro to check for working link/symlink
 AcSplit/CF_LOCALE               check if we have locale stuff
+AcSplit/CF_LOCKFILE             check for file-locking functions (tin).
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
 AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
