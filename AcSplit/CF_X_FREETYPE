@@ -1,10 +1,19 @@
-dnl CF_X_FREETYPE version: 8 updated: 2003/12/30 11:30:39
+dnl CF_X_FREETYPE version: 10 updated: 2003/12/31 08:21:44
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x).
 AC_DEFUN([CF_X_FREETYPE],
 [
+cf_extra_freetype_libs=
+AC_PATH_PROG(FREETYPE_CONFIG, xft-config, none)
+if test "$FREETYPE_CONFIG" = none; then
+	cf_extra_freetype_libs="-lXft"
+	AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, none)
+fi
+
+if test "$FREETYPE_CONFIG" != none ; then
+
 AC_CACHE_CHECK(for X FreeType headers,cf_cv_x_freetype_incs,[
-	cf_cv_x_freetype_incs="`freetype-config --cflags 2>/dev/null`"
+	cf_cv_x_freetype_incs="`$FREETYPE_CONFIG --cflags 2>/dev/null`"
 ])
 
 AC_CACHE_CHECK(for X FreeType libraries,cf_cv_x_freetype_libs,[
@@ -12,7 +21,7 @@ AC_CACHE_CHECK(for X FreeType libraries,cf_cv_x_freetype_libs,[
 cf_save_LIBS="$LIBS"
 cf_save_INCS="$CPPFLAGS"
 
-cf_cv_x_freetype_libs="-lXft `freetype-config --libs 2>/dev/null`"
+cf_cv_x_freetype_libs="$cf_extra_freetype_libs `$FREETYPE_CONFIG --libs 2>/dev/null`"
 
 LIBS="$cf_cv_x_freetype_libs $LIBS"
 CPPFLAGS="$cf_cv_x_freetype_incs $CPPFLAGS"
@@ -31,6 +40,9 @@ if test -n "$cf_cv_x_freetype_libs" ; then
 	LIBS="$cf_cv_x_freetype_libs $LIBS"
 	CPPFLAGS="$cf_cv_x_freetype_incs $CPPFLAGS"
 	AC_DEFINE(XRENDERFONT)
+else
+	CPPFLAGS=`echo "$CPPFLAGS" | sed -e s/-DXRENDERFONT//`
+fi
 else
 	CPPFLAGS=`echo "$CPPFLAGS" | sed -e s/-DXRENDERFONT//`
 fi
