@@ -1,0 +1,26 @@
+dnl Check for existence of external data in the current set of libraries.  If
+dnl we can modify it, it's real enough.
+dnl $1 = the name to check
+dnl $2 = its type
+AC_DEFUN([CF_CHECK_EXTERN_DATA],
+[
+AC_MSG_CHECKING(if external $1 exists)
+AC_CACHE_VAL(cf_cv_have_$1,[
+    AC_TRY_LINK([
+#undef $1
+extern $2 $1;
+],
+    [$1 = 2],
+    [eval 'cf_cv_have_'$1'=yes'],
+    [eval 'cf_cv_have_'$1'=no'])])
+
+eval 'cf_result=$cf_cv_have_'$1
+AC_MSG_RESULT($cf_result)
+
+if test "$cf_result" = yes ; then
+    eval 'cf_result=HAVE_'$1
+    CF_UPPER(cf_result,$cf_result)
+    AC_DEFINE_UNQUOTED($cf_result)
+fi
+
+])dnl

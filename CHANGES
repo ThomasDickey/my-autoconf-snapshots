@@ -1,3 +1,10 @@
+1999-05-08  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CHECK_EXTERN_DATA: RCS_BASE
+
+	* AcSplit/CF_CHECK_ERRNO:
+	split-out CF_CHECK_EXTERN_DATA, to use in lynx's h_errno test
+
 1999-05-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess: xterm-101
