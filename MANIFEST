@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980207
+MANIFEST for my-autoconf, version t19980210
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -96,6 +96,9 @@ AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
 AcSplit/CF_OUTPUT_IF_CHANGED    augment AC_OUTPUT by checking if output changes
+AcSplit/CF_PATH_EDITOR          tin script to find default-editor
+AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory
+AcSplit/CF_PATH_MAILER          tin script to find default mailer-program
 AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PATH symbol
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
