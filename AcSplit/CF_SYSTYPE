@@ -1,3 +1,5 @@
+dnl CF_SYSTYPE version: 3 updated: 2001/02/03 00:14:59
+dnl ----------
 dnl Derive the system-type (our main clue to the method of building shared
 dnl libraries).
 AC_DEFUN([CF_SYSTYPE],
@@ -8,9 +10,7 @@ AC_ARG_WITH(system-type,
 [  --with-system-type=XXX  test: override derived host system-type],
 [cf_cv_systype=$withval],
 [
-changequote(,)dnl
-cf_cv_systype="`(uname -s || hostname || echo unknown) 2>/dev/null |sed -e s'/[:\/.-]/_/'g  | sed 1q`"
-changequote([,])dnl
+cf_cv_systype="`(uname -s || hostname || echo unknown) 2>/dev/null |sed -e s'/[[:\/.-]]/_/'g  | sed 1q`"
 if test -z "$cf_cv_systype"; then cf_cv_systype=unknown;fi
 ])])
 AC_MSG_RESULT($cf_cv_systype)

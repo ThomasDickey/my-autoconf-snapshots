@@ -1,3 +1,5 @@
+dnl CF_SYSRELV version: 3 updated: 2001/02/03 00:14:25
+dnl ----------
 dnl Derive the system-release (our secondary clue to the method of building
 dnl shared libraries).
 AC_DEFUN([CF_SYSRELV],
@@ -8,9 +10,7 @@ AC_ARG_WITH(system-release,
 [  --with-system-relv=XXX  test: override derived host system-release version],
 [cf_cv_sysrelv=$withval],
 [
-changequote(,)dnl
-cf_cv_sysrelv="`(uname -r || echo unknown) 2>/dev/null |sed -e s'/[:\/-]/_/'g  | sed 1q`"
-changequote([,])dnl
+cf_cv_sysrelv="`(uname -r || echo unknown) 2>/dev/null |sed -e s'/[[:\/-]]/_/'g  | sed 1q`"
 if test -z "$cf_cv_sysrelv"; then cf_cv_sysrelv=unknown;fi
 ])])
 AC_MSG_RESULT($cf_cv_sysrelv)

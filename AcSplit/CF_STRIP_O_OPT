@@ -1,6 +1,6 @@
+dnl CF_STRIP_O_OPT version: 3 updated: 2001/02/02 19:06:08
+dnl --------------
 dnl	Remove "-O" option from the compiler options
 AC_DEFUN([CF_STRIP_O_OPT],[
-changequote(,)dnl
-$1=`echo ${$1} | sed -e 's/-O[1-9]\? //' -e 's/-O[1-9]\?$//'`
-changequote([,])dnl
+$1=`echo ${$1} | sed -e 's/-O[[1-9]]\? //' -e 's/-O[[1-9]]\?$//'`
 ])dnl

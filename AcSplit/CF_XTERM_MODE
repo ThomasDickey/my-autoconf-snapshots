@@ -1,3 +1,5 @@
+dnl CF_XTERM_MODE version: 7 updated: 2001/02/03 00:10:35
+dnl -------------
 dnl Check if xterm is installed setuid/setgid, assume we want to do the same on a
 dnl new install
 AC_DEFUN([CF_XTERM_MODE],[
@@ -24,9 +26,7 @@ if test -f "$XTERM_PATH" ; then
 	# captured the group as well.
 	echo "if \"$cf_rest\" is null, we do not look for group" 1>&AC_FD_CC
 	if test -n "$cf_rest" ; then
-changequote(,)dnl
-		cf_test=`echo "${cf_date2}${cf_date3}" | sed -e 's/[0-9:]//g'`
-changequote([,])dnl
+		cf_test=`echo "${cf_date2}${cf_date3}" | sed -e 's/[[0-9:]]//g'`
 		echo "if we have date in proper columns ($cf_date1 $cf_date2 $cf_date3), \"$cf_test\" is null" 1>&AC_FD_CC
 		if test -z "$cf_test" ; then
 			XTERM_USR=$cf_usr;
@@ -49,10 +49,8 @@ changequote([,])dnl
 fi
 
 if test -n "${XTERM_USR}${XTERM_GRP}" ; then
-changequote(,)dnl
-	cf_usr=`id | sed -e 's/^[^(]*(//' -e 's/).*$//'`
-	cf_grp=`id | sed -e 's/^.* gid=[^(]*(//' -e 's/).*$//'`
-changequote([,])dnl
+	cf_usr=`id | sed -e 's/^[[^(]]*(//' -e 's/).*$//'`
+	cf_grp=`id | sed -e 's/^.* gid=[[^(]]*(//' -e 's/).*$//'`
 	echo "configuring as user \"$cf_usr\", group \"$cf_grp\" of previously-installed xterm" 1>&AC_FD_CC
 	test "$XTERM_USR" = "$cf_usr" && XTERM_USR=""
 	test "$XTERM_USR" = "root"    && XTERM_USR=""

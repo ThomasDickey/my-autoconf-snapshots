@@ -1,7 +1,8 @@
+dnl CF_UPPERCASE version: 3 updated: 2001/02/03 00:15:52
+dnl ------------
 dnl Make an uppercase version of a given name
+dnl obs: use CF_UPPER
 AC_DEFUN([CF_UPPERCASE],
 [
-changequote(,)dnl
-$2=`echo $1 |tr '[a-z]' '[A-Z]'`
-changequote([,])dnl
+$2=`echo $1 |tr '[[a-z]]' '[[A-Z]]'`
 ])dnl

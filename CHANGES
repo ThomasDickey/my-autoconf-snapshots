@@ -1,3 +1,42 @@
+2001-02-03  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	eliminate changequote(), since it is broken in autoconf 2.49c
+
+	* AcSplit/CF_GNAT_VERSION:
+	eliminate changequote() since it is broken in autoconf 2.49c
+
+	* AcSplit/CF_SUBST_NCURSES_VERSION, AcSplit/CF_MANPAGE_FORMAT:
+	eliminate changequote(), since it is broken in autoconf 2.49c
+
+2001-02-02  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SRAND: RCS_BASE
+
+	* AcSplit/CF_UPPERCASE: autoconf 2.49c breaks changequote()
+
+	* AcSplit/CF_UPPERCASE: ci-aclocal generated header
+
+	* AcSplit/CF_SYSTYPE: autoconf 2.49c breaks changequote()
+
+	* AcSplit/CF_SYSTYPE: ci-aclocal generated header
+
+	* AcSplit/CF_SYSRELV: autoconf 2.49c breaks changequote()
+
+	* AcSplit/CF_SYSRELV: ci-aclocal generated header
+
+	* AcSplit/CF_PROG_INSTALL, AcSplit/CF_INCLUDE_PATH, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_XTERM_MODE:
+	autoconf 2.49c breaks changequote()
+
+	* AcSplit/CF_XTERM_MODE: ci-aclocal generated header
+
+	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_STRIP_O_OPT:
+	autoconf 2.49c breaks changequote()
+
+	* AcSplit/CF_STRIP_O_OPT: ci-aclocal generated header
+
+	* AcSplit/CF_X_TOOLKIT: autoconf 2.49c breaks changequote()
+
 2001-01-31  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_FUNCS:
