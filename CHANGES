@@ -1,3 +1,23 @@
+2003-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	back-out version 11, which allowed this to set $CFLAGS if $GXX (g++) was
+	found.  That doesn't work well when compiling with HPUX cc and g++, since
+	the gcc options leak into the cc compile.
+
+2003-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL:
+	only update $VERSION if it's not set (it should be)
+
+	* AcSplit/CF_BUNDLED_INTL:
+	dialog: adapt this to use "my-gettext", which happens to have Makefile.in,
+	while po has makefile.inn (by making this macro look for Makefile.in or
+	makefile.in).  Also set CONFIG_H and VERSION if they're not set
+
+	* AcSplit/CF_OUR_MESSAGES:
+	dialog: prefix the "po/" with "$srcdir/", in case I'd like to use --srcdir
+
 2003-06-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RCS_SCCS:
