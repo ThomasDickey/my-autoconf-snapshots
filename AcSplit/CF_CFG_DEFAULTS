@@ -1,3 +1,5 @@
+dnl CF_CFG_DEFAULTS version: 5 updated: 2000/11/18 23:30:03
+dnl ---------------
 dnl Determine the default configuration into which we'll install ncurses.  This
 dnl can be overridden by the user's command-line options.  There's two items to
 dnl look for:
@@ -14,7 +16,7 @@ AC_MSG_CHECKING(for prefix)
 if test "x$prefix" = "xNONE" ; then
 	case "$cf_cv_system_name" in
 		# non-vendor systems don't have a conflict
-	openbsd*|netbsd*|freebsd*|linux*)
+	openbsd*|netbsd*|freebsd*|linux*|cygwin*)
 		prefix=/usr
 		;;
 	*)	prefix=$ac_default_prefix

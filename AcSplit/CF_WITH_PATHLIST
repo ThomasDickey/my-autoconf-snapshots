@@ -7,10 +7,11 @@ dnl $4 = default value, shown in the help-message, must be a constant
 dnl $5 = default value, if it's an expression & cannot be in the help-message
 dnl
 AC_DEFUN([CF_WITH_PATHLIST],[
+AC_REQUIRE([CF_PATHSEP])
 AC_ARG_WITH($1,[$2 ](default: ifelse($4,,empty,$4)),,
 ifelse($4,,[withval="${$3}"],[withval="${$3-ifelse($5,,$4,$5)}"]))dnl
 
-IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
 cf_dst_path=
 for cf_src_path in $withval
 do
