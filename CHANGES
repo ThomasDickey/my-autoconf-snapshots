@@ -1,3 +1,7 @@
+2004-02-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2004-02-23 (from tin)
+
 2004-02-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUILD_CC: add BUILD_CPP, BUILD_OBJEXT for lynx
