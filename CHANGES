@@ -1,3 +1,12 @@
+2001-05-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_RULES:
+	fix for --disable-overwrite (it was only allowing overwrite of the first
+	library)
+	add "make depend" rule
+
+	* config.sub, config.guess: autoconf 2.50
+
 2001-05-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURS_TOUCHLINE: RCS_BASE
