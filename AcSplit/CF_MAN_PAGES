@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 24 updated: 2003/10/18 18:52:41
+dnl CF_MAN_PAGES version: 25 updated: 2003/12/13 18:01:58
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -72,7 +72,7 @@ case \$i in #(vi
 		continue
 	fi
 CF_EOF
-if test "$MANPAGE_SYMLINKS" = yes ; then
+if test "$MANPAGE_ALIASES" != no ; then
 cat >>man/edit_man.sh <<CF_EOF
 	aliases=\`sed -f \$srcdir/manlinks.sed \$inalias | sort -u\`
 CF_EOF
@@ -148,27 +148,32 @@ cat >>man/edit_man.sh <<CF_EOF
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
+cf_so_strip=
 case "$MANPAGE_FORMAT" in #(vi
 *compress*) #(vi
+	cf_so_strip="Z"
+	cf_compress=compress
 cat >>man/edit_man.sh <<CF_EOF
 	if test \$verb = installing ; then
 	if ( compress -f \$TMP )
 	then
-		mv \$TMP.Z \$TMP
+		mv \$TMP.$cf_so_strip \$TMP
 	fi
 	fi
-	target="\$target.Z"
+	target="\$target.$cf_so_strip"
 CF_EOF
   ;;
 *gzip*) #(vi
+	cf_so_strip="gz"
+	cf_compress=gzip
 cat >>man/edit_man.sh <<CF_EOF
 	if test \$verb = installing ; then
 	if ( gzip -f \$TMP )
 	then
-		mv \$TMP.gz \$TMP
+		mv \$TMP.$cf_so_strip \$TMP
 	fi
 	fi
-	target="\$target.gz"
+	target="\$target.$cf_so_strip"
 CF_EOF
   ;;
 *BSDI*)
@@ -185,6 +190,8 @@ cat >>man/edit_man.sh <<CF_EOF
 		\$INSTALL_DATA \$TMP \$target
 		test -n "\$aliases" && (
 			cd $cf_subdir\${section} && (
+				source=\`echo \$target |sed -e 's%^.*/\([[^/]][[^/]]*/[[^/]][[^/]]*$\)%\1%'\`
+				test -n "$cf_so_strip" && source=\`echo \$source |sed -e 's%\.$cf_so_strip\$%%'\`
 				target=\`basename \$target\`
 				for cf_alias in \$aliases
 				do
@@ -192,19 +199,25 @@ cat >>man/edit_man.sh <<CF_EOF
 						cf_alias=\`echo \$cf_alias|sed "\${transform}"\`
 					fi
 
-					if test -f \$cf_alias\${suffix} ; then
-						if ( cmp -s \$target \$cf_alias\${suffix} )
-						then
-							:
-						else
-							echo .. \$verb alias \$cf_alias\${suffix}
-							rm -f \$cf_alias\${suffix}
-							$LN_S \$target \$cf_alias\${suffix}
+					if test "$MANPAGE_SYMLINKS" = yes ; then
+						if test -f \$cf_alias\${suffix} ; then
+							if ( cmp -s \$target \$cf_alias\${suffix} )
+							then
+								continue
+							fi
 						fi
-					else
 						echo .. \$verb alias \$cf_alias\${suffix}
 						rm -f \$cf_alias\${suffix}
 						$LN_S \$target \$cf_alias\${suffix}
+					elif test "\$target" != "\$cf_alias\${suffix}" ; then
+						echo ".so \$source" >\$TMP
+						if test -n "$cf_so_strip" ; then
+							$cf_compress -f \$TMP
+							mv \$TMP.$cf_so_strip \$TMP
+						fi
+						echo .. \$verb alias \$cf_alias\${suffix}
+						rm -f \$cf_alias\${suffix}
+						\$INSTALL_DATA \$TMP \$cf_alias\${suffix}
 					fi
 				done
 			)

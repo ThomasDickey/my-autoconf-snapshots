@@ -1,4 +1,4 @@
-dnl CF_SYSV version: 2 updated: 2000/05/29 16:16:04
+dnl CF_SYSV version: 3 updated: 2003/12/13 07:47:09
 dnl -------
 dnl Check if this is a SYSV platform
 AC_DEFUN([CF_SYSV],
@@ -10,7 +10,7 @@ AC_TRY_COMPILE([
 #include <sys/termio.h>
 ],[
 /* FIXME: need a test that excludes linux */
-#ifdef linux
+#if defined(linux) || defined(__CYGWIN__)
 make an error
 #endif
 static struct termio d_tio;
