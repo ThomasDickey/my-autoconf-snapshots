@@ -1,3 +1,5 @@
+dnl CF_MAKE_AR_RULES version: 3 updated: 2001/07/15 16:04:43
+dnl ----------------
 dnl Check if the 'make' program knows how to interpret archive rules.  Though
 dnl this is common practice since the mid-80's, there are some holdouts (1997).
 AC_DEFUN([CF_MAKE_AR_RULES],
@@ -8,6 +10,7 @@ cf_dir=subd$$
 cf_cv_ar_rules=unknown
 mkdir $cf_dir
 cat >$cf_dir/makefile <<CF_EOF
+SHELL = /bin/sh
 AR = ar crv
 CC = $CC
 
@@ -22,6 +25,7 @@ all:  conf.a
 conf.a : conf.a(conftest.o)
 CF_EOF
 touch $cf_dir/conftest.c
+CDPATH=; export CDPATH
 if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=yes
@@ -29,6 +33,7 @@ else
 echo ... did not find archive >&AC_FD_CC
 rm -f $cf_dir/conftest.o
 cat >$cf_dir/makefile <<CF_EOF
+SHELL = /bin/sh
 AR = ar crv
 CC = $CC
 
@@ -43,6 +48,7 @@ all:  conf.a
 conf.a : conftest.o
 	\$(AR) \$[]@ \$?
 CF_EOF
+CDPATH=; export CDPATH
 if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=no

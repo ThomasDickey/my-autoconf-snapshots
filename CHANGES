@@ -1,3 +1,13 @@
+2001-07-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_TOP_SRCDIR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_TOP_SRCDIR: override CDPATH
+
+	* AcSplit/CF_MAKE_AR_RULES: overrides for SHELL and CDPATH
+	(ded)
+
 2001-07-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_STRERROR: RCS_BASE
