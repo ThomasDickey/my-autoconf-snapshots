@@ -1,3 +1,21 @@
+2002-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_VERSION: ci-aclocal generated header
+
+	* AcSplit/CF_GNAT_VERSION:
+	only use the first line of gnatmake's version, to avoid showing trash from the help-message
+
+	* AcSplit/CF_LIB_RULES: rename target/host
+
+2002-12-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_LIBTOOL: integrated this (more/less) with ncurses.
+
+	* AcSplit/CF_GNAT_VERSION: report gnatmake's version for the log
+	allow for a 3.2 version (probably what gcc 3.2 does ;-)
+
 2002-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub, config.guess: 2002-11-30
