@@ -1,3 +1,12 @@
+2000-02-05  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_POLL: RCS_BASE
+
+	* AcSplit/CF_FUNC_POLL: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	updated Unixware shared-library rules to work for 7.1
+
 2000-01-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MATH_LIB:

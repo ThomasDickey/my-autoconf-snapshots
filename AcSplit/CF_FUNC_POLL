@@ -1,0 +1,28 @@
+dnl CF_FUNC_POLL version: 2 updated: 2000/02/06 01:38:04
+dnl ------------
+dnl See if the poll function really works.  Some platforms have poll(), but
+dnl it does not work for terminals or files.
+AC_DEFUN([CF_FUNC_POLL],[
+AC_CACHE_CHECK(if poll really works,cf_cv_working_poll,[
+AC_TRY_RUN([
+#include <stdio.h>
+#ifdef HAVE_POLL_H
+#include <poll.h>
+#else
+#include <sys/poll.h>
+#endif
+int main() {
+	struct pollfd myfds;
+	int ret;
+
+	myfds.fd = 0;
+	myfds.events = POLLIN;
+
+	ret = poll(&myfds, 1, 100);
+	exit(ret != 0);
+}],
+	[cf_cv_working_poll=yes],
+	[cf_cv_working_poll=no],
+	[cf_cv_working_poll=unknown])])
+test "$cf_cv_working_poll" = "yes" && AC_DEFINE(HAVE_WORKING_POLL)
+])dnl
