@@ -1,3 +1,13 @@
+2001-07-17  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_FUNCS: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_FUNCS:
+	tweak an ifdef to avoid picking up Solaris' term.h when we're configuring
+	for ncurses (if we have <ncurses/curses.h>, we should have <ncurses/term.h>,
+	except of course on broken systems such as cygwin ;-).
+	--lynx
+
 2001-07-15  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_TOP_SRCDIR:
