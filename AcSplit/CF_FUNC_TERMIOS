@@ -1,0 +1,28 @@
+dnl CF_FUNC_TERMIOS version: 2 updated: 2000/07/22 23:37:24
+dnl ---------------
+dnl Some old/broken variations define tcgetattr() only as a macro in
+dnl termio(s).h
+AC_DEFUN([CF_FUNC_TERMIOS],[
+AC_REQUIRE([CF_STRUCT_TERMIOS])
+AC_CACHE_CHECK(for tcgetattr, cf_cv_have_tcgetattr,[
+AC_TRY_LINK([
+#include <sys/types.h>
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_TERMIOS_H
+#include <termios.h>
+#define TTY struct termios
+#else
+#ifdef HAVE_TERMIO_H
+#include <termio.h>
+#define TTY struct termio
+#endif
+#endif
+],[
+TTY foo;
+tcgetattr(1, &foo);],
+[cf_cv_have_tcgetattr=yes],
+[cf_cv_have_tcgetattr=no])])
+test "$cf_cv_have_tcgetattr" = yes && AC_DEFINE(HAVE_TCGETATTR)
+])dnl

@@ -2,6 +2,7 @@ dnl Check for definitions & structures needed for window size-changing
 dnl FIXME: check that this works with "snake" (HP-UX 10.x)
 AC_DEFUN([CF_SIZECHANGE],
 [
+AC_REQUIRE([CF_STRUCT_TERMIOS])
 AC_MSG_CHECKING([declaration of size-change])
 AC_CACHE_VAL(cf_cv_sizechange,[
     cf_cv_sizechange=unknown
