@@ -1,10 +1,17 @@
+dnl CF_RCS_SCCS version: 3 updated: 2002/04/16 10:33:29
+dnl -----------
 dnl Tests for the ensemble of programs that are used in RCS, SCCS, VCS, CVS.
 dnl We'll have to assume that the related utilities all reside in the same
 dnl directory.
 AC_DEFUN([CF_RCS_SCCS],
-[CF_PROGRAM_PREFIX(RCS_PATH, rcs)
+[
+cf_rcs_sccs_path="$PATH"
+PATH="/usr/local/libexec/cssc:$PATH"
+PATH="/usr/libexec/cssc:$PATH"
+CF_PROGRAM_PREFIX(RCS_PATH, rcs)
 CF_PROGRAM_PREFIX(SCCS_PATH, admin)dnl the SCCS tool
 CF_PROGRAM_PREFIX(VCS_PATH, vcs)dnl VCS is my RCS application
 CF_PROGRAM_PREFIX(CVS_PATH, cvs)dnl CVS is a layer above RCS
 CF_PROGRAM_PREFIX(CMV_PATH, cmv)dnl CmVision combines RCS and SCCS archives
+PATH="$cf_rcs_sccs_path"
 ])dnl
