@@ -1,3 +1,7 @@
+2001-05-02  Thomas E. Dickey  <dickey@clark.net>
+
+	* install.sh: better version, from tin 1.5.9, which cites X11R5
+
 2001-04-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_X_FREETYPE: add XRENDERFONT ifdef
