@@ -1,3 +1,37 @@
+2004-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_LIBRARY: correct comment for $6
+
+	* AcSplit/CF_FUNC_ICONV:
+	set flag for $6 of CF_FIND_LIBRARY so we do not exit on failure to find iconv
+
+	* AcSplit/CF_XOPEN_SOURCE: Date: Sun, 21 Nov 2004 22:30:42 +0100
+	From: Georg Schwarz <georg.schwarz@freenet.de>
+	To: bug-ncurses@gnu.org
+	Cc: jlam@NetBSD.org
+	Subject: Ncurses 5.4 on IRIX 5.3 bug report
+
+	The following is a bug report for Ncurses 5.4 on IRIX 5.3:
+
+	ncurses/tinfo/lib_napms.c includes time.h to define struct timespec.
+	However, on
+	IRIX 5.3 that include file reads as follows:
+
+	#if (defined(_POSIX_4SOURCE) || defined(_SGI_SOURCE)) &&
+	!defined(_POSIX_SOURCE)
+	 && !defined(_XOPEN_SOURCE)
+	#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
+	typedef struct timespec {
+	        time_t  tv_sec;         /* seconds */
+	        long    tv_nsec;        /* and nanoseconds */
+	} timespec_t;
+
+	....
+
+	now the problem is that ncurses defines _POSIX_SOURCE (and in addition does
+	not
+	define _SGI_SOURCE).
+
 2004-11-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_ICONV:
