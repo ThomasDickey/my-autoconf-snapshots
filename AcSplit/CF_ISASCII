@@ -1,3 +1,5 @@
+dnl CF_ISASCII version: 3 updated: 2000/08/12 23:18:52
+dnl ----------
 dnl Check if we have either a function or macro for 'isascii()'.
 AC_DEFUN([CF_ISASCII],
 [
@@ -8,5 +10,5 @@ AC_CACHE_VAL(cf_cv_have_isascii,[
 	[cf_cv_have_isascii=no])
 ])dnl
 AC_MSG_RESULT($cf_cv_have_isascii)
-test $cf_cv_have_isascii = yes && AC_DEFINE(HAVE_ISASCII)
+test "$cf_cv_have_isascii" = yes && AC_DEFINE(HAVE_ISASCII)
 ])dnl

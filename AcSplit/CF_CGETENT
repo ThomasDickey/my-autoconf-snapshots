@@ -1,3 +1,5 @@
+dnl CF_CGETENT version: 3 updated: 2000/08/12 23:18:52
+dnl ----------
 dnl Check if the terminal-capability database functions are available.  If not,
 dnl ncurses has a much-reduced version.
 AC_DEFUN([CF_CGETENT],[
@@ -16,5 +18,5 @@ AC_TRY_LINK([
 	[cf_cv_cgetent=no])
 ])
 AC_MSG_RESULT($cf_cv_cgetent)
-test $cf_cv_cgetent = yes && AC_DEFINE(HAVE_BSD_CGETENT)
+test "$cf_cv_cgetent" = yes && AC_DEFINE(HAVE_BSD_CGETENT)
 ])dnl

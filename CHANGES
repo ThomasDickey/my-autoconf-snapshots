@@ -1,3 +1,28 @@
+2000-08-12  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	parameterized the list of program-names to be transformed
+
+	* AcSplit/CF_BOOL_SIZE: boo! autoconf 2.49a changes meaning of AC_LANG
+
+	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_ISASCII, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_TYPE_SIGACTION:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SIZECHANGE:
+	ncurses: autoconf 2.49a warns about AC_DEFINE within AC_CACHE_CHECK
+
+	* AcSplit/CF_LINK_FUNCS:
+	ncurses: autoconf 2.49a warns about AC_DEFINE within an AC_CACHE_CHECK
+
+	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_ISASCII, AcSplit/CF_LIB_RULES, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SRC_MODULES, AcSplit/CF_STDCPP_LIBRARY:
+	ncurses: quote test-parameters
+
+	* AcSplit/CF_BOOL_DECL: ncurses: quote test-parameters
+	boo! autoconf 2.49a changes meaning of AC_LANG
+
+	* AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_TYPE_SIGACTION:
+	quote 'test' parameter
+
 2000-08-03  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess, config.sub: lynx2.8.4dev.7

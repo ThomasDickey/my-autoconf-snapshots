@@ -55,5 +55,5 @@ EOF
 	LIBS="$cf_saveLIBS"
 	])
 AC_MSG_RESULT($cf_cv_link_dataonly)
-test $cf_cv_link_dataonly = no && AC_DEFINE(BROKEN_LINKER)
+test "$cf_cv_link_dataonly" = no && AC_DEFINE(BROKEN_LINKER)
 ])dnl
