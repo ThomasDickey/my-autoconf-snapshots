@@ -8,8 +8,9 @@ AC_CACHE_CHECK(for full tgetent function,cf_cv_lib_tgetent,[
 cf_save_LIBS="$LIBS"
 cf_cv_lib_tgetent=no
 cf_TERMLIB="termcap termlib ncurses curses"
-for cf_termlib in $cf_TERMLIB ; do
-	LIBS="$cf_save_LIBS -l$cf_termlib"
+for cf_termlib in '' $cf_TERMLIB ; do
+	LIBS="$cf_save_LIBS"
+	test -n "$cf_termlib" && LIBS="$LIBS -l$cf_termlib"
 	AC_TRY_RUN([
 /* terminfo implementations ignore the buffer argument, making it useless for
  * the xterm application, which uses this information to make a new TERMCAP
@@ -22,7 +23,11 @@ int main()
 	tgetent(buffer, "vt100");
 	exit(buffer[0] == 0); }],
 	[echo "yes, there is a termcap/tgetent in $cf_termlib" 1>&AC_FD_CC
-	 cf_cv_lib_tgetent="-l$cf_termlib"
+	 if test -n "$cf_termlib" ; then
+	 	cf_cv_lib_tgetent="-l$cf_termlib"
+	 else
+	 	cf_cv_lib_tgetent=yes
+	 fi
 	 break],
 	[echo "no, there is no termcap/tgetent in $cf_termlib" 1>&AC_FD_CC],
 	[echo "cross-compiling, cannot verify if a termcap/tgetent is present in $cf_termlib" 1>&AC_FD_CC])
@@ -34,8 +39,8 @@ LIBS="$cf_save_LIBS"
 # (LIBS cannot be set inside AC_CACHE_CHECK; the commands there should
 # not have side effects other than setting the cache variable, because
 # they are not executed when a cached value exists.)
-if test $cf_cv_lib_tgetent != no ; then
-	LIBS="$LIBS $cf_cv_lib_tgetent"
+if test "$cf_cv_lib_tgetent" != no ; then
+	test "$cf_cv_lib_tgetent" != yes && LIBS="$LIBS $cf_cv_lib_tgetent"
 	AC_CHECK_HEADERS(termcap.h)
 else
         # If we didn't find a tgetent() that supports the buffer
@@ -55,7 +60,7 @@ else
 	LIBS="$cf_save_LIBS"
 	])
 
-	if test $cf_cv_lib_part_tgetent != no ; then
+	if test "$cf_cv_lib_part_tgetent" != no ; then
 		LIBS="$LIBS $cf_cv_lib_part_tgetent"
 		AC_CHECK_HEADERS(termcap.h)
 
