@@ -1,3 +1,47 @@
+1998-02-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_UNSIGNED_LITERALS: RCS_BASE
+
+	* AcSplit/CF_UNSIGNED_LITERALS: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS: install HP-UX libs w/o execute-privilege
+	add simple chaining of libraries
+
+	* AcSplit/CF_SRC_MODULES: integrated tack
+
+	* AcSplit/CF_MAN_PAGES:
+	run the make_sed.sh script rather than trying to do that inline here.
+	also, make uninstall a little more efficient by not running the renaming then.
+
+	* AcSplit/CF_TYPEOF_CHTYPE:
+	use unsigned literals for chtype if we've got them
+
+	* AcSplit/CF_GNAT_VERSION: Juergen stopped supporting gnats before 3.10
+
+	* AcSplit/CF_ISASCII, AcSplit/CF_LIB_PREFIX: RCS_BASE
+
+	* AcSplit/CF_BOOL_SIZE:
+	fixes from Fred Fish: check if bool wants to be unsigned, and fix a quote.
+
+	* AcSplit/CF_LIB_RULES:
+	lib-subsets (to allow building terminfo library)
+	fixes for Ada95 install/uninstall
+
+	* AcSplit/CF_CFG_DEFAULTS: use AC_FD_MSG rather than '6'
+
+	* AcSplit/CF_CURSES_TERMCAP: moved the details into CHECK_DECL_HDRS
+
+	* AcSplit/CF_TYPE_OUTCHAR:
+	restructured, using CHECK_DECL_HDRS to hide details
+
+	* AcSplit/CF_CURSES_LIBS:
+	oops: have to check for termcap libraries BEFORE curses libraries!
+
+	* AcSplit/CF_X_TOOLKIT:
+	both IRIX 6 and IRIX 5 have broken nsl, socket libraries
+
+	* AcSplit/CF_FUNC_TGETENT: rewrite by Bjorne Helgaas
+
 1998-02-02  Thomas E. Dickey  <dickey@clark.net>
 
 	* mkdirs.sh: space on 1st line
