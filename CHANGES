@@ -1,3 +1,10 @@
+2000-10-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_GNU_SOURCE: ci-aclocal generated header
+
+	* AcSplit/CF_GNU_SOURCE, AcSplit/CF_X_ATHENA:
+	xterm: change $CFLAGS to $CPPFLAGS
+
 2000-10-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess: ncurses: add-back os2 fix

@@ -1,3 +1,5 @@
+dnl CF_GNU_SOURCE version: 3 updated: 2000/10/29 23:30:53
+dnl -------------
 dnl Check if we must define _GNU_SOURCE to get a reasonable value for
 dnl _XOPEN_SOURCE, upon which many POSIX definitions depend.  This is a defect
 dnl (or misfeature) of glibc2, which breaks portability of many applications,
@@ -12,16 +14,16 @@ AC_TRY_COMPILE([#include <sys/types.h>],[
 make an error
 #endif],
 	[cf_cv_gnu_source=no],
-	[cf_save="$CFLAGS"
-	 CFLAGS="$CFLAGS -D_GNU_SOURCE"
+	[cf_save="$CPPFLAGS"
+	 CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
 	 AC_TRY_COMPILE([#include <sys/types.h>],[
 #ifdef _XOPEN_SOURCE
 make an error
 #endif],
 	[cf_cv_gnu_source=no],
 	[cf_cv_gnu_source=yes])
-	CFLAGS="$cf_save"
+	CPPFLAGS="$cf_save"
 	])
 ])
-test "$cf_cv_gnu_source" = yes && CFLAGS="$CFLAGS -D_GNU_SOURCE"
+test "$cf_cv_gnu_source" = yes && CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
 ])dnl
