@@ -1,3 +1,5 @@
+dnl CF_MANPAGE_RENAMES version: 6 updated: 2002/01/19 22:51:32
+dnl ------------------
 dnl The Debian people have their own naming convention for manpages.  This
 dnl option lets us override the name of the file containing renaming, or
 dnl disable it altogether.
@@ -7,35 +9,38 @@ AC_MSG_CHECKING(for manpage renaming)
 
 AC_ARG_WITH(manpage-renames,
 	[  --with-manpage-renames  specify manpage-renaming],
-	[cf_manpage_renames=$withval],
-	[cf_manpage_renames=yes])
+	[MANPAGE_RENAMES=$withval],
+	[MANPAGE_RENAMES=yes])
 
-case ".$cf_manpage_renames" in #(vi
+case ".$MANPAGE_RENAMES" in #(vi
 .no) #(vi
   ;;
 .|.yes)
   # Debian 'man' program?
   if test -f /etc/debian_version ; then
-    cf_manpage_renames=`cd $srcdir && pwd`/man/man_db.renames
+    MANPAGE_RENAMES=`cd $srcdir && pwd`/man/man_db.renames
   else
-    cf_manpage_renames=no
+    MANPAGE_RENAMES=no
   fi
   ;;
 esac
 
-if test "$cf_manpage_renames" != no ; then
-  if test ! -f $cf_manpage_renames ; then
-    AC_MSG_ERROR(not a filename: $cf_manpage_renames)
+if test "$MANPAGE_RENAMES" != no ; then
+  if test -f $srcdir/man/$MANPAGE_RENAMES ; then
+    MANPAGE_RENAMES=`cd $srcdir/man && pwd`/$MANPAGE_RENAMES
+  elif test ! -f $MANPAGE_RENAMES ; then
+    AC_MSG_ERROR(not a filename: $MANPAGE_RENAMES)
   fi
 
   test ! -d man && mkdir man
 
   # Construct a sed-script to perform renaming within man-pages
-  if test -n "$cf_manpage_renames" ; then
+  if test -n "$MANPAGE_RENAMES" ; then
     test ! -d man && mkdir man
-    sh $srcdir/man/make_sed.sh $cf_manpage_renames >man/edit_man.sed
+    sh $srcdir/man/make_sed.sh $MANPAGE_RENAMES >man/edit_man.sed
   fi
 fi
 
-AC_MSG_RESULT($cf_manpage_renames)
+AC_MSG_RESULT($MANPAGE_RENAMES)
+AC_SUBST(MANPAGE_RENAMES)
 ])dnl

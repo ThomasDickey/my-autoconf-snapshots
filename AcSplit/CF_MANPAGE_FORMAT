@@ -1,3 +1,5 @@
+dnl CF_MANPAGE_FORMAT version: 6 updated: 2002/01/19 22:51:32
+dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases.
 AC_DEFUN([CF_MANPAGE_FORMAT],
@@ -8,10 +10,10 @@ AC_MSG_CHECKING(format of man-pages)
 AC_ARG_WITH(manpage-format,
 	[  --with-manpage-format   specify manpage-format: gzip/compress/BSDI/normal and
                           optionally formatted, e.g., gzip,formatted],
-	[cf_manpage_form=$withval],
-	[cf_manpage_form=unknown])
+	[MANPAGE_FORMAT=$withval],
+	[MANPAGE_FORMAT=unknown])
 
-case ".$cf_manpage_form" in
+case ".$MANPAGE_FORMAT" in
 .gzip|.compress|.BSDI|.normal|.formatted) # (vi
   ;;
 .unknown|.) # (vi
@@ -20,7 +22,7 @@ case ".$cf_manpage_form" in
   fi
   # look for the 'date' man-page (it's most likely to be installed!)
   IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
-  cf_manpage_form=unknown
+  MANPAGE_FORMAT=unknown
   for cf_dir in $MANPATH; do
     test -z "$cf_dir" && cf_dir=/usr/man
     for cf_name in $cf_dir/*/date.[[01]]* $cf_dir/*/date
@@ -28,15 +30,15 @@ case ".$cf_manpage_form" in
        cf_test=`echo $cf_name | sed -e 's/*//'`
        if test "x$cf_test" = "x$cf_name" ; then
 	  case "$cf_name" in
-	  *.gz) cf_manpage_form=gzip;;
-	  *.Z)  cf_manpage_form=compress;;
-	  *.0)	cf_manpage_form=BSDI,formatted;;
-	  *)    cf_manpage_form=normal;;
+	  *.gz) MANPAGE_FORMAT=gzip;;
+	  *.Z)  MANPAGE_FORMAT=compress;;
+	  *.0)	MANPAGE_FORMAT=BSDI,formatted;;
+	  *)    MANPAGE_FORMAT=normal;;
 	  esac
 	  break
        fi
     done
-    if test "$cf_manpage_form" != "unknown" ; then
+    if test "$MANPAGE_FORMAT" != "unknown" ; then
        break
     fi
   done
@@ -47,5 +49,5 @@ case ".$cf_manpage_form" in
   ;;
 esac
 
-AC_MSG_RESULT($cf_manpage_form)
+AC_MSG_RESULT($MANPAGE_FORMAT)
 ])dnl

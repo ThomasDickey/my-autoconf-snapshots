@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20020113
+MANIFEST for my-autoconf, version t20020119
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -125,6 +125,7 @@ AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-gr
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
 AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
+AcSplit/CF_LIBUTF8              check for libutf8
 AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
 AcSplit/CF_LIB_RULES            append library-rules (ncurses)
 AcSplit/CF_LIB_SUFFIX           derive the library-suffix from the model
@@ -143,6 +144,7 @@ AcSplit/CF_MANPAGE_SYMLINKS     accept configure option for manpage symbolic lin
 AcSplit/CF_MANPAGE_TBL          handle --with-manpage-tbl option (ncurses)
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MATH_LIB             check if math libs are needed for math functions
+AcSplit/CF_MBSTATE_T            check for mbstate_t in wchar.h
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
 AcSplit/CF_MISSING_EXTERN       check for missing extern-declaration
 AcSplit/CF_MIXEDCASE_FILENAMES  check if the filesystem is really case-dependent

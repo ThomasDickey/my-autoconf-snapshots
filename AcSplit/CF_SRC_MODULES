@@ -1,3 +1,5 @@
+dnl CF_SRC_MODULES version: 14 updated: 2002/01/19 22:51:32
+dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
 dnl use in CF_LIB_RULES.
@@ -58,11 +60,11 @@ do
 	fi
 done
 AC_MSG_RESULT($cf_cv_src_modules)
-TEST_ARGS="-L${LIB_DIR} -L\$(libdir) $TEST_ARGS"
+TEST_ARGS="-L${LIB_DIR} $TEST_ARGS"
 AC_SUBST(TEST_DEPS)
 AC_SUBST(TEST_ARGS)
 
-PROG_ARGS="-L${LIB_DIR} -L\$(libdir) $PROG_ARGS"
+PROG_ARGS="-L${LIB_DIR} $PROG_ARGS"
 AC_SUBST(PROG_ARGS)
 
 SRC_SUBDIRS="man include"
