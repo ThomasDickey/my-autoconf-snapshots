@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20021227
+MANIFEST for my-autoconf, version t20021229
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -85,6 +85,7 @@ AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
+AcSplit/CF_ENABLE_WARNINGS      enable warnings (add)
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
@@ -277,7 +278,9 @@ AcSplit/CF_WCTYPE               check for wide-ctype stuff (vile)
 AcSplit/CF_WIDEC_CURSES         check for wide-character curses
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
+AcSplit/CF_WITH_DBMALLOC        configure with dbmalloc (add)
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
+AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
