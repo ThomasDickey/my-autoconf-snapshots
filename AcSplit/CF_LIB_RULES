@@ -61,6 +61,7 @@ do
 				rmSoLocs=$cf_cv_rm_so_locs \
 				overwrite=$WITH_OVERWRITE \
 				depend="$cf_depend" \
+				target="$target" \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 			test $cf_dir = ncurses && WITH_OVERWRITE=no
 			$AWK -f $srcdir/mk-2nd.awk \

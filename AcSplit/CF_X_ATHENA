@@ -2,16 +2,29 @@ dnl Check for Xaw (Athena) libraries
 dnl
 AC_DEFUN([CF_X_ATHENA],
 [AC_REQUIRE([CF_X_TOOLKIT])
-AC_CHECK_HEADERS(X11/Xaw/SimpleMenu.h)
-AC_CHECK_LIB(Xmu, XmuClientWindow)
+cf_x_athena=Xaw
+
+AC_ARG_WITH(Xaw3d,
+	[  --with-Xaw3d            link with Xaw 3d library],
+	[cf_x_athena=Xaw3d])
+
+AC_ARG_WITH(neXtaw,
+	[  --with-neXtaw           link with neXT Athena library],
+	[cf_x_athena=neXtaw])
+
+AC_CHECK_HEADERS(X11/$cf_x_athena/SimpleMenu.h)
+
+AC_CHECK_LIB(Xmu, XmuClientWindow,,[
+AC_CHECK_LIB(Xmu_s, XmuClientWindow)])
+
 AC_CHECK_LIB(Xext,XextCreateExtension,
 	[LIBS="-lXext $LIBS"])
-AC_CHECK_LIB(Xmu_s, XmuClientWindow)
-AC_CHECK_LIB(Xaw, XawSimpleMenuAddGlobalActions,
-	[LIBS="-lXaw $LIBS"],[
-AC_CHECK_LIB(Xaw_s, XawSimpleMenuAddGlobalActions,
-	[LIBS="-lXaw_s $LIBS"],
+
+AC_CHECK_LIB($cf_x_athena, XawSimpleMenuAddGlobalActions,
+	[LIBS="-l$cf_x_athena $LIBS"],[
+AC_CHECK_LIB(${cf_x_athena}_s, XawSimpleMenuAddGlobalActions,
+	[LIBS="-l${cf_x_athena}_s $LIBS"],
 	AC_ERROR(
-[Unable to successfully link Athena library (-lXaw) with test program]),
+[Unable to successfully link Athena library (-l$cf_x_athena) with test program]),
 	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])])
 ])dnl
