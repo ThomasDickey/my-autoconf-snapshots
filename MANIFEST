@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010526
+MANIFEST for my-autoconf, version t20010527
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -85,6 +85,7 @@ AcSplit/CF_FIND_IPV6_TYPE       determine the IPV6 type
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
+AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6

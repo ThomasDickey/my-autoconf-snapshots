@@ -1,3 +1,20 @@
+2001-05-27  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FIX_SLASHES: RCS_BASE
+
+	* AcSplit/CF_POSIX_JC:
+	autoconf 2.50 warned about an AC_DEFINE in a questionable location
+
+	* AcSplit/CF_FIX_SLASHES, AcSplit/CF_PATH_MAILER, AcSplit/CF_POSIX_JC:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MAKEFLAGS:
+	fix a "no match" problem on OS/2 EMX by setting SHELL in the test-makefile.
+	That fixes a problem with the echo, which apparently did not strip single quotes
+	unless the shell was given.
+
+	* AcSplit/CF_PATH_MAILER: fix/workaround for OS/2 pathnames
+
 2001-05-26  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LOCKFILE: RCS_BASE
