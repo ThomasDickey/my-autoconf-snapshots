@@ -1,3 +1,17 @@
+2003-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SYSV: typo: dn/dnl
+
+	* AcSplit/CF_SYSV:
+	hmm - I couldn't force a symbol conflict for SIGCHLD/SIGCLD, so I reverted
+	part of my changes, just saying linux!=SYSV.  The cygwin fix works...
+
+2003-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SYSV:
+	Slackware 3.6 didn't error on the sys/termio.h, so I added a check to see
+	if SIGCHLD is defined in signal.h
+
 2003-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SYSV:
