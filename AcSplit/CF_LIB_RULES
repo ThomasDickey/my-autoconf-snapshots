@@ -17,7 +17,7 @@ for cf_dir in $SRC_SUBDIRS
 do
 	if test -f $srcdir/$cf_dir/modules; then
 
-		cf_libs_to_make=
+		LIBS_TO_MAKE=
 		for cf_item in $CF_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
@@ -39,7 +39,7 @@ do
 				esac
 			fi
 			fi
-			cf_libs_to_make="$cf_libs_to_make ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
+			LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
 		done
 
 		if test $cf_dir = ncurses ; then
@@ -47,13 +47,32 @@ do
 			termlib+*) #(vi
 				;;
 			*) #(vi
-				cf_item=`echo $cf_libs_to_make |sed -e s/$LIB_NAME/$TINFO_NAME/g`
-				cf_libs_to_make="$cf_item $cf_libs_to_make"
+				cf_item=`echo $LIBS_TO_MAKE |sed -e s/$LIB_NAME/$TINFO_NAME/g`
+				LIBS_TO_MAKE="$cf_item $LIBS_TO_MAKE"
 				;;
 			esac
 		fi
 
-		sed -e "s@\@LIBS_TO_MAKE\@@$cf_libs_to_make@" \
+		# add import libraries for cygwin
+		IMPORT_LIB=
+		SHARED_LIB=
+		if test $cf_cv_shlib_version = cygdll ; then
+			cf_item=`echo "$CF_LIST_MODELS" |sed -e 's/ //g'`
+			case $cf_item in #(vi
+			shared) #(vi
+				SHARED_LIB="`echo $LIBS_TO_MAKE | sed -e 's/\.dll/\$(ABI_VERSION).dll/g'`"
+				IMPORT_LIB="`echo $LIBS_TO_MAKE | sed -e 's/\.dll/.dll.a/g'`"
+				LIBS_TO_MAKE='$(SHARED_LIB) $(IMPORT_LIB)'
+				;;
+			*shared*)
+				AC_MSG_ERROR(Cannot mix shared/static models: $CF_LIST_MODELS)
+				;;
+			esac
+		fi
+
+		sed -e "s@\@LIBS_TO_MAKE\@@$LIBS_TO_MAKE@" \
+		    -e "s@\@IMPORT_LIB\@@$IMPORT_LIB@" \
+		    -e "s@\@SHARED_LIB\@@$SHARED_LIB@" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
 

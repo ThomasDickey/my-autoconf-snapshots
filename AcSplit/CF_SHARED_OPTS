@@ -70,6 +70,11 @@ AC_DEFUN([CF_SHARED_OPTS],
 	beos*)
 		MK_SHARED_LIB='$(CC) -o $[@] -Xlinker -soname=`basename $[@]` -nostart -e 0'
 		;;
+	cygwin*)
+		MK_SHARED_LIB='$(CC) -shared -Wl,--out-implib=$(IMPLIB) -Wl,--export-all-symbols -o $(SHAREDLIB)'
+		cf_cv_shlib_version=cygdll
+		cf_cv_shlib_version_infix=cygdll
+		;;
 	darwin*)
 		EXTRA_CFLAGS="-no-cpp-precomp"
 		CC_SHARED_OPTS="-dynamic"
