@@ -1,0 +1,14 @@
+dnl Some people expect each tool to make all aliases for manpages in the
+dnl man-directory.  This accommodates the older, less-capable implementations
+dnl of 'man', and is optional.
+AC_DEFUN([CF_MANPAGE_SYMLINKS],
+[
+AC_MSG_CHECKING(for manpage symlinks)
+
+AC_ARG_WITH(manpage-symlinks,
+	[  --with-manpage-symlinks specify manpage-symlinks],
+	[cf_manpage_symlinks=$withval],
+	[cf_manpage_symlinks=yes])
+
+AC_MSG_RESULT($cf_manpage_symlinks)
+])dnl

@@ -1,3 +1,14 @@
+2000-06-10  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MANPAGE_SYMLINKS: RCS_BASE
+
+	* config.guess: elf64_is64 target from Kevin Buettner
+	additional Rhapsody targets from Bernd Kuemmerlen <bkuemmer@mevis.de>
+
+	* config.sub:
+	forwarded by Urs JanBen - Bernd Kuemmerlen <bkuemmer@mevis.de>
+	to work with MacOS X (Rhapsody)
+
 2000-05-31  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SVR4: ci-aclocal generated header
