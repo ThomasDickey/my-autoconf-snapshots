@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20021109
+MANIFEST for my-autoconf, version t20021110
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -274,6 +274,7 @@ AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_li
 AcSplit/CF_WAIT_HEADERS         construct a set of headers for testing wait/waitpid/union-wait
 AcSplit/CF_WIDEC_CURSES         check for wide-character curses
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
+AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
