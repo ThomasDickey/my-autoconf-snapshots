@@ -1,3 +1,8 @@
+2001-06-03  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_NCURSES_VERSION:
+	lynx: make this a little more paranoid wrt cleaning up tempfiles
+
 2001-05-27  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FIX_SLASHES: RCS_BASE
