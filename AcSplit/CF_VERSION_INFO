@@ -1,31 +1,82 @@
-dnl CF_VERSION_INFO version: 2 updated: 2002/07/20 00:33:32
+dnl CF_VERSION_INFO version: 3 updated: 2003/11/22 12:22:45
 dnl ---------------
-dnl Provide a configure option to incorporate libtool.  Define several useful
-dnl symbols for the makefile, including ones derived from the VERSION file:
+dnl Define several useful symbols derived from the VERSION file.  A separate
+dnl file is preferred to embedding the version numbers in various scripts.
+dnl (automake is a textbook-example of why the latter is a bad idea, but there
+dnl are others).
+dnl
+dnl The file contents are:
 dnl	libtool-version	release-version	patch-version
+dnl or
+dnl	release-version
+dnl where
+dnl	libtool-version (see ?) consists of 3 integers separated by '.'
+dnl	release-version consists of a major version and minor version
+dnl		separated by '.', optionally followed by a patch-version
+dnl		separated by '-'.  The minor version need not be an
+dnl		integer (but it is preferred).
+dnl	patch-version is an integer in the form yyyymmdd, so ifdef's and
+dnl		scripts can easily compare versions.
+dnl
+dnl If libtool is used, the first form is required, since CF_WITH_LIBTOOL
+dnl simply extracts the first field using 'cut -f1'.
 AC_DEFUN([CF_VERSION_INFO],
 [
 if test -f $srcdir/VERSION ; then
 	AC_MSG_CHECKING(for package version)
-	cf_version=`cut -f2 $srcdir/VERSION`
 
-	VERSION_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
+	# if there are not enough fields, cut returns the last one...
+	cf_field1=`sed -e '2,$d' $srcdir/VERSION|cut -f1`
+	cf_field2=`sed -e '2,$d' $srcdir/VERSION|cut -f2`
+	cf_field3=`sed -e '2,$d' $srcdir/VERSION|cut -f3`
+
+	# this is how CF_BUNDLED_INTL uses $VERSION:
+	VERSION="$cf_field1"
+
+	VERSION_MAJOR=`echo "$cf_field2" | sed -e 's/\..*//'`
 	test -z "$VERSION_MAJOR" && AC_MSG_ERROR(missing major-version)
 
-	VERSION_MINOR=`echo "$cf_version" | sed -e 's/^[[^.]]*\.//'`
+	VERSION_MINOR=`echo "$cf_field2" | sed -e 's/^[[^.]]*\.//' -e 's/-.*//'`
 	test -z "$VERSION_MINOR" && AC_MSG_ERROR(missing minor-version)
 
 	AC_MSG_RESULT(${VERSION_MAJOR}.${VERSION_MINOR})
 
 	AC_MSG_CHECKING(for package patch date)
-	VERSION_PATCH=`cut -f3 $srcdir/VERSION`
-	test -z "$VERSION_PATCH" && AC_MSG_ERROR(missing patch-date)
+	VERSION_PATCH=`echo "$cf_field3" | sed -e 's/^[[^-]]*-//'`
+	case .$VERSION_PATCH in
+	.)
+		AC_MSG_ERROR(missing patch-date $VERSION_PATCH)
+		;;
+	.[[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]])
+		;;
+	*)
+		AC_MSG_ERROR(illegal patch-date $VERSION_PATCH)
+		;;
+	esac
 	AC_MSG_RESULT($VERSION_PATCH)
 else
 	AC_MSG_ERROR(did not find $srcdir/VERSION)
 fi
 
+# show the actual data that we have for versions:
+CF_VERBOSE(VERSION $VERSION)
+CF_VERBOSE(VERSION_MAJOR $VERSION_MAJOR)
+CF_VERBOSE(VERSION_MINOR $VERSION_MINOR)
+CF_VERBOSE(VERSION_PATCH $VERSION_PATCH)
+
+AC_SUBST(VERSION)
 AC_SUBST(VERSION_MAJOR)
 AC_SUBST(VERSION_MINOR)
 AC_SUBST(VERSION_PATCH)
+
+dnl if a package name is given, define its corresponding version info.  We
+dnl need the package name to ensure that the defined symbols are unique.
+ifelse($1,,,[
+	PACKAGE=$1
+	AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
+	AC_SUBST(PACKAGE)
+	CF_UPPER(cf_PACKAGE,$PACKAGE)
+	AC_DEFINE_UNQUOTED(${cf_PACKAGE}_VERSION,"${VERSION_MAJOR}.${VERSION_MINOR}")
+	AC_DEFINE_UNQUOTED(${cf_PACKAGE}_PATCHDATE,${VERSION_PATCH})
+])
 ])dnl
