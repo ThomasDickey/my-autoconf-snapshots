@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERM_H version: 5 updated: 2003/08/20 15:23:08
+dnl CF_CURSES_TERM_H version: 6 updated: 2003/11/06 19:59:57
 dnl ----------------
 dnl SVr4 curses should have term.h as well (where it puts the definitions of
 dnl the low-level interface).  This may not be true in old/broken implementations,
@@ -8,6 +8,7 @@ AC_DEFUN([CF_CURSES_TERM_H],
 [
 AC_CACHE_CHECK(for term.h, cf_cv_term_header,[
 
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 # If we found <ncurses/curses.h>, look for <ncurses/term.h>, but always look
 # for <term.h> if we do not find the variant.
 for cf_header in \

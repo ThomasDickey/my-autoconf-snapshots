@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20031101
+MANIFEST for my-autoconf, version t20031107
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -309,6 +309,7 @@ AcSplit/CF_WITH_WARNINGS        make option for gcc warnings
 AcSplit/CF_WITH_ZLIB            check for zlib
 AcSplit/CF_XKB_BELL_EXT         check for XKB Bell extension (xterm)
 AcSplit/CF_XOPEN_CURSES         check for X/Open curses
+AcSplit/CF_XOPEN_SOURCE         wrapper for CF_GNU_SOURCE and whatever else I need to get _XOPEN_SOURCE
 AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
 AcSplit/CF_X_ATHENA             check for Xaw library
 AcSplit/CF_X_ATHENA_CPPFLAGS    check for c-preprocessor flags for Athena-widgets

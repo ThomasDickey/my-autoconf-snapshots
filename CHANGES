@@ -1,3 +1,29 @@
+2003-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	tack on a check for getbegyx(), since I'm using it and HPUX dropped compat
+	for older stuff such as getbegy()/getbegx().
+
+	* AcSplit/CF_XOPEN_SOURCE: ci-aclocal generated header
+
+2003-11-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	provide CF_CURSES_CPPFLAGS so I can make this an equal dependency of macros
+	that use the header-variables
+
+	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_NCURSES_VERSION:
+	require CF_CURSES_CPPFLAGS
+
+	* AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_TCAP_CURSOR:
+	require CF_CURSES_CPPFLAGS and use the derived header
+
+	* AcSplit/CF_CURSES_MOUSE, AcSplit/CF_STRUCT_SCREEN:
+	require CF_CURSES_CPPFLAGS and use the derived header variable
+
+	* AcSplit/CF_XOPEN_CURSES:
+	require CF_CURSES_CPPFLAGS and use the derived header.
+
 2003-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_SUFFIX: Date: Mon, 27 Oct 2003 14:55:10 -0500

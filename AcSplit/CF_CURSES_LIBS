@@ -1,9 +1,10 @@
-dnl CF_CURSES_LIBS version: 22 updated: 2002/10/27 18:21:42
+dnl CF_CURSES_LIBS version: 23 updated: 2003/11/06 19:59:57
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
 AC_DEFUN([CF_CURSES_LIBS],[
 
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 AC_MSG_CHECKING(if we have identified curses libraries)
 AC_TRY_LINK([#include <${cf_cv_ncurses_header-curses.h}>],
 	[initscr(); tgoto("?", 0,0)],
