@@ -1,3 +1,22 @@
+1999-05-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: xterm-101
+
+	* AcSplit/CF_LEX_STATES: RCS_BASE
+
+	* AcSplit/CF_LEX_STATES: ci-aclocal generated header
+
+	* AcSplit/CF_MAKEFLAGS:
+	prefer $(MAKEFLAGS) to $(MFLAGS), since the latter is more standard now,
+	and incidentally gmake passes '=' stuff along with it.
+
+	* AcSplit/CF_XTERM_MODE:
+	allow for possibility that xterm's installed via a symbolic link
+
+	* AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_GCC_WARNINGS: parenthesis
+
+	* config.sub: xterm-101 HP-UX 11.00 fixes
+
 1999-03-30  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_OUR_MESSAGES: RCS_BASE

@@ -6,7 +6,7 @@ AC_DEFUN([CF_MAKEFLAGS],
 AC_MSG_CHECKING([for makeflags variable])
 AC_CACHE_VAL(cf_cv_makeflags,[
 	cf_cv_makeflags=''
-	for cf_option in '$(MFLAGS)' '-$(MAKEFLAGS)'
+	for cf_option in '-$(MAKEFLAGS)' '$(MFLAGS)' 
 	do
 		cat >cf_makeflags.tmp <<CF_EOF
 all :

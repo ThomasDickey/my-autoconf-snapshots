@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990330
+MANIFEST for my-autoconf, version t19990507
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -90,6 +90,7 @@ AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
 AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
+AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
 AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
 AcSplit/CF_LIB_RULES            append library-rules (ncurses)
