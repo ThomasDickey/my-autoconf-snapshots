@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 23 updated: 2002/12/21 22:46:07
+dnl CF_MAN_PAGES version: 24 updated: 2003/10/18 18:52:41
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -123,7 +123,7 @@ CF_EOF
 	])
 if test -f $MANPAGE_RENAMES ; then
 cat >>man/edit_man.sh <<CF_EOF
-		< \$i | sed -f edit_man.sed >\$TMP
+		< \$i | sed -f $srcdir/edit_man.sed >\$TMP
 CF_EOF
 else
 cat >>man/edit_man.sh <<CF_EOF
