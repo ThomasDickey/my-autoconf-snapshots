@@ -27,7 +27,7 @@ esac
 
 LIBS="$cf_ncurses_LIBS $LIBS"
 CF_FIND_LIBRARY(ncurses,
-	[#include <$cf_cv_ncurses_header>],
+	[#include <${cf_cv_ncurses_header-curses.h}>],
 	[initscr()],
 	initscr)
 
@@ -40,7 +40,7 @@ if test -n "$cf_ncurses_LIBS" ; then
 			LIBS="$q"
 		fi
 	done
-	AC_TRY_LINK([#include <$cf_cv_ncurses_header>],
+	AC_TRY_LINK([#include <${cf_cv_ncurses_header-curses.h}>],
 		[initscr(); mousemask(0,0); tgoto((char *)0, 0, 0);],
 		[AC_MSG_RESULT(yes)],
 		[AC_MSG_RESULT(no)
