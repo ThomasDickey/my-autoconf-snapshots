@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 31 updated: 2004/02/14 15:00:43
+dnl CF_LIB_RULES version: 33 updated: 2004/02/14 20:31:27
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -59,7 +59,7 @@ do
 			cf_subsets="$LIB_SUBSETS"
 			cf_termlib=`echo "$cf_subsets" |sed -e 's/ .*$//'`
 			if test "$cf_termlib" != "$cf_subsets" ; then
-				cf_item=`echo $LIBS_TO_MAKE |sed -e s%$LIB_NAME%$TINFO_NAME%g`
+				cf_item=`echo $LIBS_TO_MAKE |sed -e s%${LIB_NAME}${LIB_SUFFIX}%${TINFO_LIB_SUFFIX}%g`
 				LIBS_TO_MAKE="$cf_item $LIBS_TO_MAKE"
 			fi
 		else
@@ -86,6 +86,22 @@ do
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
 			CF_OBJ_SUBDIR($cf_item,cf_subdir)
 
+			# Test for case where we build libinfo with a different name.
+			cf_libname=$cf_dir
+			if test $cf_dir = ncurses ; then
+				case $cf_subset in
+				*base*)
+					;;
+				termlib*)
+					cf_libname=$TINFO_LIB_SUFFIX
+					if test -n "${DFT_ARG_SUFFIX}" ; then
+						# undo $LIB_SUFFIX add-on in CF_LIB_SUFFIX
+						cf_suffix=`echo $cf_suffix |sed -e "s%^${LIB_SUFFIX}%%"`
+					fi
+				;;
+				esac
+			fi
+
 			# These dependencies really are for development, not
 			# builds, but they are useful in porting, too.
 			cf_depend="../include/ncurses_cfg.h"
@@ -102,7 +118,7 @@ do
 			fi
 
 			$AWK -f $srcdir/mk-1st.awk \
-				name=$cf_dir \
+				name=$cf_libname \
 				traces=$LIB_TRACING \
 				MODEL=$CF_ITEM \
 				model=$cf_subdir \
@@ -131,8 +147,8 @@ do
 				subset=$cf_subset \
 				srcdir=$srcdir \
 				echo=$WITH_ECHO \
-				cc_c_o=$cf_cv_prog_CC_c_o \
-				cxx_c_o=$cf_cv_prog_CXX_c_o \
+				crenames=$cf_cv_prog_CC_c_o \
+				cxxrenames=$cf_cv_prog_CXX_c_o \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 			cf_subdirs="$cf_subdirs $cf_subdir"
 			done
