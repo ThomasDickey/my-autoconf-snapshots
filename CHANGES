@@ -1,3 +1,25 @@
+2001-01-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PATHSEP: allow system name to be os2-emx
+
+	* AcSplit/CF_PATHSEP: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_PREFIX: allow system-name to be os2-emx
+
+	* AcSplit/CF_LIB_PREFIX: ci-aclocal generated header
+
+	* config.sub: Pavel Roskin's -os2 fix
+
+	* config.guess:
+	slightly newer version to get same-timestamp as config.sub for OS/2
+
+	* config.sub, config.guess: current, from subversions
+
+2001-01-10  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	oops: ensure that if we haven't checked for ncurses version, that this doesn't assume we found it
+
 2001-01-05  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHAR_DEVICE: RCS_BASE
