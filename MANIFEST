@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990822
+MANIFEST for my-autoconf, version t19990901
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -37,6 +37,7 @@ AcSplit/CF_CHECK_CACHE          check for conflicting configure-cache
 AcSplit/CF_CHECK_DECL           check one or more missing-prototypes
 AcSplit/CF_CHECK_ERRNO          check for declaration of items in errno.h
 AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
+AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
@@ -83,8 +84,11 @@ AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
+AcSplit/CF_GPP_LIBRARY          check for -lg++
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
+AcSplit/CF_HEADER_RESOURCE      test for sys/resource.h vs wait.h and time.h
+AcSplit/CF_HEADER_SELECT        test for select.h vc time.h
 AcSplit/CF_HELP_MESSAGE         divert text for help-message headers
 AcSplit/CF_IMAKE_CFLAGS         check for imake's CFLAGS (IMAKE_CFLAGS)
 AcSplit/CF_INCLUDE_DIRS         construct a list of -I options
@@ -161,6 +165,7 @@ AcSplit/CF_SPEED_TYPE           derive 'speed_t' type
 AcSplit/CF_SRC_MAKEFILE         expand modules list into makefile lists
 AcSplit/CF_SRC_MODULES          obtain the list of source-directories with modules listed
 AcSplit/CF_STAT_ST_BLOCKS       check if 'stat' struct defines 'st_blocks' (td_lib)
+AcSplit/CF_STDCPP_LIBRARY       check for -lstdc++
 AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
 AcSplit/CF_STRIP_O_OPT          strip the "-O" option from CFLAGS
 AcSplit/CF_STRUCT_SCREEN        check if curses defines 'struct screen' (td_lib)

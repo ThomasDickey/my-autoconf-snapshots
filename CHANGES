@@ -1,3 +1,34 @@
+1999-09-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROG_EXT: cygwin needs .exe
+
+	* AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_GPP_LIBRARY: RCS_BASE
+
+	* AcSplit/CF_PROG_EXT:
+	add CXXFLAGS, which lets me build ncurses c++ demo (it needs to be built
+	with threaded code since the rest of the library is, so that break's
+	errno's definition otherwise)
+
+	* AcSplit/CF_SRC_MODULES:
+	change ncurses "--without-cxx" configure option so there's now also
+	a "--without-cxx-binding" option.  That changes naming in this macro
+
+	* AcSplit/CF_LIB_PREFIX:
+	define LIB_PREFIX for substitution to handle special case in ncurses/c++
+	directory
+
+1999-08-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CHECK_FD_SET:
+	integrate more/less with the older CF_TYPE_FD_SET
+
+	* AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT:
+	RCS_BASE
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	check for curses library first - on terminfo systems that's the only way
+	to get color.
+
 1999-08-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_INPUT_METHOD: RCS_BASE

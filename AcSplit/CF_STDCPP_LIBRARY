@@ -1,0 +1,26 @@
+dnl Check for -lstdc++
+AC_DEFUN([CF_STDCPP_LIBRARY],
+[
+case $cf_cv_system_name in #(vi
+os2*) #(vi
+	cf_stdcpp_libname=stdcpp
+	;;
+*)
+	cf_stdcpp_libname=stdc++
+	;;
+esac
+AC_CACHE_CHECK(for library $cf_stdcpp_libname,cf_cv_libstdcpp,[
+	cf_save="$LIBS"
+	LIBS="$LIBS -l$cf_stdcpp_libname -lm"
+AC_TRY_LINK([
+#include <strstream.h>],[
+char buf[80];
+strstreambuf foo(buf, sizeof(buf))
+//destroy foo
+],
+	[cf_cv_libstdcpp=yes],
+	[cf_cv_libstdcpp=no])
+	LIBS="$cf_save"
+])
+test $cf_cv_libstdcpp = yes && CXXLIBS="$CXXLIBS -l$cf_stdcpp_libname"
+])dnl
