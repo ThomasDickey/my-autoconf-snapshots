@@ -1,10 +1,10 @@
-dnl srand() and rand() are more standard, but we'll accept older variations
-dnl if they are not available.  All return an integer between 0 and RAND_MAX,
-dnl which must be defined for use in scaling. 
+dnl srand() and rand() are more standard, but we'll accept other variations
+dnl if they are available.  All return an integer between 0 and RAND_MAX,
+dnl which must be defined for use in scaling.
 AC_DEFUN([CF_SRAND],[
 AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
-for cf_func in srand/rand srandom/random srand48/lrand48
+for cf_func in srand48/lrand48 srandom/random srand/rand
 do
 	cf_srand_func=`echo $cf_func | sed -e 's@/.*@@'`
 	cf_rand_func=`echo  $cf_func | sed -e 's@.*/@@'`
@@ -20,7 +20,7 @@ done
 if test "$cf_cv_srand_func" != unknown ; then
 	cf_srand_func=`echo $cf_func | sed -e 's@/.*@@'`
 	cf_rand_func=`echo $cf_func | sed -e 's@.*/@@'`
-	test "$cf_srand_func" != srand && AC_DEFINE(srand,$cf_srand_func)
-	test "$cf_rand_func"  != rand  && AC_DEFINE(rand, $cf_rand_func)
+	AC_DEFINE_UNQUOTED(my_srand,$cf_srand_func)
+	AC_DEFINE_UNQUOTED(my_rand, $cf_rand_func)
 fi
 ])dnl
