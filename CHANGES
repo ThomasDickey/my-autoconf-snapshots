@@ -1,3 +1,22 @@
+2002-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SUBDIR_PATH: RCS_BASE
+
+	* AcSplit/AM_WITH_NLS: ci-aclocal generated header
+
+	* AcSplit/AM_WITH_NLS:
+	reintegrated with tin, add 4th param to allow tin to have --disable-nls,
+	and lynx to have --enable-nls
+
+	* AcSplit/AM_MULTIBYTE_ABLE: RCS_BASE
+
+	* AcSplit/CF_FIND_IPV6_LIBS: ci-aclocal generated header
+
+	* AcSplit/CF_FIND_IPV6_LIBS: tin: change "ipv6" to "IPv6"
+
+	* AcSplit/CF_DEFAULT_SHELL:
+	tin: urs added dash, csh, tcsh, as well as a check for absolute path
+
 2002-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2002-10-21 (from tin 1.5.15)

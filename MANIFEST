@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20021107
+MANIFEST for my-autoconf, version t20021109
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -12,6 +12,7 @@ AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
 AcSplit/AM_ICONV                adapted from gettext 0.10.40 (tin)
 AcSplit/AM_LANGINFO_CODESET     adapted from gettext 0.10.40 (tin)
 AcSplit/AM_LC_MESSAGES          check if LC_MESSAGES works
+AcSplit/AM_MULTIBYTE_ABLE       composite check for multibyte-able libc (tin)
 AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
 AcSplit/AM_WITH_NLS             macro to test for NLS
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version
@@ -219,6 +220,7 @@ AcSplit/CF_STRIP_O_OPT          strip the "-O" option from CFLAGS
 AcSplit/CF_STRUCT_SCREEN        check if curses defines 'struct screen' (td_lib)
 AcSplit/CF_STRUCT_SIGACTION     test for struct sigaction
 AcSplit/CF_STRUCT_TERMIOS       test for struct termios
+AcSplit/CF_SUBDIR_PATH          setup a directory search-path, used by CF_HEADER_PATH and CF_LIBRARY_PATH
 AcSplit/CF_SUBST                better version of AC_SUBST
 AcSplit/CF_SUBST_NCURSES_VERSION  obtain ncurses version for use in substitution
 AcSplit/CF_SVR4                 define SVR4 if needed (for xterm)
