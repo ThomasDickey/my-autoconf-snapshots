@@ -1,3 +1,16 @@
+2002-11-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_CURSES_DIR: RCS_BASE
+
+	* AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_WITH_CURSES_DIR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_LIBS:
+	tin: add/use --with-curses-dir option
+
+	* AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH:
+	tin: rewrite/simplify using CF_SUBDIR_PATH
+
 2002-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SUBDIR_PATH: RCS_BASE
