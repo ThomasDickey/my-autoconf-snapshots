@@ -1,3 +1,19 @@
+2003-03-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TTY_GROUP: ci-aclocal generated header
+
+	* AcSplit/CF_TTY_GROUP:
+	xterm: the AC_TRY_RUN check won't run in batch mode (I knew that, but didn't
+	consider it important - Nelson Beebe did).  Make it a little smarter and
+	more tolerant to accommodate.
+
+2003-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WCTYPE: ci-aclocal generated header
+
+	* AcSplit/CF_WCTYPE:
+	vile: the parameter to AC_SEARCH_LIBS must not include the "-l"
+
 2003-03-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INHERIT_SCRIPT: RCS_BASE
