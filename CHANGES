@@ -1,3 +1,27 @@
+1997-12-17  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_TERMCAP:
+	first pass of debug/test, corrected inverted test for termcap.h, and
+	also add logic to see if we're ok with just term.h
+
+	* AcSplit/CF_TYPE_OUTCHAR:
+	split-out the header file, since config.log gets hard to read.
+
+	* AcSplit/CF_DEFINE_PATHNAME: ci-aclocal generated header
+
+	* AcSplit/CF_DEFINE_PATHNAME: fixes for 'NONE' vs 'NONE/'
+
+	* AcSplit/CF_SLANG_CPPFLAGS: log the headers we try (for debugging)
+
+	* AcSplit/CF_DEFINE_PATHNAME: RCS_BASE
+
+	* AcSplit/CF_SLANG_LIBS:
+	check if we can link slang w/o termcap (applies to recent versions)
+
+	* AcSplit/CF_CURSES_TERMCAP: RCS_BASE
+
+	* AcSplit/CF_TYPE_OUTCHAR: make this depend on CF_CURSES_TERMCAP
+
 1997-12-16  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:

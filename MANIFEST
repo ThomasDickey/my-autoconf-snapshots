@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19971216
+MANIFEST for my-autoconf, version t19971217
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -43,9 +43,11 @@ AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
 AcSplit/CF_CURSES_LIBS          check for standard (not ncurses!) curses libraries
 AcSplit/CF_CURSES_MOUSE         test for SVr4 curses support for mouse (td_lib)
 AcSplit/CF_CURSES_STYLE         detect curses line-struct style (td_lib)
+AcSplit/CF_CURSES_TERMCAP       check for prototypes in curses.h or termcap.h
 AcSplit/CF_CURSES_TERM_H        check for curses's term.h
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
+AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define
 AcSplit/CF_DEFINE_PROG          check for program, defining its path
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile

@@ -1,9 +1,26 @@
 dnl Look for the slang library.
 AC_DEFUN([CF_SLANG_LIBS],
 [
+cf_slang_LIBS1="$LIBS"
+CF_TERMCAP_LIBS
+cf_slang_LIBS2="$LIBS"
 AC_CHECK_FUNC(acos,,[CF_RECHECK_FUNC(acos,m,LIBS)])
 CF_FIND_LIBRARY(slang,
 	[#include <slang.h>],
 	[SLtt_get_screen_size()],
 	SLtt_get_screen_size)
+cf_slang_LIBS3="$LIBS"
+AC_MSG_CHECKING(if we can link slang without termcap)
+if test -n "$cf_slang_LIBS1" ; then
+	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s@$cf_slang_LIBS1@@" -e 's@^.@@'`
+else
+	cf_exclude="$cf_slang_LIBS2"
+fi
+LIBS=`echo ".$cf_slang_LIBS3" | sed -e "s@$cf_exclude@@" -e 's@^.@@'`
+AC_TRY_LINK([#include <slang.h>],
+	[SLtt_get_screen_size()],
+	[cf_result=yes],
+	[cf_result=no])
+AC_MSG_RESULT($cf_result)
+test $cf_result = no && LIBS="$cf_slang_LIBS3"
 ])dnl

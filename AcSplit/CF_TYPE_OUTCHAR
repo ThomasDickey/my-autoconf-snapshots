@@ -1,6 +1,8 @@
 dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
 AC_DEFUN([CF_TYPE_OUTCHAR],
-[AC_MSG_CHECKING([declaration of tputs 3rd param])
+[
+AC_REQUIRE([CF_CURSES_TERMCAP])
+AC_MSG_CHECKING([declaration of tputs 3rd param])
 AC_CACHE_VAL(cf_cv_type_outchar,[
 cf_cv_type_outchar="int OutChar(int)"
 cf_cv_found=no
@@ -9,19 +11,19 @@ for Q in int void; do
 for R in int char; do
 for S in "" const; do
 	AC_TRY_COMPILE([
-#ifdef USE_TERMINFO
-#include <curses.h>
+#ifdef NEED_CURSES_H
+# if HAVE_NCURSES_H
+#  include <ncurses.h>
+# else
+#  include <curses.h>
+# endif
+#endif
 #if HAVE_TERM_H
-#include <term.h>
+# include <term.h>
 #endif
-#else
-#ifdef NEED_CURSES_H	/* FIXME: need a test */
-#include <curses.h>
-#endif
-#if HAVE_TERMCAP_H
-#include <termcap.h>
-#endif
-#endif ],
+#if NEED_TERMCAP_H
+# include <termcap.h>
+#endif],
 	[extern $Q OutChar($R);
 	extern $P tputs ($S char *string, int nlines, $Q (*_f)($R));
 	tputs("", 1, OutChar)],
