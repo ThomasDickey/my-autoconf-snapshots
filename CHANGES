@@ -1,3 +1,15 @@
+2000-02-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	from cdk: add case for HPUX 11.x for cur_colr library
+
+	* AcSplit/CF_GETOPT_HEADER, AcSplit/CF_PDCURSES_X11: RCS_BASE
+
+	* AcSplit/CF_CURSES_FUNCS:
+	allow for checks in XCurses (PDCurses X11 library)
+
+	* AcSplit/CF_GETOPT_HEADER: ci-aclocal generated header
+
 2000-02-05  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_POLL: RCS_BASE
