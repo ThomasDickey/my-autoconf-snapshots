@@ -1,3 +1,5 @@
+dnl CF_BUNDLED_PCRE version: 3 updated: 2002/04/17 21:09:56
+dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the pcre library.
 dnl
@@ -19,6 +21,7 @@ case .$cf_pcre_home in #(vi
 	;;
 .yes) #(vi
 	PCREDIR_MAKE='#'
+	PCREDIR_LIBS="-lpcre"
 	;;
 .*)
 	CF_PATH_SYNTAX(cf_pcre_home)
