@@ -5,6 +5,10 @@ AC_MSG_CHECKING(for size_t in <sys/types.h> or <stdio.h>)
 AC_CACHE_VAL(cf_cv_type_size_t,[
 	AC_TRY_COMPILE([
 #include <sys/types.h>
+#if STDC_HEADERS
+#include <stdlib.h>
+#include <stddef.h>
+#endif
 #include <stdio.h>],
 		[size_t x],
 		[cf_cv_type_size_t=yes],

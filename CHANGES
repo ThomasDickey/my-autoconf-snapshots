@@ -1,3 +1,7 @@
+1998-04-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SIZE_T: merge with autoconf's version : include <stdlib.h>
+
 1998-04-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ANSI_CC_CHECK:
