@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19971018
+MANIFEST for my-autoconf, version t19971021
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -54,6 +54,7 @@ AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
 AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
+AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
 AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
@@ -154,6 +155,7 @@ AcSplit/CF_UTMP                 check for struct utmp (or similar)
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_lib)
+AcSplit/CF_WAIT_HEADERS         construct a set of headers for testing wait/waitpid/union-wait
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
