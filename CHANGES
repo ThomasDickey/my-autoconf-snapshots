@@ -1,3 +1,9 @@
+2000-07-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS: quote a '$' so m4 doesn't eat it
+
+	* AcSplit/CF_MAN_PAGES: sort/uniq the output from manlinks.sed
+
 2000-06-29  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/AM_WITH_NLS:

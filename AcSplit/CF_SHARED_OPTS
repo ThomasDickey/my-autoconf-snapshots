@@ -192,7 +192,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		if test $ac_cv_prog_gcc != yes; then
 			CC_SHARED_OPTS='-KPIC'
 		fi
-		MK_SHARED_LIB='$(LD) -d y -G -o $@'
+		MK_SHARED_LIB='$(LD) -d y -G -o [$]@'
 		;;
 	*)
 		CC_SHARED_OPTS='unknown'
