@@ -1,3 +1,10 @@
+1998-07-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ALT_CHAR_SET: oops: missed a $mapname instance vs acs_map
+
+	* AcSplit/CF_SOCKS5:
+	rewrite based on bug report in lynx from Brian Hauber
+
 1998-07-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess: re-merged patch from Mike Hopkirk for Unixware
