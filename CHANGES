@@ -1,3 +1,14 @@
+2005-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT: typo in help message
+
+	* AcSplit/CF_FUNC_TGETENT:
+	address Gentoo bug #69926 by adding a --disable-full-tgentent option.
+	If disabled, this macro does not check for the termcap library, and
+	does not insist that the tgetent function return data in its buffer.
+	That makes it accept the first tgetent function it finds (which will
+	probably be from terminfo).
+
 2005-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2004-11-30
