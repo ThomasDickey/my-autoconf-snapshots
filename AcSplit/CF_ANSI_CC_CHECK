@@ -43,7 +43,7 @@ AC_MSG_RESULT($cf_cv_ansi_cc)
 
 if test "$cf_cv_ansi_cc" != "no"; then
 if test ".$cf_cv_ansi_cc" != ".-DCC_HAS_PROTOS"; then
-	CFLAGS="$CFLAGS $cf_cv_ansi_cc"
+	CF_ADD_CFLAGS($cf_cv_ansi_cc)
 else
 	AC_DEFINE(CC_HAS_PROTOS)
 fi
