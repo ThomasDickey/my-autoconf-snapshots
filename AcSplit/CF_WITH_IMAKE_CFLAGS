@@ -1,4 +1,4 @@
-dnl CF_WITH_IMAKE_CFLAGS version: 1 updated: 2003/04/12 15:32:30
+dnl CF_WITH_IMAKE_CFLAGS version: 2 updated: 2003/04/13 20:09:42
 dnl --------------------
 dnl xterm and similar programs build more readily when propped up with imake's
 dnl hand-tuned definitions.  If we do not use imake, provide fallbacks for the
@@ -15,7 +15,7 @@ if test "$enable_imake" = yes ; then
 	CF_ADD_CFLAGS($IMAKE_CFLAGS)
 else
 	IMAKE_CFLAGS=
-	IMAKE_LOADFLAGS
+	IMAKE_LOADFLAGS=
 	CF_VERBOSE(make fallback definitions)
 
 	UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
@@ -36,6 +36,8 @@ else
 	*freebsd*|*gnu*|*irix5*|*irix6*|*linux-gnu*|*netbsd*|*openbsd*)
 		IMAKE_CFLAGS="-DNARROWPROTO=1 $IMAKE_CFLAGS"
 	esac
+
+	CF_ADD_CFLAGS($IMAKE_CFLAGS)
 
 	AC_SUBST(IMAKE_CFLAGS)
 	AC_SUBST(IMAKE_LOADFLAGS)
