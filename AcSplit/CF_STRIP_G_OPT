@@ -1,3 +1,0 @@
-dnl	Remove "-g" option from the compiler options
-AC_DEFUN([CF_STRIP_G_OPT],
-[$1=`echo ${$1} | sed -e 's/-g //' -e 's/-g$//'`])dnl

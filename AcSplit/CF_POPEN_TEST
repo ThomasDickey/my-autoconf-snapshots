@@ -1,5 +1,3 @@
-dnl CF_POPEN_TEST version: 2 updated: 1995/08/23 21:29:04
-dnl -------------
 dnl	Check to ensure that our prototype for 'popen()' doesn't conflict
 dnl	with the system's (this is a problem on AIX and CLIX).
 dnl
