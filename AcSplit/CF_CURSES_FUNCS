@@ -9,7 +9,9 @@ do
 	AC_CACHE_VAL(cf_cv_func_$cf_func,[
 		eval cf_result='$ac_cv_func_'$cf_func
 		if test ".$cf_result" != ".no"; then
-			AC_TRY_LINK([#include <curses.h>],
+			AC_TRY_LINK([
+#define _XOPEN_SOURCE_EXTENDED
+#include <curses.h>],
 			[
 #ifndef ${cf_func}
 long foo = (long)(&${cf_func});

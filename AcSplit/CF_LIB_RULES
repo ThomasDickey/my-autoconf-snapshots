@@ -30,7 +30,7 @@ do
 				;;
 			*) #(vi
 				cf_item=`echo $cf_libs_to_make |sed -e s/$LIB_NAME/$TINFO_NAME/g`
-				cf_libs_to_make="$cf_libs_to_make $cf_item"
+				cf_libs_to_make="$cf_item $cf_libs_to_make"
 				;;
 			esac
 		fi

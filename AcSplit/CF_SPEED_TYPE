@@ -2,17 +2,22 @@ dnl Check for datatype 'speed_t', which is normally declared via either
 dnl sys/types.h or termios.h
 AC_DEFUN([CF_SPEED_TYPE],
 [
-AC_MSG_CHECKING([for speed_t])
-AC_CACHE_VAL(cf_cv_type_speed_t,[
-	AC_TRY_COMPILE([
-#include <sys/types.h>
-#if HAVE_TERMIOS_H
-#include <termios.h>
-#endif],
-	[speed_t x = 0],
-	[cf_cv_type_speed_t=yes],
-	[cf_cv_type_speed_t=no])
-	])
-AC_MSG_RESULT($cf_cv_type_speed_t)
-test $cf_cv_type_speed_t != yes && AC_DEFINE(speed_t,unsigned)
+AC_MSG_CHECKING(for speed_t) 
+OSPEED_INCLUDES= 
+AC_TRY_COMPILE([#include <sys/types.h>],
+	[speed_t some_variable = 0],
+	[OSPEED_TYPE=speed_t],
+	[OSPEED_TYPE=short])
+AC_TRY_COMPILE([#include <termios.h>],
+	[speed_t some_variable = 0],
+	[OSPEED_TYPE=speed_t 
+	 OSPEED_INCLUDES="#include <termios.h>"],[]) 
+AC_SUBST(OSPEED_TYPE) 
+AC_SUBST(OSPEED_INCLUDES) 
+if test "$OSPEED_TYPE" = "short" ; then 
+	AC_MSG_RESULT(no) 
+	AC_DEFINE(speed_t,unsigned)
+else 
+	AC_MSG_RESULT(yes) 
+fi 
 ])dnl
