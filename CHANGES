@@ -1,3 +1,7 @@
+1998-11-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: fix for another CLIX configure, from Lynx
+
 1998-11-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_EBCDIC: RCS_BASE
