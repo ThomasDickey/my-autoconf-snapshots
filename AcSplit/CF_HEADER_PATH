@@ -25,5 +25,5 @@ test "$prefix" != /opt && \
 test -d /opt && \
 $1="[$]$1 /opt/include /opt/include/$2 /opt/$2/include"
 
-$1="[$]$1 [$]HOME/lib [$]HOME/lib/$2 [$]HOME/$2/lib"
+$1="[$]$1 [$]HOME/include [$]HOME/include/$2 [$]HOME/$2/include"
 ])dnl

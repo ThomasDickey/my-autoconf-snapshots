@@ -1,3 +1,9 @@
+2002-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HEADER_PATH:
+	testing on BeOS, I found that my checks for $HOME were looking in 'lib'
+	rather than 'include' (oops).
+
 2002-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_GNU_GETTEXT: tin: from gettext 0.10.40
