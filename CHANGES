@@ -1,3 +1,19 @@
+2001-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTMP_UT_NAME: RCS_BASE
+
+	* AcSplit/CF_NGROUPS, AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_XSTATUS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NGROUPS:
+	lynx: ac252 noted I should move an AC_DEFINE outside an AC_CACHE_CHECK
+
+	* AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME:
+	lynx: ac252 tells me not to require CF_UTMP
+
+	* AcSplit/CF_UTMP:
+	lynx: split-out CF_UTMP_UT_NAME so this compiles with ac252
+
 2001-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CPPFLAGS:
