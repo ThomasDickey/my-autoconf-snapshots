@@ -1,3 +1,11 @@
+1997-10-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_RULES: uninstall rather than deinstall
+	(use jargon rather than plain English)
+
+	* AcSplit/CF_X_ATHENA:
+	integration with vile, need to define HAVE_LIB_xxx
+
 1997-09-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:
