@@ -1,3 +1,5 @@
+dnl CF_TYPE_SIGACTION version: 3 updated: 2000/08/12 23:18:52
+dnl -----------------
 dnl
 AC_DEFUN([CF_TYPE_SIGACTION],
 [
@@ -9,5 +11,5 @@ AC_CACHE_VAL(cf_cv_type_sigaction,[
 		[cf_cv_type_sigaction=yes],
 		[cf_cv_type_sigaction=no])])
 AC_MSG_RESULT($cf_cv_type_sigaction)
-test $cf_cv_type_sigaction = yes && AC_DEFINE(HAVE_TYPE_SIGACTION)
+test "$cf_cv_type_sigaction" = yes && AC_DEFINE(HAVE_TYPE_SIGACTION)
 ])dnl

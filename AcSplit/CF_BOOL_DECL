@@ -6,7 +6,7 @@ dnl Treat the configuration-variable specially here, since we're directly
 dnl substituting its value (i.e., 1/0).
 AC_DEFUN([CF_BOOL_DECL],
 [
-AC_MSG_CHECKING([for builtin ifelse(AC_LANG,[C],$CC,$CXX) bool type])
+AC_MSG_CHECKING([for builtin bool type])
 AC_CACHE_VAL(ifelse($1,,cf_cv_builtin_bool,[$1]),[
 	AC_TRY_COMPILE([
 #include <stdio.h>
@@ -15,7 +15,7 @@ AC_CACHE_VAL(ifelse($1,,cf_cv_builtin_bool,[$1]),[
 		[ifelse($1,,cf_cv_builtin_bool,[$1])=1],
 		[ifelse($1,,cf_cv_builtin_bool,[$1])=0])
 	])
-if test $ifelse($1,,cf_cv_builtin_bool,[$1]) = 1
+if test "$ifelse($1,,cf_cv_builtin_bool,[$1])" = 1
 then	AC_MSG_RESULT(yes)
 else	AC_MSG_RESULT(no)
 fi

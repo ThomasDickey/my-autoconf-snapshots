@@ -22,7 +22,7 @@ do
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
 			if test $cf_item = shared ; then
-			if test $cf_cv_do_symlinks = yes ; then
+			if test "$cf_cv_do_symlinks" = yes ; then
 				case "$cf_cv_shlib_version" in #(vi
 				rel) cf_suffix="$cf_suffix"'.$(REL_VERSION)' ;; #(vi
 				abi) cf_suffix="$cf_suffix"'.$(ABI_VERSION)' ;;

@@ -1,3 +1,5 @@
+dnl CF_STDCPP_LIBRARY version: 5 updated: 2000/08/12 23:18:52
+dnl -----------------
 dnl Check for -lstdc++, which is GNU's standard C++ library.
 AC_DEFUN([CF_STDCPP_LIBRARY],
 [
@@ -22,6 +24,6 @@ strstreambuf foo(buf, sizeof(buf))
 	[cf_cv_libstdcpp=no])
 	LIBS="$cf_save"
 ])
-test $cf_cv_libstdcpp = yes && CXXLIBS="$CXXLIBS -l$cf_stdcpp_libname"
+test "$cf_cv_libstdcpp" = yes && CXXLIBS="$CXXLIBS -l$cf_stdcpp_libname"
 fi
 ])dnl

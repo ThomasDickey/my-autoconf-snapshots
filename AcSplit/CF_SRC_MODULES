@@ -63,7 +63,7 @@ do
 	SRC_SUBDIRS="$SRC_SUBDIRS $cf_dir"
 done
 SRC_SUBDIRS="$SRC_SUBDIRS misc test"
-test $cf_with_cxx_binding != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
+test "$cf_with_cxx_binding" != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
 
 ADA_SUBDIRS=
 if test "$cf_cv_prog_gnat_correct" = yes && test -f $srcdir/Ada95/Makefile.in; then

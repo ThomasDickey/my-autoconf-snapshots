@@ -42,13 +42,13 @@ int main()
 }
 			],[
 			cf_cv_link_funcs="$cf_cv_link_funcs $cf_func"
-			eval 'ac_cv_func_'$cf_func'=yes'
-			CF_UPPER(cf_FUNC,$cf_func)
-			AC_DEFINE_UNQUOTED(HAVE_$cf_FUNC)],[
+			eval 'ac_cv_func_'$cf_func'=yes'],[
 			eval 'ac_cv_func_'$cf_func'=no'],[
 			eval 'ac_cv_func_'$cf_func'=error'])
 		done
 		test -z "$cf_cv_link_funcs" && cf_cv_link_funcs=no
 	])
+	test "$ac_cv_func_link"    = yes && AC_DEFINE(HAVE_LINK)
+	test "$ac_cv_func_symlink" = yes && AC_DEFINE(HAVE_SYMLINK)
 fi
 ])dnl

@@ -12,7 +12,7 @@ os2*) #(vi
 	cf_gpp_libname=g++
 	;;
 esac
-if test $ac_cv_prog_gxx = yes; then
+if test "$ac_cv_prog_gxx" = yes; then
 	AC_MSG_CHECKING([for lib$cf_gpp_libname])
 	cf_save="$LIBS"
 	LIBS="$LIBS -l$cf_gpp_libname"

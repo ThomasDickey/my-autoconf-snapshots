@@ -101,12 +101,12 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	linux*|gnu*)
 		# tested with Linux 2.0.29 and gcc 2.7.2 (ELF)
-		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-Wl,-rpath,"
-		if test $DFT_LWR_MODEL = "shared" ; then
+		test "$cf_cv_ld_rpath" = yes && cf_ld_rpath_opt="-Wl,-rpath,"
+		if test "$DFT_LWR_MODEL" = "shared" ; then
  			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
  			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
 		fi
-		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		MK_SHARED_LIB='$(CC) -shared -Wl,-soname,`basename $[@] .$(REL_VERSION)`.$(ABI_VERSION),-stats,-lc -o $[@]'
 		;;
 	openbsd2*)
@@ -116,17 +116,17 @@ AC_DEFUN([CF_SHARED_OPTS],
 	openbsd*|freebsd*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		MK_SHARED_LIB='$(LD) -Bshareable -o $[@]'
-		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		;;
 	netbsd*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-Wl,-rpath,"
-		if test $DFT_LWR_MODEL = "shared" && test $cf_cv_ld_rpath = yes ; then
+		test "$cf_cv_ld_rpath" = yes && cf_ld_rpath_opt="-Wl,-rpath,"
+		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
 			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
 			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
 			EXTRA_LDFLAGS="-Wl,-rpath,\$(libdir) $EXTRA_LDFLAGS"
 			MK_SHARED_LIB='$(CC) -shared -Wl,-soname,`basename $[@] .$(REL_VERSION)`.$(ABI_VERSION) -o $[@]'
-			if test $cf_cv_shlib_version = auto; then
+			if test "$cf_cv_shlib_version" = auto; then
 			if test ! -f /usr/libexec/ld.elf_so; then
 				cf_cv_shlib_version=rel
 			fi
@@ -140,14 +140,14 @@ AC_DEFUN([CF_SHARED_OPTS],
 		# tested with OSF/1 V3.2 and gcc 2.6.3 (but the c++ demo didn't
 		# link with shared libs).
  		MK_SHARED_LIB='$(LD) -set_version $(REL_VERSION):$(ABI_VERSION) -expect_unresolved "*" -shared -soname `basename $[@]`'
-		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-rpath"
+		test "$cf_cv_ld_rpath" = yes && cf_ld_rpath_opt="-rpath"
 		case $host_os in
 		osf4*)
  			MK_SHARED_LIB="${MK_SHARED_LIB} -msym"
 			;;
 		esac
 		MK_SHARED_LIB="${MK_SHARED_LIB}"' -o $[@]'
-		if test $DFT_LWR_MODEL = "shared" ; then
+		if test "$DFT_LWR_MODEL" = "shared" ; then
  			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
  			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
 		fi
@@ -155,41 +155,41 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	sco3.2v5*)  # (also uw2* and UW7) hops 13-Apr-98
 		# tested with osr5.0.5
-		if test $ac_cv_prog_gcc != yes; then
+		if test "$ac_cv_prog_gcc" != yes; then
 			CC_SHARED_OPTS='-belf -KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -dy -G -h `basename $[@] .$(REL_VERSION)`.$(ABI_VERSION) -o [$]@'
-		if test $cf_cv_ld_rpath = yes ; then
+		if test "$cf_cv_ld_rpath" = yes ; then
 			# only way is to set LD_RUN_PATH but no switch for it
 			RUN_PATH=$libdir
 		fi
-		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		LINK_PROGS='LD_RUN_PATH=$(libdir)'
 		LINK_TESTS='Pwd=`pwd`;LD_RUN_PATH=`dirname $${Pwd}`/lib'
 		;;
 	sunos4*)
 		# tested with SunOS 4.1.1 and gcc 2.7.0
-		if test $ac_cv_prog_gcc != yes; then
+		if test "$ac_cv_prog_gcc" != yes; then
 			CC_SHARED_OPTS='-KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -assert pure-text -o $[@]'
-		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		;;
 	solaris2*)
 		# tested with SunOS 5.5.1 (solaris 2.5.1) and gcc 2.7.2
-		if test $ac_cv_prog_gcc != yes; then
+		if test "$ac_cv_prog_gcc" != yes; then
 			CC_SHARED_OPTS='-KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -dy -G -h `basename $[@] .$(REL_VERSION)`.$(ABI_VERSION) -o $[@]'
-		if test $cf_cv_ld_rpath = yes ; then
+		if test "$cf_cv_ld_rpath" = yes ; then
 			cf_ld_rpath_opt="-R"
 			EXTRA_LDFLAGS="-R ../lib:\$(libdir) $EXTRA_LDFLAGS"
 		fi
-		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		;;
 	sysv5uw7*|unix_sv*)
 		# tested with UnixWare 7.1.0 (gcc 2.95.2 and cc)
-		if test $ac_cv_prog_gcc != yes; then
+		if test "$ac_cv_prog_gcc" != yes; then
 			CC_SHARED_OPTS='-KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -d y -G -o [$]@'
@@ -221,7 +221,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		AC_TRY_LINK(, , cf_rpath_space=no, cf_rpath_space=yes)
 		LIBS="$cf_save_LIBS"
 		AC_MSG_RESULT($cf_rpath_space)
-		test $cf_rpath_space = yes && cf_ld_rpath_opt="$cf_ld_rpath_opt "
+		test "$cf_rpath_space" = yes && cf_ld_rpath_opt="$cf_ld_rpath_opt "
 		MK_SHARED_LIB="$MK_SHARED_LIB $cf_ld_rpath_opt\$(libdir)"
 	fi
 
