@@ -1,3 +1,18 @@
+1999-08-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_INPUT_METHOD: RCS_BASE
+
+1999-08-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LINK_FUNCS: RCS_BASE
+
+	* AcSplit/CF_BOOL_DECL:
+	allow for bogus definitions of bool and false in <sys/types.h> and <stdio.h>
+
+	* AcSplit/CF_BOOL_SIZE:
+	corrected sign test for bool, since gcc incorrectly promoted -(unsigned) to
+	int.
+
 1999-07-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_SIGACTION: RCS_BASE
