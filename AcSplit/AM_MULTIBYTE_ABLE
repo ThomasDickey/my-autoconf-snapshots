@@ -22,9 +22,13 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
       wchar_t wcb2[5];
       wchar_t format[3];
 
+      putwc(0, 0);
+      mbtowc(wcb, icb, MB_CUR_MAX);
       mbstowcs(wcb, icb, 5);
       iswprint((wint_t) wcb[0]);
+      wcslen(wcb);
       wcsnlen(wcb, 4);
+      wcwidth((wint_t) wcb[0]);
       wcswidth(wcb, 5);
       wcstombs(ocb, wcb, 5);
       mbstowcs(format, "%s", 2);
@@ -37,17 +41,21 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
        [char icb[5] = {0xa4, 0xa4, 0xa4, 0xe5, 0x00};
         char ocb[5];
         wchar_t wcb[5];
- 	wchar_t wcb2[5];
+        wchar_t wcb2[5];
         wchar_t format[3];
 
+        putwc(0, 0);
+        mbtowc(wcb, icb, MB_CUR_MAX);
         mbstowcs(wcb, icb, 5);
         iswprint((wint_t) wcb[0]);
+        wcslen(wcb);
         wcsnlen(wcb, 4);
+        wcwidth((wint_t) wcb[0]);
         wcswidth(wcb, 5);
         wcstombs(ocb, wcb, 5);
         mbstowcs(format, "%s", 2);
         swprintf(wcb, 5, format, "test");
-	wcsncat(wcb2, wcb, 5);],
+        wcsncat(wcb2, wcb, 5);],
         [am_cv_multibyte_able=yes
          AC_DEFINE(HAVE_LIBUTF8_H)],
         [am_cv_multibyte_able=no
