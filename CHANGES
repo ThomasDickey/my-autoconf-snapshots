@@ -1,3 +1,9 @@
+2003-10-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2003-08-18 (from autoconf 2.57g)
+
+	* config.guess: 2003-10-03 (from autoconf 2.57g)
+
 2003-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES:
