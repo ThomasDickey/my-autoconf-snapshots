@@ -1,0 +1,26 @@
+dnl Look for <wctype.h> and related functions.  This is needed with glibc to
+dnl see the codes above 127.
+AC_DEFUN([CF_WCTYPE],
+[
+AC_CACHE_CHECK(for <wctype.h> and functions, cf_cv_have_wctype,[
+AC_TRY_COMPILE([
+#include <wctype.h>],[
+	wint_t temp = 101;
+	int test = (wctype("alnum") != 0)
+       		|| iswalnum(temp)
+		|| iswalpha(temp)
+		|| iswblank(temp)
+		|| iswcntrl(temp)
+		|| iswdigit(temp)
+		|| iswgraph(temp)
+		|| iswlower(temp)
+		|| iswprint(temp)
+		|| iswpunct(temp)
+		|| iswspace(temp)
+		|| iswupper(temp)
+		|| iswxdigit(temp);],
+	[cf_cv_have_wctype=yes],
+	[cf_cv_have_wctype=no])
+])
+test "$cf_cv_have_wctype" = yes && AC_DEFINE(HAVE_WCTYPE)
+])dnl

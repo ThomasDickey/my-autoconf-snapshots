@@ -1,3 +1,9 @@
+2002-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA: ci-aclocal generated header
+
+	* AcSplit/CF_X_ATHENA: vile: add a check/option for XawPlus
+
 2002-12-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WCTYPE: RCS_BASE

@@ -1,3 +1,5 @@
+dnl CF_X_ATHENA version: 11 updated: 2002/12/26 20:56:10
+dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
 AC_DEFUN([CF_X_ATHENA],
@@ -12,6 +14,9 @@ AC_ARG_WITH(neXtaw,
 	[  --with-neXtaw           link with neXT Athena library],
 	[cf_x_athena=neXtaw])
 
+AC_ARG_WITH(XawPlus,
+	[  --with-XawPlus          link with Athena-Plus library],
+	[cf_x_athena=XawPlus])
 
 AC_CHECK_LIB(Xext,XextCreateExtension,
 	[LIBS="-lXext $LIBS"])
