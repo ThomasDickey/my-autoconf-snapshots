@@ -1,3 +1,14 @@
+2000-04-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_INPUT_METHOD: ci-aclocal generated header
+
+	* AcSplit/CF_INPUT_METHOD: initialize a couple of variables
+
+	* AcSplit/CF_TTY_GROUP:
+	modified to compute the group-name of the configurer's tty, and from that
+	infer if a 'tty' (or similar, such as 'terminal') group is being applied
+	to it.
+
 2000-04-06  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PDCURSES_X11:
