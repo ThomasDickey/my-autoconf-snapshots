@@ -1,3 +1,11 @@
+1997-09-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS: add a test for Hcurses
+
+	* AcSplit/CF_NETLIBS:
+	cache the result of this macro so we'll get the same result if we rerun
+	w/o deleting config.cache
+
 1997-09-15  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TYPE_FD_SET: RCS_BASE
