@@ -1,3 +1,15 @@
+2002-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub, config.guess: 2002-11-30
+
+2002-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DEFAULT_SHELL: ci-aclocal generated header
+
+	* AcSplit/AM_MULTIBYTE_ABLE: tin: refine compile-time test
+
+	* AcSplit/CF_DEFAULT_SHELL: tin: whitespace
+
 2002-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_ADD_CFLAGS, AcSplit/CF_INCLUDE_DIRS:
