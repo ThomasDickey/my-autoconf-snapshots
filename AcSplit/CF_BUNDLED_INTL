@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 6 updated: 2003/06/06 00:48:41
+dnl CF_BUNDLED_INTL version: 8 updated: 2003/06/16 20:36:13
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -21,6 +21,19 @@ dnl setting $LINGUAS overrides $ALL_LINGUAS.  Some environments set $LINGUAS
 dnl rather than $LC_ALL
 test -z "$ALL_LINGUAS" && ALL_LINGUAS=`test -d $srcdir/po && cd $srcdir/po && echo *.po|sed -e 's/\.po//g' -e 's/*//'`
 
+# variables used in lynx:
+CONFIG_H=config.h
+AC_SUBST(CONFIG_H)
+
+if test -z "$VERSION" ; then
+if test -f $srcdir/VERSION ; then
+	VERSION=`head -1 $srcdir/VERSION|cut -f1`
+else
+	VERSION=unknown
+fi
+fi
+AC_SUBST(VERSION)
+
 AM_GNU_GETTEXT(,,,[$2])
 
 INTLDIR_MAKE=
@@ -32,14 +45,23 @@ CF_OUR_MESSAGES($1)
 
 if test "$USE_INCLUDED_LIBINTL" = yes ; then
         if test "$nls_cv_force_use_gnu_gettext" = yes ; then
-		SUB_MAKEFILE="$SUB_MAKEFILE intl/$cf_makefile"
+		:
 	elif test "$nls_cv_use_gnu_gettext" = yes ; then
-		SUB_MAKEFILE="$SUB_MAKEFILE intl/$cf_makefile"
+		:
 	else
 		INTLDIR_MAKE="#"
 	fi
 	if test -z "$INTLDIR_MAKE"; then
 		AC_DEFINE(HAVE_LIBGETTEXT_H)
+		for cf_makefile in \
+			$srcdir/intl/Makefile.in \
+			$srcdir/intl/makefile.in
+		do
+			if test -f "$cf_makefile" ; then
+				SUB_MAKEFILE="$SUB_MAKEFILE `echo ${cf_makefile}|sed -e 's/\.in$//'`:${cf_makefile}"
+				break
+			fi
+		done
 	fi
 else
 	INTLDIR_MAKE="#"
