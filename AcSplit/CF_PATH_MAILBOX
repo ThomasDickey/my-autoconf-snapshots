@@ -3,6 +3,9 @@ dnl actual mail-file, to verify this, but that is not always easy to arrange.
 AC_DEFUN([CF_PATH_MAILBOX],
 [
 AC_MSG_CHECKING(for incoming-mail directory)
+AC_ARG_WITH(mailbox,
+    [  --with-mailbox=DIR      directory for incoming mailboxes],
+    [DEFAULT_MAILBOX=$withval],[
 if test -z "$DEFAULT_MAILBOX" ; then
 for cf_dir in \
 	/var/spool/mail \
@@ -17,9 +20,11 @@ for cf_dir in \
 	fi
     done
 fi
-AC_MSG_RESULT($DEFAULT_MAILBOX)
+])
 if test -n "$DEFAULT_MAILBOX" ; then
-	AC_VERBOSE(found mailbox $DEFAULT_MAILBOX)
 	AC_DEFINE_UNQUOTED(DEFAULT_MAILBOX,"$DEFAULT_MAILBOX")
+else
+	DEFAULT_MAILBOX=none
 fi
+AC_MSG_RESULT($DEFAULT_MAILBOX)
 ])dnl

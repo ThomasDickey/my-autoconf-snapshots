@@ -1,3 +1,15 @@
+1998-02-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PATH_EDITOR: make this a command-line argument
+
+	* AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER:
+	make this a configure option
+
+1998-02-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_DISABLE_ECHO:
+	my fix for autoconf makes quotes in the help-message superfluous
+
 1998-02-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS: correct a typo (spurious '\' before 'test')
