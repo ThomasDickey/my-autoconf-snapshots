@@ -1,3 +1,5 @@
+dnl CF_UTMP_UT_XTIME version: 6 updated: 2002/10/27 23:21:42
+dnl ----------------
 dnl Check if UTMP/UTMPX struct defines ut_xtime member
 AC_DEFUN([CF_UTMP_UT_XTIME],
 [
@@ -23,4 +25,4 @@ if test $cf_cv_have_utmp_ut_xtime != no ; then
 	fi
 fi
 fi
-])
+])dnl

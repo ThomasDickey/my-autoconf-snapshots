@@ -1,3 +1,5 @@
+dnl CF_UTMP_UT_HOST version: 6 updated: 2002/10/27 23:21:42
+dnl ---------------
 dnl Check if UTMP/UTMPX struct defines ut_host member
 AC_DEFUN([CF_UTMP_UT_HOST],
 [
@@ -14,4 +16,4 @@ AC_CACHE_VAL(cf_cv_have_utmp_ut_host,[
 AC_MSG_RESULT($cf_cv_have_utmp_ut_host)
 test $cf_cv_have_utmp_ut_host != no && AC_DEFINE(HAVE_UTMP_UT_HOST)
 fi
-])
+])dnl

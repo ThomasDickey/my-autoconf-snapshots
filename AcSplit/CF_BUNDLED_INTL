@@ -33,6 +33,9 @@ if test "$USE_INCLUDED_LIBINTL" = yes ; then
 	else
 		MSG_DIR_MAKE="#"
 	fi
+	if test -z "$INTLDIR_MAKE"; then
+		AC_DEFINE(HAVE_LIBGETTEXT_H)
+	fi
 elif test "$USE_NLS" = yes ; then
 	AC_CHECK_HEADERS(libintl.h)
 	INTLDIR_MAKE="#"
@@ -55,8 +58,20 @@ if test -z "$INTLDIR_MAKE" ; then
 	CPPFLAGS="$CPPFLAGS -I../intl"
 fi
 
+dnl FIXME:  we use this in lynx (the alternative is a spurious dependency upon
+dnl GNU make)
+if test "$BUILD_INCLUDED_LIBINTL" = yes ; then
+	GT_YES="#"
+	GT_NO=
+else
+	GT_YES=
+	GT_NO="#"
+fi
+
 AC_SUBST(INTLDIR_MAKE)
 AC_SUBST(MSG_DIR_MAKE)
+AC_SUBST(GT_YES)
+AC_SUBST(GT_NO)
 
 dnl FIXME:  the underlying AM_GNU_GETTEXT macro either needs some fixes or a
 dnl little documentation.  It doesn't define anything so that we can ifdef our

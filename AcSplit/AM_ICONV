@@ -1,11 +1,12 @@
+dnl AM_ICONV version: 3 updated: 2002/10/27 23:21:42
+dnl --------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
 dnl iconv.m4
 dnl ====================
-#serial AM2
-
+dnl serial AM2
+dnl
 dnl From Bruno Haible.
-
 AC_DEFUN([AM_ICONV],
 [
   dnl Some systems have iconv in libc, some have it in libiconv (OSF/1 and
@@ -70,4 +71,4 @@ size_t iconv();
     LIBICONV="-liconv"
   fi
   AC_SUBST(LIBICONV)
-])
+])dnl

@@ -1,3 +1,5 @@
+dnl CF_PDCURSES_X11 version: 6 updated: 2002/10/27 18:21:42
+dnl ---------------
 dnl Configure for PDCurses' X11 library
 AC_DEFUN([CF_PDCURSES_X11],[
 AC_REQUIRE([CF_X_ATHENA])
@@ -22,4 +24,4 @@ if test $cf_cv_lib_XCurses = yes ; then
 else
 	AC_ERROR(Cannot link with XCurses)
 fi
-])
+])dnl
