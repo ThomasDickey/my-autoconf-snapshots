@@ -1,3 +1,9 @@
+2002-06-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* mkdirs.sh: update from ncurses:
+	oops - can't really use a range in a case-statement since locale stuff may
+	break it.  Modified to be an explicit set of characterss.
+
 2002-04-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
