@@ -22,5 +22,8 @@ AC_TRY_COMPILE([
 	[cf_cv_have_wctype=yes],
 	[cf_cv_have_wctype=no])
 ])
-test "$cf_cv_have_wctype" = yes && AC_DEFINE(HAVE_WCTYPE)
+if test "$cf_cv_have_wctype" = yes ; then
+	AC_DEFINE(HAVE_WCTYPE)
+	AC_SEARCH_LIBS(wctype,[-lw])
+fi
 ])dnl
