@@ -1,3 +1,10 @@
+1999-06-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAKEFLAGS:
+	correct (I had used 'set' as if this was csh!) and improve (by checking
+	the expansion of $(MAKEFLAGS) if assignments are passed through, like the
+	POSIX make program on IRIX64 6.2).
+
 1999-06-19  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SPEED_TYPE:
