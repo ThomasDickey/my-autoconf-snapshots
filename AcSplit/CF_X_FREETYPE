@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 4 updated: 2003/09/17 20:51:30
+dnl CF_X_FREETYPE version: 5 updated: 2003/09/21 13:12:44
 dnl -------------
 dnl Check for X freetype libraries (XFree86 4.x)
 AC_DEFUN([CF_X_FREETYPE],
@@ -24,7 +24,7 @@ else
 	CPPFLAGS=`echo "$CPPFLAGS" | sed -e s/-DXRENDERFONT//`
 fi
 
-# FIXME: revisit this if/when Xft and Xrender are documented
+# FIXME: revisit this if needed
 AC_SUBST(XRENDERFONT)
 AC_SUBST(HAVE_TYPE_FCCHAR32)
 AC_SUBST(HAVE_TYPE_XFTCHARSPEC)

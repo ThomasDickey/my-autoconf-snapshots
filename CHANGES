@@ -1,3 +1,7 @@
+2003-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE: hmm - Xft is "documented"
+
 2003-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NUMBER_SYNTAX, AcSplit/CF_WITH_ABI_VERSION, AcSplit/CF_WITH_REL_VERSION, AcSplit/CF_PROG_LDCONFIG:
