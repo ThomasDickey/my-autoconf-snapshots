@@ -1,10 +1,10 @@
-dnl CF_XOPEN_SOURCE version: 5 updated: 2003/12/27 07:16:43
+dnl CF_XOPEN_SOURCE version: 6 updated: 2003/12/27 20:48:07
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions.
 AC_DEFUN([CF_XOPEN_SOURCE],[
 case $host_os in #(vi
 freebsd*) #(vi
-	CPPFLAGS="$CPPFLAGS -D_BSD_TYPES"
+	CPPFLAGS="$CPPFLAGS -D_BSD_TYPES -D__BSD_VISIBLE -D_POSIX_C_SOURCE=200112 -D_XOPEN_SOURCE=600"
 	;;
 hpux*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_HPUX_SOURCE"
