@@ -21,6 +21,7 @@ AC_ARG_WITH($1,[$2],ifelse($3,,
    # user supplied option-value for "--with-$1=path"
    AC_MSG_CHECKING(for $1)
    ac_cv_path_]cf_path_name[="$withval"
+   AC_DEFINE_UNQUOTED(cf_path_name,"$withval")dnl
    AC_DEFINE(cf_have_name)dnl
    AC_MSG_RESULT($withval)
    ;;
