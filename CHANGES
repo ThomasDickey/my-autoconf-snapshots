@@ -1,3 +1,9 @@
+2001-07-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_STRERROR: RCS_BASE
+
+	* AcSplit/CF_STRERROR: ci-aclocal generated header
+
 2001-06-26  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess: tin 1.5.9
