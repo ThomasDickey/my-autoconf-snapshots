@@ -1,3 +1,9 @@
+1998-07-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: re-merged patch from Mike Hopkirk for Unixware
+
+	* config.guess: version from automake 1.3
+
 1998-07-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_X_MOTIF, AcSplit/CF_X_OPENLOOK: RCS_BASE
