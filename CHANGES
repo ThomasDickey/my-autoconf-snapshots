@@ -1,3 +1,20 @@
+1997-09-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ALL_MAKEFILES: RCS_BASE
+
+	* AcSplit/CF_ALL_MAKEFILES: ci-aclocal generated header
+
+	* AcSplit/CF_GMTOFF: FreeBSD has a 'timezone()' function.
+
+	* AcSplit/CF_FIND_TDLIB: gcc 2.6.3 doesn't search /usr/local/include
+
+	* AcSplit/CF_TOP_SRCDIR: RCS_BASE
+
+	* AcSplit/CF_TD_SRC_MAKEFILES: ci-aclocal generated header
+
+	* AcSplit/CF_TD_SRC_MAKEFILES:
+	move most of the logic into CF_SRC_MAKEFILE
+
 1997-09-12  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SRC_MAKEFILE: RCS_BASE

@@ -25,7 +25,8 @@ test $cf_cv_decl_localzone = yes && AC_DEFINE(LOCALZONE_DECLARED)
 AC_MSG_CHECKING(for timezone declared)
 AC_CACHE_VAL(cf_cv_decl_timezone,[
 	AC_TRY_COMPILE($cf_decl,
-		[long x = timezone],
+		[long x = timezone;
+		 timezone = x],
 		[cf_cv_decl_timezone=yes],
 		[cf_cv_decl_timezone=no])])
 AC_MSG_RESULT($cf_cv_decl_timezone)
