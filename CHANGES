@@ -1,3 +1,9 @@
+2003-08-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	ncurses: mods to make this work with libtool 1.5 -- it requires "options"
+	that are not really optional, for planned support of other languages than C.
+
 2003-08-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_FUNCS:
