@@ -1,0 +1,43 @@
+dnl CF_WITH_IMAKE_CFLAGS version: 1 updated: 2003/04/12 15:32:30
+dnl --------------------
+dnl xterm and similar programs build more readily when propped up with imake's
+dnl hand-tuned definitions.  If we do not use imake, provide fallbacks for the
+dnl most common definitions that we're not likely to do by autoconf tests.
+AC_DEFUN([CF_WITH_IMAKE_CFLAGS],[
+AC_MSG_CHECKING(if we should use imake to help)
+CF_ARG_DISABLE(imake,
+	[  --disable-imake         disable use of imake for definitions],
+	[enable_imake=no],
+	[enable_imake=yes])
+AC_MSG_RESULT($enable_imake)
+if test "$enable_imake" = yes ; then
+	CF_IMAKE_CFLAGS(ifelse($1,,,$1))
+	CF_ADD_CFLAGS($IMAKE_CFLAGS)
+else
+	IMAKE_CFLAGS=
+	IMAKE_LOADFLAGS
+	CF_VERBOSE(make fallback definitions)
+
+	UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
+	case $UNAME_RELEASE in
+	[[0-9]]*.[[0-9]]**)
+		OSMAJORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/\..*//'`
+		OSMINORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^.]]*\.//' -e 's/\..*//'`
+		IMAKE_CFLAGS="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION $IMAKE_CFLAGS"
+		;;
+	esac
+
+	# FUNCPROTO is standard with X11R6, but XFree86 drops it, leaving some
+	# fallback/fragments for NeedPrototypes, etc.
+	IMAKE_CFLAGS="-DFUNCPROTO=15 $IMAKE_CFLAGS"
+
+	# If this is not set properly, Xaw's scrollbars will not work
+	case `$ac_config_guess` in
+	*freebsd*|*gnu*|*irix5*|*irix6*|*linux-gnu*|*netbsd*|*openbsd*)
+		IMAKE_CFLAGS="-DNARROWPROTO=1 $IMAKE_CFLAGS"
+	esac
+
+	AC_SUBST(IMAKE_CFLAGS)
+	AC_SUBST(IMAKE_LOADFLAGS)
+fi
+])dnl
