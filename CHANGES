@@ -1,3 +1,7 @@
+1999-05-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROG_PERL: put brackets for consistency
+
 1999-05-14  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIBRARY_PATH: from CDK, add /opt

@@ -5,7 +5,7 @@ changequote()
 define(U_TURN_BACK, ]) 
 changequote([, ]) 
 
-AC_DEFUN(CF_PROG_PERL,
+AC_DEFUN([CF_PROG_PERL],
 [# find perl binary
 AC_MSG_CHECKING([for ifelse([$1],,perl,[perl-$1])])
 AC_CACHE_VAL(cf_cv_prog_PERL,
