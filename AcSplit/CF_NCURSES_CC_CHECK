@@ -1,3 +1,5 @@
+dnl CF_NCURSES_CC_CHECK version: 3 updated: 2003/01/12 18:59:28
+dnl -------------------
 dnl Check if we can compile with ncurses' header file
 dnl $1 is the cache variable to set
 dnl $2 is the header-file to include
@@ -6,7 +8,8 @@ AC_DEFUN([CF_NCURSES_CC_CHECK],[
 	AC_TRY_COMPILE([
 ]ifelse($3,ncursesw,[
 #define _XOPEN_SOURCE_EXTENDED
-#define HAVE_LIBUTF8_H
+#undef  HAVE_LIBUTF8_H	/* in case we used CF_UTF8_LIB */
+#define HAVE_LIBUTF8_H	/* to force ncurses' header file to use cchar_t */
 ])[
 #include <$2>],[
 #ifdef NCURSES_VERSION

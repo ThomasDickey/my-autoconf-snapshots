@@ -1,3 +1,10 @@
+2003-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CC_CHECK: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_CC_CHECK:
+	lynx: undef HAVE_LIBUTF8_H in case it was already defined via CF_UTF8_LIB
+
 2003-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_INSTALL_PREFIX: RCS_BASE
