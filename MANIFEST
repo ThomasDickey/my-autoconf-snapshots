@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010213
+MANIFEST for my-autoconf, version t20010312
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -257,6 +257,7 @@ AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a va
 AcSplit/CF_XOPEN_CURSES         check for X/Open curses
 AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
 AcSplit/CF_X_ATHENA             check for Xaw library
+AcSplit/CF_X_FREETYPE           test for x freetype libs
 AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
