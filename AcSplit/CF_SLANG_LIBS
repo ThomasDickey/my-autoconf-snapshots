@@ -11,7 +11,7 @@ CF_FIND_LIBRARY(slang,
 	SLtt_get_screen_size)
 cf_slang_LIBS3="$LIBS"
 AC_MSG_CHECKING(if we can link slang without termcap)
-if test -n "$cf_slang_LIBS1" ; then
+if test -n "`echo $cf_slang_LIBS1 | sed -e 's/ //g'`" ; then
 	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s@$cf_slang_LIBS1@@" -e 's@^.@@'`
 else
 	cf_exclude="$cf_slang_LIBS2"
