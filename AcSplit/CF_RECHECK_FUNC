@@ -1,3 +1,5 @@
+dnl CF_RECHECK_FUNC version: 3 updated: 2000/10/18 19:29:13
+dnl ---------------
 dnl Re-check on a function to see if we can pick it up by adding a library.
 dnl	$1 = function to check
 dnl	$2 = library to check in
@@ -15,7 +17,7 @@ AC_CHECK_LIB($2,$1,[
 	CF_UPPER(cf_tr_func,$1)
 	AC_DEFINE_UNQUOTED(HAVE_$cf_tr_func)
 	ac_cv_func_$1=yes
-	$3="-l$2 [$]$3"],[
+	if test "$cf_used_lib_$2" != yes ; then cf_used_lib_$2=yes; $3="-l$2 [$]$3"; fi],[
 	ac_cv_func_$1=unknown
 	unset ac_cv_func_$1 2>/dev/null
 	$4],
