@@ -1,3 +1,24 @@
+2000-07-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_X_ATHENA: add /usr/local to search path, for OpenBSD
+
+2000-07-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_TERMCAP:
+	tin - define NEED_TERM_H if we can really use term.h rather than termcap.h, etc.
+
+	* AcSplit/CF_ARG_WITH, AcSplit/CF_PATH_EDITOR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_PATH_EDITOR:
+	provide a more reasonable default for the help message
+
+	* AcSplit/CF_PATH_MAILER:
+	provide a more reasonable default for the help-message
+
+	* AcSplit/CF_ARG_WITH:
+	tin - added 5th parameter to provide _some_ default value for help message
+
 2000-07-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: lynx - os390 changes

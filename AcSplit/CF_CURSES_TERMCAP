@@ -72,6 +72,9 @@ both) #(vi
 curses.h) #(vi
 	AC_DEFINE_UNQUOTED(NEED_CURSES_H)
 	;;
+term.h) #(vi
+	AC_DEFINE_UNQUOTED(NEED_TERM_H)
+	;;
 termcap.h) #(vi
 	AC_DEFINE_UNQUOTED(NEED_TERMCAP_H)
 	;;

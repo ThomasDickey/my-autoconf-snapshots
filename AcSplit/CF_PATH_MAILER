@@ -4,7 +4,7 @@ AC_DEFUN([CF_PATH_MAILER],
 AC_PATH_PROG(DEFAULT_MAILER,sendmail,,$PATH:/usr/sbin:/usr/lib)
 CF_ARG_WITH(mailer,
      [  --with-mailer=PROG      specify default mailer-program],
-     [DEFAULT_MAILER])
+     [DEFAULT_MAILER],,mailx)
 if test -z "$DEFAULT_MAILER" ; then
 AC_PATH_PROG(DEFAULT_MAILER,mailx,,$PATH:/usr/bin)
 fi
