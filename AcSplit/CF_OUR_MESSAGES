@@ -1,8 +1,17 @@
-dnl CF_OUR_MESSAGES version: 3 updated: 2000/01/20 10:49:08
+dnl CF_OUR_MESSAGES version: 4 updated: 2003/06/06 00:48:41
 dnl ---------------
 dnl Check if we use the messages included with this program
+dnl
+dnl $1 specifies either Makefile or makefile, defaulting to the former.
+dnl
+dnl Sets variables which can be used to substitute in makefiles:
+dnl	MSG_DIR_MAKE - to make ./po directory
+dnl	SUB_MAKEFILE - makefile in ./po directory (see CF_BUNDLED_INTL)
+dnl
 AC_DEFUN([CF_OUR_MESSAGES],
 [
+cf_makefile=ifelse($1,,Makefile,$1)
+
 use_our_messages=no
 if test "$USE_NLS" = yes ; then
 if test -d $srcdir/po ; then
@@ -14,6 +23,14 @@ AC_MSG_CHECKING(if we should use included message-library)
 fi
 AC_MSG_RESULT($use_our_messages)
 fi
-test $use_our_messages = yes && USE_OUR_MESSAGES=
-AC_SUBST(USE_OUR_MESSAGES)
+
+MSG_DIR_MAKE="#"
+if test "$use_our_messages" = yes
+then
+	SUB_MAKEFILE="$SUB_MAKEFILE po/$cf_makefile.in:po/$cf_makefile.inn"
+	MSG_DIR_MAKE=
+fi
+
+AC_SUBST(MSG_DIR_MAKE)
+AC_SUBST(SUB_MAKEFILE)
 ])dnl

@@ -1,3 +1,28 @@
+2003-06-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	define LIB_PREP as token to substitute for 'ranlib' in makefiles rather
+	than 'RANLIB', so I don't accidentally change the $RANLIB that the configure
+	script is using, e.g., in the test for broken-linker.
+
+	* AcSplit/CF_SUBST_NCURSES_VERSION:
+	don't need to ifdef based on cf_cv_cc_bool_type any more
+
+2003-06-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CPPFLAGS:
+	change the order that I add to $CPPFLAGS, putting the curses include-directory
+	first (noticed this while working on tin)
+
+	* AcSplit/CF_OUR_MESSAGES:
+	tin: move logic for MSF_DIR_MAKE from CF_BUNDLED_INTL (which had some
+	conflicting logic with INTLDIR_MAKE).
+	also added some comments.
+
+	* AcSplit/CF_BUNDLED_INTL:
+	tin: move some logic over to CF_OUR_MESSAGES that should have been there,
+	e.g., for MSG_DIR_MAKE.  Add some comments.
+
 2003-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2003-05-24 (from tin 1.5.18)

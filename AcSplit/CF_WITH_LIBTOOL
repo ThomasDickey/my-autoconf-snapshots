@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 5 updated: 2003/04/18 22:19:54
+dnl CF_WITH_LIBTOOL version: 6 updated: 2003/06/07 17:05:45
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -10,6 +10,7 @@ LIB_OBJECT='$(OBJECTS)'
 LIB_SUFFIX=.a
 LIB_INSTALL=
 LIB_UNINSTALL=
+LIB_PREP="$RANLIB"
 
 AC_MSG_CHECKING(if you want to build libraries with libtool)
 AC_ARG_WITH(libtool,
@@ -28,7 +29,7 @@ if test "$with_libtool" = "yes"; then
 	LIB_SUFFIX=.la
 	LIB_INSTALL='$(LIBTOOL) --mode=install'
 	LIB_UNINSTALL='$(LIBTOOL) --mode=uninstall'
-	RANLIB=:
+	LIB_PREP=:
 
 	# Show the version of libtool
 	AC_MSG_CHECKING(version of libtool)
@@ -53,5 +54,6 @@ AC_SUBST(LIB_OBJECT)
 AC_SUBST(LIB_SUFFIX)
 AC_SUBST(LIB_INSTALL)
 AC_SUBST(LIB_UNINSTALL)
+AC_SUBST(LIB_PREP)
 
 ])dnl
