@@ -1,3 +1,23 @@
+1998-07-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_CC_OFFSETOF_CASES: RCS_BASE
+
+	* AcSplit/CF_CC_INIT_UNIONS: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_CCHAR_T: RCS_BASE
+
+	* AcSplit/CF_CURSES_DATA: check for cchar_t
+
+	* AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_DATA:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_FUNCS:
+	use term.h if we have it, for terminfo functions
+
+1998-06-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ALT_CHAR_SET: oops: fix cache-reference
+
 1998-05-26  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:

@@ -1,0 +1,15 @@
+dnl Check if the C compiler supports offsetof expressions in switch cases. 
+dnl Some losing compiler's can be found on pyramid's, aix, and Apple's AUX2. 
+dnl (Lint on several platforms will complain, even when the compiler won't).
+AC_DEFUN([CF_CC_OFFSETOF_CASES],[
+AC_CACHE_CHECK(if switch cases work with structure offsets,
+cf_cv_case_offsetof,[
+	AC_TRY_COMPILE([],
+	[struct foo {int a,b;};
+	 extern getpid();
+	 switch(getpid()){case ((int) &(((struct foo *)0)->b)) : printf("foo"); } ],
+	[cf_cv_case_offsetof=yes],
+	[cf_cv_case_offsetof=no])
+	])
+test $cf_cv_case_offsetof = no && AC_DEFINE(CC_CANNOT_OFFSET_CASES)
+])dnl
