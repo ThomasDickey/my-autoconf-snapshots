@@ -1,3 +1,7 @@
+2003-02-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub, config.guess: tin: 2003/2/22
+
 2003-02-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WCTYPE: add a check for -lw, needed for Solaris
