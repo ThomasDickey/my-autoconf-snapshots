@@ -71,6 +71,7 @@ __argz_count __argz_stringify __argz_next])
      sed -e '/^#/d' $srcdir/intl/$msgformat-msg.sed > intl/po2msg.sed
    fi
    dnl po2tbl.sed is always needed.
+   rm -f intl/po2tbl.sed
    sed -e '/^#.*[^\\]$/d' -e '/^#$/d' \
      $srcdir/intl/po2tbl.sed.in > intl/po2tbl.sed
 
