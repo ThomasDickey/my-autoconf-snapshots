@@ -1,3 +1,21 @@
+2000-07-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_SUFFIX:
+	ncurses: move assumptions about *bsd using REL_VERSION suffix to CF_SHLIB_OPTS
+
+	* AcSplit/CF_LIB_RULES:
+	ncurses: use $cf_cv_shlib_version and $cf_cv_do_symlinks to handle the
+	special case of constructing $cf_suffix.  Most of the shared-library
+	suffix logic is in mk-1st.awk, but there's a list of dependencies that
+	are generated here.
+
+	* AcSplit/CF_SHARED_OPTS:
+	ncurses: various fixes, mostly because I broke something before 5.0 which
+	dealt with the rel/abi symbolic links.  This rearranges things so the
+	library name passed to mk-1st.awk doesn't have the version number tacked
+	onto the ".so" suffix - the main problem.
+	Also moved some logic out of CF_LIB_SUFFIX to work with that rearrangement.
+
 2000-07-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SHARED_OPTS: quote a '$' so m4 doesn't eat it
