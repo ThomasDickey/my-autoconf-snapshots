@@ -1,3 +1,14 @@
+2002-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	check for $cf_ncu_hdr_root equal to ncursesw also
+
+	* AcSplit/CF_XOPEN_CURSES: ci-aclocal generated header
+
+	* AcSplit/CF_XOPEN_CURSES:
+	tin: if we cannot compile even after adding _XOPEN_SOURCE_EXTENDED, mark it
+	as "unknown", so we can check this case later when we're sure it should work.
+
 2002-11-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_CURSES_DIR: RCS_BASE

@@ -1,3 +1,5 @@
+dnl CF_XOPEN_CURSES version: 6 updated: 2002/11/12 06:55:30
+dnl ---------------
 dnl Test if we should define X/Open source for curses, needed on Digital Unix
 dnl 4.x, to see the extended functions, but breaks on IRIX 6.x.
 AC_DEFUN([CF_XOPEN_CURSES],
@@ -14,6 +16,6 @@ AC_TRY_LINK([
 #include <${cf_cv_ncurses_header-curses.h}>],[
 	long x = winnstr(stdscr, "", 0)],
 	[cf_cv_need_xopen_extension=yes],
-	[cf_cv_need_xopen_extension=no])])])
+	[cf_cv_need_xopen_extension=unknown])])])
 test $cf_cv_need_xopen_extension = yes && CPPFLAGS="$CPPFLAGS -D_XOPEN_SOURCE_EXTENDED"
 ])dnl
