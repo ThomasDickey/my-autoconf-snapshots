@@ -1,3 +1,5 @@
+dnl CF_LINK_FUNCS version: 5 updated: 2003/02/02 01:41:46
+dnl -------------
 dnl Most Unix systems have both link and symlink, a few don't have symlink.
 dnl A few non-Unix systems implement symlink, but not link.
 dnl A few non-systems implement neither (or have nonfunctional versions).
@@ -7,7 +9,7 @@ AC_CHECK_FUNCS( \
 	remove \
 	unlink )
 
-if test "$ac_cv_prog_cc_cross" = yes ; then
+if test "$cross_compiling" = yes ; then
 	AC_CHECK_FUNCS( \
 		link \
 		symlink )

@@ -1,3 +1,5 @@
+dnl CF_LINK_DATAONLY version: 6 updated: 2003/02/02 01:41:46
+dnl ----------------
 dnl Some systems have a non-ANSI linker that doesn't pull in modules that have
 dnl only data (i.e., no functions), for example NeXT.  On those systems we'll
 dnl have to provide wrappers for global tables to ensure they're linked
@@ -13,7 +15,7 @@ int	testdata[[3]] = { 123, 456, 789 };
 EOF
 	if AC_TRY_EVAL(ac_compile) ; then
 		mv conftest.o data.o && \
-		( $AR $AR_OPTS conftest.a data.o ) 2>&5 1>/dev/null
+		( $AR $AR_OPTS conftest.a data.o ) 2>&AC_FD_CC 1>/dev/null
 	fi
 	rm -f conftest.$ac_ext data.o
 	cat >conftest.$ac_ext <<EOF
@@ -32,10 +34,10 @@ int	testfunc()
 EOF
 	if AC_TRY_EVAL(ac_compile); then
 		mv conftest.o func.o && \
-		( $AR $AR_OPTS conftest.a func.o ) 2>&5 1>/dev/null
+		( $AR $AR_OPTS conftest.a func.o ) 2>&AC_FD_CC 1>/dev/null
 	fi
 	rm -f conftest.$ac_ext func.o
-	( eval $ac_cv_prog_RANLIB conftest.a ) 2>&5 >/dev/null
+	( eval $RANLIB conftest.a ) 2>&AC_FD_CC >/dev/null
 	cf_saveLIBS="$LIBS"
 	LIBS="conftest.a $LIBS"
 	AC_TRY_RUN([
