@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 29 updated: 2003/07/19 16:05:52
+dnl CF_LIB_RULES version: 30 updated: 2004/01/10 15:50:50
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -57,16 +57,13 @@ do
 
 		if test $cf_dir = ncurses ; then
 			cf_subsets="$LIB_SUBSETS"
-			case "$LIB_SUBSETS" in #(vi
-			termlib+*) #(vi
-				;;
-			*) #(vi
+			cf_termlib=`echo "$cf_subsets" |sed -e 's/ .*$//'`
+			if test "$cf_termlib" != "$cf_subsets" ; then
 				cf_item=`echo $LIBS_TO_MAKE |sed -e s%$LIB_NAME%$TINFO_NAME%g`
 				LIBS_TO_MAKE="$cf_item $LIBS_TO_MAKE"
-				;;
-			esac
+			fi
 		else
-			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib //'`
+			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib.* //'`
 		fi
 
 		sed -e "s%@LIBS_TO_MAKE@%$LIBS_TO_MAKE%" \
