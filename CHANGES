@@ -1,3 +1,14 @@
+1997-09-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SED_CONFIG_H: keep old behavior: remove the input-file
+
+	* AcSplit/CF_X_TOOLKIT: make dependency upon CF_CHECK_CACHE explicit
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	oops: forgot the final else-clause in the check for predefined header
+
+	* AcSplit/CF_IMAKE_CFLAGS: missing -f on 'test'
+
 1997-09-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_NCURSES_BROKEN:

@@ -18,7 +18,7 @@ esac
 if mkdir conftestdir; then
 	cd conftestdir
 	echo >./Imakefile
-	test ../Imakefile && cat ../Imakefile >>./Imakefile
+	test -f ../Imakefile && cat ../Imakefile >>./Imakefile
 	cat >> ./Imakefile <<'CF_EOF'
 findstddefs:
 	@echo 'IMAKE_CFLAGS="${STD_DEFINES} ifelse($1,,,$1)"'
