@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990621
+MANIFEST for my-autoconf, version t19990728
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -74,6 +74,7 @@ AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
+AcSplit/CF_FUNC_SIGACTION       check for sigaction function and related structs
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
 AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
 AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
