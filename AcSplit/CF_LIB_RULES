@@ -170,6 +170,18 @@ distclean ::
 	rm -rf \$(DIRS_TO_MAKE)
 CF_EOF
 
+# Special case: tack's manpage lives in its own directory.
+if test -d tack ; then
+if test -f $srcdir/$tack.h; then
+cat >> Makefile <<CF_EOF
+
+install.man \
+uninstall.man ::
+	cd tack && \$(MAKE) \$(CF_MFLAGS) \[$]@
+CF_EOF
+fi
+fi
+
 dnl If we're installing into a subdirectory of /usr/include, etc., we should
 dnl prepend the subdirectory's name to the "#include" paths.  It won't hurt
 dnl anything, and will make it more standardized.  It's awkward to decide this
@@ -207,7 +219,7 @@ case \$DST in
 	done
 	rm -f \$TMPSRC
 	sed -f \$TMPSED \$SRC > \$TMPSRC
-	eval \$PRG \$TMPSRC \$DST/\$SRC
+	eval \$PRG \$TMPSRC \$DST/\`basename \$SRC\`
 	rm -f \$TMPSRC \$TMPSED
 	;;
 *)
@@ -227,7 +239,7 @@ do
 
 install \\
 install.libs \\
-install.includes :: \$(DESTDIR)\$(includedir) \\
+install.includes :: \$(AUTO_SRC) \$(DESTDIR)\$(includedir) \\
 CF_EOF
 		j=""
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`

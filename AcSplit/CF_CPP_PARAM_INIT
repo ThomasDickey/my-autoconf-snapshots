@@ -3,7 +3,7 @@ dnl is a late feature for the standard and is not in some recent compilers
 dnl (1999/9/11).
 AC_DEFUN([CF_CPP_PARAM_INIT],
 [
-if test -n "$CXX" ; then
+if test "$CXX" = yes ; then
 AC_CACHE_CHECK(if $CXX accepts parameter initialization,cf_cv_cpp_param_init,[
 	AC_LANG_CPLUSPLUS
 	AC_TRY_RUN([

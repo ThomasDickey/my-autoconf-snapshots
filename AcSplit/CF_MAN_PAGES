@@ -62,10 +62,16 @@ case \$i in #(vi
 	fi
 	aliases=
 	source=\`basename \$i\`
+	inalias=\$source
+	test ! -f \$inalias && inalias="\$srcdir/\$inalias"
+	if test ! -f \$inalias ; then
+		echo .. skipped \$source
+		continue
+	fi
 CF_EOF
 if test "$cf_manpage_symlinks" = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
-	aliases=\`sed -f \$srcdir/manlinks.sed \$source | sort -u\`
+	aliases=\`sed -f \$srcdir/manlinks.sed \$inalias | sort -u\`
 CF_EOF
 fi
 if test "$cf_manpage_renames" = no ; then

@@ -8,7 +8,7 @@ AC_CACHE_VAL(cf_cv_type_of_bool,[
 	AC_TRY_RUN([
 #include <stdlib.h>
 #include <stdio.h>
-#if HAVE_GXX_BUILTIN_H
+#ifdef HAVE_GXX_BUILTIN_H
 #include <g++/builtin.h>
 #elif HAVE_GPP_BUILTIN_H
 #include <gpp/builtin.h>

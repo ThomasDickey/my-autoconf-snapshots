@@ -13,14 +13,14 @@ do
     CFLAGS="$cf_save_CFLAGS"
     test -n "$cf_opts" && CFLAGS="$CFLAGS -D$cf_opts"
     AC_TRY_COMPILE([#include <sys/types.h>
-#if HAVE_TERMIOS_H
+#ifdef HAVE_TERMIOS_H
 #include <termios.h>
 #else
-#if HAVE_TERMIO_H
+#ifdef HAVE_TERMIO_H
 #include <termio.h>
 #endif
 #endif
-#if NEED_PTEM_H
+#ifdef NEED_PTEM_H
 /* This is a workaround for SCO:  they neglected to define struct winsize in
  * termios.h -- it's only in termio.h and ptem.h
  */
