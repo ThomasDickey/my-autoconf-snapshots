@@ -1,13 +1,15 @@
+dnl CF_TYPE_OUTCHAR version: 13 updated: 2002/10/09 20:00:37
+dnl ---------------
 dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
 dnl
 dnl For this check, and for CF_CURSES_TERMCAP, the $CHECK_DECL_HDRS variable
 dnl must point to a header file containing this (or equivalent):
 dnl
 dnl	#ifdef NEED_CURSES_H
-dnl	# if HAVE_NCURSES_NCURSES_H
+dnl	# ifdef HAVE_NCURSES_NCURSES_H
 dnl	#  include <ncurses/ncurses.h>
 dnl	# else
-dnl	#  if HAVE_NCURSES_H
+dnl	#  ifdef HAVE_NCURSES_H
 dnl	#   include <ncurses.h>
 dnl	#  else
 dnl	#   include <curses.h>
@@ -15,10 +17,10 @@ dnl	#  endif
 dnl	# endif
 dnl	#endif
 dnl
-dnl	#if HAVE_NCURSES_TERM_H
+dnl	#ifdef HAVE_NCURSES_TERM_H
 dnl	#  include <ncurses/term.h>
 dnl	#else
-dnl	# if HAVE_TERM_H
+dnl	# ifdef HAVE_TERM_H
 dnl	#  include <term.h>
 dnl	# endif
 dnl	#endif

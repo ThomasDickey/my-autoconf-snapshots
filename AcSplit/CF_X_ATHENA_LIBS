@@ -1,0 +1,51 @@
+dnl Normally invoked by CF_X_ATHENA, with $1 set to the appropriate flavor of
+dnl the Athena widgets, e.g., Xaw, Xaw3d, neXtaw.
+AC_DEFUN([CF_X_ATHENA_LIBS],
+[AC_REQUIRE([CF_X_TOOLKIT])
+cf_x_athena_root=ifelse($1,,Xaw,$1)
+cf_x_athena_lib=""
+
+for cf_path in default \
+	/usr/contrib/X11R6 \
+	/usr/contrib/X11R5 \
+	/usr/lib/X11R5 \
+	/usr/local
+do
+	for cf_lib in \
+		"-l$cf_x_athena_root -lXmu" \
+		"-l$cf_x_athena_root -lXpm -lXmu" \
+		"-l${cf_x_athena_root}_s -lXmu_s"
+	do
+		if test -z "$cf_x_athena_lib" ; then
+			cf_save="$LIBS"
+			cf_test=XawSimpleMenuAddGlobalActions
+			if test $cf_path != default ; then
+				LIBS="-L$cf_path/lib $cf_lib $LIBS"
+				AC_MSG_CHECKING(for $cf_lib in $cf_path)
+			else
+				LIBS="$cf_lib $LIBS"
+				AC_MSG_CHECKING(for $cf_test in $cf_lib)
+			fi
+			AC_TRY_LINK([],[$cf_test()],
+				[cf_result=yes],
+				[cf_result=no],
+				[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
+			AC_MSG_RESULT($cf_result)
+			if test "$cf_result" = yes ; then
+				cf_x_athena_lib="$cf_lib"
+				break
+			else
+				LIBS="$cf_save"
+			fi
+		fi
+	done
+done
+
+if test -z "$cf_x_athena_lib" ; then
+	AC_ERROR(
+[Unable to successfully link Athena library (-l$cf_x_athena_root) with test program])
+fi
+
+CF_UPPER(cf_x_athena_LIBS,HAVE_LIB_$cf_x_athena)
+AC_DEFINE_UNQUOTED($cf_x_athena_LIBS)
+])

@@ -16,74 +16,8 @@ AC_ARG_WITH(neXtaw,
 AC_CHECK_LIB(Xext,XextCreateExtension,
 	[LIBS="-lXext $LIBS"])
 
-cf_x_athena_include=""
 cf_x_athena_lib=""
 
-for cf_path in default \
-	/usr/contrib/X11R6 \
-	/usr/contrib/X11R5 \
-	/usr/lib/X11R5 \
-	/usr/local
-do
-
-	if test -z "$cf_x_athena_include" ; then
-		cf_save="$CPPFLAGS"
-		cf_test=X11/$cf_x_athena/SimpleMenu.h
-		if test $cf_path != default ; then
-			CPPFLAGS="-I$cf_path/include $cf_save"
-			AC_MSG_CHECKING(for $cf_test in $cf_path)
-		else
-			AC_MSG_CHECKING(for $cf_test)
-		fi
-		AC_TRY_COMPILE([
-#include <X11/Intrinsic.h>
-#include <$cf_test>],[],
-			[cf_result=yes],
-			[cf_result=no])
-		AC_MSG_RESULT($cf_result)
-		if test "$cf_result" = yes ; then
-			cf_x_athena_include=$cf_path
-		else
-			CPPFLAGS="$cf_save"
-		fi
-	fi
-
-	for cf_lib in "-l$cf_x_athena -lXmu" "-l${cf_x_athena}_s -lXmu_s"
-	do
-		if test -z "$cf_x_athena_lib" ; then
-			cf_save="$LIBS"
-			cf_test=XawSimpleMenuAddGlobalActions
-			if test $cf_path != default ; then
-				LIBS="-L$cf_path/lib $cf_lib $LIBS"
-				AC_MSG_CHECKING(for $cf_lib in $cf_path)
-			else
-				LIBS="$cf_lib $LIBS"
-				AC_MSG_CHECKING(for $cf_test in $cf_lib)
-			fi
-			AC_TRY_LINK([],[$cf_test()],
-				[cf_result=yes],
-				[cf_result=no],
-				[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
-			AC_MSG_RESULT($cf_result)
-			if test "$cf_result" = yes ; then
-				cf_x_athena_lib="$cf_lib"
-			else
-				LIBS="$cf_save"
-			fi
-		fi
-	done
-done
-
-if test -z "$cf_x_athena_include" ; then
-	AC_MSG_WARN(
-[Unable to successfully find Athena header files with test program])
-fi
-
-if test -z "$cf_x_athena_lib" ; then
-	AC_ERROR(
-[Unable to successfully link Athena library (-l$cf_x_athena) with test program])
-fi
-
-CF_UPPER(CF_X_ATHENA_LIBS,HAVE_LIB_$cf_x_athena)
-AC_DEFINE_UNQUOTED($CF_X_ATHENA_LIBS)
+CF_X_ATHENA_CPPFLAGS($cf_x_athena)
+CF_X_ATHENA_LIBS($cf_x_athena)
 ])dnl
