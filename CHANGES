@@ -1,3 +1,32 @@
+2004-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	xterm: modify the generated Makefile to use sed-scripts that effectively
+	recognize -D options that have non-numeric values.  When those are found,
+	this forces quotes around the value.
+	See also CF_ADD_CFLAGS, which has to work around limitations in passing
+	backslashes and quotes around.
+
+	* AcSplit/CF_ADD_CFLAGS:
+	xterm: inspect each -D option to see if it looks like a quoted string.
+	We're expecting to see something like
+		-D'"xxx"'
+	from CF_IMAKE_CFLAGS -> CF_WITH_IMAKE_CFLAGS.  In some cases this
+		-D'"xxx yyy"'
+	would be passed as
+		-D'"xxx
+		yyy"'
+	so we put it back together in the loop here.  Crude, but it seems the only
+	way to cope with $(VENDOR_DEFINES) in the X makefiles.
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	I made a script (cfg-xorg) to run cfg-xterm+ within the X.Org build tree.
+	To make this work (since this script prefers xmkmf to imake), I have both
+	imake and xmkmf in its cfg-xorg's $PATH.  One more detail is needed to get
+	going: xmkmf has to point to the config-files within the build tree rather
+	than in its final installed location.  So I added a case to set cf_imake_opts
+	to add the build-tree's location to xmkmf as a parameter.
+
 2004-02-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
