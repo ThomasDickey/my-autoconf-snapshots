@@ -6,9 +6,7 @@ AC_DEFUN([CF_PATH_SYNTAX],[
 case ".[$]$1" in #(vi
 ./*) #(vi
   ;;
-changequote(,)dnl
-.[a-zA-Z]:[\\/]*) #(vi OS/2 EMX
-changequote([,])dnl
+.[[a-zA-Z]]:[[\\/]]*) #(vi OS/2 EMX
   ;;
 .\[$]{*prefix}*) #(vi
   eval $1="[$]$1"

@@ -7,10 +7,8 @@ case $INSTALL in
 /*)
   ;;
 *)
-changequote({{,}})dnl
-  cf_dir=`echo $INSTALL|sed -e 's%/[^/]*$%%'`
+  cf_dir=`echo $INSTALL|sed -e 's%/[[^/]]*$%%'`
   test -z "$cf_dir" && cf_dir=.
-changequote([,])dnl
   INSTALL=`cd $cf_dir && pwd`/`echo $INSTALL | sed -e 's:^.*/::'`
   ;;
 esac

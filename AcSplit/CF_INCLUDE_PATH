@@ -19,9 +19,7 @@ do
 		/usr/include|/usr/include/*)
 			;;
 		*)
-changequote(,)dnl
-			cf_temp=`echo $cf_path | sed -e s'%/[^/]*$%%'`
-changequote([,])dnl
+			cf_temp=`echo $cf_path | sed -e s'%/[[^/]]*$%%'`
 			case $cf_temp in
 			*/include)
 				INCLUDES="$INCLUDES -I$cf_temp"

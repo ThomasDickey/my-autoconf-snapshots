@@ -27,9 +27,7 @@ AC_CACHE_VAL(cf_cv_slang_header,[
 AC_MSG_RESULT($cf_cv_slang_header)
 AC_DEFINE(USE_SLANG)
 
-changequote(,)dnl
-cf_incdir=`echo $cf_cv_slang_header | sed -e 's:/[^/]*$::'`
-changequote([,])dnl
+cf_incdir=`echo $cf_cv_slang_header | sed -e 's:/[[^/]]*$::'`
 
 case $cf_cv_slang_header in # (vi
 predefined) # (vi
