@@ -1,3 +1,13 @@
+1998-02-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub: from automake 1.3
+
+	* AcSplit/CF_CHECK_ERRNO: OS/2 EMX has sys_errlist in <stdlib.h>
+
+	* AcSplit/CF_FIONBIO: RCS_BASE
+
+	* AcSplit/CF_FIONBIO: ci-aclocal generated header
+
 1998-02-20  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PATH_EDITOR: make this a command-line argument
