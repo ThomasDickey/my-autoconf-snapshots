@@ -1,0 +1,15 @@
+dnl Check for X Toolkit libraries
+dnl
+AC_DEFUN([CF_X_TOOLKIT],
+[
+AC_CHECK_LIB(X11,XOpenDisplay,
+	[LIBS="-lX11 $LIBS"],,
+	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
+AC_CHECK_LIB(Xt, XtAppInitialize,
+	[AC_DEFINE(HAVE_LIBXT) LIBS="-lXt $X_PRE_LIBS $LIBS"],
+	AC_WARN(
+[Unable to successfully link X Toolkit library (-lXt).
+You will have to check and add the proper libraries by hand to Makefile.]),
+	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
+
+])dnl

@@ -1,0 +1,12 @@
+AC_DEFUN([CF_TTYTYPE],
+[
+AC_MSG_CHECKING(if ttytype is declared in curses library)
+AC_CACHE_VAL(cf_cv_have_ttytype,[
+	AC_TRY_LINK([#include <$cf_cv_ncurses_header>],
+	[char *x = &ttytype[1]; *x = 1],
+	[cf_cv_have_ttytype=yes],
+	[cf_cv_have_ttytype=no])
+	])
+AC_MSG_RESULT($cf_cv_have_ttytype)
+test $cf_cv_have_ttytype = yes && AC_DEFINE(HAVE_TTYTYPE)
+])

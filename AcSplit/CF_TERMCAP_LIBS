@@ -1,0 +1,28 @@
+dnl Look for termcap libraries, needed by some versions of slang.
+AC_DEFUN([CF_TERMCAP_LIBS],
+[
+AC_CACHE_VAL(cf_cv_lib_termcap,[
+cf_cv_lib_termcap=none
+# HP-UX 9.x terminfo has setupterm, but no tigetstr.
+if test "$termlib" = none; then
+	AC_CHECK_LIB(termlib, tigetstr, [LIBS="$LIBS -ltermlib" cf_cv_lib_termcap=terminfo])
+fi
+if test "$cf_cv_lib_termcap" = none; then
+	AC_CHECK_LIB(termlib, tgoto, [LIBS="$LIBS -ltermlib" cf_cv_lib_termcap=termcap])
+fi
+if test "$cf_cv_lib_termcap" = none; then
+	# allow curses library for broken AIX system.
+	AC_CHECK_LIB(curses, initscr, [LIBS="$LIBS -lcurses" cf_cv_lib_termcap=termcap])
+	AC_CHECK_LIB(termcap, tgoto, [LIBS="$LIBS -ltermcap" cf_cv_lib_termcap=termcap])
+fi
+if test "$cf_cv_lib_termcap" = none; then
+	AC_CHECK_LIB(termcap, tgoto, [LIBS="$LIBS -ltermcap" cf_cv_lib_termcap=termcap])
+fi
+if test "$cf_cv_lib_termcap" = none; then
+	AC_CHECK_LIB(ncurses, tgoto, [LIBS="$LIBS -lncurses" cf_cv_lib_termcap=ncurses])
+fi
+])
+if test "$cf_cv_lib_termcap" = none; then
+	AC_ERROR([Can't find -ltermlib, -lcurses, or -ltermcap])
+fi
+])dnl

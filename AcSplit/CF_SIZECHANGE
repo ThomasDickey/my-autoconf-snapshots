@@ -1,0 +1,56 @@
+dnl Check for definitions & structures needed for window size-changing
+dnl FIXME: check that this works with "snake" (HP-UX 10.x)
+AC_DEFUN([CF_SIZECHANGE],
+[
+AC_MSG_CHECKING([declaration of size-change])
+AC_CACHE_VAL(cf_cv_sizechange,[
+    cf_cv_sizechange=unknown
+    cf_save_CFLAGS="$CFLAGS"
+
+for cf_opts in "" "NEED_PTEM_H"
+do
+
+    CFLAGS="$cf_save_CFLAGS"
+    test -n "$cf_opts" && CFLAGS="$CFLAGS -D$cf_opts"
+    AC_TRY_COMPILE([#include <sys/types.h>
+#if HAVE_TERMIOS_H
+#include <termios.h>
+#endif
+#if NEED_PTEM_H
+/* This is a workaround for SCO:  they neglected to define struct winsize in
+ * termios.h -- it's only in termio.h and ptem.h
+ */
+#include        <sys/stream.h>
+#include        <sys/ptem.h>
+#endif
+#if !defined(sun) || !defined(HAVE_TERMIOS_H)
+#include <sys/ioctl.h>
+#endif
+],[
+#ifdef TIOCGSIZE
+	struct ttysize win;	/* FIXME: what system is this? */
+	int y = win.ts_lines;
+	int x = win.ts_cols;
+#else
+#ifdef TIOCGWINSZ
+	struct winsize win;
+	int y = win.ws_row;
+	int x = win.ws_col;
+#else
+	no TIOCGSIZE or TIOCGWINSZ
+#endif /* TIOCGWINSZ */
+#endif /* TIOCGSIZE */
+	],
+	[cf_cv_sizechange=yes],
+	[cf_cv_sizechange=no])
+
+	CFLAGS="$cf_save_CFLAGS"
+	if test "$cf_cv_sizechange" = yes ; then
+		test -n "$cf_opts" && AC_DEFINE($cf_opts)
+		break
+	fi
+done
+	])
+AC_MSG_RESULT($cf_cv_sizechange)
+test $cf_cv_sizechange != no && AC_DEFINE(HAVE_SIZECHANGE)
+])dnl

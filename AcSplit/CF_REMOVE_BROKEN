@@ -1,0 +1,27 @@
+dnl Check for broken definition of 'remove()'.  This is (in particular) broken
+dnl on the older version of SCO (I'd cite version if I knew where to look) by
+dnl having <stdio.h> #define remove to __unlink, which appears in no library.
+dnl
+dnl Fortuitously, we can combine this with a more general test: do we have
+dnl 'unlink()' but no 'remove()'.  Note, however, that we cannot simply #define
+dnl remove to unlink, but have to make a fallback function.
+dnl
+AC_DEFUN([CF_REMOVE_BROKEN],
+[
+AC_MSG_CHECKING(for broken/missing definition of remove)
+AC_CACHE_VAL(cf_cv_baddef_remove,[
+AC_TRY_LINK(
+	[#include <stdio.h>],
+	[remove("dummy")],
+	[cf_cv_baddef_remove=no],
+	[AC_TRY_LINK(
+		[#include <stdio.h>
+		int __unlink(name) { return unlink(name); } ],
+		[remove("dummy")],
+		[cf_cv_baddef_remove=yes],
+		[cf_cv_baddef_remove=unknown])
+	])
+])
+AC_MSG_RESULT($cf_cv_baddef_remove)
+test "$cf_cv_baddef_remove" = yes && AC_DEFINE(NEED_REMOVE)
+])dnl

@@ -4,6 +4,7 @@ dnl
 dnl	-Wconversion (useful in older versions of gcc, but not in gcc 2.7.x)
 dnl	-Wredundant-decls (system headers make this too noisy)
 dnl	-Wtraditional (combines too many unrelated messages, only a few useful)
+dnl	-Wwrite-strings (too noisy, but should review occasionally)
 dnl	-pedantic
 dnl
 AC_DEFUN([CF_GCC_WARNINGS],
@@ -36,6 +37,7 @@ EOF
 		if AC_TRY_EVAL(ac_compile); then
 			test -n "$verbose" && AC_MSG_RESULT(... -$cf_opt)
 			EXTRA_CFLAGS="$EXTRA_CFLAGS -$cf_opt"
+			test "$cf_opt" = Wcast-qual && EXTRA_CFLAGS="$EXTRA_CFLAGS -DXTSTRINGDEFINES"
 		fi
 	done
 	rm -f conftest*

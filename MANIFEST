@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19970828
+MANIFEST for my-autoconf, version t19970905
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -6,48 +6,81 @@ config.sub                      autoconf's config.sub
 install.sh                      alternate install-script
 AcSplit                         subdirectory
 AcSplit/CF_ADD_INCDIR           add include-directory
+AcSplit/CF_ALT_CHAR_SET         check for alternate character-set in curses
 AcSplit/CF_ARG_DISABLE          utility for command-option disable
 AcSplit/CF_ARG_ENABLE           utility for command-option enable
 AcSplit/CF_ARG_OPTION           restricted form of AC_ARG_ENABLE
+AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_CHECK_1_DECL         check one declaration
+AcSplit/CF_CHECK_CACHE          check for conflicting configure-cache
 AcSplit/CF_CHECK_DECL           check one or more missing-prototypes
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
+AcSplit/CF_COLOR_CURSES         check if curses supports color
 AcSplit/CF_COMPTYPE             obtain qsort's compare-type
 AcSplit/CF_COREFILE             see if the application can dump a core file
 AcSplit/CF_CPP_CONCATS          check if cpp can do token-concatenation
 AcSplit/CF_CPP_EXPANDS          check if cpp can expand #token
+AcSplit/CF_CURSES_LIBS          check for standard (not ncurses!) curses libraries
+AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
+AcSplit/CF_DEFINE_PROG          check for program, defining its path
+AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
+AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
+AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
+AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
+AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
+AcSplit/CF_IMAKE_CFLAGS         check for imake's CFLAGS (IMAKE_CFLAGS)
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
+AcSplit/CF_LOCALE               check if we have locale stuff
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
+AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
 AcSplit/CF_MSG_LOG              write to configure's log
+AcSplit/CF_NCURSES_BROKEN       check for broken 1.9.9e ncurses
 AcSplit/CF_NCURSES_CPPFLAGS     set up CFLAGS (ncurses)
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NETLIBS              check for network-libraries
+AcSplit/CF_NGROUPS              check for NGROUPS
+AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PATH symbol
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_RECHECK_FUNC         recheck for a function, to pick up a library
 AcSplit/CF_REGEX                simple check for regular expressions
+AcSplit/CF_REMOVE_BROKEN        check if the 'remove()' function is broken (a SCO bug)
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions
 AcSplit/CF_SIG_ARGS             check for signal-values w/o prototypes
 AcSplit/CF_SIG_CONST            check for signal constants that could be prototyped
+AcSplit/CF_SIZECHANGE           check for functions & structures needed for window-size changing
+AcSplit/CF_SLANG_CPPFLAGS       check for slang's compiler flags
+AcSplit/CF_SLANG_LIBS           check for slang library
 AcSplit/CF_SOCKS5               check for socks5 library
+AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
+AcSplit/CF_STRIP_O_OPT          strip the "-O" option from CFLAGS
+AcSplit/CF_SYSTEM_MAIL_FLAGS    check for system mailer-flags
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
+AcSplit/CF_TERMCAP_LIBS         check for termcap libraries
 AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
+AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
 AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
+AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()
 AcSplit/CF_TYPE_SIGACTION       check for type sigaction_t
 AcSplit/CF_UNION_WAIT           check for union wait
 AcSplit/CF_UPPER                convert to uppercase
+AcSplit/CF_UPPERCASE            uppercase a name
+AcSplit/CF_UTMP                 check for struct utmp (or similar)
+AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
+AcSplit/CF_X_ATHENA             check for Xaw library
+AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
