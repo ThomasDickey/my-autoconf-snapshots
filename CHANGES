@@ -1,3 +1,8 @@
+1998-05-26  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	typo (missing underscore in EXTRA_LOAD_FLAGS)
+
 1998-05-23  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess: patch from Mike Hopkirk to recognize Unixware
