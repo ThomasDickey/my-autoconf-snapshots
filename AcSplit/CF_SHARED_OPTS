@@ -31,9 +31,9 @@ AC_DEFUN([CF_SHARED_OPTS],
 			LD_SHARED_OPTS='-Xlinker +b -Xlinker $(libdir)'
 		else
 			CC_SHARED_OPTS='+Z'
-			LD_SHARED_OPTS='+b $(libdir)'
+			LD_SHARED_OPTS='-Wl,+b,$(libdir)' 
 		fi
-		MK_SHARED_LIB='$(LD) -b +h `basename $[@]` -o $[@]'
+		MK_SHARED_LIB='$(LD) +b $(libdir) -b +h `basename $[@]` -o $[@]'
 		# HP-UX shared libraries must be executable, and should be
 		# readonly to exploit a quirk in the memory manager.
 		INSTALL_LIB="-m 555"
@@ -46,9 +46,9 @@ AC_DEFUN([CF_SHARED_OPTS],
 			LD_SHARED_OPTS='-Xlinker +b -Xlinker $(libdir)'
 		else
 			CC_SHARED_OPTS='+Z'
-			LD_SHARED_OPTS='+b $(libdir)'
+			LD_SHARED_OPTS='-Wl,+b,$(libdir)' 
 		fi
-		MK_SHARED_LIB='$(LD) -b -o $[@]'
+		MK_SHARED_LIB='$(LD) +b $(libdir) -b -o $[@]'
 		# HP-UX shared libraries must be executable, and should be
 		# readonly to exploit a quirk in the memory manager.
 		INSTALL_LIB="-m 555"
@@ -73,6 +73,10 @@ AC_DEFUN([CF_SHARED_OPTS],
  			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
 		fi
 		cf_cv_do_symlinks=yes
+		;;
+	openbsd2*)
+		CC_SHARED_OPTS='-fpic -DPIC'
+		MK_SHARED_LIB='$(LD) -Bshareable -soname,`basename $[@].$(ABI_VERSION)` -o $[@]'
 		;;
 	openbsd*|netbsd*|freebsd*)
 		CC_SHARED_OPTS='-fpic -DPIC'

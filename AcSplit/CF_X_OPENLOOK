@@ -1,0 +1,15 @@
+dnl CF_X_OPENLOOK version: 2 updated: 1998/07/22 22:20:11
+dnl -------------
+AC_DEFUN([CF_X_OPENLOOK],
+[AC_REQUIRE([CF_X_TOOLKIT])dnl
+if test -n "$OPENWINHOME"; then
+	X_LIBS="$X_LIBS -L${OPENWINHOME}/lib"
+	X_CFLAGS="$X_CFLAGS -I${OPENWINHOME}/include"
+fi
+LDFLAGS="$LDFLAGS $X_LIBS"
+AC_CHECK_LIB(Xmu,XmuClientWindow)
+AC_CHECK_LIB(Xol, OlToolkitInitialize,
+	[LIBS="-lXol -lm $LIBS"],
+	AC_ERROR(
+[Unable to successfully link OpenLook library (-lXol) with test program])) dnl
+])dnl

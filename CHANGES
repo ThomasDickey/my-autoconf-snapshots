@@ -1,3 +1,26 @@
+1998-07-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_X_MOTIF, AcSplit/CF_X_OPENLOOK: RCS_BASE
+
+	* AcSplit/CF_X_MOTIF, AcSplit/CF_X_OPENLOOK:
+	ci-aclocal generated header
+
+1998-07-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES:
+	RCS_BASE
+
+	* AcSplit/CF_GNAT_TRY_RUN: ci-aclocal generated header
+
+	* AcSplit/CF_GNAT_VERSION: naming convention
+
+	* AcSplit/CF_MAN_PAGES:
+	split-out CF_MANPAGE_FORMAT and CF_MANPAGE_RENAMES
+
+	* AcSplit/CF_SRC_MODULES: tweaks for HPUX 10.x
+
+	* AcSplit/CF_SHARED_OPTS: tweaks for HPUX and OpenBSD
+
 1998-07-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_CC_OFFSETOF_CASES: RCS_BASE
