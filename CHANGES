@@ -1,3 +1,7 @@
+2003-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS: ci-aclocal generated header
+
 2003-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS:

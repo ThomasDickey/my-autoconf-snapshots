@@ -1,0 +1,66 @@
+dnl CF_GNUTLS version: 1 updated: 2003/04/13 17:26:30
+dnl ---------
+dnl Check for gnutls library (TLS "is" SSL)
+dnl $1 = the [optional] directory in which the library may be found
+AC_DEFUN([CF_GNUTLS],[
+cf_ssl_library="-lgnutls-extra -lgnutls -lcrypto"
+case "$1" in #(vi
+no) #(vi
+  ;;
+yes) #(vi
+  AC_CHECK_LIB(gnutls, SSL_get_version,[],[
+  	if test -d /usr/local/gnutls ; then
+		CF_VERBOSE(assume it is in /usr/local/gnutls)
+		cf_ssl_library="-L/usr/local/gnutls/lib $cf_ssl_library"
+		CPPFLAGS="-I/usr/local/gnutls/include $CPPFLAGS"
+	else
+		AC_MSG_ERROR(cannot find gnutls library)
+	fi
+	],
+	[-lcrypto])
+  ;;
+*)
+  if test -d $1 ; then
+    if test -d $1/include ; then
+      CPPFLAGS="$CPPFLAGS -I$1/include"
+      cf_ssl_library="-L$1/lib $cf_ssl_library"
+    else
+      cf_ssl_library="-L$1 $cf_ssl_library"
+      test -d $1/../include && CPPFLAGS="$CPPFLAGS -I$1/../include"
+    fi
+  else
+    AC_MSG_WARN(expected a directory: $1)
+  fi
+  ;;
+esac
+LIBS="$cf_ssl_library $LIBS"
+
+AC_MSG_CHECKING(for gnutls include directory)
+AC_TRY_COMPILE([
+#include <stdio.h>
+#include <gnutls/openssl.h>],
+	[SSL_shutdown((SSL *)0)],
+	[cf_openssl_incl=yes],
+	[cf_openssl_incl=no])
+AC_MSG_RESULT($cf_openssl_incl)
+test "$cf_openssl_incl" = yes && AC_DEFINE(USE_GNUTLS_INCL)
+
+AC_MSG_CHECKING(if we can link to gnutls library)
+AC_TRY_LINK([
+#include <stdio.h>
+#ifdef USE_GNUTLS_INCL
+#include <gnutls/openssl.h>
+#else
+#include <ssl.h>
+#endif
+],
+	[SSL_shutdown((SSL *)0)],
+	[cf_ssl_library=yes],
+	[cf_ssl_library=no])
+AC_MSG_RESULT($cf_ssl_library)
+if test "$cf_ssl_library" = yes ; then
+	AC_DEFINE(USE_SSL)
+else
+	AC_ERROR(Cannot link with gnutls library)
+fi
+])dnl

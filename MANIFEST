@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20030412
+MANIFEST for my-autoconf, version t20030413
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -118,6 +118,7 @@ AcSplit/CF_GETOPT_HEADER        check for getopt variables in header file
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
+AcSplit/CF_GNUTLS               check for GNU TLS ("SSL") library
 AcSplit/CF_GNU_SOURCE           check if _GNU_SOURCE is needed to define _XOPEN_SOURCE
 AcSplit/CF_GPP_LIBRARY          check for -lg++
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
