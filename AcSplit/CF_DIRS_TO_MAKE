@@ -1,10 +1,16 @@
+dnl CF_DIRS_TO_MAKE version: 3 updated: 2002/02/23 20:38:31
+dnl ---------------
 AC_DEFUN([CF_DIRS_TO_MAKE],
 [
 DIRS_TO_MAKE="lib"
 for cf_item in $cf_list_models
 do
 	CF_OBJ_SUBDIR($cf_item,cf_subdir)
-	DIRS_TO_MAKE="$DIRS_TO_MAKE $cf_subdir"
+	for cf_item2 in $DIRS_TO_MAKE
+	do
+		test $cf_item2 = $cf_subdir && break
+	done
+	test ".$cf_item2" != ".$cf_subdir" && DIRS_TO_MAKE="$DIRS_TO_MAKE $cf_subdir"
 done
 for cf_dir in $DIRS_TO_MAKE
 do

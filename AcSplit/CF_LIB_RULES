@@ -17,6 +17,8 @@ for cf_dir in $SRC_SUBDIRS
 do
 	if test -f $srcdir/$cf_dir/modules; then
 
+		IMPORT_LIB=
+		SHARED_LIB=
 		LIBS_TO_MAKE=
 		for cf_item in $CF_LIST_MODELS
 		do
@@ -38,6 +40,13 @@ do
 					;;
 				esac
 			fi
+			# cygwin needs import library, and has unique naming convention
+			if test $cf_cv_shlib_version = cygdll ; then
+				SHARED_LIB="../lib/${cf_prefix}${cf_dir}\$(ABI_VERSION).dll"
+				IMPORT_LIB="../lib/${cf_prefix}${cf_dir}.dll.a"
+				LIBS_TO_MAKE="$LIBS_TO_MAKE \$(SHARED_LIB) \$(IMPORT_LIB)"
+				continue
+			fi
 			fi
 			LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
 		done
@@ -53,23 +62,6 @@ do
 			esac
 		fi
 
-		# add import libraries for cygwin
-		IMPORT_LIB=
-		SHARED_LIB=
-		if test $cf_cv_shlib_version = cygdll ; then
-			cf_item=`echo "$CF_LIST_MODELS" |sed -e 's/ //g'`
-			case $cf_item in #(vi
-			shared) #(vi
-				SHARED_LIB="`echo $LIBS_TO_MAKE | sed -e 's/\.dll/\$(ABI_VERSION).dll/g'`"
-				IMPORT_LIB="`echo $LIBS_TO_MAKE | sed -e 's/\.dll/.dll.a/g'`"
-				LIBS_TO_MAKE='$(SHARED_LIB) $(IMPORT_LIB)'
-				;;
-			*shared*)
-				AC_MSG_ERROR(Cannot mix shared/static models: $CF_LIST_MODELS)
-				;;
-			esac
-		fi
-
 		sed -e "s@\@LIBS_TO_MAKE\@@$LIBS_TO_MAKE@" \
 		    -e "s@\@IMPORT_LIB\@@$IMPORT_LIB@" \
 		    -e "s@\@SHARED_LIB\@@$SHARED_LIB@" \
@@ -77,9 +69,10 @@ do
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
 
 		$AWK -f $srcdir/mk-0th.awk \
-			libname="${cf_dir}${LIB_SUFFIX}" \
+			libname="${cf_dir}${LIB_SUFFIX}" subsets="$LIB_SUBSETS" \
 			$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 
+		cf_subdirs=
 		for cf_item in $CF_LIST_MODELS
 		do
 			echo 'Appending rules for '$cf_item' model ('$cf_dir')'
@@ -121,6 +114,11 @@ do
 				depend="$cf_depend" \
 				target="$target" \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+			for cf_subdir2 in $cf_subdirs lib
+			do
+				test $cf_subdir = $cf_subdir2 && break
+			done
+			test ".$cf_subdir2" != ".$cf_subdir" && \
 			$AWK -f $srcdir/mk-2nd.awk \
 				name=$cf_dir \
 				traces=$LIB_TRACING \
@@ -130,6 +128,7 @@ do
 				srcdir=$srcdir \
 				echo=$WITH_ECHO \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+			cf_subdirs="$cf_subdirs $cf_subdir"
 			done
 		done
 	fi

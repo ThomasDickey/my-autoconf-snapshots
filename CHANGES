@@ -1,3 +1,25 @@
+2002-02-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES: add substitution for NCURSES_OSPEED
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_DIRS_TO_MAKE, AcSplit/CF_OBJ_SUBDIR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES: fixes for cygwin dll's
+
+	* AcSplit/CF_DIRS_TO_MAKE:
+	ncurses: better logic (filter out duplicates)
+
+	* AcSplit/CF_BOOL_SIZE:
+	ncurses: if $cf_cv_type_of_bool is empty, make it 'unknown'
+
+	* AcSplit/CF_LINK_DATAONLY:
+	set $BROKEN_LINKER in addition to the #define, so we can use it in substitutions
+
+	* AcSplit/CF_OBJ_SUBDIR: special case for cygwin dll's
+
+	* AcSplit/CF_SHARED_OPTS: special cases for cygwin dll's
+
 2002-01-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2002/1/23
