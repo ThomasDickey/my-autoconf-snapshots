@@ -1,3 +1,5 @@
+dnl CF_TD_CURSES_LIBS version: 3 updated: 1998/02/15 16:37:44
+dnl -----------------
 dnl Test for the varieties of curses libraries.
 dnl
 dnl	There are two main varieties of curses: BSD and SYSV.  The latter has
@@ -13,7 +15,6 @@ dnl	and /5include).
 dnl
 AC_DEFUN([CF_TD_CURSES_LIBS],
 [
-AC_PROVIDE([$0])
 # Check for gpm (general purpose mouse) since we may need this for ncurses.
 AC_CHECK_LIB(gpm,Gpm_Open)
 if test $WithNcurses = yes; then
@@ -26,11 +27,11 @@ else
 	AC_TRY_LINK([#include <curses.h>],
 		[initscr()],
 		[case "$LIBS" in
-		 *libncurses.*|*-lncurses*)
+		 *libncurses.*|*-lncurses*) #(vi
 		 	ac_cv_lib_ncurses_initscr=predefined
 		 	ac_cv_lib_curses_initscr=no
 		 	;;
-		 *)
+		 *) #(vi
 		 	ac_cv_lib_ncurses_initscr=no
 		 	ac_cv_lib_curses_initscr=yes
 		 	;;
@@ -51,18 +52,4 @@ elif test $ac_cv_lib_ncurses_initscr = unknown; then
 	AC_CHECK_LIB(termcap, tgetent)
 	AC_CHECK_LIB(curses, initscr)
 fi
-# The main distinction between bsd- and sysv-curses is that the latter has a
-# keypad function.
-AC_MSG_CHECKING(BSD vs SYSV curses)
-CF_MSG_LOG(curses-type BSD/SYSV)
-AC_CACHE_VAL(cf_cv_curses_type,[
-	cf_cv_curses_type=unknown
-	if test .$ac_cv_lib_curses_initscr = .yes; then
-		AC_TRY_LINK([#include <curses.h>],
-			[keypad(curscr,1)],
-			[cf_cv_curses_type=sysv],
-			[cf_cv_curses_type=bsd])
-	fi
-])
-AC_MSG_RESULT($cf_cv_curses_type)
 ])dnl
