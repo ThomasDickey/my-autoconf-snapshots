@@ -1,7 +1,7 @@
 dnl Check if curses supports color.  (Note that while SVr3 curses supports
 dnl color, it does this differently from SVr4 curses; more work would be needed
 dnl to accommodate SVr3).
-dnl 
+dnl
 AC_DEFUN([CF_COLOR_CURSES],
 [
 AC_MSG_CHECKING(if curses supports color attributes)
