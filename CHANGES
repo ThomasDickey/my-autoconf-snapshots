@@ -1,3 +1,15 @@
+2000-07-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAN_PAGES: mods to make this work with program-prefix
+	(very ugly)
+
+2000-07-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	lynx: if we've checked for ncurses version and found ncurses, prefer -lncurses
+	to avoid problems with misconfigured system where ncurses headers are visible,
+	but not library
+
 2000-07-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIB_SUFFIX:
