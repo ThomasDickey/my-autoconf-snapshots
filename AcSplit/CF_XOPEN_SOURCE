@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 2 updated: 2003/11/26 19:29:42
+dnl CF_XOPEN_SOURCE version: 3 updated: 2003/12/06 17:31:21
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions.
 AC_DEFUN([CF_XOPEN_SOURCE],[
@@ -11,6 +11,9 @@ linux*) #(vi
 	;;
 osf[[45]]*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_OSF_SOURCE"
+	;;
+solaris*) #(vi
+	CPPFLAGS="$CPPFLAGS -D__EXTENSIONS__"
 	;;
 *)
 	;;
