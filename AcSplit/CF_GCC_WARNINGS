@@ -11,12 +11,10 @@ AC_DEFUN([CF_GCC_WARNINGS],
 [
 if test "$GCC" = yes
 then
-	changequote(,)dnl
 	cat > conftest.$ac_ext <<EOF
 #line __oline__ "configure"
-int main(int argc, char *argv[]) { return (argv[argc-1] == 0) ; }
+int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == 0) ; }
 EOF
-	changequote([,])dnl
 	AC_CHECKING([for $CC warning options])
 	cf_save_CFLAGS="$CFLAGS"
 	EXTRA_CFLAGS="-W -Wall"

@@ -1,8 +1,10 @@
+dnl CF_PATHSEP version: 3 updated: 2001/01/12 01:23:53
+dnl ----------
 dnl Provide a value for the $PATH and similar separator
 AC_DEFUN([CF_PATHSEP],
 [
 	case $cf_cv_system_name in
-	os2)	PATHSEP=';'  ;;
+	os2*)	PATHSEP=';'  ;;
 	*)	PATHSEP=':'  ;;
 	esac
 ifelse($1,,,[$1=$PATHSEP])

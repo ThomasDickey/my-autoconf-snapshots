@@ -1,3 +1,10 @@
+2001-01-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_UPPER:
+	autoconf-2.49c-breaks-changequote
+
+	* AcSplit/CF_UPPER: ci-aclocal generated header
+
 2001-01-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PATHSEP: allow system name to be os2-emx
