@@ -1,3 +1,22 @@
+2003-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	modified to implement --with-manpage-aliases option combined with --without-manpage-symlinks
+
+	* AcSplit/CF_MANPAGE_SYMLINKS:
+	ncurses: add --with-manpage-aliases option
+
+	* AcSplit/CF_X_FREETYPE:
+	add -lfontconfig, needed on current Cygwin.  Note that current Cygwin is
+	broken anyway since the fontconfig package contains only documentation,
+	no code (courtesy of Harold Hunt ;-)
+
+	* AcSplit/CF_SYSV:
+	don't define SYSV for __CYGWIN__ since this in turn leads to <X11/Xos.h>
+	declaring sys_errlist[], which differs from Cygwin's hack (the latter
+	adds a 'const').  Comparing with Linux, it seems that's a good way to
+	improve the check rather than rely on hardcoded ifdef's.
+
 2003-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
