@@ -1,4 +1,4 @@
-dnl CF_SSL version: 4 updated: 2004/04/26 19:31:28
+dnl CF_SSL version: 5 updated: 2004/04/26 20:08:48
 dnl ------
 dnl Check for ssl library
 dnl $1 = the [optional] directory in which the library may be found
@@ -37,15 +37,15 @@ yes) #(vi
 esac
 LIBS="$cf_ssl_library $LIBS"
 
-cf_test_openssl_incs=yes
+cf_ssl_subincs=yes
 if test -n "$cf_ssl_root" ; then
 	if test -d $cf_ssl_root/include ; then
 		CF_ADD_CFLAGS(-I$cf_ssl_root/include)
-		test -d $cf_ssl_root/include/openssl || cf_test_openssl_incs=no
+		test -d $cf_ssl_root/include/openssl || cf_ssl_subincs=no
 	fi
 fi
 
-if test "$cf_test_openssl_incs" = yes ; then
+if test "$cf_ssl_subincs" = yes ; then
 AC_MSG_CHECKING(for openssl include directory)
 AC_TRY_COMPILE([
 #include <stdio.h>
