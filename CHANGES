@@ -1,3 +1,17 @@
+1998-03-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SPEED_TYPE: mods to check for headers that define speed_t
+
+	* AcSplit/CF_SHARED_OPTS: mods to make -ltinfo chain properly on Linux
+
+	* AcSplit/CF_LIB_RULES:
+	switch order of cf_libs_to_make so I can force -ltinfo last
+
+1998-03-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_FUNCS:
+	we implicitly assume some of the _XOPEN_SOURCE_EXTENDED stuff
+
 1998-03-05  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS: fixes from Jonathan Sergent for lynx
