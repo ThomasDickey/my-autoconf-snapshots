@@ -26,7 +26,7 @@ AC_DEFUN(AM_WITH_NLS,
       AC_ARG_WITH(included-gettext,
         [  --with-included-gettext use the GNU gettext library included here],
         nls_cv_force_use_gnu_gettext=$withval,
-        nls_cv_force_use_gnu_gettext=yes)
+        nls_cv_force_use_gnu_gettext=no)
       AC_MSG_RESULT($nls_cv_force_use_gnu_gettext)
 
       nls_cv_use_gnu_gettext="$nls_cv_force_use_gnu_gettext"
@@ -46,11 +46,14 @@ AC_DEFUN(AM_WITH_NLS,
 
 	   if test "$gt_cv_func_gettext_libc" != "yes"; then
 	     AC_CHECK_LIB(intl, bindtextdomain,
-	       [AC_CACHE_CHECK([for gettext in libintl],
+	       [ gt_save_LIBS="$LIBS"
+		 LIBS="$gt_save_LIBS -lintl"
+	         AC_CACHE_CHECK([for gettext in libintl],
 		 gt_cv_func_gettext_libintl,
 		 [AC_TRY_LINK([], [return (int) gettext ("")],
 		 gt_cv_func_gettext_libintl=yes,
-		 gt_cv_func_gettext_libintl=no)])])
+		 gt_cv_func_gettext_libintl=no)])
+		 LIBS="$gt_save_LIBS"])
 	   fi
 
 	   if test "$gt_cv_func_gettext_libintl" = yes; then
@@ -170,9 +173,13 @@ AC_DEFUN(AM_WITH_NLS,
       AC_LINK_FILES($nls_cv_header_libgt, $nls_cv_header_intl)
     fi
 
-    AC_OUTPUT_COMMANDS( #(vi
-     [case "\$CONFIG_FILES" in *po/makefile.in*)
+    AC_OUTPUT_COMMANDS([ #(vi
+      case "\$CONFIG_FILES" in
+      *po/makefile.in*) #(vi
         sed -e "/POTFILES =/r po/POTFILES" po/makefile.in > po/makefile
+        ;;
+      *po/Makefile.in*)
+        sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile
       esac])
 
     dnl These rules are solely for the distribution goal.  While doing this
