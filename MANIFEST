@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20040616
+MANIFEST for my-autoconf, version t20040626
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -102,6 +102,7 @@ AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_CURSES_VERSION  check for a curses_version string vs curses_version() function
+AcSplit/CF_FUNC_DLSYM           test for dlsym()
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
