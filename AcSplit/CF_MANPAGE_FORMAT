@@ -4,7 +4,7 @@ AC_DEFUN([CF_MANPAGE_FORMAT],
 [ AC_MSG_CHECKING(format of man-pages)
 
 AC_ARG_WITH(manpage-format,
-	[  --manpage-format        specify manpage-format: gzip/compress/BSDI/normal and
+	[  --with-manpage-format   specify manpage-format: gzip/compress/BSDI/normal and
                           optionally formatted, e.g., gzip,formatted],
 	[cf_manpage_form=$withval],
 	[cf_manpage_form=unknown])

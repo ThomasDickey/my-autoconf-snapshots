@@ -1,3 +1,8 @@
+1998-08-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES:
+	nit in help-message
+
 1998-07-31  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SOCKS: RCS_BASE
