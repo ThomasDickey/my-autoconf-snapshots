@@ -1,3 +1,25 @@
+2002-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SUBDIR_PATH:
+	add: added some special chunks - most for symmetry - but to pick up the
+	/usr/local/ncurses/include/ncurses directory which I use in cfg-local on
+	my Linux boxes.
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	add: when attempting to port to OS/2, I found this macro didn't find my
+	header files -- because the -I options weren't being set.  Also, the
+	CF_ADD_INCDIR adds both /usr/include/ncurses and /usr/include, so there's
+	no need for the special test to add each separately.
+
+	* AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_SUBDIR_PATH:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	RCS_BASE
+
+	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	ci-aclocal generated header
+
 2002-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_TGETENT: ci-aclocal generated header
