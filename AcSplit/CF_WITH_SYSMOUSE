@@ -1,0 +1,27 @@
+dnl If we can compile with sysmouse, make it available unless it is not wanted.
+AC_DEFUN([CF_WITH_SYSMOUSE],[
+# not everyone has "test -c"
+if test -c /dev/sysmouse 2>/dev/null ; then
+AC_MSG_CHECKING(if you want to use sysmouse)
+AC_ARG_WITH(sysmouse,
+	[  --with-sysmouse         use sysmouse (FreeBSD console)],
+	[cf_with_sysmouse=$withval],
+	[cf_with_sysmouse=maybe])
+	if test "$cf_with_sysmouse" != no ; then
+	AC_TRY_COMPILE([
+#include <osreldate.h>
+#if (__FreeBSD_version >= 400017)
+#include <sys/consio.h>
+#include <sys/fbio.h>
+#else
+#include <machine/console.h>
+#endif
+],[
+	struct mouse_info the_mouse;
+	ioctl(0, CONS_MOUSECTL, &the_mouse);
+],[cf_with_sysmouse=yes],[cf_with_sysmouse=no])
+	fi
+fi
+AC_MSG_RESULT($cf_with_sysmouse)
+test "$cf_with_sysmouse" = yes && AC_DEFINE(USE_SYSMOUSE)
+])dnl

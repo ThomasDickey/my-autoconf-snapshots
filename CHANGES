@@ -1,3 +1,7 @@
+2003-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SYSMOUSE: RCS_BASE
+
 2003-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_MULTIBYTE_ABLE: ci-aclocal generated header
