@@ -1,0 +1,22 @@
+dnl CF_CHECK_HEADERS version: 3 updated: 2000/11/03 11:14:19
+dnl ----------------
+dnl AC_CHECK_HEADERS(sys/socket.h) fails on OS/2 EMX because it demands that
+dnl <sys/types.h> be included first.
+dnl
+dnl Also <sys/dir.h> and <sys/dirent.h> and <sys/stat.h>, but we normally do
+dnl not do our own tests via AC_CHECK_HEADERS for those.
+AC_DEFUN([CF_CHECK_HEADERS],[
+for cf_hdr in $1
+do
+	AC_MSG_CHECKING(for $cf_hdr)
+	AC_TRY_CPP([
+#include <sys/types.h>
+#include <$cf_hdr>
+],[cf_found=yes],[cf_found=no])
+AC_MSG_RESULT($cf_found)
+if test $cf_found = yes ; then
+	CF_UPPER(cf_tr_hdr,$cf_hdr)
+	AC_DEFINE_UNQUOTED(HAVE_${cf_tr_hdr})
+fi
+done
+])dnl

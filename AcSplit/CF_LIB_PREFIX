@@ -3,6 +3,7 @@ dnl $1 = variable to set
 AC_DEFUN([CF_LIB_PREFIX],
 [
 	case $cf_cv_system_name in
+	OS/2*)	LIB_PREFIX=''     ;;
 	os2)	LIB_PREFIX=''     ;;
 	*)	LIB_PREFIX='lib'  ;;
 	esac

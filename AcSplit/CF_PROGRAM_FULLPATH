@@ -1,14 +1,18 @@
+dnl CF_PROGRAM_FULLPATH version: 4 updated: 2000/11/02 01:26:33
+dnl -------------------
 dnl Tests for one or more programs given by name along the user's path, and
 dnl sets a variable to the program's full-path if found.
 AC_DEFUN([CF_PROGRAM_FULLPATH],
 [
+AC_REQUIRE([CF_PATHSEP])
+AC_REQUIRE([CF_PROG_EXT])
 AC_MSG_CHECKING(full path of $1)
 AC_CACHE_VAL(cf_cv_$1,[
 	cf_cv_$1="[$]$1"
 	if test -z "[$]cf_cv_$1"; then
 		set -- $2;
 		while test [$]# != 0; do
-			cf_word=[$]1
+			cf_word=[$]1${PROG_EXT}
 			case [$]1 in
 			-*)
 				;;
@@ -16,7 +20,7 @@ AC_CACHE_VAL(cf_cv_$1,[
 				if test -f "$cf_word" && test ! -f "./$cf_word" && test -x "$cf_word"; then
 					cf_cv_$1="$cf_word"
 				else
-					IFS="${IFS= 	}"; cf_save_ifs="$IFS"; IFS="${IFS}:"
+					IFS="${IFS= 	}"; cf_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
 					for cf_dir in $PATH; do
 						test -z "$cf_dir" && cf_dir=.
 						if test "$cf_dir" != "." && test -f $cf_dir/$cf_word && test -x $cf_dir/$cf_word; then

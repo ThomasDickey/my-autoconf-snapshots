@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20001029
+MANIFEST for my-autoconf, version t20001103
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -43,6 +43,7 @@ AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
 AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
+AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> dependency
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
@@ -143,6 +144,7 @@ AcSplit/CF_NGROUPS              check for NGROUPS
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
 AcSplit/CF_OUR_MESSAGES         macro for i18n support (lynx)
 AcSplit/CF_OUTPUT_IF_CHANGED    augment AC_OUTPUT by checking if output changes
+AcSplit/CF_PATHSEP              find $PATH separator
 AcSplit/CF_PATH_EDITOR          tin script to find default-editor
 AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory
 AcSplit/CF_PATH_MAILER          tin script to find default mailer-program

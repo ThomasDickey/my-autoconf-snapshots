@@ -1,3 +1,38 @@
+2000-11-03  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CHECK_HEADERS: ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_HEADERS:
+	oops - don't use AC_TRY_COMPILE - use AC_TRY_CPP
+
+	* AcSplit/AM_PATH_PROG_WITH_TEST: add dependency on CF_PATHSEP
+
+	* AcSplit/CF_CHECK_HEADERS: RCS_BASE
+
+2000-11-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX:
+	ci-aclocal generated header
+
+	* AcSplit/CF_PROGRAM_PREFIX:
+	use CF_PATHSEP to make this work on OS/2 EMX
+
+	* AcSplit/CF_PROGRAM_FULLPATH:
+	use CF_PROG_EXT to make this search for files with exe suffix if needed
+
+	* AcSplit/CF_FIND_TDLIB: ci-aclocal generated header
+
+	* AcSplit/CF_FIND_TDLIB:
+	use CF_LIB_PREFIX to make this work on OS/2 EMX
+
+	* AcSplit/CF_PATHSEP: RCS_BASE
+
+	* AcSplit/CF_LIB_PREFIX:
+	add special case for OS/2's uname so I don't need to distribute config.guess
+	or config.sub with ded
+
+	* AcSplit/CF_PROGRAM_FULLPATH: use CF_PATHSEP to make this work on OS/2
+
 2000-10-29  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_GNU_SOURCE: ci-aclocal generated header
