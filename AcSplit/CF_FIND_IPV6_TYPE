@@ -1,0 +1,68 @@
+AC_DEFUN([CF_FIND_IPV6_TYPE],[
+AC_CACHE_CHECK(ipv6 stack type, cf_cv_ipv6type, [
+cf_cv_ipv6type=unknown
+for i in inria kame linux-glibc linux-libinet6 toshiba v6d zeta
+do
+	case $i in #(vi
+	inria) #(vi
+		dnl http://www.kame.net/
+		AC_EGREP_CPP(yes, [dnl
+#include <netinet/in.h>
+#ifdef IPV6_INRIA_VERSION
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	kame) #(vi
+		dnl http://www.kame.net/
+		AC_EGREP_CPP(yes, [dnl
+#include <netinet/in.h>
+#ifdef __KAME__
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	linux-glibc) #(vi
+		dnl http://www.v6.linux.or.jp/
+		AC_EGREP_CPP(yes, [dnl
+#include <features.h>
+#if defined(__GLIBC__) && __GLIBC__ >= 2 && __GLIBC_MINOR__ >= 1
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	linux-libinet6) #(vi
+		dnl http://www.v6.linux.or.jp/
+		if test -d /usr/inet6
+		then
+			cf_cv_ipv6type=$i
+		elif test -f /usr/include/netinet/ip6.h
+		then
+			cf_cv_ipv6type=$i
+		fi
+		;;
+	toshiba) #(vi
+		AC_EGREP_CPP(yes, [dnl
+#include <sys/param.h>
+#ifdef _TOSHIBA_INET6
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	v6d) #(vi
+		AC_EGREP_CPP(yes, [dnl
+#include </usr/local/v6/include/sys/v6config.h>
+#ifdef __V6D__
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	zeta)
+		AC_EGREP_CPP(yes, [dnl
+#include <sys/param.h>
+#ifdef _ZETA_MINAMI_INET6
+yes
+#endif],	[cf_cv_ipv6type=$i])
+		;;
+	esac
+	if test "$cf_cv_ipv6type" != "unknown"; then
+		break
+	fi
+done
+])
+])dnl

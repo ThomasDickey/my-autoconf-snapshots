@@ -1,0 +1,23 @@
+dnl CF_CHECK_IPV6 version: 2 updated: 2000/04/13 21:38:04
+dnl -------------
+dnl Check for IPV6 configuration.
+AC_DEFUN([CF_CHECK_IPV6],[
+CF_FIND_IPV6_TYPE
+CF_FIND_IPV6_LIBS
+
+CF_FUNC_GETADDRINFO
+
+if test "$cf_cv_getaddrinfo" != "yes"; then
+	if test "$cf_cv_ipv6type" != "linux"; then
+		AC_MSG_ERROR(
+[You must get working getaddrinfo() function,
+or you can specify "--disable-ipv6"])
+	else
+		AC_MSG_WARN(
+[The getaddrinfo() implementation on your system seems be buggy.
+You should upgrade your system library to the newest version
+of GNU C library (aka glibc).])
+	fi
+fi
+
+])dnl

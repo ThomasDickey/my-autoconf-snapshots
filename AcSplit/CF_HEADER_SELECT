@@ -1,6 +1,6 @@
 dnl like AC_HEADER_TIME, check for conflicts:
 dnl on SCO v4, sys/time.h conflicts with select.h
-AC_DEFUN(CF_HEADER_SELECT,[
+AC_DEFUN([CF_HEADER_SELECT],[
 AC_REQUIRE([AC_HEADER_TIME])
 AC_CACHE_CHECK(if we can include select.h with time.h,
 cf_cv_select_with_time,[

@@ -1,7 +1,7 @@
 dnl On SunOS, struct rusage is referred to in <sys/wait.h>.  struct rusage is
 dnl defined in <sys/resource.h>.  On SCO v4, resource.h needs time.h, which we
 dnl may have excluded.
-AC_DEFUN(CF_HEADER_RESOURCE,[
+AC_DEFUN([CF_HEADER_RESOURCE],[
 AC_REQUIRE([CF_HEADER_SELECT])
 AC_CACHE_CHECK(if we may include sys/resource.h with sys/wait.h,
 cf_cv_resource_with_wait,[
