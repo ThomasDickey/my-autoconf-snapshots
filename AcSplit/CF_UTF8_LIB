@@ -1,17 +1,25 @@
+dnl CF_UTF8_LIB version: 4 updated: 2003/03/01 18:36:42
+dnl -----------
 dnl Check for multibyte support, and if not found, utf8 compatibility library
 AC_DEFUN([CF_UTF8_LIB],
 [
 AC_CACHE_CHECK(for multibyte character support,cf_cv_utf8_lib,[
-AC_TRY_LINK([
-#include <stdlib.h>],[putwc(0,0);],cf_cv_utf8_lib=yes,[
-cf_save_LIBS="$LIBS"
-LIBS="-lutf8 $LIBS"
-AC_TRY_LINK([
+	cf_save_LIBS="$LIBS"
+	AC_TRY_LINK([
+#include <stdlib.h>],[putwc(0,0);],
+	[cf_cv_utf8_lib=yes],
+	[LIBS="-lutf8 $LIBS"
+	 AC_TRY_LINK([
 #include <libutf8.h>],[putwc(0,0);],
-[cf_cv_utf8_lib=add-on],
-[cf_cv_utf8_lib=no])])
-])
+		[cf_cv_utf8_lib=add-on],
+		[cf_cv_utf8_lib=no])
+	LIBS="$cf_save_LIBS"
+])])
 
-# This is used by ncurses if curses.h is shared between ncurses/ncursesw:
-test "$cf_cv_utf8_lib" != no && AC_DEFINE(HAVE_LIBUTF8_H)
+# HAVE_LIBUTF8_H is used by ncurses if curses.h is shared between
+# ncurses/ncursesw:
+if test "$cf_cv_utf8_lib" = "add-on" ; then
+	AC_DEFINE(HAVE_LIBUTF8_H)
+	LIBS="-lutf8 $LIBS"
+fi
 ])dnl

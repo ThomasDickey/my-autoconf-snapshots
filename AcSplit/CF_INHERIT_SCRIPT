@@ -1,0 +1,7 @@
+dnl CF_INHERIT_SCRIPT version: 2 updated: 2003/03/01 23:50:42
+dnl -----------------
+dnl If we do not have a given script, look for it in the parent directory.
+AC_DEFUN([CF_INHERIT_SCRIPT],
+[
+test -f $1 || ( test -f ../$1 && cp ../$1 ./ )
+])dnl

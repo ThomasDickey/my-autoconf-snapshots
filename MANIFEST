@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20030222
+MANIFEST for my-autoconf, version t20030301
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -62,7 +62,9 @@ AcSplit/CF_CPP_EXPANDS          check if cpp can expand #token
 AcSplit/CF_CPP_PARAM_INIT       check for special C++ problem with param-init
 AcSplit/CF_CPP_VSCAN_FUNC       check for C++ usable vscan function (ncurses)
 AcSplit/CF_CRYPT_FUNC           check for existing/working crypt() function
+AcSplit/CF_CURSES_ACS_MAP       check for acs_map[] array (ncurses)
 AcSplit/CF_CURSES_CCHAR_T       check for 'cchar_t'
+AcSplit/CF_CURSES_CHECK_TYPE    check for a datatype which is defined in curses.h
 AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
 AcSplit/CF_CURSES_CPPFLAGS      check for curses/ncurses header file
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
@@ -74,6 +76,7 @@ AcSplit/CF_CURSES_STYLE         detect curses line-struct style (td_lib)
 AcSplit/CF_CURSES_TERMCAP       check for prototypes in curses.h or termcap.h
 AcSplit/CF_CURSES_TERM_H        check for curses's term.h
 AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
+AcSplit/CF_CURSES_WACS_MAP      check for wacs_map[] (ncurses)
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
@@ -97,6 +100,7 @@ AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
+AcSplit/CF_FUNC_CURSES_VERSION  check for a curses_version string vs curses_version() function
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
@@ -125,6 +129,7 @@ AcSplit/CF_IMAKE_CFLAGS         check for imake's CFLAGS (IMAKE_CFLAGS)
 AcSplit/CF_INCLUDE_DIRS         construct a list of -I options
 AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
 AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
+AcSplit/CF_INHERIT_SCRIPT       inherit config-scripts from parent directory (ncurses)
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group

@@ -1,0 +1,19 @@
+dnl CF_CURSES_ACS_MAP version: 2 updated: 2003/03/01 23:36:42
+dnl -----------------
+dnl Check for likely values of acs_map[]:
+AC_DEFUN([CF_CURSES_ACS_MAP],
+[
+AC_CACHE_CHECK(for alternate character set array, cf_cv_curses_acs_map,[
+cf_cv_curses_acs_map=unknown
+for name in acs_map _acs_map __acs_map _nc_acs_map
+do
+AC_TRY_LINK([
+#include <curses.h>
+],[
+$name['k'] = ACS_PLUS
+],[cf_cv_curses_acs_map=$name; break])
+done
+])
+
+test "$cf_cv_curses_acs_map" != unknown && AC_DEFINE_UNQUOTED(CURSES_ACS_ARRAY,$cf_cv_curses_acs_map)
+])
