@@ -18,7 +18,7 @@ esac
 test "$cf_cv_curses_incdir" != no && CPPFLAGS="$CPPFLAGS $cf_cv_curses_incdir"
 
 AC_CACHE_CHECK(if we have identified curses headers,cf_cv_ncurses_header,[
-cf_cv_ncurses_header=curses.h
+cf_cv_ncurses_header=none
 for cf_header in \
 	curses.h \
 	ncurses.h \
@@ -30,6 +30,10 @@ AC_TRY_COMPILE([#include <${cf_header}>],
 	[cf_cv_ncurses_header=$cf_header; break],[])
 done
 ])
+
+if test "$cf_cv_ncurses_header" = none ; then
+	AC_MSG_ERROR(No curses header-files found)
+fi
 
 # cheat, to get the right #define's for HAVE_NCURSES_H, etc.
 AC_CHECK_HEADERS($cf_cv_ncurses_header)

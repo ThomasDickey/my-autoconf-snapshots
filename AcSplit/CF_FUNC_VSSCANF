@@ -1,3 +1,5 @@
+dnl CF_FUNC_VSSCANF version: 3 updated: 2001/12/19 00:50:10
+dnl ---------------
 dnl Check for vsscanf() function, which is in c9x but generally not in earlier
 dnl versions of C.  It is in the GNU C library, and can often be simulated by
 dnl other functions.
@@ -8,7 +10,7 @@ AC_TRY_LINK([
 #include <stdarg.h>
 #include <stdio.h>],[
 	va_list ap;
-	vsscanf("from", "%d", ap)],[cf_cv_func_vsscanf=yes],[
+	vsscanf("from", "%d", ap)],[cf_cv_func_vsscanf=vsscanf],[
 AC_TRY_LINK([
 #include <stdarg.h>
 #include <stdio.h>],[

@@ -1,3 +1,21 @@
+2001-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CPPFLAGS:
+	lynx: ensure that we found a curses.h (or ncurses.h), since some people
+	don't know the difference between runtime and development
+
+2001-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_SUBST_NCURSES_VERSION:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_CACHE: fix quoting for autoconf 2.52
+
+	* AcSplit/CF_SUBST_NCURSES_VERSION: make this work with autoconf 2.52
+
+	* AcSplit/CF_FUNC_VSSCANF:
+	ncurses: fix an incorrect value for cf_cv_func_vsscanf
+
 2001-12-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2001-12-10
