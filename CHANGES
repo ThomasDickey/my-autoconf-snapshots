@@ -1,3 +1,25 @@
+1998-05-06  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS: add logic to get IMAKE_LOADFLAGS
+
+1998-04-27  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ALT_CHAR_SET:
+	there's more than one possible array-name (OSF/1 uses _acs_map[])
+
+	* AcSplit/CF_NCURSES_BROKEN: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_TTYTYPE: fallback for curses.h
+
+	* AcSplit/CF_CURSES_LIBS:
+	check for cursesX before curses (for Ultrix, from lynx)
+
+	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_CURS_PERFORMANCE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_FANCY_CURSES:
+	fallback for curses.h
+
 1998-04-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SIZE_T: merge with autoconf's version : include <stdlib.h>
