@@ -1,3 +1,24 @@
+2004-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE: Thorsten Glaser adds a case for mirbsd
+
+	* AcSplit/CF_TAR_OPTIONS: ci-aclocal generated header
+
+	* AcSplit/CF_PATH_PROG:
+	tweak to allow a list of programs, use this in lynx to support selecting
+	among tar/star/pax
+
+	* AcSplit/AM_GNU_GETTEXT:
+	Thorsten Glaser added a check for a system copy of mkinstalldirs (note that
+	his check relied on using environment variables, so I fixed it).
+
+	* AcSplit/CF_CHECK_CACHE:
+	Thorsten Glaser noticed a standard variable $ac_config_sub to use.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	oops - defining _XOPEN_SOURCE breaks lynx on SCO (some problems immediately
+	with the network headers).
+
 2004-01-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_BZLIB:
