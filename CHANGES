@@ -1,3 +1,45 @@
+2004-04-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	fix for cases when the IMAKE_CFLAGS and/or IMAKE_LOADFLAGS are empty.
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	hmm - this broke again when I added $(VENDORMANDEFS), since that contained
+	different escaping of the quotes.  This seems to work, for xterm #187.
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	the second parameter to xmkmf should be the top of the build tree, not
+	the directory containing the cf-files.
+
+	* AcSplit/CF_ADD_CFLAGS:
+	fix the first expression for cf_tst_cflags by ensuring we match single
+	quote rather than just any character after the '='.  Do a similar fix for
+	the "yes" part of the case statement, so we exit on a fragment such as
+		xxx"'
+	Finally, put any quoted (single-token) -D option into EXTRA_CPPFLAGS.
+	That seems to be consistent, though of course we don't handle things like
+		-Dxxx=\"foo\"
+
+	* AcSplit/CF_X_FREETYPE:
+	add --with-freetype-cflags and --with-freetype-libs options (actually because
+	I thought I could use that to override xft-config easily via an option to
+	cfg-xterm+, but that didn't work well, so I ended up overriding its cache
+	variables).  The options still are useful.
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	if --verbose is set, show the $IMAKE_CFLAGS and $IMAKE_LOADFLAGS at the
+	end of this macro.
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	fix the order of setting CDPATH (does not seem to help on my current Debian
+	testing, but still better than it was)
+
+	* AcSplit/CF_X_TOOLKIT:
+	remove the checks for clix (obsolete) and move the call to AC_PATH_XTRA to
+	the beginning - which it essentially was anyway.  Now it simply calls
+	AC_PATH_XTRA and ensures that I can get -lXt and -lX11.  Reading the code,
+	it seems that the IRIX6/IRIX5 issue was taken care of in autoconf 2.13.
+
 2004-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:
