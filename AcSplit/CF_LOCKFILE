@@ -1,0 +1,84 @@
+dnl CF_LOCKFILE version: 2 updated: 2001/05/26 12:41:02
+dnl -----------
+dnl Check for functions that we can use for file-locking.  Simply checking for
+dnl existence is not sufficient, since fcntl, for example, uses definitions
+dnl that are not in every version of the header.
+AC_DEFUN([CF_LOCKFILE],
+[
+AC_CHECK_HEADERS(unistd.h fcntl.h sys/file.h)
+AC_CHECK_FUNC(fcntl)
+AC_CHECK_FUNC(lockf)
+AC_CHECK_FUNC(flock,,,[
+	CF_RECHECK_FUNC(flock,bsd,cf_cv_lockfile,[AC_MSG_WARN(no lock function found)])])
+
+AC_CACHE_CHECK(for file-locking functions,cf_cv_lockfile,[
+cf_cv_lockfile=
+for cf_lock in fcntl lockf flock
+do
+if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
+	case $cf_lock in #(vi
+	fcntl) #(vi
+		AC_TRY_COMPILE([
+#include <stdio.h>
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+],[
+	struct flock flk;
+	int block = 1;
+	int fd = 0;
+	int rc;
+
+	flk.l_type = F_WRLCK;
+	flk.l_whence = SEEK_SET;
+	flk.l_start = 0;
+	flk.l_len = 0;
+	rc = fcntl(fd, block ? F_SETLKW : F_SETLK, &flk)
+	&& fcntl(fd, F_GETLK, &flk)
+	&& fcntl(fd, F_SETLK, &flk);
+	],,continue)
+		;;
+	lockf) #(vi
+		AC_TRY_COMPILE([
+#include <stdio.h>
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+],[
+	int block = 1, fd = 0;
+	int ret = lockf(fd, block ? F_LOCK : F_TLOCK, 0L)
+	 && lockf(fd, F_TEST, 0L)
+	 && lockf(fd, F_ULOCK, 0L);
+	],,[continue])
+		;;
+	flock)
+		AC_TRY_COMPILE([
+#include <stdio.h>
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+#ifdef HAVE_SYS_FILE_H
+#include <sys/file.h>
+#endif
+],[
+	int block = 1, fd = 0;
+	int ret = flock(fd, (LOCK_EX|LOCK_NB))
+	 && flock(fd, LOCK_UN)
+	 && flock(fd, block ? LOCK_EX : (LOCK_EX | LOCK_NB));
+	],,[continue])
+		;;
+	esac
+	cf_cv_lockfile="$cf_cv_lockfile $cf_lock"
+fi
+done
+])
+])dnl
