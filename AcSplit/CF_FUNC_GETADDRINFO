@@ -79,4 +79,8 @@ int main()
 [cf_cv_getaddrinfo=no],
 [cf_cv_getaddrinfo=unknown])
 ])
+if test "$cf_cv_getaddrinfo" = yes ; then
+	AC_DEFINE(HAVE_GAI_STRERROR)
+	AC_DEFINE(HAVE_GETADDRINFO)
+fi
 ])dnl
