@@ -1,3 +1,5 @@
+dnl CF_PATH_MAILER version: 6 updated: 2001/05/27 21:36:02
+dnl --------------
 dnl Look for the program that sends outgoing mail.
 AC_DEFUN([CF_PATH_MAILER],
 [
@@ -13,6 +15,8 @@ AC_PATH_PROG(DEFAULT_MAILER,mail,,$PATH:/usr/bin)
 fi
 AC_MSG_CHECKING(for default mailer)
 if test -n "$DEFAULT_MAILER" ; then
+	CF_FIX_SLASHES(ac_cv_path_DEFAULT_MAILER)
+	CF_FIX_SLASHES(DEFAULT_MAILER)
 	AC_DEFINE_UNQUOTED(DEFAULT_MAILER,"$DEFAULT_MAILER")
 else
 	DEFAULT_MAILER=none

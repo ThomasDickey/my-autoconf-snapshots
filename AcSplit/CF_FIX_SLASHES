@@ -1,0 +1,13 @@
+dnl CF_FIX_SLASHES version: 2 updated: 2001/05/27 21:36:02
+dnl --------------
+dnl OS/2 and Cygwin ports may pick up backslashes in pathnames, which are not
+dnl usable in quoted strings.  Fix them.
+dnl	$1=fixed($2)
+AC_DEFUN([CF_FIX_SLASHES],
+[
+case $cf_cv_system_name in #(vi
+os2*|cygwin*)
+	$1=`echo "[$]$1" | sed -e 's%\\\\%/%g'`
+	;;
+esac
+])dnl
