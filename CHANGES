@@ -1,3 +1,24 @@
+2004-09-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: eliminate the test -a option, using a case
+
+	* AcSplit/CF_LIB_RULES: Date: Sat, 4 Sep 2004 14:19:56 -0700 (PDT)
+	From: "James J. Ramsey" <jjramsey_6x9eq42@yahoo.com>
+	Subject: Patch for appending "w" in the right place on OS X
+	To: bug-ncurses@gnu.org
+
+	[-- Attachment #1 --]
+	[-- Type: text/plain, Encoding: 7bit, Size: 0.4K --]
+
+	This patch fixes aclocal.m4 and configure so that the
+	wide-character version of ncurses gets compiled as
+	libncursesw.5.dylib, instead of libncurses.5w.dylib. I
+	was able to compile and install ncursesw with this
+	patch.
+
+	(the chunk before mk-1st.awk didn't work since I'd made changes for libtinfo,
+	so I fixed that -TD)
+
 2004-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_INTL:
