@@ -1,3 +1,5 @@
+dnl CF_WITH_PATHLIST version: 5 updated: 2001/12/10 01:28:30
+dnl ----------------
 dnl Process an option specifying a list of colon-separated paths.
 dnl
 dnl $1 = option name
@@ -10,7 +12,7 @@ dnl
 AC_DEFUN([CF_WITH_PATHLIST],[
 AC_REQUIRE([CF_PATHSEP])
 AC_ARG_WITH($1,[$2 ](default: ifelse($4,,empty,$4)),,
-ifelse($4,,[withval="${$3}"],[withval="${$3-ifelse($5,,$4,$5)}"]))dnl
+ifelse($4,,[withval=${$3}],[withval=${$3-ifelse($5,,$4,$5)}]))dnl
 
 IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${PATHSEP}"
 cf_dst_path=

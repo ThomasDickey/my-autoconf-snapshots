@@ -1,3 +1,28 @@
+2001-12-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS:
+	td_lib: add checks for cygwin variation
+
+2001-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_PERL, AcSplit/CF_WITH_PATHLIST:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MISSING_CHECK:
+	vile: escape the double-quotes in the AC_MSG_CHECKING message, which makes
+	this produce the same (quoted) message with autoconf 2.13 as with 2.52
+
+	* AcSplit/CF_PROG_PERL:
+	vile: modified the use of brackets to work with autoconf 2.52, which doesn't
+	allow an unbalanced square bracket to happen.
+
+	* AcSplit/CF_WITH_PATHLIST:
+	vile: omit some double quotes which don't appear to be needed, which don't
+	work when I generate the configure script with autoconf 2.52
+
 2001-12-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_SHARED_OPTS:

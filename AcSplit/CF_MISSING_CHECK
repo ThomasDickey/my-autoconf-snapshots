@@ -1,7 +1,7 @@
 dnl
 AC_DEFUN([CF_MISSING_CHECK],
 [
-AC_MSG_CHECKING([for missing "$1" extern])
+AC_MSG_CHECKING([for missing \"$1\" extern])
 AC_CACHE_VAL([cf_cv_func_$1],[
 cf_save_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $CHECK_DECL_FLAG"
