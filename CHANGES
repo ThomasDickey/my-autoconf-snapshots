@@ -1,3 +1,9 @@
+2004-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_IPV6:
+	lynx: treat non-Linux systems comparably to Linux by not exiting with an
+	error when getaddrinfo() check fails.
+
 2004-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUILD_CC:
