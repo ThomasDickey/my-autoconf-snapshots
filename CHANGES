@@ -1,3 +1,13 @@
+2004-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL:
+	fix to generate intl/makefile rather than $srcdir/intl/makefile when the
+	configure --srcdir option is given.
+
+	* AcSplit/CF_OUR_MESSAGES:
+	fix to generate po/makefile rather than $srcdir/po/makefile when the
+	configure --srcdir option is given
+
 2004-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:

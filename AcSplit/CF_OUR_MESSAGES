@@ -1,4 +1,4 @@
-dnl CF_OUR_MESSAGES version: 6 updated: 2004/01/03 10:56:43
+dnl CF_OUR_MESSAGES version: 7 updated: 2004/09/12 19:45:55
 dnl ---------------
 dnl Check if we use the messages included with this program
 dnl
@@ -27,7 +27,7 @@ fi
 MSG_DIR_MAKE="#"
 if test "$use_our_messages" = yes
 then
-	SUB_MAKEFILE="$SUB_MAKEFILE $srcdir/po/$cf_makefile.in:$srcdir/po/$cf_makefile.inn"
+	SUB_MAKEFILE="$SUB_MAKEFILE po/$cf_makefile.in:$srcdir/po/$cf_makefile.inn"
 	MSG_DIR_MAKE=
 fi
 

@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 10 updated: 2003/09/14 18:49:13
+dnl CF_BUNDLED_INTL version: 11 updated: 2004/09/12 19:45:55
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -63,7 +63,7 @@ if test "$USE_INCLUDED_LIBINTL" = yes ; then
 			$srcdir/intl/makefile.in
 		do
 			if test -f "$cf_makefile" ; then
-				SUB_MAKEFILE="$SUB_MAKEFILE `echo ${cf_makefile}|sed -e 's/\.in$//'`:${cf_makefile}"
+				SUB_MAKEFILE="$SUB_MAKEFILE `echo ${cf_makefile}|sed -e ',^'$srcdir',,' -e 's/\.in$//'`:${cf_makefile}"
 				break
 			fi
 		done
