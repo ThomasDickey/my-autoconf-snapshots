@@ -1,3 +1,19 @@
+2000-01-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_OUR_MESSAGES: ci-aclocal generated header
+
+	* AcSplit/CF_OUR_MESSAGES: if'd this inside $USE_NLS
+
+	* AcSplit/AM_WITH_NLS:
+	move/correct the chunk that generates po/makefile
+	move the chunk that links the intl.h header (so it's done only if we use NLS)
+
+	* AcSplit/AM_WITH_NLS:
+	Urs added an assignment to make $LIBS have -lintl (does not look right -fixme)
+
+	* AcSplit/AM_WITH_NLS:
+	temporary workaround for $(top_builddir), which is not defined by autoconf
+
 2000-01-19  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/AM_WITH_NLS: resync with drepper's serial #5

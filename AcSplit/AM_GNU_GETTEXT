@@ -13,9 +13,9 @@ AC_DEFUN(AM_GNU_GETTEXT,
    AC_REQUIRE([AC_FUNC_MMAP])dnl
 
    AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h string.h \
-unistd.h values.h sys/param.h])
+unistd.h sys/param.h])
    AC_CHECK_FUNCS([getcwd munmap putenv setenv setlocale strchr strcasecmp \
-__argz_count __argz_stringify __argz_next])
+strdup __argz_count __argz_stringify __argz_next])
 
    if test "${ac_cv_func_stpcpy+set}" != "set"; then
      AC_CHECK_FUNCS(stpcpy)
