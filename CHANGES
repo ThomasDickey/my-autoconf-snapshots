@@ -1,3 +1,12 @@
+2004-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_C_SOURCE: ci-aclocal generated header
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	split-out CF_POSIX_C_SOURCE (which mistakenly reused the $cv_cv_xopen_source
+	cache variable, and had an error in its second compiler test which was not
+	noticed because of the first error!).
+
 2004-09-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: eliminate the test -a option, using a case
