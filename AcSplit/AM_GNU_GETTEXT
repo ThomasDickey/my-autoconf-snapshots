@@ -62,18 +62,20 @@ __argz_count __argz_stringify __argz_next])
    dnl Determine which catalog format we have (if any is needed)
    dnl For now we know about two different formats:
    dnl   Linux libc-5 and the normal X/Open format
-   test -d intl || mkdir intl
-   if test "$CATOBJEXT" = ".cat"; then
-     AC_CHECK_HEADER(linux/version.h, msgformat=linux, msgformat=xopen)
+   if test "$USE_NLS" = "yes"; then
+     test -d intl || mkdir intl
+     if test "$CATOBJEXT" = ".cat"; then
+       AC_CHECK_HEADER(linux/version.h, msgformat=linux, msgformat=xopen)
 
-     dnl Transform the SED scripts while copying because some dumb SEDs
-     dnl cannot handle comments.
-     sed -e '/^#/d' $srcdir/intl/$msgformat-msg.sed > intl/po2msg.sed
+       dnl Transform the SED scripts while copying because some dumb SEDs
+       dnl cannot handle comments.
+       sed -e '/^#/d' $srcdir/intl/$msgformat-msg.sed > intl/po2msg.sed
+     fi
+     dnl po2tbl.sed is always needed.
+     rm -f intl/po2tbl.sed
+     sed -e '/^#.*[^\\]$/d' -e '/^#$/d' \
+       $srcdir/intl/po2tbl.sed.in > intl/po2tbl.sed
    fi
-   dnl po2tbl.sed is always needed.
-   rm -f intl/po2tbl.sed
-   sed -e '/^#.*[^\\]$/d' -e '/^#$/d' \
-     $srcdir/intl/po2tbl.sed.in > intl/po2tbl.sed
 
    dnl In the intl/makefile.in we have a special dependency which only
    dnl makes sense for gettext.  We comment this out for non-gettext
@@ -107,7 +109,6 @@ __argz_count __argz_stringify __argz_next])
 
    dnl Generate list of files to be processed by xgettext which will
    dnl be included in po/makefile.
-   test -d po || mkdir po
    if test "x$srcdir" != "x."; then
      if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
        posrcprefix="$srcdir/"
@@ -117,8 +118,10 @@ __argz_count __argz_stringify __argz_next])
    else
      posrcprefix="../"
    fi
-   rm -f po/POTFILES
-   sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$posrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
-	< $srcdir/po/POTFILES.in > po/POTFILES
-  ])
-
+   if test "$USE_NLS" = "yes"; then
+     test -d po || mkdir po
+     rm -f po/POTFILES
+     sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$posrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
+	  < $srcdir/po/POTFILES.in > po/POTFILES
+   fi
+])dnl

@@ -1,3 +1,13 @@
+1998-12-10  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_VARARGS: check for header files, so this works standalone
+
+	* AcSplit/CF_VARARGS: ci-aclocal generated header
+
+	* AcSplit/AM_GNU_GETTEXT: mods to let me disable nls properly
+
+	* AcSplit/CF_MAKE_INCLUDE: use CONFIG_SHELL for /bin/sh
+
 1998-12-09  Thomas E. Dickey  <dickey@clark.net>
 
 	* install-sh: RCS_BASE
