@@ -1,3 +1,11 @@
+2001-06-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* install-sh:
+	copied from install.sh, which uses ":" rather than "true", and allows a
+	tab in $IFS
+
+	* install.sh: tin: trim trailing blanks
+
 2001-06-16  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PROG_EXT:
