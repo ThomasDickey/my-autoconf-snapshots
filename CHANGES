@@ -1,3 +1,14 @@
+2004-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_DLSYM: ci-aclocal generated header
+
+2004-06-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA:
+	prompted by a gentoo bug report, modify the AC_ARG_WITH checks to assume
+	that someone might really do --without-Xaw3d and not like it if I just
+	assumed $withval was "yes"
+
 2004-05-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_CACHE:

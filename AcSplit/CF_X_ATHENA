@@ -1,22 +1,44 @@
-dnl CF_X_ATHENA version: 11 updated: 2002/12/26 20:56:10
+dnl CF_X_ATHENA version: 12 updated: 2004/06/15 21:14:41
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
+dnl Sets $cf_x_athena according to the flavor of Xaw which is used.
 AC_DEFUN([CF_X_ATHENA],
 [AC_REQUIRE([CF_X_TOOLKIT])
 cf_x_athena=${cf_x_athena-Xaw}
 
+AC_MSG_CHECKING(if you want to link with Xaw 3d library)
+withval=
 AC_ARG_WITH(Xaw3d,
-	[  --with-Xaw3d            link with Xaw 3d library],
-	[cf_x_athena=Xaw3d])
+	[  --with-Xaw3d            link with Xaw 3d library])
+if test "$withval" = yes ; then
+	cf_x_athena=Xaw3d
+	AC_MSG_RESULT(yes)
+else
+	AC_MSG_RESULT(no)
+fi
 
+AC_MSG_CHECKING(if you want to link with neXT Athena library)
+withval=
 AC_ARG_WITH(neXtaw,
-	[  --with-neXtaw           link with neXT Athena library],
-	[cf_x_athena=neXtaw])
+	[  --with-neXtaw           link with neXT Athena library])
+if test "$withval" = yes ; then
+	cf_x_athena=neXtaw
+	AC_MSG_RESULT(yes)
+else
+	AC_MSG_RESULT(no)
+fi
 
+AC_MSG_CHECKING(if you want to link with Athena-Plus library)
+withval=
 AC_ARG_WITH(XawPlus,
-	[  --with-XawPlus          link with Athena-Plus library],
-	[cf_x_athena=XawPlus])
+	[  --with-XawPlus          link with Athena-Plus library])
+if test "$withval" = yes ; then
+	cf_x_athena=XawPlus
+	AC_MSG_RESULT(yes)
+else
+	AC_MSG_RESULT(no)
+fi
 
 AC_CHECK_LIB(Xext,XextCreateExtension,
 	[LIBS="-lXext $LIBS"])
