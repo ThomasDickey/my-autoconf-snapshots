@@ -1,3 +1,5 @@
+dnl CF_TTY_GROUP version: 5 updated: 2003/03/19 23:52:35
+dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
 AC_DEFUN([CF_TTY_GROUP],
@@ -41,7 +43,10 @@ osf*) #(vi
 	cf_cv_tty_group_name="terminal"
 	;;
 *)
-	cf_cv_tty_group_name="tty"
+	cf_cv_tty_group_name="unknown"
+	if ( egrep '^tty:' /etc/group 2>/dev/null 1>/dev/null ) then
+		cf_cv_tty_group_name="tty"
+	fi
 	;;
 esac
 fi
@@ -49,7 +54,14 @@ fi
 
 AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_cv_tty_group_name")
 
-AC_CACHE_CHECK(if we may use tty group,cf_cv_tty_group,[
+# This is only a double-check that the group-name we obtained above really
+# does apply to the device.  We cannot perform this test if we are in batch
+# mode, or if we are cross-compiling.
+
+AC_CACHE_CHECK(if we may use $cf_cv_tty_group_name group,cf_cv_tty_group,[
+cf_tty_name=`tty`
+if test "$cf_tty_name" != "not a tty"
+then
 AC_TRY_RUN([
 #include <unistd.h>
 #include <sys/types.h>
@@ -75,6 +87,11 @@ int main()
 	[cf_cv_tty_group=yes],
 	[cf_cv_tty_group=no],
 	[cf_cv_tty_group=unknown])
+elif test "$cross_compiling" = yes; then
+	cf_cv_tty_group=unknown
+else
+	cf_cv_tty_group=yes
+fi
 ])
 test $cf_cv_tty_group = yes && AC_DEFINE(USE_TTY_GROUP)
 ])dnl
