@@ -1,3 +1,7 @@
+2001-01-05  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CHAR_DEVICE: RCS_BASE
+
 2001-01-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SSL: RCS_BASE
