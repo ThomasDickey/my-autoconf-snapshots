@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19981106
+MANIFEST for my-autoconf, version t19981107
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -6,6 +6,10 @@ config.sub                      autoconf's config.sub
 install.sh                      alternate install-script
 mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
+AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
+AcSplit/AM_LC_MESSAGES          check if LC_MESSAGES works
+AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
+AcSplit/AM_WITH_NLS             macro to test for NLS
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
 AcSplit/CF_ADD_INCDIR           add include-directory
@@ -171,6 +175,7 @@ AcSplit/CF_TD_TEST_MAKEFILES    generate test/*/makefile
 AcSplit/CF_TD_TEST_MODULES      make a list of modules under test/*
 AcSplit/CF_TERMCAP_LIBS         check for termcap libraries
 AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
+AcSplit/CF_TERMIO_AND_CURSES    check if we can include both curses.h and termio.h
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
 AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm

@@ -19,6 +19,9 @@ hpux10.*)
 		ac_cv_func_initscr=yes
 		])])
 	;;
+linux*) # Suse Linux does not follow /usr/lib convention
+	$1="[$]$1 /lib"
+	;;
 esac
 
 if test ".$With5lib" != ".no" ; then

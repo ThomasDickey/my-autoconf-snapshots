@@ -1,3 +1,12 @@
+1998-11-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS: fix for Suse Linux
+
+1998-11-06  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TERMIO_AND_CURSES, AcSplit/AM_GNU_GETTEXT, AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/AM_WITH_NLS:
+	RCS_BASE
+
 1998-10-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES:
