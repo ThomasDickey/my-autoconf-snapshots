@@ -1,3 +1,7 @@
+2003-09-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL: change "head -1" to "sed -e '2,$d'"
+
 2003-09-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_VERSION:
