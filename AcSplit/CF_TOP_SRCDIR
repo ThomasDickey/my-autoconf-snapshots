@@ -1,5 +1,0 @@
-dnl Make an absolute symbol for the top of the configuration.
-AC_DEFUN([CF_TOP_SRCDIR],
-[TOP_SRCDIR=`cd $srcdir;pwd`
-AC_SUBST(TOP_SRCDIR)
-])dnl

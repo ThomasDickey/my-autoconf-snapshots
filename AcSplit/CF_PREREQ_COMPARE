@@ -1,5 +1,3 @@
-dnl CF_PREREQ_COMPARE version: 2 updated: 1997/09/06 13:24:56
-dnl -----------------
 dnl CF_PREREQ_COMPARE(MAJOR1, MINOR1, TERNARY1, MAJOR2, MINOR2, TERNARY2,
 dnl                   PRINTABLE2, not FOUND, FOUND)
 define(CF_PREREQ_COMPARE,

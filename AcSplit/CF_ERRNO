@@ -1,5 +1,3 @@
-dnl CF_ERRNO version: 5 updated: 1997/11/30 12:44:39
-dnl --------
 dnl Check if 'errno' is declared in <errno.h>
 AC_DEFUN([CF_ERRNO],
 [
