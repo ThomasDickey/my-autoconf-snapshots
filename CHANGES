@@ -1,3 +1,52 @@
+2000-10-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAKE_TAGS, AcSplit/CF_MIXEDCASE_FILENAMES: RCS_BASE
+
+	* AcSplit/CF_LIB_RULES: add install.man rule for tack.
+	add $(AUTO_SRC) dependency for install.includes
+	do a basename of install-target, in case the given $SRC is not in the current directory
+
+	* AcSplit/CF_MAKE_TAGS, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_TYPEOF_CHTYPE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_CACHE:
+	ncurses: allow a parameter so we can specify use of AC_CANONICAL_SYSTEM
+	rather than AC_CANONICAL_HOST, for cross-compiles.
+
+	* AcSplit/CF_CPP_PARAM_INIT:
+	ncurses: change to testing $CXX if it is "yes", to avoid conflict with people's
+	environments when they set $CXX to the actual compiler name.
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS:
+	ncurses: change to testing if $GCC is "yes", rather than nonnull, avoid problems with people's environment settings.
+
+	* AcSplit/CF_TYPEOF_CHTYPE:
+	ncurses: change to using "#ifdef" thoughout, rather than "#if"
+
+	* AcSplit/CF_BOOL_SIZE:
+	ncurses: change to using "#ifdef" throughout rather than "#if"
+
+	* AcSplit/CF_SIZECHANGE, AcSplit/CF_SYS_TIME_SELECT:
+	ncurses: change to using "#ifdef" throughout, rather than "#if"
+
+	* AcSplit/CF_SHARED_OPTS:
+	ncurses: eliminate a redundant case for HPUX, check $GCC for equality to
+	"yes", and revise rpath support to (try to) eliminate relative paths.
+
+	* AcSplit/CF_MAN_PAGES:
+	ncurses: fix for configure --srcdir, since some files to install would be
+	in the current directory, and some would be in the $srcdir directory
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	ncurses: test $GCC for "yes" rather than nonnull, since some people set the
+	compiler name that way.
+
+	* AcSplit/CF_INCLUDE_DIRS:
+	ncurses: test for $GCC set to "yes", in case someone set it to the compiler name.
+
+	* AcSplit/CF_GCC_WARNINGS:
+	ncurses: test for $GCC set to "yes", in case someone uses it to set the compiler name.
+
 2000-09-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_GETADDRINFO: ci-aclocal generated header

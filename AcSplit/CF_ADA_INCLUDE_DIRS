@@ -6,7 +6,7 @@ ACPPFLAGS="$ACPPFLAGS -I. -I../../include"
 if test "$srcdir" != "."; then
 	ACPPFLAGS="$ACPPFLAGS -I\$(srcdir)/../../include"
 fi
-if test -z "$GCC"; then
+if test "$GCC" != yes; then
 	ACPPFLAGS="$ACPPFLAGS -I\$(includedir)"
 elif test "$includedir" != "/usr/include"; then
 	if test "$includedir" = '${prefix}/include' ; then

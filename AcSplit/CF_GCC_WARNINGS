@@ -9,7 +9,7 @@ dnl	-pedantic
 dnl
 AC_DEFUN([CF_GCC_WARNINGS],
 [
-if test -n "$GCC"
+if test "$GCC" = yes
 then
 	changequote(,)dnl
 	cat > conftest.$ac_ext <<EOF

@@ -8,7 +8,7 @@ CPPFLAGS="$CPPFLAGS -I. -I../include"
 if test "$srcdir" != "."; then
 	CPPFLAGS="$CPPFLAGS -I\$(srcdir)/../include"
 fi
-if test -z "$GCC"; then
+if test "$GCC" != yes; then
 	CPPFLAGS="$CPPFLAGS -I\$(includedir)"
 elif test "$includedir" != "/usr/include"; then
 	if test "$includedir" = '${prefix}/include' ; then
