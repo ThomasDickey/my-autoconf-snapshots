@@ -1,3 +1,12 @@
+2000-06-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/AM_WITH_NLS:
+	Julian Coleman <J.D.Coleman@newcastle.ac.uk> noticed that if the intl
+	directory is missing, this macro still tries to make the intl/libintl.h
+	link.  Found that AC_LINK_FILES is evaluated at autoconf time, while I
+	want to suppress the links at configure time.  Did this by resetting the
+	variables used as parameters to AC_LINK_FILES.
+
 2000-06-20  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_ERRNO: John Coyne <John.Coyne@CTBTO.ORG>
