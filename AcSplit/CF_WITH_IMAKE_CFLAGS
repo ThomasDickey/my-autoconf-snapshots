@@ -1,4 +1,4 @@
-dnl CF_WITH_IMAKE_CFLAGS version: 2 updated: 2003/04/13 20:09:42
+dnl CF_WITH_IMAKE_CFLAGS version: 6 updated: 2005/02/06 13:47:10
 dnl --------------------
 dnl xterm and similar programs build more readily when propped up with imake's
 dnl hand-tuned definitions.  If we do not use imake, provide fallbacks for the
@@ -18,11 +18,24 @@ else
 	IMAKE_LOADFLAGS=
 	CF_VERBOSE(make fallback definitions)
 
-	UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
-	case $UNAME_RELEASE in
-	[[0-9]]*.[[0-9]]**)
-		OSMAJORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/\..*//'`
-		OSMINORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^.]]*\.//' -e 's/\..*//'`
+	# We prefer config.guess' values when we can get them, to avoid
+	# inconsistent results with uname (AIX for instance).  However,
+	# config.guess is not always consistent either.
+	case $host_os in
+	*[[0-9]].[[0-9]]*)
+		UNAME_RELEASE="$host_os"
+		;;
+	*)
+		UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
+		;;
+	esac
+
+	case .$UNAME_RELEASE in
+	*[[0-9]].[[0-9]]*)
+		OSMAJORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^0-9]]*//' -e 's/\..*//'`
+		OSMINORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^0-9]]*//' -e 's/^[[^.]]*\.//' -e 's/\..*//' -e 's/[[^0-9]].*//' `
+		test -z "$OSMAJORVERSION" && OSMAJORVERSION=1
+		test -z "$OSMINORVERSION" && OSMINORVERSION=0
 		IMAKE_CFLAGS="-DOSMAJORVERSION=$OSMAJORVERSION -DOSMINORVERSION=$OSMINORVERSION $IMAKE_CFLAGS"
 		;;
 	esac
@@ -35,6 +48,18 @@ else
 	case `$ac_config_guess` in
 	*freebsd*|*gnu*|*irix5*|*irix6*|*linux-gnu*|*netbsd*|*openbsd*)
 		IMAKE_CFLAGS="-DNARROWPROTO=1 $IMAKE_CFLAGS"
+	esac
+
+	# Other special definitions:
+	case $host_os in
+	aix*)
+		# imake on AIX 5.1 defines AIXV3.  really.
+		IMAKE_CFLAGS="-DAIXV3 -DAIXV4 $IMAKE_CFLAGS"
+		;;
+	irix[[56]].*) #(vi
+		# these are needed to make SIGWINCH work in xterm
+		IMAKE_CFLAGS="-DSYSV -DSVR4 $IMAKE_CFLAGS"
+		;;
 	esac
 
 	CF_ADD_CFLAGS($IMAKE_CFLAGS)
