@@ -1,3 +1,15 @@
+2003-03-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XKB_BELL_EXT: RCS_BASE
+
+	* AcSplit/CF_WCHAR_TYPE: ci-aclocal generated header
+
+	* AcSplit/CF_ETIP_DEFINES: fix includes needed in build
+
+	* AcSplit/CF_WITH_SYSMOUSE:
+	moved a "fi" to keep from emitting message when not on FreeBSD
+	added generated header
+
 2003-03-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TTY_GROUP: ci-aclocal generated header
