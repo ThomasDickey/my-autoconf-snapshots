@@ -269,6 +269,9 @@ test "\$NAME" = "curses.h" && NAME=ncurses.h
 CF_EOF
 fi
 cat >>headers.sh <<CF_EOF
+# Just in case someone gzip'd manpages, remove the conflicting copy.
+test -f \$DST/\$NAME.gz && rm -f \$DST/\$NAME.gz
+
 eval \$PRG \$TMPSRC \$DST/\$NAME
 rm -f \$TMPSRC \$TMPSED
 CF_EOF
