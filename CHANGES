@@ -1,3 +1,11 @@
+2002-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2002/1/2
+
+2002-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTMP_UT_HOST: delete a blank line on the end
+
 2001-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PDCURSES_X11:
