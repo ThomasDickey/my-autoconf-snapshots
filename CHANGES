@@ -1,3 +1,18 @@
+2003-09-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_VERSION:
+	ncurses: replace "head -1" with "sed -e '2,$d'", to work when POSIXLY_CORRECT
+	is set.  This also gets rid of an unnecessary use of $AWK, and ensures that
+	$cf_ada_make is set.
+
+	* AcSplit/CF_GCC_VERSION:
+	ncurses: replace "head -1" with "sed -e '2,$d'" to work when POSIXLY_CORRECT
+	is set.
+
+	* AcSplit/CF_GXX_VERSION, AcSplit/CF_WITH_LIBTOOL:
+	ncurses: replace "head -1" with "sed -e '2,$d'", to work when POSIXLY_CORRECT
+	is set.
+
 2003-08-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL:
