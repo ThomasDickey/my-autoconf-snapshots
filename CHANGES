@@ -1,3 +1,9 @@
+1997-09-08  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TD_SRC_MAKEFILES, AcSplit/CF_TD_SRC_MODULES: RCS_BASE
+
+	* AcSplit/CF_MAKE_INCLUDE: make this work w/o lynx's directory-tree
+
 1997-09-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_CACHE: add check for AC_CANONICAL host
