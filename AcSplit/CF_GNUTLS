@@ -1,9 +1,9 @@
-dnl CF_GNUTLS version: 1 updated: 2003/04/13 17:26:30
+dnl CF_GNUTLS version: 2 updated: 2003/04/28 01:28:08
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_GNUTLS],[
-cf_ssl_library="-lgnutls-extra -lgnutls -lcrypto"
+cf_ssl_library="-lgnutls-extra -lgnutls -lcrypt"
 case "$1" in #(vi
 no) #(vi
   ;;
@@ -17,7 +17,7 @@ yes) #(vi
 		AC_MSG_ERROR(cannot find gnutls library)
 	fi
 	],
-	[-lcrypto])
+	[-lcrypt])
   ;;
 *)
   if test -d $1 ; then
