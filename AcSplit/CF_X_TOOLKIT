@@ -2,11 +2,12 @@ dnl Check for X Toolkit libraries
 dnl
 AC_DEFUN([CF_X_TOOLKIT],
 [
+AC_REQUIRE([CF_CHECK_CACHE])
 # We need to check for -lsocket and -lnsl here in order to work around an
 # autoconf bug.  autoconf-2.12 is not checking for these prior to checking for
 # the X11R6 -lSM and -lICE libraries.  The resultant failures cascade...
 # 	(tested on Solaris 2.5 w/ X11R6)
-SYSTEM_NAME=`echo "$system_name"|tr ' ' -`
+SYSTEM_NAME=`echo "$cf_cv_system_name"|tr ' ' -`
 cf_have_X_LIBS=no
 case $SYSTEM_NAME in
 irix5*) ;;
