@@ -1,3 +1,17 @@
+1998-04-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	add case for HPUX that uses +e option, since I don't think it used to
+	be supported
+
+	* AcSplit/CF_SHARED_OPTS: Juergen changed -fPIC to -fpic
+
+	* AcSplit/CF_FP_ISREADY: RCS_BASE
+
+	* AcSplit/CF_FP_ISREADY: ci-aclocal generated header
+
+	* AcSplit/CF_PROG_EXT: make this depend on CF_CACHE_CHECK
+
 1998-04-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ARG_WITH: New file.

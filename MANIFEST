@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980401
+MANIFEST for my-autoconf, version t19980418
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -59,6 +59,7 @@ AcSplit/CF_FCNTL_VS_IOCTL       check usable ioctl with FIONREAD, or fcntl.h (vt
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
+AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
