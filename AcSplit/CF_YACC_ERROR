@@ -1,5 +1,3 @@
-dnl CF_YACC_ERROR version: 2 updated: 1995/08/23 21:29:04
-dnl -------------
 dnl	Test the supplied version of yacc to see which (if any) of the
 dnl	error-reporting enhancements will work.
 dnl

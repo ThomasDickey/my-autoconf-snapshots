@@ -1,8 +1,0 @@
-dnl Make an uppercase version of a variable
-dnl $1=uppercase($2)
-AC_DEFUN([CF_UPPER],
-[
-changequote(,)dnl
-$1=`echo $2 | tr '[a-z]' '[A-Z]'`
-changequote([,])dnl
-])dnl
