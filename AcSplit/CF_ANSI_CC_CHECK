@@ -25,7 +25,7 @@ do
 	AC_TRY_COMPILE(
 [
 #ifndef CC_HAS_PROTOS
-#if !defined(__STDC__) || __STDC__ != 1
+#if !defined(__STDC__) || (__STDC__ != 1)
 choke me
 #endif
 #endif
