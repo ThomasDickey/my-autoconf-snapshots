@@ -1,3 +1,18 @@
+2000-06-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub: based on 2000-06-13 snapshot
+
+	* config.guess: based on 2000-06-13 snapshot from gnu.org
+
+2000-06-17  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	make -fPIC vs -fpic choice at configure time based on whether the compiler
+	recognizes it
+
+	* AcSplit/CF_LIB_RULES:
+	oops - modify headers.sh so I don't write on the build directory.
+
 2000-06-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE:
