@@ -1,3 +1,13 @@
+2003-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* install-sh: copied from install.sh
+
+	* install.sh: nicer(?) version from tin
+
+2003-11-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE: add case for osf1 (4.x, 5.x)
+
 2003-11-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_VERSION_INFO:
