@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 6 updated: 2003/12/27 20:48:07
+dnl CF_XOPEN_SOURCE version: 7 updated: 2003/12/29 21:33:30
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions.
 AC_DEFUN([CF_XOPEN_SOURCE],[
@@ -11,6 +11,9 @@ hpux*) #(vi
 	;;
 linux*) #(vi
 	CF_GNU_SOURCE
+	;;
+openbsd*) #(vi
+	# setting _XOPEN_SOURCE breaks xterm on OpenBSD 2.8, is not needed for ncurses
 	;;
 osf[[45]]*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_OSF_SOURCE"

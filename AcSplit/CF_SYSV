@@ -1,4 +1,4 @@
-dnl CF_SYSV version: 8 updated: 2003/12/29 18:36:48
+dnl CF_SYSV version: 9 updated: 2003/12/30 13:52:30
 dnl -------
 dnl Check if this is a SYSV platform, e.g., as used in <X11/Xos.h>, and whether
 dnl defining it will be helpful.  The following features are used to check:
@@ -9,6 +9,8 @@ dnl declare strerror().  Xos.h declares the legacy form of str_errlist[], and
 dnl a compile-time error will result from trying to assign to a const array.
 dnl
 dnl b) compile with headers that exist on SYSV hosts.
+dnl
+dnl c) compile with type definitions that differ on SYSV hosts from standard C.
 AC_DEFUN([CF_SYSV],
 [
 AC_CACHE_CHECK(if we should define SYSV,cf_cv_sysv,[
@@ -16,6 +18,9 @@ AC_REQUIRE([CF_SYS_ERRLIST])
 AC_TRY_COMPILE([
 #undef  SYSV
 #define SYSV 1			/* get Xos.h to declare sys_errlist[] */
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>		/* look for wchar_t */
+#endif
 #include <X11/Intrinsic.h>	/* Intrinsic.h has other traps... */
 #include <curses.h>
 #include <term.h>		/* eliminate most BSD hacks */
