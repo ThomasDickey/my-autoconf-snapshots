@@ -15,14 +15,13 @@ esac
 if test $ac_cv_prog_gxx = yes; then
 	AC_MSG_CHECKING([for lib$cf_gpp_libname])
 	cf_save="$LIBS"
-	LIBS="$LIBS -l$cf_gpp_libname -lm"
+	LIBS="$LIBS -l$cf_gpp_libname"
 	AC_TRY_LINK([
 #include <$cf_gpp_libname/builtin.h>
 	],
-	[//float foo=abs(1.0);
-	 two_arg_error_handler_t foo2 = lib_error_handler],
+	[two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
-	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname -lm"
+	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname"
 	 if test "$cf_gpp_libname" = cpp ; then
 	    AC_DEFINE(HAVE_GPP_BUILTIN_H)
 	 else
@@ -31,10 +30,9 @@ if test $ac_cv_prog_gxx = yes; then
 	[AC_TRY_LINK([
 #include <builtin.h>
 	],
-	[//float foo=abs(1.0);
-	 two_arg_error_handler_t foo2 = lib_error_handler],
+	[two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
-	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname -lm"
+	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname"
 	 AC_DEFINE(HAVE_BUILTIN_H)],
 	[cf_cxx_library=no])])
 	LIBS="$cf_save"
