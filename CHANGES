@@ -1,3 +1,16 @@
+2002-10-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_X_ATHENA_LIBS: RCS_BASE
+
+	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_MISSING_CHECK, AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_MISSING_CHECK, AcSplit/CF_TYPE_OUTCHAR:
+	vile: change "#if" to "#ifdef"
+
+	* AcSplit/CF_X_ATHENA:
+	vile: split-out CF_X_ATHENA_CPPFLAGS and CF_X_ATHENA_LIBS
+
 2002-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHAR_DEVICE:

@@ -1,9 +1,11 @@
+dnl CF_ANSI_QSORT version: 4 updated: 2002/10/09 20:00:37
+dnl -------------
 dnl Test if we should use ANSI-style prototype for qsort's compare-function
 AC_DEFUN([CF_ANSI_QSORT],
 [
 AC_CACHE_CHECK(for standard qsort, cf_cv_ansi_qsort,[
 	AC_TRY_COMPILE([
-#if HAVE_STDLIB_H
+#ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
 	int compare(const void *a, const void *b)

@@ -1,3 +1,5 @@
+dnl CF_CHECK_FD_SET version: 4 updated: 2002/10/09 20:00:37
+dnl ---------------
 dnl Check if the fd_set type and corresponding macros are defined.
 AC_DEFUN([CF_CHECK_FD_SET],
 [
@@ -8,7 +10,7 @@ AC_TRY_COMPILE([
 #if USE_SYS_SELECT_H
 # include <sys/select.h>
 #else
-# if HAVE_SYS_TIME_H
+# ifdef HAVE_SYS_TIME_H
 #  include <sys/time.h>
 #  ifdef TIME_WITH_SYS_TIME
 #   include <time.h>

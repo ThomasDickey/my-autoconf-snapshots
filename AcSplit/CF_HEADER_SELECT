@@ -1,3 +1,5 @@
+dnl CF_HEADER_SELECT version: 4 updated: 2002/10/09 20:00:37
+dnl ----------------
 dnl like AC_HEADER_TIME, check for conflicts:
 dnl on SCO v4, sys/time.h conflicts with select.h
 AC_DEFUN([CF_HEADER_SELECT],[
@@ -6,7 +8,7 @@ AC_CACHE_CHECK(if we can include select.h with time.h,
 cf_cv_select_with_time,[
 AC_TRY_COMPILE([
 #include <sys/types.h>
-#if HAVE_SYS_TIME_H
+#ifdef HAVE_SYS_TIME_H
 #include <sys/time.h>
 #ifdef TIME_WITH_SYS_TIME
 # include <time.h>
@@ -14,11 +16,11 @@ AC_TRY_COMPILE([
 #else
 #include <time.h>
 #endif
-#if HAVE_SELECT
-# if HAVE_SELECT_H
+#ifdef HAVE_SELECT
+# ifdef HAVE_SELECT_H
 # include <select.h>
 # endif
-# if HAVE_SYS_SELECT_H
+# ifdef HAVE_SYS_SELECT_H
 # include <sys/select.h>
 # endif
 #endif
