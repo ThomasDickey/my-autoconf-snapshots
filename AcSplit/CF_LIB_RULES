@@ -59,6 +59,7 @@ do
 				suffix=$cf_suffix \
 				DoLinks=$cf_cv_do_symlinks \
 				rmSoLocs=$cf_cv_rm_so_locs \
+				ldconfig="$LDCONFIG" \
 				overwrite=$WITH_OVERWRITE \
 				depend="$cf_depend" \
 				target="$target" \
@@ -84,6 +85,7 @@ do
 		if test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
 install.includes \\
+deinstall.includes \\
 CF_EOF
 		fi
 if test "$cf_dir" != "c++" ; then
@@ -92,14 +94,18 @@ fi
 cat >> Makefile <<CF_EOF
 lintlib \\
 install.libs \\
-install.$cf_dir ::
+deinstall.libs \\
+install.$cf_dir \\
+deinstall.$cf_dir ::
 	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
 CF_EOF
 	elif test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
 
 install.libs \\
-install.includes ::
+deinstall.libs \\
+install.includes \\
+deinstall.includes ::
 	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
 CF_EOF
 fi
@@ -190,6 +196,18 @@ CF_EOF
 		do
 			echo "	@ ../headers.sh \$(INSTALL_DATA) \$(INSTALL_PREFIX)\$(includedir) \$(srcdir) $i" >>$cf_dir/Makefile
 			test $i = curses.h && echo "	@ (cd \$(INSTALL_PREFIX)\$(includedir) && rm -f ncurses.h && \$(LN_S) curses.h ncurses.h)" >>$cf_dir/Makefile
+		done
+
+	cat >>$cf_dir/Makefile <<CF_EOF
+
+deinstall \\
+deinstall.libs \\
+deinstall.includes ::
+CF_EOF
+		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
+		do
+			echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/$i" >>$cf_dir/Makefile
+			test $i = curses.h && echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/ncurses.h" >>$cf_dir/Makefile
 		done
 	fi
 done

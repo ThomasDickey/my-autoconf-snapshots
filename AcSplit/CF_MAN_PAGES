@@ -72,6 +72,9 @@ INSTALL_DATA="$INSTALL_DATA"
 TMP=\${TMPDIR-/tmp}/man\$\$
 trap "rm -f \$TMP" 0 1 2 5 15
 
+verb=\{{$}}1
+shift
+
 mandir=\{{$}}1
 shift
 
@@ -80,8 +83,10 @@ do
 case \$i in
 *.[0-9]*)
 	section=\`expr "\$i" : '.*\\.\\([0-9]\\)[xm]*'\`;
-	if [ ! -d $cf_subdir\${section} ]; then
+	if test \$verb = installing ; then
+	if test ! -d $cf_subdir\${section} ; then
 		\$MKDIRS $cf_subdir\$section
+	fi
 	fi
 	source=\`basename \$i\`
 CF_EOF
@@ -101,29 +106,35 @@ cat >>man/edit_man.sh <<CF_EOF
 	sed -e 's,@DATADIR@,\$datadir,' < \$i | sed -f edit_man.sed >\$TMP
 CF_EOF
 fi
+if test \$verb = installing ; then
 if test $cf_format = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
 	nroff -man \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
+fi
 case "$cf_form" in
 compress)
 cat >>man/edit_man.sh <<CF_EOF
+	if test \$verb = installing ; then
 	if ( compress -f \$TMP )
 	then
 		mv \$TMP.Z \$TMP
-		target="\$target.Z"
 	fi
+	fi
+	target="\$target.Z"
 CF_EOF
   ;;
 gzip)
 cat >>man/edit_man.sh <<CF_EOF
+	if test \$verb = installing ; then
 	if ( gzip -f \$TMP )
 	then
 		mv \$TMP.gz \$TMP
-		target="\$target.gz"
 	fi
+	fi
+	target="\$target.gz"
 CF_EOF
   ;;
 BSDI)
@@ -134,8 +145,12 @@ CF_EOF
   ;;
 esac
 cat >>man/edit_man.sh <<CF_EOF
-	echo installing \$target
-	\$INSTALL_DATA \$TMP \$target
+	echo \$verb \$target
+	if test \$verb = installing ; then
+		\$INSTALL_DATA \$TMP \$target
+	else
+		rm -f \$target
+	fi
 	;;
 esac
 done 
