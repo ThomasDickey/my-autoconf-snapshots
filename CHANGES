@@ -1,3 +1,17 @@
+1999-01-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_INET_ADDR:
+	oops: forgot to reset $LIBS if I don't find anything to append
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	make the cache-variable spelled consistently...
+
+1999-01-23  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS: mods to support --with-shlib-version
+
+	* config.guess: re-merge Mike Hopkirk's patch
+
 1999-01-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_INET_ADDR: RCS_BASE
