@@ -2,11 +2,10 @@ dnl Check for memmove, or a bcopy that can handle overlapping copy.  If neither
 dnl is found, add our own version of memmove to the list of objects.
 AC_DEFUN([CF_FUNC_MEMMOVE],
 [
-if test ".$ac_cv_func_memmove" != .yes ; then
-	if test ".$ac_cv_func_bcopy" = ".yes" ; then
-		AC_MSG_CHECKING(if bcopy does overlapping moves)
-		AC_CACHE_VAL(cf_cv_good_bcopy,[
-			AC_TRY_RUN([
+AC_CHECK_FUNC(memmove,,[
+AC_CHECK_FUNC(bcopy,[
+	AC_CACHE_CHECK(if bcopy does overlapping moves,cf_cv_good_bcopy,[
+		AC_TRY_RUN([
 int main() {
 	static char data[] = "abcdefghijklmnopqrstuwwxyz";
 	char temp[40];
@@ -20,14 +19,10 @@ int main() {
 		[cf_cv_good_bcopy=no],
 		[cf_cv_good_bcopy=unknown])
 		])
-		AC_MSG_RESULT($cf_cv_good_bcopy)
-	else
-		cf_cv_good_bcopy=no
-	fi
+	],[cf_cv_good_bcopy=no])
 	if test $cf_cv_good_bcopy = yes ; then
 		AC_DEFINE(USE_OK_BCOPY)
 	else
 		AC_DEFINE(USE_MY_MEMMOVE)
 	fi
-fi
-])dnl
+])])dnl
