@@ -1,0 +1,15 @@
+dnl Look for the program that sends outgoing mail.
+AC_DEFUN([CF_PATH_MAILER],
+[
+AC_PATH_PROG(DEFAULT_MAILER,sendmail,,$PATH:/usr/sbin:/usr/lib)
+if test -z "$DEFAULT_MAILER" ; then
+AC_PATH_PROG(DEFAULT_MAILER,mailx,,$PATH:/usr/bin)
+fi
+if test -z "$DEFAULT_MAILER" ; then
+AC_PATH_PROG(DEFAULT_MAILER,mail,,$PATH:/usr/bin)
+fi
+if test -n "$DEFAULT_MAILER" ; then
+	AC_VERBOSE(found mailer $DEFAULT_MAILER)
+	AC_DEFINE_UNQUOTED(DEFAULT_MAILER,"$DEFAULT_MAILER")
+fi
+])dnl
