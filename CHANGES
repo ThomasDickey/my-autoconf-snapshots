@@ -1,3 +1,15 @@
+1998-12-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAKE_INCLUDE:
+	don't use $CONFIG_SHELL, since it breaks something on CLIX
+
+1998-12-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS:
+	add gnu* to shared-library cases
+
+	* AcSplit/CF_SRC_MODULES: whitespace
+
 1998-12-10  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_VARARGS: check for header files, so this works standalone
