@@ -1,3 +1,26 @@
+2001-01-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SSL: RCS_BASE
+
+	* AcSplit/CF_SSL, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SOCKS:
+	lynx: expand use of the parameter to set $CPPFLAGS as well as $LIBS
+
+	* AcSplit/CF_SOCKS5:
+	lynx: expand use of the parameter to set $CPPFLAGS as well as $LIBS
+	also, add check to define INCLUDE_PROTOTYPES
+
+2000-12-31  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TERMIO_AND_CURSES: ci-aclocal generated header
+
+	* AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_SOCKS5, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_XOPEN_CURSES:
+	lynx: change $CFLAGS to $CPPFLAGS
+
+	* AcSplit/CF_PDCURSES_X11: lynx: use CF_ADD_CFLAGS
+
 2000-12-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ADD_CFLAGS: add gcc's -undef, -nostdinc options

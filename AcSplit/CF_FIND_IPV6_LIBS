@@ -52,7 +52,7 @@ if test "$cf_ipv6lib" != "none"; then
 		cf_header=$cf_incdir/netinet/ip6.h
 		if test -f $cf_header
 		then
-			CFLAGS="$CFLAGS -I$cf_incdir"
+			CPPFLAGS="$CPPFLAGS -I$cf_incdir"
 			test -n "$verbose" && echo "	... found $cf_header" 1>&AC_FD_MSG
 			break
 		fi
