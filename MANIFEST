@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20040116
+MANIFEST for my-autoconf, version t20040119
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -34,6 +34,7 @@ AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no v
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
+AcSplit/CF_BUILD_CC             configure options to specify BUILD_CC, etc
 AcSplit/CF_BUNDLED_INTL         combine all libintl macros
 AcSplit/CF_BUNDLED_PCRE         macro to setup variables when configuriing for PCRE which may be bundled
 AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions

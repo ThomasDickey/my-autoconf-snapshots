@@ -1,6 +1,6 @@
-dnl AM_MULTIBYTE_ABLE version: 5 updated: 2003/01/16 16:21:27
+dnl AM_MULTIBYTE_ABLE version: 6 updated: 2004/01/19 12:11:07
 dnl -----------------
-
+dnl
 dnl check for required multibyte/widechar functions
 dnl Urs Janssen <urs@tin.org> 20021006
 dnl Usage: AM_MULTIBYTE_ABLE
@@ -62,14 +62,17 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
         mbstowcs(format, "%s", 2);
         swprintf(wcb, 5, format, "test");
         wcsncat(wcb2, wcb, 5);],
-        [am_cv_multibyte_able=yes
-         AC_DEFINE(HAVE_LIBUTF8_H)],
-        [am_cv_multibyte_able=no
-         LIBS="$cf_save_LIBS"])
+        [am_cv_multibyte_able=libutf8],
+        [am_cv_multibyte_able=no])
+      LIBS="$cf_save_LIBS"
    ])
-  if test $am_cv_multibyte_able = yes; then
+  ])
+  if test "$am_cv_multibyte_able" != no; then
+    if test "$am_cv_multibyte_able" = libutf8; then
+      AC_DEFINE(HAVE_LIBUTF8_H)
+      LIBS="-lutf8 $LIBS"
+    fi
     AC_DEFINE(MULTIBYTE_ABLE, 1,
       [Define if you have swprintf() and co.])
   fi
-  ])
 ])
