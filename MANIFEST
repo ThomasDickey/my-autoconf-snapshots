@@ -1,6 +1,7 @@
-MANIFEST for my-autoconf, version t19950823
+MANIFEST for my-autoconf, version t19961122
 --------------------------------------------------------------------------------
 MANIFEST                        this file
+config.sub                      autoconf's config.sub
 AcSplit                         subdirectory
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
