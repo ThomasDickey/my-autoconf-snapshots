@@ -1,3 +1,5 @@
+dnl CF_CPP_VSCAN_FUNC version: 5 updated: 2001/12/02 01:39:28
+dnl -----------------
 dnl Check if the g++ compiler supports vscan function (not a standard feature).
 AC_DEFUN([CF_CPP_VSCAN_FUNC],
 [
@@ -27,13 +29,12 @@ AC_CACHE_CHECK(if $CXX supports vscan function,cf_cv_cpp_vscan_func,[
 int scanw(const char* fmt, ...)
 {
     int result = -1;
-#if defined(__GNUG__)
     char buf[BUFSIZ];
 
     va_list args;
     va_start(args, fmt);
 #if defined(USE_STDIO_VSCAN)
-    if (::vscanf(fmt, args) != -1)
+    if (::vsscanf(buf, fmt, args) != -1)
 	result = 0;
 #elif defined(USE_STRSTREAM_VSCAN)
     strstreambuf ss(buf, sizeof(buf));
@@ -47,9 +48,6 @@ int scanw(const char* fmt, ...)
 #error case $cf_vscan_func failed
 #endif
     va_end(args);
-#else
-#error sorry, we only know about the GNU compiler case
-#endif
     return result;
 }
 ],[int tmp, foo = scanw("%d", &tmp)],

@@ -24,8 +24,18 @@ do
 			if test $cf_item = shared ; then
 			if test "$cf_cv_do_symlinks" = yes ; then
 				case "$cf_cv_shlib_version" in #(vi
-				rel) cf_suffix="$cf_suffix"'.$(REL_VERSION)' ;; #(vi
-				abi) cf_suffix="$cf_suffix"'.$(ABI_VERSION)' ;;
+				rel) #(vi
+					case "$cf_cv_system_name" in #(vi
+					darwin*) cf_suffix='.$(REL_VERSION)'"$cf_suffix" ;; #(vi
+					*) cf_suffix="$cf_suffix"'.$(REL_VERSION)' ;;
+					esac
+					;;
+				abi)
+					case "$cf_cv_system_name" in #(vi
+					darwin*) cf_suffix='.$(ABI_VERSION)'"$cf_suffix" ;; #(vi
+					*) cf_suffix="$cf_suffix"'.$(ABI_VERSION)' ;;
+					esac
+					;;
 				esac
 			fi
 			fi
@@ -48,7 +58,7 @@ do
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
 
 		$AWK -f $srcdir/mk-0th.awk \
-			name=$cf_dir \
+			libname="${cf_dir}${LIB_SUFFIX}" \
 			$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 
 		for cf_item in $CF_LIST_MODELS
@@ -84,6 +94,7 @@ do
 				suffix=$cf_suffix \
 				subset=$cf_subset \
 				ShlibVer=$cf_cv_shlib_version \
+				ShlibVerInfix=$cf_cv_shlib_version_infix \
 				DoLinks=$cf_cv_do_symlinks \
 				rmSoLocs=$cf_cv_rm_so_locs \
 				ldconfig="$LDCONFIG" \
@@ -155,11 +166,11 @@ done
 
 cat >> Makefile <<CF_EOF
 
-install.data \
+install.data \\
 uninstall.data ::
-	cd misc && \$(MAKE) \$(CF_MFLAGS) \[$]@
+$MAKE_TERMINFO	cd misc && \$(MAKE) \$(CF_MFLAGS) \[$]@
 
-install.man \
+install.man \\
 uninstall.man ::
 	cd man && \$(MAKE) \$(CF_MFLAGS) \[$]@
 
@@ -174,7 +185,7 @@ if test -d tack ; then
 if test -f $srcdir/$tack.h; then
 cat >> Makefile <<CF_EOF
 
-install.man \
+install.man \\
 uninstall.man ::
 	cd tack && \$(MAKE) \$(CF_MFLAGS) \[$]@
 CF_EOF
@@ -269,7 +280,7 @@ do
 	if test -f $srcdir/$cf_dir/headers; then
 	cat >>$cf_dir/Makefile <<CF_EOF
 \$(DESTDIR)\$(includedir) :
-	\$(srcdir)/../mkinstalldirs \[$]@
+	sh \$(srcdir)/../mkinstalldirs \[$]@
 
 install \\
 install.libs \\

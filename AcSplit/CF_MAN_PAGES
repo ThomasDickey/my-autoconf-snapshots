@@ -33,7 +33,7 @@ cat >man/edit_man.sh <<CF_EOF
 prefix="$cf_prefix"
 datadir="$datadir"
 TERMINFO="$TERMINFO"
-MKDIRS="`cd $srcdir && pwd`/mkinstalldirs"
+MKDIRS="sh `cd $srcdir && pwd`/mkinstalldirs"
 INSTALL="$INSTALL"
 INSTALL_DATA="$INSTALL_DATA"
 transform="$program_transform_name"

@@ -17,5 +17,6 @@ AC_SUBST(cf_cv_rel_version)
 AC_SUBST(cf_cv_abi_version)
 AC_SUBST(cf_cv_cc_bool_type)
 AC_SUBST(cf_cv_builtin_bool)
+AC_SUBST(cf_cv_header_stdbool_h)
 AC_SUBST(cf_cv_type_of_bool)dnl
 ])dnl
