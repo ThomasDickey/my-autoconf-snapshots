@@ -1,3 +1,8 @@
+2001-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PDCURSES_X11:
+	use CF_CHECK_CFLAGS rather than CF_ADD_CFLAGS
+
 2001-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_CFLAGS:
