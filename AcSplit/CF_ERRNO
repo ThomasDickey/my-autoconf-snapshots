@@ -1,13 +1,7 @@
+dnl CF_ERRNO version: 5 updated: 1997/11/30 12:44:39
+dnl --------
 dnl Check if 'errno' is declared in <errno.h>
 AC_DEFUN([CF_ERRNO],
 [
-AC_MSG_CHECKING([for errno external decl])
-AC_CACHE_VAL(cf_cv_extern_errno,[
-    AC_TRY_COMPILE([
-#include <errno.h>],
-        [int x = errno],
-        [cf_cv_extern_errno=yes],
-        [cf_cv_extern_errno=no])])
-AC_MSG_RESULT($cf_cv_extern_errno)
-test $cf_cv_extern_errno = no && AC_DEFINE(DECL_ERRNO)
+CF_CHECK_ERRNO(errno)
 ])dnl

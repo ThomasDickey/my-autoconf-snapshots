@@ -1,0 +1,30 @@
+dnl Check for data that is usually declared in <stdio.h> or <errno.h>
+dnl $1 = the name to check
+AC_DEFUN([CF_CHECK_ERRNO],
+[
+AC_MSG_CHECKING([declaration of $1])
+AC_CACHE_VAL(cf_cv_dcl_$1,[
+    AC_TRY_COMPILE([
+#include <stdio.h>
+#include <sys/types.h>
+#include <errno.h> ],
+    [long x = (long) $1],
+    [eval 'cf_cv_dcl_'$1'=yes'],
+    [eval 'cf_cv_dcl_'$1'=no]')])
+eval 'cf_result=$cf_cv_dcl_'$1
+AC_MSG_RESULT($cf_result)
+
+# It's possible (for near-UNIX clones) that the data doesn't exist
+if test $cf_cv_dcl_$1 = no ; then
+    CF_UPPER(cf_NAME,cf_name)
+    AC_DEFINE(DECL_$cf_NAME)
+    AC_MSG_CHECKING([existence of $1])
+    AC_CACHE_VAL(cf_cv_have_$1,[
+        AC_TRY_LINK([#include <errno.h>],
+            [long x = (long) $1],
+            [eval 'cf_cv_have_'$1'=yes'],
+            [eval 'cf_cv_have_'$1'=no'])])
+    eval 'cf_result=$cf_cv_have_'$1
+    AC_MSG_RESULT($cf_result)
+fi
+])dnl

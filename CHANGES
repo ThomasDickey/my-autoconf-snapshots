@@ -1,3 +1,23 @@
+1997-11-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MISSING_CHECK:
+	use CHECK_DECL_HDRS rather than explicit list, to make this reusable.
+	(vile now uses estruct.h's list)
+
+	* AcSplit/CF_CHECK_ERRNO: RCS_BASE
+
+	* AcSplit/CF_ERRNO: ci-aclocal generated header
+
+	* AcSplit/CF_ERRNO, AcSplit/CF_SYS_ERRLIST: use CF_CHECK_ERRNO
+
+1997-11-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TIOCGWINSZ: ci-aclocal generated header
+
+	* AcSplit/CF_TIOCGWINSZ: consolidated changes from CF_CHECK_1_DECL
+
+	* AcSplit/CF_CHECK_1_DECL: simplified by reusing tin.h
+
 1997-11-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_MEMMOVE: quoted a variable that needed it

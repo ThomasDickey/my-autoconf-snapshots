@@ -1,3 +1,5 @@
+dnl CF_TIOCGWINSZ version: 3 updated: 1997/11/29 01:04:53
+dnl -------------
 dnl On some systems ioctl(fd, TIOCGWINSZ, &size) will always return {0,0} until
 dnl ioctl(fd, TIOCSWINSZ, &size) is called to explicitly set the size of the
 dnl screen.
@@ -5,19 +7,16 @@ dnl
 dnl Attempt to determine if we're on such a system by running a test-program.
 dnl This won't work, of course, if the configure script is run in batch mode,
 dnl since we've got to have access to the terminal.
+dnl
+dnl CHECK_DECL_FLAG and CHECK_DECL_HDRS must be set in configure.in
 AC_DEFUN([CF_TIOCGWINSZ],
 [
 AC_MSG_CHECKING([for working TIOCGWINSZ])
 AC_CACHE_VAL(cf_cv_use_tiocgwinsz,[
-	cf_save="$CFLAGS"
-	CFLAGS="-I. -I$srcdir/include -DHAVE_CONFIG_H -D__CPROTO__ $CFLAGS"
-	rm -f autoconf.h
-	echo > autoconf.h
+	cf_save_CFLAGS="$CFLAGS"
+	CFLAGS="$CFLAGS -D__CPROTO__ $CHECK_DECL_FLAG"
 	AC_TRY_RUN([
-#ifndef M_UNIX
-#define M_UNIX
-#endif
-#include <tin.h>
+$CHECK_DECL_HDRS
 int main()
 {
 	int fd;
@@ -42,7 +41,7 @@ int main()
 		[cf_cv_use_tiocgwinsz=no],
 		[cf_cv_use_tiocgwinsz=unknown])
 		rm -f autoconf.h
-		CFLAGS="$cf_save"])
+		CFLAGS="$cf_save_CFLAGS"])
 AC_MSG_RESULT($cf_cv_use_tiocgwinsz)
 test $cf_cv_use_tiocgwinsz != yes && AC_DEFINE(DONT_HAVE_SIGWINCH)
 ])dnl
