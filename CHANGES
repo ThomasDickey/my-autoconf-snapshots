@@ -1,3 +1,10 @@
+2003-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	cdk: for CF_DISABLE_ECHO, reset the ECHO_LT variable if we're not using libtool
+
+	* AcSplit/CF_DISABLE_ECHO: cdk: add ECHO_LT, to quiet libtool
+
 2003-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS: ci-aclocal generated header
