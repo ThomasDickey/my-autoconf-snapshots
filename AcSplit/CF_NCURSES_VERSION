@@ -6,8 +6,10 @@ AC_DEFUN([CF_NCURSES_VERSION],
 AC_CACHE_CHECK(for ncurses version, cf_cv_ncurses_version,[
 	cf_cv_ncurses_version=no
 	cf_tempfile=out$$
+	rm -f $cf_tempfile
 	AC_TRY_RUN([
 #include <${cf_cv_ncurses_header-curses.h}>
+#include <stdio.h>
 int main()
 {
 	FILE *fp = fopen("$cf_tempfile", "w");
@@ -26,8 +28,7 @@ int main()
 #endif
 	exit(0);
 }],[
-	cf_cv_ncurses_version=`cat $cf_tempfile`
-	rm -f $cf_tempfile],,[
+	cf_cv_ncurses_version=`cat $cf_tempfile`],,[
 
 	# This will not work if the preprocessor splits the line after the
 	# Autoconf token.  The 'unproto' program does that.
@@ -50,6 +51,8 @@ EOF
 		test -n "$cf_out" && cf_cv_ncurses_version="$cf_out"
 		rm -f conftest.out
 	fi
-])])
+])
+	rm -f $cf_tempfile
+])
 test "$cf_cv_ncurses_version" = no || AC_DEFINE(NCURSES)
 ])
