@@ -79,7 +79,7 @@ done
 
 if test -n "$ADA_SUBDIRS"; then
    for cf_dir in $ADA_SUBDIRS
-   do	
+   do
       SUB_MAKEFILES="$SUB_MAKEFILES Ada95/$cf_dir/Makefile"
    done
    AC_SUBST(ADA_SUBDIRS)
