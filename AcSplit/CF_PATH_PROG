@@ -1,0 +1,44 @@
+dnl Check for a given program, defining corresponding symbol.
+dnl	$1 = environment variable, which is suffixed by "_PATH" in the #define.
+dnl	$2 = program name to find.
+dnl
+dnl If there is more than one token in the result, #define the remaining tokens
+dnl to $1_ARGS.  We need this for 'install' in particular.
+dnl
+dnl FIXME: we should allow this to be overridden by environment variables
+dnl
+AC_DEFUN([CF_PATH_PROG],[
+test -z "[$]$1" && $1=$2
+if test "$with_full_paths" = yes ; then
+	AC_PATH_PROG($1,$2,[$]$1)
+else
+	AC_MSG_CHECKING(for $2)
+	AC_MSG_RESULT([$]$1)
+	eval 'ac_cv_path_'$1'="'$2'"'
+fi
+cf_path_prog=""
+cf_path_args=""
+IFS="${IFS= 	}"; cf_save_ifs="$IFS"
+case $host_os in #(vi
+os2*) #(vi
+	IFS="${IFS};"
+	;;
+*)
+	IFS="${IFS}:"
+	;;
+esac
+for cf_temp in $ac_cv_path_$1
+do
+	if test -z "$cf_path_prog" ; then
+		cf_path_prog="$cf_temp"
+	elif test -z "$cf_path_args" ; then
+		cf_path_args="$cf_temp"
+	else
+		cf_path_args="$cf_path_args $cf_temp"
+	fi
+done
+IFS="$cf_save_ifs"
+
+AC_DEFINE_UNQUOTED($1_PATH,"$cf_path_prog")
+test -n "$cf_path_args" && AC_DEFINE_UNQUOTED($1_ARGS,"$cf_path_args")
+])dnl

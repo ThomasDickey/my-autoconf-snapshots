@@ -1,0 +1,59 @@
+dnl	Combines AC_HAVE_FUNCS logic with additional test from Kevin Buettner
+dnl	that checks to see if we need a prototype for the given function.
+dnl
+dnl The prototype-check is only turned on when we're configuring to compile
+dnl with warnings.
+dnl
+AC_DEFUN([CF_HAVE_FUNCS],
+[
+cf_CFLAGS="$CFLAGS"
+CFLAGS="$CFLAGS -Iinclude"
+for cf_func in $1
+do
+CF_UPPER(cf_tr_func,$cf_func)
+AC_MSG_CHECKING(for ${cf_func})
+CF_MSG_LOG(${cf_func})
+AC_CACHE_VAL(cf_cv_func_$cf_func,[
+	# Test for prior functional test (e.g., vfork).
+eval cf_result='$ac_cv_func_'$cf_func
+if test ".$cf_result" != ".no"; then
+	# GCC won't reliably fail on prototype mismatches unless we make all
+	# warnings into errors.  Of course, _this_ assumes that the config is
+	# otherwise ok.
+AC_TRY_LINK([#undef ${cf_func}],[${cf_func}();],[
+if test $WithPrototypes != yes; then
+	cf_result=yes
+elif test $WithWarnings = yes; then
+	if test $ac_cv_prog_gcc = yes; then
+		CFLAGS="$CFLAGS -Werror"
+	fi
+	AC_TRY_COMPILE([
+#undef  HAVE_${cf_tr_func}
+#define HAVE_${cf_tr_func} 1
+#include <td_local.h>],
+[
+#undef $cf_func
+	struct zowie { int a; double b; struct zowie *c; char d; };
+	extern struct zowie *$cf_func(); $cf_func() ],
+	[cf_result=undeclared],
+	[cf_result=declared])
+else
+	cf_result=yes
+fi
+],
+[cf_result=no])
+fi
+eval 'cf_cv_func_'$cf_func'=$cf_result'
+])
+# use the computed/retrieved cache-value:
+eval 'cf_result=$cf_cv_func_'$cf_func
+AC_MSG_RESULT($cf_result)
+if test $cf_result != no; then
+	AC_DEFINE_UNQUOTED(HAVE_${cf_tr_func})
+	if test $cf_result = undeclared; then
+		AC_DEFINE_UNQUOTED(NEED_${cf_tr_func})
+	fi
+fi
+done
+CFLAGS="$cf_CFLAGS"
+])dnl

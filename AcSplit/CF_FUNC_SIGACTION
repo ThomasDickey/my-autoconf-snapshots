@@ -1,0 +1,20 @@
+dnl CF_FUNC_SIGACTION version: 2 updated: 1999/07/28 06:09:35
+dnl -----------------
+dnl Check if we have the sigaction function and related structures.
+AC_DEFUN([CF_FUNC_SIGACTION],[
+AC_CACHE_CHECK(for sigaction and structs,cf_cv_func_sigaction,[
+AC_TRY_LINK([
+#include <sys/types.h>
+#include <signal.h>],
+	[struct sigaction act;
+	act.sa_handler = SIG_DFL;
+#ifdef SA_RESTART
+	act.sa_flags |= SA_RESTART;
+#endif /* SA_RESTART */
+	sigaction(1, &act, 0);
+	],
+	[cf_cv_func_sigaction=yes],
+	[cf_cv_func_sigaction=no])
+])
+test "$cf_cv_func_sigaction" = yes && AC_DEFINE(HAVE_SIGACTION)
+])dnl

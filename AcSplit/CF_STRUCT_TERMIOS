@@ -1,0 +1,25 @@
+dnl Some machines require _POSIX_SOURCE to completely define struct termios.
+dnl If so, define SVR4_TERMIO
+AC_DEFUN([CF_STRUCT_TERMIOS],[
+if test $ac_cv_header_termios_h = yes ; then
+	case "$CFLAGS" in
+	*-D_POSIX_SOURCE*)
+		termios_bad=dunno ;;
+	*)	termios_bad=maybe ;;
+	esac
+	if test $termios_bad = maybe ; then
+	AC_MSG_CHECKING(whether termios.h needs _POSIX_SOURCE)
+	AC_TRY_COMPILE([#include <termios.h>],
+		[struct termios foo; int x = foo.c_iflag],
+		termios_bad=no, [
+		AC_TRY_COMPILE([
+#define _POSIX_SOURCE
+#include <termios.h>],
+			[struct termios foo; int x = foo.c_iflag],
+			termios_bad=unknown,
+			termios_bad=yes AC_DEFINE(SVR4_TERMIO))
+			])
+	AC_MSG_RESULT($termios_bad)
+	fi
+fi
+])dnl

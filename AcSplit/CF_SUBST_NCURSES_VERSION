@@ -1,0 +1,23 @@
+dnl Get the version-number for use in shared-library naming, etc.
+AC_DEFUN([CF_SUBST_NCURSES_VERSION],
+[
+changequote(,)dnl
+NCURSES_MAJOR="`egrep '^NCURSES_MAJOR[ 	]*=' $srcdir/dist.mk | sed -e 's/^[^0-9]*//'`"
+NCURSES_MINOR="`egrep '^NCURSES_MINOR[ 	]*=' $srcdir/dist.mk | sed -e 's/^[^0-9]*//'`"
+NCURSES_PATCH="`egrep '^NCURSES_PATCH[ 	]*=' $srcdir/dist.mk | sed -e 's/^[^0-9]*//'`"
+changequote([,])dnl
+cf_cv_abi_version=${NCURSES_MAJOR}
+cf_cv_rel_version=${NCURSES_MAJOR}.${NCURSES_MINOR}
+dnl Show the computed version, for logging
+AC_MSG_RESULT(Configuring NCURSES $cf_cv_rel_version ABI $cf_cv_abi_version (`date`))
+dnl We need these values in the generated headers
+AC_SUBST(NCURSES_MAJOR)
+AC_SUBST(NCURSES_MINOR)
+AC_SUBST(NCURSES_PATCH)
+dnl We need these values in the generated makefiles
+AC_SUBST(cf_cv_rel_version)
+AC_SUBST(cf_cv_abi_version)
+AC_SUBST(cf_cv_cc_bool_type)
+AC_SUBST(cf_cv_builtin_bool)
+AC_SUBST(cf_cv_type_of_bool)dnl
+])dnl

@@ -1,0 +1,20 @@
+dnl Check if we can include <sys/time.h> with <sys/select.h>; this breaks on
+dnl older SCO configurations.
+AC_DEFUN([CF_SYS_TIME_SELECT],
+[
+AC_MSG_CHECKING(if sys/time.h works with sys/select.h)
+AC_CACHE_VAL(cf_cv_sys_time_select,[
+AC_TRY_COMPILE([
+#include <sys/types.h>
+#if HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif
+#if HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#endif
+],[],[cf_cv_sys_time_select=yes],
+     [cf_cv_sys_time_select=no])
+     ])
+AC_MSG_RESULT($cf_cv_sys_time_select)
+test $cf_cv_sys_time_select = yes && AC_DEFINE(HAVE_SYS_TIME_SELECT)
+])dnl

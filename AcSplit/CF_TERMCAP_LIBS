@@ -1,0 +1,53 @@
+dnl Look for termcap libraries, or the equivalent in terminfo.
+AC_DEFUN([CF_TERMCAP_LIBS],
+[
+AC_CACHE_VAL(cf_cv_termlib,[
+cf_cv_termlib=none
+AC_TRY_LINK([],[char *x=(char*)tgoto("",0,0)],
+[AC_TRY_LINK([],[int x=tigetstr("")],
+	[cf_cv_termlib=terminfo],
+	[cf_cv_termlib=termcap])
+	CF_VERBOSE(using functions in predefined $cf_cv_termlib LIBS)
+],[
+ifelse([$1],,,[
+if test "$1" = ncurses; then
+	CF_NCURSES_CPPFLAGS
+	CF_NCURSES_LIBS
+	cf_cv_termlib=terminfo
+fi
+])
+if test "$cf_cv_termlib" = none; then
+	# FreeBSD's linker gives bogus results for AC_CHECK_LIB, saying that
+	# tgetstr lives in -lcurses when it is only an unsatisfied extern.
+	cf_save_LIBS="$LIBS"
+	for cf_lib in curses ncurses termlib termcap
+	do
+	LIBS="-l$cf_lib $cf_save_LIBS"
+	for cf_func in tigetstr tgetstr
+	do
+		AC_MSG_CHECKING(for $cf_func in -l$cf_lib)
+		AC_TRY_LINK([],[int x=$cf_func("")],[cf_result=yes],[cf_result=no])
+		AC_MSG_RESULT($cf_result)
+		if test "$cf_result" = yes ; then
+			if test "$cf_func" = tigetstr ; then
+				cf_cv_termlib=terminfo
+			else
+				cf_cv_termlib=termcap
+			fi
+			break
+		fi
+	done
+		test "$cf_result" = yes && break
+	done
+	test "$cf_result" = no && LIBS="$cf_save_LIBS"
+fi
+if test "$cf_cv_termlib" = none; then
+	# allow curses library for broken AIX system.
+	AC_CHECK_LIB(curses, initscr, [LIBS="$LIBS -lcurses" cf_cv_termlib=termcap])
+	AC_CHECK_LIB(termcap, tgoto, [LIBS="$LIBS -ltermcap" cf_cv_termlib=termcap])
+fi
+])
+if test "$cf_cv_termlib" = none; then
+	AC_ERROR([Can't find -ltermlib, -lcurses, or -ltermcap])
+fi
+])])dnl

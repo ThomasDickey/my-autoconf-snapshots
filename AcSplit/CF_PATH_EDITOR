@@ -1,0 +1,19 @@
+dnl Look for the default editor (vi)
+AC_DEFUN([CF_PATH_EDITOR],
+[
+AC_MSG_CHECKING(for default editor)
+CF_ARG_WITH(editor,
+    [  --with-editor=PROG      specify editor (default: vi)],
+    [DEFAULT_EDITOR])
+if test -z "$DEFAULT_EDITOR" ; then
+    if test -n "$EDITOR" ; then
+    	DEFAULT_EDITOR="$EDITOR"
+    elif test -n "$VISUAL" ; then
+    	DEFAULT_EDITOR="$VISUAL"
+    else
+	AC_PATH_PROG(DEFAULT_EDITOR,vi,vi,$PATH:/usr/bin:/usr/ucb)
+    fi
+fi
+AC_MSG_RESULT($DEFAULT_EDITOR)
+AC_DEFINE_UNQUOTED(DEFAULT_EDITOR,"$DEFAULT_EDITOR")
+])dnl

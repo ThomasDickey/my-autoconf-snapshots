@@ -1,0 +1,14 @@
+dnl CF_UNSIGNED_LITERALS version: 2 updated: 1998/02/07 22:10:16
+dnl --------------------
+dnl Test if the compiler supports 'U' and 'L' suffixes.  Only old compilers
+dnl won't, but they're still there.
+AC_DEFUN([CF_UNSIGNED_LITERALS],
+[
+AC_MSG_CHECKING([if unsigned literals are legal])
+AC_CACHE_VAL(cf_cv_unsigned_literals,[
+	AC_TRY_COMPILE([],[long x = 1L + 1UL + 1U + 1],
+		[cf_cv_unsigned_literals=yes],
+		[cf_cv_unsigned_literals=no])
+	])
+AC_MSG_RESULT($cf_cv_unsigned_literals)
+])dnl

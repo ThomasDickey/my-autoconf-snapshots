@@ -1,0 +1,72 @@
+AC_DEFUN([CF_GMTOFF],
+[
+cf_decl='#include <sys/types.h>
+'
+if test $ac_cv_header_sys_time_h = yes; then
+	cf_decl="$cf_decl
+#include <sys/time.h>
+"
+else
+	cf_decl="$cf_decl
+#include <time.h>
+"
+fi
+
+AC_STRUCT_TM
+AC_MSG_CHECKING(for localzone declared)
+AC_CACHE_VAL(cf_cv_decl_localzone,[
+	AC_TRY_COMPILE([$cf_decl],
+		[long x = localzone],
+		[cf_cv_decl_localzone=yes],
+		[cf_cv_decl_localzone=no])])
+AC_MSG_RESULT($cf_cv_decl_localzone)
+test $cf_cv_decl_localzone = yes && AC_DEFINE(LOCALZONE_DECLARED)
+
+AC_MSG_CHECKING(for timezone declared)
+AC_CACHE_VAL(cf_cv_decl_timezone,[
+	AC_TRY_COMPILE($cf_decl,
+		[long x = timezone;
+		 timezone = x],
+		[cf_cv_decl_timezone=yes],
+		[cf_cv_decl_timezone=no])])
+AC_MSG_RESULT($cf_cv_decl_timezone)
+if test $cf_cv_decl_timezone = yes; then
+	AC_DEFINE(TIMEZONE_DECLARED)
+
+	AC_MSG_CHECKING(for daylight declared)
+	AC_CACHE_VAL(cf_cv_decl_daylight,[
+		AC_TRY_COMPILE($cf_decl,
+			[long x = daylight],
+			[cf_cv_decl_daylight=yes],
+			[cf_cv_decl_daylight=no])])
+	AC_MSG_RESULT($cf_cv_decl_daylight)
+	test $cf_cv_decl_daylight = yes && AC_DEFINE(DAYLIGHT_DECLARED)
+fi
+
+AC_MSG_CHECKING(for .tm_gmtoff in struct tm)
+AC_CACHE_VAL(cf_cv_tm_gmtoff_decl,[
+	AC_TRY_COMPILE([$cf_decl],
+		[struct tm tm; tm.tm_gmtoff],
+		[cf_cv_tm_gmtoff_decl=yes],
+		[cf_cv_tm_gmtoff_decl=no])])
+AC_MSG_RESULT($cf_cv_tm_gmtoff_decl)
+test $cf_cv_tm_gmtoff_decl = yes && AC_DEFINE(HAVE_TM_GMTOFF)
+
+AC_MSG_CHECKING(for .tm_isdst in struct tm)
+AC_CACHE_VAL(cf_cv_tm_isdst_decl,[
+	AC_TRY_COMPILE([$cf_decl],
+		[struct tm tm; tm.tm_isdst],
+		[cf_cv_tm_isdst_decl=yes],
+		[cf_cv_tm_isdst_decl=no])])
+AC_MSG_RESULT($cf_cv_tm_isdst_decl)
+test $cf_cv_tm_isdst_decl = yes && AC_DEFINE(HAVE_TM_ISDST)
+
+AC_MSG_CHECKING(for .tm_zone in struct tm)
+AC_CACHE_VAL(cf_cv_tm_zone_decl,[
+	AC_TRY_COMPILE([$cf_decl],
+		[struct tm tm; tm.tm_zone],
+		[cf_cv_tm_zone_decl=yes],
+		[cf_cv_tm_zone_decl=no])])
+AC_MSG_RESULT($cf_cv_tm_zone_decl)
+test $cf_cv_tm_zone_decl = yes && AC_DEFINE(HAVE_TM_ZONE)
+])dnl

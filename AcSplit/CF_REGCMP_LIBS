@@ -1,0 +1,33 @@
+dnl CF_REGCMP_LIBS version: 2 updated: 1997/09/07 15:13:55
+dnl --------------
+dnl Tests for the presence of regcmp/regex functions (no include-file?)
+dnl Some systems (CLIX) use <pw.h> for this purpose.  CLIX requires the -lPW,
+dnl but HPUX has only a broken version of that library, so we've got to
+dnl try the compile with/without the library.
+dnl
+dnl By the way: CLIX's PW library has a conflict with the curses library's
+dnl "move()" function.
+AC_DEFUN([CF_REGCMP_LIBS],
+[
+AC_TRY_RUN([
+#include <stdio.h>	/* need this for CLIX to define '__' macro */
+#if HAVE_PW_H
+#include <pw.h>		/* _must_ use prototype on CLIX */
+#endif
+#if HAVE_LIBGEN_H
+#include <libgen.h>	/* IRIX defines it here */
+#endif
+	int main() {
+		char *e;
+		char *p = "foo";
+		char *s = "foobar";
+		if ((e = (char *)regcmp(p, 0)) == 0
+		 || regex(e, s, 0) == 0)
+		 	exit(1);
+		free(e);
+		exit(0);
+	} ],
+	[cf_cv_REGCMP_func=yes],
+	[cf_cv_REGCMP_func=no],
+	[cf_cv_REGCMP_func=unknown])
+])dnl

@@ -1,0 +1,103 @@
+dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
+dnl get these, but if imake is properly configured there is no point in doing
+dnl this.
+AC_DEFUN([CF_IMAKE_CFLAGS],
+[
+AC_PATH_PROGS(IMAKE,xmkmf imake)
+case $IMAKE in # (vi
+*/imake)
+	cf_imake_opts="-DUseInstalled=YES" # (vi
+	;;
+*)
+	cf_imake_opts=
+	;;
+esac
+
+# If it's installed properly, imake (or its wrapper, xmkmf) will point to the
+# config directory.
+if mkdir conftestdir; then
+	cf_makefile=`cd $srcdir;pwd`/Imakefile
+	cd conftestdir
+	echo >./Imakefile
+	test -f $cf_makefile && cat $cf_makefile >>./Imakefile
+	cat >> ./Imakefile <<'CF_EOF'
+findstddefs:
+	@echo 'IMAKE_CFLAGS="${ALLDEFINES} ifelse($1,,,$1)"'
+	@echo 'IMAKE_LOADFLAGS="${EXTRA_LOAD_FLAGS} ifelse($2,,,$2)"'
+CF_EOF
+	if ( $IMAKE $cf_imake_opts 1>/dev/null 2>&AC_FD_CC && test -f Makefile)
+	then
+		CF_VERBOSE(Using $IMAKE)
+	else
+		# sometimes imake doesn't have the config path compiled in.  Find it.
+		cf_config=
+		for cf_libpath in $X_LIBS $LIBS ; do
+			case $cf_libpath in # (vi
+			-L*)
+				cf_libpath=`echo .$cf_libpath | sed -e 's/^...//'`
+				cf_libpath=$cf_libpath/X11/config
+				if test -d $cf_libpath ; then
+					cf_config=$cf_libpath
+					break
+				fi
+				;;
+			esac
+		done
+		if test -z "$cf_config" ; then
+			AC_WARN(Could not find imake config-directory)
+		else
+			cf_imake_opts="$cf_imake_opts -I$cf_config"
+			if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
+			then
+				CF_VERBOSE(Using $IMAKE $cf_config)
+			else
+				AC_WARN(Cannot run $IMAKE)
+			fi
+		fi
+	fi
+
+	# GNU make sometimes prints "make[1]: Entering...", which
+	# would confuse us.
+	eval `make findstddefs 2>/dev/null | grep -v make`
+
+	cd ..
+	rm -rf conftestdir
+
+	# We use $(ALLDEFINES) rather than $(STD_DEFINES) because the former
+	# declares XTFUNCPROTO there.  However, some vendors (e.g., SGI) have
+	# modified it to support site.cf, adding a kludge for the /usr/include
+	# directory.  Try to filter that out, otherwise gcc won't find its
+	# headers.
+	if test -n "$GCC" ; then
+	    if test -n "$IMAKE_CFLAGS" ; then
+		cf_nostdinc=""
+		cf_std_incl=""
+		cf_cpp_opts=""
+		for cf_opt in $IMAKE_CFLAGS
+		do
+		    case "$cf_opt" in
+		    -nostdinc) #(vi
+			cf_nostdinc="$cf_opt"
+			;;
+		    -I/usr/include) #(vi
+			cf_std_incl="$cf_opt"
+			;;
+		    *) #(vi
+			cf_cpp_opts="$cf_cpp_opts $cf_opt"
+			;;
+		    esac
+		done
+		if test -z "$cf_nostdinc" ; then
+		    IMAKE_CFLAGS="$cf_cpp_opts $cf_std_incl"
+		elif test -z "$cf_std_incl" ; then
+		    IMAKE_CFLAGS="$cf_cpp_opts $cf_nostdinc"
+		else
+		    CF_VERBOSE(suppressed \"$cf_nostdinc\" and \"$cf_std_incl\")
+		    IMAKE_CFLAGS="$cf_cpp_opts"
+		fi
+	    fi
+	fi
+fi
+AC_SUBST(IMAKE_CFLAGS)
+AC_SUBST(IMAKE_LOADFLAGS)
+])dnl

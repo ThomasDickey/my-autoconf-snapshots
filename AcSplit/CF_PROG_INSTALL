@@ -1,0 +1,17 @@
+dnl Force $INSTALL to be an absolute-path.  Otherwise, edit_man.sh and the
+dnl misc/tabset install won't work properly.  Usually this happens only when
+dnl using the fallback mkinstalldirs script
+AC_DEFUN([CF_PROG_INSTALL],
+[AC_PROG_INSTALL
+case $INSTALL in
+/*)
+  ;;
+*)
+changequote({{,}})dnl
+  cf_dir=`echo $INSTALL|sed -e 's%/[^/]*$%%'`
+  test -z "$cf_dir" && cf_dir=.
+changequote([,])dnl
+  INSTALL=`cd $cf_dir && pwd`/`echo $INSTALL | sed -e 's:^.*/::'`
+  ;;
+esac
+])dnl

@@ -1,0 +1,35 @@
+dnl Some 'make' programs support $(MAKEFLAGS), some $(MFLAGS), to pass 'make'
+dnl options to lower-levels.  It's very useful for "make -n" -- if we have it.
+dnl (GNU 'make' does both, something POSIX 'make', which happens to make the
+dnl $(MAKEFLAGS) variable incompatible because it adds the assignments :-)
+AC_DEFUN([CF_MAKEFLAGS],
+[
+AC_MSG_CHECKING([for makeflags variable])
+AC_CACHE_VAL(cf_cv_makeflags,[
+	cf_cv_makeflags=''
+	for cf_option in '-$(MAKEFLAGS)' '$(MFLAGS)'
+	do
+		cat >cf_makeflags.tmp <<CF_EOF
+all :
+	@ echo '.$cf_option'
+CF_EOF
+		cf_result=`${MAKE-make} -k -f cf_makeflags.tmp 2>/dev/null`
+		case "$cf_result" in
+		.*k)
+			cf_result=`${MAKE-make} -k -f cf_makeflags.tmp CC=cc 2>/dev/null`
+			case "$cf_result" in
+			.*CC=*)	cf_cv_makeflags=
+				;;
+			*)	cf_cv_makeflags=$cf_option
+				;;
+			esac
+			break
+			;;
+		*)	echo no match "$cf_result"
+			;;
+		esac
+	done
+	rm -f cf_makeflags.tmp])
+AC_MSG_RESULT($cf_cv_makeflags)
+AC_SUBST(cf_cv_makeflags)
+])dnl

@@ -1,0 +1,27 @@
+dnl CF_TM_GMTOFF version: 2 updated: 1997/08/28 23:57:55
+dnl ------------
+dnl Check if the tm-struct defines the '.tm_gmtoff' member (useful in decoding
+dnl dates).
+AC_DEFUN([CF_TM_GMTOFF],
+[
+AC_MSG_CHECKING([for tm.tm_gmtoff])
+AC_CACHE_VAL(cf_cv_tm_gmtoff,[
+	AC_TRY_COMPILE([
+#ifdef TIME_WITH_SYS_TIME
+#	include <sys/time.h>
+#	include <time.h>
+#else
+#	ifdef HAVE_SYS_TIME_H
+#		include <sys/time.h>
+#	else
+#		include <time.h>
+#	endif
+#endif
+],[
+	struct tm foo;
+	long bar = foo.tm_gmtoff],
+	[cf_cv_tm_gmtoff=yes],
+	[cf_cv_tm_gmtoff=no])])
+AC_MSG_RESULT($cf_cv_tm_gmtoff)
+test $cf_cv_tm_gmtoff = no && AC_DEFINE(DONT_HAVE_TM_GMTOFF)
+])dnl

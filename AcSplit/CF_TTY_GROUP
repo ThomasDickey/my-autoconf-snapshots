@@ -1,0 +1,22 @@
+dnl Check if the system has a tty-group defined.  This is used in xterm when
+dnl setting pty ownership.
+AC_DEFUN([CF_TTY_GROUP],
+[
+AC_CACHE_CHECK(for tty group,cf_cv_tty_group,[
+AC_TRY_RUN([
+#include <sys/types.h>
+#include <grp.h>
+int main()
+{
+	struct group *ttygrp;
+	int code = (ttygrp = getgrnam("tty")) == 0;
+	endgrent();
+	exit(code);
+}
+	],
+	[cf_cv_tty_group=yes],
+	[cf_cv_tty_group=no],
+	[cf_cv_tty_group=unknown])
+])
+test $cf_cv_tty_group = yes && AC_DEFINE(USE_TTY_GROUP)
+])dnl

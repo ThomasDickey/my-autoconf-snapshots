@@ -1,0 +1,34 @@
+dnl Note: must follow AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
+dnl messes up the messages...
+AC_DEFUN([CF_KILLPG],
+[
+AC_MSG_CHECKING([if killpg is needed])
+AC_CACHE_VAL(cf_cv_need_killpg,[
+AC_TRY_RUN([
+#include <sys/types.h>
+#include <signal.h>
+RETSIGTYPE
+handler(s)
+    int s;
+{
+    exit(0);
+}
+
+main()
+{
+#ifdef SETPGRP_VOID
+    (void) setpgrp();
+#else
+    (void) setpgrp(0,0);
+#endif
+    (void) signal(SIGINT, handler);
+    (void) kill(-getpid(), SIGINT);
+    exit(1);
+}],
+	[cf_cv_need_killpg=no],
+	[cf_cv_need_killpg=yes],
+	[cf_cv_need_killpg=unknown]
+)])
+AC_MSG_RESULT($cf_cv_need_killpg)
+test $cf_cv_need_killpg = yes && AC_DEFINE(HAVE_KILLPG)
+])dnl

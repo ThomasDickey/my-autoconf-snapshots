@@ -1,0 +1,27 @@
+dnl Test for conflicting definitions of exception in gcc 2.8.0, etc., between
+dnl math.h and builtin.h, only for ncurses
+AC_DEFUN([CF_ETIP_DEFINES],
+[
+AC_MSG_CHECKING(for special defines needed for etip.h)
+cf_save_CXXFLAGS="$CXXFLAGS"
+cf_result="none"
+for cf_math in "" MATH_H
+do
+for cf_excp in "" MATH_EXCEPTION
+do
+	CXXFLAGS="$cf_save_CXXFLAGS -I${srcdir}/c++ -I${srcdir}/menu"
+	test -n "$cf_math" && CXXFLAGS="$CXXFLAGS -DETIP_NEEDS_${cf_math}"
+	test -n "$cf_excp" && CXXFLAGS="$CXXFLAGS -DETIP_NEEDS_${cf_excp}"
+AC_TRY_COMPILE([
+#include <etip.h.in>
+],[],[
+	test -n "$cf_math" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_math})
+	test -n "$cf_excp" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_excp})
+	cf_result="$cf_math $cf_excp"
+	break
+],[])
+done
+done
+AC_MSG_RESULT($cf_result)
+CXXFLAGS="$cf_save_CXXFLAGS"
+])

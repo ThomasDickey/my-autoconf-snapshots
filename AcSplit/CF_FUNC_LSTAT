@@ -1,0 +1,23 @@
+dnl CF_FUNC_LSTAT version: 2 updated: 1997/09/07 13:00:21
+dnl -------------
+dnl A conventional existence-check for 'lstat' won't work with the Linux
+dnl version of gcc 2.7.0, since the symbol is defined only within <sys/stat.h>
+dnl as an inline function.
+dnl
+dnl So much for portability.
+AC_DEFUN([CF_FUNC_LSTAT],
+[
+AC_MSG_CHECKING(for lstat)
+AC_CACHE_VAL(ac_cv_func_lstat,[
+AC_TRY_LINK([
+#include <sys/types.h>
+#include <sys/stat.h>],
+	[lstat(".", (struct stat *)0)],
+	[ac_cv_func_lstat=yes],
+	[ac_cv_func_lstat=no])
+	])
+AC_MSG_RESULT($ac_cv_func_lstat )
+if test $ac_cv_func_lstat = yes; then
+	AC_DEFINE(HAVE_LSTAT)
+fi
+])dnl
