@@ -1,10 +1,12 @@
+dnl CF_PATH_EDITOR version: 5 updated: 2000/07/20 00:41:18
+dnl --------------
 dnl Look for the default editor (vi)
 AC_DEFUN([CF_PATH_EDITOR],
 [
 AC_MSG_CHECKING(for default editor)
 CF_ARG_WITH(editor,
-    [  --with-editor=PROG      specify editor (default: vi)],
-    [DEFAULT_EDITOR])
+    [  --with-editor=PROG      specify editor],
+    [DEFAULT_EDITOR],,vi)
 if test -z "$DEFAULT_EDITOR" ; then
     if test -n "$EDITOR" ; then
     	DEFAULT_EDITOR="$EDITOR"
