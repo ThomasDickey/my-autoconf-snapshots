@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20030322
+MANIFEST for my-autoconf, version t20030405
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -295,6 +295,7 @@ AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_WITH_WARNINGS        make option for gcc warnings
+AcSplit/CF_XKB_BELL_EXT         check for XKB Bell extension (xterm)
 AcSplit/CF_XOPEN_CURSES         check for X/Open curses
 AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
 AcSplit/CF_X_ATHENA             check for Xaw library
