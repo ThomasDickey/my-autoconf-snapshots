@@ -1,3 +1,12 @@
+2001-02-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub, config.guess: 2000-2-13
+
+2001-02-08  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SRAND:
+	changed order - feedback indicated that the most portable code is the worst...
+
 2001-02-03  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAN_PAGES:
