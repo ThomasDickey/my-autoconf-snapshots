@@ -69,6 +69,7 @@ do
 			do
 			$AWK -f $srcdir/mk-1st.awk \
 				name=$cf_dir \
+				traces=$LIB_TRACING \
 				MODEL=$CF_ITEM \
 				model=$cf_subdir \
 				prefix=$cf_prefix \
@@ -84,6 +85,7 @@ do
 			test $cf_dir = ncurses && WITH_OVERWRITE=no
 			$AWK -f $srcdir/mk-2nd.awk \
 				name=$cf_dir \
+				traces=$LIB_TRACING \
 				MODEL=$CF_ITEM \
 				model=$cf_subdir \
 				subset=$cf_subset \
@@ -102,6 +104,7 @@ do
 	if test -f $cf_dir/Makefile ; then
 		case "$cf_dir" in
 		Ada95) #(vi
+			echo 'libs \' >> Makefile
 			echo 'install.libs \' >> Makefile
 			echo 'uninstall.libs ::' >> Makefile
 			echo '	cd '$cf_dir' && $(MAKE) $(CF_MFLAGS) [$]@' >> Makefile
@@ -121,6 +124,7 @@ if test "$cf_dir" != "c++" ; then
 echo 'lint \' >> Makefile
 fi
 cat >> Makefile <<CF_EOF
+libs \\
 lintlib \\
 install.libs \\
 uninstall.libs \\
@@ -131,6 +135,7 @@ CF_EOF
 	elif test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
 
+libs \\
 install.libs \\
 uninstall.libs \\
 install.includes \\

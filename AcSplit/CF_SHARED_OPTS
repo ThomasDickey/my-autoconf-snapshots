@@ -46,6 +46,10 @@ AC_DEFUN([CF_SHARED_OPTS],
 	cf_cv_rm_so_locs=no
 
 	case $cf_cv_system_name in
+	beos*)
+		CC_SHARED_OPTS='-fPIC'
+		MK_SHARED_LIB='$(CC) -o $[@] -Xlinker -soname=`basename $[@]` -nostart -e 0'
+		;;
 	hpux10.*)
 		# (tested with gcc 2.7.2 -- I don't have c89)
 		if test -n "$GCC"; then

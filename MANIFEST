@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000520
+MANIFEST for my-autoconf, version t20000529
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -146,6 +146,7 @@ AcSplit/CF_PDCURSES_X11         check for PDCurses' XCurses library
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_JC             check for POSIX-style sigaction
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
+AcSplit/CF_POSIX_WAIT           check for POSIX wait functions
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
@@ -190,9 +191,11 @@ AcSplit/CF_STRUCT_SIGACTION     test for struct sigaction
 AcSplit/CF_STRUCT_TERMIOS       test for struct termios
 AcSplit/CF_SUBST                better version of AC_SUBST
 AcSplit/CF_SUBST_NCURSES_VERSION  obtain ncurses version for use in substitution
+AcSplit/CF_SVR4                 define SVR4 if needed (for xterm)
 AcSplit/CF_SYSRELV              derive the system release-version
 AcSplit/CF_SYSTEM_MAIL_FLAGS    check for system mailer-flags
 AcSplit/CF_SYSTYPE              derive the system-type
+AcSplit/CF_SYSV                 define SYSV if needed (for xterm)
 AcSplit/CF_SYSV_UTMP            check for utmp-related functions
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
@@ -210,6 +213,7 @@ AcSplit/CF_TERMCAP_LIBS         check for termcap libraries
 AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
 AcSplit/CF_TERMIO_AND_CURSES    check if we can include both curses.h and termio.h
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
+AcSplit/CF_TERMIO_C_ISPEED      check for missing .c_ispeed member
 AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
 AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)

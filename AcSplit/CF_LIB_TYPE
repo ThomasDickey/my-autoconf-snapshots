@@ -1,4 +1,7 @@
 dnl Compute the string to append to -library from the given model name
+dnl $1 = model name
+dnl $2 = variable to set
+dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_TYPE],
 [
 	case $1 in
@@ -7,4 +10,5 @@ AC_DEFUN([CF_LIB_TYPE],
 	profile) $2='_p' ;;
 	shared)  $2=''   ;;
 	esac
+	test -n "$LIB_SUFFIX" && $2="${LIB_SUFFIX}[$]{$2}"
 ])dnl

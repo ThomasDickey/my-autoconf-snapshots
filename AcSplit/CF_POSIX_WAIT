@@ -1,0 +1,24 @@
+dnl CF_POSIX_WAIT version: 2 updated: 2000/05/29 16:16:04
+dnl -------------
+dnl Check for POSIX wait support
+AC_DEFUN([CF_POSIX_WAIT],
+[
+AC_REQUIRE([AC_HEADER_SYS_WAIT])
+AC_CACHE_CHECK(for POSIX wait functions,cf_cv_posix_wait,[
+AC_TRY_LINK([
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+],[
+	int stat_loc;
+	pid_t pid = waitpid(-1, &stat_loc, WNOHANG|WUNTRACED);
+	pid_t pid2 = wait(&stat_loc);
+],
+[cf_cv_posix_wait=yes],
+[cf_cv_posix_wait=no])
+])
+test "$cf_cv_posix_wait" = yes && AC_DEFINE(USE_POSIX_WAIT)
+])dnl
