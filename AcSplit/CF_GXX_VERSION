@@ -1,0 +1,12 @@
+dnl CF_GXX_VERSION version: 2 updated: 2003/05/24 14:41:00
+dnl --------------
+dnl Check for version of g++
+AC_DEFUN([CF_GXX_VERSION],[
+AC_REQUIRE([AC_PROG_CPP])
+GXX_VERSION=none
+if test "$GXX" = yes; then
+	AC_MSG_CHECKING(version of g++)
+	GXX_VERSION="`${CXX-g++} --version|head -1`"
+	AC_MSG_RESULT($GXX_VERSION)
+fi
+])dnl
