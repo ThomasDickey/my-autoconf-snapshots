@@ -1,3 +1,19 @@
+2004-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	add ifdef'd invocation of AC_PROG_LIBTOOL with an example of how to turn
+	it on, and documented the reasons why not.  Also improved the sed expression
+	for libtool's version - Debian's package adds some stuff in parentheses
+	which confused my script because there were digits before the actual version
+	number.
+
+2004-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BOOL_DECL:
+	ncurses: rewrote the check for stdbool.h, since HPUX has a <stdbool.h> that
+	defines bool only if the compiler is c99.  In that case, we'll normally
+	fall-through to the non-bool case.
+
 2004-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
