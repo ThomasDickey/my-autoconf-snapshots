@@ -1,3 +1,13 @@
+2001-06-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROG_EXT:
+	add PROG_EXT in quotes, for ncurses' programs that check if they're renamed
+
+	* AcSplit/CF_MAKEFLAGS:
+	aha: set SHELL in the test-makefile to make warnings go away
+
+	* AcSplit/CF_CPP_VSCAN_FUNC: ugh: add strstream_cast case
+
 2001-06-09  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: tin 1.5.9
