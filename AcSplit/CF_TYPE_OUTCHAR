@@ -15,8 +15,8 @@ for S in "" const; do
 #include <term.h>
 #endif
 #else
-#if HAVE_CURSES_H
-#include <curses.h>	/* FIXME: this should be included only for terminfo */
+#ifdef NEED_CURSES_H	/* FIXME: need a test */
+#include <curses.h>
 #endif
 #if HAVE_TERMCAP_H
 #include <termcap.h>

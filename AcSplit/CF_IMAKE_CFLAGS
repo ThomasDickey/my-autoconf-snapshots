@@ -42,14 +42,15 @@ CF_EOF
 			esac
 		done
 		if test -z "$cf_config" ; then
-			AC_ERROR(Could not find imake config-directory)
-		fi
-		cf_imake_opts="$cf_imake_opts -I$cf_config"
-		if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
-		then
-			CF_VERBOSE(Using $IMAKE $cf_config)
+			AC_WARN(Could not find imake config-directory)
 		else
-			AC_ERROR(Cannot run $IMAKE)
+			cf_imake_opts="$cf_imake_opts -I$cf_config"
+			if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
+			then
+				CF_VERBOSE(Using $IMAKE $cf_config)
+			else
+				AC_WARN(Cannot run $IMAKE)
+			fi
 		fi
 	fi
 

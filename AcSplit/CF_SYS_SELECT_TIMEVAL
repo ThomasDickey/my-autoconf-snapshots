@@ -1,3 +1,5 @@
+dnl CF_SYS_SELECT_TIMEVAL version: 4 updated: 1997/12/16 11:22:31
+dnl ---------------------
 dnl Check if there is a conflict between <sys/select.h> and <sys/time.h>.
 dnl This is known to be a problem with SCO.
 AC_DEFUN([CF_SYS_SELECT_TIMEVAL],
@@ -8,7 +10,7 @@ for cf_opts in no yes
 do
 AC_TRY_COMPILE([
 #define yes 1
-#define no 1
+#define no 0
 #if $cf_opts
 #define timeval fake_timeval
 #endif

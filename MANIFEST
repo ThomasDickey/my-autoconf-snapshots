@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19971213
+MANIFEST for my-autoconf, version t19971216
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -100,6 +100,7 @@ AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
+AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca
 AcSplit/CF_RCS_SCCS             check for RCS/SCCS/etc used in ded, cm_tools (td_lib)
 AcSplit/CF_RECHECK_FUNC         recheck for a function, to pick up a library
 AcSplit/CF_REGCMP_FUNCS         check for regcmp/regex functions (td_lib)
