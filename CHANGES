@@ -1,3 +1,15 @@
+1999-12-12  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub: from Kevin Buettner, recognize ia64 machine.
+
+1999-11-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: added wildcard on elf32ppc, for lynx
+
+	* AcSplit/CF_PATH_SYNTAX: fix for OS/2 EMX, from Lynx
+
+	* mkdirs.sh: kludge for OS/2 EMX
+
 1999-11-27  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_STDCPP_LIBRARY: drop check for math lib

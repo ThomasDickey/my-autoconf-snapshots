@@ -157,7 +157,7 @@ case $basic_machine in
 		| i370 | sh | powerpc | powerpcle | 1750a | dsp16xx | pdp11 \
 		| mips64 | mipsel | mips64el | mips64orion | mips64orionel \
 		| mipstx39 | mipstx39el \
-		| sparc | sparclet | sparclite | sparc64 | v850)
+		| sparc | sparclet | sparclite | sparc64 | v850 | ia64)
 		basic_machine=$basic_machine-unknown
 		;;
 	# We use `pc' rather than `unknown'
@@ -184,7 +184,7 @@ case $basic_machine in
 	      | sparc64-* | mips64-* | mipsel-* \
 	      | mips64el-* | mips64orion-* | mips64orionel-*  \
 	      | mipstx39-* | mipstx39el-* \
-	      | f301-*)
+	      | f301-* | ia64-*)
 		;;
 	# Recognize the various machine names and aliases which stand
 	# for a CPU type and a company and sometimes even an OS.
