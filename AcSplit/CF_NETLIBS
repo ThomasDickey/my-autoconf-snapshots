@@ -1,3 +1,5 @@
+dnl CF_NETLIBS version: 4 updated: 1999/12/23 15:20:39
+dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
 dnl libc, etc., and have to be handled specially because there are conflicting
@@ -20,7 +22,8 @@ AC_CHECK_FUNCS(gethostname,,[
 #
 # FIXME:  sequent needs this library (i.e., -lsocket -linet -lnsl), but
 # I don't know the entrypoints - 97/7/22 TD
-AC_HAVE_LIBRARY(inet,cf_cv_netlibs="-linet $cf_cv_netlibs")
+# AC_HAVE_LIBRARY(inet,cf_cv_netlibs="-linet $cf_cv_netlibs")
+AC_CHECK_LIB(inet, main, cf_cv_netlibs="-linet $cf_cv_netlibs")
 #
 if test "$ac_cv_func_lsocket" != no ; then
 AC_CHECK_FUNCS(socket,,[
