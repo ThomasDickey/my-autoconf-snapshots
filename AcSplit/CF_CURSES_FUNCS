@@ -11,7 +11,10 @@ do
 		if test ".$cf_result" != ".no"; then
 			AC_TRY_LINK([
 #define _XOPEN_SOURCE_EXTENDED
-#include <curses.h>],
+#include <curses.h>
+#ifdef HAVE_TERM_H
+#include <term.h>
+#endif],
 			[
 #ifndef ${cf_func}
 long foo = (long)(&${cf_func});

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980526
+MANIFEST for my-autoconf, version t19980701
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -23,6 +23,8 @@ AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no v
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
+AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions
+AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
 AcSplit/CF_CFG_DEFAULTS         determine the default "--prefix" (ncurses)
 AcSplit/CF_CGETENT              test for BSD 4.4 cgetent()
 AcSplit/CF_CHECK_1_DECL         check one declaration
@@ -38,6 +40,7 @@ AcSplit/CF_COMPTYPE             obtain qsort's compare-type
 AcSplit/CF_COREFILE             see if the application can dump a core file
 AcSplit/CF_CPP_CONCATS          check if cpp can do token-concatenation
 AcSplit/CF_CPP_EXPANDS          check if cpp can expand #token
+AcSplit/CF_CURSES_CCHAR_T       check for 'cchar_t'
 AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
 AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
