@@ -1,3 +1,14 @@
+2000-01-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	from Debian ncurses 5.0 diffs, a better choice for CC_SHARED_OPTS for linux
+
+	* config.sub: from Debian ncurses 5.0 diffs, a guess for 'hurd'
+
+1999-12-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MATH_LIB: RCS_BASE
+
 1999-12-23  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_NETLIBS: ci-aclocal generated header
