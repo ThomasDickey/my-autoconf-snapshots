@@ -115,7 +115,7 @@ do
 				ldconfig="$LDCONFIG" \
 				overwrite=$WITH_OVERWRITE \
 				depend="$cf_depend" \
-				target="$target" \
+				host="$host" \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 			for cf_subdir2 in $cf_subdirs lib
 			do

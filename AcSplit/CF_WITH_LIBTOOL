@@ -1,3 +1,5 @@
+dnl CF_WITH_LIBTOOL version: 3 updated: 2002/12/08 01:17:33
+dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
 AC_DEFUN([CF_WITH_LIBTOOL],
@@ -6,24 +8,48 @@ LIBTOOL=
 LIB_CREATE='$(AR) -cr'
 LIB_OBJECT='$(OBJECTS)'
 LIB_SUFFIX=.a
-INSTALL_LIB=
-UNINSTALL_LIB=
+LIB_INSTALL=
+LIB_UNINSTALL=
 
+AC_MSG_CHECKING(if you want to build libraries with libtool)
 AC_ARG_WITH(libtool,
-	[  --with-libtool          use libtool to build shared libraries],[
-	LIBTOOL='libtool --silent'
+	[  --with-libtool          generate libraries with libtool],
+	[with_libtool=$withval],
+	[with_libtool=no])
+AC_MSG_RESULT($with_libtool)
+if test "$with_libtool" = "yes"; then
+	AC_PATH_PROG(LIBTOOL,libtool)
+	if test -z "$LIBTOOL" ; then
+		AC_MSG_ERROR(Cannot find libtool)
+	fi
+
 	LIB_CREATE='$(LIBTOOL) --mode=link $(CC) -rpath $(DESTDIR)$(libdir) -version-info `cut -f1 $(srcdir)/VERSION` -o'
 	LIB_OBJECT='$(OBJECTS:.o=.lo)'
 	LIB_SUFFIX=.la
-	INSTALL_LIB='$(LIBTOOL) --mode=install'
-	UNINSTALL_LIB='$(LIBTOOL) --mode=uninstall'
+	LIB_INSTALL='$(LIBTOOL) --mode=install'
+	LIB_UNINSTALL='$(LIBTOOL) --mode=uninstall'
 	RANLIB=:
-])
+
+	# Show the version of libtool
+	AC_MSG_CHECKING(version of libtool)
+
+	# Save the version in a cache variable - this is not entirely a good
+	# thing, but the version string from libtool is very ugly, and for
+	# bug reports it might be useful to have the original string.
+	cf_cv_libtool_version=`$LIBTOOL --version 2>&1 | sed -e 's/^[[^1-9]]*//' -e 's/[[^0-9.]].*//'`
+	AC_MSG_RESULT($cf_cv_libtool_version)
+	if test -z "$cf_cv_libtool_version" ; then
+		AC_MSG_ERROR(This is not libtool)
+	fi
+else
+	LIBTOOL=""
+fi
 
 AC_SUBST(LIBTOOL)
 AC_SUBST(LIB_CREATE)
 AC_SUBST(LIB_OBJECT)
 AC_SUBST(LIB_SUFFIX)
-AC_SUBST(INSTALL_LIB)
-AC_SUBST(UNINSTALL_LIB)
+AC_SUBST(LIB_INSTALL)
+AC_SUBST(LIB_UNINSTALL)
+
 ])dnl
