@@ -1,3 +1,15 @@
+2001-11-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WIDEC_CURSES: add a check to define HAVE_MBSTATE_T
+
+	* AcSplit/CF_PATH_PROG, AcSplit/CF_WIDEC_CURSES:
+	ci-aclocal generated header
+
+	* AcSplit/CF_PATH_PROG:
+	lynx: don't define anything if we're using full-pathnames and we didn't find anything
+
+	* AcSplit/CF_PATH_SYNTAX: make the AC_ERROR optional, for lynx
+
 2001-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_UTF8_LIB, AcSplit/CF_WIDEC_CURSES: RCS_BASE

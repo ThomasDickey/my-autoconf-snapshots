@@ -1,3 +1,5 @@
+dnl CF_WIDEC_CURSES version: 3 updated: 2001/11/18 20:52:38
+dnl ---------------
 dnl Check for curses implementations that can handle wide-characters
 AC_DEFUN([CF_WIDEC_CURSES],
 [
@@ -34,6 +36,10 @@ if test "$cf_cv_widec_curses" = yes ; then
 
 if test "$cf_cv_widec_mbstate" = yes ; then
 	AC_DEFINE(NEED_WCHAR_H)
+fi
+
+if test "$cf_cv_widec_mbstate" != unknown ; then
+	AC_DEFINE(HAVE_MBSTATE_T)
 fi
 
 fi
