@@ -71,7 +71,8 @@ AC_DEFUN([CF_SHARED_OPTS],
 		MK_SHARED_LIB='$(CC) -o $[@] -Xlinker -soname=`basename $[@]` -nostart -e 0'
 		;;
 	cygwin*)
-		MK_SHARED_LIB='$(CC) -shared -Wl,--out-implib=$(IMPLIB) -Wl,--export-all-symbols -o $(SHAREDLIB)'
+		CC_SHARED_OPTS=
+		MK_SHARED_LIB='$(CC) -shared -Wl,--out-implib=$(IMPORT_LIB) -Wl,--export-all-symbols -o $(SHARED_LIB)'
 		cf_cv_shlib_version=cygdll
 		cf_cv_shlib_version_infix=cygdll
 		;;

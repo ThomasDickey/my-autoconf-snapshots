@@ -1,3 +1,5 @@
+dnl CF_OBJ_SUBDIR version: 4 updated: 2002/02/23 20:38:31
+dnl -------------
 dnl Compute the object-directory name from the given model name
 AC_DEFUN([CF_OBJ_SUBDIR],
 [
@@ -6,6 +8,12 @@ AC_DEFUN([CF_OBJ_SUBDIR],
 	normal)  $2='objects' ;;
 	debug)   $2='obj_g' ;;
 	profile) $2='obj_p' ;;
-	shared)  $2='obj_s' ;;
+	shared)
+		case $cf_cv_system_name in #(vi
+		cygwin) #(vi
+			$2='objects' ;;
+		*)
+			$2='obj_s' ;;
+		esac
 	esac
 ])dnl
