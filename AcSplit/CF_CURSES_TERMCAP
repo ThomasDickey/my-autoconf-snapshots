@@ -11,7 +11,7 @@ AC_DEFUN([CF_CURSES_TERMCAP],
 AC_REQUIRE([CF_CURSES_TERM_H])
 AC_MSG_CHECKING(if we should include curses.h or termcap.h)
 AC_CACHE_VAL(cf_cv_need_curses_h,[
-cf_save_CFLAGS="$CFLAGS"
+cf_save_CPPFLAGS="$CPPFLAGS"
 cf_cv_need_curses_h=no
 
 for cf_t_opts in "" "NEED_TERMCAP_H"
@@ -19,9 +19,9 @@ do
 for cf_c_opts in "" "NEED_CURSES_H"
 do
 
-    CFLAGS="$cf_save_CFLAGS $CHECK_DECL_FLAG"
-    test -n "$cf_c_opts" && CFLAGS="$CFLAGS -D$cf_c_opts"
-    test -n "$cf_t_opts" && CFLAGS="$CFLAGS -D$cf_t_opts"
+    CPPFLAGS="$cf_save_CPPFLAGS $CHECK_DECL_FLAG"
+    test -n "$cf_c_opts" && CPPFLAGS="$CPPFLAGS -D$cf_c_opts"
+    test -n "$cf_t_opts" && CPPFLAGS="$CPPFLAGS -D$cf_t_opts"
 
     AC_TRY_LINK([/* $cf_c_opts $cf_t_opts */
 $CHECK_DECL_HDRS],
@@ -39,7 +39,7 @@ $CHECK_DECL_HDRS],
 	 cf_ok_c_opts=$cf_c_opts
 	 cf_ok_t_opts=$cf_t_opts])])
 
-	CFLAGS="$cf_save_CFLAGS"
+	CPPFLAGS="$cf_save_CPPFLAGS"
 	test "$cf_cv_need_curses_h" = yes && break
 done
 	test "$cf_cv_need_curses_h" = yes && break

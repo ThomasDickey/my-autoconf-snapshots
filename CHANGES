@@ -1,3 +1,26 @@
+2000-11-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_WITH_PATHLIST: use CF_PATHSEP
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	just for tidyness, use CF_ADD_CFLAGS to distinguish between CFLAGS/CPPFLAGS
+
+	* AcSplit/CF_STRUCT_TERMIOS:
+	assume $CFLAGS may contain preprocessor options, but prefer $CPPFLAGS
+
+	* AcSplit/CF_STRUCT_TERMIOS: ci-aclocal generated header
+
+	* AcSplit/CF_TYPE_OUTCHAR: use $CPPFLAGS for preprocessor options
+
+	* AcSplit/CF_SIZECHANGE: ci-aclocal generated header
+
+	* AcSplit/CF_SIZECHANGE: use $CPPFLAGS for preprocessor options
+
+	* AcSplit/CF_PROG_EXT: split-out $CPPFLAGS for preprocessor options
+
+	* AcSplit/CF_MISSING_CHECK, AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_CURSES_LIBS:
+	use $CPPFLAGS for preprocessor options
+
 2000-11-03  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_HEADERS: ci-aclocal generated header

@@ -26,8 +26,8 @@ AC_CACHE_VAL(cf_cv_type_outchar,[
 
 cf_cv_type_outchar="int OutChar(int)"
 cf_cv_found=no
-cf_save_CFLAGS="$CFLAGS"
-CFLAGS="$CFLAGS $CHECK_DECL_FLAG"
+cf_save_CPPFLAGS="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $CHECK_DECL_FLAG"
 
 for P in int void; do
 for Q in int void; do
@@ -61,5 +61,5 @@ case $cf_cv_type_outchar in
 	;;
 esac
 
-CFLAGS="$cf_save_CFLAGS"
+CPPFLAGS="$cf_save_CPPFLAGS"
 ])dnl
