@@ -1,0 +1,23 @@
+dnl CF_WITH_BZLIB version: 1 updated: 2003/10/05 17:36:00
+dnl -------------
+dnl Check for libbz2 aka "bzlib"
+AC_DEFUN([CF_WITH_BZLIB],[
+AC_MSG_CHECKING(if we need to add -I option to get bzlib.h)
+AC_TRY_COMPILE([#include <zlib.h>],[],[AC_MSG_RESULT(no)],[
+AC_MSG_RESULT(yes)
+CF_HEADER_PATH(cf_search,bzlib)
+for cf_incdir in $cf_search
+do
+	if test -f $cf_incdir/bzlib.h ; then
+		CF_ADD_CFLAGS(-I$cf_incdir)
+		CF_VERBOSE(... found in $cf_incdir)
+		break
+	fi
+	CF_VERBOSE(... tested $cf_incdir)
+done
+])
+CF_FIND_LIBRARY(bz2,bz2,
+	[#include <bzlib.h>],
+	[BZ2_bzopen("name","mode")],
+	BZ2_bzopen)
+])dnl
