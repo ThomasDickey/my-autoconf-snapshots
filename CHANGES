@@ -1,3 +1,9 @@
+1999-07-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_SIGACTION: RCS_BASE
+
+	* AcSplit/CF_FUNC_SIGACTION: ci-aclocal generated header
+
 1999-06-21  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAKEFLAGS:
