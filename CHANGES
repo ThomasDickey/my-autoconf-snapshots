@@ -1,3 +1,27 @@
+2005-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2004-11-30
+
+	* config.guess: 2004-11-12
+
+	* AcSplit/CF_SHARED_OPTS: Albert Chin added case for SGI with -rpath
+
+	* AcSplit/CF_CHECK_TYPE: ci-aclocal generated header
+
+2004-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS: integrated the Intel compiler's warnings.
+
+	* AcSplit/CF_GNU_SOURCE:
+	don't try to set _GNU_SOURCE if we're using the Intel compiler.
+	May rethink that, but have been burned by inconsistent evaluation between
+	icc/gcc when this is set.
+
+	* AcSplit/CF_INTEL_COMPILER: ci-aclocal generated header
+
+	* AcSplit/CF_GCC_WARNINGS: check for Intel compiler.
+	If it's set, turn on all of its warnings.
+
 2004-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS:

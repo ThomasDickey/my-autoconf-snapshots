@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 30 updated: 2003/12/27 20:48:07
+dnl CF_SHARED_OPTS version: 31 updated: 2005/01/01 16:39:44
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
 dnl library.
@@ -100,8 +100,13 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	irix*)
 		if test "$cf_cv_ld_rpath" = yes ; then
-			cf_ld_rpath_opt="-Wl,-rpath,"
-			EXTRA_LDFLAGS="-Wl,-rpath,\$(libdir) $EXTRA_LDFLAGS"
+			if test "$GCC" = yes; then
+				cf_ld_rpath_opt="-Wl,-rpath,"
+				EXTRA_LDFLAGS="-Wl,-rpath,\$(libdir) $EXTRA_LDFLAGS"
+			else
+				cf_ld_rpath_opt="-rpath "
+				EXTRA_LDFLAGS="-rpath \$(libdir) $EXTRA_LDFLAGS"
+			fi
 		fi
 		# tested with IRIX 5.2 and 'cc'.
 		if test "$GCC" != yes; then
