@@ -1,11 +1,10 @@
 dnl Verify Version of GNAT.
 AC_DEFUN([CF_GNAT_VERSION],
 [
-changequote(<<, >>)dnl
-cf_cv_gnat_version=`$cf_ada_make -v 2>&1 | grep '[0-9].[0-9][0-9]*' |\
-  sed -e 's/[^0-9 \.]//g' | $AWK '{print $<<1>>;}'`
+cf_cv_gnat_version=`$cf_ada_make -v 2>&1 | grep '[[0-9]].[[0-9]][[0-9]]*' |\
+  sed -e 's/[[^0-9 \.]]//g' | $AWK '{print $[1];}'`
 case $cf_cv_gnat_version in
-  3.1[1-9]*|3.[2-9]*|[4-9].*)
+  3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*)
     cf_cv_prog_gnat_correct=yes
     ;;
   *) echo Unsupported GNAT version $cf_cv_gnat_version. Required is 3.11 or better. Disabling Ada95 binding.
@@ -13,7 +12,7 @@ case $cf_cv_gnat_version in
      ;;
 esac
 case $cf_cv_gnat_version in
-  3.1*|[4-9].*)
+  3.1*|[[4-9]].*)
       cf_compile_generics=generics
       cf_generic_objects="\$(GENOBJS)"
       ;;
@@ -21,5 +20,4 @@ case $cf_cv_gnat_version in
       cf_generic_objects=
       ;;
 esac
-changequote([, ])dnl
 ])
