@@ -1,3 +1,5 @@
+dnl CF_GPP_LIBRARY version: 8 updated: 2003/02/02 01:41:46
+dnl --------------
 dnl If we're trying to use g++, test if libg++ is installed (a rather common
 dnl problem :-).  If we have the compiler but no library, we'll be able to
 dnl configure, but won't be able to build the c++ demo program.
@@ -12,7 +14,7 @@ os2*) #(vi
 	cf_gpp_libname=g++
 	;;
 esac
-if test "$ac_cv_prog_gxx" = yes; then
+if test "$GXX" = yes; then
 	AC_MSG_CHECKING([for lib$cf_gpp_libname])
 	cf_save="$LIBS"
 	LIBS="$LIBS -l$cf_gpp_libname"

@@ -1,3 +1,30 @@
+2003-02-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HAVE_FUNCS: ci-aclocal generated header
+
+	* AcSplit/CF_HAVE_FUNCS: ncurses: add quotes around test $variable
+
+2003-02-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_SHARED_OPTS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	ncurses: use $GCC rather than $ac_cv_prog_gcc since the latter is a different
+	name in autconf 2.5x
+
+	* AcSplit/CF_GPP_LIBRARY:
+	ncurses: use $GXX rather than $ac_cv_prog_gxx since the latter is a different
+	name in autoconf 2.5x
+
+	* AcSplit/CF_LINK_DATAONLY:
+	ncurses: use $RANLIB rather than $ac_cv_prog_RANLIB since the latter is a
+	different name in autoconf  2.5x
+
+	* AcSplit/CF_LINK_FUNCS:
+	ncurses: use $cross_compiling rather than $ac_cv_prog_cc_cross, since the
+	latter is a different name in autoconf 2.5x
+
 2003-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SYSMOUSE: RCS_BASE
