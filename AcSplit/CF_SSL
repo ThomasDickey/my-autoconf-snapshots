@@ -1,0 +1,66 @@
+dnl CF_SSL version: 2 updated: 2001/01/01 20:53:43
+dnl ------
+dnl Check for ssl library
+dnl $1 = the [optional] directory in which the library may be found
+AC_DEFUN([CF_SSL],[
+cf_ssl_library="-lssl -lcrypto"
+case "$1" in #(vi
+no) #(vi
+  ;;
+yes) #(vi
+  AC_CHECK_LIB(ssl, SSL_get_version,[],[
+  	if test -d /usr/local/ssl ; then
+		CF_VERBOSE(assume it is in /usr/local/ssl)
+		cf_ssl_library="-L/usr/local/ssl/lib $cf_ssl_library"
+		CPPFLAGS="-I/usr/local/ssl/include $CPPFLAGS"
+	else
+		AC_MSG_ERROR(cannot find ssl library)
+	fi
+	],
+	[-lcrypto])
+  ;;
+*)
+  if test -d $1 ; then
+    if test -d $1/include ; then
+      CPPFLAGS="$CPPFLAGS -I$1/include"
+      cf_ssl_library="-L$1/lib $cf_ssl_library"
+    else
+      cf_ssl_library="-L$1 $cf_ssl_library"
+      test -d $1/../include && CPPFLAGS="$CPPFLAGS -I$1/../include"
+    fi
+  else
+    AC_MSG_WARN(expected a directory: $1)
+  fi
+  ;;
+esac
+LIBS="$cf_ssl_library $LIBS"
+
+AC_MSG_CHECKING(for openssl include directory)
+AC_TRY_COMPILE([
+#include <stdio.h>
+#include <openssl/ssl.h>],
+	[SSL_shutdown((SSL *)0)],
+	[cf_openssl_incl=yes],
+	[cf_openssl_incl=no])
+AC_MSG_RESULT($cf_openssl_incl)
+test "$cf_openssl_incl" = yes && AC_DEFINE(USE_OPENSSL_INCL)
+
+AC_MSG_CHECKING(if we can link to ssl library)
+AC_TRY_LINK([
+#include <stdio.h>
+#ifdef USE_OPENSSL_INCL
+#include <openssl/ssl.h>
+#else
+#include <ssl.h>
+#endif
+],
+	[SSL_shutdown((SSL *)0)],
+	[cf_ssl_library=yes],
+	[cf_ssl_library=no])
+AC_MSG_RESULT($cf_ssl_library)
+if test "$cf_ssl_library" = yes ; then
+	AC_DEFINE(USE_SSL)
+else
+	AC_ERROR(Cannot link with ssl library)
+fi
+])dnl
