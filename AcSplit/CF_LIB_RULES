@@ -85,7 +85,7 @@ do
 		if test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
 install.includes \\
-deinstall.includes \\
+uninstall.includes \\
 CF_EOF
 		fi
 if test "$cf_dir" != "c++" ; then
@@ -94,18 +94,18 @@ fi
 cat >> Makefile <<CF_EOF
 lintlib \\
 install.libs \\
-deinstall.libs \\
+uninstall.libs \\
 install.$cf_dir \\
-deinstall.$cf_dir ::
+uninstall.$cf_dir ::
 	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
 CF_EOF
 	elif test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
 
 install.libs \\
-deinstall.libs \\
+uninstall.libs \\
 install.includes \\
-deinstall.includes ::
+uninstall.includes ::
 	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
 CF_EOF
 fi
@@ -200,9 +200,9 @@ CF_EOF
 
 	cat >>$cf_dir/Makefile <<CF_EOF
 
-deinstall \\
-deinstall.libs \\
-deinstall.includes ::
+uninstall \\
+uninstall.libs \\
+uninstall.includes ::
 CF_EOF
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
