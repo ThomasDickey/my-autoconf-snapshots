@@ -1,3 +1,9 @@
+2000-05-31  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SVR4: ci-aclocal generated header
+
+	* AcSplit/CF_SVR4: need a compile-check (I used termio with VLNEXT)
+
 2000-05-29  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_POSIX_WAIT, AcSplit/CF_SVR4, AcSplit/CF_SYSV, AcSplit/CF_TERMIO_C_ISPEED:
