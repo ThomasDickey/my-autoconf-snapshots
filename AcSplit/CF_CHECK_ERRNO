@@ -15,13 +15,17 @@ eval 'cf_result=$cf_cv_dcl_'$1
 AC_MSG_RESULT($cf_result)
 
 # It's possible (for near-UNIX clones) that the data doesn't exist
-if test $cf_cv_dcl_$1 = no ; then
-    CF_UPPER(cf_NAME,cf_name)
-    AC_DEFINE(DECL_$cf_NAME)
+if test $cf_result = no ; then
+    eval 'cf_result=DECL_'$1
+    CF_UPPER(cf_result,$cf_result)
+    AC_DEFINE_UNQUOTED($cf_result)
     AC_MSG_CHECKING([existence of $1])
     AC_CACHE_VAL(cf_cv_have_$1,[
-        AC_TRY_LINK([#include <errno.h>],
-            [long x = (long) $1],
+        AC_TRY_LINK([
+#undef $1
+extern long $1;
+],
+            [$1 = 2],
             [eval 'cf_cv_have_'$1'=yes'],
             [eval 'cf_cv_have_'$1'=no'])])
     eval 'cf_result=$cf_cv_have_'$1
