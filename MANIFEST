@@ -1,6 +1,7 @@
-MANIFEST for my-autoconf, version t19961122
+MANIFEST for my-autoconf, version t19961126
 --------------------------------------------------------------------------------
 MANIFEST                        this file
+config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 AcSplit                         subdirectory
 AcSplit/CF_POPEN_TEST           check for declaration of popen()

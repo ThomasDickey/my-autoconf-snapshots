@@ -1,3 +1,7 @@
+1996-11-26  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: RCS_BASE
+
 1996-11-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: RCS_BASE
