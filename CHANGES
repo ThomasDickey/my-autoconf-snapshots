@@ -1,3 +1,16 @@
+2000-09-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_GETADDRINFO: ci-aclocal generated header
+
+	* AcSplit/CF_FUNC_GETADDRINFO: lynx 2.8.4dev.11
+
+2000-08-31  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	lynx: my juggling of ncurses/curses search order exposed a hole.  If I
+	specified the curses library in $LIBS, that might depend on -ltermcap,
+	which then would not be found.  Fixed by doing an AC_TRY_LINK explicitly.
+
 2000-08-24  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_GETADDRINFO:
