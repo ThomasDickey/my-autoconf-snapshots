@@ -1,3 +1,14 @@
+1998-01-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_HELP_MESSAGE: ci-aclocal generated header
+
+	* AcSplit/CF_HELP_MESSAGE: use new macro AC_DIVERT_HELP
+
+	* AcSplit/CF_SLANG_LIBS: hack to get rid of some spurious blanks
+
+	* AcSplit/CF_CHECK_FUNCDECL:
+	make this work with compilers other than gcc, which is too tolerant
+
 1997-12-23  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS:
