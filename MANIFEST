@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19970912
+MANIFEST for my-autoconf, version t19970913
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -9,6 +9,7 @@ AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally base
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
+AcSplit/CF_ALL_MAKEFILES        list all makefiles
 AcSplit/CF_ALT_CHAR_SET         check for alternate character-set in curses
 AcSplit/CF_ANSI_CC_CHECK        check if we have an ANSI compiler (no preprocessor check)
 AcSplit/CF_ANSI_CC_REQD         verify that we've got an ANSI compiler
@@ -114,6 +115,7 @@ AcSplit/CF_SLANG_CPPFLAGS       check for slang's compiler flags
 AcSplit/CF_SLANG_LIBS           check for slang library
 AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type
+AcSplit/CF_SRC_MAKEFILE         expand modules list into makefile lists
 AcSplit/CF_SRC_MODULES          obtain the list of source-directories with modules listed
 AcSplit/CF_STAT_ST_BLOCKS       check if 'stat' struct defines 'st_blocks' (td_lib)
 AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
@@ -139,6 +141,7 @@ AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
 AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
+AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()

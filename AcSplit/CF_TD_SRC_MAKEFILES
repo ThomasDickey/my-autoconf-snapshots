@@ -1,81 +1,16 @@
+dnl CF_TD_SRC_MAKEFILES version: 4 updated: 1997/09/13 12:04:36
+dnl -------------------
 dnl Append predefined lists to src/*/makefile.
 dnl
 dnl Also, make a series of "cd XXX && make" statements, which is understood by
 dnl all "make -n" commands.
 dnl
-dnl The library is named $Z, to avoid problems with parentheses.
 AC_DEFUN([CF_TD_SRC_MAKEFILES],
 [
-for p in $cf_cv_src_modules
+for cf_src in $cf_cv_src_modules
 do
-	q=$srcdir/src/$p/modules
-	cf_out=src/$p/makefile
-	if test -f $q ; then
-${AWK-awk} <$q >>$cf_out '
-BEGIN	{
-		found = 0;
-	}
-	{
-		if ( found == 0 )
-		{
-			printf "\nCSRC="
-			found = 1;
-		}
-		printf " \\\n\t%s.c", [$]1
-	}
-'
-	if test $cf_cv_ar_rules = yes ; then
-${AWK-awk} <$q >>$cf_out '
-BEGIN	{
-		found = 0;
-	}
-	{
-		if ( found == 0 )
-		{
-			printf "\nOBJS="
-			found = 1;
-		}
-		printf " \\\n\t$Z(%s.o)", [$]1
-	}
-'
-	else
-${AWK-awk} <$q >>$cf_out '
-BEGIN	{
-		found = 0;
-	}
-	{
-		if ( found == 0 )
-		{
-			printf "\nOBJS="
-			found = 1;
-		}
-		printf " \\\n\t%s.o", [$]1
-	}
-'
-	fi
-	cat >>$cf_out <<CF_EOF
-
-
-${make_include_left}../td_rules.mk${make_include_right}
-CF_EOF
-	echo "	cd $p &&	\$(MAKE) \$(MAKE_OPTS) \[$]@" >>src/makefile
-
-	if test $cf_cv_ar_rules = yes ; then
-cat >>$cf_out <<CF_EOF
-
-\$Z:	\$(OBJS)
-	\$(RANLIB) \$Z
-CF_EOF
-	else
-cat >>$cf_out <<CF_EOF
-
-\$Z:	\$(OBJS)
-	\$(AR) \$Z \$(OBJS)
-	\$(RANLIB) \$Z
-CF_EOF
-	fi
-
-	fi
+	CF_SRC_MAKEFILE($srcdir,src/$cf_src,../td_rules.mk)
+	echo "	cd $cf_src &&	\$(MAKE) \$(MAKE_OPTS) \[$]@" >>src/makefile
 done
 test -f $srcdir/src/makefile.end && \
     cat $srcdir/src/makefile.end >>src/makefile
