@@ -1,5 +1,3 @@
-dnl CF_FP_ISREADY version: 2 updated: 1998/04/18 20:51:42
-dnl -------------
 dnl Test for the common variations of stdio structures that we can use to
 dnl test if a character is available for reading.
 AC_DEFUN([CF_FP_ISREADY],

@@ -1,5 +1,3 @@
-dnl CF_VERBOSE version: 2 updated: 1997/09/05 10:45:14
-dnl ----------
 dnl Use AC_VERBOSE w/o the warnings
 AC_DEFUN([CF_VERBOSE],
 [test -n "$verbose" && echo "	$1" 1>&AC_FD_MSG

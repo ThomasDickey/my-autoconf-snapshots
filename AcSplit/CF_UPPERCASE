@@ -1,7 +1,0 @@
-dnl Make an uppercase version of a given name
-AC_DEFUN([CF_UPPERCASE],
-[
-changequote(,)dnl
-$2=`echo $1 |tr '[a-z]' '[A-Z]'`
-changequote([,])dnl
-])dnl
