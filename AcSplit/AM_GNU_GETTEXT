@@ -1,3 +1,5 @@
+dnl AM_GNU_GETTEXT version: 10 updated: 2002/11/17 17:25:28
+dnl --------------
 dnl Usage: Just like AM_WITH_NLS, which see.
 AC_DEFUN([AM_GNU_GETTEXT],
   [AC_REQUIRE([AC_PROG_MAKE_SET])dnl
@@ -23,7 +25,7 @@ strdup strtoul tsearch __argz_count __argz_stringify __argz_next])
    AM_ICONV
    AM_LANGINFO_CODESET
    AM_LC_MESSAGES
-   AM_WITH_NLS([$1],[$2],[$3])
+   AM_WITH_NLS([$1],[$2],[$3],[$4])
 
    if test "x$CATOBJEXT" != "x"; then
      if test "x$ALL_LINGUAS" = "x"; then

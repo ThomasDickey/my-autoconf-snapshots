@@ -1,3 +1,14 @@
+2002-11-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_GNU_GETTEXT, AcSplit/CF_BUNDLED_INTL:
+	ci-aclocal generated header
+
+	* AcSplit/CF_BUNDLED_INTL:
+	lynx: add a 2nd param so we can have --enable-nls option rather than --disable-nls
+
+	* AcSplit/AM_GNU_GETTEXT:
+	lynx: pass a 4th parameter to AM_WITH_NLS, to make it use --enable-nls
+
 2002-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CPPFLAGS:
