@@ -3,7 +3,7 @@ AC_DEFUN([CF_SYSV_UTMP],
 [
 AC_REQUIRE([CF_UTMP])
 AC_CACHE_CHECK(if $cf_cv_have_utmp is SYSV flavor,cf_cv_sysv_utmp,[
-AC_TRY_COMPILE([
+AC_TRY_LINK([
 #include <sys/types.h>
 #include <${cf_cv_have_utmp}.h>],[
 struct $cf_cv_have_utmp x;

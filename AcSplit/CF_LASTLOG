@@ -1,0 +1,22 @@
+AC_DEFUN([CF_LASTLOG],
+[
+AC_CHECK_HEADERS(lastlog.h paths.h)
+AC_CACHE_CHECK(for lastlog path,cf_cv_path_lastlog,[
+AC_TRY_COMPILE([
+#include <sys/types.h>
+#ifdef HAVE_LASTLOG_H
+#include <lastlog.h>
+#else
+#ifdef HAVE_PATHS_H
+#include <paths.h>
+#endif
+#endif],[char *path = _PATH_LASTLOG],
+	[cf_cv_path_lastlog="_PATH_LASTLOG"],
+	[if test -f /usr/adm/lastlog ; then
+	 	cf_cv_path_lastlog=/usr/adm/lastlog
+	else
+		cf_cv_path_lastlog=no
+	fi])
+])
+test $cf_cv_path_lastlog != no && AC_DEFINE(USE_LASTLOG)
+])dnl

@@ -1,3 +1,21 @@
+1999-10-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_GNU_SOURCE, AcSplit/CF_LASTLOG, AcSplit/CF_UTMP_UT_XTIME:
+	RCS_BASE
+
+	* AcSplit/CF_TYPE_FD_SET: add a dependency on X11/Xpoll.h
+
+	* AcSplit/CF_TYPE_FD_SET: ci-aclocal generated header
+
+	* AcSplit/CF_UTMP: expanded to handle some HPUX 10.x cases
+
+	* AcSplit/CF_FUNC_TGETENT: keep from combining ncurses' termcap.h !
+
+	* AcSplit/CF_SYSV_UTMP: linking is stronger than compiling
+
+	* AcSplit/CF_UTMP_UT_HOST:
+	make this use the definitions from CF_UTMP for include-files
+
 1999-10-05  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ANSI_CC_CHECK:

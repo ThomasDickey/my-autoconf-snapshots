@@ -41,7 +41,12 @@ LIBS="$cf_save_LIBS"
 # they are not executed when a cached value exists.)
 if test "$cf_cv_lib_tgetent" != no ; then
 	test "$cf_cv_lib_tgetent" != yes && LIBS="$LIBS $cf_cv_lib_tgetent"
-	AC_CHECK_HEADERS(termcap.h)
+	AC_DEFINE(USE_TERMCAP)
+	AC_TRY_COMPILE([
+#include <termcap.h>],[
+#ifdef NCURSES_VERSION
+make an error
+#endif],[AC_DEFINE(HAVE_TERMCAP_H)])
 else
         # If we didn't find a tgetent() that supports the buffer
         # argument, look again to see whether we can find even
