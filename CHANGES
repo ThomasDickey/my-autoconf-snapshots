@@ -1,3 +1,9 @@
+2000-04-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_HEADER_RESOURCE: make quoting in AC_DEFUN consistent
+
+	* AcSplit/CF_HEADER_SELECT: make quoting of AC_DEFUN consistent
+
 2000-04-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FIND_IPV6_TYPE: get rid of -o option in test

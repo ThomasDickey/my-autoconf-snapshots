@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000413
+MANIFEST for my-autoconf, version t20000414
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -42,6 +42,7 @@ AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
 AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
+AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_COLOR_CURSES         check if curses supports color
@@ -72,11 +73,14 @@ AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
 AcSplit/CF_FCNTL_VS_IOCTL       check usable ioctl with FIONREAD, or fcntl.h (vttest)
+AcSplit/CF_FIND_IPV6_LIBS       based on the IPV6 type, find libraries
+AcSplit/CF_FIND_IPV6_TYPE       determine the IPV6 type
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
+AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_POLL            functional test for poll()

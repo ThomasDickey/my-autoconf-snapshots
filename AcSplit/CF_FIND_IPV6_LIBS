@@ -1,0 +1,76 @@
+dnl Based on the IPV6 stack type, look for the corresponding library.
+AC_DEFUN([CF_FIND_IPV6_LIBS],[
+AC_REQUIRE([CF_FIND_IPV6_TYPE])
+
+cf_ipv6lib=none
+cf_ipv6dir=none
+
+AC_MSG_CHECKING(for ipv6 library if required)
+case $cf_cv_ipv6type in #(vi
+inria) #(vi
+	;;
+kame) #(vi
+	dnl http://www.kame.net/
+	cf_ipv6lib=inet6
+	cf_ipv6dir=v6
+	;;
+linux-glibc) #(vi
+	;;
+linux-libinet6) #(vi
+	dnl http://www.v6.linux.or.jp/
+	cf_ipv6lib=inet6
+	cf_ipv6dir=inet6
+	;;
+toshiba) #(vi
+	cf_ipv6lib=inet6
+	cf_ipv6dir=v6
+	;;
+v6d) #(vi
+	cf_ipv6lib=v6
+	cf_ipv6dir=v6
+	;;
+zeta)
+	cf_ipv6lib=inet6
+	cf_ipv6dir=v6
+	;;
+esac
+AC_MSG_RESULT($cf_ipv6lib)
+
+if test "$cf_ipv6lib" != "none"; then
+
+	AC_TRY_LINK([
+#include <sys/types.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/ip6.h>],
+	[getaddrinfo(0, 0, 0, 0)],,[
+	CF_HEADER_PATH(cf_search,$cf_ipv6dir)
+	for cf_incdir in $cf_search
+	do
+		cf_header=$cf_incdir/netinet/ip6.h
+		if test -f $cf_header
+		then
+			CFLAGS="$CFLAGS -I$cf_incdir"
+			test -n "$verbose" && echo "	... found $cf_header" 1>&AC_FD_MSG
+			break
+		fi
+		test -n "$verbose" && echo "	... tested $cf_header" 1>&AC_FD_MSG
+	done
+	])
+
+	CF_FIND_LIBRARY([$cf_ipv6lib],[$cf_ipv6dir],[
+#include <sys/types.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/ip6.h>],
+	[getaddrinfo(0, 0, 0, 0)],
+	[getaddrinfo],
+	noexit)
+	if test $cf_found_library = no ; then
+		AC_MSG_ERROR(
+[No $cf_ipv6lib library found, cannot continue.  You must fetch lib$cf_ipv6lib.a
+from an appropriate ipv6 kit and compile beforehand.])
+	fi
+fi
+
+])dnl

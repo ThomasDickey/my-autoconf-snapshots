@@ -1,0 +1,82 @@
+dnl Look for a working version of getaddrinfo(), for IPV6 support.
+AC_DEFUN(CF_FUNC_GETADDRINFO,[
+AC_CACHE_CHECK(working getaddrinfo, cf_cv_getaddrinfo,[
+AC_TRY_RUN([
+#include <sys/types.h>
+#include <netdb.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#define expect(a,b) if (strcmp(a,b) != 0) goto bad
+
+int main()
+{
+   int passive, gaierr, inet4 = 0, inet6 = 0;
+   struct addrinfo hints, *ai, *aitop;
+   char straddr[INET6_ADDRSTRLEN], strport[16];
+
+   for (passive = 0; passive <= 1; passive++) {
+     memset(&hints, 0, sizeof(hints));
+     hints.ai_family = AF_UNSPEC;
+     hints.ai_flags = passive ? AI_PASSIVE : 0;
+     hints.ai_socktype = SOCK_STREAM;
+     if ((gaierr = getaddrinfo(NULL, "54321", &hints, &aitop)) != 0) {
+       (void)gai_strerror(gaierr);
+       goto bad;
+     }
+     for (ai = aitop; ai; ai = ai->ai_next) {
+       if (ai->ai_addr == NULL ||
+           ai->ai_addrlen == 0 ||
+           getnameinfo(ai->ai_addr, ai->ai_addrlen,
+                       straddr, sizeof(straddr), strport, sizeof(strport),
+                       NI_NUMERICHOST|NI_NUMERICSERV) != 0) {
+         goto bad;
+       }
+       switch (ai->ai_family) {
+       case AF_INET:
+         expect(strport, "54321");
+         if (passive) {
+           expect(straddr, "0.0.0.0");
+         } else {
+           expect(straddr, "127.0.0.1");
+         }
+         inet4++;
+         break;
+       case AF_INET6:
+         expect(strport, "54321");
+         if (passive) {
+           expect(straddr, "::");
+         } else {
+           expect(straddr, "::1");
+         }
+         inet6++;
+         break;
+       case AF_UNSPEC:
+         goto bad;
+         break;
+       default:
+         /* another family support? */
+         break;
+       }
+     }
+   }
+
+   if (inet6 != 2 || inet4 != 2)
+     goto bad;
+
+   if (aitop)
+     freeaddrinfo(aitop);
+   exit(0);
+
+  bad:
+   if (aitop)
+     freeaddrinfo(aitop);
+   exit(1);
+}
+],
+[cf_cv_getaddrinfo=yes],
+[cf_cv_getaddrinfo=no],
+[cf_cv_getaddrinfo=unknown])
+])
+])dnl
