@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990313
+MANIFEST for my-autoconf, version t19990330
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -113,6 +113,7 @@ AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
+AcSplit/CF_OUR_MESSAGES         macro for i18n support (lynx)
 AcSplit/CF_OUTPUT_IF_CHANGED    augment AC_OUTPUT by checking if output changes
 AcSplit/CF_PATH_EDITOR          tin script to find default-editor
 AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory

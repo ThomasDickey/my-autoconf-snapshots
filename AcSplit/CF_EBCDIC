@@ -1,5 +1,7 @@
+dnl CF_EBCDIC version: 3 updated: 1999/03/30 17:24:31
+dnl ---------
 dnl Check whether character set is EBCDIC.
-AC_DEFUN(CF_EBCDIC,[
+AC_DEFUN([CF_EBCDIC],[
 AC_MSG_CHECKING(if character set is EBCDIC)
 AC_CACHE_VAL(cf_cv_ebcdic,[
 	AC_TRY_COMPILE([ ],
@@ -8,7 +10,7 @@ AC_CACHE_VAL(cf_cv_ebcdic,[
    Use compile-time rather than run-time tests for cross-compiler
    tolerance.  */
 #if '0'!=240
-#error "Character set is not EBCDIC"
+make an error "Character set is not EBCDIC"
 #endif ],
 [ # TryCompile action if true
 cf_cv_ebcdic=yes ],

@@ -40,7 +40,7 @@ if test $cf_cv_have_lib_$1 = no ; then
 fi
 case $host_os in #(vi
 linux*) # Suse Linux does not follow /usr/lib convention
-	$1="[$]$1 /lib"
+	LIBS="$LIBS -L/lib"
 	;;
 esac
 ])dnl
