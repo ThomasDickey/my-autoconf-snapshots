@@ -1,6 +1,7 @@
-dnl Compute the library-suffix from the given model name
+dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
 dnl $2 = variable to set
+dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_SUFFIX],
 [
 	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
@@ -23,4 +24,5 @@ AC_DEFUN([CF_LIB_SUFFIX],
 		*)	$2='.so'  ;;
 		esac
 	esac
+	test -n "$LIB_SUFFIX" && $2="${LIB_SUFFIX}[$]{$2}"
 ])dnl

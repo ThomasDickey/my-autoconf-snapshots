@@ -1,3 +1,34 @@
+2000-05-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_POSIX_WAIT, AcSplit/CF_SVR4, AcSplit/CF_SYSV, AcSplit/CF_TERMIO_C_ISPEED:
+	RCS_BASE
+
+	* AcSplit/CF_TTY_GROUP:
+	check for "not a tty" result if we're running this in batch mode.
+	also, add quotes that were missing in a test.
+
+	* AcSplit/CF_POSIX_WAIT, AcSplit/CF_SYSV, AcSplit/CF_TERMIO_C_ISPEED:
+	ci-aclocal generated header
+
+2000-05-27  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_GNAT_VERSION: Juergen requires gnat 3.11 now
+
+	* AcSplit/CF_LIB_RULES: add "make libs"
+	add hook to suppress 'trace()' function
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_LIB_TYPE:
+	add LIB_SUFFIX variable, for libncursesw
+
+	* AcSplit/CF_SHARED_OPTS: add beos
+
+	* AcSplit/CF_MAN_PAGES:
+	add logic to generate symbolic links to manpages
+
+	* AcSplit/CF_MATH_LIB: ci-aclocal generated header
+
+	* AcSplit/CF_MATH_LIB: correct a mis-nested parenthesis
+
 2000-05-20  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SLANG_LIBS:

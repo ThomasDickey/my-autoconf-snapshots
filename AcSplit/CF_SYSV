@@ -1,0 +1,30 @@
+dnl CF_SYSV version: 2 updated: 2000/05/29 16:16:04
+dnl -------
+dnl Check if this is a SYSV platform
+AC_DEFUN([CF_SYSV],
+[
+AC_CACHE_CHECK(if this platform has SYSV flavor,cf_cv_sysv,[
+AC_TRY_COMPILE([
+#include <curses.h>
+#include <term.h>
+#include <sys/termio.h>
+],[
+/* FIXME: need a test that excludes linux */
+#ifdef linux
+make an error
+#endif
+static struct termio d_tio;
+	d_tio.c_cc[VINTR] = 0;
+	d_tio.c_cc[VQUIT] = 0;
+	d_tio.c_cc[VERASE] = 0;
+	d_tio.c_cc[VKILL] = 0;
+	d_tio.c_cc[VEOF] = 0;
+	d_tio.c_cc[VEOL] = 0;
+	d_tio.c_cc[VMIN] = 0;
+	d_tio.c_cc[VTIME] = 0;
+],
+[cf_cv_sysv=yes],
+[cf_cv_sysv=no])
+])
+test "$cf_cv_sysv" = yes && AC_DEFINE(SYSV)
+])dn

@@ -1,0 +1,18 @@
+dnl Check if this is an SVR4 system.  We need the definition for xterm
+AC_DEFUN([CF_SVR4],
+[
+AC_REQUIRE([AC_FUNC_GETLOADAVG])
+AC_CACHE_CHECK(if this is an SVR4 system, cf_cv_svr4,[
+AC_TRY_COMPILE([
+#include <elf.h>
+#include <sys/termio.h>
+],[
+#ifndef SVR4
+make an error
+#endif
+],
+[cf_cv_svr4=yes],
+[cf_cv_svr4=no])
+])
+test "$cf_cv_svr4" = yes && AC_DEFINE(SVR4)
+])dnl

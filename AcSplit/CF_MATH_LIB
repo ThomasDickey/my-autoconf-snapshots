@@ -1,3 +1,5 @@
+dnl CF_MATH_LIB version: 5 updated: 2000/05/28 01:39:10
+dnl -----------
 dnl Checks for libraries.  At least one UNIX system, Apple Macintosh
 dnl Rhapsody 5.5, does not have -lm.  We cannot use the simpler
 dnl AC_CHECK_LIB(m,sin), because that fails for C++.
@@ -12,10 +14,10 @@ AC_CACHE_CHECK(if -lm needed for math functions,
 	[double x = rand(); printf("result = %g\n", ]ifelse($2,,sin(x),$2)[)],
 	[cf_cv_need_libm=no],
 	[cf_cv_need_libm=yes])])
-ifelse($1,,[
 if test "$cf_cv_need_libm" = yes
 then
+ifelse($1,,[
 	LIBS="$LIBS -lm"
-fi
 ],[$1=-lm])
+fi
 ])

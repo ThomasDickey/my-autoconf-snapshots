@@ -12,8 +12,9 @@ cf_uid=`id | sed -e 's/^[^=]*=//' -e 's/(.*$//'`
 if test "$cf_uid" != 0 ; then
 cf_cv_tty_group_name=
 cf_tty_name=`tty`
+test "$cf_tty_name" = "not a tty" && cf_tty_name=/dev/tty
 test -z "$cf_tty_name" && cf_tty_name=/dev/tty
-if test -c $cf_tty_name
+if test -c "$cf_tty_name"
 then
 	cf_option="-l -L"
 
