@@ -1,18 +1,56 @@
-dnl Check if xterm is installed setuid, assume we want to do the same on a
+dnl Check if xterm is installed setuid/setgid, assume we want to do the same on a
 dnl new install
 AC_DEFUN([CF_XTERM_MODE],[
 AC_PATH_PROG(XTERM_PATH,xterm)
 XTERM_MODE=755
+XTERM_USR=
+XTERM_GRP=
 AC_MSG_CHECKING(for presumed installation-mode)
 if test -f "$XTERM_PATH" ; then
-	ls -Ll $XTERM_PATH >conftest.out
-	read cf_mode cf_rest <conftest.out
+	cf_option="-l -L"
+
+	# Expect listing to have fields like this:
+	#-r--r--r--   1 user      group       34293 Jul 18 16:29 pathname
+	ls $cf_option $XTERM_PATH >conftest.out
+	read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest.out
+	echo "if \"$cf_rest\" is null, try the -g option" 1>&AC_FD_CC
+	if test -z "$cf_rest" ; then
+		cf_option="$cf_option -g"
+		ls $cf_option $XTERM_PATH >conftest.out
+		read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest.out
+	fi
+
+	# If we have a pathname, and the date fields look right, assume we've
+	# captured the group as well.
+	echo "if \"$cf_rest\" is null, we do not look for group" 1>&AC_FD_CC
+	if test -n "$cf_rest" ; then
+changequote(,)dnl
+		cf_test=`echo "${cf_date2}${cf_date3}" | sed -e 's/[0-9:]//g'`
+changequote([,])dnl
+		echo "if we have date in proper columns ($cf_date1 $cf_date2 $cf_date3), \"$cf_test\" is null" 1>&AC_FD_CC
+		if test -z "$cf_test" ; then
+			XTERM_USR=$cf_usr;
+			XTERM_GRP=$cf_grp;
+		fi
+	fi
+
+	echo "see if mode \"$cf_mode\" has s-bit set" 1>&AC_FD_CC
 	case ".$cf_mode" in #(vi
-	.???s*)
+	.???s*) #(vi
 		XTERM_MODE=4711
+		;;
+	.??????s*)
+		XTERM_MODE=2711
 		;;
 	esac
 fi
-AC_MSG_RESULT($XTERM_MODE)
+test "$XTERM_USR" = "root" && XTERM_USR=""
+test "$XTERM_GRP" = "root" && XTERM_GRP=""
+test "$XTERM_GRP" = "wheel" && XTERM_GRP=""
+AC_MSG_RESULT($XTERM_MODE $XTERM_USR $XTERM_GRP)
+test -n "$XTERM_USR" && XTERM_USR="-o $XTERM_USR"
+test -n "$XTERM_GRP" && XTERM_GRP="-g $XTERM_GRP"
 AC_SUBST(XTERM_MODE)
+AC_SUBST(XTERM_USR)
+AC_SUBST(XTERM_GRP)
 ])dnl
