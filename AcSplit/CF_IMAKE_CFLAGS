@@ -3,7 +3,6 @@ dnl get these, but if imake is properly configured there is no point in doing
 dnl this.
 AC_DEFUN([CF_IMAKE_CFLAGS],
 [
-rm -f Makefile Makefile.bak
 AC_PATH_PROGS(IMAKE,xmkmf imake)
 case $IMAKE in # (vi
 */imake)
@@ -16,77 +15,50 @@ esac
 
 # If it's installed properly, imake (or its wrapper, xmkmf) will point to the
 # config directory.
-if ( $IMAKE $cf_imake_opts 1>/dev/null 2>&AC_FD_CC)
-then
-	CF_VERBOSE(Using $IMAKE)
-else
-	# sometimes imake doesn't have the config path compiled in.  Find it.
-	cf_config=
-	for cf_libpath in $X_LIBS $LIBS ; do
-		case $cf_libpath in # (vi
-		-L*)
-			cf_libpath=`echo .$cf_libpath | sed -e 's/^...//'`
-			cf_libpath=$cf_libpath/X11/config
-			if test -d $cf_libpath ; then
-				cf_config=$cf_libpath
-				break
-			fi
-			;;
-		esac
-	done
-	if test -z $cf_config ; then
-		AC_ERROR(Could not find imake config-directory)
-	fi
-	cf_imake_opts="$cf_imake_opts -I$cf_config"
-	if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
+if mkdir conftestdir; then
+	cd conftestdir
+	echo >./Imakefile
+	test ../Imakefile && cat ../Imakefile >>./Imakefile
+	cat >> ./Imakefile <<'CF_EOF'
+findstddefs:
+	@echo 'IMAKE_CFLAGS="${STD_DEFINES} ifelse($1,,,$1)"'
+CF_EOF
+	if ( $IMAKE $cf_imake_opts 1>/dev/null 2>&AC_FD_CC && test -f Makefile)
 	then
-		CF_VERBOSE(Using $IMAKE $cf_config)
+		CF_VERBOSE(Using $IMAKE)
 	else
-		AC_ERROR(Cannot run imake)
-	fi
-fi
-
-# If we've gotten this far, we have a Makefile for xterm.  Some X11R5 config
-# macros do not work well enough to actually use the Makefile for a build, but
-# the definitions are usable (probably).
-AC_MSG_CHECKING(for compiler options known to imake)
-AC_CACHE_VAL(cf_cv_imake_cflags,[
-	test -n "$verbose" && echo working...
-	cf_imake_cflags=`${MAKE-make} -n -f Makefile main.o RM=echo 2>/dev/null`
-	for cf_opt in $cf_imake_cflags
-	do
-		cf_found=no
-		case $cf_opt in # (vi
-changequote(,)dnl
-		-[focg]) cf_found=yes
-			;; # (vi
-		-[OID]*) #(vi
-changequote([,])dnl
-			for cf_opt2 in $CFLAGS
-			do
-				if test ".$cf_opt" = ".$cf_opt2" ; then
-					cf_found=yes
+		# sometimes imake doesn't have the config path compiled in.  Find it.
+		cf_config=
+		for cf_libpath in $X_LIBS $LIBS ; do
+			case $cf_libpath in # (vi
+			-L*)
+				cf_libpath=`echo .$cf_libpath | sed -e 's/^...//'`
+				cf_libpath=$cf_libpath/X11/config
+				if test -d $cf_libpath ; then
+					cf_config=$cf_libpath
 					break
 				fi
-			done
-			;;
-		"\\")	cf_found=yes #(vi
-			;;
-		"&&")	cf_found=yes #(vi
-			;;
-		-*)	;; #(vi
-		$CC|cc|gcc|main.*|echo)	cf_found=yes
-			;;
-		esac
-		if test $cf_found = no ; then
-			CF_VERBOSE(flag:$cf_opt)
-			cf_cv_imake_cflags="$cf_cv_imake_cflags $cf_opt"
-		else
-			CF_VERBOSE(skip:$cf_opt)
+				;;
+			esac
+		done
+		if test -z "$cf_config" ; then
+			AC_ERROR(Could not find imake config-directory)
 		fi
-	done
-])
-test -z "$verbose" && AC_MSG_RESULT(done)
-IMAKE_CFLAGS="$cf_cv_imake_cflags"
-rm -f Makefile Makefile.bak
+		cf_imake_opts="$cf_imake_opts -I$cf_config"
+		if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
+		then
+			CF_VERBOSE(Using $IMAKE $cf_config)
+		else
+			AC_ERROR(Cannot run $IMAKE)
+		fi
+	fi
+
+	# GNU make sometimes prints "make[1]: Entering...", which
+	# would confuse us.
+	eval `make findstddefs 2>/dev/null | grep -v make`
+
+	cd ..
+	rm -rf conftestdir
+fi
+AC_SUBST(IMAKE_CFLAGS)
 ])dnl

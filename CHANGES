@@ -1,3 +1,23 @@
+1997-09-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TYPE_FD_SET: RCS_BASE
+
+	* AcSplit/CF_FUNC_TGETENT: comment
+
+	* AcSplit/CF_IMAKE_CFLAGS: missing quotes
+
+	* AcSplit/CF_X_TOOLKIT: use config.guess, so case-names are lower-case
+
+	* AcSplit/CF_X_ATHENA, AcSplit/CF_X_TOOLKIT:
+	add logic from vile's configure.in
+
+	* AcSplit/CF_IMAKE_CFLAGS: parameterize, since xterm needed it
+
+1997-09-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	simplified this by using Kevin Buettner's logic from vile
+
 1997-09-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ALL_MAKEFILES: RCS_BASE

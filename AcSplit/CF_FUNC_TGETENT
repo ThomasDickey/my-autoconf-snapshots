@@ -14,7 +14,8 @@ do
 	LIBS="$cf_save_LIBS -l$cf_termlib"
 	AC_TRY_RUN([
 /* terminfo implementations ignore the buffer argument, making it useless for
- * the xterm application, which uses this information to make a new $TERMCAP
+ * the xterm application, which uses this information to make a new TERMCAP
+ * environment variable.
  */
 int main()
 {

@@ -3,11 +3,15 @@ dnl
 AC_DEFUN([CF_X_ATHENA],
 [AC_REQUIRE([CF_X_TOOLKIT])
 AC_CHECK_HEADERS(X11/Xaw/SimpleMenu.h)
-AC_CHECK_LIB(Xext,XextCreateExtension)
 AC_CHECK_LIB(Xmu, XmuClientWindow)
-AC_CHECK_LIB(Xaw, XawSimpleMenuAddGlobalActions,,
+AC_CHECK_LIB(Xext,XextCreateExtension,
+	[LIBS="-lXext $LIBS"])
+AC_CHECK_LIB(Xmu_s, XmuClientWindow)
+AC_CHECK_LIB(Xaw, XawSimpleMenuAddGlobalActions,
+	[LIBS="-lXaw $LIBS"],[
+AC_CHECK_LIB(Xaw_s, XawSimpleMenuAddGlobalActions,
+	[LIBS="-lXaw_s $LIBS"],
 	AC_ERROR(
-[Unable to successfully link Athena library (-lXaw)]),
-	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
-
+[Unable to successfully link Athena library (-lXaw) with test program]),
+	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])])
 ])dnl
