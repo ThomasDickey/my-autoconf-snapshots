@@ -1,3 +1,9 @@
+2004-11-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	add a sanity-check to ensure that --with-build-cc was used to specify a
+	different compiler from $CC when cross-compiling.
+
 2004-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_LIBRARY: correct comment for $6
