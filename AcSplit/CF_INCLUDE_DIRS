@@ -1,0 +1,23 @@
+dnl Construct the list of include-options according to whether we're building
+dnl in the source directory or using '--srcdir=DIR' option.  If we're building
+dnl with gcc, don't append the includedir if it happens to be /usr/include,
+dnl since that usually breaks gcc's shadow-includes.
+AC_DEFUN([CF_INCLUDE_DIRS],
+[
+CPPFLAGS="$CPPFLAGS -I. -I../include"
+if test "$srcdir" != "."; then
+	CPPFLAGS="$CPPFLAGS -I\$(srcdir)/../include"
+fi
+if test -z "$GCC"; then
+	CPPFLAGS="$CPPFLAGS -I\$(includedir)"
+elif test "$includedir" != "/usr/include"; then
+	if test "$includedir" = '${prefix}/include' ; then
+		if test $prefix != /usr ; then
+			CPPFLAGS="$CPPFLAGS -I\$(includedir)"
+		fi
+	else
+		CPPFLAGS="$CPPFLAGS -I\$(includedir)"
+	fi
+fi
+AC_SUBST(CPPFLAGS)
+])dnl

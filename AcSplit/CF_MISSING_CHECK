@@ -1,0 +1,191 @@
+dnl
+AC_DEFUN([CF_MISSING_CHECK],
+[
+AC_MSG_CHECKING([for missing "$1" extern])
+AC_CACHE_VAL([cf_cv_func_$1],[
+AC_TRY_LINK([
+#include <stdio.h>
+#include <sys/types.h>
+#include <setjmp.h>
+#include <signal.h>
+#include <errno.h>
+#ifdef HAVE_TYPES_H
+#include <types.h>
+#endif
+#ifdef HAVE_LIBC_H
+#include <libc.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_STDARG_H
+#include <stdarg.h>
+#else
+#ifdef HAVE_VARARGS_H
+#include <varargs.h>
+#endif
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_STDDEF_H
+#include <stddef.h>
+#endif
+#if HAVE_UTIME_H
+# include <utime.h>
+#endif
+
+#if STDC_HEADERS || HAVE_STRING_H
+#include <string.h>
+  /* An ANSI string.h and pre-ANSI memory.h might conflict.  */
+#if !STDC_HEADERS && HAVE_MEMORY_H
+#include <memory.h>
+#endif /* not STDC_HEADERS and HAVE_MEMORY_H */
+#else /* not STDC_HEADERS and not HAVE_STRING_H */
+#if HAVE_STRINGS_H
+#include <strings.h>
+  /* memory.h and strings.h conflict on some systems */
+#endif
+#endif /* not STDC_HEADERS and not HAVE_STRING_H */
+
+#ifdef HAVE_FCNTL_H
+#include <fcntl.h>
+#endif
+
+/* unistd.h defines _POSIX_VERSION on POSIX.1 systems.  */
+#if defined(HAVE_DIRENT_H) || defined(_POSIX_VERSION)
+#include <dirent.h>
+#else /* not (HAVE_DIRENT_H or _POSIX_VERSION) */
+#ifdef HAVE_SYS_NDIR_H
+#include <sys/ndir.h>
+#endif /* HAVE_SYS_NDIR_H */
+#ifdef HAVE_SYS_DIR_H
+#include <sys/dir.h>
+#endif /* HAVE_SYS_DIR_H */
+#ifdef HAVE_NDIR_H
+#include <ndir.h>
+#endif /* HAVE_NDIR_H */
+#endif /* not (HAVE_DIRENT_H or _POSIX_VERSION) */
+
+#ifdef HAVE_SYS_FILE_H
+#include <sys/file.h>
+#endif
+#ifdef HAVE_STAT_H
+#include <stat.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+#include <sys/stat.h>
+#endif
+#ifdef HAVE_DLFCN_H
+#include <dlfcn.h>
+#endif
+#ifdef HAVE_SIGINFO_H
+#include <siginfo.h>
+#endif
+
+#if HAVE_SYS_TIME_H && ! SYSTEM_LOOKS_LIKE_SCO
+/* on SCO, sys/time.h conflicts with select.h, and we don't need it */
+#include <sys/time.h>
+#ifdef TIME_WITH_SYS_TIME
+# include <time.h>
+#endif
+#else
+#include <time.h>
+#endif
+
+#ifdef HAVE_SYS_TIMES_H
+#include <sys/times.h>
+#endif
+#ifdef HAVE_UCONTEXT_H
+#include <ucontext.h>
+#endif
+#ifdef HAVE_LIBGEN_H
+#include <libgen.h>
+#else
+#ifdef HAVE_BSD_REGEX_H
+#include <bsd/regex.h>
+#endif
+#endif
+#ifdef HAVE_MATH_H
+#include <math.h>
+#endif
+#ifdef HAVE_SYS_SOCKET_H
+#include <sys/socket.h>
+#endif
+#ifdef HAVE_NETINET_IN_H
+#include <netinet/in.h>
+#endif
+#ifdef HAVE_ARPA_INET_H
+#include <arpa/inet.h>
+#endif
+#ifdef HAVE_NETDB_H
+#include <netdb.h>
+#endif
+#ifdef HAVE_SYS_UN_H
+#include <sys/un.h>
+#endif
+#ifdef HAVE_SYS_PARAM_H
+#include <sys/param.h>
+#endif
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+#ifdef HAVE_SYS_IPC_H
+#include <sys/ipc.h>
+#endif
+#ifdef HAVE_SYS_MSG_H
+#include <sys/msg.h>
+#endif
+#ifdef HAVE_SYS_MMAN_H
+#include <sys/mman.h>
+#endif
+#ifdef HAVE_SELECT_H
+#include <select.h>
+#endif
+#ifdef HAVE_SYS_SELECT_H
+#include <sys/select.h>
+#endif
+/* SCO needs resource.h after select.h, to pick up timeval struct */
+#ifdef HAVE_SYS_RESOURCE_H
+#include <sys/resource.h>
+#endif
+#ifdef HAVE_SYS_FILIO_H
+# include <sys/filio.h>
+#endif
+#ifdef HAVE_IOCTL_H
+# include <ioctl.h>
+#else
+# ifdef HAVE_SYS_IOCTL_H
+#  include <sys/ioctl.h>
+# endif
+#endif
+
+#if USE_TERMINFO
+# include <curses.h>
+# if HAVE_TERM_H
+#  include <term.h>
+# endif
+#else
+#if HAVE_TERMCAP_H
+#include <termcap.h>
+#endif
+#endif
+
+#undef $1
+struct zowie { int a; double b; struct zowie *c; char d; };
+extern struct zowie *$1();
+],
+[
+#if HAVE_LIBXT		/* needed for SunOS 4.0.3 or 4.1 */
+XtToolkitInitialize();
+#endif
+],
+[eval 'cf_cv_func_'$1'=yes'],
+[eval 'cf_cv_func_'$1'=no'])])
+eval 'cf_result=$cf_cv_func_'$1
+AC_MSG_RESULT($cf_result)
+test $cf_result = yes && AC_DEFINE_UNQUOTED(MISSING_EXTERN_$2)
+])dnl

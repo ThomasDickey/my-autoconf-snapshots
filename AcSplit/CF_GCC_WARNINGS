@@ -29,7 +29,6 @@ EOF
 		Wmissing-prototypes \
 		Wnested-externs \
 		Wpointer-arith \
-		Wwrite-strings \
 		Wshadow \
 		Wstrict-prototypes
 	do
@@ -43,4 +42,5 @@ EOF
 	rm -f conftest*
 	CFLAGS="$cf_save_CFLAGS"
 fi
+AC_SUBST(EXTRA_CFLAGS)
 ])dnl

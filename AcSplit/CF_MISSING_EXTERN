@@ -1,0 +1,10 @@
+dnl CF_MISSING_EXTERN version: 3 updated: 1997/09/06 15:25:32
+dnl -----------------
+dnl
+AC_DEFUN([CF_MISSING_EXTERN],
+[for ac_func in $1
+do
+CF_UPPER(ac_tr_func,$ac_func)
+CF_MISSING_CHECK(${ac_func}, ${ac_tr_func})dnl
+done
+])dnl
