@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 26 updated: 2005/02/05 10:39:02
+dnl CF_IMAKE_CFLAGS version: 27 updated: 2005/04/05 18:26:15
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -10,6 +10,9 @@ dnl	$2 = optional value to append to $IMAKE_LOADFLAGS
 AC_DEFUN([CF_IMAKE_CFLAGS],
 [
 AC_PATH_PROGS(IMAKE,xmkmf imake)
+
+if test -n "$IMAKE" ; then
+
 case $IMAKE in # (vi
 */imake)
 	cf_imake_opts="-DUseInstalled=YES" # (vi
@@ -25,7 +28,6 @@ esac
 
 # If it's installed properly, imake (or its wrapper, xmkmf) will point to the
 # config directory.
-if test -n "$IMAKE" ; then
 if mkdir conftestdir; then
 	CDPATH=; export CDPATH
 	cf_makefile=`cd $srcdir;pwd`/Imakefile
@@ -128,7 +130,6 @@ CF_EOF
 	    fi
 	fi
 fi
-fi
 
 # Some imake configurations define PROJECTROOT with an empty value.  Remove
 # the empty definition.
@@ -139,6 +140,8 @@ case $IMAKE_CFLAGS in
 	IMAKE_CFLAGS=`echo "$IMAKE_CFLAGS" |sed -e "s,-DPROJECTROOT=[[ 	]], ,"`
 	;;
 esac
+
+fi
 
 CF_VERBOSE(IMAKE_CFLAGS $IMAKE_CFLAGS)
 CF_VERBOSE(IMAKE_LOADFLAGS $IMAKE_LOADFLAGS)
