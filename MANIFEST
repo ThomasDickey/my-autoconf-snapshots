@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19971108
+MANIFEST for my-autoconf, version t19971123
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -26,6 +26,8 @@ AcSplit/CF_CGETENT              test for BSD 4.4 cgetent()
 AcSplit/CF_CHECK_1_DECL         check one declaration
 AcSplit/CF_CHECK_CACHE          check for conflicting configure-cache
 AcSplit/CF_CHECK_DECL           check one or more missing-prototypes
+AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
+AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_COLOR_CURSES         check if curses supports color
