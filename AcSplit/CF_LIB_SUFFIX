@@ -10,8 +10,15 @@ AC_DEFUN([CF_LIB_SUFFIX],
 	profile) $2='_p.a' ;;
 	shared)
 		case $cf_cv_system_name in
-		openbsd*|netbsd*|freebsd*)
+		openbsd*|freebsd*)
 			$2='.so.$(REL_VERSION)' ;;
+		netbsd*)
+			if test -f /usr/libexec/ld.elf_so; then
+				$2='.so'
+			else
+				$2='.so.$(REL_VERSION)'
+			fi
+			;;
 		hpux*)	$2='.sl'  ;;
 		*)	$2='.so'  ;;
 		esac

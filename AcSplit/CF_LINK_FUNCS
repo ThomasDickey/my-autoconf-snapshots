@@ -42,7 +42,9 @@ int main()
 }
 			],[
 			cf_cv_link_funcs="$cf_cv_link_funcs $cf_func"
-			eval 'ac_cv_func_'$cf_func'=yes'],[
+			eval 'ac_cv_func_'$cf_func'=yes'
+			CF_UPPER(cf_FUNC,$cf_func)
+			AC_DEFINE_UNQUOTED(HAVE_$cf_FUNC)],[
 			eval 'ac_cv_func_'$cf_func'=no'],[
 			eval 'ac_cv_func_'$cf_func'=error'])
 		done

@@ -142,10 +142,12 @@ done
 
 cat >> Makefile <<CF_EOF
 
-install.data ::
+install.data \
+uninstall.data ::
 	cd misc && \$(MAKE) \$(CF_MFLAGS) \[$]@
 
-install.man ::
+install.man \
+uninstall.man ::
 	cd man && \$(MAKE) \$(CF_MFLAGS) \[$]@
 
 distclean ::
