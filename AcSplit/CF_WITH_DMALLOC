@@ -1,4 +1,4 @@
-dnl CF_WITH_DMALLOC version: 3 updated: 2004/01/19 13:06:01
+dnl CF_WITH_DMALLOC version: 4 updated: 2004/02/28 05:49:27
 dnl ---------------
 dnl Configure-option for dmalloc.  The optional parameter is used to override
 dnl the updating of $LIBS, e.g., to avoid conflict with subsequent tests.
@@ -9,9 +9,8 @@ AC_ARG_WITH(dmalloc,
 	[with_dmalloc=$withval],
 	[with_dmalloc=no])
 AC_MSG_RESULT($with_dmalloc)
-if test $with_dmalloc = yes ; then
+if test "$with_dmalloc" = yes ; then
 	AC_CHECK_HEADER(dmalloc.h,
-		[AC_CHECK_LIB(dmalloc,dmalloc_debug
-			ifelse($1,,[],[,$1]))])
+		[AC_CHECK_LIB(dmalloc,[dmalloc_debug]ifelse($1,,[],[,$1]))])
 fi
 ])dnl
