@@ -1,0 +1,7 @@
+1995-08-23  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_POPEN_TEST, AcSplit/CF_YACC_ERROR: RCS_BASE
+
+	* AcSplit/CF_POPEN_TEST, AcSplit/CF_YACC_ERROR:
+	ci-aclocal generated header
+
