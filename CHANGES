@@ -1,3 +1,12 @@
+2005-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	OSF1's uname -r returns "V4.0" for 4.0D, so I modified the sed script to
+	strip leading non-digits when getting a value for OSMAJORVERSION
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	typo - I'd left off the blank needed for one of the fix_cflags.sed expressions
+
 2005-02-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_C_SOURCE:
