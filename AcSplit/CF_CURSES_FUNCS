@@ -15,7 +15,7 @@ do
 #include <xcurses.h>
 char * XCursesProgramName = "test";
 #else
-#include <curses.h>
+#include <${cf_cv_ncurses_header-curses.h}>
 #ifdef HAVE_TERM_H
 #include <term.h>
 #endif

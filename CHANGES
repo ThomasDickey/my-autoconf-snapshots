@@ -1,3 +1,16 @@
+2000-05-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SLANG_LIBS:
+	CF_FIND_LIBRARY takes extra param ($1 is duplicated)
+
+	* AcSplit/CF_SLANG_UNIX_DEFS: ci-aclocal generated header
+
+	* AcSplit/CF_SLANG_UNIX_DEFS:
+	lynx: ensure SLang_TT_Baud_Rate is declared extern
+
+	* AcSplit/CF_CURSES_FUNCS, AcSplit/CF_XOPEN_CURSES:
+	lynx: use $cf_cv_ncurses_header
+
 2000-04-15  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_GETADDRINFO: make quoting consistent
