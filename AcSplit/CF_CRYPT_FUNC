@@ -1,0 +1,38 @@
+dnl Check if we have a working crypt() function
+AC_DEFUN([CF_CRYPT_FUNC],
+[
+AC_CACHE_CHECK(for crypt function,cf_cv_crypt_func,[
+cf_cv_crypt_func=
+AC_TRY_LINK([],[crypt()],[
+	cf_cv_crypt_func=yes],[
+	cf_save_LIBS="$LIBS"
+	LIBS="-lcrypt $LIBS"
+	AC_TRY_LINK([],[crypt()],[
+		cf_cv_crypt_func="-lcrypt"],[
+		cf_cv_crypt_func=no])
+	LIBS="$cf_save_LIBS"
+	])
+])
+if test "$cf_cv_crypt_func" != no ; then
+	cf_save_LIBS="$LIBS"
+	test "$cf_cv_crypt_func" != yes && LIBS="$cf_cv_crypt_func $LIBS"
+AC_CACHE_CHECK(if crypt works,cf_cv_crypt_works,[
+AC_TRY_RUN([
+#include <string.h>
+extern char *crypt();
+int main() {
+	char *s = crypt("vi-crypt", "vi");
+	exit(strcmp("vi6r2tczBYLvM", s) != 0);
+}
+	],[
+	cf_cv_crypt_works=yes],[
+	cf_cv_crypt_works=no],[
+	cf_cv_crypt_works=unknown])])
+	if test "$cf_cv_crypt_works" != no ; then
+		AC_DEFINE(HAVE_CRYPT)
+		if test "$cf_cv_crypt_func" != yes ; then
+			LIBS="$cf_cv_crypt_func $LIBS"
+		fi
+	fi
+fi
+])dnl

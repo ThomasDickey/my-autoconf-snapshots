@@ -17,7 +17,13 @@ if test "$1" = ncurses; then
 fi
 ])
 if test "$cf_cv_termlib" = none; then
-	AC_CHECK_LIB(curses, tgetstr, [LIBS="$LIBS -lcurses" cf_cv_termlib=terminfo])
+	case $host_os in #(vi
+	freebsd*) #(vi
+		;;
+	*)
+		AC_CHECK_LIB(curses, tgetstr, [LIBS="$LIBS -lcurses" cf_cv_termlib=terminfo])
+		;;
+	esac
 fi
 # HP-UX 9.x terminfo has setupterm, but no tigetstr.
 if test "$cf_cv_termlib" = none; then
