@@ -1,3 +1,18 @@
+2003-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_SUFFIX: Date: Mon, 27 Oct 2003 14:55:10 -0500
+	From: Jonathan Ward <Jonathan.Ward@hp.com>
+	Subject: Patch for HP-UX for Itanium support
+	To: bug-ncurses@gnu.org
+
+	The following is a patch for the Itanium releases of HP-UX.  There are several
+	key features but the most notable is the library suffix is .so on Itanium
+	+libraries
+	not .sl as on PA-RISC libraries.
+
+
+	(omitted a chunk that put a modified-by comment at the top of aclocal.m4)
+
 2003-10-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2003-08-18 (from autoconf 2.57g)

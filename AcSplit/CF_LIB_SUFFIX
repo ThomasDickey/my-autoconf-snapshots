@@ -1,4 +1,4 @@
-dnl CF_LIB_SUFFIX version: 12 updated: 2002/01/20 01:43:41
+dnl CF_LIB_SUFFIX version: 13 updated: 2003/11/01 16:09:07
 dnl -------------
 dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
@@ -16,7 +16,12 @@ AC_DEFUN([CF_LIB_SUFFIX],
 		case $cf_cv_system_name in
 		cygwin*) $2='.dll' ;;
 		darwin*) $2='.dylib' ;;
-		hpux*)	$2='.sl'  ;;
+		hpux*)
+			case $target in
+			ia64*)	$2='.so' ;;
+			*)	$2='.sl' ;;
+			esac
+			;;
 		*)	$2='.so'  ;;
 		esac
 	esac
