@@ -8,7 +8,7 @@ dnl	-Wwrite-strings (too noisy, but should review occasionally)
 dnl	-pedantic
 dnl
 AC_DEFUN([CF_GCC_WARNINGS],
-[EXTRA_CFLAGS=""
+[
 if test -n "$GCC"
 then
 	changequote(,)dnl
@@ -20,6 +20,8 @@ EOF
 	AC_CHECKING([for gcc warning options])
 	cf_save_CFLAGS="$CFLAGS"
 	EXTRA_CFLAGS="-W -Wall"
+	cf_warn_CONST=""
+	test "$with_ext_const" = yes && cf_warn_CONST="Wwrite-strings"
 	for cf_opt in \
 		Wbad-function-cast \
 		Wcast-align \
@@ -30,7 +32,7 @@ EOF
 		Wnested-externs \
 		Wpointer-arith \
 		Wshadow \
-		Wstrict-prototypes
+		Wstrict-prototypes $cf_warn_CONST
 	do
 		CFLAGS="$cf_save_CFLAGS $EXTRA_CFLAGS -$cf_opt"
 		if AC_TRY_EVAL(ac_compile); then

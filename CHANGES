@@ -1,3 +1,16 @@
+1997-09-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_SUFFIX: comment
+
+	* AcSplit/CF_LIB_RULES: pass $target down to mk-1st.awk
+
+	* AcSplit/CF_SED_CONFIG_H:
+	add parameters 3 & 4, for preamble and trailer here-documents
+
+	* AcSplit/CF_GCC_WARNINGS: don't reset EXTRA_CFLAGS here!
+
+	* AcSplit/CF_GCC_WARNINGS: add ncurses' tweaks to the heap
+
 1997-09-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SED_CONFIG_H: keep old behavior: remove the input-file
