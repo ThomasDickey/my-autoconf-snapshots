@@ -7,8 +7,15 @@ dnl and the linker will record a dependency.
 AC_DEFUN([CF_NCURSES_LIBS],
 [AC_REQUIRE([CF_NCURSES_CPPFLAGS])
 
+	# This works, except for the special case where we find gpm, but
+	# ncurses is in a nonstandard location via $LIBS, and we really want
+	# to link gpm.
 cf_ncurses_LIBS=""
-AC_CHECK_LIB(gpm,Gpm_Open,[AC_CHECK_LIB(gpm,initscr,,[cf_ncurses_LIBS="-lgpm"])])
+cf_ncurses_SAVE="$LIBS"
+AC_CHECK_LIB(gpm,Gpm_Open,
+	[AC_CHECK_LIB(gpm,initscr,
+		[LIBS="$cf_ncurses_SAVE"],
+		[cf_ncurses_LIBS="-lgpm"])])
 
 case $host_os in #(vi
 freebsd*)
