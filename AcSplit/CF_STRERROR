@@ -1,0 +1,7 @@
+dnl CF_STRERROR version: 2 updated: 2001/07/11 09:34:49
+dnl -----------
+dnl Check for strerror(), or it is not found, for the related data.  POSIX
+dnl requires strerror(), so only old systems such as SunOS lack it.
+AC_DEFUN([CF_STRERROR],[
+AC_CHECK_FUNCS(strerror, AC_DEFINE(HAVE_STRERROR),[CF_SYS_ERRLIST])
+])dnl
