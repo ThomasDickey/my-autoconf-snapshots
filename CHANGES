@@ -1,3 +1,14 @@
+2000-07-29  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	dialog: suppress redundant check for $cf_curs_lib vs $cf_term_lib
+
+	* AcSplit/CF_ARG_MSG_ENABLE: RCS_BASE
+
+	* AcSplit/CF_ARG_MSG_ENABLE: ci-aclocal generated header
+
+	* AcSplit/CF_UPPER: improve using explicit range
+
 2000-07-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_TERMIOS: RCS_BASE

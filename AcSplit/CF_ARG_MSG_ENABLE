@@ -1,0 +1,21 @@
+dnl CF_ARG_MSG_ENABLE version: 2 updated: 2000/07/29 19:32:03
+dnl -----------------
+dnl Verbose form of AC_ARG_ENABLE:
+dnl
+dnl Parameters:
+dnl $1 = message
+dnl $2 = option name
+dnl $3 = help-string
+dnl $4 = action to perform if option is enabled
+dnl $5 = action if perform if option is disabled
+dnl $6 = default option value (either 'yes' or 'no')
+AC_DEFUN([CF_ARG_MSG_ENABLE],[
+AC_MSG_CHECKING($1)
+AC_ARG_ENABLE($2,[$3],,enableval=ifelse($6,,no,$6))
+AC_MSG_RESULT($enableval)
+if test "$enableval" != no ; then
+ifelse($4,,[	:],$4)
+else
+ifelse($5,,[	:],$5)
+fi
+])dnl
