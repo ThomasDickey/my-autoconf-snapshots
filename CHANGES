@@ -1,3 +1,9 @@
+2002-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS: BCPP: apply this to g++ also
+
+	* AcSplit/CF_GCC_WARNINGS: ci-aclocal generated header
+
 2002-11-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_GNU_GETTEXT, AcSplit/CF_BUNDLED_INTL:
