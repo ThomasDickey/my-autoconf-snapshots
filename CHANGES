@@ -1,3 +1,22 @@
+1999-06-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SRC_MODULES: Juergen renamed ada_include to src
+
+	* AcSplit/CF_BOOL_DECL:
+	change to allow additional test for 'bool' in CC by passing the cache
+	variable as an optional parameter
+
+	* AcSplit/CF_SUBST_NCURSES_VERSION: changed to test for 'bool' in CC
+
+	* AcSplit/CF_GNAT_VERSION: don't pass $(GENOBJS) - jpf
+
+	* AcSplit/CF_SHARED_OPTS: hurd (gnu) is the same as linux, here.
+
+	* AcSplit/CF_LIB_SUFFIX: hurd (gnu) is treated like linux
+
+	* AcSplit/CF_BOOL_SIZE:
+	tell which compiler we're testing - may be CC as well
+
 1999-05-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PROG_PERL: put brackets for consistency

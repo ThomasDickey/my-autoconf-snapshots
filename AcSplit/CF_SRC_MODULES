@@ -68,7 +68,7 @@ test $cf_cxx_library != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
 ADA_SUBDIRS=
 if test "$cf_cv_prog_gnat_correct" = yes && test -d $srcdir/Ada95; then
    SRC_SUBDIRS="$SRC_SUBDIRS Ada95"
-   ADA_SUBDIRS="gen ada_include samples"
+   ADA_SUBDIRS="gen src samples"
 fi
 
 SUB_MAKEFILES=

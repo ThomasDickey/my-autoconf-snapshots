@@ -2,7 +2,7 @@ dnl Test for the size of 'bool' in the configured C++ compiler (e.g., a type).
 dnl Don't bother looking for bool.h, since it's been deprecated.
 AC_DEFUN([CF_BOOL_SIZE],
 [
-AC_MSG_CHECKING([for size of c++ bool])
+AC_MSG_CHECKING([for size of ifelse(AC_LANG,[C],$CC,$CXX) bool])
 AC_CACHE_VAL(cf_cv_type_of_bool,[
 	rm -f cf_test.out
 	AC_TRY_RUN([
