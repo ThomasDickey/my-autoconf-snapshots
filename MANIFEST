@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19991024
+MANIFEST for my-autoconf, version t19991028
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -211,6 +211,7 @@ AcSplit/CF_UPPER                convert to uppercase
 AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTMP                 check for struct utmp (or similar)
 AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
+AcSplit/CF_UTMP_UT_SESSION      check for utmp.ut_session
 AcSplit/CF_UTMP_UT_XTIME        check for utmp.ut_xtime member
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf

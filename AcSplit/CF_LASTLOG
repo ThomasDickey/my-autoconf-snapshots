@@ -1,3 +1,5 @@
+dnl Check for header defining _PATH_LASTLOG, or failing that, see if the lastlog
+dnl file exists.
 AC_DEFUN([CF_LASTLOG],
 [
 AC_CHECK_HEADERS(lastlog.h paths.h)
@@ -19,4 +21,5 @@ AC_TRY_COMPILE([
 	fi])
 ])
 test $cf_cv_path_lastlog != no && AC_DEFINE(USE_LASTLOG)
-])dnl
+]
+)dnl

@@ -14,10 +14,26 @@ for cf_header in utmpx utmp ; do
 #endif
 ],
 	[struct $cf_header x;
-	 char *name = x.ut_name; /* HP-UX 10.x omits this in utmpx.h */
+	 char *name = x.ut_name; /* utmp.h and compatible definitions */
 	],
 	[cf_cv_have_utmp=$cf_header
-	 break])
+	 break],
+	[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <${cf_header}.h>
+#define getutent getutxent
+#ifdef USE_LASTLOG
+#include <lastlog.h>	/* may conflict with utmpx.h on Linux */
+#endif
+],
+	[struct $cf_header x;
+	 char *name = x.ut_user; /* utmpx.h must declare this */
+	],
+	[cf_cv_have_utmp=$cf_header
+	 AC_DEFINE(ut_name,ut_user)
+	 break
+	])])
 done
 ])
 
@@ -26,6 +42,7 @@ if test $cf_cv_have_utmp != no ; then
 	test $cf_cv_have_utmp = utmpx && AC_DEFINE(UTMPX_FOR_UTMP)
 	CF_UTMP_UT_HOST
 	CF_UTMP_UT_XTIME
+	CF_UTMP_UT_SESSION
 	CF_SYSV_UTMP
 fi
 ])

@@ -1,3 +1,15 @@
+1999-10-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_UTMP_UT_SESSION: RCS_BASE
+
+	* AcSplit/CF_UTMP: add CF_UTMP_UT_SESSION
+	also, add definition for ut_name to ut_user
+
+	* AcSplit/CF_UTMP_UT_XTIME:
+	beyond existence check for ut_xtime, add check for missing #define
+
+	* AcSplit/CF_LASTLOG: comments
+
 1999-10-24  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIB_RULES: add uninstall.data and uninstall.man rules
