@@ -1,17 +1,19 @@
+dnl CF_GMTOFF version: 4 updated: 2002/04/16 13:02:23
+dnl ---------
 AC_DEFUN([CF_GMTOFF],
 [
 cf_decl='#include <sys/types.h>
+#if TIME_WITH_SYS_TIME
+# include <sys/time.h>
+# include <time.h>
+#else
+# if HAVE_SYS_TIME_H
+#  include <sys/time.h>
+# else
+#  include <time.h>
+# endif
+#endif
 '
-if test $ac_cv_header_sys_time_h = yes; then
-	cf_decl="$cf_decl
-#include <sys/time.h>
-"
-else
-	cf_decl="$cf_decl
-#include <time.h>
-"
-fi
-
 AC_STRUCT_TM
 AC_MSG_CHECKING(for localzone declared)
 AC_CACHE_VAL(cf_cv_decl_localzone,[

@@ -1,3 +1,12 @@
+2002-04-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GMTOFF:
+	change to use the ifdef's from AC_HEADER_TIME (but still include <sys/types.h>)
+
+	* AcSplit/CF_GMTOFF, AcSplit/CF_RCS_SCCS: ci-aclocal generated header
+
+	* AcSplit/CF_RCS_SCCS: look in /usr/local/libexec/cssc for CSSC clone
+
 2002-03-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: tin: 2002-03-20
