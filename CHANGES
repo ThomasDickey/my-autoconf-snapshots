@@ -1,3 +1,12 @@
+2001-08-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND:
+	lynx 2.8.5dev.2 : change order of srand48 vs srandom
+
+	* AcSplit/AM_WITH_NLS:
+	lynx 2.8.5dev.2 : fix an oops in the order of -lintl library to avoid
+	conflict with GNU gettext vs Solaris
+
 2001-07-22  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_WITH_PROGRAM: ci-aclocal generated header
