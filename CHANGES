@@ -1,3 +1,39 @@
+2000-04-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FIND_IPV6_TYPE: get rid of -o option in test
+
+	* AcSplit/CF_FIND_IPV6_LIBS:
+	remove redundant assignments that are in the other macro
+
+	* AcSplit/CF_LIBRARY_PATH: add directories at '/', for SuSE
+
+	* AcSplit/CF_HEADER_PATH: look in $HOME, too
+
+	* AcSplit/CF_CHECK_IPV6, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE, AcSplit/CF_FUNC_GETADDRINFO:
+	RCS_BASE
+
+	* AcSplit/CF_FIND_LIBRARY:
+	add 2 params, to make this reusable from IPV6 tests.
+	drop that SuSE junk - it's not used here.
+
+	* AcSplit/CF_NCURSES_LIBS: added param to CF_FIND_LIBRARY
+
+	* AcSplit/AM_GNU_GETTEXT: ah - let him keep 'Makefile'
+
+	* AcSplit/CF_CHECK_IPV6, AcSplit/CF_FIND_LIBRARY:
+	ci-aclocal generated header
+
+	* AcSplit/CF_HEADER_PATH:
+	permute the second parameter before '/include', to allow for weird packages
+	such as socks5
+
+	* AcSplit/CF_LIBRARY_PATH:
+	permute the second parameter before '/lib', for weird packages
+
+	* AcSplit/CF_BUNDLED_INTL, AcSplit/CF_PW_GECOS: RCS_BASE
+
+	* AcSplit/CF_PW_GECOS: ci-aclocal generated header
+
 2000-04-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_INPUT_METHOD: ci-aclocal generated header
