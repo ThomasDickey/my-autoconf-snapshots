@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 11 updated: 2004/01/26 20:58:41
+dnl CF_XOPEN_SOURCE version: 12 updated: 2004/06/26 18:29:41
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality.
@@ -13,7 +13,7 @@ hpux*) #(vi
 irix6.*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_SGI_SOURCE"
 	;;
-linux*) #(vi
+linux*|gnu*) #(vi
 	CF_GNU_SOURCE
 	;;
 mirbsd*) #(vi

@@ -1,3 +1,38 @@
+2004-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE: Date: Thu, 20 May 2004 13:15:42 -0700
+	From: Jeff Bailey <jbailey@raspberryginger.com>
+	Subject: Re: Bug#249214: FTBFS: Doesn't recognise that hurd-i386 is a
+	+glibc-based arch
+	To: dickey@his.com, 249214-quiet@bugs.debian.org
+	Cc: Jeff Bailey <jbailey@raspberryginger.com>,
+	        249214-submitter@bugs.debian.org
+
+	On Thu, May 20, 2004 at 03:29:16PM -0400, Thomas Dickey wrote:
+	> > Here are patches to make hurd-i386 build again.  the hurd terminal
+	> ...
+	> > --- aclocal.m4.bak      2004-05-15 23:02:22.000000000 -0400
+	> > +++ aclocal.m4  2004-05-15 23:02:40.000000000 -0400
+	> > @@ -3646,7 +3646,7 @@
+	> >  irix6.*) #(vi
+	> >         CPPFLAGS="$CPPFLAGS -D_SGI_SOURCE"
+	> >         ;;
+	> > -linux*) #(vi
+	> > +gnu*|linux*) #(vi
+	>
+	> What is the whole output of config.guess?
+
+	i386-unknown-gnu0.3
+
+	Tks,
+	Jeff Bailey
+
+	--
+	Ignorance was bliss.
+	~.
+
+	* config.sub, config.guess: ncurses: update from subversions
+
 2004-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_DLSYM: ci-aclocal generated header
