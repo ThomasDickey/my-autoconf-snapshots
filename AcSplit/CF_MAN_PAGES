@@ -63,7 +63,7 @@ case \$i in #(vi
 CF_EOF
 if test "$cf_manpage_symlinks" = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
-	aliases=\`sed -f \$srcdir/manlinks.sed \$source\`
+	aliases=\`sed -f \$srcdir/manlinks.sed \$source | sort -u\`
 CF_EOF
 fi
 if test "$cf_manpage_renames" = no ; then
