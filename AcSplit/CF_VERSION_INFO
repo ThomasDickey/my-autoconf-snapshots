@@ -1,0 +1,31 @@
+dnl CF_VERSION_INFO version: 2 updated: 2002/07/20 00:33:32
+dnl ---------------
+dnl Provide a configure option to incorporate libtool.  Define several useful
+dnl symbols for the makefile, including ones derived from the VERSION file:
+dnl	libtool-version	release-version	patch-version
+AC_DEFUN([CF_VERSION_INFO],
+[
+if test -f $srcdir/VERSION ; then
+	AC_MSG_CHECKING(for package version)
+	cf_version=`cut -f2 $srcdir/VERSION`
+
+	VERSION_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
+	test -z "$VERSION_MAJOR" && AC_MSG_ERROR(missing major-version)
+
+	VERSION_MINOR=`echo "$cf_version" | sed -e 's/^[[^.]]*\.//'`
+	test -z "$VERSION_MINOR" && AC_MSG_ERROR(missing minor-version)
+
+	AC_MSG_RESULT(${VERSION_MAJOR}.${VERSION_MINOR})
+
+	AC_MSG_CHECKING(for package patch date)
+	VERSION_PATCH=`cut -f3 $srcdir/VERSION`
+	test -z "$VERSION_PATCH" && AC_MSG_ERROR(missing patch-date)
+	AC_MSG_RESULT($VERSION_PATCH)
+else
+	AC_MSG_ERROR(did not find $srcdir/VERSION)
+fi
+
+AC_SUBST(VERSION_MAJOR)
+AC_SUBST(VERSION_MINOR)
+AC_SUBST(VERSION_PATCH)
+])dnl

@@ -1,0 +1,20 @@
+dnl CF_CURSES_SETBEGYX version: 1 updated: 2002/07/22 22:38:19
+dnl ------------------
+dnl See if we can define a function to set a window's beginning y/x coordinates.
+AC_DEFUN([CF_CURSES_SETBEGYX],[
+AC_MSG_CHECKING(how to define setbegyx)
+cf_result=ERR
+for cf_check in \
+	'((win)->_begy = (y), (win)->_begx = (x), OK)'
+do
+	AC_TRY_COMPILE([
+#include <${cf_cv_ncurses_header-curses.h}>
+],[
+WINDOW *win = 0;
+#define setbegyx(win,y,x) $cf_check
+setbegyx(win, 2, 3);
+],[cf_result=$cf_check; break])
+done
+AC_MSG_RESULT("$cf_result")
+AC_DEFINE_UNQUOTED(setbegyx(win,y,x),$cf_result)
+])dnl

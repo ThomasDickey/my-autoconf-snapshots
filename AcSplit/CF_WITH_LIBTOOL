@@ -1,0 +1,29 @@
+dnl Provide a configure option to incorporate libtool.  Define several useful
+dnl symbols for the makefile rules.
+AC_DEFUN([CF_WITH_LIBTOOL],
+[
+LIBTOOL=
+LIB_CREATE='$(AR) -cr'
+LIB_OBJECT='$(OBJECTS)'
+LIB_SUFFIX=.a
+INSTALL_LIB=
+UNINSTALL_LIB=
+
+AC_ARG_WITH(libtool,
+	[  --with-libtool          use libtool to build shared libraries],[
+	LIBTOOL='libtool --silent'
+	LIB_CREATE='$(LIBTOOL) --mode=link $(CC) -rpath $(DESTDIR)$(libdir) -version-info `cut -f1 $(srcdir)/VERSION` -o'
+	LIB_OBJECT='$(OBJECTS:.o=.lo)'
+	LIB_SUFFIX=.la
+	INSTALL_LIB='$(LIBTOOL) --mode=install'
+	UNINSTALL_LIB='$(LIBTOOL) --mode=uninstall'
+	RANLIB=:
+])
+
+AC_SUBST(LIBTOOL)
+AC_SUBST(LIB_CREATE)
+AC_SUBST(LIB_OBJECT)
+AC_SUBST(LIB_SUFFIX)
+AC_SUBST(INSTALL_LIB)
+AC_SUBST(UNINSTALL_LIB)
+])dnl
