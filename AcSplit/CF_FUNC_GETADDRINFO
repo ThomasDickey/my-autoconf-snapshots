@@ -1,3 +1,5 @@
+dnl CF_FUNC_GETADDRINFO version: 5 updated: 2000/09/28 06:18:08
+dnl -------------------
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
 AC_DEFUN([CF_FUNC_GETADDRINFO],[
 AC_CACHE_CHECK(working getaddrinfo, cf_cv_getaddrinfo,[
@@ -62,7 +64,9 @@ int main()
      }
    }
 
-   if (inet6 != 2 || inet4 != 2)
+   if (!(inet4 == 0 || inet4 == 2))
+     goto bad;
+   if (!(inet6 == 0 || inet6 == 2))
      goto bad;
 
    if (aitop)
