@@ -1,3 +1,5 @@
+dnl CF_TD_SIG_ARGS version: 3 updated: 2002/12/21 18:32:04
+dnl --------------
 dnl Test for non-Posix prototype for 'signal()'
 dnl
 dnl	Apollo sr10.x defines prototypes for the signal handling function that
@@ -35,7 +37,7 @@ AC_CACHE_VAL(cf_cv_sig_args,[
 AC_MSG_RESULT($cf_cv_sig_args)
 AC_DEFINE_UNQUOTED(SIG_ARGS_$cf_cv_sig_args)
 
-if test -n "$GCC" && test $WithWarnings = yes
+if test -n "$GCC" && test "$cf_opt_with_warnings" = yes
 then
 	AC_MSG_CHECKING(redefinable signal handler prototype)
 	AC_CACHE_VAL(cf_cv_sigs_redef,[

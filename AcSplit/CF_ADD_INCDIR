@@ -1,6 +1,10 @@
+dnl CF_ADD_INCDIR version: 4 updated: 2002/12/21 14:25:52
+dnl -------------
 dnl Add an include-directory to $CPPFLAGS.  Don't add /usr/include, since it's
 dnl redundant.  We don't normally need to add -I/usr/local/include for gcc,
-dnl but old versions (and some misinstalled ones) need that.
+dnl but old versions (and some misinstalled ones) need that.  To make things
+dnl worse, gcc 3.x gives error messages if -I/usr/local/include is added to
+dnl the include-path).
 AC_DEFUN([CF_ADD_INCDIR],
 [
 for cf_add_incdir in $1
@@ -10,11 +14,22 @@ do
 		case $cf_add_incdir in
 		/usr/include) # (vi
 			;;
+		/usr/local/include) # (vi
+			if test "$GCC" = yes
+			then
+				cf_save_CPPFLAGS="$CPPFLAGS"
+				CPPFLAGS="$CPPFLAGS -I$cf_add_incdir"
+				AC_TRY_COMPILE([#include <stdio.h>],
+						[printf("Hello")],
+						[],
+						[CPPFLAGS="$cf_save_CPPFLAGS"])
+			fi
+			;;
 		*) # (vi
 			CPPFLAGS="$CPPFLAGS -I$cf_add_incdir"
 			;;
 		esac
-		cf_top_incdir=`echo $cf_add_incdir | sed -e 's:/include/.*$:/include:'`
+		cf_top_incdir=`echo $cf_add_incdir | sed -e 's%/include/.*$%/include%'`
 		test "$cf_top_incdir" = "$cf_add_incdir" && break
 		cf_add_incdir="$cf_top_incdir"
 	done

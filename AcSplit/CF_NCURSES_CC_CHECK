@@ -1,0 +1,29 @@
+dnl Check if we can compile with ncurses' header file
+dnl $1 is the cache variable to set
+dnl $2 is the header-file to include
+dnl $3 is the root name (ncurses or ncursesw)
+AC_DEFUN([CF_NCURSES_CC_CHECK],[
+	AC_TRY_COMPILE([
+]ifelse($3,ncursesw,[
+#define _XOPEN_SOURCE_EXTENDED
+#define HAVE_LIBUTF8_H
+])[
+#include <$2>],[
+#ifdef NCURSES_VERSION
+]ifelse($3,ncursesw,[
+#ifndef WACS_BSSB
+	make an error
+#endif
+])[
+printf("%s\n", NCURSES_VERSION);
+#else
+#ifdef __NCURSES_H
+printf("old\n");
+#else
+	make an error
+#endif
+#endif
+	]
+	,[$1=$cf_header]
+	,[$1=no])
+])dnl

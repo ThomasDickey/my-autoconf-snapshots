@@ -1,3 +1,40 @@
+2002-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAN_PAGES, AcSplit/CF_PROG_INSTALL:
+	ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAN_PAGES, AcSplit/CF_PROG_INSTALL:
+	ncurses: prefer '%' as sed-delimiter
+
+	* AcSplit/CF_NCURSES_CC_CHECK: RCS_BASE
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	ded: reverse order of curses.h, ncurses/curses.h search list (from tin).
+	split-out CF_NCURSES_CC_CHECK to simplify implementing a compile-time check for ncursesw
+
+	* AcSplit/CF_WITH_WARNINGS: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_WARNINGS:
+	ded: fix some typos that made this silently fail
+
+	* AcSplit/CF_NCURSES_LIBS: ded: use '%' as sed-delimiter
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_DIRNAME, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_PROG_EXT, AcSplit/CF_STRIP_G_OPT:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ADD_INCDIR:
+	ded: filter out requests to add -I/usr/local/include when gcc 3.x barfs
+
+	* AcSplit/CF_GCC_ATTRIBUTES: ded: remove some commented-out stuff
+
+	* AcSplit/CF_DIRNAME, AcSplit/CF_PROG_EXT, AcSplit/CF_STRIP_G_OPT:
+	ded: use '%' as sed-delimiter
+
+	* AcSplit/CF_TD_SIG_ARGS: ci-aclocal generated header
+
+	* AcSplit/CF_HAVE_FUNCS, AcSplit/CF_TD_SIG_ARGS:
+	ded: rename $WithWarnings to $cf_opt_with_warnings to work with CF_WITH_WARNINGS
+
 2002-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_VERSION: ci-aclocal generated header

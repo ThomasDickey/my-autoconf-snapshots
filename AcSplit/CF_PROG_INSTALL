@@ -1,3 +1,5 @@
+dnl CF_PROG_INSTALL version: 5 updated: 2002/12/21 22:46:07
+dnl ---------------
 dnl Force $INSTALL to be an absolute-path.  Otherwise, edit_man.sh and the
 dnl misc/tabset install won't work properly.  Usually this happens only when
 dnl using the fallback mkinstalldirs script
@@ -9,7 +11,7 @@ case $INSTALL in
 *)
   CF_DIRNAME(cf_dir,$INSTALL)
   test -z "$cf_dir" && cf_dir=.
-  INSTALL=`cd $cf_dir && pwd`/`echo $INSTALL | sed -e 's:^.*/::'`
+  INSTALL=`cd $cf_dir && pwd`/`echo $INSTALL | sed -e 's%^.*/%%'`
   ;;
 esac
 ])dnl
