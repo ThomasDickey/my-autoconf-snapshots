@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980701
+MANIFEST for my-autoconf, version t19980722
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -57,6 +57,7 @@ AcSplit/CF_DEFINE_PROG          check for program, defining its path
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
+AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
 AcSplit/CF_FCNTL_VS_IOCTL       check usable ioctl with FIONREAD, or fcntl.h (vttest)
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
@@ -72,6 +73,7 @@ AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
 AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
+AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
@@ -91,6 +93,8 @@ AcSplit/CF_LOCALE               check if we have locale stuff
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
 AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
+AcSplit/CF_MANPAGE_FORMAT       determine (optionally) the manpage format
+AcSplit/CF_MANPAGE_RENAMES      determine (optionally) if we must rename manpage sections
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
 AcSplit/CF_MISSING_EXTERN       check for missing extern-declaration
@@ -188,5 +192,7 @@ AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_X_ATHENA             check for Xaw library
+AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
+AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs

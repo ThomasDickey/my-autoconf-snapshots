@@ -54,14 +54,7 @@ TEST_ARGS="-L${LIB_DIR} -L\$(libdir) $TEST_ARGS"
 AC_SUBST(TEST_DEPS)
 AC_SUBST(TEST_ARGS)
 
-case $cf_cv_system_name in #(vi
-hpux*) #(vi
-	PROG_ARGS="-L\$(libdir) -L${LIB_DIR} $PROG_ARGS"
-	;;
-*)
-	PROG_ARGS="-L${LIB_DIR} -L\$(libdir) $PROG_ARGS"
-	;;
-esac
+PROG_ARGS="-L${LIB_DIR} -L\$(libdir) $PROG_ARGS"
 AC_SUBST(PROG_ARGS)
 
 SRC_SUBDIRS="man include"
@@ -73,7 +66,7 @@ SRC_SUBDIRS="$SRC_SUBDIRS misc test"
 test $cf_cxx_library != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
 
 ADA_SUBDIRS=
-if test "$ac_cv_prog_gnat_correct" = yes && test -d $srcdir/Ada95; then
+if test "$cf_cv_prog_gnat_correct" = yes && test -d $srcdir/Ada95; then
    SRC_SUBDIRS="$SRC_SUBDIRS Ada95"
    ADA_SUBDIRS="gen ada_include samples"
 fi
