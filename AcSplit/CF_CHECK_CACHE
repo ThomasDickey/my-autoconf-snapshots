@@ -1,4 +1,4 @@
-dnl CF_CHECK_CACHE version: 9 updated: 2004/01/30 15:59:13
+dnl CF_CHECK_CACHE version: 10 updated: 2004/05/23 13:03:31
 dnl --------------
 dnl Check if we're accidentally using a cache from a different machine.
 dnl Derive the system name, as a check for reusing the autoconf cache.
@@ -12,7 +12,7 @@ dnl Note: we would use $ac_config_sub, but that is one of the places where
 dnl autoconf 2.5x broke compatibility with autoconf 2.13
 AC_DEFUN([CF_CHECK_CACHE],
 [
-if test -f $srcdir/config.guess ; then
+if test -f $srcdir/config.guess || test -f $ac_aux_dir/config.guess ; then
 	ifelse([$1],,[AC_CANONICAL_HOST],[$1])
 	system_name="$host_os"
 else

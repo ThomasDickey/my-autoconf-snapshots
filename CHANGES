@@ -1,3 +1,13 @@
+2004-05-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_CACHE:
+	Thorsten Glaser is apparently packaging lynx w/o the bundled config.guess,
+	putting that in $ac_aux_dir
+
+	* AcSplit/CF_SRAND:
+	from Thorsten Glaser: check for arc4random on MirBSD.
+	google says this is an OpenBSD function.
+
 2004-04-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_LIBS: 2004-04-27 (2.8.6dev.2)

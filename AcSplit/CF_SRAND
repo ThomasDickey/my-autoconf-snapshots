@@ -1,12 +1,13 @@
-dnl CF_SRAND version: 6 updated: 2002/09/17 19:03:38
+dnl CF_SRAND version: 7 updated: 2004/05/23 13:00:30
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
 dnl which usually is only 16-bits.
+dnl On MirOS, use arc4random_push() and arc4random().
 AC_DEFUN([CF_SRAND],[
 AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
-for cf_func in srandom/random srand48/lrand48 srand/rand
+for cf_func in arc4random_push/arc4random srandom/random srand48/lrand48 srand/rand
 do
 	cf_srand_func=`echo $cf_func | sed -e 's%/.*%%'`
 	cf_rand_func=`echo  $cf_func | sed -e 's%.*/%%'`
@@ -28,6 +29,10 @@ if test "$cf_cv_srand_func" != unknown ; then
 		srand/rand)
 			cf_cv_rand_max=RAND_MAX
 			cf_rand_max=16
+			;;
+		arc4random_push/arc4random)
+			cf_cv_rand_max=0xFFFFFFFFUL
+			cf_rand_max=32
 			;;
 		*)
 			cf_cv_rand_max=INT_MAX
