@@ -1,3 +1,10 @@
+2002-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHAR_DEVICE:
+	change sed delimiter from '@' to '%' for consistency (vile)
+
+	* AcSplit/CF_CHAR_DEVICE: ci-aclocal generated header
+
 2002-09-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_WITH_NLS:
