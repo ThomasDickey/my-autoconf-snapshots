@@ -14,8 +14,6 @@ dnl
 dnl Some loaders leave 'so_locations' lying around.  It's nice to clean up.
 AC_DEFUN([CF_SHARED_OPTS],
 [
-	AC_REQUIRE([CF_SYSTYPE])
-	AC_REQUIRE([CF_SYSRELV])
 	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
  	LOCAL_LDFLAGS=
  	LOCAL_LDFLAGS2=
@@ -24,8 +22,8 @@ AC_DEFUN([CF_SHARED_OPTS],
 	cf_cv_do_symlinks=no
 	cf_cv_rm_so_locs=no
 
-	case $cf_cv_systype in
-	HP_UX)
+	case $cf_cv_system_name in
+	hpux*)
 		# (tested with gcc 2.7.2 -- I don't have c89)
 		if test "${CC}" = "gcc"; then
 			CC_SHARED_OPTS='-fPIC'
@@ -36,7 +34,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		fi
 		MK_SHARED_LIB='$(LD) -b -o $[@]'
 		;;
-	IRIX*)
+	irix*)
 		# tested with IRIX 5.2 and 'cc'.
 		if test "${CC}" = "gcc"; then
 			CC_SHARED_OPTS='-fPIC'
@@ -46,10 +44,10 @@ AC_DEFUN([CF_SHARED_OPTS],
 		MK_SHARED_LIB='$(LD) -shared -rdata_shared -soname `basename $[@]` -o $[@]'
 		cf_cv_rm_so_locs=yes
 		;;
-	Linux)
-		# tested with Linux 1.2.8 and gcc 2.7.0 (ELF)
+	linux*)
+		# tested with Linux 2.0.29 and gcc 2.7.2 (ELF)
 		CC_SHARED_OPTS='-fPIC'
- 		MK_SHARED_LIB='gcc -o $[@].$(REL_VERSION) -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)`,-stats,-lc'
+ 		MK_SHARED_LIB='gcc -o $[@].$(REL_VERSION) -L../lib -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)`,-stats,$(SHLIB_LIST)-lc'
 		test $cf_cv_ld_rpath = yes && MK_SHARED_LIB="$MK_SHARED_LIB -Wl,-rpath,\$(libdir)"
 		if test $DFT_LWR_MODEL = "shared" ; then
  			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
@@ -57,19 +55,19 @@ AC_DEFUN([CF_SHARED_OPTS],
 		fi
 		cf_cv_do_symlinks=yes
 		;;
-	OpenBSD|NetBSD|FreeBSD)
+	openbsd*|netbsd*|freebsd*)
 		CC_SHARED_OPTS='-fpic -DPIC'
-		MK_SHARED_LIB='$(LD) -Bshareable -o $[@]'
+		MK_SHARED_LIB='$(LD) -Bshareable -o $[@].$(REL_VERSION)'
 		;;
-	OSF1|MLS+)
+	osf*|mls+*)
 		# tested with OSF/1 V3.2 and 'cc'
 		# tested with OSF/1 V3.2 and gcc 2.6.3 (but the c++ demo didn't
 		# link with shared libs).
 		CC_SHARED_OPTS=''
  		MK_SHARED_LIB='$(LD) -o $[@].$(REL_VERSION) -set_version $(ABI_VERSION):$(REL_VERSION) -expect_unresolved "*" -shared -soname `basename $[@].$(ABI_VERSION)`'
 		test $cf_cv_ld_rpath = yes && MK_SHARED_LIB="$MK_SHARED_LIB -rpath \$(libdir)"
-		case $cf_cv_sysrelv in
-		V4.*)
+		case $host_os in
+		osf4*)
  			MK_SHARED_LIB="${MK_SHARED_LIB} -msym"
 			;;
 		esac
@@ -80,25 +78,27 @@ AC_DEFUN([CF_SHARED_OPTS],
 		cf_cv_do_symlinks=yes
 		cf_cv_rm_so_locs=yes
 		;;
-	SunOS)
+	sunos4*)
 		# tested with SunOS 4.1.1 and gcc 2.7.0
-		# tested with SunOS 5.3 (solaris 2.3) and gcc 2.7.0
 		if test $ac_cv_prog_gcc = yes; then
 			CC_SHARED_OPTS='-fpic'
 		else
 			CC_SHARED_OPTS='-KPIC'
 		fi
-		case $cf_cv_sysrelv in
-		4.*)
-			MK_SHARED_LIB='$(LD) -assert pure-text -o $[@].$(REL_VERSION)'
-			;;
-		5.*)
-			MK_SHARED_LIB='$(LD) -d y -G -h `basename $[@].$(ABI_VERSION)` -o $[@].$(REL_VERSION)'
-			;;
-		esac
+		MK_SHARED_LIB='$(LD) -assert pure-text -o $[@].$(REL_VERSION)'
 		cf_cv_do_symlinks=yes
 		;;
-	UNIX_SV)
+	solaris2*)
+		# tested with SunOS 5.5.1 (solaris 2.5.1) and gcc 2.7.2
+		if test $ac_cv_prog_gcc = yes; then
+			CC_SHARED_OPTS='-fpic'
+		else
+			CC_SHARED_OPTS='-KPIC'
+		fi
+		MK_SHARED_LIB='$(LD) -dy -G -h `basename $[@].$(ABI_VERSION)` -o $[@].$(REL_VERSION)'
+		cf_cv_do_symlinks=yes
+		;;
+	unix_sv*)
 		# tested with UnixWare 1.1.2
 		CC_SHARED_OPTS='-KPIC'
 		MK_SHARED_LIB='$(LD) -d y -G -o $[@]'

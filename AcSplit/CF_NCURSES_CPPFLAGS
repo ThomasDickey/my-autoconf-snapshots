@@ -21,7 +21,7 @@ AC_CACHE_VAL(cf_cv_ncurses_header,[
 printf("%s\n", NCURSES_VERSION);
 #else
 #ifdef __NCURSES_H
-printf("maybe 1.8.7\n");
+printf("old\n");
 #else
 make an error
 #endif
@@ -36,12 +36,14 @@ make an error
 			curses.h \
 			ncurses.h
 		do
-			if egrep "NCURSES" $cf_incdir/$cf_header 1>&5 2>&1; then
+changequote(,)dnl
+			if egrep "NCURSES_[VH]" $cf_incdir/$cf_header 1>&AC_FD_CC 2>&1; then
+changequote([,])dnl
 				cf_cv_ncurses_header=$cf_incdir/$cf_header
-				test -n "$verbose" && echo $ac_n "	... found $ac_c" 1>&6
+				test -n "$verbose" && echo $ac_n "	... found $ac_c" 1>&AC_FD_MSG
 				break
 			fi
-			test -n "$verbose" && echo "	... tested $cf_incdir/$cf_header" 1>&6
+			test -n "$verbose" && echo "	... tested $cf_incdir/$cf_header" 1>&AC_FD_MSG
 		done
 		test -n "$cf_cv_ncurses_header" && break
 	done
@@ -68,4 +70,5 @@ predefined) # (vi
 	CF_ADD_INCDIR($cf_incdir)
 	;;
 esac
+CF_NCURSES_VERSION
 ])dnl

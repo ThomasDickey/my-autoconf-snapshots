@@ -1,3 +1,5 @@
+dnl CF_REGEX version: 3 updated: 1997/11/01 14:26:01
+dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
 AC_DEFUN([CF_REGEX],
@@ -15,10 +17,12 @@ AC_TRY_LINK([#include <sys/types.h>
 		char *p = compile("", "", "", 0);
 		int x = step("", "");
 	],[cf_cv_regex="regexp.h"],[
+		cf_save_LIBS="$LIBS"
+		LIBS="-lgen $LIBS"
 		AC_TRY_LINK([#include <regexpr.h>],[
 			char *p = compile("", "", "");
 			int x = step("", "");
-		],[cf_cv_regex="regexpr.h"])])])
+		],[cf_cv_regex="regexpr.h"],[LIBS="$cf_save_LIBS"])])])
 ])
 AC_MSG_RESULT($cf_cv_regex)
 case $cf_cv_regex in

@@ -3,24 +3,53 @@ AC_DEFUN([CF_NCURSES_VERSION],
 [AC_MSG_CHECKING(for ncurses version)
 AC_CACHE_VAL(cf_cv_ncurses_version,[
 	cf_cv_ncurses_version=no
+	cf_tempfile=out$$
+	AC_TRY_RUN([
+#include <$cf_cv_ncurses_header>
+int main()
+{
+	FILE *fp = fopen("$cf_tempfile", "w");
+#ifdef NCURSES_VERSION
+# ifdef NCURSES_VERSION_PATCH
+	fprintf(fp, "%s.%d\n", NCURSES_VERSION, NCURSES_VERSION_PATCH);
+# else
+	fprintf(fp, "%s\n", NCURSES_VERSION);
+# endif
+#else
+# ifdef __NCURSES_H
+	fprintf(fp, "old\n");
+# else
+	make an error
+# endif
+#endif
+	exit(0);
+}],[
+	cf_cv_ncurses_version=`cat $cf_tempfile`
+	rm -f $cf_tempfile],,[
+
+	# This will not work if the preprocessor splits the line after the
+	# Autoconf token.  The 'unproto' program does that.
 	cat > conftest.$ac_ext <<EOF
 #include <$cf_cv_ncurses_header>
+#undef Autoconf
 #ifdef NCURSES_VERSION
 Autoconf NCURSES_VERSION
 #else
 #ifdef __NCURSES_H
 Autoconf "old"
 #endif
+;
 #endif
 EOF
-	cf_try="$ac_cpp conftest.$ac_ext 2>&5 | grep '^Autoconf ' >conftest.out"
+	cf_try="$ac_cpp conftest.$ac_ext 2>&AC_FD_CC | grep '^Autoconf ' >conftest.out"
 	AC_TRY_EVAL(cf_try)
 	if test -f conftest.out ; then
 changequote(,)dnl
-		cf_out=`cat conftest.out | sed -e 's@^[^\"]*\"@@' -e 's@\".*@@'`
+		cf_out=`cat conftest.out | sed -e 's@^Autoconf @@' -e 's@^[^"]*"@@' -e 's@".*@@'`
 changequote([,])dnl
 		test -n "$cf_out" && cf_cv_ncurses_version="$cf_out"
+		rm -f conftest.out
 	fi
-])
+])])
 AC_MSG_RESULT($cf_cv_ncurses_version)
 ])
