@@ -1,3 +1,15 @@
+1997-09-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	oops: we must use $(ALLDEFINES) rather than $(STD_DEFINES), since the latter
+	doesn't set XTFUNCPROTO!
+
+	* AcSplit/CF_LIB_RULES: add logic for de-installing libraries
+
+	* AcSplit/CF_MAN_PAGES: add logic so I can de-install man-pages
+
+	* AcSplit/CF_GNAT_VERSION: juergen added $cf_compile_generics symbol
+
 1997-09-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_X_ATHENA: add --with-Xaw3d and --with-neXtaw options.

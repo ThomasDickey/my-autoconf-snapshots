@@ -12,5 +12,12 @@ case $cf_cv_gnat_version in
      ac_cv_prog_gnat_correct=no
      ;;
 esac
+case $cf_cv_gnat_version in
+  3.1*|[4-9].*)
+      cf_compile_generics=generics
+      ;;
+  *)  cf_compile_generics=
+      ;;
+esac
 changequote([, ])dnl
 ])
