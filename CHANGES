@@ -1,3 +1,38 @@
+2003-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	change FreeBSD 4.x, 5.x, to use soname.  This differs a little from the
+	system's version (libncurses.so.5 versus my libncurses.so.5.3), but doesn't
+	seem to do any harm.  I don't see a clean way to check if my library is
+	preferred to the system library though.
+
+	I also tried to get -rpath to work, but it didn't work consistently enough
+	for me to want it.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	modified the freebsd case so I can build ncursesw also.  I did this on my
+	FreeBSD 5.1 - will have to retest on 4.x.  Probably doesn't work for older
+	FreeBSD's.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add definition for _BSD_TYPES (thought I'd done this, but apparently got
+	sidetracked with __EXTENSIONS__)
+
+2003-12-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	always use tbl when creating formatted manpages.
+	optionally use tbl when installing unformatted manpages
+
+	* AcSplit/CF_MANPAGE_FORMAT:
+	add --with-manpage=catonly flavor, and be more rigorous about allowing
+	the various keywords for --with-manpage in any combination.
+
+	* AcSplit/CF_MAN_PAGES:
+	not quite a rewrite - this adds support for --with-manpage-format=catonly
+	by modifying the man/edit_man.sh script to recur as needed, so the recurrance
+	will process formatted manpages.
+
 2003-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SYSV: typo: dn/dnl
