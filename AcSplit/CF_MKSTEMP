@@ -1,0 +1,39 @@
+dnl Check for a working mkstemp
+AC_DEFUN([CF_MKSTEMP],[
+AC_CACHE_CHECK(for working mkstemp, cf_cv_func_mkstemp,[
+rm -f conftest*
+AC_TRY_RUN([
+#include <sys/types.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/stat.h>
+int main()
+{
+	char *tmpl = "conftestXXXXXX";
+	char temp[80];
+	int result = 0;
+	int fd;
+	struct stat sb;
+
+	umask(077);
+	strcpy(temp, tmpl);
+	if ((fd = mkstemp(temp)) >= 0) {
+		if (!strcmp(temp, tmpl)
+		 || stat(temp, &sb) != 0
+		 || (sb.st_mode & S_IFMT) != S_IFREG
+		 || (sb.st_mode & 077) != 0) {
+			result = 1;
+		}
+		close(fd);
+	}
+	exit(result);
+}
+],[cf_cv_func_mkstemp=yes
+],[cf_cv_func_mkstemp=no
+],[AC_CHECK_FUNC(mkstemp)
+])
+])
+if test "$cf_cv_func_mkstemp" = yes ; then
+	AC_DEFINE(HAVE_MKSTEMP)
+fi
+])dnl
