@@ -1,0 +1,14 @@
+AC_DEFUN([CF_DIRS_TO_MAKE],
+[
+DIRS_TO_MAKE="lib"
+for cf_item in $cf_list_models
+do
+	CF_OBJ_SUBDIR($cf_item,cf_subdir)
+	DIRS_TO_MAKE="$DIRS_TO_MAKE $cf_subdir"
+done
+for cf_dir in $DIRS_TO_MAKE
+do
+	test ! -d $cf_dir && mkdir $cf_dir
+done
+AC_SUBST(DIRS_TO_MAKE)
+])dnl

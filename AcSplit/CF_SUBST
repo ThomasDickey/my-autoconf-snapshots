@@ -1,0 +1,17 @@
+dnl CF_SUBST version: 2 updated: 1997/09/06 23:41:28
+dnl --------
+dnl	Shorthand macro for substituting things that the user may override
+dnl	with an environment variable.
+dnl
+dnl	$1 = long/descriptive name
+dnl	$2 = environment variable
+dnl	$3 = default value
+AC_DEFUN([CF_SUBST],
+[AC_CACHE_VAL(cf_cv_subst_$2,[
+AC_MSG_CHECKING(for $1 (symbol $2))
+test -z "[$]$2" && $2=$3
+AC_MSG_RESULT([$]$2)
+AC_SUBST($2)
+cf_cv_subst_$2=[$]$2])
+$2=${cf_cv_subst_$2}
+])dnl

@@ -1,0 +1,51 @@
+dnl Determine the default configuration into which we'll install ncurses.  This
+dnl can be overridden by the user's command-line options.  There's two items to
+dnl look for:
+dnl	1. the prefix (e.g., /usr)
+dnl	2. the header files (e.g., /usr/include/ncurses)
+dnl We'll look for a previous installation of ncurses and use the same defaults.
+dnl
+dnl We don't use AC_PREFIX_DEFAULT, because it gets evaluated too soon, and
+dnl we don't use AC_PREFIX_PROGRAM, because we cannot distinguish ncurses's
+dnl programs from a vendor's.
+AC_DEFUN([CF_CFG_DEFAULTS],
+[
+AC_MSG_CHECKING(for prefix)
+if test "x$prefix" = "xNONE" ; then
+	case "$cf_cv_system_name" in
+		# non-vendor systems don't have a conflict
+	openbsd*|netbsd*|freebsd*|linux*)
+		prefix=/usr
+		;;
+	*)	prefix=$ac_default_prefix
+		;;
+	esac
+fi
+AC_MSG_RESULT($prefix)
+
+if test "x$prefix" = "xNONE" ; then
+AC_MSG_CHECKING(for default include-directory)
+test -n "$verbose" && echo 1>&AC_FD_MSG
+for cf_symbol in \
+	$includedir \
+	$includedir/ncurses \
+	$prefix/include \
+	$prefix/include/ncurses \
+	/usr/local/include \
+	/usr/local/include/ncurses \
+	/usr/include \
+	/usr/include/ncurses
+do
+	cf_dir=`eval echo $cf_symbol`
+	if test -f $cf_dir/curses.h ; then
+	if ( fgrep NCURSES_VERSION $cf_dir/curses.h 2>&1 >/dev/null ) ; then
+		includedir="$cf_symbol"
+		test -n "$verbose"  && echo $ac_n "	found " 1>&AC_FD_MSG
+		break
+	fi
+	fi
+	test -n "$verbose"  && echo "	tested $cf_dir" 1>&AC_FD_MSG
+done
+AC_MSG_RESULT($includedir)
+fi
+])dnl

@@ -1,0 +1,21 @@
+dnl Check for the declaration of fd_set.  Some platforms declare it in
+dnl <sys/types.h>, and some in <sys/select.h>, which requires <sys/types.h>
+AC_DEFUN([CF_TYPE_FD_SET],
+[
+AC_MSG_CHECKING(for declaration of fd_set)
+AC_CACHE_VAL(cf_cv_type_fd_set,[
+AC_TRY_COMPILE([
+#include <sys/types.h>],
+	[fd_set x],
+	[cf_cv_type_fd_set=sys/types.h],
+	[AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <sys/select.h>],
+	[fd_set x],
+	[cf_cv_type_fd_set=sys/select.h],
+	[cf_cv_type_fd_set=unknown])])])
+AC_MSG_RESULT($cf_cv_type_fd_set)
+if test $cf_cv_type_fd_set = sys/select.h ; then
+	AC_DEFINE(USE_SYS_SELECT_H)
+fi
+])

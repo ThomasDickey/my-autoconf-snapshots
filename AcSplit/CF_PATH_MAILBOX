@@ -1,0 +1,31 @@
+dnl CF_PATH_MAILBOX version: 4 updated: 1998/04/01 11:39:13
+dnl ---------------
+dnl Look for the directory that contains incoming mail.  I would check for an
+dnl actual mail-file, to verify this, but that is not always easy to arrange.
+AC_DEFUN([CF_PATH_MAILBOX],
+[
+AC_MSG_CHECKING(for incoming-mail directory)
+CF_ARG_WITH(mailbox,
+    [  --with-mailbox=DIR      directory for incoming mailboxes],
+    [DEFAULT_MAILBOX])
+if test -z "$DEFAULT_MAILBOX" ; then
+for cf_dir in \
+	/var/spool/mail \
+	/usr/spool/mail \
+	/var/mail \
+	/usr/mail \
+	/mail
+    do
+    	if test -d $cf_dir ; then
+	    DEFAULT_MAILBOX=$cf_dir
+	    break
+	fi
+    done
+fi
+if test -n "$DEFAULT_MAILBOX" ; then
+	AC_DEFINE_UNQUOTED(DEFAULT_MAILBOX,"$DEFAULT_MAILBOX")
+else
+	DEFAULT_MAILBOX=none
+fi
+AC_MSG_RESULT($DEFAULT_MAILBOX)
+])dnl

@@ -1,3 +1,7 @@
+1999-03-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_POSIX_VDISABLE: comments
+
 1999-01-24  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_INET_ADDR:
