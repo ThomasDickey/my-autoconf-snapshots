@@ -1,3 +1,8 @@
+2001-04-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_DIRNAME:
+	ncurses: trim extra newlines, to avoid adding them in configure script
+
 2001-04-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_CPPFLAGS: oops - wrong $host_os case for sunos
