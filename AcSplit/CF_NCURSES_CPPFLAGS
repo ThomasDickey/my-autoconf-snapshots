@@ -16,8 +16,15 @@ AC_DEFUN([CF_NCURSES_CPPFLAGS],
 [
 AC_MSG_CHECKING(for ncurses header file)
 AC_CACHE_VAL(cf_cv_ncurses_header,[
-	AC_TRY_COMPILE([#include <curses.h>],
-	[printf("%s\n", NCURSES_VERSION)],
+	AC_TRY_COMPILE([#include <curses.h>],[
+#ifdef NCURSES_VERSION
+printf("%s\n", NCURSES_VERSION);
+#else
+#ifdef __NCURSES_H
+printf("pre-1.8.7\n");
+#endif
+#endif
+	],
 	[cf_cv_ncurses_header=predefined],[
 	CF_HEADER_PATH(cf_search,ncurses)
 	test -n "$verbose" && echo
