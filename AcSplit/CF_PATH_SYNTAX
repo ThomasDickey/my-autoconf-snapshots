@@ -1,3 +1,5 @@
+dnl CF_PATH_SYNTAX version: 9 updated: 2002/09/17 23:03:38
+dnl --------------
 dnl Check the argument to see that it looks like a pathname.  Rewrite it if it
 dnl begins with one of the prefix/exec_prefix variables, and then again if the
 dnl result begins with 'NONE'.  This is necessary to work around autoconf's
@@ -14,12 +16,12 @@ case ".[$]$1" in #(vi
   eval $1="[$]$1"
   case ".[$]$1" in #(vi
   .NONE/*)
-    $1=`echo [$]$1 | sed -e s@NONE@$ac_default_prefix@`
+    $1=`echo [$]$1 | sed -e s%NONE%$ac_default_prefix%`
     ;;
   esac
   ;; #(vi
 .NONE/*)
-  $1=`echo [$]$1 | sed -e s@NONE@$ac_default_prefix@`
+  $1=`echo [$]$1 | sed -e s%NONE%$ac_default_prefix%`
   ;;
 *)
   ifelse($2,,[AC_ERROR([expected a pathname, not \"[$]$1\"])],$2)

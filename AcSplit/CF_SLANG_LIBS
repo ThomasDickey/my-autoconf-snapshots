@@ -1,3 +1,5 @@
+dnl CF_SLANG_LIBS version: 7 updated: 2002/09/17 19:03:38
+dnl -------------
 dnl Look for the slang library.
 AC_DEFUN([CF_SLANG_LIBS],
 [
@@ -20,11 +22,11 @@ CF_FIND_LIBRARY(slang,slang,
 cf_slang_LIBS3="$LIBS"
 AC_MSG_CHECKING(if we can link slang without termcap)
 if test -n "`echo $cf_slang_LIBS1 | sed -e 's/ //g'`" ; then
-	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s@$cf_slang_LIBS1@@" -e 's@^.@@'`
+	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s%$cf_slang_LIBS1%%" -e 's%^.%%'`
 else
 	cf_exclude="$cf_slang_LIBS2"
 fi
-LIBS=`echo ".$cf_slang_LIBS3" | sed -e "s@$cf_exclude@@" -e 's@^.@@'`
+LIBS=`echo ".$cf_slang_LIBS3" | sed -e "s%$cf_exclude%%" -e 's%^.%%'`
 AC_TRY_LINK([#include <slang.h>],
 	[SLtt_get_screen_size()],
 	[cf_result=yes],
