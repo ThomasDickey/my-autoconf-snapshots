@@ -5,9 +5,13 @@ dnl	$1 = library name
 dnl	$2 = includes
 dnl	$3 = code fragment to compile/link
 dnl	$4 = corresponding function-name
+dnl
+dnl Sets the variable "$cf_libdir" as a side-effect, so we can see if we had
+dnl to use a -L option.
 AC_DEFUN([CF_FIND_LIBRARY],
 [
 	cf_cv_have_lib_$1=no
+	cf_libdir=""
 	AC_CHECK_FUNC($4,cf_cv_have_lib_$1=yes,[
 		cf_save_LIBS="$LIBS"
 		AC_MSG_CHECKING(for $4 in -l$1)

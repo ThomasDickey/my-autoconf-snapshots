@@ -3,14 +3,21 @@ dnl termcap/termlib to be linked as well.
 AC_DEFUN([CF_CURSES_LIBS],[
 AC_CHECK_FUNC(initscr,,[
 case $host_os in #(vi
-freebsd*)
+freebsd*) #(vi
 	AC_CHECK_LIB(mytinfo,tgoto,[LIBS="-lmytinfo $LIBS"])
+	;;
+*hp-hpux10.*)
+	AC_CHECK_LIB(cur_color,initscr,[
+		LIBS="-lcur_color $LIBS"
+		CFLAGS="-I/usr/include/curses_colr $CFLAGS"
+		])
 	;;
 esac
 if test -d /usr/5lib ; then
 	# SunOS 3.x or 4.x
 	CPPFLAGS="$CPPFLAGS -I/usr/5include"
 	LIBS="$LIBS -L/usr/5lib"
+# FIXME: check if we need/use -R option
 # elif test -d /usr/ccs/lib ; then
 # 	# Solaris 5.x
 # 	LIBS="$LIBS -L/usr/ccs/lib -R/usr/ccs/lib"

@@ -1,3 +1,31 @@
+1997-09-12  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SRC_MAKEFILE: RCS_BASE
+
+	* AcSplit/CF_SRC_MAKEFILE: ci-aclocal generated header
+
+	* AcSplit/CF_FIND_TDLIB: comment
+
+	* AcSplit/CF_DISABLE_ECHO: add symbol RULE_CC
+
+	* AcSplit/CF_SED_CONFIG_H:
+	adjusted so I don't try to sed _or_ grep wide files (SCO's grep cannot do it)
+
+	* AcSplit/CF_TD_CONFIG: ci-aclocal generated header
+
+	* AcSplit/CF_TD_CONFIG: corrected the variable to test/update
+
+	* AcSplit/CF_TYPE_OUTCHAR: fix OUTC_ARGS when it's a char
+
+	* AcSplit/CF_HELP_MESSAGE: RCS_BASE
+
+	* AcSplit/CF_WITH_PATH:
+	add a hack to let me use variables for the default, e.g., --libdir
+
+	* AcSplit/CF_CURSES_LIBS: add hack for HP's cur_color library
+
+	* AcSplit/CF_COLOR_CURSES: make sure we have a color defined.
+
 1997-09-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FIND_TDLIB: RCS_BASE

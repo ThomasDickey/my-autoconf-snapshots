@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19970911
+MANIFEST for my-autoconf, version t19970912
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -47,6 +47,7 @@ AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
 AcSplit/CF_FCNTL_VS_IOCTL       check usable ioctl with FIONREAD, or fcntl.h (vttest)
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
+AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
@@ -58,6 +59,7 @@ AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
+AcSplit/CF_HELP_MESSAGE         divert text for help-message headers
 AcSplit/CF_IMAKE_CFLAGS         check for imake's CFLAGS (IMAKE_CFLAGS)
 AcSplit/CF_INCLUDE_DIRS         construct a list of -I options
 AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
@@ -125,6 +127,7 @@ AcSplit/CF_SYSTYPE              derive the system-type
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
 AcSplit/CF_TCAP_CURSOR          check if curses defines KD, KU, etc. (td_lib)
+AcSplit/CF_TD_CONFIG            script that finds or makes a copy of td_config
 AcSplit/CF_TD_CURSES_LIBS       renamed to avoid conflict
 AcSplit/CF_TD_SIG_ARGS          test for non-POSIX signal args
 AcSplit/CF_TD_SRC_MAKEFILES     script to make src/*/makefiles

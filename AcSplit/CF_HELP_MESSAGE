@@ -1,0 +1,7 @@
+dnl Insert text into the help-message, for readability, from AC_ARG_WITH.
+AC_DEFUN([CF_HELP_MESSAGE],
+[AC_DIVERT_PUSH(AC_DIVERSION_NOTICE)dnl
+ac_help="$ac_help
+[$1]"
+AC_DIVERT_POP()dnl
+])dnl
