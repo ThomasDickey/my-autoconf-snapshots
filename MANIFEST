@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20040126
+MANIFEST for my-autoconf, version t20040130
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -248,6 +248,7 @@ AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
 AcSplit/CF_SYS_SELECT_TIMEVAL   check for <sys/time.h> vs <sys/select.h> conflict
 AcSplit/CF_SYS_TIME_SELECT      test for conflict between sys/time.h and sys/select.h
+AcSplit/CF_TAR_OPTIONS          provides useful options for tar and variants thereof (lynx)
 AcSplit/CF_TCAP_CURSOR          check if curses defines KD, KU, etc. (td_lib)
 AcSplit/CF_TD_CONFIG            script that finds or makes a copy of td_config
 AcSplit/CF_TD_CURSES_LIBS       renamed to avoid conflict

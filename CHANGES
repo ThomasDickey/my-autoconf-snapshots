@@ -1,3 +1,13 @@
+2004-01-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_CACHE:
+	ncurses: revert TG's change since it breaks my build on FreeBSD 3.1
+
+	* AcSplit/CF_BOOL_DECL:
+	ncurses: fix for BeOS 4.5, which has bool declared inconsistently in two
+	locations.  We can control whether we include <stdbool.h>, but not the
+	other (which is buried away in support headers for I/O).
+
 2004-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE: Thorsten Glaser adds a case for mirbsd

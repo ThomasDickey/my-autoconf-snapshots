@@ -1,0 +1,33 @@
+dnl CF_TAR_OPTIONS version: 1 updated: 2004/01/26 20:58:41
+dnl --------------
+dnl This is just a list of the most common tar options, allowing for variants
+dnl that can operate with the "-" standard input/output option.
+AC_DEFUN([CF_TAR_OPTIONS],
+[
+case ifelse($1,,tar,$1) in
+*pax)
+	TAR_UP_OPTIONS="-w"
+	TAR_DOWN_OPTIONS="-r"
+	TAR_PIPE_OPTIONS=""
+	TAR_FILE_OPTIONS="-f"
+	;;
+*star)
+	TAR_UP_OPTIONS="-c -f"
+	TAR_DOWN_OPTIONS="-x -U -f"
+	TAR_PIPE_OPTIONS="-"
+	TAR_FILE_OPTIONS=""
+	;;
+*tar)
+	# FIXME: some versions of tar require, some don't allow the "-"
+	TAR_UP_OPTIONS="-cf"
+	TAR_DOWN_OPTIONS="-xf"
+	TAR_PIPE_OPTIONS="-"
+	TAR_FILE_OPTIONS=""
+	;;
+esac
+
+AC_SUBST(TAR_UP_OPTIONS)
+AC_SUBST(TAR_DOWN_OPTIONS)
+AC_SUBST(TAR_FILE_OPTIONS)
+AC_SUBST(TAR_PIPE_OPTIONS)
+])dnl
