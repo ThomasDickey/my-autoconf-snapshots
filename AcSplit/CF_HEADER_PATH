@@ -12,4 +12,5 @@ test "$prefix" != NONE           && $1="[$]$1 $prefix/include $prefix/include/$2
 fi
 test "$prefix" != /usr/local     && $1="[$]$1 /usr/local/include /usr/local/include/$2"
 test "$prefix" != /usr           && $1="[$]$1 /usr/include /usr/include/$2"
+test "$prefix" != /opt           && $1="[$]$1 /opt/include /opt/include/$2"
 ])dnl
