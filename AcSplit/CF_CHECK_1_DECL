@@ -17,7 +17,19 @@ extern struct zowie *$1();
 ],
 [
 ],
+[if test -n "$CHECK_DECL_HDRS" ; then
+# try to workaround system headers which are infested with non-standard syntax
+CF_UPPER(cf_1_up,$1)
+AC_TRY_COMPILE([
+#define DECL_${cf_1_up}
+$CHECK_DECL_HDRS
+],[long x = 0],
 [eval 'cf_cv_func_'$1'=yes'],
+[eval 'cf_cv_func_'$1'=no'])
+else
+eval 'cf_cv_func_'$1'=yes'
+fi
+],
 [eval 'cf_cv_func_'$1'=no'])
 CFLAGS="$cf_save_CFLAGS"
 ])
