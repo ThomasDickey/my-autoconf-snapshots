@@ -1,18 +1,26 @@
-dnl CF_SYSV version: 3 updated: 2003/12/13 07:47:09
+dnl CF_SYSV version: 4 updated: 2003/12/14 09:38:58
 dnl -------
-dnl Check if this is a SYSV platform
+dnl Check if this is a SYSV platform, e.g., as used in <X11/Xos.h>, and whether
+dnl defining it will be helpful.  The following features are used to check:
+dnl
+dnl a) bona-fide SVSY doesn't use const for sys_errlist[].  Since this is a
+dnl legacy (pre-ANSI) feature, const should not apply.  Modern systems only
+dnl declare strerror().  Xos.h declares the legacy form of str_errlist[], and
+dnl a compile-time error will result from trying to assign to a const array.
+dnl
+dnl b) compile with headers that exist on SYSV hosts.
 AC_DEFUN([CF_SYSV],
 [
-AC_CACHE_CHECK(if this platform has SYSV flavor,cf_cv_sysv,[
+AC_CACHE_CHECK(if we should define SYSV,cf_cv_sysv,[
 AC_TRY_COMPILE([
+#undef  SYSV
+#define SYSV 1			/* get Xos.h to declare sys_errlist[] */
+#include <X11/Xos.h>
 #include <curses.h>
-#include <term.h>
-#include <sys/termio.h>
+#include <term.h>		/* eliminate most BSD hacks */
+#include <errno.h>
+#include <sys/termio.h>		/* eliminate most of the remaining ones */
 ],[
-/* FIXME: need a test that excludes linux */
-#if defined(linux) || defined(__CYGWIN__)
-make an error
-#endif
 static struct termio d_tio;
 	d_tio.c_cc[VINTR] = 0;
 	d_tio.c_cc[VQUIT] = 0;
@@ -22,6 +30,7 @@ static struct termio d_tio;
 	d_tio.c_cc[VEOL] = 0;
 	d_tio.c_cc[VMIN] = 0;
 	d_tio.c_cc[VTIME] = 0;
+sys_errlist[0] = "";
 ],
 [cf_cv_sysv=yes],
 [cf_cv_sysv=no])
