@@ -1,3 +1,13 @@
+2005-04-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	make a quick check on the result from CF_IMAKE_CFLAGS to see if we found
+	$IMAKE and set $IMAKE_CFLAGS (the first is necessary, the latter is only
+	very likely).  If that fails, fall-through as if we're getting --disable-imake
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	skip over most of this if we don't have $IMAKE set
+
 2005-04-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_WARNINGS: hmm (first version was probably for bcpp).
