@@ -1,0 +1,14 @@
+dnl Wrapper for AC_ARG_WITH to inherit/override an environment variable's
+dnl "#define" in the compile.
+AC_DEFUN([CF_WITH_DFTENV],
+[AC_ARG_WITH($1,[$2 ](default: ifelse($4,,empty,$4)),,
+ifelse($4,,[withval="${$3}"],[withval="${$3-$4}"]))dnl
+case "$withval" in #(vi
+yes|no)
+  echo 'configure: error: expected a value for $3' 1>&2
+  exit 1
+  ;;
+esac
+$3="$withval"
+AC_DEFINE_UNQUOTED($3,"[$]$3")dnl
+])dnl

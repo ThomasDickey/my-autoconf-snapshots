@@ -1,0 +1,19 @@
+AC_DEFUN([CF_UNION_WAIT],
+[
+AC_MSG_CHECKING([for union wait])
+AC_CACHE_VAL(cf_cv_type_unionwait,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#if HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+#if HAVE_WAITSTATUS_H
+#include <waitstatus.h>
+#endif
+],
+	[union wait x],
+	[cf_cv_type_unionwait=yes],
+	[cf_cv_type_unionwait=no])])
+AC_MSG_RESULT($cf_cv_type_unionwait)
+test $cf_cv_type_unionwait = yes && AC_DEFINE(HAVE_TYPE_UNIONWAIT)
+])dnl

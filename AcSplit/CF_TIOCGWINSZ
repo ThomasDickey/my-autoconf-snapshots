@@ -1,0 +1,48 @@
+dnl On some systems ioctl(fd, TIOCGWINSZ, &size) will always return {0,0} until
+dnl ioctl(fd, TIOCSWINSZ, &size) is called to explicitly set the size of the
+dnl screen.
+dnl
+dnl Attempt to determine if we're on such a system by running a test-program.
+dnl This won't work, of course, if the configure script is run in batch mode,
+dnl since we've got to have access to the terminal.
+AC_DEFUN([CF_TIOCGWINSZ],
+[
+AC_MSG_CHECKING([for working TIOCGWINSZ])
+AC_CACHE_VAL(cf_cv_use_tiocgwinsz,[
+	cf_save="$CFLAGS"
+	CFLAGS="-I. -I$srcdir/include -DHAVE_CONFIG_H -D__CPROTO__ $CFLAGS"
+	rm -f autoconf.h
+	echo > autoconf.h
+	AC_TRY_RUN([
+#ifndef M_UNIX
+#define M_UNIX
+#endif
+#include <tin.h>
+int main()
+{
+	int fd;
+	for (fd = 0; fd <= 2; fd++) {	/* try in/out/err in case redirected */
+#ifdef TIOCGSIZE
+		struct ttysize size;
+		if (ioctl (0, TIOCGSIZE, &size) == 0
+		 && size.ts_lines > 0
+		 && size.ts_cols > 0)
+			exit(0);
+#else
+		struct winsize size;
+		if (ioctl(0, TIOCGWINSZ, &size) == 0
+		 && size.ws_row > 0
+		 && size.ws_col > 0)
+			exit(0);
+#endif
+	}
+	exit(0);	/* we cannot guarantee this is run interactively */
+}],
+		[cf_cv_use_tiocgwinsz=yes],
+		[cf_cv_use_tiocgwinsz=no],
+		[cf_cv_use_tiocgwinsz=unknown])
+		rm -f autoconf.h
+		CFLAGS="$cf_save"])
+AC_MSG_RESULT($cf_cv_use_tiocgwinsz)
+test $cf_cv_use_tiocgwinsz != yes && AC_DEFINE(DONT_HAVE_SIGWINCH)
+])dnl
