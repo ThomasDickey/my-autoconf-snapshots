@@ -11,7 +11,6 @@ dnl	lib<name>.so.<major>	->
 dnl	lib<name>.so.<maj>.<minor>
 AC_DEFUN([CF_LIB_RULES],
 [
-AC_REQUIRE([CF_SYSTYPE])
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 for cf_dir in $SRC_SUBDIRS
 do
