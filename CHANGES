@@ -1,3 +1,7 @@
+1998-11-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess, config.sub: changes for os390
+
 1998-11-14  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAN_PAGES: filter out .orig and .rej files
