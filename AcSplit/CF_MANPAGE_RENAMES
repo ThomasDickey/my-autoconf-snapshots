@@ -6,7 +6,7 @@ AC_DEFUN([CF_MANPAGE_RENAMES],
 AC_MSG_CHECKING(for manpage renaming)
 
 AC_ARG_WITH(manpage-renames,
-	[  --manpage-renames       specify manpage-renaming],
+	[  --with-manpage-renames  specify manpage-renaming],
 	[cf_manpage_renames=$withval],
 	[cf_manpage_renames=yes])
 
