@@ -1,3 +1,17 @@
+1998-08-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	add check for $LIBS having the termcap lib already
+	also add parameter that makes this look for ncurses
+
+	* AcSplit/CF_PROG_PERL: RCS_BASE
+
+	* AcSplit/CF_CC_OFFSETOF_CASES: ci-aclocal generated header
+
+	* AcSplit/CF_CC_OFFSETOF_CASES: whitespace
+
+	* AcSplit/CF_XTERM_MODE: RCS_BASE
+
 1998-08-23  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_TGETENT:
