@@ -1,3 +1,20 @@
+1998-02-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS: add xcurses library for UnixWare
+
+	* AcSplit/CF_CURSES_CHTYPE: typo
+
+	* AcSplit/CF_CURSES_TYPE: RCS_BASE
+
+	* AcSplit/CF_CURSES_CHTYPE:
+	add a check to see if 'chtype' is a scalar (OSF1 4.0 uses a struct, so we
+	cannot do attribute OR'ing on it)
+
+	* AcSplit/CF_CURSES_TYPE, AcSplit/CF_TD_CURSES_LIBS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_TD_CURSES_LIBS: split-out CF_CURSES_TYPE
+
 1998-02-10  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER:
