@@ -1,3 +1,14 @@
+2003-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE:
+	fix -DRENDERFONT when there is no freetype, etc., broken by the cygwin/X fix.
+
+	* AcSplit/CF_X_FREETYPE:
+	current cygwin/X provides xft-config and freetype-config scripts.  The former
+	declares -lXft and -lfontconfig (which are both needed for xterm with AA-fonts).
+	The latter only declares -lfreetype.  So I added a check for both, preferring
+	the xft-config script.  That got xterm to configure/build.
+
 2003-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SYSV:
