@@ -1,3 +1,14 @@
+2002-12-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WCTYPE: RCS_BASE
+
+	* AcSplit/AM_MULTIBYTE_ABLE: tin: add calls to fputwc() and fwide()
+
+	* AcSplit/CF_NCURSES_LIBS: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_LIBS:
+	vile: define HAVE_LIBNCURSES/HAVE_LIBNCURSESW as needed
+
 2002-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAN_PAGES, AcSplit/CF_PROG_INSTALL:

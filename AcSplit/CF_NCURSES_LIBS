@@ -1,3 +1,5 @@
+dnl CF_NCURSES_LIBS version: 11 updated: 2002/12/22 14:22:25
+dnl ---------------
 dnl Look for the ncurses library.  This is a little complicated on Linux,
 dnl because it may be linked with the gpm (general purpose mouse) library.
 dnl Some distributions have gpm linked with (bsd) curses, which makes it
@@ -32,7 +34,6 @@ esac
 
 LIBS="$cf_ncurses_LIBS $LIBS"
 
-
 if ( test -n "$cf_cv_curses_dir" && test "$cf_cv_curses_dir" != "no" )
 then
 	LIBS="-L$cf_cv_curses_dir/lib -l$cf_nculib_root $LIBS"
@@ -58,4 +59,7 @@ if test -n "$cf_ncurses_LIBS" ; then
 		[AC_MSG_RESULT(no)
 		 LIBS="$cf_ncurses_SAVE"])
 fi
+
+CF_UPPER(cf_nculib_ROOT,HAVE_LIB$cf_nculib_root)
+AC_DEFINE_UNQUOTED($cf_nculib_ROOT)
 ])dnl
