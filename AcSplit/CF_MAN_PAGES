@@ -121,7 +121,7 @@ CF_EOF
 	])
 if test -f $MANPAGE_RENAMES ; then
 cat >>man/edit_man.sh <<CF_EOF
-		< \$i | sed -f man/edit_man.sed >\$TMP
+		< \$i | sed -f edit_man.sed >\$TMP
 CF_EOF
 else
 cat >>man/edit_man.sh <<CF_EOF

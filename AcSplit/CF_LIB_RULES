@@ -65,9 +65,9 @@ do
 			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib //'`
 		fi
 
-		sed -e "s@\@LIBS_TO_MAKE\@@$LIBS_TO_MAKE@" \
-		    -e "s@\@IMPORT_LIB\@@$IMPORT_LIB@" \
-		    -e "s@\@SHARED_LIB\@@$SHARED_LIB@" \
+		sed -e "s%@LIBS_TO_MAKE@%$LIBS_TO_MAKE%" \
+		    -e "s%@IMPORT_LIB@%$IMPORT_LIB%" \
+		    -e "s%@SHARED_LIB@%$SHARED_LIB%" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
 
