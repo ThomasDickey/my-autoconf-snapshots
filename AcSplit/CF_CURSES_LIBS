@@ -29,9 +29,10 @@ hpux10.*|hpux11.*) #(vi
 linux*) # Suse Linux does not follow /usr/lib convention
 	LIBS="$LIBS -L/lib"
 	;;
-sun3*|sun4*)
+sunos3*|sunos4*)
 	test -d /usr/5lib && \
-	LIBS="$LIBS -L/usr/5lib"
+	LIBS="$LIBS -L/usr/5lib -lcurses -ltermcap"
+	ac_cv_func_initscr=yes
 	;;
 esac
 
