@@ -1,3 +1,15 @@
+2001-05-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURS_TOUCHLINE: RCS_BASE
+
+	* AcSplit/CF_CURS_TOUCHLINE: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_VERSION:
+	define NCURSES as a side-effect (use for lynx)
+
+	* AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_NCURSES_CPPFLAGS:
+	test for ncurses.h after curses.h
+
 2001-05-02  Thomas E. Dickey  <dickey@clark.net>
 
 	* install.sh: better version, from tin 1.5.9, which cites X11R5
