@@ -1,21 +1,35 @@
 dnl Copy non-preprocessor flags to $CFLAGS, preprocessor flags to $CPPFLAGS
+dnl The second parameter if given makes this macro verbose.
 AC_DEFUN([CF_ADD_CFLAGS],
 [
+cf_new_cflags=
+cf_new_cppflags=
 for cf_add_cflags in $1
 do
 	case $cf_add_cflags in #(vi
 	-undef|-nostdinc*|-I*|-D*|-U*|-E|-P|-C) #(vi
 		case "$CPPFLAGS" in
-		*$cf_add_cflags)
+		*$cf_add_cflags) #(vi
 			;;
-		*)
-			CPPFLAGS="$CPPFLAGS $cf_add_cflags"
+		*) #(vi
+			cf_new_cppflags="$cf_new_cppflags $cf_add_cflags"
 			;;
 		esac
 		;;
 	*)
-		CFLAGS="$CFLAGS $cf_add_cflags"
+		cf_new_cflags="$cf_new_cflags $cf_add_cflags"
 		;;
 	esac
 done
+
+if test -n "$cf_new_cflags" ; then
+	ifelse($2,,,[CF_VERBOSE(add to \$CFLAGS $cf_new_cflags)])
+	CFLAGS="$CFLAGS $cf_new_cflags"
+fi
+
+if test -n "$cf_new_cppflags" ; then
+	ifelse($2,,,[CF_VERBOSE(add to \$CPPFLAGS $cf_new_cppflags)])
+	CPPFLAGS="$CPPFLAGS $cf_new_cppflags"
+fi
+
 ])dnl

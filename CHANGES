@@ -1,3 +1,48 @@
+2001-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_CFLAGS:
+	delay updating the $CFLAGS and $CPPFLAGS til the end so I can make the
+	macro conditionally verbose
+
+	* AcSplit/CF_CHECK_CFLAGS: RCS_BASE
+
+	* AcSplit/CF_CHECK_CFLAGS, AcSplit/CF_X_TOOLKIT:
+	ci-aclocal generated header
+
+	* AcSplit/CF_X_TOOLKIT:
+	vile: use CF_CHECK_CFLAGS rather than CF_ADD_CFLAGS
+
+	* AcSplit/CF_RESTARTABLE_PIPEREAD: ci-aclocal generated header
+
+	* AcSplit/CF_RESTARTABLE_PIPEREAD: vile: use AC_CACHE_VAL
+
+	* AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_TERMCAP: use AC_CACHE_CHECK
+
+	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS, AcSplit/CF_TYPE_OUTCHAR:
+	vile: use CF_CACHE_CHECK
+
+	* AcSplit/CF_CHECK_ERRNO:
+	change to use AC_CACHE_CHECK, which ultimately meant I cannot use eval's to
+	support a loop
+
+	* AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_SYS_ERRLIST:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SYS_ERRLIST:
+	don't use a loop on CF_CHECK_ERRNO (since I rewrote it to avoid using eval,
+	for vile)
+
+	* AcSplit/CF_CHECK_EXTERN_DATA:
+	vile: eliminated eval's used to support loop, since that got in the way of
+	using AC_CACHE_CHECK
+
+	* AcSplit/CF_ANSI_CC_CHECK: ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_ANSI_QSORT:
+	vile: use AC_CACHE_CHECK
+
 2001-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_UTMP_UT_NAME: RCS_BASE

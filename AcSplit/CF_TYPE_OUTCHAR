@@ -21,8 +21,7 @@ AC_DEFUN([CF_TYPE_OUTCHAR],
 [
 AC_REQUIRE([CF_CURSES_TERMCAP])
 
-AC_MSG_CHECKING([declaration of tputs 3rd param])
-AC_CACHE_VAL(cf_cv_type_outchar,[
+AC_CACHE_CHECK(declaration of tputs 3rd param, cf_cv_type_outchar,[
 
 cf_cv_type_outchar="int OutChar(int)"
 cf_cv_found=no
@@ -48,8 +47,8 @@ done
 done
 	test $cf_cv_found = yes && break
 done
-	])
-AC_MSG_RESULT($cf_cv_type_outchar)
+])
+
 case $cf_cv_type_outchar in
 int*)
 	AC_DEFINE(OUTC_RETURN)

@@ -1,9 +1,10 @@
+dnl CF_KILLPG version: 3 updated: 2001/12/30 18:17:27
+dnl ---------
 dnl Note: must follow AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
 dnl messes up the messages...
 AC_DEFUN([CF_KILLPG],
 [
-AC_MSG_CHECKING([if killpg is needed])
-AC_CACHE_VAL(cf_cv_need_killpg,[
+AC_CACHE_CHECK(if killpg is needed, cf_cv_need_killpg,[
 AC_TRY_RUN([
 #include <sys/types.h>
 #include <signal.h>
@@ -27,8 +28,8 @@ main()
 }],
 	[cf_cv_need_killpg=no],
 	[cf_cv_need_killpg=yes],
-	[cf_cv_need_killpg=unknown]
-)])
-AC_MSG_RESULT($cf_cv_need_killpg)
+	[cf_cv_need_killpg=unknown])
+])
+
 test $cf_cv_need_killpg = yes && AC_DEFINE(HAVE_KILLPG)
 ])dnl

@@ -1,0 +1,21 @@
+dnl CF_CHECK_CFLAGS version: 2 updated: 2001/12/30 19:09:58
+dnl ---------------
+dnl Conditionally add to $CFLAGS and $CPPFLAGS values which are derived from
+dnl a build-configuration such as imake.  These have the pitfall that they
+dnl often contain compiler-specific options which we cannot use, mixed with
+dnl preprocessor options that we usually can.
+AC_DEFUN([CF_CHECK_CFLAGS],
+[
+CF_VERBOSE(checking additions to CFLAGS)
+cf_check_cflags="$CFLAGS"
+cf_check_cppflags="$CPPFLAGS"
+CF_ADD_CFLAGS($1,yes)
+if test "$cf_check_cflags" != "$CFLAGS" ; then
+AC_TRY_LINK([#include <stdio.h>],[printf("Hello world");],,
+	[CF_VERBOSE(test-compile failed.  Undoing change to \$CFLAGS)
+	 if test "$cf_check_cppflags" != "$CPPFLAGS" ; then
+		 CF_VERBOSE(but keeping change to \$CPPFLAGS)
+	 fi
+	 CFLAGS="$cf_check_flags"])
+fi
+])dnl

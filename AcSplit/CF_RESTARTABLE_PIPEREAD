@@ -1,3 +1,5 @@
+dnl CF_RESTARTABLE_PIPEREAD version: 3 updated: 2001/12/30 18:23:20
+dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
 dnl wait() as the test code.  apparently there is a POSIX change, which OSF/1
@@ -6,8 +8,7 @@ dnl data has been transferred are interruptable _regardless_ of the SA_RESTART
 dnl bit.  yuck.
 AC_DEFUN([CF_RESTARTABLE_PIPEREAD],
 [
-AC_MSG_CHECKING(for restartable reads on pipes)
-AC_CACHE_VAL(cf_cv_can_restart_read,[
+AC_CACHE_CHECK(for restartable reads on pipes, cf_cv_can_restart_read,[
 AC_TRY_RUN(
 [/* Exit 0 (true) if wait returns something other than -1,
    i.e. the pid of the child, which means that wait was restarted
@@ -54,7 +55,8 @@ main () {
 ],
 [cf_cv_can_restart_read=yes],
 [cf_cv_can_restart_read=no],
-[cf_cv_can_restart_read=unknown])])
-AC_MSG_RESULT($cf_cv_can_restart_read)
+[cf_cv_can_restart_read=unknown])
+])
+
 test $cf_cv_can_restart_read = yes && AC_DEFINE(HAVE_RESTARTABLE_PIPEREAD)
 ])dnl

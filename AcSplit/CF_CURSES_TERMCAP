@@ -9,8 +9,7 @@ dnl See CF_TYPE_OUTCHAR for more details.
 AC_DEFUN([CF_CURSES_TERMCAP],
 [
 AC_REQUIRE([CF_CURSES_TERM_H])
-AC_MSG_CHECKING(if we should include curses.h or termcap.h)
-AC_CACHE_VAL(cf_cv_need_curses_h,[
+AC_CACHE_CHECK(if we should include curses.h or termcap.h, cf_cv_need_curses_h,[
 cf_save_CPPFLAGS="$CPPFLAGS"
 cf_cv_need_curses_h=no
 
@@ -62,7 +61,6 @@ if test "$cf_cv_need_curses_h" != no ; then
 	fi
 fi
 ])
-AC_MSG_RESULT($cf_cv_need_curses_h)
 
 case $cf_cv_need_curses_h in
 both) #(vi
