@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20001018
+MANIFEST for my-autoconf, version t20001020
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -127,6 +127,7 @@ AcSplit/CF_MAKE_TAGS            generate tags/TAGS targets for makefile dependin
 AcSplit/CF_MANPAGE_FORMAT       determine (optionally) the manpage format
 AcSplit/CF_MANPAGE_RENAMES      determine (optionally) if we must rename manpage sections
 AcSplit/CF_MANPAGE_SYMLINKS     accept configure option for manpage symbolic links
+AcSplit/CF_MANPAGE_TBL          handle --with-manpage-tbl option (ncurses)
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MATH_LIB             check if math libs are needed for math functions
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)

@@ -206,26 +206,61 @@ done
 DST=\[$]1
 REF=\[$]2
 SRC=\[$]3
+TMPSRC=\${TMPDIR-/tmp}/\`basename \$SRC\`\$\$
+TMPSED=\${TMPDIR-/tmp}/headers.sed\$\$
 echo installing \$SRC in \$DST
+CF_EOF
+if test $WITH_CURSES_H = yes; then
+	cat >>headers.sh <<CF_EOF
 case \$DST in
 /*/include/*)
-	TMPSRC=\${TMPDIR-/tmp}/\`basename \$SRC\`\$\$
-	TMPSED=\${TMPDIR-/tmp}/headers.sed\$\$
 	END=\`basename \$DST\`
 	for i in \`cat \$REF/../*/headers |fgrep -v "#"\`
 	do
 		NAME=\`basename \$i\`
 		echo "s/<\$NAME>/<\$END\/\$NAME>/" >> \$TMPSED
 	done
-	rm -f \$TMPSRC
-	sed -f \$TMPSED \$SRC > \$TMPSRC
-	eval \$PRG \$TMPSRC \$DST/\`basename \$SRC\`
-	rm -f \$TMPSRC \$TMPSED
 	;;
 *)
-	eval \$PRG \$SRC \$DST
+	echo "" >> \$TMPSED
 	;;
 esac
+CF_EOF
+else
+	cat >>headers.sh <<CF_EOF
+case \$DST in
+/*/include/*)
+	END=\`basename \$DST\`
+	for i in \`cat \$REF/../*/headers |fgrep -v "#"\`
+	do
+		NAME=\`basename \$i\`
+		if test "\$NAME" = "curses.h"
+		then
+			echo "s/<curses.h>/<ncurses.h>/" >> \$TMPSED
+			NAME=ncurses.h
+		fi
+		echo "s/<\$NAME>/<\$END\/\$NAME>/" >> \$TMPSED
+	done
+	;;
+*)
+	echo "s/<curses.h>/<ncurses.h>/" >> \$TMPSED
+	;;
+esac
+CF_EOF
+fi
+cat >>headers.sh <<CF_EOF
+rm -f \$TMPSRC
+sed -f \$TMPSED \$SRC > \$TMPSRC
+NAME=\`basename \$SRC\`
+CF_EOF
+if test $WITH_CURSES_H != yes; then
+	cat >>headers.sh <<CF_EOF
+test "\$NAME" = "curses.h" && NAME=ncurses.h
+CF_EOF
+fi
+cat >>headers.sh <<CF_EOF
+eval \$PRG \$TMPSRC \$DST/\$NAME
+rm -f \$TMPSRC \$TMPSED
 CF_EOF
 
 chmod 0755 headers.sh
@@ -251,7 +286,7 @@ CF_EOF
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
 			echo "	@ (cd \$(DESTDIR)\$(includedir) && rm -f `basename $i`) ; ../headers.sh \$(INSTALL_DATA) \$(DESTDIR)\$(includedir) \$(srcdir) $i" >>$cf_dir/Makefile
-			test $i = curses.h && echo "	@ (cd \$(DESTDIR)\$(includedir) && rm -f ncurses.h && \$(LN_S) curses.h ncurses.h)" >>$cf_dir/Makefile
+			test $i = curses.h && test $WITH_CURSES_H = yes && echo "	@ (cd \$(DESTDIR)\$(includedir) && rm -f ncurses.h && \$(LN_S) curses.h ncurses.h)" >>$cf_dir/Makefile
 		done
 
 	cat >>$cf_dir/Makefile <<CF_EOF

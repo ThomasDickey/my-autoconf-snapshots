@@ -7,6 +7,7 @@ CF_HELP_MESSAGE(Options to Specify How Manpages are Installed:)
 CF_MANPAGE_FORMAT
 CF_MANPAGE_RENAMES
 CF_MANPAGE_SYMLINKS
+CF_MANPAGE_TBL
 
   if test "$prefix" = "NONE" ; then
      cf_prefix="$ac_default_prefix"
@@ -120,6 +121,18 @@ cat >>man/edit_man.sh <<CF_EOF
 	test \$verb = installing && sed -e "s,@DATADIR@,\$datadir," < \$i | sed -f edit_man.sed >\$TMP
 CF_EOF
 fi
+if test $cf_manpage_tbl = yes ; then
+cat >>man/edit_man.sh <<CF_EOF
+	tbl \$TMP >\$TMP.out
+	mv \$TMP.out \$TMP
+CF_EOF
+fi
+if test $with_curses_h != yes ; then
+cat >>man/edit_man.sh <<CF_EOF
+	sed -e "/\#[    ]*include/s,curses.h,ncurses.h," < \$TMP >\$TMP.out
+	mv \$TMP.out \$TMP
+CF_EOF
+fi
 if test $cf_format = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
 	nroff -man \$TMP >\$TMP.out
@@ -157,9 +170,9 @@ CF_EOF
   ;;
 esac
 cat >>man/edit_man.sh <<CF_EOF
-	echo \$verb \$target
 	suffix=\`basename \$target | sed -e 's/^[^.]*//'\`
 	if test \$verb = installing ; then
+		echo \$verb \$target
 		\$INSTALL_DATA \$TMP \$target
 		test -n "\$aliases" && (
 			cd $cf_subdir\${section} && (
@@ -187,7 +200,8 @@ cat >>man/edit_man.sh <<CF_EOF
 				done
 			)
 		)
-	else
+	elif test \$verb = removing ; then
+		echo \$verb \$target
 		rm -f \$target
 		test -n "\$aliases" && (
 			cd $cf_subdir\${section} && (
@@ -202,6 +216,9 @@ cat >>man/edit_man.sh <<CF_EOF
 				done
 			)
 		)
+	else
+#		echo ".hy 0"
+		cat \$TMP
 	fi
 	;;
 esac

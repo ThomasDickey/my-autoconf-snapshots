@@ -2,6 +2,7 @@ dnl Compute the object-directory name from the given model name
 AC_DEFUN([CF_OBJ_SUBDIR],
 [
 	case $1 in
+	libtool) $2='obj_lo'  ;;
 	normal)  $2='objects' ;;
 	debug)   $2='obj_g' ;;
 	profile) $2='obj_p' ;;

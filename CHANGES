@@ -1,3 +1,19 @@
+2000-10-20  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MANPAGE_TBL: RCS_BASE
+
+	* AcSplit/CF_LIB_TYPE: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES: ncurses: add --without-curses-h
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_LIB_TYPE, AcSplit/CF_OBJ_SUBDIR:
+	ncurses: add model for libtool
+
+	* AcSplit/CF_SRC_MODULES: ncurses: add support for libtool
+
+	* AcSplit/CF_MAN_PAGES: ncurses: add support for manpage-tbl option
+	modified edit_man.sh to allow reuse for "make -f dist.mk manhtml"
+
 2000-10-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_RECHECK_FUNC: ci-aclocal generated header
