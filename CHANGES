@@ -1,3 +1,8 @@
+1997-09-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_X_ATHENA: add --with-Xaw3d and --with-neXtaw options.
+	correct order of Xmu_s vs Xext libraries
+
 1997-09-20  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIB_SUFFIX: comment

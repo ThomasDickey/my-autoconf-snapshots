@@ -1,4 +1,6 @@
 dnl Compute the library-suffix from the given model name
+dnl $1 = model name
+dnl $2 = variable to set
 AC_DEFUN([CF_LIB_SUFFIX],
 [
 	AC_REQUIRE([CF_SYSTYPE])
