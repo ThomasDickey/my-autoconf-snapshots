@@ -1,3 +1,17 @@
+1998-11-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_EBCDIC: RCS_BASE
+
+	* AcSplit/AM_WITH_NLS: change default to --disable-nls
+
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_SYSTEM_MAIL_FLAGS:
+	ci-aclocal generated header
+
+	* AcSplit/AM_GNU_GETTEXT: remove the po2tbl.sed script when done
+
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SYSTEM_MAIL_FLAGS:
+	whitespace
+
 1998-11-16  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.guess, config.sub: changes for os390

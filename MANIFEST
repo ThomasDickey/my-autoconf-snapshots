@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19981116
+MANIFEST for my-autoconf, version t19981118
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -60,6 +60,7 @@ AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define
 AcSplit/CF_DEFINE_PROG          check for program, defining its path
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
+AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses

@@ -1,11 +1,13 @@
-AC_DEFUN([CF_SYSTEM_MAIL_FLAGS], 
+dnl CF_SYSTEM_MAIL_FLAGS version: 3 updated: 1998/11/18 14:45:34
+dnl --------------------
+AC_DEFUN([CF_SYSTEM_MAIL_FLAGS],
 [
 AC_MSG_CHECKING([system mail flags])
 AC_CACHE_VAL(cf_cv_system_mail_flags,[
 	case $cf_cv_SYSTEM_MAIL in
 	*/mmdf/*)
 		[cf_cv_system_mail_flags="-mlruxto,cc\\\\*"]
-        	;; 
+        	;;
 	*)
         	[cf_cv_system_mail_flags="-t -oi"]
 	esac
