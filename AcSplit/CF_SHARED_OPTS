@@ -78,6 +78,10 @@ AC_DEFUN([CF_SHARED_OPTS],
 		INSTALL_LIB="-m 555"
 		;;
 	irix*)
+		if test "$cf_cv_ld_rpath" = yes ; then
+			cf_ld_rpath_opt="-Wl,-rpath,"
+			EXTRA_LDFLAGS="-Wl,-rpath,\$(libdir) $EXTRA_LDFLAGS"
+		fi
 		# tested with IRIX 5.2 and 'cc'.
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-KPIC'
