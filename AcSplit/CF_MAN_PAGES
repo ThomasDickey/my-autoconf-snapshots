@@ -43,9 +43,9 @@ shift
 mandir=\{{$}}1
 shift
 
-for i in \{{$}}*
-do
+for i in \{{$}}* ; do
 case \$i in #(vi
+*.orig|*.rej) ;; #(vi
 *.[0-9]*)
 	section=\`expr "\$i" : '.*\\.\\([0-9]\\)[xm]*'\`;
 	if test \$verb = installing ; then

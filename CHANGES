@@ -1,3 +1,7 @@
+1998-11-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_MAN_PAGES: filter out .orig and .rej files
+
 1998-11-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS: fix for Suse Linux
