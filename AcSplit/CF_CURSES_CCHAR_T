@@ -1,17 +1,18 @@
-dnl CF_CURSES_CCHAR_T version: 2 updated: 1998/07/01 09:41:58
+dnl CF_CURSES_CCHAR_T version: 3 updated: 2003/11/06 19:59:57
 dnl -----------------
 dnl Test if curses defines 'cchar_t' (usually a 'long' type for SysV curses).
 AC_DEFUN([CF_CURSES_CCHAR_T],
 [
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 AC_CACHE_CHECK(for cchar_t typedef,cf_cv_cchar_t_decl,[
-	AC_TRY_COMPILE([#include <curses.h>],
+	AC_TRY_COMPILE([#include <${cf_cv_ncurses_header-curses.h}>],
 		[cchar_t foo],
 		[cf_cv_cchar_t_decl=yes],
 		[cf_cv_cchar_t_decl=no])])
 if test $cf_cv_cchar_t_decl = yes ; then
 	AC_DEFINE(HAVE_TYPE_CCHAR_T)
 	AC_CACHE_CHECK(if cchar_t is scalar or struct,cf_cv_cchar_t_type,[
-		AC_TRY_COMPILE([#include <curses.h>],
+		AC_TRY_COMPILE([#include <${cf_cv_ncurses_header-curses.h}>],
 			[cchar_t foo; long x = foo],
 			[cf_cv_cchar_t_type=scalar],
 			[cf_cv_cchar_t_type=struct])])

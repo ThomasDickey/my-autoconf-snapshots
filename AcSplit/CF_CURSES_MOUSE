@@ -1,12 +1,13 @@
-dnl CF_CURSES_MOUSE version: 2 updated: 1997/09/07 15:13:55
+dnl CF_CURSES_MOUSE version: 3 updated: 2003/11/06 19:59:57
 dnl ---------------
 dnl Test for the existence of SysVr4 mouse support in curses. If we've not got
 dnl it, we'll simulate the interface (for xterm, at least).
 AC_DEFUN([CF_CURSES_MOUSE],
 [
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 AC_MSG_CHECKING(for curses mouse-support)
 AC_CACHE_VAL(cf_cv_curses_mouse,[
-AC_TRY_LINK([#include <curses.h>],[
+AC_TRY_LINK([#include <${cf_cv_ncurses_header-curses.h}>],[
 	int x, y;
 	getmouse();
 	request_mouse_pos();

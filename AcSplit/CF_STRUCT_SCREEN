@@ -1,4 +1,4 @@
-dnl CF_STRUCT_SCREEN version: 2 updated: 1997/09/07 15:13:55
+dnl CF_STRUCT_SCREEN version: 3 updated: 2003/11/06 19:59:57
 dnl ----------------
 dnl Test if curses defines 'struct screen'.
 dnl
@@ -7,11 +7,12 @@ dnl	for that type, since it isn't resolved.
 dnl
 AC_DEFUN([CF_STRUCT_SCREEN],
 [
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 AC_MSG_CHECKING(if curses uses struct screen)
 AC_CACHE_VAL(cf_cv_have_struct_screen,[
 	AC_TRY_COMPILE([
 #define lint	/* sysvr4 has its own fallback for lint */
-#include <curses.h>],
+#include <${cf_cv_ncurses_header-curses.h}>],
 		[struct screen dummy],
 		[cf_cv_have_struct_screen=yes],
 		[cf_cv_have_struct_screen=no])
@@ -21,7 +22,7 @@ AC_MSG_RESULT($cf_cv_have_struct_screen)
 AC_MSG_CHECKING(for definition of struct screen)
 AC_CACHE_VAL(cf_cv_need_struct_screen,[
 	if test $cf_cv_have_struct_screen = yes; then
-		AC_TRY_COMPILE([#include <curses.h>],
+		AC_TRY_COMPILE([#include <${cf_cv_ncurses_header-curses.h}>],
 			[struct screen { int dummy;}],
 			[cf_cv_need_struct_screen=yes],
 			[cf_cv_need_struct_screen=no])

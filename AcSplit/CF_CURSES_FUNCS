@@ -1,8 +1,9 @@
-dnl CF_CURSES_FUNCS version: 11 updated: 2003/08/20 15:23:08
+dnl CF_CURSES_FUNCS version: 12 updated: 2003/11/06 19:59:57
 dnl ---------------
 dnl Curses-functions are a little complicated, since a lot of them are macros.
 AC_DEFUN([CF_CURSES_FUNCS],
 [
+AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
 AC_REQUIRE([CF_XOPEN_CURSES])
 AC_REQUIRE([CF_CURSES_TERM_H])
 for cf_func in $1
