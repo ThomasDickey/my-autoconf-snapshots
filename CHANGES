@@ -1,3 +1,9 @@
+2004-02-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	join lines in an AC_CHECK_LIB where a parameter was split across lines.
+	that made the resulting substitution split also (reported in tin 1.7.4).
+
 2004-02-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2004-02-23 (from tin)
