@@ -1,3 +1,27 @@
+1997-09-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FIND_TDLIB: RCS_BASE
+
+	* AcSplit/CF_FIND_LIBRARY:
+	comment, set $cf_libdir to known value so it can be tested in CF_FIND_TDLIB
+
+	* AcSplit/CF_TD_CONFIG: RCS_BASE
+
+	* AcSplit/CF_SED_CONFIG_H:
+	use td_config if available to workaround problems with very long @DEFS@
+
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TD_TEST_MODULES:
+	RCS_BASE
+
+	* AcSplit/CF_DISABLE_ECHO: SHOW_CC is only for .c.o rules
+
+	* AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TD_TEST_MODULES:
+	ci-aclocal generated header
+
+	* AcSplit/CF_TD_SRC_MAKEFILES: made a workable version
+
+	* AcSplit/CF_TD_SRC_MODULES: make a workable version
+
 1997-09-08  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TD_SRC_MAKEFILES, AcSplit/CF_TD_SRC_MODULES: RCS_BASE

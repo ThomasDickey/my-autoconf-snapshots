@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19970908
+MANIFEST for my-autoconf, version t19970911
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -69,6 +69,7 @@ AcSplit/CF_LIB_TYPE             derive the library type (suffix) from the model
 AcSplit/CF_LINK_DATAONLY        test for linker that doesn't link data-only references
 AcSplit/CF_LOCALE               check if we have locale stuff
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
+AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
@@ -126,6 +127,10 @@ AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
 AcSplit/CF_TCAP_CURSOR          check if curses defines KD, KU, etc. (td_lib)
 AcSplit/CF_TD_CURSES_LIBS       renamed to avoid conflict
 AcSplit/CF_TD_SIG_ARGS          test for non-POSIX signal args
+AcSplit/CF_TD_SRC_MAKEFILES     script to make src/*/makefiles
+AcSplit/CF_TD_SRC_MODULES       script to determine src/*/modules
+AcSplit/CF_TD_TEST_MAKEFILES    generate test/*/makefile
+AcSplit/CF_TD_TEST_MODULES      make a list of modules under test/*
 AcSplit/CF_TERMCAP_LIBS         check for termcap libraries
 AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
