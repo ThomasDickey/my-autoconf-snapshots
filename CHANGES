@@ -1,3 +1,12 @@
+2002-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT: ci-aclocal generated header
+
+	* AcSplit/CF_FUNC_TGETENT:
+	xterm: workaround for running in 'screen', which may set $TERM to a value
+	that is not in termcap - noting that xterm prefers termcap if it can get
+	it, while screen is more easily fooled.
+
 2002-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA: ci-aclocal generated header
