@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 15 updated: 2004/01/10 16:05:16
+dnl CF_SRC_MODULES version: 16 updated: 2004/02/14 20:18:37
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -19,7 +19,7 @@ else
 fi
 
 # dependencies and linker-arguments for utility-programs
-test "$with_termlib" != yes && PROG_ARGS="$TEST_ARGS"
+test "$with_termlib" = no && PROG_ARGS="$TEST_ARGS"
 
 cf_cv_src_modules=
 for cf_dir in $1
