@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980823
+MANIFEST for my-autoconf, version t19980830
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -118,6 +118,7 @@ AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
 AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
+AcSplit/CF_PROG_PERL            check for perl program
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca
 AcSplit/CF_RCS_SCCS             check for RCS/SCCS/etc used in ded, cm_tools (td_lib)
@@ -192,6 +193,7 @@ AcSplit/CF_WITH_DFTENV          inherit/override environment variable with comma
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
+AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
 AcSplit/CF_X_ATHENA             check for Xaw library
 AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)

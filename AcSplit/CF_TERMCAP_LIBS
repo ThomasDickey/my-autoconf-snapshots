@@ -1,8 +1,21 @@
-dnl Look for termcap libraries
+dnl Look for termcap libraries, or the equivalent in terminfo.
 AC_DEFUN([CF_TERMCAP_LIBS],
 [
 AC_CACHE_VAL(cf_cv_lib_termcap,[
 cf_cv_lib_termcap=none
+AC_TRY_LINK([],[char *x=(char*)tgoto("",0,0)],
+[AC_TRY_LINK([],[int x=tigetstr("")],
+	[cf_cv_termlib=terminfo],
+	[cf_cv_termlib=termcap])
+	CF_VERBOSE(using functions in predefined $cf_cv_termlib LIBS)
+],[
+ifelse([$1],,,[
+if test "$1" = ncurses; then
+	CF_NCURSES_CPPFLAGS
+	CF_NCURSES_LIBS
+	cf_cv_termlib=terminfo
+fi
+])
 # HP-UX 9.x terminfo has setupterm, but no tigetstr.
 if test "$termlib" = none; then
 	AC_CHECK_LIB(termlib, tigetstr, [LIBS="$LIBS -ltermlib" cf_cv_lib_termcap=terminfo])
@@ -25,4 +38,4 @@ fi
 if test "$cf_cv_lib_termcap" = none; then
 	AC_ERROR([Can't find -ltermlib, -lcurses, or -ltermcap])
 fi
-])dnl
+])])dnl

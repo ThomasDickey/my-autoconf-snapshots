@@ -1,5 +1,7 @@
-dnl Check if the C compiler supports offsetof expressions in switch cases. 
-dnl Some losing compiler's can be found on pyramid's, aix, and Apple's AUX2. 
+dnl CF_CC_OFFSETOF_CASES version: 3 updated: 1998/08/30 21:49:26
+dnl --------------------
+dnl Check if the C compiler supports offsetof expressions in switch cases.
+dnl Some losing compiler's can be found on pyramid's, aix, and Apple's AUX2.
 dnl (Lint on several platforms will complain, even when the compiler won't).
 AC_DEFUN([CF_CC_OFFSETOF_CASES],[
 AC_CACHE_CHECK(if switch cases work with structure offsets,
