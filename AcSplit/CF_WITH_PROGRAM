@@ -13,8 +13,7 @@ changequote([,])dnl
 AC_ARG_WITH($1,[$2],ifelse($3,,
 [case "$withval" in #(vi
   yes[)]
-   echo 'configure: error: "--with-$1" requires value' 1>&2
-   exit 1
+   AC_ERROR(expected a value for --with-$1)
    ;; #(vi
   no[)]
    ;; #(vi
