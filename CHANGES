@@ -1,3 +1,16 @@
+2001-03-12  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.sub: from autoconf 2.49e
+
+2001-02-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_X_FREETYPE: RCS_BASE
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	cancel message from $CDPATH by making it an empty string.
+
+	* AcSplit/CF_IMAKE_CFLAGS: ci-aclocal generated header
+
 2001-02-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub, config.guess: 2000-2-13

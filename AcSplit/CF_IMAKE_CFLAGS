@@ -1,3 +1,5 @@
+dnl CF_IMAKE_CFLAGS version: 13 updated: 2001/02/15 01:30:11
+dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
 dnl this.
@@ -17,6 +19,7 @@ esac
 # config directory.
 if mkdir conftestdir; then
 	cf_makefile=`cd $srcdir;pwd`/Imakefile
+	CDPATH=; export CDPATH
 	cd conftestdir
 	echo >./Imakefile
 	test -f $cf_makefile && cat $cf_makefile >>./Imakefile
