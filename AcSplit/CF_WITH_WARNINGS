@@ -1,6 +1,9 @@
-dnl CF_WITH_WARNINGS version: 4 updated: 2003/05/24 15:01:41
+dnl CF_WITH_WARNINGS version: 5 updated: 2004/07/23 14:40:34
 dnl ----------------
 dnl Combine the checks for gcc features into a configure-script option
+dnl
+dnl Parameters:
+dnl	$1 - see CF_GCC_WARNINGS
 AC_DEFUN([CF_WITH_WARNINGS],
 [
 if ( test "$GCC" = yes || test "$GXX" = yes )
@@ -13,7 +16,7 @@ AC_ARG_WITH(warnings,
 AC_MSG_RESULT($cf_opt_with_warnings)
 if test "$cf_opt_with_warnings" != no ; then
 	CF_GCC_ATTRIBUTES
-	CF_GCC_WARNINGS
+	CF_GCC_WARNINGS([$1])
 fi
 fi
 ])dnl
