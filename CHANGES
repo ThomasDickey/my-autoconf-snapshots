@@ -1,3 +1,16 @@
+2000-12-28  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ADD_CFLAGS: add gcc's -undef, -nostdinc options
+	add some logic to suppress repetition of previous token, which appears to
+	happen in xterm's configure script.
+
+	* AcSplit/CF_X_TOOLKIT:
+	use CF_ADD_CFLAGS rather than setting $CFLAGS directly
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	use CF_ADD_CFLAGS rather than setting $CFLAGS directly (I missed this on
+	the last change, would break on some machines that need $CPPFLAGS updated).
+
 2000-11-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CFG_DEFAULTS: ci-aclocal generated header
