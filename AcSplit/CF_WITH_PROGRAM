@@ -1,3 +1,5 @@
+dnl CF_WITH_PROGRAM version: 5 updated: 2001/07/22 23:07:22
+dnl ---------------
 dnl Wrapper for AC_PATH_PROG, with command-line option.
 dnl Params:
 dnl $1 = program name
@@ -6,10 +8,8 @@ dnl $3 = caller-supplied default if no --with option is given.  If this is
 dnl      blank, the macro uses AC_PATH_PROG.
 AC_DEFUN([CF_WITH_PROGRAM],
 [dnl
-changequote(<<,>>)dnl
-define(<<cf_path_name>>, PATH_<<>>translit($1, [a-z], [A-Z]))dnl
-define(<<cf_have_name>>, HAVE_<<>>translit($1, [a-z], [A-Z]))dnl
-changequote([,])dnl
+define([cf_path_name], PATH_[]translit($1, [a-z], [A-Z]))dnl
+define([cf_have_name], HAVE_[]translit($1, [a-z], [A-Z]))dnl
 AC_ARG_WITH($1,[$2],ifelse($3,,
 [case "$withval" in #(vi
   yes[)]

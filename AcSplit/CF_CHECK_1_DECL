@@ -1,3 +1,5 @@
+dnl CF_CHECK_1_DECL version: 5 updated: 2001/07/22 21:09:16
+dnl ---------------
 dnl Check for missing declarations in the system headers (adapted from vile).
 dnl
 dnl CHECK_DECL_FLAG and CHECK_DECL_HDRS must be set in configure.in
@@ -18,7 +20,7 @@ extern struct zowie *$1();
 [
 ],
 [if test -n "$CHECK_DECL_HDRS" ; then
-# try to workaround system headers which are infested with non-standard syntax
+# try to work around system headers which are infested with non-standard syntax
 CF_UPPER(cf_1_up,$1)
 AC_TRY_COMPILE([
 #define DECL_${cf_1_up}

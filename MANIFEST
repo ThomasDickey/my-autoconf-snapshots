@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010718
+MANIFEST for my-autoconf, version t20010722
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -31,6 +31,7 @@ AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
 AcSplit/CF_BUNDLED_INTL         combine all libintl macros
+AcSplit/CF_BUNDLED_PCRE         macro to setup variables when configuriing for PCRE which may be bundled
 AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions
 AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
 AcSplit/CF_CFG_DEFAULTS         determine the default "--prefix" (ncurses)
@@ -70,8 +71,10 @@ AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
+AcSplit/CF_DEFAULT_SHELL        check for a default-shell variable (actually, any shell program from a given
 AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define
 AcSplit/CF_DEFINE_PROG          check for program, defining its path
+AcSplit/CF_DEFINE_STRING        convert a shell variable to a #define which is a quoted string
 AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
