@@ -1,3 +1,12 @@
+2003-11-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_VERSION_INFO:
+	dialog: initially modify so I can read the "0.9b-20031002" version from
+	dialog's VERSION file.  This macro will read that, plus the 3-column
+	text from cdk's VERSION file, making it a little more general than it was.
+	(Not all programs should use libtool).  Also integrated the PACKAGE stuff
+	here, so I can define DIALOG_VERSION and DIALOG_PATCHDATE.
+
 2003-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: this is 1.294
