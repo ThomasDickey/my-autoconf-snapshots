@@ -169,9 +169,15 @@ AC_DEFUN(AM_WITH_NLS,
     if test "$PACKAGE" = gettext; then
       USE_NLS=yes
       USE_INCLUDED_LIBINTL=yes
-
-      AC_LINK_FILES($nls_cv_header_libgt, $nls_cv_header_intl)
     fi
+
+    # If we really do not use included intl, suppress the command that
+    # would attempt to symlink the two copies of its header.
+    if test "$USE_INCLUDED_LIBINTL" != yes; then
+      nls_cv_header_libgt=
+      nls_cv_header_intl=
+    fi
+    AC_LINK_FILES($nls_cv_header_libgt, $nls_cv_header_intl)
 
     AC_OUTPUT_COMMANDS([ #(vi
       case "\$CONFIG_FILES" in
