@@ -1,3 +1,16 @@
+1999-11-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	rewrote (for vile 8.4b) to use AC_TRY_LINK throughout so I avoid the
+	broken linker on FreeBSD
+
+	* AcSplit/CF_ADD_CFLAGS: RCS_BASE
+
+	* AcSplit/CF_CRYPT_FUNC: ci-aclocal generated header
+
+	* AcSplit/CF_CRYPT_FUNC:
+	nit - forgot to reset $LIBS in the second test.
+
 1999-11-10  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CRYPT_FUNC: RCS_BASE

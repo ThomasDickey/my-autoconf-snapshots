@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19991110
+MANIFEST for my-autoconf, version t19991111
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -13,6 +13,7 @@ AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
 AcSplit/AM_WITH_NLS             macro to test for NLS
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
+AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
 AcSplit/CF_ALL_MAKEFILES        list all makefiles
