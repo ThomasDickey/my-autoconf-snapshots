@@ -6,16 +6,16 @@ case $host_os in #(vi
 freebsd*) #(vi
 	AC_CHECK_LIB(mytinfo,tgoto,[LIBS="-lmytinfo $LIBS"])
 	;;
-*hp-hpux10.*)
+hpux10.*)
+	AC_CHECK_LIB(cur_colr,initscr,[
+		LIBS="-lcur_colr $LIBS"
+		CFLAGS="-I/usr/include/curses_colr $CFLAGS"
+		ac_cv_func_initscr=yes
+		],[
 	AC_CHECK_LIB(Hcurses,initscr,[
 		# HP's header uses __HP_CURSES, but user claims _HP_CURSES.
 		LIBS="-lHcurses $LIBS"
 		CFLAGS="-D__HP_CURSES -D_HP_CURSES $CFLAGS"
-		ac_cv_func_initscr=yes
-		],[
-	AC_CHECK_LIB(cur_color,initscr,[
-		LIBS="-lcur_color $LIBS"
-		CFLAGS="-I/usr/include/curses_colr $CFLAGS"
 		ac_cv_func_initscr=yes
 		])])
 	;;

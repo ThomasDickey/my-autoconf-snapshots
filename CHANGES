@@ -1,3 +1,7 @@
+1998-03-05  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS: fixes from Jonathan Sergent for lynx
+
 1998-03-03  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FIND_LIBRARY:
