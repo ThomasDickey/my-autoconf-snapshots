@@ -1,3 +1,7 @@
+2003-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PREDEFINE: ci-aclocal generated header
+
 2003-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
