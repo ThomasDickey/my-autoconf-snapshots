@@ -24,6 +24,7 @@ CF_MANPAGE_RENAMES
     ;;
   esac
 
+test ! -d man && mkdir man
 cat >man/edit_man.sh <<CF_EOF
 changequote({{,}})dnl
 #! /bin/sh
