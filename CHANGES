@@ -1,3 +1,10 @@
+2000-08-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_GETADDRINFO:
+	lynx: add AC_DEFINE's for HAVE_GAI_STRERROR and HAVE_GETADDRINFO
+
+	* config.guess, config.sub: ncurses: add cases for OS/2 EMX
+
 2000-08-19  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIB_RULES: change $(INSTALL_PREFIX) to $(DESTDIR)
