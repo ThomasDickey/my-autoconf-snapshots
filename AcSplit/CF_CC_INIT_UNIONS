@@ -1,3 +1,5 @@
+dnl CF_CC_INIT_UNIONS version: 2 updated: 1998/07/01 22:16:27
+dnl -----------------
 dnl Check if the C compiler supports initialization of unions.
 AC_DEFUN([CF_CC_INIT_UNIONS],[
 AC_CACHE_CHECK(if we can initialize unions,

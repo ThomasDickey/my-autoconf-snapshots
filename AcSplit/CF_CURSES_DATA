@@ -1,0 +1,11 @@
+dnl CF_CURSES_DATA version: 3 updated: 1998/07/01 09:41:58
+dnl --------------
+dnl Test for curses data/types
+AC_DEFUN([CF_CURSES_DATA],
+[
+CF_CURSES_CCHAR_T
+CF_CURSES_CHTYPE
+CF_CURSES_STYLE
+CF_STRUCT_SCREEN
+CF_TCAP_CURSOR
+])dnl

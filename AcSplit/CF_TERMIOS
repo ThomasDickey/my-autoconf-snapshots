@@ -1,0 +1,33 @@
+dnl CF_TERMIOS version: 2 updated: 1997/08/28 23:57:55
+dnl ----------
+dnl See if we can link with the termios functions tcsetattr/tcgetattr
+AC_DEFUN([CF_TERMIOS],
+[
+AC_MSG_CHECKING([for nonconflicting termios.h])
+AC_CACHE_VAL(cf_cv_use_termios_h,[
+	AC_TRY_LINK([
+#ifdef HAVE_IOCTL_H
+#	include <ioctl.h>
+#else
+#	ifdef HAVE_SYS_IOCTL_H
+#		include <sys/ioctl.h>
+#	endif
+#endif
+
+#if !defined(sun) || !defined(NL0)
+#include <termios.h>
+#endif
+],[
+	struct termios save_tty;
+	(void) tcsetattr (0, TCSANOW, &save_tty);
+	(void) tcgetattr (0, &save_tty)],
+	[cf_cv_use_termios_h=yes],
+	[cf_cv_use_termios_h=no])
+])
+AC_MSG_RESULT($cf_cv_use_termios_h)
+if test $cf_cv_use_termios_h = yes; then
+	AC_DEFINE(HAVE_TERMIOS_H)
+	AC_DEFINE(HAVE_TCGETATTR)
+	AC_DEFINE(HAVE_TCSETATTR)
+fi
+])dnl

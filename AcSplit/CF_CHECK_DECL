@@ -1,0 +1,9 @@
+dnl CF_CHECK_DECL version: 2 updated: 1997/08/28 23:57:55
+dnl -------------
+AC_DEFUN([CF_CHECK_DECL],
+[for ac_func in $1
+do
+CF_UPPER(ac_tr_func,$ac_func)
+CF_CHECK_1_DECL(${ac_func}, ${ac_tr_func})dnl
+done
+])dnl

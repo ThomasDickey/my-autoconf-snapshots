@@ -1,0 +1,55 @@
+dnl CF_TD_CURSES_LIBS version: 3 updated: 1998/02/15 16:37:44
+dnl -----------------
+dnl Test for the varieties of curses libraries.
+dnl
+dnl	There are two main varieties of curses: BSD and SYSV.  The latter has
+dnl	more features (e.g., keypad and function key support, auxiliary
+dnl	character set).  The easiest thing to test for is the presence of
+dnl	'keypad()' in the curses library.  BSD curses hasn't got it.
+dnl
+dnl	There's a free version of SYSV curses called 'ncurses'.  If we've got
+dnl	that, configure for it instead of the BSD curses.
+dnl
+dnl	On SunOS, we may have both BSD and SYS5 curses (the latter under /5lib
+dnl	and /5include).
+dnl
+AC_DEFUN([CF_TD_CURSES_LIBS],
+[
+# Check for gpm (general purpose mouse) since we may need this for ncurses.
+AC_CHECK_LIB(gpm,Gpm_Open)
+if test $WithNcurses = yes; then
+	CF_MSG_LOG(ncurses library, by option)
+	AC_CHECK_LIB(ncurses,initscr)
+else
+	# Check if we've already got curses functions in our library list
+	# (e.g., if the user is overriding this test by setting $LIBS).
+	CF_MSG_LOG(curses library, by default)
+	AC_TRY_LINK([#include <curses.h>],
+		[initscr()],
+		[case "$LIBS" in
+		 *libncurses.*|*-lncurses*) #(vi
+		 	ac_cv_lib_ncurses_initscr=predefined
+		 	ac_cv_lib_curses_initscr=no
+		 	;;
+		 *) #(vi
+		 	ac_cv_lib_ncurses_initscr=no
+		 	ac_cv_lib_curses_initscr=yes
+		 	;;
+		 esac],
+		[ac_cv_lib_ncurses_initscr=unknown])
+fi
+CF_MSG_LOG(ncurses state $ac_cv_lib_ncurses_initscr)
+if test $ac_cv_lib_ncurses_initscr = yes; then
+	# Linux installs NCURSES's include files in a separate directory to avoid
+	# confusion with the native curses.  NCURSES has its own termcap support.
+	CF_INCLUDE_PATH(/usr/include/ncurses /usr/local/include/ncurses)
+	ac_cv_lib_curses_initscr=yes
+elif test $ac_cv_lib_ncurses_initscr = unknown; then
+	# The curses library often depends on the termcap library, so we've checked
+	# for it first.  We could make a more complicated test to ensure that we
+	# don't add the termcap library, but some functions use it anyway if it's
+	# there.
+	AC_CHECK_LIB(termcap, tgetent)
+	AC_CHECK_LIB(curses, initscr)
+fi
+])dnl

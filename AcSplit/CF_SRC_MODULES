@@ -1,0 +1,87 @@
+dnl For each parameter, test if the source-directory exists, and if it contains
+dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
+dnl use in CF_LIB_RULES.
+dnl
+dnl This uses the configured value to make the lists SRC_SUBDIRS and
+dnl SUB_MAKEFILES which are used in the makefile-generation scheme.
+AC_DEFUN([CF_SRC_MODULES],
+[
+AC_MSG_CHECKING(for src modules)
+
+# dependencies and linker-arguments for test-programs
+TEST_DEPS="${LIB_PREFIX}${LIB_NAME}${DFT_DEP_SUFFIX} $TEST_DEPS"
+TEST_ARGS="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARGS"
+
+# dependencies and linker-arguments for utility-programs
+PROG_ARGS="$TEST_ARGS"
+
+cf_cv_src_modules=
+for cf_dir in $1
+do
+	if test -f $srcdir/$cf_dir/modules; then
+
+		# We may/may not have tack in the distribution, though the
+		# makefile is.
+		if test $cf_dir = tack ; then
+			if test ! -f $srcdir/${cf_dir}/${cf_dir}.h; then
+				continue
+			fi
+		fi
+
+		if test -z "$cf_cv_src_modules"; then
+			cf_cv_src_modules=$cf_dir
+		else
+			cf_cv_src_modules="$cf_cv_src_modules $cf_dir"
+		fi
+
+		# Make the ncurses_cfg.h file record the library interface files as
+		# well.  These are header files that are the same name as their
+		# directory.  Ncurses is the only library that does not follow
+		# that pattern.
+		if test $cf_dir = tack ; then
+			continue
+		elif test -f $srcdir/${cf_dir}/${cf_dir}.h; then
+			CF_UPPER(cf_have_include,$cf_dir)
+			AC_DEFINE_UNQUOTED(HAVE_${cf_have_include}_H)
+			AC_DEFINE_UNQUOTED(HAVE_LIB${cf_have_include})
+			TEST_DEPS="${LIB_PREFIX}${cf_dir}${DFT_DEP_SUFFIX} $TEST_DEPS"
+			TEST_ARGS="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARGS"
+		fi
+	fi
+done
+AC_MSG_RESULT($cf_cv_src_modules)
+TEST_ARGS="-L${LIB_DIR} -L\$(libdir) $TEST_ARGS"
+AC_SUBST(TEST_DEPS)
+AC_SUBST(TEST_ARGS)
+
+PROG_ARGS="-L${LIB_DIR} -L\$(libdir) $PROG_ARGS"
+AC_SUBST(PROG_ARGS)
+
+SRC_SUBDIRS="man include"
+for cf_dir in $cf_cv_src_modules
+do
+	SRC_SUBDIRS="$SRC_SUBDIRS $cf_dir"
+done
+SRC_SUBDIRS="$SRC_SUBDIRS misc test"
+test $cf_cxx_library != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
+
+ADA_SUBDIRS=
+if test "$cf_cv_prog_gnat_correct" = yes && test -d $srcdir/Ada95; then
+   SRC_SUBDIRS="$SRC_SUBDIRS Ada95"
+   ADA_SUBDIRS="gen ada_include samples"
+fi
+
+SUB_MAKEFILES=
+for cf_dir in $SRC_SUBDIRS
+do
+	SUB_MAKEFILES="$SUB_MAKEFILES $cf_dir/Makefile"
+done
+
+if test -n "$ADA_SUBDIRS"; then
+   for cf_dir in $ADA_SUBDIRS
+   do
+      SUB_MAKEFILES="$SUB_MAKEFILES Ada95/$cf_dir/Makefile"
+   done
+   AC_SUBST(ADA_SUBDIRS)
+fi
+])dnl

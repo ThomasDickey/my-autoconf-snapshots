@@ -1,0 +1,63 @@
+dnl Test for non-Posix prototype for 'signal()'
+dnl
+dnl	Apollo sr10.x defines prototypes for the signal handling function that
+dnl	have an extra argument (in comparison with Standard C).  Also, on the
+dnl	systems that have standard prototypes, the predefined actions often
+dnl	have incomplete prototypes.  This macro tries to test for these cases
+dnl	so that when compiling I don't see unnecessary warning messages from
+dnl	gcc.
+dnl
+dnl	(If the compiler doesn't recognize prototypes, of course, this test
+dnl	will not find anything :-)
+dnl
+AC_DEFUN([CF_TD_SIG_ARGS],
+[
+AC_REQUIRE([AC_TYPE_SIGNAL])
+AC_MSG_CHECKING(for non-standard signal handler prototype)
+AC_CACHE_VAL(cf_cv_sig_args,[
+	AC_TRY_RUN([
+#include <signal.h>
+		RETSIGTYPE (*signal(int sig, RETSIGTYPE(*func)(int sig)))(int sig2);
+		RETSIGTYPE catch(int sig) { exit(1); }
+		main() { signal(SIGINT, catch); exit(0); } ],
+		[cf_cv_sig_args=STANDARD],
+		[AC_TRY_RUN([
+#include <signal.h>
+			RETSIGTYPE (*signal(int sig, RETSIGTYPE(*func)(int sig,...)))(int sig2,...);
+			RETSIGTYPE catch(int sig, ...) { exit(1); }
+			main() { signal(SIGINT, catch); exit(0); } ],
+			[cf_cv_sig_args=VARYING],
+			[cf_cv_sig_args=UNKNOWN],
+			[cf_cv_sig_args=UNKNOWN])
+		],
+		[cf_cv_sig_args=UNKNOWN])
+	])
+AC_MSG_RESULT($cf_cv_sig_args)
+AC_DEFINE_UNQUOTED(SIG_ARGS_$cf_cv_sig_args)
+
+if test -n "$GCC" && test $WithWarnings = yes
+then
+	AC_MSG_CHECKING(redefinable signal handler prototype)
+	AC_CACHE_VAL(cf_cv_sigs_redef,[
+		cf_cv_sigs_redef=no
+		# We're checking the definitions of the commonly-used predefined signal
+		# macros, to see if their values are the ones that we expect.  If so,
+		# we'll plug in our own definitions, that have complete prototypes.  We
+		# do this when we're developing with gcc, with all warnings, and
+		# shouldn't do it for other compilers, since (for example) the IRIX
+		# compiler complains a lot.
+		if test $cf_cv_sig_args != UNKNOWN; then	# we have prototypes
+			AC_TRY_RUN([
+#include <signal.h>
+#undef  NOT
+#define NOT(s,d) ((long)(s) != (long)(d))
+				main() { exit(NOT(SIG_IGN,1) || NOT(SIG_DFL,0) || NOT(SIG_ERR,-1)); } ],
+				[cf_cv_sigs_redef=yes],
+				[cf_cv_sigs_redef=no],
+				[cf_cv_sigs_redef=unknown])
+		fi
+		])
+		AC_MSG_RESULT($cf_cv_sigs_redef)
+		test $cf_cv_sigs_redef = yes && AC_DEFINE(SIG_IGN_REDEFINEABLE)
+fi
+])dnl
