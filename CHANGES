@@ -1,3 +1,13 @@
+1999-09-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_XTERM_MODE: fixes for 'ls' that inverts the -g option
+
+1999-09-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_XTERM_MODE: add a check for -g option
+
+	* AcSplit/CF_X_ATHENA: check for nonstandard locations
+
 1999-09-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CPP_PARAM_INIT: RCS_BASE
