@@ -1,6 +1,14 @@
 dnl Some machines require _POSIX_SOURCE to completely define struct termios.
 dnl If so, define SVR4_TERMIO
 AC_DEFUN([CF_STRUCT_TERMIOS],[
+AC_CHECK_HEADERS( \
+termio.h \
+termios.h \
+unistd.h \
+)
+if test "$ISC" = yes ; then
+	AC_CHECK_HEADERS( sys/termio.h )
+fi
 if test $ac_cv_header_termios_h = yes ; then
 	case "$CFLAGS" in
 	*-D_POSIX_SOURCE*)

@@ -22,7 +22,8 @@ cf_x_athena_lib=""
 for cf_path in default \
 	/usr/contrib/X11R6 \
 	/usr/contrib/X11R5 \
-	/usr/lib/X11R5
+	/usr/lib/X11R5 \
+	/usr/local
 do
 
 	if test -z "$cf_x_athena_include" ; then
