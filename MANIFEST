@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20011018
+MANIFEST for my-autoconf, version t20011108
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -250,6 +250,7 @@ AcSplit/CF_UNSIGNED_LITERALS    test if the compiler allows unsigned literals
 AcSplit/CF_UPPER                convert to uppercase
 AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTEMPTER             test for Redhat's utempter library
+AcSplit/CF_UTF8_LIB             check for -lutf8 (needed in some ncursesw configs)
 AcSplit/CF_UTMP                 check for struct utmp (or similar)
 AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
 AcSplit/CF_UTMP_UT_SESSION      check for utmp.ut_session
@@ -259,6 +260,7 @@ AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_lib)
 AcSplit/CF_WAIT_HEADERS         construct a set of headers for testing wait/waitpid/union-wait
+AcSplit/CF_WIDEC_CURSES         check for wide-character curses
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
