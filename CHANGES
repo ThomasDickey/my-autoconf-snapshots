@@ -1,3 +1,9 @@
+2000-01-17  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_PREFIX:
+	assign directly to LIB_PREFIX, retaining parameter for optional use.
+	(will obsolete the parameter)
+
 2000-01-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SHARED_OPTS:
