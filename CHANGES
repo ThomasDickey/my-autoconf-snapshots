@@ -1,3 +1,25 @@
+2001-04-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CPP_VSCAN_FUNC:
+	ncurses: better check, don't need sstream header
+
+	* AcSplit/CF_CPP_VSCAN_FUNC: RCS_BASE
+
+	* AcSplit/CF_CPP_PARAM_INIT: ci-aclocal generated header
+
+	* AcSplit/CF_CPP_PARAM_INIT:
+	oops: why was I still checking if $CXX is 'yes'?
+	also, save/restore language to make this more reusable
+
+2001-04-01  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	change this to return a warning if not found, since slang (which uses this
+	macro) may not need it (lynx)
+
+	* AcSplit/CF_SRAND:
+	lynx 2.8.4 dev.18 - better check for range of rand(sic) functions
+
 2001-03-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAN_PAGES: fix oops for Debian renames
