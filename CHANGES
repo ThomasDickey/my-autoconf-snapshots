@@ -1,3 +1,9 @@
+2003-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_MULTIBYTE_ABLE: ci-aclocal generated header
+
+	* AcSplit/AM_MULTIBYTE_ABLE: tin: whitespace
+
 2003-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CC_CHECK: ci-aclocal generated header
