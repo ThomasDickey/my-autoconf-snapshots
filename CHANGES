@@ -1,3 +1,14 @@
+1999-01-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_XOPEN_CURSES: RCS_BASE
+
+	* AcSplit/CF_STAT_ST_BLOCKS: ci-aclocal generated header
+
+	* AcSplit/CF_STAT_ST_BLOCKS:
+	oops: this didn't work because the test program had a typo
+
+	* AcSplit/CF_CURSES_FUNCS: use CF_XOPEN_CURSES
+
 1998-12-25  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_POSIX_JC: RCS_BASE
