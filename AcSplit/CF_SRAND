@@ -1,3 +1,5 @@
+dnl CF_SRAND version: 6 updated: 2002/09/17 19:03:38
+dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
 dnl which usually is only 16-bits.
@@ -6,8 +8,8 @@ AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
 for cf_func in srandom/random srand48/lrand48 srand/rand
 do
-	cf_srand_func=`echo $cf_func | sed -e 's@/.*@@'`
-	cf_rand_func=`echo  $cf_func | sed -e 's@.*/@@'`
+	cf_srand_func=`echo $cf_func | sed -e 's%/.*%%'`
+	cf_rand_func=`echo  $cf_func | sed -e 's%.*/%%'`
 AC_TRY_LINK([
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
@@ -42,8 +44,8 @@ if test "$cf_cv_srand_func" != unknown ; then
 		],[long x = $cf_cv_rand_max],,
 		[cf_cv_rand_max="(1L<<$cf_rand_max)-1"])
 	])
-	cf_srand_func=`echo $cf_func | sed -e 's@/.*@@'`
-	cf_rand_func=`echo  $cf_func | sed -e 's@.*/@@'`
+	cf_srand_func=`echo $cf_func | sed -e 's%/.*%%'`
+	cf_rand_func=`echo  $cf_func | sed -e 's%.*/%%'`
 	CF_UPPER(cf_rand_max,ifelse($1,,my_,$1)rand_max)
 	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)srand,$cf_srand_func)
 	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)rand, $cf_rand_func)

@@ -1,3 +1,13 @@
+2002-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_LIBS, AcSplit/CF_SRAND:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_LIBS:
+	lynx: change sed delimiter to '%'
+
+	* AcSplit/CF_SRAND: lynx; change sed-delimiter to '%'
+
 2002-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES:
