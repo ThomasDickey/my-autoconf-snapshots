@@ -1,4 +1,4 @@
-dnl CF_WCHAR_TYPE version: 1 updated: 2003/03/22 19:13:43
+dnl CF_WCHAR_TYPE version: 2 updated: 2004/01/17 19:18:20
 dnl -------------
 dnl Check if type wide-character type $1 is declared, and if so, which header
 dnl file is needed.  The second parameter is used to set a shell variable when
@@ -10,6 +10,8 @@ AC_DEFUN([CF_WCHAR_TYPE],
 AC_CACHE_CHECK(if we must include wchar.h to declare $1,cf_cv_$1,[
 AC_TRY_COMPILE([
 #include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
 #ifdef HAVE_LIBUTF8_H
 #include <libutf8.h>
 #endif],
@@ -17,6 +19,8 @@ AC_TRY_COMPILE([
 	[cf_cv_$1=no],
 	[AC_TRY_COMPILE([
 #include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
 #include <wchar.h>
 #ifdef HAVE_LIBUTF8_H
 #include <libutf8.h>

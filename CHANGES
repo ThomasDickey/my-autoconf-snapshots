@@ -1,3 +1,27 @@
+2004-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	tin: add 2 parameters to allow me to pick up the proper $CPPFLAGS for build,
+	and ensure that the defaults are different when I'm cross-compiling.
+
+	* AcSplit/CF_BUILD_CC: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	tin: remove "test:" from usage message.  Add optional parameter to allow
+	delaying adding the $LIBS and $CPPFLAGS updates til the end of the script.
+
+	* AcSplit/AM_MULTIBYTE_ABLE:
+	corrected the way cache variable interacts with the #define's (based on
+	warning message from autoconf 2.52).
+
+2004-01-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WCHAR_TYPE:
+	ncurses: Tru64 4.0d headers include files under /usr/include.dtk which
+	reference __VA_LIST__ symbol when <wchar.h> is included.  So I included
+	<stdarg.h> - not enough, had to add <stdio.h> also.  That made the test
+	work.
+
 2004-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL:

@@ -1,14 +1,17 @@
-dnl CF_WITH_DBMALLOC version: 2 updated: 2002/12/29 21:11:45
+dnl CF_WITH_DBMALLOC version: 3 updated: 2004/01/19 13:06:01
 dnl ----------------
-dnl Configure-option for dbmalloc
+dnl Configure-option for dbmalloc.  The optional parameter is used to override
+dnl the updating of $LIBS, e.g., to avoid conflict with subsequent tests.
 AC_DEFUN([CF_WITH_DBMALLOC],[
 AC_MSG_CHECKING(if you want to link with dbmalloc for testing)
 AC_ARG_WITH(dbmalloc,
-	[  --with-dbmalloc         test: use Conor Cahill's dbmalloc library],
+	[  --with-dbmalloc         use Conor Cahill's dbmalloc library],
 	[with_dbmalloc=$withval],
 	[with_dbmalloc=no])
 AC_MSG_RESULT($with_dbmalloc)
 if test $with_dbmalloc = yes ; then
-	AC_CHECK_LIB(dbmalloc,debug_malloc)
+	AC_CHECK_HEADER(dbmalloc.h,
+		[AC_CHECK_LIB(dbmalloc,debug_malloc
+			ifelse($1,,[],[,$1]))])
 fi
 ])dnl

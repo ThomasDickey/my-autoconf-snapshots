@@ -1,0 +1,50 @@
+dnl CF_BUILD_CC version: 2 updated: 2004/01/19 16:20:54
+dnl -----------
+dnl If we're cross-compiling, allow the user to override the tools and their
+dnl options.  The configure script is oriented toward identifying the host
+dnl compiler, etc., but we need a build compiler to generate parts of the
+dnl source.
+dnl
+dnl $1 = default for $CPPFLAGS
+dnl $2 = default for $LIBS
+AC_DEFUN([CF_BUILD_CC],[
+if test "$cross_compiling" = yes ; then
+	: ${BUILD_CC:='$(CC)'}
+	: ${BUILD_CFLAGS:=''}
+	: ${BUILD_CPPFLAGS:='ifelse([$1],,,[$1])'}
+	: ${BUILD_LDFLAGS:=''}
+	: ${BUILD_LIBS:='ifelse([$2],,,[$2])'}
+	: ${BUILD_EXEEXT:='$x'}
+	AC_ARG_WITH(build-cc,
+		[  --with-build-cc=XXX     the build C compiler ($BUILD_CC)],
+		[BUILD_CC="$withval"],
+		[AC_CHECK_PROGS(BUILD_CC, $CC gcc cc)])
+	AC_ARG_WITH(build-cflags,
+		[  --with-build-cflags=XXX the build C compiler-flags],
+		[BUILD_CFLAGS="$withval"])
+	AC_ARG_WITH(build-cppflags,
+		[  --with-build-cppflags=XXX the build C preprocessor-flags],
+		[BUILD_CPPFLAGS="$withval"])
+	AC_ARG_WITH(build-ldflags,
+		[  --with-build-ldflags=XXX the build linker-flags],
+		[BUILD_LDFLAGS="$withval"])
+	AC_ARG_WITH(build-libs,
+		[  --with-build-libs=XXX   the build libraries],
+		[BUILD_LIBS="$withval"])
+	BUILD_EXEEXT=
+else
+	: ${BUILD_CC:='$(CC)'}
+	: ${BUILD_CFLAGS:='$(CFLAGS)'}
+	: ${BUILD_CPPFLAGS:='$(CPPFLAGS)'}
+	: ${BUILD_LDFLAGS:='$(LDFLAGS)'}
+	: ${BUILD_LIBS:='$(LIBS)'}
+	: ${BUILD_EXEEXT:='$x'}
+fi
+
+AC_SUBST(BUILD_CC)
+AC_SUBST(BUILD_CFLAGS)
+AC_SUBST(BUILD_CPPFLAGS)
+AC_SUBST(BUILD_LDFLAGS)
+AC_SUBST(BUILD_LIBS)
+AC_SUBST(BUILD_EXEEXT)
+])dnl
