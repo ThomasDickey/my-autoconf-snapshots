@@ -1,8 +1,10 @@
+dnl CF_CHECK_FUNCDECLS version: 4 updated: 1999/03/30 12:24:31
+dnl ------------------
 dnl Check if functions are declared by including a set of include files.
 dnl and define DECL_XXX if not.
 dnl
 dnl CF_CHECK_FUNCDECLS(INCLUDES, FUNCTION... [, ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]])
-AC_DEFUN(CF_CHECK_FUNCDECLS,
+AC_DEFUN([CF_CHECK_FUNCDECLS],
 [for ac_func in $2
 do
 CF_CHECK_FUNCDECL([$1], $ac_func,

@@ -1,3 +1,29 @@
+1999-03-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_OUR_MESSAGES: RCS_BASE
+
+	* AcSplit/CF_CHECK_FUNCDECL, AcSplit/CF_CHECK_FUNCDECLS: brackets
+
+	* AcSplit/CF_ARG_DISABLE, AcSplit/CF_ARG_ENABLE, AcSplit/CF_CHECK_FUNCDECL, AcSplit/CF_CHECK_FUNCDECLS, AcSplit/CF_EBCDIC, AcSplit/CF_INET_ADDR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LIBRARY:
+	fix err in linux case (assignment to wrong variable)
+
+	* AcSplit/CF_PATH_PROG:
+	fix missing assignment, which left paths defined to empty strings when this
+	function was disabled
+
+	* AcSplit/CF_INET_ADDR: include <sys/types.h> in the test-compile
+
+	* AcSplit/AM_GNU_GETTEXT: make this work if the po directory is missing
+
+	* AcSplit/CF_EBCDIC: make this work with SunOS K&R C (and also IRIX C)
+
+	* AcSplit/CF_ARG_ENABLE: omit the wordy '(default: off)'
+
+	* AcSplit/CF_ARG_DISABLE: omit the wordy '(default: on)'
+
 1999-03-13  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_POSIX_VDISABLE: comments

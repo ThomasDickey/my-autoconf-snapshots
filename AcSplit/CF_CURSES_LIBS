@@ -20,7 +20,7 @@ hpux10.*)
 		])])
 	;;
 linux*) # Suse Linux does not follow /usr/lib convention
-	$1="[$]$1 /lib"
+	LIBS="$LIBS -L/lib"
 	;;
 esac
 
