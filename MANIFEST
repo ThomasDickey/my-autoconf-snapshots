@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19990924
+MANIFEST for my-autoconf, version t19991005
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -198,6 +198,7 @@ AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
 AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
+AcSplit/CF_TTY_GROUP            check for existence of tty group
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
 AcSplit/CF_TYPE_FD_SET          check for a header that will define fd_set.
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()

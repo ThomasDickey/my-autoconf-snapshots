@@ -1,3 +1,8 @@
+1999-10-05  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	change from Urs Janssen for defining _HPUX_SOURCE in ANSI mode on HPUX
+
 1999-09-24  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TTY_GROUP, AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_HOST:
