@@ -1,3 +1,5 @@
+dnl CF_CURSES_TERMCAP version: 10 updated: 2002/01/13 16:02:19
+dnl -----------------
 dnl Check if we should include <curses.h> to pick up prototypes for termcap
 dnl functions.  On terminfo systems, these are normally declared in <curses.h>,
 dnl but may be in <term.h>.  We check for termcap.h as an alternate, but it
@@ -54,7 +56,7 @@ if test "$cf_cv_need_curses_h" != no ; then
 		fi
 	elif test -n "$cf_ok_t_opts" ; then
 		cf_cv_need_curses_h=termcap.h
-	elif test "$cf_cv_have_term_h" != no ; then
+	elif test "$cf_cv_term_header" != no ; then
 		cf_cv_need_curses_h=term.h
 	else
 		cf_cv_need_curses_h=no
