@@ -1,3 +1,11 @@
+2003-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	ncurses: make a big default case to handle my preferred _XOPEN_SOURCE definition.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add __EXTENSIONS__ for solaris* (the scope of this macro is losing focus)
+
 2003-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* install-sh: copied from install.sh
