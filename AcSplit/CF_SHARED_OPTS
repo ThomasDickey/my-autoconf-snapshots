@@ -95,18 +95,32 @@ AC_DEFUN([CF_SHARED_OPTS],
 		fi
 		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
 		if test $cf_cv_shlib_version = no ; then
-			MK_SHARED_LIB='gcc -shared -Wl,-stats,-lc -o $[@]'
+			MK_SHARED_LIB='$(CC) -shared -Wl,-stats,-lc -o $[@]'
 		else
-			MK_SHARED_LIB='gcc -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)`,-stats,-lc -o $[@]'
+			MK_SHARED_LIB='$(CC) -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)`,-stats,-lc -o $[@]'
 		fi
 		;;
 	openbsd2*)
 		CC_SHARED_OPTS='-fpic -DPIC'
 		MK_SHARED_LIB='$(LD) -Bshareable -soname,`basename $[@].$(ABI_VERSION)` -o $[@]'
 		;;
-	openbsd*|netbsd*|freebsd*)
+	openbsd*|freebsd*)
 		CC_SHARED_OPTS='-fpic -DPIC'
 		MK_SHARED_LIB='$(LD) -Bshareable -o $[@]'
+		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		;;
+	netbsd*)
+		CC_SHARED_OPTS='-fpic -DPIC'
+		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-Wl,-rpath,"
+		if test $DFT_LWR_MODEL = "shared" && test $cf_cv_ld_rpath = yes ; then
+			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
+			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
+			EXTRA_LDFLAGS="-Wl,-rpath,\$(libdir) $EXTRA_LDFLAGS"
+			MK_SHARED_LIB='$(CC) -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)` -o $[@]'
+			test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
+		else
+			MK_SHARED_LIB='$(LD) -Bshareable -o $[@]'
+		fi
 		;;
 	osf*|mls+*)
 		# tested with OSF/1 V3.2 and 'cc'
@@ -130,9 +144,9 @@ AC_DEFUN([CF_SHARED_OPTS],
 	sco3.2v5*)  # (also uw2* and UW7) hops 13-Apr-98
 		# tested with osr5.0.5
 		if test $ac_cv_prog_gcc = yes; then
-			CC_SHARED_OPTS='-melf -fpic'
+			CC_SHARED_OPTS='-fpic'
 		else
-			CC_SHARED_OPTS='-KPIC'
+			CC_SHARED_OPTS='-belf -KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -dy -G -h `basename [$]@.$(ABI_VERSION)` -o [$]@'
 		if test $cf_cv_ld_rpath = yes ; then

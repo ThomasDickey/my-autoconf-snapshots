@@ -19,7 +19,7 @@ if test $ac_cv_prog_gxx = yes; then
 	AC_TRY_LINK([
 #include <$cf_gpp_libname/builtin.h>
 	],
-	[float foo=abs(1.0);
+	[//float foo=abs(1.0);
 	 two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
 	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname -lm"
@@ -31,7 +31,7 @@ if test $ac_cv_prog_gxx = yes; then
 	[AC_TRY_LINK([
 #include <builtin.h>
 	],
-	[float foo=abs(1.0);
+	[//float foo=abs(1.0);
 	 two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
 	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname -lm"

@@ -1,6 +1,7 @@
-dnl Check for -lstdc++
+dnl Check for -lstdc++, which is GNU's standard C++ library.
 AC_DEFUN([CF_STDCPP_LIBRARY],
 [
+if test -n "$GXX" ; then
 case $cf_cv_system_name in #(vi
 os2*) #(vi
 	cf_stdcpp_libname=stdcpp
@@ -23,4 +24,5 @@ strstreambuf foo(buf, sizeof(buf))
 	LIBS="$cf_save"
 ])
 test $cf_cv_libstdcpp = yes && CXXLIBS="$CXXLIBS -l$cf_stdcpp_libname"
+fi
 ])dnl

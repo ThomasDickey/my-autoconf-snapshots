@@ -1,3 +1,36 @@
+1999-10-24  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_RULES: add uninstall.data and uninstall.man rules
+
+	* AcSplit/CF_STDCPP_LIBRARY:
+	limit this to checking for variants of g++ (skip vendor's c++)
+
+	* AcSplit/CF_LIB_SUFFIX:
+	modify for netbsd: the suffix may be simply ".so", or ".so.$(REL_VERSION)",
+	depending on whether ld.elf_so is present
+
+	* AcSplit/CF_LINK_FUNCS:
+	oops - forgot to #define HAVE_LINK and HAVE_SYMLINK
+
+	* AcSplit/CF_GCC_WARNINGS: put the compiler name into the messages
+	(may not be 'gcc')
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	put the compiler name into the messages - may not be 'cc'
+
+	* AcSplit/CF_GPP_LIBRARY:
+	took out the part of the test code that uses 'abs()', since (at least SCO's
+	copy of gcc 2.7.2.3) some versions of g++ may report ambiguity in the test
+	compile, making the test fail unexpectedly.
+
+	* AcSplit/CF_SHARED_OPTS:
+	treat netbsd differently from openbsd/freebsd (from patch).
+	fix openbsd/freebsd (I can test FreeBSD, anyway) to keep the REL_VERSION
+	on the library suffix (needed for FreeBSD 3.1, still - though someone
+	long ago told me it wouldn't be ;-).
+	corrections for SCO's shared libraries (what is -melf, anyway?)
+	modify linux to use $(CC) rather than gcc.
+
 1999-10-16  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_GNU_SOURCE, AcSplit/CF_LASTLOG, AcSplit/CF_UTMP_UT_XTIME:
