@@ -1,3 +1,10 @@
+2001-04-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_CPPFLAGS: oops - wrong $host_os case for sunos
+
+	* AcSplit/CF_CURSES_LIBS: oops - wrong $host_os value for sunos.
+	also, force -lcurses -ltermcap in that case (should incorporate real fixes)
+
 2001-04-15  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PROG_INSTALL: use CF_DIRNAME
