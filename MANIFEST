@@ -1,8 +1,9 @@
-MANIFEST for my-autoconf, version t19961126
+MANIFEST for my-autoconf, version t19970311
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
+install.sh                      alternate install-script
 AcSplit                         subdirectory
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
