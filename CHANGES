@@ -1,3 +1,7 @@
+1997-05-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: add case for CLIX
+
 1997-03-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* install.sh: RCS_BASE
