@@ -1,9 +1,9 @@
 dnl Check for Perl, given the minimum version, to ensure that required features
 dnl are present.
 dnl $1 = the minimum version
-changequote() 
-define(U_TURN_BACK, ]) 
-changequote([, ]) 
+changequote()
+define(U_TURN_BACK, ])
+changequote([, ])
 
 AC_DEFUN([CF_PROG_PERL],
 [# find perl binary

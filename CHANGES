@@ -1,3 +1,16 @@
+1999-11-10  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CRYPT_FUNC: RCS_BASE
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	don't bother looking for termcap functions in libcurses on FreeBSD
+
+	* AcSplit/CF_PROG_PERL: trim trailing blanks
+
+1999-10-30  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: add powerpc-apple
+
 1999-10-28  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_UTMP_UT_SESSION: RCS_BASE
