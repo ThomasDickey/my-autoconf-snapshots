@@ -17,4 +17,5 @@ cygwin*)
     ;;
 esac
 AC_SUBST(PROG_EXT)
+test -n "$PROG_EXT" && AC_DEFINE_UNQUOTED(PROG_EXT,"$PROG_EXT")
 ])dnl
