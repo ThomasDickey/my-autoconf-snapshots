@@ -1,0 +1,42 @@
+dnl Check for vsscanf() function, which is in c9x but generally not in earlier
+dnl versions of C.  It is in the GNU C library, and can often be simulated by
+dnl other functions.
+AC_DEFUN([CF_FUNC_VSSCANF],
+[
+AC_CACHE_CHECK(for vsscanf function or workaround,cf_cv_func_vsscanf,[
+AC_TRY_LINK([
+#include <stdarg.h>
+#include <stdio.h>],[
+	va_list ap;
+	vsscanf("from", "%d", ap)],[cf_cv_func_vsscanf=yes],[
+AC_TRY_LINK([
+#include <stdarg.h>
+#include <stdio.h>],[
+    FILE strbuf;
+    char *str = "from";
+
+    strbuf._flag = _IOREAD;
+    strbuf._ptr = strbuf._base = (unsigned char *) str;
+    strbuf._cnt = strlen(str);
+    strbuf._file = _NFILE;
+    return (vfscanf(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=vfscanf],[
+AC_TRY_LINK([
+#include <stdarg.h>
+#include <stdio.h>],[
+    FILE strbuf;
+    char *str = "from";
+
+    strbuf._flag = _IOREAD;
+    strbuf._ptr = strbuf._base = (unsigned char *) str;
+    strbuf._cnt = strlen(str);
+    strbuf._file = _NFILE;
+    return (_doscan(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=_doscan],[
+cf_cv_func_vsscanf=no])])])])
+
+case $cf_cv_func_vsscanf in #(vi
+vsscanf) AC_DEFINE(HAVE_VSSCANF);; #(vi
+vfscanf) AC_DEFINE(HAVE_VFSCANF);; #(vi
+_doscan) AC_DEFINE(HAVE__DOSCAN);;
+esac
+
+])dnl

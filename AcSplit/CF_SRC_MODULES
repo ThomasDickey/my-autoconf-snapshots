@@ -70,7 +70,8 @@ for cf_dir in $cf_cv_src_modules
 do
 	SRC_SUBDIRS="$SRC_SUBDIRS $cf_dir"
 done
-SRC_SUBDIRS="$SRC_SUBDIRS misc test"
+SRC_SUBDIRS="$SRC_SUBDIRS test"
+test -z "$MAKE_TERMINFO" && SRC_SUBDIRS="$SRC_SUBDIRS misc"
 test "$cf_with_cxx_binding" != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
 
 ADA_SUBDIRS=

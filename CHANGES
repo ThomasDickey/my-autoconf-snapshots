@@ -1,3 +1,36 @@
+2001-12-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SHARED_OPTS:
+	Jason Evan's changes for ncurses on Mac OS X
+
+	* AcSplit/CF_FUNC_VSSCANF: RCS_BASE
+
+	* AcSplit/CF_MANPAGE_RENAMES:
+	use explicit 'sh' to invoke 'mkinstalldirs'
+
+	* AcSplit/CF_MAN_PAGES: use explicit 'sh' to invokoe mkinstalldirs
+
+2001-12-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS: add case for darwin
+
+	* AcSplit/CF_BOOL_DECL: add check for stdbool.h
+
+	* AcSplit/CF_BOOL_SIZE: add check to accommodate stdbool.h
+
+	* AcSplit/CF_SUBST_NCURSES_VERSION:
+	add substitute for cf_cv_header_stdbool_h
+
+	* AcSplit/CF_BOOL_DECL, AcSplit/CF_CPP_VSCAN_FUNC:
+	ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
+	mods to make generating terminfo database optional
+
+	* AcSplit/CF_CPP_VSCAN_FUNC:
+	ncurses: omit the ifdef that says we only know about g++
+	correct test, which was for vscanf(), not vsscanf()
+
 2001-11-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WIDEC_CURSES: add a check to define HAVE_MBSTATE_T

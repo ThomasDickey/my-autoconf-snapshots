@@ -33,7 +33,7 @@ if test "$cf_manpage_renames" != no ; then
   # Construct a sed-script to perform renaming within man-pages
   if test -n "$cf_manpage_renames" ; then
     test ! -d man && mkdir man
-    $srcdir/man/make_sed.sh $cf_manpage_renames >man/edit_man.sed
+    sh $srcdir/man/make_sed.sh $cf_manpage_renames >man/edit_man.sed
   fi
 fi
 

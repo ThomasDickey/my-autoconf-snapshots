@@ -1,3 +1,5 @@
+dnl CF_BOOL_DECL version: 6 updated: 2001/12/02 01:39:28
+dnl ------------
 dnl Test if 'bool' is a builtin type in the configured C++ compiler.  Some
 dnl older compilers (e.g., gcc 2.5.8) don't support 'bool' directly; gcc
 dnl 2.6.3 does, in anticipation of the ANSI C++ standard.
@@ -6,6 +8,9 @@ dnl Treat the configuration-variable specially here, since we're directly
 dnl substituting its value (i.e., 1/0).
 AC_DEFUN([CF_BOOL_DECL],
 [
+AC_CHECK_HEADER(stdbool.h,
+	cf_cv_header_stdbool_h=1,
+	cf_cv_header_stdbool_h=0)
 AC_MSG_CHECKING([for builtin bool type])
 AC_CACHE_VAL(ifelse($1,,cf_cv_builtin_bool,[$1]),[
 	AC_TRY_COMPILE([

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20011201
+MANIFEST for my-autoconf, version t20011208
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -99,6 +99,7 @@ AcSplit/CF_FUNC_SIGACTION       check for sigaction function and related structs
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
 AcSplit/CF_FUNC_TERMIOS         special check for tcgetattr()
 AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
+AcSplit/CF_FUNC_VSSCANF         check for vsscanf() or ways we can implement it (ncurses)
 AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
 AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
