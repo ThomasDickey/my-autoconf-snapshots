@@ -1,3 +1,11 @@
+1997-12-23  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	restructured so I'm checking for more combinations (prompted by bug
+	report that SUSE installs ncurses, not "curses", but also by noting that
+	the tgoto/initscr combinations weren't expanded properly when I went to
+	add ncurses to the list)
+
 1997-12-17  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_TERMCAP:
