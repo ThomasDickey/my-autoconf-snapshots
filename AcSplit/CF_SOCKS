@@ -1,0 +1,26 @@
+dnl Check for socks library
+dnl $1 = the [optional] directory in which the library may be found
+dnl $2 = the [optional] name of the library
+AC_DEFUN([CF_SOCKS],[
+case "$1" in #(vi
+no|yes) #(vi
+  ;;
+*)
+  LIBS="$LIBS -L$1"
+  ;;
+esac
+LIBS="$LIBS -lsocks"
+AC_DEFINE(SOCKS)
+AC_DEFINE(accept,Raccept)
+AC_DEFINE(bind,Rbind)
+AC_DEFINE(connect,Rconnect)
+AC_DEFINE(getpeername,Rgetpeername)
+AC_DEFINE(getsockname,Rgetsockname)
+AC_DEFINE(listen,Rlisten)
+AC_DEFINE(recvfrom,Rrecvfrom)
+AC_DEFINE(select,Rselect)
+AC_TRY_LINK([
+#include <stdio.h>],[
+	accept((char *)0)],,
+	[AC_ERROR(Cannot link with socks library)])
+])dnl

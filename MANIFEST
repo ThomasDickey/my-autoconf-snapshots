@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19980730
+MANIFEST for my-autoconf, version t19980731
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -139,6 +139,7 @@ AcSplit/CF_SIZECHANGE           check for functions & structures needed for wind
 AcSplit/CF_SIZE_T               check for size_t defined in <stdio.h>, etc (td_lib)
 AcSplit/CF_SLANG_CPPFLAGS       check for slang's compiler flags
 AcSplit/CF_SLANG_LIBS           check for slang library
+AcSplit/CF_SOCKS                option/test for socks library
 AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type
 AcSplit/CF_SRC_MAKEFILE         expand modules list into makefile lists
