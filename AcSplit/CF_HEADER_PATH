@@ -2,6 +2,10 @@ dnl Construct a search-list for a nonstandard header-file
 AC_DEFUN([CF_HEADER_PATH],
 [$1=""
 
+test "$prefix" != /usr/local && \
+test -d /usr/local && \
+$1="[$]$1 /usr/local/include /usr/local/include/$2 /usr/local/$2/include"
+
 test "$includedir" != NONE && \
 test -d "$includedir" && \
 $1="[$]$1 $includedir $includedir/$2"
@@ -13,10 +17,6 @@ $1="[$]$1 $oldincludedir $oldincludedir/$2"
 test "$prefix" != NONE && \
 test -d "$prefix" && \
 $1="[$]$1 $prefix/include $prefix/include/$2 $prefix/$2/include"
-
-test "$prefix" != /usr/local && \
-test -d /usr/local && \
-$1="[$]$1 /usr/local/include /usr/local/include/$2 /usr/local/$2/include"
 
 test "$prefix" != /usr && \
 $1="[$]$1 /usr/include /usr/include/$2 /usr/$2/include"

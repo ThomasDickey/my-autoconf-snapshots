@@ -1,3 +1,36 @@
+2001-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTF8_LIB, AcSplit/CF_WIDEC_CURSES: RCS_BASE
+
+	* AcSplit/CF_MKSTEMP: ci-aclocal generated header
+
+	* AcSplit/CF_MKSTEMP:
+	improved check by doing it twice, to see if names are unique
+
+2001-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TERMCAP_LIBS: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	lynx: add an optional parameter so I can implement --with-screen=ncursesw
+
+	* AcSplit/CF_NCURSES_LIBS:
+	lynx: add optional parameter so I can implement --with-screen=ncursesw
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	lynx: allow parameter to be ncurses or ncursesw
+
+	* AcSplit/CF_HEADER_PATH:
+	lynx: put the /usr/local stuff first, to more closely match gcc's nonstandard
+	include rules, so we lessen the chance of picking up the wrong version of
+	curses.h
+	I did that to make <ncursesw/curses.h> work ok.
+
+	* AcSplit/CF_LIBRARY_PATH:
+	lynx: put the /usr/local stuff first, to more closely match gcc's rules.
+	This is mainly for symmetry with CF_HEADER_PATH, but may be needed to
+	pick up the "right" version of ncurses/curses
+
 2001-10-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_IPV6_TYPE: ci-aclocal generated header

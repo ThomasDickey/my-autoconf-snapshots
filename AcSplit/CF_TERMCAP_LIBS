@@ -1,3 +1,5 @@
+dnl CF_TERMCAP_LIBS version: 10 updated: 2001/10/18 20:42:39
+dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 AC_DEFUN([CF_TERMCAP_LIBS],
 [
@@ -10,11 +12,13 @@ AC_TRY_LINK([],[char *x=(char*)tgoto("",0,0)],
 	CF_VERBOSE(using functions in predefined $cf_cv_termlib LIBS)
 ],[
 ifelse([$1],,,[
-if test "$1" = ncurses; then
-	CF_NCURSES_CPPFLAGS
-	CF_NCURSES_LIBS
+case "$1" in # (vi
+ncurses*)
+	CF_NCURSES_CPPFLAGS($1)
+	CF_NCURSES_LIBS($1)
 	cf_cv_termlib=terminfo
-fi
+	;;
+esac
 ])
 if test "$cf_cv_termlib" = none; then
 	# FreeBSD's linker gives bogus results for AC_CHECK_LIB, saying that
