@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19981010
+MANIFEST for my-autoconf, version t19981012
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -111,6 +111,7 @@ AcSplit/CF_PATH_EDITOR          tin script to find default-editor
 AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory
 AcSplit/CF_PATH_MAILER          tin script to find default mailer-program
 AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PATH symbol
+AcSplit/CF_PATH_SYNTAX          check pathname syntax for CF_WITH_PATH and CF_WITH_PATHLIST
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
@@ -191,6 +192,7 @@ AcSplit/CF_WAIT_HEADERS         construct a set of headers for testing wait/wait
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
+AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
