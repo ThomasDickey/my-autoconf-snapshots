@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 22 updated: 2004/04/25 20:55:33
+dnl CF_IMAKE_CFLAGS version: 23 updated: 2004/11/30 19:04:33
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -127,6 +127,16 @@ CF_EOF
 	fi
 fi
 fi
+
+# Some imake configurations define PROJECTROOT with an empty value.  Remove
+# the empty definition.
+case $IMAKE_CFLAGS in
+*-DPROJECTROOT=/*)
+	;;
+*)
+	IMAKE_CFLAGS=`echo "$IMAKE_CFLAGS" |sed -e "s,-DPROJECTROOT=[[ 	]], ,"`
+	;;
+esac
 
 CF_VERBOSE(IMAKE_CFLAGS $IMAKE_CFLAGS)
 CF_VERBOSE(IMAKE_LOADFLAGS $IMAKE_LOADFLAGS)
