@@ -1,3 +1,8 @@
+2002-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	ded: add -Wundef since I want to use Tru64's strict checking, which is the same.
+
 2002-06-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* mkdirs.sh: update from ncurses:
