@@ -1,3 +1,12 @@
+2000-04-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_GETADDRINFO: make quoting consistent
+
+	* AcSplit/AM_WITH_NLS:
+	mods from tin, to make choice of Makefile/makefile in po irrelevant.
+	also, fixes one of those GNU-bugs where it would refuse to build with non-GNU gettext,
+	by changing the $nls_cv_force_use_gnu_gettext assignment
+
 2000-04-14  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_HEADER_RESOURCE: make quoting in AC_DEFUN consistent

@@ -1,5 +1,5 @@
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
-AC_DEFUN(CF_FUNC_GETADDRINFO,[
+AC_DEFUN([CF_FUNC_GETADDRINFO],[
 AC_CACHE_CHECK(working getaddrinfo, cf_cv_getaddrinfo,[
 AC_TRY_RUN([
 #include <sys/types.h>
