@@ -1,0 +1,21 @@
+dnl Slang's header files rely on some predefined symbols to declare variables
+dnl that we might find useful.  This check is needed, because those symbols
+dnl are generally not available.
+AC_DEFUN([CF_SLANG_UNIX_DEFS],
+[
+AC_REQUIRE([CF_SLANG_CPPFLAGS])
+AC_REQUIRE([CF_SLANG_LIBS])
+AC_CACHE_CHECK(if we must tell slang this is UNIX,cf_cv_slang_unix,[
+AC_TRY_LINK([#include <slang.h>],
+	[
+#ifdef REAL_UNIX_SYSTEM
+make an error
+#else
+int x = SLang_TT_Baud_Rate
+#endif
+],
+	[cf_cv_slang_unix=yes],
+	[cf_cv_slang_unix=no])
+])
+test $cf_cv_slang_unix = yes && AC_DEFINE(REAL_UNIX_SYSTEM)
+])dnl

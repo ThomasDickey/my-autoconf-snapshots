@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000326
+MANIFEST for my-autoconf, version t20000406
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -160,6 +160,7 @@ AcSplit/CF_REMOVE_BROKEN        check if the 'remove()' function is broken (a SC
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads
 AcSplit/CF_RE_COMP_FUNCS        check for re_comp/re_exec functions (td_lib)
 AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
+AcSplit/CF_SET_ERRNO            check if we can set errno
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions
 AcSplit/CF_SHARED_OPTS          derive CC/LD options for shared libraries
 AcSplit/CF_SIG_ARGS             check for signal-values w/o prototypes
@@ -168,6 +169,7 @@ AcSplit/CF_SIZECHANGE           check for functions & structures needed for wind
 AcSplit/CF_SIZE_T               check for size_t defined in <stdio.h>, etc (td_lib)
 AcSplit/CF_SLANG_CPPFLAGS       check for slang's compiler flags
 AcSplit/CF_SLANG_LIBS           check for slang library
+AcSplit/CF_SLANG_UNIX_DEFS      slang's header files need a prop on Unix-like systems...
 AcSplit/CF_SOCKS                option/test for socks library
 AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type

@@ -6,7 +6,7 @@ case $host_os in #(vi
 freebsd*) #(vi
 	AC_CHECK_LIB(mytinfo,tgoto,[LIBS="-lmytinfo $LIBS"])
 	;;
-hpux10.*|hpux10.*)
+hpux10.*|hpux11.*)
 	AC_CHECK_LIB(cur_colr,initscr,[
 		LIBS="-lcur_colr $LIBS"
 		CFLAGS="-I/usr/include/curses_colr $CFLAGS"

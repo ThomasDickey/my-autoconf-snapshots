@@ -1,3 +1,21 @@
+2000-04-06  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PDCURSES_X11:
+	testing with Lynx, I found that if I installed only the static libXcurses.a,
+	then I need Xt and Xaw also.
+
+	* AcSplit/CF_SLANG_UNIX_DEFS: RCS_BASE
+
+	* AcSplit/CF_CURSES_LIBS: gotta watch those late-friday-night patches
+
+2000-03-26  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SET_ERRNO: RCS_BASE
+
+	* AcSplit/CF_SET_ERRNO: ci-aclocal generated header
+
+	* AcSplit/AM_WITH_NLS: restore $(top_builddir) expression, used by lynx
+
 2000-02-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CURSES_LIBS:
