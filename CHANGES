@@ -1,3 +1,77 @@
+2003-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CFG_DEFAULTS: Date: Tue, 8 Jul 2003 02:12:25 +0200
+	From: Robert Millan <zeratul2@wanadoo.es>
+	To: "Thomas E. Dickey" <dickey@invisible-island.net>
+	Subject: patch for GNU/FreeBSD support
+	Message-ID: <20030708001225.GA10771@aragorn>
+	Mime-Version: 1.0
+	Content-Type: multipart/mixed; boundary="5mCyUwZo2JvN/JJP"
+	Content-Disposition: inline
+	Organisation: free as in freedom
+	User-Agent: Mutt/1.5.4i
+	Sender: Robert Millan <rmh@debian.org>
+	Status: RO
+	Content-Length: 1453
+	Lines: 48
+
+	--5mCyUwZo2JvN/JJP
+	Content-Type: text/plain; charset=us-ascii
+	Content-Disposition: inline
+
+	Hi!
+
+	If i'm not confused, you're the maintainer of ncurses, right?
+
+	I mailed you some time ago about your special autoconf templates
+	that need your hacked autoconf2.13 to be processed.
+
+	I finaly installed your hacked autoconf2.13 and tested my patches
+	for ncurses to support GNU/FreeBSD. My patch works fine and is
+	attached; all it does is adding our triplet in a pair of places
+	in aclocal.m4
+
+	(his change installs ncurses with --prefix=/usr by default for kfreebsd-gnu)
+
+	* AcSplit/CF_SHARED_OPTS: Date: Tue, 8 Jul 2003 02:12:25 +0200
+	From: Robert Millan <zeratul2@wanadoo.es>
+	To: "Thomas E. Dickey" <dickey@invisible-island.net>
+	Subject: patch for GNU/FreeBSD support
+	Message-ID: <20030708001225.GA10771@aragorn>
+	Mime-Version: 1.0
+	Content-Type: multipart/mixed; boundary="5mCyUwZo2JvN/JJP"
+	Content-Disposition: inline
+	Organisation: free as in freedom
+	User-Agent: Mutt/1.5.4i
+	Sender: Robert Millan <rmh@debian.org>
+	Status: RO
+	Content-Length: 1453
+	Lines: 48
+
+	--5mCyUwZo2JvN/JJP
+	Content-Type: text/plain; charset=us-ascii
+	Content-Disposition: inline
+
+	Hi!
+
+	If i'm not confused, you're the maintainer of ncurses, right?
+
+	I mailed you some time ago about your special autoconf templates
+	that need your hacked autoconf2.13 to be processed.
+
+	I finaly installed your hacked autoconf2.13 and tested my patches
+	for ncurses to support GNU/FreeBSD. My patch works fine and is
+	attached; all it does is adding our triplet in a pair of places
+	in aclocal.m4
+
+	(hit change adds shared-library rules for kfreebsd-gnu)
+
+	* config.sub: 2003-07-04
+	ncurses - needs k*bsd*gnu
+
+	* config.guess: 2003-07-02
+	ncurses: needs k*bsd*gnu
+
 2003-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:
