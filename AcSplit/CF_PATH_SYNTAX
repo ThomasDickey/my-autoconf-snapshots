@@ -6,7 +6,9 @@ AC_DEFUN([CF_PATH_SYNTAX],[
 case ".[$]$1" in #(vi
 ./*) #(vi
   ;;
+changequote(,)dnl
 .[a-zA-Z]:[\\/]*) #(vi OS/2 EMX
+changequote([,])dnl
   ;;
 .\[$]{*prefix}*) #(vi
   eval $1="[$]$1"
@@ -20,7 +22,7 @@ case ".[$]$1" in #(vi
   $1=`echo [$]$1 | sed -e s@NONE@$ac_default_prefix@`
   ;;
 *)
-  AC_ERROR(expected a pathname)
+  AC_ERROR(expected a pathname, not "[$]$1")
   ;;
 esac
 ])dnl

@@ -1,3 +1,19 @@
+2000-10-25  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: ncurses: add-back os2 fix
+
+	* config.sub: ncurses: add-back the os2 fix
+
+	* config.sub: CVS version 2000-10-25
+
+	* config.guess: CVS 2000-10-23 version
+
+	* AcSplit/CF_SLANG_LIBS: lynx: add check for -lvideo on OS/2 EMX
+
+	* AcSplit/CF_PATH_SYNTAX:
+	lynx: correct missing changequote() around a bracket expression,
+	and make the error message clearer by adding the pathname which fails.
+
 2000-10-20  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MANPAGE_TBL: RCS_BASE
