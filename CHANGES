@@ -1,3 +1,10 @@
+1998-07-31  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SOCKS: RCS_BASE
+
+	* AcSplit/CF_SOCKS5: first rewrite based on feedback from Brian Hauber
+	for lynx
+
 1998-07-30  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_ALT_CHAR_SET: oops: missed a $mapname instance vs acs_map
