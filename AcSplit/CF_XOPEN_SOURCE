@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 8 updated: 2004/01/11 20:30:04
+dnl CF_XOPEN_SOURCE version: 9 updated: 2004/01/12 20:45:17
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality.
@@ -16,8 +16,11 @@ irix6.*) #(vi
 linux*) #(vi
 	CF_GNU_SOURCE
 	;;
+netbsd*) #(vi
+	# setting _XOPEN_SOURCE breaks IPv6 for lynx on NetBSD 1.6, breaks xterm, is not needed for ncursesw
+	;;
 openbsd*) #(vi
-	# setting _XOPEN_SOURCE breaks xterm on OpenBSD 2.8, is not needed for ncurses
+	# setting _XOPEN_SOURCE breaks xterm on OpenBSD 2.8, is not needed for ncursesw
 	;;
 osf[[45]]*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_OSF_SOURCE"
