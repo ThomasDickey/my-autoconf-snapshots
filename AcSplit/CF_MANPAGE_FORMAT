@@ -1,7 +1,17 @@
-dnl CF_MANPAGE_FORMAT version: 6 updated: 2002/01/19 22:51:32
+dnl CF_MANPAGE_FORMAT version: 7 updated: 2003/12/20 19:30:34
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
-dnl There are several special cases.
+dnl There are several special cases:
+dnl
+dnl	gzip - man checks for, can display gzip'd files
+dnl	compress - man checks for, can display compressed files
+dnl	BSDI - files in the cat-directories are suffixed ".0"
+dnl	formatted - installer should format (put files in cat-directory)
+dnl	catonly - installer should only format, e.g., for a turnkey system.
+dnl
+dnl There are other configurations which this macro does not test, e.g., HPUX's
+dnl compressed manpages (but uncompressed manpages are fine, and HPUX's naming
+dnl convention would not match our use).
 AC_DEFUN([CF_MANPAGE_FORMAT],
 [
 AC_REQUIRE([CF_PATHSEP])
@@ -9,45 +19,90 @@ AC_MSG_CHECKING(format of man-pages)
 
 AC_ARG_WITH(manpage-format,
 	[  --with-manpage-format   specify manpage-format: gzip/compress/BSDI/normal and
-                          optionally formatted, e.g., gzip,formatted],
+                          optionally formatted/catonly, e.g., gzip,formatted],
 	[MANPAGE_FORMAT=$withval],
 	[MANPAGE_FORMAT=unknown])
 
-case ".$MANPAGE_FORMAT" in
-.gzip|.compress|.BSDI|.normal|.formatted) # (vi
-  ;;
-.unknown|.) # (vi
+test -z "$MANPAGE_FORMAT" && MANPAGE_FORMAT=unknown
+MANPAGE_FORMAT=`echo "$MANPAGE_FORMAT" | sed -e 's/,/ /g'`
+
+cf_unknown=
+
+case $MANPAGE_FORMAT in
+unknown)
   if test -z "$MANPATH" ; then
     MANPATH="/usr/man:/usr/share/man"
   fi
+
   # look for the 'date' man-page (it's most likely to be installed!)
+  MANPAGE_FORMAT=
+  cf_preform=no
+  cf_catonly=yes
+  cf_example=date
+
   IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
-  MANPAGE_FORMAT=unknown
   for cf_dir in $MANPATH; do
     test -z "$cf_dir" && cf_dir=/usr/man
-    for cf_name in $cf_dir/*/date.[[01]]* $cf_dir/*/date
+    for cf_name in $cf_dir/man*/$cf_example.[[01]]* $cf_dir/cat*/$cf_example.[[01]]* $cf_dir/man*/$cf_example $cf_dir/cat*/$cf_example
     do
-       cf_test=`echo $cf_name | sed -e 's/*//'`
-       if test "x$cf_test" = "x$cf_name" ; then
-	  case "$cf_name" in
-	  *.gz) MANPAGE_FORMAT=gzip;;
-	  *.Z)  MANPAGE_FORMAT=compress;;
-	  *.0)	MANPAGE_FORMAT=BSDI,formatted;;
-	  *)    MANPAGE_FORMAT=normal;;
-	  esac
-	  break
-       fi
+      cf_test=`echo $cf_name | sed -e 's/*//'`
+      if test "x$cf_test" = "x$cf_name" ; then
+
+	case "$cf_name" in
+	*.gz) MANPAGE_FORMAT="$MANPAGE_FORMAT gzip";;
+	*.Z)  MANPAGE_FORMAT="$MANPAGE_FORMAT compress";;
+	*.0)	MANPAGE_FORMAT="$MANPAGE_FORMAT BSDI";;
+	*)    MANPAGE_FORMAT="$MANPAGE_FORMAT normal";;
+	esac
+
+	case "$cf_name" in
+	$cf_dir/man*)
+	  cf_catonly=no
+	  ;;
+	$cf_dir/cat*)
+	  cf_preform=yes
+	  ;;
+	esac
+	break
+      fi
+
+      # if we found a match in either man* or cat*, stop looking
+      if test -n "$MANPAGE_FORMAT" ; then
+	cf_found=no
+	test "$cf_preform" = yes && MANPAGE_FORMAT="$MANPAGE_FORMAT formatted"
+	test "$cf_catonly" = yes && MANPAGE_FORMAT="$MANPAGE_FORMAT catonly"
+	case "$cf_name" in
+	$cf_dir/cat*)
+	  cf_found=yes
+	  ;;
+	esac
+	test $cf_found=yes && break
+      fi
     done
-    if test "$MANPAGE_FORMAT" != "unknown" ; then
+    # only check the first directory in $MANPATH where we find manpages
+    if test -n "$MANPAGE_FORMAT" ; then
        break
     fi
   done
+  # if we did not find the example, just assume it is normal
+  test -z "$MANPAGE_FORMAT" && MANPAGE_FORMAT=normal
   IFS="$ac_save_ifs"
   ;;
-.*) # (vi
-  AC_MSG_WARN(Unexpected manpage-format)
+*)
+  for cf_option in $MANPAGE_FORMAT; do
+     case $cf_option in #(vi
+     gzip|compress|BSDI|normal|formatted|catonly)
+       ;;
+     *)
+       cf_unknown="$cf_unknown $cf_option"
+       ;;
+     esac
+  done
   ;;
 esac
 
 AC_MSG_RESULT($MANPAGE_FORMAT)
+if test -n "$cf_unknown" ; then
+  AC_MSG_WARN(Unexpected manpage-format $cf_unknown)
+fi
 ])dnl
