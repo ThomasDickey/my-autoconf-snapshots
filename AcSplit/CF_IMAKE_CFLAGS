@@ -1,4 +1,4 @@
-dnl Use imake to obtain compiler flags.  We could, in principal, write tests to
+dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
 dnl this.
 AC_DEFUN([CF_IMAKE_CFLAGS],
@@ -60,6 +60,41 @@ CF_EOF
 
 	cd ..
 	rm -rf conftestdir
+
+	# We use $(ALLDEFINES) rather than $(STD_DEFINES) because the former
+	# declares XTFUNCPROTO there.  However, some vendors (e.g., SGI) have
+	# modified it to support site.cf, adding a kludge for the /usr/include
+	# directory.  Try to filter that out, otherwise gcc won't find its
+	# headers.
+	if test -n "$GCC" ; then
+	    if test -n "$IMAKE_CFLAGS" ; then
+		cf_nostdinc=""
+		cf_std_incl=""
+		cf_cpp_opts=""
+		for cf_opt in $IMAKE_CFLAGS
+		do
+		    case "$cf_opt" in
+		    -nostdinc) #(vi
+			cf_nostdinc="$cf_opt"
+			;;
+		    -I/usr/include) #(vi
+			cf_std_incl="$cf_opt"
+			;;
+		    *) #(vi
+			cf_cpp_opts="$cf_cpp_opts $cf_opt"
+			;;
+		    esac
+		done
+		if test -z "$cf_nostdinc" ; then
+		    IMAKE_CFLAGS="$cf_cpp_opts $cf_std_incl"
+		elif test -z "$cf_std_incl" ; then
+		    IMAKE_CFLAGS="$cf_cpp_opts $cf_nostdinc"
+		else
+		    CF_VERBOSE(suppressed \"$cf_nostdinc\" and \"$cf_std_incl\")
+		    IMAKE_CFLAGS="$cf_cpp_opts"
+		fi
+	    fi
+	fi
 fi
 AC_SUBST(IMAKE_CFLAGS)
 ])dnl

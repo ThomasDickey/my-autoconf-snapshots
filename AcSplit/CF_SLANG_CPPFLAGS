@@ -14,7 +14,8 @@ AC_CACHE_VAL(cf_cv_slang_header,[
 		for cf_header in \
 			slang.h
 		do
-			if egrep "SLANG_VERSION" $cf_incdir/$cf_header 1>&5 2>&1; then
+			echo trying $cf_incdir/$cf_header 1>&AC_FD_CC
+			if egrep "SLANG_VERSION" $cf_incdir/$cf_header 1>&AC_FD_CC 2>&1; then
 				cf_cv_slang_header=$cf_incdir/$cf_header 
 				break
 			fi
