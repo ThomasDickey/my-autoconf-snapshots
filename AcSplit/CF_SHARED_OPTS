@@ -30,6 +30,9 @@ AC_DEFUN([CF_SHARED_OPTS],
 	[  --with-shlib-version=X  Specify rel or abi version for shared libs],
 	[test -z "$withval" && withval=auto
 	case $withval in #(vi
+	yes) #(vi
+		cf_cv_shlib_version=auto
+		;;
 	rel|abi|auto|no) #(vi
 		cf_cv_shlib_version=$withval
 		;;
@@ -82,7 +85,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		MK_SHARED_LIB='$(LD) -shared -rdata_shared -soname `basename $[@]` -o $[@]'
 		cf_cv_rm_so_locs=yes
 		;;
-	linux*)
+	linux*|gnu*)
 		# tested with Linux 2.0.29 and gcc 2.7.2 (ELF)
 		CC_SHARED_OPTS='-fpic'
 		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-Wl,-rpath,"
@@ -101,7 +104,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		CC_SHARED_OPTS='-fpic -DPIC'
 		MK_SHARED_LIB='$(LD) -Bshareable -soname,`basename $[@].$(ABI_VERSION)` -o $[@]'
 		;;
-	openbsd*|netbsd*|freebsd*|gnu*)
+	openbsd*|netbsd*|freebsd*)
 		CC_SHARED_OPTS='-fpic -DPIC'
 		MK_SHARED_LIB='$(LD) -Bshareable -o $[@]'
 		;;
@@ -117,7 +120,7 @@ AC_DEFUN([CF_SHARED_OPTS],
  			MK_SHARED_LIB="${MK_SHARED_LIB} -msym"
 			;;
 		esac
-		MK_SHARED_LIB="${MK_SHARED_LIB} -o $[@]"
+		MK_SHARED_LIB="${MK_SHARED_LIB}"' -o $[@]'
 		if test $DFT_LWR_MODEL = "shared" ; then
  			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
  			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
