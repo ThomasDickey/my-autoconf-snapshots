@@ -1,11 +1,42 @@
-dnl CF_WITH_LIBTOOL version: 8 updated: 2003/09/06 19:15:56
+dnl CF_WITH_LIBTOOL version: 9 updated: 2004/01/16 14:55:37
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
+dnl
+dnl The reference to AC_PROG_LIBTOOL does not normally work, since it uses
+dnl macros from libtool.m4 which is in the aclocal directory of automake.
+dnl Following is a simple script which turns on the AC_PROG_LIBTOOL macro.
+dnl But that still does not work properly since the macro is expanded outside
+dnl the CF_WITH_LIBTOOL macro:
+dnl
+dnl	#!/bin/sh
+dnl	ACLOCAL=`aclocal --print-ac-dir`
+dnl	if test -z "$ACLOCAL" ; then
+dnl		echo cannot find aclocal directory
+dnl		exit 1
+dnl	elif test ! -f $ACLOCAL/libtool.m4 ; then
+dnl		echo cannot find libtool.m4 file
+dnl		exit 1
+dnl	fi
+dnl	
+dnl	LOCAL=aclocal.m4
+dnl	ORIG=aclocal.m4.orig
+dnl	
+dnl	trap "mv $ORIG $LOCAL" 0 1 2 5 15
+dnl	rm -f $ORIG
+dnl	mv $LOCAL $ORIG
+dnl	
+dnl	# sed the LIBTOOL= assignment to omit the current directory?
+dnl	sed -e 's/^LIBTOOL=.*/LIBTOOL=${LIBTOOL-libtool}/' $ACLOCAL/libtool.m4 >>$LOCAL
+dnl	cat $ORIG >>$LOCAL
+dnl	
+dnl	autoconf-257 $*
+dnl
 AC_DEFUN([CF_WITH_LIBTOOL],
 [
+ifdef([AC_PROG_LIBTOOL],,[
 LIBTOOL=
-
+])
 # common library maintenance symbols that are convenient for libtool scripts:
 LIB_CREATE='$(AR) -cr'
 LIB_OBJECT='$(OBJECTS)'
@@ -27,16 +58,21 @@ AC_ARG_WITH(libtool,
 	[with_libtool=no])
 AC_MSG_RESULT($with_libtool)
 if test "$with_libtool" != "no"; then
-	if test "$with_libtool" != "yes" ; then
+ifdef([AC_PROG_LIBTOOL],[
+	# missing_content_AC_PROG_LIBTOOL{{
+	AC_PROG_LIBTOOL
+	# missing_content_AC_PROG_LIBTOOL}}
+],[
+ 	if test "$with_libtool" != "yes" ; then
 		CF_PATH_SYNTAX(with_libtool)
 		LIBTOOL=$with_libtool
 	else
-		AC_PATH_PROG(LIBTOOL,libtool)
-	fi
-	if test -z "$LIBTOOL" ; then
-		AC_MSG_ERROR(Cannot find libtool)
-	fi
-
+ 		AC_PATH_PROG(LIBTOOL,libtool)
+ 	fi
+ 	if test -z "$LIBTOOL" ; then
+ 		AC_MSG_ERROR(Cannot find libtool)
+ 	fi
+])dnl
 	LIB_CREATE='$(LIBTOOL) --mode=link $(CC) -rpath $(DESTDIR)$(libdir) -version-info `cut -f1 $(srcdir)/VERSION` -o'
 	LIB_OBJECT='$(OBJECTS:.o=.lo)'
 	LIB_SUFFIX=.la
@@ -53,7 +89,7 @@ if test "$with_libtool" != "no"; then
 	# Save the version in a cache variable - this is not entirely a good
 	# thing, but the version string from libtool is very ugly, and for
 	# bug reports it might be useful to have the original string.
-	cf_cv_libtool_version=`$LIBTOOL --version 2>&1 | sed -e '2,$d' -e 's/^[[^1-9]]*//' -e 's/[[^0-9.]].*//'`
+	cf_cv_libtool_version=`$LIBTOOL --version 2>&1 | sed -e '2,$d' -e 's/([[^)]]*)//g' -e 's/^[[^1-9]]*//' -e 's/[[^0-9.]].*//'`
 	AC_MSG_RESULT($cf_cv_libtool_version)
 	if test -z "$cf_cv_libtool_version" ; then
 		AC_MSG_ERROR(This is not libtool)
