@@ -1,3 +1,5 @@
+dnl CF_NGROUPS version: 3 updated: 2001/12/27 07:55:07
+dnl ----------
 dnl Check for the symbol NGROUPS
 AC_DEFUN([CF_NGROUPS],
 [
@@ -24,10 +26,10 @@ AC_TRY_COMPILE([
 		[cf_cv_ngroups=no])
 	])
 AC_MSG_RESULT($cf_cv_ngroups)
+])
 if test "$cf_cv_ngroups" = no ; then
 	AC_DEFINE(NGROUPS,16)
 elif test "$cf_cv_ngroups" = NGROUPS_MAX ; then
 	AC_DEFINE(NGROUPS,NGROUPS_MAX)
 fi
-])
 ])dnl

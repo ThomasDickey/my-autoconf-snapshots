@@ -1,0 +1,34 @@
+dnl Check if UTMP/UTMPX struct defines ut_name member
+AC_DEFUN([CF_UTMP_UT_NAME],
+[
+if test $cf_cv_have_utmp != no ; then
+AC_CACHE_CHECK(if utmp.ut_name is declared,cf_cv_have_utmp_ut_name,[
+	cf_cv_have_utmp_ut_name=no
+cf_utmp_includes="
+#include <sys/types.h>
+#include <${cf_cv_have_utmp}.h>
+#define getutent getutxent
+#ifdef USE_LASTLOG
+#include <lastlog.h>		/* may conflict with utmpx.h on Linux */
+#endif
+"
+for cf_header in ut_name ut_user ; do
+	AC_TRY_COMPILE([$cf_utmp_includes],
+	[struct $cf_cv_have_utmp x;
+	 char *name = x.$cf_header;
+	],
+	[cf_cv_have_utmp_ut_name=$cf_header
+	 break])
+done
+])
+
+case $cf_cv_have_utmp_ut_name in #(vi
+no) #(vi
+	AC_MSG_ERROR(Cannot find declaration for ut.ut_name)
+	;;
+ut_user)
+	AC_DEFINE(ut_name,ut_user)
+	;;
+esac
+fi
+])
