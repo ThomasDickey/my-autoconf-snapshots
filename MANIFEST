@@ -1,9 +1,10 @@
-MANIFEST for my-autoconf, version t19971201
+MANIFEST for my-autoconf, version t19971213
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 install.sh                      alternate install-script
+mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
@@ -135,6 +136,7 @@ AcSplit/CF_SYSTEM_MAIL_FLAGS    check for system mailer-flags
 AcSplit/CF_SYSTYPE              derive the system-type
 AcSplit/CF_SYS_ERRLIST          check for sys_errlist[]
 AcSplit/CF_SYS_NAME             obtain a usable system name w/o config.guess
+AcSplit/CF_SYS_SELECT_TIMEVAL   check for <sys/time.h> vs <sys/select.h> conflict
 AcSplit/CF_TCAP_CURSOR          check if curses defines KD, KU, etc. (td_lib)
 AcSplit/CF_TD_CONFIG            script that finds or makes a copy of td_config
 AcSplit/CF_TD_CURSES_LIBS       renamed to avoid conflict

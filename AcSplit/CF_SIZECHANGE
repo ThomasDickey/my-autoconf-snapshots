@@ -15,6 +15,10 @@ do
     AC_TRY_COMPILE([#include <sys/types.h>
 #if HAVE_TERMIOS_H
 #include <termios.h>
+#else
+#if HAVE_TERMIO_H
+#include <termio.h>
+#endif
 #endif
 #if NEED_PTEM_H
 /* This is a workaround for SCO:  they neglected to define struct winsize in

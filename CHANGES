@@ -1,3 +1,19 @@
+1997-12-13  Thomas E. Dickey  <dickey@clark.net>
+
+	* mkdirs.sh: RCS_BASE
+
+1997-12-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SYS_SELECT_TIMEVAL: better include sys/types.h too
+
+	* AcSplit/CF_SYS_SELECT_TIMEVAL: RCS_BASE
+
+	* AcSplit/CF_SIZECHANGE:
+	include <termio.h> if we cannot include <termios.h>
+
+	* AcSplit/CF_CHECK_ERRNO:
+	force the HAVE_xxx to be defined even if the DECL_xxx isn't needed
+
 1997-12-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_ERRNO: oops: more than one err
