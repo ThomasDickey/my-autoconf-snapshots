@@ -1,3 +1,14 @@
+2004-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_EXT:
+	ncurses - using AC_EXEEXT made a conflict between explicit suffix and the -Zexe
+	flag.  Modified this to set $ac_cv_exeext to bypass the AC_EXEEXT macro
+	(which would set both -Zexe and EXEEXT=.exe).
+
+	* AcSplit/CF_OUR_MESSAGES:
+	fix sense of help-message - since the default is "yes", the help message
+	should show "--disable"
+
 2003-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FREETYPE:
