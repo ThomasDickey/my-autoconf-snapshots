@@ -22,6 +22,7 @@ if test $ac_cv_prog_gxx = yes; then
 	[float foo=abs(1.0)],
 	[cf_cxx_library=yes
 	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname -lm"],
+	 AC_DEFINE(HAVE_BUILTIN_H)
 	[cf_cxx_library=no])
 	LIBS="$cf_save"
 	AC_MSG_RESULT($cf_cxx_library)

@@ -1,3 +1,9 @@
+1999-09-04  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_GPP_LIBRARY:
+	add check for HAVE_BUILTIN_H, so we don't accidentally pickup qt's builtin.h
+	on my FreeBSD 3.1
+
 1999-09-01  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_PROG_EXT: cygwin needs .exe
