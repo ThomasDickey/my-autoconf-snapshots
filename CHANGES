@@ -1,3 +1,14 @@
+1997-10-21  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_FUNC_WAIT, AcSplit/CF_WAIT_HEADERS: RCS_BASE
+
+	* AcSplit/CF_FUNC_WAIT, AcSplit/CF_WAIT_HEADERS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_BROKEN: fix order of if/then/message
+
+	* AcSplit/CF_UNION_WAIT: split-out/expanded tests for union-wait
+
 1997-10-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_NCURSES_CPPFLAGS: nit
