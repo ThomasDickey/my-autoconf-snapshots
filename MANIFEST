@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20021214
+MANIFEST for my-autoconf, version t20021221
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -156,6 +156,7 @@ AcSplit/CF_MIXEDCASE_FILENAMES  check if the filesystem is really case-dependent
 AcSplit/CF_MKSTEMP              check for working mkstemp() (vile)
 AcSplit/CF_MSG_LOG              write to configure's log
 AcSplit/CF_NCURSES_BROKEN       check for broken 1.9.9e ncurses
+AcSplit/CF_NCURSES_CC_CHECK     check to ensure right ncurses/ncursesw header (ded)
 AcSplit/CF_NCURSES_CPPFLAGS     set up CFLAGS (ncurses)
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version

@@ -1,3 +1,5 @@
+dnl CF_LIB_RULES version: 28 updated: 2002/12/21 22:46:07
+dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
 dnl subdirectory is a library-source directory, modify the LIBRARIES list in
@@ -57,7 +59,7 @@ do
 			termlib+*) #(vi
 				;;
 			*) #(vi
-				cf_item=`echo $LIBS_TO_MAKE |sed -e s/$LIB_NAME/$TINFO_NAME/g`
+				cf_item=`echo $LIBS_TO_MAKE |sed -e s%$LIB_NAME%$TINFO_NAME%g`
 				LIBS_TO_MAKE="$cf_item $LIBS_TO_MAKE"
 				;;
 			esac

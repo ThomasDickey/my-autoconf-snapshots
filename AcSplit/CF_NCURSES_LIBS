@@ -47,7 +47,7 @@ if test -n "$cf_ncurses_LIBS" ; then
 	AC_MSG_CHECKING(if we can link $cf_nculib_root without $cf_ncurses_LIBS)
 	cf_ncurses_SAVE="$LIBS"
 	for p in $cf_ncurses_LIBS ; do
-		q=`echo $LIBS | sed -e 's/'$p' //' -e 's/'$p'$//'`
+		q=`echo $LIBS | sed -e "s%$p %%" -e "s%$p$%%"`
 		if test "$q" != "$LIBS" ; then
 			LIBS="$q"
 		fi
