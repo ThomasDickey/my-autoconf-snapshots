@@ -1,5 +1,7 @@
+dnl CF_SED_CONFIG_H version: 9 updated: 1998/05/17 00:30:22
+dnl ---------------
 dnl This bypasses the normal autoconf process because we're generating an
-dnl arbitrary number of NEED_xxxx definitions with the CF_HAVE_FUNCS macro. 
+dnl arbitrary number of NEED_xxxx definitions with the CF_HAVE_FUNCS macro.
 dnl Rather than populate an aclocal.h file with all of those definitions, we do
 dnl it here.
 dnl
