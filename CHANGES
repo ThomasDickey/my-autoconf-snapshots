@@ -1,3 +1,7 @@
+2001-03-16  Thomas E. Dickey  <dickey@clark.net>
+
+	* config.guess: from autoconf 2.49e
+
 2001-03-12  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: from autoconf 2.49e
