@@ -1,3 +1,20 @@
+2004-01-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_BZLIB:
+	original bzip2 1.0.2 header <bzlib.h> does not include <stdio.h>, but uses
+	FILE*, so unless someone's fixed it (for a package), I have to add <stdio.h>
+	to the includes
+
+2004-01-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_WITH_NLS:
+	lynx: suppress check for bison if we're not bundling intl/.  The dependency
+	upon bison is contrived (not needed for the application), anyway.
+
+	* AcSplit/AM_WITH_NLS:
+	lynx: add a check to see if intl/ directory is packaged, and if not to
+	stop with an error.
+
 2004-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_IPV6:

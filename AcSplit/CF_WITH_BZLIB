@@ -1,4 +1,4 @@
-dnl CF_WITH_BZLIB version: 1 updated: 2003/10/05 17:36:00
+dnl CF_WITH_BZLIB version: 2 updated: 2004/01/24 17:45:25
 dnl -------------
 dnl Check for libbz2 aka "bzlib"
 AC_DEFUN([CF_WITH_BZLIB],[
@@ -16,8 +16,9 @@ do
 	CF_VERBOSE(... tested $cf_incdir)
 done
 ])
-CF_FIND_LIBRARY(bz2,bz2,
-	[#include <bzlib.h>],
+CF_FIND_LIBRARY(bz2,bz2, [
+#include <stdio.h>
+#include <bzlib.h>],
 	[BZ2_bzopen("name","mode")],
 	BZ2_bzopen)
 ])dnl
