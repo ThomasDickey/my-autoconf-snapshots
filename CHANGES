@@ -1,3 +1,10 @@
+2005-04-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GXX_WARNINGS: hmm (first version was probably for bcpp).
+	I rewrote this for ncurses, to try to use g++ to flush out problems with
+	its c++ binding, after finding that Solaris c++ complained (rightly) about
+	some anachronisms.
+
 2005-02-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS:
