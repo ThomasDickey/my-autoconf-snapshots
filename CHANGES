@@ -1,3 +1,44 @@
+2004-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	Modified to ensure that _POSIX_C_SOURCE is defined with a value.  Here's
+	the report:
+	      From: Paul Green (Paul.Green@stratus.com)
+	      Subject: Re: IS:: build of lynx on VOS
+
+
+	   This is the only article in this thread
+	                      View: Original Format
+
+	   Newsgroups:
+	   comp.sys.stratus
+	   Date: 2004-08-20 13:00:11 PST
+
+	Tao Diesel <stefan_ridinger(at)yahoo.de> wrote:
+	>
+	> building lynx failed with followed error:
+	>
+	> !gcc -I ./ -I ../ -I ../../ncurses/include -I
+	> ../WWW/Library/Implementation -I .
+	> +./src -c ../WWW/Library/Implementation/HTAABrow.c -o
+	> ../objects/HTAABrow.o -DHA
+	> +VE_CONFIG_H -D_POSIX_C_SOURCE -D_BSD_SOURCE -D_SVID_SOURCE
+	> -U__PROTOTYPES__ -O3
+
+
+	1. The POSIX standard requires that the _POSIX_C_SOURCE macro have a
+	   value.  Try the following control argument to gcc:
+
+	   -D_POSIX_C_SOURCE=200112L
+
+	2. On VOS, you should use either -D_BSD_SOURCE or -D_SVID_SOURCE.
+	   You should not use both of them.  I generally define _SVID_SOURCE
+	   as it has everything that _BSD_SOURCE has plus additional features.
+	   Ditto for setting up your object library search paths.
+
+	Thanks
+	PG
+
 2004-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_TRY_LINK: RCS_BASE
