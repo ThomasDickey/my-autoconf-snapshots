@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010101
+MANIFEST for my-autoconf, version t20010105
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -190,6 +190,7 @@ AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type
 AcSplit/CF_SRC_MAKEFILE         expand modules list into makefile lists
 AcSplit/CF_SRC_MODULES          obtain the list of source-directories with modules listed
+AcSplit/CF_SSL                  configure-macro for SSL
 AcSplit/CF_STAT_ST_BLOCKS       check if 'stat' struct defines 'st_blocks' (td_lib)
 AcSplit/CF_STDCPP_LIBRARY       check for -lstdc++
 AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
