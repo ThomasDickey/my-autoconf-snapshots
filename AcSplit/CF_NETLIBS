@@ -1,0 +1,33 @@
+dnl After checking for functions in the default $LIBS, make a further check
+dnl for the functions that are netlib-related (these aren't always in the
+dnl libc, etc., and have to be handled specially because there are conflicting
+dnl and broken implementations.
+dnl Common library requirements (in order):
+dnl	-lresolv -lsocket -lnsl
+dnl	-lnsl -lsocket
+dnl	-lsocket
+dnl	-lbsd
+AC_DEFUN([CF_NETLIBS],[
+NETLIBS=""
+#
+AC_CHECK_FUNCS(gethostname,,[
+	CF_RECHECK_FUNC(gethostname,nsl,NETLIBS,[
+		CF_RECHECK_FUNC(gethostname,socket,NETLIBS)])])
+#
+# FIXME:  sequent needs this library (i.e., -lsocket -linet -lnsl), but
+# I don't know the entrypoints - 97/7/22 TD
+AC_HAVE_LIBRARY(inet,NETLIBS="-linet $NETLIBS")
+#
+if test "$ac_cv_func_lsocket" != no ; then
+AC_CHECK_FUNCS(socket,,[
+	CF_RECHECK_FUNC(socket,socket,NETLIBS,[
+		CF_RECHECK_FUNC(socket,bsd,NETLIBS)])])
+fi
+#
+AC_CHECK_FUNCS(gethostbyname,,[
+	CF_RECHECK_FUNC(gethostbyname,nsl,NETLIBS)])
+#
+AC_CHECK_FUNCS(strcasecmp,,[
+	CF_RECHECK_FUNC(strcasecmp,resolv,NETLIBS)])
+LIBS="$LIBS $NETLIBS"
+])dnl

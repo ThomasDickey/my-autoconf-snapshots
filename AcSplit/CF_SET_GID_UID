@@ -1,0 +1,17 @@
+dnl CF_SET_GID_UID version: 2 updated: 1997/08/28 23:57:55
+dnl --------------
+dnl Check for the functions that set effective/real uid/gid.  This has to
+dnl follow the AC_CHECK_FUNCS call.
+AC_DEFUN([CF_SET_GID_UID],
+[
+AC_MSG_CHECKING([for setuid-like functions])
+AC_CACHE_VAL(cf_cv_setuid_funcs,[
+if test -n "${ac_cv_func_setuid}${ac_cv_func_seteuid}${ac_cv_func_setreuid}"; then
+	cf_cv_setuid_funcs=yes
+else
+	cf_cv_setuid_funcs=no
+fi
+])
+AC_MSG_RESULT($cf_cv_setuid_funcs)
+test $cf_cv_setuid_funcs = yes && AC_DEFINE(HAVE_SET_GID_UID)
+])dnl

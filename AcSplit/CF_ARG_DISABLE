@@ -1,0 +1,3 @@
+dnl Allow user to disable a normally-on option.
+AC_DEFUN([CF_ARG_DISABLE],
+[CF_ARG_OPTION($1,[$2 (default: on)],[$3],[$4],yes)])dnl

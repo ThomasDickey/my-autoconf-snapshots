@@ -1,0 +1,21 @@
+dnl CF_SIG_ARGS version: 2 updated: 1997/08/28 23:57:55
+dnl -----------
+dnl Check for systems that have signal-handlers prototyped with one argument
+dnl versus those with more than one argument, define the symbol SIG_ARGS to
+dnl match.  (If it's empty, that's ok too).
+AC_DEFUN([CF_SIG_ARGS],
+[
+AC_MSG_CHECKING([declaration of signal arguments])
+AC_CACHE_VAL(cf_cv_sig_args,[
+cf_cv_sig_args=
+for cf_test in "int sig" "int sig, ..."
+do
+	AC_TRY_COMPILE([
+#include <signal.h>],
+	[extern RETSIGTYPE catch($cf_test); signal(SIGINT, catch)],
+	[cf_cv_sig_args="$cf_test";break])
+done
+])
+AC_MSG_RESULT($cf_cv_sig_args)
+AC_DEFINE_UNQUOTED(SIG_ARGS,$cf_cv_sig_args)
+])dnl

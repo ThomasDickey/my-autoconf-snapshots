@@ -1,0 +1,3 @@
+AC_DEFUN([CF_MSG_LOG],
+echo "(line __oline__) testing $* ..." 1>&5
+)dnl

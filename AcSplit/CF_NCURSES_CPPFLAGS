@@ -1,0 +1,62 @@
+dnl Look for the SVr4 curses clone 'ncurses' in the standard places, adjusting
+dnl the CPPFLAGS variable.
+dnl
+dnl The header files may be installed as either curses.h, or ncurses.h
+dnl (obsolete).  If not installed for overwrite, the curses.h file would be
+dnl in an ncurses subdirectory (e.g., /usr/include/ncurses), but someone may
+dnl have installed overwriting the vendor's curses.  Only very old versions
+dnl (pre-1.9.2d, the first autoconf'd version) of ncurses don't define
+dnl either __NCURSES_H or NCURSES_VERSION in the header.
+dnl
+dnl If the installer has set $CFLAGS or $CPPFLAGS so that the ncurses header
+dnl is already in the include-path, don't even bother with this, since we cannot
+dnl easily determine which file it is.  In this case, it has to be <curses.h>.
+dnl
+AC_DEFUN([CF_NCURSES_CPPFLAGS],
+[
+AC_MSG_CHECKING(for ncurses header file)
+AC_CACHE_VAL(cf_cv_ncurses_header,[
+	AC_TRY_COMPILE([#include <curses.h>],
+	[printf("%s\n", NCURSES_VERSION)],
+	[cf_cv_ncurses_header=predefined],[
+	CF_HEADER_PATH(cf_search,ncurses)
+	test -n "$verbose" && echo
+	for cf_incdir in $cf_search
+	do
+		for cf_header in \
+			curses.h \
+			ncurses.h
+		do
+			if egrep "NCURSES" $cf_incdir/$cf_header 1>&5 2>&1; then
+				cf_cv_ncurses_header=$cf_incdir/$cf_header 
+				test -n "$verbose" && echo $ac_n "	... found $ac_c" 1>&6
+				break
+			fi
+			test -n "$verbose" && echo "	... tested $cf_incdir/$cf_header" 1>&6
+		done
+		test -n "$cf_cv_ncurses_header" && break
+	done
+	test -z "$cf_cv_ncurses_header" && AC_ERROR(not found)
+	])])
+AC_MSG_RESULT($cf_cv_ncurses_header)
+AC_DEFINE(NCURSES)
+
+changequote(,)dnl
+cf_incdir=`echo $cf_cv_ncurses_header | sed -e 's:/[^/]*$::'`
+changequote([,])dnl
+
+case $cf_cv_ncurses_header in # (vi
+*/ncurses.h)
+	AC_DEFINE(HAVE_NCURSES_H)
+	;;
+esac
+
+case $cf_cv_ncurses_header in # (vi
+predefined) # (vi
+	cf_cv_ncurses_header=curses.h
+	;;
+*)
+	CF_ADD_INCDIR($cf_incdir)
+	;;
+esac
+])dnl

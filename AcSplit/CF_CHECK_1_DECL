@@ -1,0 +1,144 @@
+dnl Check for missing declarations in the system headers (adapted from vile).
+AC_DEFUN([CF_CHECK_1_DECL],
+[
+AC_MSG_CHECKING([for missing "$1" extern])
+AC_CACHE_VAL([cf_cv_func_$1],[
+CF_MSG_LOG([for missing "$1" external])
+AC_TRY_LINK([
+#include <stdio.h>
+#include <sys/types.h>
+#include <signal.h>
+#include <ctype.h>
+#ifdef HAVE_ERRNO_H
+#	include <errno.h>
+#else
+#	include <sys/errno.h>
+#endif
+#ifdef HAVE_LIBC_H
+#	include <libc.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#	include <unistd.h>
+#endif
+#ifdef HAVE_STDARG_H
+#	include <stdarg.h>
+#else
+#	ifdef HAVE_VARARGS_H
+#		include <varargs.h>
+#	endif
+#endif
+#ifdef HAVE_UNISTD_H
+#	include <unistd.h>
+#endif
+#ifdef HAVE_STDLIB_H
+#	include <stdlib.h>
+#endif
+#ifdef HAVE_STDDEF_H
+#	include <stddef.h>
+#endif
+#ifdef HAVE_PWD_H
+#	include <pwd.h>
+#endif
+#ifdef HAVE_NETDB_H
+#	include <netdb.h>
+#endif
+#ifdef HAVE_ARPA_INET_H
+#	include <arpa/inet.h>
+#endif
+#ifdef HAVE_SYS_SOCKET_H
+#	include <sys/socket.h>
+#endif
+
+#if STDC_HEADERS || HAVE_STRING_H
+#	include <string.h>
+  /* An ANSI string.h and pre-ANSI memory.h might conflict.  */
+#	if !STDC_HEADERS && HAVE_MEMORY_H
+#		include <memory.h>
+#	endif /* not STDC_HEADERS and HAVE_MEMORY_H */
+#else /* not STDC_HEADERS and not HAVE_STRING_H */
+#	if HAVE_STRINGS_H
+#		include <strings.h>
+  /* memory.h and strings.h conflict on some systems */
+#	endif
+#endif /* not STDC_HEADERS and not HAVE_STRING_H */
+
+/* unistd.h defines _POSIX_VERSION on POSIX.1 systems.  */
+#if defined(HAVE_DIRENT_H) || defined(_POSIX_VERSION)
+#	include <dirent.h>
+#else /* not (HAVE_DIRENT_H or _POSIX_VERSION) */
+#	ifdef HAVE_SYS_NDIR_H
+#		include <sys/ndir.h>
+#	endif /* HAVE_SYS_NDIR_H */
+#	ifdef HAVE_SYS_DIR_H
+#		include <sys/dir.h>
+#	endif /* HAVE_SYS_DIR_H */
+#	ifdef HAVE_NDIR_H
+#		include <ndir.h>
+#	endif /* HAVE_NDIR_H */
+#endif /* not (HAVE_DIRENT_H or _POSIX_VERSION) */
+
+#ifdef HAVE_SYS_FILE_H
+#	include <sys/file.h>
+#endif
+#ifdef HAVE_SYS_STAT_H
+#	include <sys/stat.h>
+#endif
+
+#ifdef TIME_WITH_SYS_TIME
+#	include <sys/time.h>
+#	include <time.h>
+#else
+#	ifdef HAVE_SYS_TIME_H
+#		include <sys/time.h>
+#	else
+#		include <time.h>
+#	endif
+#endif
+
+#ifdef HAVE_SYS_TIMES_H
+#	include <sys/times.h>
+#endif
+#ifdef HAVE_SYS_PARAM_H
+#	include <sys/param.h>
+#endif
+#ifdef HAVE_SYS_WAIT_H
+#	include <sys/wait.h>
+#endif
+#ifdef HAVE_SYS_SELECT_H
+#	include <sys/select.h>
+#endif
+
+#ifdef HAVE_CURSES_H
+#	include <curses.h>
+#endif
+
+#if 0	/* FIXME: this has prototypes, but creates new problems */
+#ifdef HAVE_TERM_H
+#	include <term.h>
+#endif
+#endif
+
+#ifdef HAVE_TERMCAP_H
+#	include <termcap.h>
+#endif
+
+#ifdef HAVE_IOCTL_H
+#	include <ioctl.h>
+#else
+#	ifdef HAVE_SYS_IOCTL_H
+#		include <sys/ioctl.h>
+#	endif
+#endif
+
+#undef $1
+struct zowie { int a; double b; struct zowie *c; char d; };
+extern struct zowie *$1();
+],
+[
+],
+[eval 'cf_cv_func_'$1'=yes'],
+[eval 'cf_cv_func_'$1'=no'])])
+eval 'cf_result=$cf_cv_func_'$1
+AC_MSG_RESULT($cf_result)
+test $cf_result = yes && AC_DEFINE_UNQUOTED(DECL_$2)
+])dnl
