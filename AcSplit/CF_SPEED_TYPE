@@ -1,3 +1,5 @@
+dnl CF_SPEED_TYPE version: 5 updated: 1999/06/19 21:46:48
+dnl -------------
 dnl Check for datatype 'speed_t', which is normally declared via either
 dnl sys/types.h or termios.h
 AC_DEFUN([CF_SPEED_TYPE],
@@ -7,14 +9,14 @@ OSPEED_INCLUDES=
 AC_TRY_COMPILE([#include <sys/types.h>],
 	[speed_t some_variable = 0],
 	[OSPEED_TYPE=speed_t],
-	[OSPEED_TYPE=short])
+	[OSPEED_TYPE=unsigned])
 AC_TRY_COMPILE([#include <termios.h>],
 	[speed_t some_variable = 0],
 	[OSPEED_TYPE=speed_t
 	 OSPEED_INCLUDES="#include <termios.h>"],[])
 AC_SUBST(OSPEED_TYPE)
 AC_SUBST(OSPEED_INCLUDES)
-if test "$OSPEED_TYPE" = "short" ; then
+if test "$OSPEED_TYPE" = "unsigned" ; then
 	AC_MSG_RESULT(no)
 	AC_DEFINE(speed_t,unsigned)
 else

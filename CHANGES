@@ -1,3 +1,10 @@
+1999-06-19  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SPEED_TYPE:
+	change default 'ospeed' type to 'unsigned' from 'short'
+
+	* AcSplit/CF_SPEED_TYPE: ci-aclocal generated header
+
 1999-06-16  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SRC_MODULES: Juergen renamed ada_include to src
