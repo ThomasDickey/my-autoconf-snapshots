@@ -23,9 +23,7 @@ case ".$cf_manpage_form" in
   cf_manpage_form=unknown
   for cf_dir in $MANPATH; do
     test -z "$cf_dir" && cf_dir=/usr/man
-changequote({{,}})dnl
-    for cf_name in $cf_dir/*/date.[01]* $cf_dir/*/date
-changequote([,])dnl
+    for cf_name in $cf_dir/*/date.[[01]]* $cf_dir/*/date
     do
        cf_test=`echo $cf_name | sed -e 's/*//'`
        if test "x$cf_test" = "x$cf_name" ; then
