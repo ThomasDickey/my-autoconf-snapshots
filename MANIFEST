@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010502
+MANIFEST for my-autoconf, version t20010513
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -68,6 +68,7 @@ AcSplit/CF_CURSES_TERMCAP       check for prototypes in curses.h or termcap.h
 AcSplit/CF_CURSES_TERM_H        check for curses's term.h
 AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
+AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
 AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define
 AcSplit/CF_DEFINE_PROG          check for program, defining its path
