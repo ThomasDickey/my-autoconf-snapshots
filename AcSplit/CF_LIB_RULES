@@ -206,6 +206,7 @@ uninstall.includes ::
 CF_EOF
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
+			i=`basename $i`
 			echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/$i" >>$cf_dir/Makefile
 			test $i = curses.h && echo "	-@rm -f \$(INSTALL_PREFIX)\$(includedir)/ncurses.h" >>$cf_dir/Makefile
 		done

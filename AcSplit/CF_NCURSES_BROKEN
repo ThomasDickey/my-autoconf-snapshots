@@ -16,7 +16,7 @@ AC_TRY_COMPILE([
 	[cf_cv_ncurses_broken=no],
 	[cf_cv_ncurses_broken=yes])
 ])
-AC_MSG_RESULT($cf_cv_ncurses_broken=yes)
+AC_MSG_RESULT($cf_cv_ncurses_broken)
 if test "$cf_cv_ncurses_broken" = yes ; then
 	AC_MSG_WARN(hmm... you should get an up-to-date version of ncurses)
 	AC_DEFINE(NCURSES_BROKEN)

@@ -46,7 +46,8 @@ do
 
 	CFLAGS="$cf_save_CFLAGS"
 	if test "$cf_cv_sizechange" = yes ; then
-		test -n "$cf_opts" && AC_DEFINE($cf_opts)
+		echo "size-change succeeded ($cf_opts)" >&AC_FD_CC
+		test -n "$cf_opts" && AC_DEFINE_UNQUOTED($cf_opts)
 		break
 	fi
 done
