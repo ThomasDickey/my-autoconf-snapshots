@@ -7,7 +7,7 @@ case $INSTALL in
 /*)
   ;;
 *)
-  cf_dir=`echo $INSTALL|sed -e 's%/[[^/]]*$%%'`
+  CF_DIRNAME(cf_dir,$INSTALL)
   test -z "$cf_dir" && cf_dir=.
   INSTALL=`cd $cf_dir && pwd`/`echo $INSTALL | sed -e 's:^.*/::'`
   ;;

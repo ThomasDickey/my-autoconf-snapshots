@@ -1,3 +1,31 @@
+2001-04-15  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_PROG_INSTALL: use CF_DIRNAME
+
+	* AcSplit/CF_SLANG_CPPFLAGS: ci-aclocal generated header
+
+	* AcSplit/CF_SLANG_CPPFLAGS: use CF_DIRNAME
+
+	* AcSplit/CF_NCURSES_VERSION: changed this to use AC_CACHE_CHECK
+
+	* AcSplit/CF_CURSES_LIBS: split-out the CF_CURSES_CPPFLAGS stuff
+
+	* AcSplit/CF_CURSES_CPPFLAGS: RCS_BASE
+
+	* AcSplit/CF_INCLUDE_PATH: ci-aclocal generated header
+
+	* AcSplit/CF_INCLUDE_PATH: use CF_DIRNAME
+
+	* AcSplit/CF_NCURSES_CPPFLAGS: nit
+
+	* AcSplit/CF_DIRNAME: RCS_BASE
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	ded: rewrite to handle the case where ncurses is not installed in any of
+	the standard locations, and we are using $CPPFLAGS to predefine its header
+	location.  Also, change preference to look for ncurses.h rather than curses.h,
+	since it's less likely that we chose the wrong header in that case.
+
 2001-04-07  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CPP_VSCAN_FUNC:

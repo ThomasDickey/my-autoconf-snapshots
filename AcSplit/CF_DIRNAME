@@ -1,0 +1,4 @@
+dnl "dirname" is not portable, so we fake it with a shell script.
+AC_DEFUN([CF_DIRNAME],[
+$1=`echo $2 | sed -e 's:/[[^/]]*$::'`
+])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20010407
+MANIFEST for my-autoconf, version t20010415
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -58,6 +58,7 @@ AcSplit/CF_CPP_VSCAN_FUNC       check for C++ usable vscan function (ncurses)
 AcSplit/CF_CRYPT_FUNC           check for existing/working crypt() function
 AcSplit/CF_CURSES_CCHAR_T       check for 'cchar_t'
 AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
+AcSplit/CF_CURSES_CPPFLAGS      check for curses/ncurses header file
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
 AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
 AcSplit/CF_CURSES_LIBS          check for standard (not ncurses!) curses libraries
@@ -70,6 +71,7 @@ AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
 AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define
 AcSplit/CF_DEFINE_PROG          check for program, defining its path
+AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
