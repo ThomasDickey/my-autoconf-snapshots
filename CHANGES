@@ -1,3 +1,10 @@
+2004-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	add a workaround to remove empty "-DPROJECTROOT= " string.  It looks as if
+	all of the Unix vendors have that in their imake config, while XFree86 and
+	X.Org define a value.
+
 2004-11-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUILD_CC:
