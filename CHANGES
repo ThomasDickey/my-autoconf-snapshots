@@ -1,3 +1,21 @@
+2003-03-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INHERIT_SCRIPT: RCS_BASE
+
+	* AcSplit/CF_INHERIT_SCRIPT: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_CHECK_TYPE: RCS_BASE
+
+	* AcSplit/CF_CURSES_CHECK_TYPE: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION:
+	RCS_BASE
+
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_UTF8_LIB:
+	ci-aclocal generated header
+
+	* AcSplit/CF_UTF8_LIB: ncurses/test: fix a caching issue with $LIBS
+
 2003-02-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub, config.guess: tin: 2003/2/22

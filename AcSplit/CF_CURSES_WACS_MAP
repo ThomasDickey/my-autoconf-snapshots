@@ -1,0 +1,19 @@
+dnl CF_CURSES_WACS_MAP version: 2 updated: 2003/03/01 23:36:42
+dnl ------------------
+dnl Check for likely values of wacs_map[]:
+AC_DEFUN([CF_CURSES_WACS_MAP],
+[
+AC_CACHE_CHECK(for wide alternate character set array, cf_cv_curses_wacs_map,[
+	cf_cv_curses_wacs_map=unknown
+	for name in wacs_map _wacs_map __wacs_map _nc_wacs
+	do
+	AC_TRY_LINK([
+#ifndef _XOPEN_SOURCE_EXTENDED
+#define _XOPEN_SOURCE_EXTENDED
+#endif
+#include <curses.h>],
+	[$name['k'] = *WACS_PLUS],
+	[cf_cv_curses_wacs_map=$name
+	 break])
+	done])
+])
