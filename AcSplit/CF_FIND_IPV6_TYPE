@@ -1,9 +1,18 @@
 AC_DEFUN([CF_FIND_IPV6_TYPE],[
 AC_CACHE_CHECK(ipv6 stack type, cf_cv_ipv6type, [
 cf_cv_ipv6type=unknown
-for i in inria kame linux-glibc linux-libinet6 toshiba v6d zeta
+for i in solaris inria kame linux-glibc linux-libinet6 toshiba v6d zeta
 do
 	case $i in #(vi
+	solaris) #(vi
+		if test "SunOS" = "`uname -s`"
+		then
+		  if test -f /usr/include/netinet/ip6.h
+		  then
+			cf_cv_ipv6type=$i
+		  fi
+		fi
+		;;
 	inria) #(vi
 		dnl http://www.kame.net/
 		AC_EGREP_CPP(yes, [dnl
