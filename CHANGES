@@ -1,3 +1,31 @@
+1999-09-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CPP_PARAM_INIT: RCS_BASE
+
+	* AcSplit/CF_BOOL_SIZE:
+	add kludge for including builtin.h to avoid qt's builtin.h
+
+	* AcSplit/CF_ETIP_DEFINES:
+	huh - fix quoting for ETIP_NEEDS_xxx, which was wrong for a long time...
+
+	* AcSplit/CF_GPP_LIBRARY: smarter check for builtin.h
+
+	* AcSplit/CF_LIB_PREFIX:
+	oops - typo (masked in ncurses by redundant assignment)
+
+1999-09-08  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_DISABLE_ECHO: Urs dropped the "test: " from help-message
+
+	* AcSplit/CF_DISABLE_ECHO: ci-aclocal generated header
+
+	* AcSplit/CF_MAKEFLAGS: whitespace
+
+	* AcSplit/CF_CHECK_1_DECL:
+	workaround for trash in glibc2's headers - if we're compiling with extra
+	includes (e.g., for tin and vile), double-check that we can compile properly
+	_with_ the headers.
+
 1999-09-04  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_GPP_LIBRARY:

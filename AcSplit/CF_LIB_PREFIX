@@ -6,6 +6,6 @@ AC_DEFUN([CF_LIB_PREFIX],
 	os2)	$1=''     ;;
 	*)	$1='lib'  ;;
 	esac
-	LIB_PREFIX=$1
+	LIB_PREFIX=[$]$1
 	AC_SUBST(LIB_PREFIX)
 ])dnl
