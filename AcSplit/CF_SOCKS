@@ -1,12 +1,23 @@
+dnl CF_SOCKS version: 3 updated: 2001/01/01 09:54:40
+dnl --------
 dnl Check for socks library
 dnl $1 = the [optional] directory in which the library may be found
-dnl $2 = the [optional] name of the library
 AC_DEFUN([CF_SOCKS],[
 case "$1" in #(vi
 no|yes) #(vi
   ;;
 *)
-  LIBS="$LIBS -L$1"
+  if test -d $1 ; then
+    if test -d $1/include ; then
+      CPPFLAGS="$CPPFLAGS -I$1/include"
+      LIBS="$LIBS -L$1/lib"
+    else
+      LIBS="$LIBS -L$1"
+      test -d $1/../include && CPPFLAGS="$CPPFLAGS -I$1/../include"
+    fi
+  else
+    AC_MSG_WARN(expected a directory: $1)
+  fi
   ;;
 esac
 LIBS="$LIBS -lsocks"

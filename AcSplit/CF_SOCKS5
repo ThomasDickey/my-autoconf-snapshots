@@ -1,3 +1,5 @@
+dnl CF_SOCKS5 version: 7 updated: 2001/01/01 09:54:40
+dnl ---------
 dnl Check for socks5 configuration
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_SOCKS5],[
@@ -5,14 +7,24 @@ case "$1" in #(vi
 no|yes) #(vi
   ;;
 *)
-  LIBS="$LIBS -L$1"
-  CFLAGS="$CFLAGS -I$1/../include"
+  if test -d $1 ; then
+    if test -d $1/include ; then
+      CPPFLAGS="$CPPFLAGS -I$1/include"
+      LIBS="$LIBS -L$1/lib"
+    else
+      LIBS="$LIBS -L$1"
+      test -d $1/../include && CPPFLAGS="$CPPFLAGS -I$1/../include"
+    fi
+  else
+    AC_MSG_WARN(expected a directory: $1)
+  fi
   ;;
 esac
 LIBS="$LIBS -lsocks5"
 AC_DEFINE(USE_SOCKS5)
 AC_DEFINE(SOCKS)
 AC_MSG_CHECKING(if the socks library uses socks4 prefix)
+cf_use_socks4=error
 AC_TRY_LINK([
 #include <socks.h>],[
 	Rinit((char *)0)],
@@ -38,4 +50,13 @@ else
 	AC_DEFINE(getsockname,SOCKSgetsockname)
 	AC_DEFINE(recvfrom,SOCKSrecvfrom)
 fi
+AC_MSG_CHECKING(if socks5p.h is available)
+AC_TRY_COMPILE([
+#define INCLUDE_PROTOTYPES
+#include <socks.h>],[
+	init((char *)0)],
+	[cf_use_socks5p_h=yes],
+	[cf_use_socks5p_h=no])
+AC_MSG_RESULT($cf_use_socks5p_h)
+test "$cf_use_socks5p_h" = yes && AC_DEFINE(INCLUDE_PROTOTYPES)
 ])dnl

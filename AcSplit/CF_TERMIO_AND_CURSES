@@ -1,10 +1,12 @@
+dnl CF_TERMIO_AND_CURSES version: 3 updated: 2000/12/31 19:47:37
+dnl --------------------
 dnl Check if including termio.h with <curses.h> dies like on sysv68
 dnl FIXME: this is too Lynx-specific
 AC_DEFUN([CF_TERMIO_AND_CURSES],
 [
 AC_CACHE_CHECK(if we can include termio.h with curses,cf_cv_termio_and_curses,[
-    cf_save_CFLAGS="$CFLAGS"
-    CFLAGS="$CFLAGS -DHAVE_CONFIG_H -I. -I${srcdir-.} -I${srcdir-.}/src -I${srcdir-.}/WWW/Library/Implementation"
+    cf_save_CFLAGS="$CPPFLAGS"
+    CPPFLAGS="$CPPFLAGS -DHAVE_CONFIG_H -I. -I${srcdir-.} -I${srcdir-.}/src -I${srcdir-.}/WWW/Library/Implementation"
     touch lynx_cfg.h
     AC_TRY_COMPILE([
 #include <$1>
@@ -12,7 +14,7 @@ AC_CACHE_CHECK(if we can include termio.h with curses,cf_cv_termio_and_curses,[
     [putchar(0x0a)],
     [cf_cv_termio_and_curses=yes],
     [cf_cv_termio_and_curses=no])
-    CFLAGS="$cf_save_CFLAGS"
+    CPPFLAGS="$cf_save_CFLAGS"
     rm -f lynx_cfg.h
 ])
 
