@@ -1,3 +1,26 @@
+2002-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_GNU_GETTEXT: tin: from gettext 0.10.40
+	I merged in the rename of mkinstalldirs to mkdirs.sh
+	Do not see the "po" directory referenced here - it's moved to a different macro
+
+	* AcSplit/AM_PATH_PROG_WITH_TEST: tin: from gettext 0.10.40
+	I merged in my CF_PATHSEP change
+
+	* AcSplit/AC_ISC_POSIX, AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/jm_GLIBC21:
+	RCS_BASE
+
+	* AcSplit/AC_ISC_POSIX, AcSplit/CF_BUNDLED_PCRE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_BUNDLED_PCRE:
+	tin: Urs changed this so --with-pcre would simply add -lpcre to libs
+
+	* AcSplit/AM_LC_MESSAGES: tin: from gettext 0.10.40
+
+	* AcSplit/AM_WITH_NLS: tin: from gettext 0.10.40
+	this macro is the product of a sick mind.
+
 2002-04-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GMTOFF:

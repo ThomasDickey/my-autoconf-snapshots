@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20020416
+MANIFEST for my-autoconf, version t20020417
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -7,7 +7,10 @@ install-sh                      generic install-script
 install.sh                      alternate install-script
 mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
+AcSplit/AC_ISC_POSIX            from gettext 0.10.40 (tin)
 AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
+AcSplit/AM_ICONV                adapted from gettext 0.10.40 (tin)
+AcSplit/AM_LANGINFO_CODESET     adapted from gettext 0.10.40 (tin)
 AcSplit/AM_LC_MESSAGES          check if LC_MESSAGES works
 AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
 AcSplit/AM_WITH_NLS             macro to test for NLS
@@ -280,3 +283,4 @@ AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
+AcSplit/jm_GLIBC21              from gettext 0.10.40 (tin)
