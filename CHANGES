@@ -1,3 +1,23 @@
+2005-02-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	repair the sed script for OSMINORVERSION to avoid trailing non-digits
+	add a special case for IRIX 5 & 6 to define SYSV and SVR4 (xterm kludge)
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	add a kludge for aix to define AIXV3 and AIXV4 if no imake is used.
+
+	* AcSplit/CF_XOPEN_SOURCE: define _ALL_SOURCE for AIX 4 and 5.
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	ran into problem using uname on AIX (which someone on autoconf list did
+	comment about recently).  AIX's uname -r returns the minor version rather
+	than the major version.  Use uname -v for the major version.  I don't want
+	to own that type of script.  However, config.guess' output is mostly usable,
+	giving the major/minor versions for most vendor systems - but not for Linux.
+	So if $host_os contains a {digit}.{digit}, I'll use that, otherwise use the
+	uname values.
+
 2005-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS:
