@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 2 updated: 2003/04/28 01:28:08
+dnl CF_GNUTLS version: 3 updated: 2003/10/05 17:34:54
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -8,7 +8,7 @@ case "$1" in #(vi
 no) #(vi
   ;;
 yes) #(vi
-  AC_CHECK_LIB(gnutls, SSL_get_version,[],[
+  AC_CHECK_LIB(gnutls, SSL_connect,[],[
   	if test -d /usr/local/gnutls ; then
 		CF_VERBOSE(assume it is in /usr/local/gnutls)
 		cf_ssl_library="-L/usr/local/gnutls/lib $cf_ssl_library"
@@ -17,7 +17,7 @@ yes) #(vi
 		AC_MSG_ERROR(cannot find gnutls library)
 	fi
 	],
-	[-lcrypt])
+	[-lgnutls-extra -lgnutls -lcrypt])
   ;;
 *)
   if test -d $1 ; then
@@ -62,5 +62,22 @@ if test "$cf_ssl_library" = yes ; then
 	AC_DEFINE(USE_SSL)
 else
 	AC_ERROR(Cannot link with gnutls library)
+fi
+
+AC_MSG_CHECKING(for X509 support)
+AC_TRY_LINK([
+#include <stdio.h>
+#ifdef USE_GNUTLS_INCL
+#include <gnutls/openssl.h>
+#else
+#include <ssl.h>
+#endif
+],
+	[X509_verify_cert_error_string(X509_STORE_CTX_get_error(X509_STORE_CTX *0))];
+	[cf_x509_support=yes],
+	[cf_x509_support=no])
+AC_MSG_RESULT($cf_x509_support)
+if test "$cf_x509_support" = yes ; then
+	AC_DEFINE(USE_X509_SUPPORT)
 fi
 ])dnl

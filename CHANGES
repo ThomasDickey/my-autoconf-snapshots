@@ -1,3 +1,14 @@
+2003-10-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ZLIB, AcSplit/CF_WITH_BZLIB:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SSL:
+	add USE_X509_SUPPORT definition to distinguish this from gnutls
+
+	* AcSplit/CF_GNUTLS:
+	add check for x509 support (which is very incomplete)
+
 2003-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FREETYPE: hmm - Xft is "documented"

@@ -1,0 +1,23 @@
+dnl CF_WITH_ZLIB version: 1 updated: 2003/10/05 17:36:14
+dnl ------------
+dnl check for libz aka "zlib"
+AC_DEFUN([CF_WITH_ZLIB],[
+AC_MSG_CHECKING(if we need to add -I option to get zlib.h)
+AC_TRY_COMPILE([#include <zlib.h>],[],[AC_MSG_RESULT(no)],[
+AC_MSG_RESULT(yes)
+CF_HEADER_PATH(cf_search,zlib)
+for cf_incdir in $cf_search
+do
+	if test -f $cf_incdir/zlib.h ; then
+		CF_ADD_CFLAGS(-I$cf_incdir)
+		CF_VERBOSE(... found in $cf_incdir)
+		break
+	fi
+	CF_VERBOSE(... tested $cf_incdir)
+done
+])
+CF_FIND_LIBRARY(z,z,
+	[#include <zlib.h>],
+	[gzopen("name","mode")],
+	gzopen)
+])dnl
