@@ -1,0 +1,16 @@
+dnl CF_PW_GECOS version: 2 updated: 2000/04/13 10:13:00
+dnl -----------
+dnl Check if the passwd-struct defines the '.pw_gecos' member (useful
+dnl in decoding user names).
+AC_DEFUN([CF_PW_GECOS],
+[
+AC_CACHE_CHECK([for passwd.pw_gecos], cf_cv_pw_gecos,[
+	AC_TRY_COMPILE([
+#include <pwd.h>
+],[
+	struct passwd foo;
+	char bar = foo.pw_gecos],
+	[cf_cv_pw_gecos=yes],
+	[cf_cv_pw_gecos=no])])
+test $cf_cv_pw_gecos = no && AC_DEFINE(DONT_HAVE_PW_GECOS)
+])dnl

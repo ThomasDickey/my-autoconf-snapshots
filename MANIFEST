@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20000411
+MANIFEST for my-autoconf, version t20000413
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -29,6 +29,7 @@ AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no v
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
+AcSplit/CF_BUNDLED_INTL         combine all libintl macros
 AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions
 AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
 AcSplit/CF_CFG_DEFAULTS         determine the default "--prefix" (ncurses)
@@ -149,6 +150,7 @@ AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_PERL            check for perl program
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca
+AcSplit/CF_PW_GECOS             check if <pwd.h> declared .pw_gecos member
 AcSplit/CF_RCS_SCCS             check for RCS/SCCS/etc used in ded, cm_tools (td_lib)
 AcSplit/CF_RECHECK_FUNC         recheck for a function, to pick up a library
 AcSplit/CF_REGCMP_FUNCS         check for regcmp/regex functions (td_lib)
