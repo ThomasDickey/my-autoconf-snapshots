@@ -1,3 +1,5 @@
+dnl CF_CURSES_LIBS version: 22 updated: 2002/10/27 18:21:42
+dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
 AC_DEFUN([CF_CURSES_LIBS],[
@@ -93,4 +95,4 @@ if test ".$ac_cv_func_initscr" != .yes ; then
 fi
 fi
 
-])
+])dnl

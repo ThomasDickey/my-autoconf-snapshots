@@ -1,3 +1,5 @@
+dnl CF_FANCY_CURSES version: 4 updated: 2002/10/27 18:21:42
+dnl ---------------
 AC_DEFUN([CF_FANCY_CURSES],
 [
 AC_MSG_CHECKING(if curses supports fancy attributes)
@@ -15,4 +17,4 @@ AC_CACHE_VAL(cf_cv_fancy_curses,[
 	])
 AC_MSG_RESULT($cf_cv_fancy_curses)
 test $cf_cv_fancy_curses = yes && AC_DEFINE(FANCY_CURSES)
-])
+])dnl

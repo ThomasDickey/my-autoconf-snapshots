@@ -1,3 +1,5 @@
+dnl CF_TTYTYPE version: 4 updated: 2002/10/27 18:21:42
+dnl ----------
 AC_DEFUN([CF_TTYTYPE],
 [
 AC_MSG_CHECKING(if ttytype is declared in curses library)
@@ -9,4 +11,4 @@ AC_CACHE_VAL(cf_cv_have_ttytype,[
 	])
 AC_MSG_RESULT($cf_cv_have_ttytype)
 test $cf_cv_have_ttytype = yes && AC_DEFINE(HAVE_TTYTYPE)
-])
+])dnl

@@ -1,3 +1,29 @@
+2002-10-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST:
+	change # to dnl since ac2.13 would emit those after AC_REVISION
+
+	* AcSplit/jm_GLIBC21: change # to dnl to work properly with ac2.13
+
+	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11, AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME, AcSplit/jm_GLIBC21:
+	ci-aclocal generated header
+
+	* AcSplit/CF_UTF8_LIB:
+	lynx: add AC_DEFINE for HAVE_LIBUTF8_H to work with ncursesw
+
+	* AcSplit/AM_WITH_NLS:
+	lynx: change # to dnl so we don't get those lines after AC_REVISION
+	lynx: change option to --enable-nls rather than --disable-nls
+
+	* AcSplit/CF_BUNDLED_INTL:
+	lynx: if we're making the ./intl directory, define HAVE_LIBGETTEXT_H
+	lynx: define GT_YES and GT_NO symbols which were present in older versions of this macro
+
+	* AcSplit/AM_GNU_GETTEXT: lynx: put a dnl on the end
+
+	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG, AcSplit/CF_LOCALE, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11, AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME:
+	lynx: tidy up comments
+
 2002-10-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_X_ATHENA_LIBS: RCS_BASE

@@ -11,4 +11,7 @@ AC_TRY_LINK([
 [cf_cv_utf8_lib=add-on],
 [cf_cv_utf8_lib=no])])
 ])
+
+# This is used by ncurses if curses.h is shared between ncurses/ncursesw:
+test "$cf_cv_utf8_lib" != no && AC_DEFINE(HAVE_LIBUTF8_H)
 ])dnl

@@ -73,4 +73,4 @@ strdup strtoul tsearch __argz_count __argz_stringify __argz_next])
    dnl Enable libtool support if the surrounding package wishes it.
    INTL_LIBTOOL_SUFFIX_PREFIX=ifelse([$1], use-libtool, [l], [])
    AC_SUBST(INTL_LIBTOOL_SUFFIX_PREFIX)
-  ])
+])dnl

@@ -1,3 +1,5 @@
+dnl CF_DEFINE_PROG version: 3 updated: 2002/10/27 18:21:42
+dnl --------------
 dnl Check for a program in the given list $3, defining the corresponding
 dnl program variable $2.
 dnl
@@ -15,4 +17,4 @@ AC_CACHE_VAL(cf_cv_$2,[
 	])
 AC_MSG_RESULT($cf_cv_$2)
 AC_DEFINE_UNQUOTED($2,"$cf_cv_$2")
-])
+])dnl

@@ -1,11 +1,12 @@
+dnl AM_LANGINFO_CODESET version: 3 updated: 2002/10/27 23:21:42
+dnl -------------------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
 dnl codeset.m4
 dnl ====================
-#serial AM1
-
+dnl serial AM1
+dnl
 dnl From Bruno Haible.
-
 AC_DEFUN([AM_LANGINFO_CODESET],
 [
   AC_CACHE_CHECK([for nl_langinfo and CODESET], am_cv_langinfo_codeset,
@@ -18,4 +19,4 @@ AC_DEFUN([AM_LANGINFO_CODESET],
     AC_DEFINE(HAVE_LANGINFO_CODESET, 1,
       [Define if you have <langinfo.h> and nl_langinfo(CODESET).])
   fi
-])
+])dnl

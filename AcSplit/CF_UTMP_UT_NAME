@@ -1,3 +1,5 @@
+dnl CF_UTMP_UT_NAME version: 3 updated: 2002/10/27 23:21:42
+dnl ---------------
 dnl Check if UTMP/UTMPX struct defines ut_name member
 AC_DEFUN([CF_UTMP_UT_NAME],
 [
@@ -31,4 +33,4 @@ ut_user)
 	;;
 esac
 fi
-])
+])dnl
