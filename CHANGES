@@ -1,3 +1,11 @@
+2002-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	ncurses: put the edit_man.sed script back in the "local" directory; otherwise
+	I cannot generate html-manpages
+
+	* AcSplit/CF_LIB_RULES: use '%' rather than '@' for sed-delimiter
+
 2002-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_LIBS, AcSplit/CF_SRAND:
