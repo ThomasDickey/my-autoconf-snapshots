@@ -1,5 +1,5 @@
 dnl Look for the curses libraries.  Older curses implementations may require
-dnl termcap/termlib to be linked as well.
+dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
 AC_DEFUN([CF_CURSES_LIBS],[
 
 AC_MSG_CHECKING(if we have identified curses libraries)
@@ -17,7 +17,6 @@ freebsd*) #(vi
 hpux10.*|hpux11.*) #(vi
 	AC_CHECK_LIB(cur_colr,initscr,[
 		LIBS="-lcur_colr $LIBS"
-		CPPFLAGS="-I/usr/include/curses_colr $CPPFLAGS"
 		ac_cv_func_initscr=yes
 		],[
 	AC_CHECK_LIB(Hcurses,initscr,[
@@ -30,15 +29,11 @@ hpux10.*|hpux11.*) #(vi
 linux*) # Suse Linux does not follow /usr/lib convention
 	LIBS="$LIBS -L/lib"
 	;;
-esac
-
-if test ".$With5lib" != ".no" ; then
-if test -d /usr/5lib ; then
-	# SunOS 3.x or 4.x
-	CPPFLAGS="$CPPFLAGS -I/usr/5include"
+sun3*|sun4*)
+	test -d /usr/5lib && \
 	LIBS="$LIBS -L/usr/5lib"
-fi
-fi
+	;;
+esac
 
 if test ".$ac_cv_func_initscr" != .yes ; then
 	cf_save_LIBS="$LIBS"
