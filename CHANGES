@@ -1,3 +1,16 @@
+2003-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SYSV:
+	back to Slackware 3.6, and found it did not flag any warnings.  But adding
+	an include for <stdlib.h> got it to cooperate.  No more "#ifdef linux".
+
+	* AcSplit/CF_X_FREETYPE:
+	rewrote this to use freetype-config (which seems to work for Debian 3.0r1
+	and current Debian testing - probably not for Redhat9).  The problem was
+	that Debian/testing didn't configure Xft because there's a magic header
+	needed to compile the test-case.  It seems that freetype-config supplies
+	the appropriate -I with "freetype-config --cflags".
+
 2003-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
