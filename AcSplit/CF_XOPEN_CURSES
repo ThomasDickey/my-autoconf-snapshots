@@ -15,5 +15,5 @@ AC_TRY_LINK([
 	long x = winnstr(stdscr, "", 0)],
 	[cf_cv_need_xopen_extension=yes],
 	[cf_cv_need_xopen_extension=no])])])
-test $cf_cv_need_xopen_extension = yes && AC_DEFINE(_XOPEN_SOURCE_EXTENDED)
+test $cf_cv_need_xopen_extension = yes && CFLAGS="$CFLAGS -D_XOPEN_SOURCE_EXTENDED"
 ])dnl

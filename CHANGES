@@ -1,3 +1,19 @@
+1999-11-27  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_STDCPP_LIBRARY: drop check for math lib
+
+	* AcSplit/CF_GPP_LIBRARY:
+	drop check for math lib, since it's not really needed
+
+	* AcSplit/CF_SRC_MODULES:
+	tweaks to let me drop Ada95 directory by checking directly for enclosed makefile
+
+1999-11-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	put the definition in $CFLAGS since we want to ensure it happens right
+	at the beginning of the compile
+
 1999-11-11  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_TERMCAP_LIBS:
