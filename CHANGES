@@ -1,3 +1,13 @@
+2003-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS:
+	add the result to $CFLAGS, for the fallback, to match the CF_IMAKE_CFLAGS
+	behavior
+
+	* AcSplit/CF_IMAKE_CFLAGS: add comments for parameters
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS: ci-aclocal generated header
+
 2003-04-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_YACC_ERROR: add some messages for the configure-output

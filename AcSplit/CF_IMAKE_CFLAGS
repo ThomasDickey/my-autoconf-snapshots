@@ -1,8 +1,12 @@
-dnl CF_IMAKE_CFLAGS version: 13 updated: 2001/02/15 01:30:11
+dnl CF_IMAKE_CFLAGS version: 14 updated: 2003/04/12 15:42:00
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
 dnl this.
+dnl
+dnl Parameters (used in constructing a sample Imakefile):
+dnl	$1 = optional value to append to $IMAKE_CFLAGS
+dnl	$2 = optional value to append to $IMAKE_LOADFLAGS
 AC_DEFUN([CF_IMAKE_CFLAGS],
 [
 AC_PATH_PROGS(IMAKE,xmkmf imake)
