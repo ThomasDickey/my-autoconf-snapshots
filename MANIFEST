@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t19981224
+MANIFEST for my-autoconf, version t19981225
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -119,6 +119,7 @@ AcSplit/CF_PATH_MAILER          tin script to find default mailer-program
 AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PATH symbol
 AcSplit/CF_PATH_SYNTAX          check pathname syntax for CF_WITH_PATH and CF_WITH_PATHLIST
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
+AcSplit/CF_POSIX_JC             check for POSIX-style sigaction
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
