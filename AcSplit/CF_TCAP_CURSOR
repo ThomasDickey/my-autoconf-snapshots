@@ -1,0 +1,20 @@
+dnl CF_TCAP_CURSOR version: 2 updated: 1997/09/07 15:13:55
+dnl --------------
+dnl Test if curses defines KD, KU, etc., for cursor keys
+dnl
+dnl	I found at least one implementation of curses that didn't declare these
+dnl	variables in the include-file, but did define them in the library.  If
+dnl	they're not in the include-file, ignore them.  Otherwise, assume that
+dnl	curses initializes them in 'initscr()'.
+dnl
+AC_DEFUN([CF_TCAP_CURSOR],
+[
+AC_MSG_CHECKING(for termcap-cursor variables)
+AC_CACHE_VAL(cf_cv_termcap_cursor,[
+	AC_TRY_COMPILE([#include <curses.h>],
+		[char *d=KD, *u=KU, *r=KR, *l=KL],
+		[cf_cv_termcap_cursor=yes],
+		[cf_cv_termcap_cursor=no])])
+AC_MSG_RESULT($cf_cv_termcap_cursor)
+test $cf_cv_termcap_cursor = yes && AC_DEFINE(HAVE_TCAP_CURSOR)
+])dnl

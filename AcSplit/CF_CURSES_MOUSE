@@ -1,0 +1,22 @@
+dnl CF_CURSES_MOUSE version: 2 updated: 1997/09/07 15:13:55
+dnl ---------------
+dnl Test for the existence of SysVr4 mouse support in curses. If we've not got
+dnl it, we'll simulate the interface (for xterm, at least).
+AC_DEFUN([CF_CURSES_MOUSE],
+[
+AC_MSG_CHECKING(for curses mouse-support)
+AC_CACHE_VAL(cf_cv_curses_mouse,[
+AC_TRY_LINK([#include <curses.h>],[
+	int x, y;
+	getmouse();
+	request_mouse_pos();
+	wmouse_position(stdscr, &x, &y);
+	mouse_on(TRUE);
+	mouse_off(FALSE);
+	mouse_set(0);],
+	[cf_cv_curses_mouse=yes],
+	[cf_cv_curses_mouse=no])
+])
+AC_MSG_RESULT($cf_cv_curses_mouse)
+test $cf_cv_curses_mouse = yes && AC_DEFINE(CURSES_HAS_MOUSE)
+])dnl

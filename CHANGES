@@ -1,3 +1,61 @@
+1997-09-07  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_CHECK_CACHE: add check for AC_CANONICAL host
+
+	* AcSplit/CF_DISABLE_ECHO: fix quoting of $@
+
+	* AcSplit/CF_DISABLE_ECHO: incorrect order for ECHO_LD
+
+	* AcSplit/CF_SED_CONFIG_H: cleanup
+
+	* AcSplit/CF_DISABLE_ECHO:
+	oops: vile 7.2b broke because I left out ECHO_LD
+
+	* AcSplit/CF_OUTPUT_IF_CHANGED: RCS_BASE
+
+	* AcSplit/CF_OUTPUT_IF_CHANGED: ci-aclocal generated header
+
+	* AcSplit/CF_SED_CONFIG_H: use CF_OUTPUT_IF_CHANGED
+
+	* AcSplit/CF_SED_CONFIG_H: RCS_BASE
+
+	* AcSplit/CF_MSG_LOG: ci-aclocal generated header
+
+	* AcSplit/CF_MSG_LOG: use symbol rather than number for file-descriptor
+
+	* AcSplit/CF_CURSES_FUNCS: use CF_UPPER rather than CF_UPPERCASE
+
+	* AcSplit/CF_CURSES_STYLE: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_STYLE, AcSplit/CF_HAVE_FUNCS:
+	use CF_UPPER rather than CF_UPPERCASE
+
+	* AcSplit/CF_ADD_LIBDIR: RCS_BASE
+
+	* AcSplit/CF_ADD_LIBDIR: ci-aclocal generated header
+
+	* AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_CHECK_REGEX: RCS_BASE
+
+	* AcSplit/CF_CHECK_REGEX: ci-aclocal generated header
+
+	* AcSplit/CF_FCNTL_VS_IOCTL, AcSplit/CF_POSIX_VDISABLE: RCS_BASE
+
+	* AcSplit/CF_FCNTL_VS_IOCTL: ci-aclocal generated header
+
+	* AcSplit/CF_TD_CURSES_LIBS: RCS_BASE
+
+	* AcSplit/CF_SYS_ERRLIST: merge td_lib (which needs both DECL and HAVE)
+
+	* AcSplit/CF_FUNC_LSTAT: RCS_BASE
+
+	* AcSplit/CF_FUNC_LSTAT: ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_DATA, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_CURSES_STYLE, AcSplit/CF_GMTOFF, AcSplit/CF_HAVE_FUNCS, AcSplit/CF_INCLUDE_PATH, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_RCS_SCCS, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	RCS_BASE
+
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_WAIT:
+	ci-aclocal generated header
+
 1997-09-06  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_SRC_MODULES, AcSplit/CF_LIB_RULES:

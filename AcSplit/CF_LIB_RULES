@@ -35,7 +35,7 @@ do
 		for cf_item in $CF_LIST_MODELS
 		do
 			echo 'Appending rules for '$cf_item' model ('$cf_dir')'
-			CF_UPPERCASE($cf_item,CF_ITEM)
+			CF_UPPER(CF_ITEM,$cf_item)
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
 			CF_OBJ_SUBDIR($cf_item,cf_subdir)
 

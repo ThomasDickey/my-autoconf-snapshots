@@ -1,0 +1,23 @@
+dnl CF_REGCMP_FUNCS version: 2 updated: 1997/09/07 15:13:55
+dnl ---------------
+dnl Test for the presence of regcmp/regex functions.
+AC_DEFUN([CF_REGCMP_FUNCS],
+[
+AC_HAVE_HEADERS(pw.h libgen.h)
+AC_MSG_CHECKING(regcmp/regex functions)
+AC_CACHE_VAL(cf_cv_REGCMP_func,[
+	CF_REGCMP_LIBS
+	if test $cf_cv_REGCMP_func = no; then
+		cf_save_LIBS="$LIBS"
+		LIBS="-lPW $LIBS"
+		CF_REGCMP_LIBS
+		LIBS="${cf_save_LIBS}"
+		test $cf_cv_REGCMP_func = yes && cf_cv_REGCMP_func="yes-lPW"
+	fi
+])
+AC_MSG_RESULT($cf_cv_REGCMP_func)
+if test $cf_cv_REGCMP_func != no; then
+	AC_DEFINE(HAVE_REGCMP_FUNCS)
+	test $cf_cv_REGCMP_func != yes && AC_CHECK_LIB(PW, regcmp)
+fi
+])dnl

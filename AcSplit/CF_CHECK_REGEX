@@ -1,0 +1,18 @@
+dnl CF_CHECK_REGEX version: 2 updated: 1997/09/07 17:43:58
+dnl --------------
+dnl Tests for the ensemble of include-files and functions that make up the
+dnl host's regular expression parsing.
+dnl
+dnl Only use REGCMP functions if no other is available, to avoid spurious
+dnl match on HP/UX with its broken -lPW.
+AC_DEFUN([CF_CHECK_REGEX],
+[
+CF_REGEX_H_FUNCS
+CF_REGEXPR_H_FUNCS
+CF_RE_COMP_FUNCS
+if	test $cf_cv_REGEX_H = no && \
+	test $cf_cv_REGEXPR_H = no && \
+	test $cf_cv_RE_COMP_func = no ; then
+	CF_REGCMP_FUNCS
+fi
+])dnl
