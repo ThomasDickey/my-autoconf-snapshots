@@ -48,7 +48,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		# tested with Linux 2.0.29 and gcc 2.7.2 (ELF)
 		CC_SHARED_OPTS='-fPIC'
  		MK_SHARED_LIB='gcc -o $[@].$(REL_VERSION) -L../lib -shared -Wl,-soname,`basename $[@].$(ABI_VERSION)`,-stats,$(SHLIB_LIST)-lc'
-		test $cf_cv_ld_rpath = yes && MK_SHARED_LIB="$MK_SHARED_LIB -Wl,-rpath,\$(libdir)"
+		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-Wl,-rpath,"
 		if test $DFT_LWR_MODEL = "shared" ; then
  			LOCAL_LDFLAGS='-Wl,-rpath,../lib'
  			LOCAL_LDFLAGS2='-Wl,-rpath,../../lib'
@@ -65,7 +65,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		# link with shared libs).
 		CC_SHARED_OPTS=''
  		MK_SHARED_LIB='$(LD) -o $[@].$(REL_VERSION) -set_version $(ABI_VERSION):$(REL_VERSION) -expect_unresolved "*" -shared -soname `basename $[@].$(ABI_VERSION)`'
-		test $cf_cv_ld_rpath = yes && MK_SHARED_LIB="$MK_SHARED_LIB -rpath \$(libdir)"
+		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-rpath"
 		case $host_os in
 		osf4*)
  			MK_SHARED_LIB="${MK_SHARED_LIB} -msym"
@@ -96,6 +96,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 			CC_SHARED_OPTS='-KPIC'
 		fi
 		MK_SHARED_LIB='$(LD) -dy -G -h `basename $[@].$(ABI_VERSION)` -o $[@].$(REL_VERSION)'
+		test $cf_cv_ld_rpath = yes && cf_ld_rpath_opt="-R"
 		cf_cv_do_symlinks=yes
 		;;
 	unix_sv*)
@@ -108,6 +109,18 @@ AC_DEFUN([CF_SHARED_OPTS],
 		MK_SHARED_LIB='echo unknown'
 		;;
 	esac
+
+	if test -n "$cf_ld_rpath_opt" ; then
+		AC_MSG_CHECKING(if we need a space after rpath option)
+		cf_save_LIBS="$LIBS"
+		LIBS="$LIBS ${cf_ld_rpath_opt}/usr/lib"
+		AC_TRY_LINK(, , cf_rpath_space=no, cf_rpath_space=yes)
+		LIBS="$cf_save_LIBS"
+		AC_MSG_RESULT($cf_rpath_space)
+		test $cf_rpath_space = yes && cf_ld_rpath_opt="$cf_ld_rpath_opt "
+		MK_SHARED_LIB="$MK_SHARED_LIB $cf_ld_rpath_opt\$(libdir)"
+	fi
+
 	AC_SUBST(CC_SHARED_OPTS)
 	AC_SUBST(LD_SHARED_OPTS)
 	AC_SUBST(MK_SHARED_LIB)
