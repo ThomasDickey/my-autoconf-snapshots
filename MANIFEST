@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20021229
+MANIFEST for my-autoconf, version t20030104
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -281,6 +281,7 @@ AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
 AcSplit/CF_WITH_DBMALLOC        configure with dbmalloc (add)
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
+AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
