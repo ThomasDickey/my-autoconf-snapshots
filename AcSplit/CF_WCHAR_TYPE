@@ -1,0 +1,45 @@
+dnl CF_WCHAR_TYPE version: 1 updated: 2003/03/22 19:13:43
+dnl -------------
+dnl Check if type wide-character type $1 is declared, and if so, which header
+dnl file is needed.  The second parameter is used to set a shell variable when
+dnl the type is not found.  The first parameter sets a shell variable for the
+dnl opposite sense.
+AC_DEFUN([CF_WCHAR_TYPE],
+[
+# This is needed on Tru64 5.0 to declare $1
+AC_CACHE_CHECK(if we must include wchar.h to declare $1,cf_cv_$1,[
+AC_TRY_COMPILE([
+#include <stdlib.h>
+#ifdef HAVE_LIBUTF8_H
+#include <libutf8.h>
+#endif],
+	[$1 state],
+	[cf_cv_$1=no],
+	[AC_TRY_COMPILE([
+#include <stdlib.h>
+#include <wchar.h>
+#ifdef HAVE_LIBUTF8_H
+#include <libutf8.h>
+#endif],
+	[$1 value],
+	[cf_cv_$1=yes],
+	[cf_cv_$1=unknown])])])
+
+if test "$cf_cv_$1" = yes ; then
+	AC_DEFINE(NEED_WCHAR_H)
+	NEED_WCHAR_H=1
+fi
+
+ifelse($2,,,[
+# if we do not find $1 in either place, use substitution to provide a fallback.
+if test "$cf_cv_$1" = unknown ; then
+	$2=1
+fi
+])
+ifelse($3,,,[
+# if we find $1 in either place, use substitution to provide a fallback.
+if test "$cf_cv_$1" != unknown ; then
+	$3=1
+fi
+])
+])dnl
