@@ -13,7 +13,7 @@ ifelse($4,,[withval="${$3}"],[withval="${$3-ifelse($5,,$4,$5)}"]))dnl
 case ".$withval" in #(vi
 ./*) #(vi
   ;;
-.\${*) #(vi
+.\[$]{*prefix}*) #(vi
   eval withval="$withval"
   case ".$withval" in #(vi
   .NONE/*)
@@ -21,6 +21,9 @@ case ".$withval" in #(vi
     ;;
   esac
   ;; #(vi
+.NONE/*)
+  withval=`echo $withval | sed -e s@NONE@$ac_default_prefix@`
+  ;;
 *)
   AC_ERROR(expected a pathname for $1)
   ;;

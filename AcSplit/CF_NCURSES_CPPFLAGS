@@ -21,7 +21,7 @@ AC_CACHE_VAL(cf_cv_ncurses_header,[
 printf("%s\n", NCURSES_VERSION);
 #else
 #ifdef __NCURSES_H
-printf("pre-1.8.7\n");
+printf("maybe 1.8.7\n");
 #else
 make an error
 #endif
@@ -37,7 +37,7 @@ make an error
 			ncurses.h
 		do
 			if egrep "NCURSES" $cf_incdir/$cf_header 1>&5 2>&1; then
-				cf_cv_ncurses_header=$cf_incdir/$cf_header 
+				cf_cv_ncurses_header=$cf_incdir/$cf_header
 				test -n "$verbose" && echo $ac_n "	... found $ac_c" 1>&6
 				break
 			fi

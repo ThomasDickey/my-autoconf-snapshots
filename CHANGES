@@ -1,3 +1,30 @@
+1997-10-18  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_NCURSES_CPPFLAGS: nit
+
+	* AcSplit/CF_ARG_OPTION: ci-aclocal generated header
+
+	* AcSplit/CF_ARG_OPTION: trimmed blanks
+
+	* install.sh: space on 1st line
+
+	* AcSplit/CF_WITH_PATH: fix my last change (pattern was not complete)
+
+	* AcSplit/CF_NCURSES_CPPFLAGS: correct a guess/message
+
+	* AcSplit/CF_SIZECHANGE: correct quoting of NEED_PTEM_H, for SCO
+
+	* AcSplit/CF_NCURSES_BROKEN: nit in output-message
+
+	* AcSplit/CF_NCURSES_LIBS:
+	ncurses 4.1 971011 needs extra boost for ncurses+gpm test
+
+1997-10-11  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIB_RULES: fix for uninstall in parallel directory
+
+	* AcSplit/CF_WITH_PATH: modify the workaround for exec-prefix=NONE
+
 1997-10-04  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_LIB_RULES: uninstall rather than deinstall
