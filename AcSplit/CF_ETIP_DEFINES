@@ -15,8 +15,8 @@ do
 AC_TRY_COMPILE([
 #include <etip.h.in>
 ],[],[
-	test -n "$cf_math" && AC_DEFINE(ETIP_NEEDS_${cf_math})
-	test -n "$cf_excp" && AC_DEFINE(ETIP_NEEDS_${cf_excp})
+	test -n "$cf_math" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_math})
+	test -n "$cf_excp" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_excp})
 	cf_result="$cf_math $cf_excp"
 	break
 ],[])

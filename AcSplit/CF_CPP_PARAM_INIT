@@ -1,0 +1,30 @@
+dnl Check if the C++ compiler accepts duplicate parameter initialization.  This
+dnl is a late feature for the standard and is not in some recent compilers
+dnl (1999/9/11).
+AC_DEFUN([CF_CPP_PARAM_INIT],
+[
+if test -n "$CXX" ; then
+AC_CACHE_CHECK(if $CXX accepts parameter initialization,cf_cv_cpp_param_init,[
+	AC_LANG_CPLUSPLUS
+	AC_TRY_RUN([
+class TEST {
+private:
+	int value;
+public:
+	TEST(int x = 1);
+	~TEST();
+};
+
+TEST::TEST(int x = 1)	// some compilers do not like second initializer
+{
+	value = x;
+}
+void main() { }
+],
+	[cf_cv_cpp_param_init=yes],
+	[cf_cv_cpp_param_init=no],
+	[cf_cv_cpp_param_init=unknown])
+])
+fi
+test "$cf_cv_cpp_param_init" = yes && AC_DEFINE(CPP_HAS_PARAM_INIT)
+])dnl
