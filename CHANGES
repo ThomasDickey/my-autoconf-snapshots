@@ -1,3 +1,7 @@
+2004-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_ICONV: ci-aclocal generated header
+
 2004-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_C_SOURCE: ci-aclocal generated header

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20041017
+MANIFEST for my-autoconf, version t20041021
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -105,6 +105,7 @@ AcSplit/CF_FUNC_CURSES_VERSION  check for a curses_version string vs curses_vers
 AcSplit/CF_FUNC_DLSYM           test for dlsym()
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6
+AcSplit/CF_FUNC_ICONV           macro to check for iconv() function and related definitions.
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_POLL            functional test for poll()
