@@ -1,3 +1,23 @@
+2005-02-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_C_SOURCE:
+	add -U_POSIX_C_SOURCE to avoid redefinition, e.g., with cygwin
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add an -U option to avoid redefinition warning with cygwin for -D_XOPEN_SOURCE
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	hmm - restore the complicated expression (needed for cygwin) and tune the
+	simpler expressions in fix_cflags.sed to (probably) work with Solaris
+
+2005-02-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_C_SOURCE:
+	add a check to avoid redefining _POSIX_SOURCE, e.g., with cygwin
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	simplify expression in fix_cflags.sed to work with pre-POSIX crap on Solaris.
+
 2005-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRC_MODULES: eliminate PROG_ARGS in favor of TINFO_ARGS

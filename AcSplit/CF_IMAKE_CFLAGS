@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 23 updated: 2004/11/30 19:04:33
+dnl CF_IMAKE_CFLAGS version: 25 updated: 2005/02/04 06:56:22
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -34,7 +34,9 @@ if mkdir conftestdir; then
 	cat >fix_cflags.sed <<'CF_EOF'
 s/\\//g
 s/"//g
-s/\(-D[[a-zA-Z0-9_]][[a-zA-Z0-9_]]*\)=\([[^\\"0-9 	]][[^ 	]]*\([[ 	]][[ 	]]*[[^- 	]][[^ 	]]*\)*\)/\1='\\"\2\\"'/g
+s/\(-D[[a-zA-Z0-9_]][[a-zA-Z0-9_]]*\)=\([[^\\'"0-9 	]][[^ 	]]*\([[ 	]][[ 	]]*[[^- 	]][[^ 	]]*\)*\)/\1='\\"\2\\"'/g
+s/\(-D[[a-zA-Z0-9_]][[a-zA-Z0-9_]]*\)=\([[^\\'"0-9 	]][[^ 	]]*\)[[ 	]]/\1='\\"\2\\"'/g
+s/\(-D[[a-zA-Z0-9_]][[a-zA-Z0-9_]]*\)=\([[^\\'"0-9 	]][[^ 	]]*\)$/\1='\\"\2\\"'/g
 s/^IMAKE[[ 	]]*/IMAKE_CFLAGS="/
 s/$/"/
 CF_EOF
