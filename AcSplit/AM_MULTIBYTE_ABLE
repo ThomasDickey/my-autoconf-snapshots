@@ -1,3 +1,5 @@
+dnl AM_MULTIBYTE_ABLE version: 5 updated: 2003/01/16 16:21:27
+dnl -----------------
 
 dnl check for required multibyte/widechar functions
 dnl Urs Janssen <urs@tin.org> 20021006
@@ -47,7 +49,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
         wchar_t format[3];
 
         putwc(0, 0);
-	fputwc(0, 0);
+        fputwc(0, 0);
         fwide(0, 0);
         mbtowc(wcb, icb, MB_CUR_MAX);
         mbstowcs(wcb, icb, 5);
