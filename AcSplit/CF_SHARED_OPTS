@@ -181,10 +181,14 @@ AC_DEFUN([CF_SHARED_OPTS],
 		fi
 		test $cf_cv_shlib_version = auto && cf_cv_shlib_version=rel
 		;;
-	unix_sv*)
-		# tested with UnixWare 1.1.2
-		CC_SHARED_OPTS='-KPIC'
-		MK_SHARED_LIB='$(LD) -d y -G -o $[@]'
+	sysv5uw7*|unix_sv*)
+		# tested with UnixWare 7.1.0 (gcc 2.95.2 and cc)
+		if test $ac_cv_prog_gcc = yes; then
+			CC_SHARED_OPTS='-fpic'
+		else
+			CC_SHARED_OPTS='-KPIC'
+		fi
+		MK_SHARED_LIB='$(LD) -d y -G -o $@'
 		;;
 	*)
 		CC_SHARED_OPTS='unknown'
