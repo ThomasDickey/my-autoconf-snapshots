@@ -9,7 +9,6 @@ AC_DEFUN([CF_FIND_LIBRARY],
 [
 	cf_cv_have_lib_$1=no
 	AC_CHECK_FUNC($4,cf_cv_have_lib_$1=yes,[
-		ac_cv_func_$4=
 		cf_save_LIBS="$LIBS"
 		AC_MSG_CHECKING(for $4 in -l$1)
 		LIBS="-l$1 $LIBS"

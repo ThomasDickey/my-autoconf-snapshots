@@ -1,0 +1,15 @@
+dnl Check for existence of alternate-character-set support in curses, so we
+dnl can decide to use it for box characters.
+dnl 
+AC_DEFUN([CF_ALT_CHAR_SET],
+[
+AC_MSG_CHECKING([if curses supports alternate-character set])
+AC_CACHE_VAL(cf_cv_alt_char_set,[
+	AC_TRY_LINK([
+#include <$cf_cv_ncurses_header>
+	],[chtype x = acs_map['l']; acs_map['m'] = 0],
+	[cf_cv_alt_char_set=yes],  
+	[cf_cv_alt_char_set=no])])
+AC_MSG_RESULT($cf_cv_alt_char_set)
+test $cf_cv_alt_char_set = yes && AC_DEFINE(ALT_CHAR_SET)
+])dnl

@@ -1,0 +1,18 @@
+AC_DEFUN([CF_FANCY_CURSES],
+[
+AC_MSG_CHECKING(if curses supports fancy attributes)
+AC_CACHE_VAL(cf_cv_fancy_curses,[
+	AC_TRY_LINK([
+#include <$cf_cv_ncurses_header>
+],
+	[attrset(A_UNDERLINE|A_BOLD|A_REVERSE);
+	 wattrset(stdscr, A_BLINK|A_DIM);
+	 attroff(A_BOLD);
+	 keypad(stdscr,TRUE);
+	],
+	[cf_cv_fancy_curses=yes],
+	[cf_cv_fancy_curses=no])
+	])
+AC_MSG_RESULT($cf_cv_fancy_curses)
+test $cf_cv_fancy_curses = yes && AC_DEFINE(FANCY_CURSES)
+])

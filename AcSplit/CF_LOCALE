@@ -1,0 +1,13 @@
+dnl Check if we've got setlocale() and its header, <locale.h>
+AC_DEFUN([CF_LOCALE],
+[
+AC_MSG_CHECKING(for setlocale())
+AC_CACHE_VAL(cf_cv_locale,[
+AC_TRY_LINK([#include <locale.h>],
+	[setlocale(LC_ALL, "")],
+	[cf_cv_locale=yes],
+	[cf_cv_locale=no])
+	])
+AC_MSG_RESULT($cf_cv_locale)
+test $cf_cv_locale = yes && AC_DEFINE(LOCALE)
+])

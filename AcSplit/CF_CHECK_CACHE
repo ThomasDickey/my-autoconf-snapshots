@@ -1,0 +1,20 @@
+dnl Check if we're accidentally using a cache from a different machine.
+dnl Derive the system name, as a check for reusing the autoconf cache.
+dnl
+AC_DEFUN([CF_CHECK_CACHE],
+[
+system_name="`(uname -s -r) 2>/dev/null`"
+if test -n "$system_name" ; then
+	AC_DEFINE_UNQUOTED(SYSTEM_NAME,"$system_name")
+else
+	system_name="`(hostname) 2>/dev/null`"
+fi
+AC_CACHE_VAL(cf_cv_system_name,[cf_cv_system_name="$system_name"])
+test -z "$system_name" && system_name="$cf_cv_system_name"
+test -n "$cf_cv_system_name" && AC_MSG_RESULT("Configuring for $cf_cv_system_name")
+
+if test ".$system_name" != ".$cf_cv_system_name" ; then
+	AC_MSG_RESULT("Cached system name does not agree with actual")
+	AC_ERROR("Please remove config.cache and try again.")
+fi
+])dnl

@@ -1,0 +1,34 @@
+dnl Look for the curses libraries.  Older curses implementations may require
+dnl termcap/termlib to be linked as well.
+AC_DEFUN([CF_CURSES_LIBS],[
+AC_CHECK_FUNC(initscr,,[
+case $host_os in #(vi
+freebsd*)
+	AC_CHECK_LIB(mytinfo,tgoto,[LIBS="-lmytinfo $LIBS"])
+	;;
+esac
+if test -d /usr/5lib ; then
+	# SunOS 3.x or 4.x
+	CPPFLAGS="$CPPFLAGS -I/usr/5include"
+	LIBS="$LIBS -L/usr/5lib"
+# elif test -d /usr/ccs/lib ; then
+# 	# Solaris 5.x
+# 	LIBS="$LIBS -L/usr/ccs/lib -R/usr/ccs/lib"
+fi
+
+cf_save_LIBS="$LIBS"
+AC_CHECK_FUNC(tgoto,[
+	AC_CHECK_LIB(curses,initscr,,[
+		AC_ERROR(cannot link curses)])
+],[
+AC_CHECK_LIB(termcap, tgoto,[
+	LIBS="-ltermcap $cf_save_LIBS"
+	AC_CHECK_LIB(curses,initscr,,[
+		AC_CHECK_LIB(cursesX,initscr,,[
+			AC_CHECK_LIB(jcurses,initscr,,[
+				AC_ERROR(cannot link curses)])])])
+	],[
+	AC_CHECK_LIB(curses,initscr,,[
+		AC_ERROR(cannot link curses)])])
+])
+])])
