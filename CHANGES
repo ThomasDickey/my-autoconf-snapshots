@@ -1,3 +1,37 @@
+2002-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS:
+	add case for cygwin dll
+
+	* AcSplit/CF_LIB_SUFFIX: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES: first cut of changes for cygwin dll
+
+	* AcSplit/CF_LIBUTF8, AcSplit/CF_MBSTATE_T: RCS_BASE
+
+	* AcSplit/CF_MANPAGE_RENAMES:
+	add check for file in $srcdir/man, adjust param if found (makes this easier to use)
+	rename variable from $cf_manpage_renames to MANPAGE_RENAMES, for consistency
+
+	* AcSplit/CF_LIBUTF8, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MANPAGE_SYMLINKS, AcSplit/CF_MANPAGE_TBL, AcSplit/CF_MBSTATE_T, AcSplit/CF_SRC_MODULES:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MAN_PAGES:
+	oops - refix my Debian fix from 2001/3/19, which dropped the manpage-renames.
+	also, rename $cf_manpage_xxx to $MANPAGE_xxx variables for consistency.
+
+	* AcSplit/CF_SRC_MODULES:
+	remove -L$(libdir), since someone pointed out it's no longer needed for HPUX
+
+	* AcSplit/CF_MANPAGE_FORMAT:
+	rename variable from $cf_manpage_form to MANPAGE_FORMAT, for consistency
+
+	* AcSplit/CF_MANPAGE_SYMLINKS:
+	rename variable from $cf_manpage_symlinks to MANPAGE_SYMLINKS
+
+	* AcSplit/CF_MANPAGE_TBL:
+	rename variable from $cf_manpage_tbl to $MANPAGE_TBL, for consistency
+
 2002-01-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_TERMCAP: ci-aclocal generated header

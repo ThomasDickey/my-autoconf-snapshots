@@ -1,0 +1,32 @@
+dnl CF_MBSTATE_T version: 2 updated: 2002/01/19 22:51:32
+dnl ------------
+dnl Check if mbstate_t is declared, and if so, which header file.
+AC_DEFUN([CF_MBSTATE_T],
+[
+# This is needed on Tru64 5.0 to declare mbstate_t
+AC_CACHE_CHECK(if we must include wchar.h to declare mbstate_t,cf_cv_mbstate_t,[
+AC_TRY_COMPILE([
+#include <stdlib.h>
+#ifdef HAVE_LIBUTF8_H
+#include <libutf8.h>
+#endif],
+	[mbstate_t state],
+	[cf_cv_mbstate_t=no],
+	[AC_TRY_COMPILE([
+#include <stdlib.h>
+#include <wchar.h>
+#ifdef HAVE_LIBUTF8_H
+#include <libutf8.h>
+#endif],
+	[mbstate_t value],
+	[cf_cv_mbstate_t=yes],
+	[cf_cv_mbstate_t=unknown])])])
+
+if test "$cf_cv_mbstate_t" = yes ; then
+	AC_DEFINE(NEED_WCHAR_H)
+fi
+
+if test "$cf_cv_mbstate_t" != unknown ; then
+	AC_DEFINE(HAVE_MBSTATE_T)
+fi
+])dnl

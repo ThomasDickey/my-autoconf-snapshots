@@ -15,7 +15,7 @@ CF_MANPAGE_TBL
      cf_prefix="$prefix"
   fi
 
-  case "$cf_manpage_form" in # (vi
+  case "$MANPAGE_FORMAT" in # (vi
   *formatted*) # (vi
     cf_subdir='$mandir/cat'
     cf_format=yes
@@ -69,13 +69,13 @@ case \$i in #(vi
 		continue
 	fi
 CF_EOF
-if test "$cf_manpage_symlinks" = yes ; then
+if test "$MANPAGE_SYMLINKS" = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
 	aliases=\`sed -f \$srcdir/manlinks.sed \$inalias | sort -u\`
 CF_EOF
 fi
 
-if test "$cf_manpage_renames" = no ; then
+if test "$MANPAGE_RENAMES" = no ; then
 cat >>man/edit_man.sh <<CF_EOF
 	# perform program transformations for section 1 man pages
 	if test \$section = 1 ; then
@@ -86,7 +86,7 @@ cat >>man/edit_man.sh <<CF_EOF
 CF_EOF
 else
 cat >>man/edit_man.sh <<CF_EOF
-	target=\`grep "^\$source" $cf_manpage_renames | $AWK '{print \[$]2}'\`
+	target=\`grep "^\$source" $MANPAGE_RENAMES | $AWK '{print \[$]2}'\`
 	if test -z "\$target" ; then
 		echo '? missing rename for '\$source
 		target="\$source"
@@ -117,10 +117,16 @@ cat >>man/edit_man.sh <<CF_EOF
 CF_EOF
 	done
 	])
+if test -f $MANPAGE_RENAMES ; then
+cat >>man/edit_man.sh <<CF_EOF
+		< \$i | sed -f edit_man.sed >\$TMP
+CF_EOF
+else
 cat >>man/edit_man.sh <<CF_EOF
 		< \$i >\$TMP
 CF_EOF
-if test $cf_manpage_tbl = yes ; then
+fi
+if test $MANPAGE_TBL = yes ; then
 cat >>man/edit_man.sh <<CF_EOF
 	tbl \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
@@ -138,7 +144,7 @@ cat >>man/edit_man.sh <<CF_EOF
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
-case "$cf_manpage_form" in #(vi
+case "$MANPAGE_FORMAT" in #(vi
 *compress*) #(vi
 cat >>man/edit_man.sh <<CF_EOF
 	if test \$verb = installing ; then

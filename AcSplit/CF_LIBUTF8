@@ -1,0 +1,20 @@
+dnl CF_LIBUTF8 version: 2 updated: 2002/01/19 22:51:32
+dnl ----------
+dnl Check for libutf8
+AC_DEFUN([CF_LIBUTF8],
+[
+AC_CACHE_CHECK(for putwc in libutf8,cf_cv_libutf8,[
+	cf_save_LIBS="$LIBS"
+	LIBS="-lutf8 $LIBS"
+AC_TRY_LINK([
+#include <libutf8.h>],[putwc(0,0);],
+	[cf_cv_libutf8=yes],
+	[cf_cv_libutf8=no])
+	LIBS="$cf_save_LIBS"
+])
+
+if test "$cf_cv_libutf8" = yes ; then
+	AC_DEFINE(HAVE_LIBUTF8_H)
+	LIBS="-lutf8 $LIBS"
+fi
+])dnl
