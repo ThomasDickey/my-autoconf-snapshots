@@ -1,3 +1,7 @@
+2005-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRC_MODULES: eliminate PROG_ARGS in favor of TINFO_ARGS
+
 2005-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_TGETENT: typo in help message
