@@ -1,0 +1,10 @@
+dnl CF_DEFINE_STRING version: 2 updated: 2001/07/22 21:09:16
+dnl ----------------
+dnl Define a string which may contain escaped quotes or backslashes
+dnl $1 = symbol to define
+dnl $2 = the information we want to quote
+AC_DEFUN([CF_DEFINE_STRING],
+[
+cf_define=`echo $2|sed -e 's/\\\\/\\\\134/g' -e 's/^[[ 	]]\\+//' -e 's/[[ 	]]\\+$//' -e 's/"/\\\\042/g'`
+AC_DEFINE_UNQUOTED($1, "$cf_define")
+])dnl

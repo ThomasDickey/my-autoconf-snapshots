@@ -1,0 +1,58 @@
+dnl Look for a Bourne-shell compatible program from a list that we know about:
+dnl	ash	Almquist Shell (sh based; NetBSD)
+dnl	bash	Bourne Again Shell (sh, ksh based)
+dnl	jsh	Job Control Shell (sh based; Solaris)
+dnl	keysh 	Key Shell (ksh based; HP-UX)
+dnl	ksh	Korn Shell (sh based)
+dnl	pdksh	Public-domain ksh
+dnl	sh	Bourne Shell or POSIX Shell
+dnl	zsh	Z Shell (sh, ksh based)
+AC_DEFUN([CF_DEFAULT_SHELL],
+[
+AC_MSG_CHECKING(for the default shell program)
+cf_shell_progs="ifelse($1,,sh,[$1])"
+if test -z "$cf_shell_progs" ; then
+	cf_shell_progs="sh ksh bash zsh pdksh ash jsh keysh"
+	# TIN preferred default shell for BSD systems is csh.  Others are sh.
+	AC_TRY_COMPILE([
+#include <sys/params.h>],[
+#if (defined(BSD) && (BSD >= 199103))
+#else
+make an error
+#endif
+],[$cf_shell_progs="csh $cf_shell_progs"])
+fi
+CF_MSG_LOG(paths of shell programs: $cf_shell_progs)
+if test -f /etc/shells ; then
+	CF_MSG_LOG(/etc/shells)
+	for cf_prog in $cf_shell_progs
+	do
+		cf_path=`egrep '/'$cf_prog'$' /etc/shells 2>/dev/null`
+		if test -n "$cf_path"
+		then
+			if test -f "$cf_path"
+			then
+				DEFAULT_SHELL="$cf_path"
+				break
+			fi
+		fi
+	done
+	AC_MSG_RESULT($DEFAULT_SHELL)
+else
+	CF_MSG_LOG($PATH)
+AC_PATH_PROGS(DEFAULT_SHELL,
+	$cf_shell_progs,,
+	$PATH:/bin:/usr/bin:/usr/xpg4/bin:/usr/local/bin)
+fi
+if test -z "$DEFAULT_SHELL" ; then
+	AC_MSG_WARN(
+Cannot find the default shell you specified: $cf_shell_progs)
+	if test -f /bin/false ; then
+		AC_MSG_WARN(Using /bin/false instead)
+		DEFAULT_SHELL=/bin/false
+	else
+		AC_MSG_ERROR(Cannot use /bin/false because it does not exist)
+	fi
+fi
+AC_DEFINE_UNQUOTED(DEFAULT_SHELL,"$DEFAULT_SHELL")
+])dnl

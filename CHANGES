@@ -1,3 +1,22 @@
+2001-07-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_WITH_PROGRAM: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_PROGRAM:
+	get rid of changequote() because it's broken in autoconf 2.50 & up (tin)
+
+	* AcSplit/CF_BUNDLED_PCRE, AcSplit/CF_DEFAULT_SHELL, AcSplit/CF_DEFINE_STRING:
+	RCS_BASE
+
+	* AcSplit/CF_PATH_SYNTAX: allow "." as a pathname
+	fix quoting in the AC_ERROR parameter
+	(for tin).
+
+	* AcSplit/CF_CHECK_1_DECL, AcSplit/CF_DEFINE_STRING:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_1_DECL: spelling - tin
+
 2001-07-18  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_MAKEFLAGS:
