@@ -1,4 +1,4 @@
-dnl CF_CURSES_CPPFLAGS version: 6 updated: 2002/10/27 18:21:42
+dnl CF_CURSES_CPPFLAGS version: 7 updated: 2003/06/06 00:48:41
 dnl ------------------
 dnl Look for the curses headers.
 AC_DEFUN([CF_CURSES_CPPFLAGS],[
@@ -17,7 +17,7 @@ sunos3*|sunos4*)
 	;;
 esac
 ])
-test "$cf_cv_curses_incdir" != no && CPPFLAGS="$CPPFLAGS $cf_cv_curses_incdir"
+test "$cf_cv_curses_incdir" != no && CPPFLAGS="$cf_cv_curses_incdir $CPPFLAGS"
 
 AC_CACHE_CHECK(if we have identified curses headers,cf_cv_ncurses_header,[
 cf_cv_ncurses_header=none

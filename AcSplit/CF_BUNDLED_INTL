@@ -1,10 +1,18 @@
-dnl CF_BUNDLED_INTL version: 5 updated: 2002/11/17 12:25:28
+dnl CF_BUNDLED_INTL version: 6 updated: 2003/06/06 00:48:41
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
 dnl
 dnl $1 specifies either Makefile or makefile, defaulting to the former.
 dnl $2 if nonempty sets the option to --enable-nls rather than to --disable-nls
+dnl
+dnl Sets variables which can be used to substitute in makefiles:
+dnl	INTLDIR_MAKE - to make ./intl directory
+dnl	MSG_DIR_MAKE - to make ./po directory
+dnl	SUB_MAKEFILE - list of makefiles in ./intl, ./po directories
+dnl Defines
+dnl	HAVE_LIBGETTEXT_H if we're using ./intl
+dnl
 AC_DEFUN([CF_BUNDLED_INTL],[
 cf_makefile=ifelse($1,,Makefile,$1)
 
@@ -18,47 +26,30 @@ AM_GNU_GETTEXT(,,,[$2])
 INTLDIR_MAKE=
 MSG_DIR_MAKE=
 SUB_MAKEFILE=
-CF_OUR_MESSAGES
+
+dnl this updates SUB_MAKEFILE and MSG_DIR_MAKE:
+CF_OUR_MESSAGES($1)
+
 if test "$USE_INCLUDED_LIBINTL" = yes ; then
         if test "$nls_cv_force_use_gnu_gettext" = yes ; then
-		SUB_MAKEFILE="intl/$cf_makefile"
+		SUB_MAKEFILE="$SUB_MAKEFILE intl/$cf_makefile"
 	elif test "$nls_cv_use_gnu_gettext" = yes ; then
-		SUB_MAKEFILE="intl/$cf_makefile"
+		SUB_MAKEFILE="$SUB_MAKEFILE intl/$cf_makefile"
 	else
 		INTLDIR_MAKE="#"
-	fi
-	if test $use_our_messages = no ; then
-		MSG_DIR_MAKE="#"
-		SUB_MAKEFILE=
-	fi
-	if test "$use_our_messages" = yes ; then
-		SUB_MAKEFILE="$SUB_MAKEFILE po/$cf_makefile.in:po/$cf_makefile.inn"
-	else
-		MSG_DIR_MAKE="#"
 	fi
 	if test -z "$INTLDIR_MAKE"; then
 		AC_DEFINE(HAVE_LIBGETTEXT_H)
 	fi
-elif test "$USE_NLS" = yes ; then
-	AC_CHECK_HEADERS(libintl.h)
-	INTLDIR_MAKE="#"
-	SUB_MAKEFILE="po/$cf_makefile.in:po/$cf_makefile.inn"
 else
 	INTLDIR_MAKE="#"
-	MSG_DIR_MAKE="#"
-fi
-
-dnl We might want to use a preinstalled message library rather than the one
-dnl which is bundled with this program.
-if test -z "$MSG_DIR_MAKE" ; then
-	if test $use_our_messages = no ; then
-		MSG_DIR_MAKE="#"
-		SUB_MAKEFILE=
+	if test "$USE_NLS" = yes ; then
+		AC_CHECK_HEADERS(libintl.h)
 	fi
 fi
 
 if test -z "$INTLDIR_MAKE" ; then
-	CPPFLAGS="$CPPFLAGS -I../intl"
+	CPPFLAGS="-I../intl $CPPFLAGS"
 fi
 
 dnl FIXME:  we use this in lynx (the alternative is a spurious dependency upon
