@@ -1,4 +1,4 @@
-dnl CF_YACC_ERROR version: 2 updated: 1995/08/23 21:29:04
+dnl CF_YACC_ERROR version: 3 updated: 2003/04/05 12:23:48
 dnl -------------
 dnl	Test the supplied version of yacc to see which (if any) of the
 dnl	error-reporting enhancements will work.
@@ -27,11 +27,17 @@ dummy
 	;
 %%
 EOF
+
+AC_MSG_CHECKING(if $CPP can handle only .c files)
 $CPP yacctest.y >yacctest.out 2>/dev/null
 if test ! -s yacctest.out
 then
 	AC_DEFINE(CPP_DOES_ONLY_C_FILES)
+	AC_MSG_RESULT(yes)
+else
+	AC_MSG_RESULT(no)
 fi
+
 $YACC yacctest.y
 rm -f yacctest.*
 td_incl='#include "y.tab.c"'

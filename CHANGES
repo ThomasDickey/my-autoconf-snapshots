@@ -1,3 +1,7 @@
+2003-04-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_YACC_ERROR: add some messages for the configure-output
+
 2003-03-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XKB_BELL_EXT: RCS_BASE
