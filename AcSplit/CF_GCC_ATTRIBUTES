@@ -46,7 +46,7 @@ EOF
 	changequote([,])dnl
 	for cf_attribute in scanf printf unused noreturn
 	do
-		CF_UPPER($cf_attribute,CF_ATTRIBUTE)
+		CF_UPPER(CF_ATTRIBUTE,$cf_attribute)
 		cf_directive="__attribute__(($cf_attribute))"
 		echo "checking for gcc $cf_directive" 1>&AC_FD_CC
 		case $cf_attribute in

@@ -1,4 +1,4 @@
-dnl
+dnl Check if 'errno' is declared in <errno.h>
 AC_DEFUN([CF_ERRNO],
 [
 AC_MSG_CHECKING([for errno external decl])

@@ -1,0 +1,18 @@
+dnl SVr4 curses should have term.h as well (where it puts the definitions of
+dnl the low-level interface).  This may not be true in old/broken implementations,
+dnl as well as in misconfigured systems (e.g., gcc configured for Solaris 2.4
+dnl running with Solaris 2.5.1).
+AC_DEFUN([CF_CURSES_TERM_H],
+[
+AC_MSG_CHECKING([for term.h])
+AC_CACHE_VAL(cf_cv_have_term_h,[
+	AC_TRY_COMPILE([
+#include <curses.h>
+#include <term.h>],
+	[WINDOW *x],
+	[cf_cv_have_term_h=yes],
+	[cf_cv_have_term_h=no])
+	])
+AC_MSG_RESULT($cf_cv_have_term_h)
+test $cf_cv_have_term_h = yes && AC_DEFINE(HAVE_TERM_H)
+])dnl

@@ -1,3 +1,44 @@
+1997-09-06  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_SRC_MODULES, AcSplit/CF_LIB_RULES:
+	use CF_UPPER rather than CF_UPPERCASE
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SUBST_NCURSES_VERSION, AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BOOL_DECL, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_CXX_LIBRARY, AcSplit/CF_DIRS_TO_MAKE, AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_TYPE, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MAN_PAGES, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_PROG_INSTALL, AcSplit/CF_SPEED_TYPE, AcSplit/CF_SRC_MODULES, AcSplit/CF_SUBST, AcSplit/CF_SYSRELV, AcSplit/CF_SYSTYPE, AcSplit/CF_TYPEOF_CHTYPE, AcSplit/CF_WIDEC_SHIFT:
+	RCS_BASE
+
+	* AcSplit/CF_CXX_LIBRARY, AcSplit/CF_SUBST, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_MISSING_EXTERN:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MISSING_EXTERN: use CF_UPPER rather than CF_UPPERCASE
+
+	* AcSplit/CF_TYPE_OUTCHAR: merge with tin's version
+
+	* AcSplit/CF_GCC_WARNINGS: -Wwrite-strings too noisy except for xterm
+	set the AC_SUBSTR for EXTRA_CFLAGS here
+
+	* AcSplit/CF_ERRNO: comment
+
+	* AcSplit/CF_KILLPG, AcSplit/CF_RESTARTABLE_PIPEREAD: RCS_BASE
+
+	* AcSplit/CF_ANSI_CC_REQD: ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_CC_REQD: tested with vile 7.2
+
+	* AcSplit/CF_AC_PREREQ, AcSplit/CF_ANSI_QSORT, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_MISSING_CHECK, AcSplit/CF_MISSING_EXTERN, AcSplit/CF_PREREQ_COMPARE:
+	RCS_BASE
+
+	* AcSplit/CF_AC_PREREQ, AcSplit/CF_PREREQ_COMPARE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	CF_UPPER is reverse order from CF_UPPERCASE
+
+	* AcSplit/CF_ANSI_CC_REQD: RCS_BASE
+
+	* AcSplit/CF_ANSI_CC_CHECK: renamed from CF_ANSI_CC
+
+	* AcSplit/CF_ANSI_CC_CHECK: RCS_BASE
+
 1997-09-05  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_GCC_WARNINGS: nits for X-defines

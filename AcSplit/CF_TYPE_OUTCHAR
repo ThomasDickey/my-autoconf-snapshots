@@ -1,4 +1,4 @@
-dnl	Check for return and param type of 3rd -- OutChar() -- param of tputs().
+dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
 AC_DEFUN([CF_TYPE_OUTCHAR],
 [AC_MSG_CHECKING([declaration of tputs 3rd param])
 AC_CACHE_VAL(cf_cv_type_outchar,[
@@ -11,7 +11,9 @@ for S in "" const; do
 	AC_TRY_COMPILE([
 #ifdef USE_TERMINFO
 #include <curses.h>
+#if HAVE_TERM_H
 #include <term.h>
+#endif
 #else
 #if HAVE_CURSES_H
 #include <curses.h>	/* FIXME: this should be included only for terminfo */

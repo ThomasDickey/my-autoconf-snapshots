@@ -1,0 +1,18 @@
+dnl Compute the library-suffix from the given model name
+AC_DEFUN([CF_LIB_SUFFIX],
+[
+	AC_REQUIRE([CF_SYSTYPE])
+	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
+	case $1 in
+	normal)  $2='.a'   ;;
+	debug)   $2='_g.a' ;;
+	profile) $2='_p.a' ;;
+	shared)
+		case $cf_cv_systype in
+		OpenBSD|NetBSD|FreeBSD)
+			$2='.so.$(REL_VERSION)' ;;
+		HP_UX)	$2='.sl'  ;;
+		*)	$2='.so'  ;;
+		esac
+	esac
+])dnl
