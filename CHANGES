@@ -1,3 +1,19 @@
+2003-02-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WCTYPE: add a check for -lw, needed for Solaris
+
+	* AcSplit/CF_X_ATHENA_LIBS: ci-aclocal generated header
+
+	* AcSplit/CF_X_ATHENA_LIBS:
+	oops - the script didn't really add $X_PRE_LIBS and $X_EXTRA_LIBS since I
+	used a macro that didn't use that parameter.
+
+	* AcSplit/CF_LOCALE: ci-aclocal generated header
+
+	* AcSplit/CF_LOCALE:
+	vile: modified the result so we can put a --with-locale option inside the
+	part where we're sure there's something to offer.
+
 2003-02-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HAVE_FUNCS: ci-aclocal generated header

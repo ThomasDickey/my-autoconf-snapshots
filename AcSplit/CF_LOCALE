@@ -1,4 +1,7 @@
-dnl Check if we've got setlocale() and its header, <locale.h>
+dnl CF_LOCALE version: 4 updated: 2003/02/16 08:16:04
+dnl ---------
+dnl Check if we have setlocale() and its header, <locale.h>
+dnl The optional parameter $1 tells what to do if we do have locale support.
 AC_DEFUN([CF_LOCALE],
 [
 AC_MSG_CHECKING(for setlocale())
@@ -9,5 +12,5 @@ AC_TRY_LINK([#include <locale.h>],
 	[cf_cv_locale=no])
 	])
 AC_MSG_RESULT($cf_cv_locale)
-test $cf_cv_locale = yes && AC_DEFINE(LOCALE)
+test $cf_cv_locale = yes && { ifelse($1,,AC_DEFINE(LOCALE),[$1]) }
 ])dnl
