@@ -1,0 +1,13 @@
+dnl This option causes manpages to be run through tbl(1) to generate tables
+dnl correctly.
+AC_DEFUN([CF_MANPAGE_TBL],
+[
+AC_MSG_CHECKING(for manpage tbl)
+
+AC_ARG_WITH(manpage-tbl,
+	[  --with-manpage-tbl      specify manpage processing with tbl],
+	[cf_manpage_tbl=$withval],
+	[cf_manpage_tbl=no])
+
+AC_MSG_RESULT($cf_manpage_tbl)
+])dnl

@@ -6,6 +6,7 @@ AC_DEFUN([CF_LIB_SUFFIX],
 [
 	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 	case $1 in
+	libtool) $2='.la'  ;;
 	normal)  $2='.a'   ;;
 	debug)   $2='_g.a' ;;
 	profile) $2='_p.a' ;;

@@ -10,7 +10,11 @@ AC_MSG_CHECKING(for src modules)
 
 # dependencies and linker-arguments for test-programs
 TEST_DEPS="${LIB_DIR}/${LIB_PREFIX}${LIB_NAME}${DFT_DEP_SUFFIX} $TEST_DEPS"
-TEST_ARGS="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARGS"
+if test "$DFT_LWR_MODEL" = "libtool"; then
+	TEST_ARGS="${TEST_DEPS}"
+else
+	TEST_ARGS="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARGS"
+fi
 
 # dependencies and linker-arguments for utility-programs
 PROG_ARGS="$TEST_ARGS"
@@ -45,7 +49,11 @@ do
 			AC_DEFINE_UNQUOTED(HAVE_${cf_have_include}_H)
 			AC_DEFINE_UNQUOTED(HAVE_LIB${cf_have_include})
 			TEST_DEPS="${LIB_DIR}/${LIB_PREFIX}${cf_dir}${DFT_DEP_SUFFIX} $TEST_DEPS"
-			TEST_ARGS="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARGS"
+			if test "$DFT_LWR_MODEL" = "libtool"; then
+				TEST_ARGS="${TEST_DEPS}"
+			else
+				TEST_ARGS="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARGS"
+			fi
 		fi
 	fi
 done
