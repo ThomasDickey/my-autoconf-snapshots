@@ -1,0 +1,76 @@
+dnl CF_TD_TEST_MAKEFILES version: 2 updated: 1997/09/11 23:08:06
+dnl --------------------
+dnl Append predefined lists to test/*/makefile.
+dnl
+dnl Also, make a series of "cd XXX && make" statements, which is understood by
+dnl all "make -n" commands.
+AC_DEFUN([CF_TD_TEST_MAKEFILES],
+[
+for p in $cf_cv_test_modules
+do
+	q=$srcdir/test/$p/modules
+	cf_out=test/$p/makefile
+	if test -f $q ; then
+		mv $cf_out $cf_out.tmp
+		echo "THIS=$p" >$cf_out
+		echo >>$cf_out
+		cat $cf_out.tmp >>$cf_out
+		rm -f $cf_out.tmp
+${AWK-awk} <$q >>$cf_out '
+BEGIN	{
+		found = 0;
+	}
+	{
+		if ( found == 0 )
+		{
+			printf "\nREF_FILES="
+			found = 1;
+		}
+		printf " \\\n\t%s.ref", [$]1
+	}
+'
+${AWK-awk} <$q >>$cf_out '
+BEGIN	{
+		found = 0;
+	}
+	{
+		if ( found == 0 )
+		{
+			printf "\n\nSCRIPTS= \\\n\trun_test.sh"
+			found = 1;
+		}
+		printf " \\\n\t%s.sh", [$]1
+	}
+'
+${AWK-awk} <$q >>$cf_out '
+BEGIN	{
+		found = 0;
+	}
+	{
+		if ( found == 0 )
+		{
+			printf "\n\nPROGS="
+			found = 1;
+		}
+		printf " \\\n\t%s", [$]1
+	}
+'
+	cat >>$cf_out <<CF_EOF
+
+
+${make_include_left}../td_rules.mk${make_include_right}
+
+# Fix for SunOS VPATH
+
+CF_EOF
+${AWK-awk} <$q >>$cf_out '
+	{
+		printf "%s.c:\n", [$]1
+	}
+'
+	echo "	cd $p &&	\$(MAKE) \$(MAKE_OPTS) \[$]@" >>test/makefile
+	fi
+done
+test -f $srcdir/test/makefile.end && \
+    cat $srcdir/test/makefile.end >>test/makefile
+])dnl

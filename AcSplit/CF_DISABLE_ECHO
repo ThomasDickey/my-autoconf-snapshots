@@ -6,7 +6,7 @@ CF_ARG_DISABLE(echo,
 	[  --disable-echo          test: display \"compiling\" commands],
 	[
     ECHO_LD='@echo linking [$]@;'
-    SHOW_CC='	@echo compiling [$]@'
+    SHOW_CC='	@echo compiling [$]<'
     ECHO_CC='@'
 ],[
     ECHO_LD=''
