@@ -1,3 +1,5 @@
+dnl CF_CRYPT_FUNC version: 3 updated: 1999/11/11 10:39:43
+dnl -------------
 dnl Check if we have a working crypt() function
 AC_DEFUN([CF_CRYPT_FUNC],
 [
@@ -27,7 +29,8 @@ int main() {
 	],[
 	cf_cv_crypt_works=yes],[
 	cf_cv_crypt_works=no],[
-	cf_cv_crypt_works=unknown])])
+	cf_cv_crypt_works=unknown])
+	LIBS="$cf_save_LIBS"])
 	if test "$cf_cv_crypt_works" != no ; then
 		AC_DEFINE(HAVE_CRYPT)
 		if test "$cf_cv_crypt_func" != yes ; then
