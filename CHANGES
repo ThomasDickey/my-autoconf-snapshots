@@ -1,3 +1,25 @@
+2003-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	"-Winline" is broken in gcc 3.3 because someone decided to turn on inlining
+	by default without adjusting the warning to be less intrusive when no explicit
+	inlining was requested for a function.  (gcc developers choose to not use
+	compiler warnings, of course ;-)
+
+	* AcSplit/CF_WITH_WARNINGS:
+	make check for gcc/g++ consistent with CF_GCC_WARNINGS
+
+	* AcSplit/CF_GCC_VERSION:
+	make this work for gcc 3.3, which writes its version as "gcc (GCC) 3.3".
+
+	* AcSplit/CF_GXX_VERSION: typo (missing brackets)
+
+	* AcSplit/CF_GCC_VERSION, AcSplit/CF_GXX_VERSION:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ENABLE_WARNINGS:
+	make check for gcc/g++ consistent with CF_GCC_WARNINGS
+
 2003-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2003-05-22 (from tin 1.5.18)
