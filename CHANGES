@@ -1,3 +1,9 @@
+1999-05-14  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_LIBRARY_PATH: from CDK, add /opt
+
+	* AcSplit/CF_HEADER_PATH: from CDK, add /opt to path
+
 1999-05-08  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_CHECK_EXTERN_DATA: RCS_BASE
