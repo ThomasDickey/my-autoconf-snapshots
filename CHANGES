@@ -1,3 +1,7 @@
+2002-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2002-10-21 (from tin 1.5.15)
+
 2002-10-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST:
