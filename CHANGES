@@ -1,3 +1,16 @@
+1997-10-22  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_NCURSES_CPPFLAGS: minor cleanup, add CF_NCURSES_VERSION
+
+	* AcSplit/CF_NCURSES_VERSION:
+	add an AC_TRY_RUN test, since unproto splits the preprocessor stuff I'd
+	concocted, making it unusable for getting the actual version.
+
+	* AcSplit/CF_FUNC_SYSTEM:
+	add dependency so I don't need to invoke CF_UNION_WAIT explicitly
+
+	* AcSplit/CF_FUNC_SYSTEM: ci-aclocal generated header
+
 1997-10-21  Thomas E. Dickey  <dickey@clark.net>
 
 	* AcSplit/CF_FUNC_WAIT, AcSplit/CF_WAIT_HEADERS: RCS_BASE

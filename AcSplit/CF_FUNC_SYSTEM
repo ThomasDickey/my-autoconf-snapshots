@@ -1,7 +1,10 @@
+dnl CF_FUNC_SYSTEM version: 3 updated: 1997/10/22 22:02:10
+dnl --------------
 dnl Check if the 'system()' function returns a usable status, or if not, try
 dnl to use the status returned by a SIGCHLD.
 AC_DEFUN([CF_FUNC_SYSTEM],
 [
+AC_REQUIRE([CF_UNION_WAIT])
 AC_MSG_CHECKING(if the system function returns usable child-status)
 AC_CACHE_VAL(cf_cv_system_status,[
 	AC_TRY_RUN([
