@@ -1,3 +1,11 @@
+2003-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: this is 1.294
+	from http://subversions.gnu.org/cgi-bin/viewcvs/config/config/
+
+	* config.guess: this is 1.284 (should have a timestamp for 2003/11/3).
+	from http://subversions.gnu.org/cgi-bin/viewcvs/config/config/
+
 2003-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_CURSES:
