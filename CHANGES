@@ -1,3 +1,11 @@
+1999-12-23  Thomas E. Dickey  <dickey@clark.net>
+
+	* AcSplit/CF_NETLIBS: ci-aclocal generated header
+
+	* AcSplit/CF_NETLIBS:
+	from Urs Janben, for tin 1.5.1 - change the test for inet (-linet) to
+	use AC_CHECK_LIB to get rid of warning wrt AC_HAVE_LIBRARY being obsolete.
+
 1999-12-12  Thomas E. Dickey  <dickey@clark.net>
 
 	* config.sub: from Kevin Buettner, recognize ia64 machine.
