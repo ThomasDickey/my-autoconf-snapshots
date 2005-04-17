@@ -1,3 +1,24 @@
+2005-04-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2005/2/10
+
+	* config.guess: 2005/3/24
+
+	* AcSplit/CF_XOPEN_SOURCE: Date: Fri, 15 Apr 2005 11:44:14 -0400
+	From: Chris Zubrzycki <beren@mac.com>
+	Subject: patch for new os x versions
+	To: Thomas Dickey <dickey@his.com>
+	X-Mailer: Apple Mail (2.728)
+
+	[-- Attachment #1 --]
+	[-- Type: text/plain, Encoding: 7bit, Size: 0.1K --]
+
+	This patch is needed for building newer versions of os x. the c++
+	demos won't build on 10.4 with the latest patches.
+
+
+	[-- Attachment #2: ncurses.patch --]
+
 2005-04-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS:
