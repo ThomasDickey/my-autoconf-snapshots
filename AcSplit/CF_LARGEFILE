@@ -1,0 +1,9 @@
+dnl CF_LARGEFILE version: 1 updated: 2005/05/22 12:42:40
+dnl ------------
+dnl Add checks for large file support.
+AC_DEFUN([CF_LARGEFILE],[
+ifdef([AC_FUNC_FSEEKO],[
+	AC_FUNC_FSEEKO
+	AC_SYS_LARGEFILE
+])
+])
