@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20050515
+MANIFEST for my-autoconf, version t20050522
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -143,6 +143,7 @@ AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
 AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
+AcSplit/CF_LARGEFILE            macro for large-file stuff
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
 AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LEX_VERSION          check for flex's version

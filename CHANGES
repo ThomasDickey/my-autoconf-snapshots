@@ -1,3 +1,7 @@
+2005-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE: ci-aclocal generated header
+
 2005-05-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE: trim whitespace from the last change
