@@ -1,3 +1,18 @@
+2005-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE:
+	add a workaround for ncurses' c++ headers, put the large-file definitions
+	into the Makefile
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	change CF_ATTRIBUTE to cf_ATTRIBUTE to avoid nuisance of finding CF_xx in
+	configure script
+
+	* AcSplit/CF_LIB_RULES:
+	rename CF_ITEM to cf_ITEM to avoid nuisance of finding CF_xxx in configure script
+
+	* AcSplit/CF_SRC_MODULES: add TEST_ARG2 and TEST_DEP2, for Ada95 tree
+
 2005-05-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LARGEFILE:
