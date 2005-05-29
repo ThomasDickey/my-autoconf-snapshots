@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 35 updated: 2004/09/18 17:54:16
+dnl CF_LIB_RULES version: 36 updated: 2005/05/28 13:16:28
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -102,7 +102,7 @@ do
 			for cf_item in $CF_LIST_MODELS
 			do
 			echo "Appending rules for ${cf_item} model (${cf_dir}: ${cf_subset})"
-			CF_UPPER(CF_ITEM,$cf_item)
+			CF_UPPER(cf_ITEM,$cf_item)
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
 			CF_OBJ_SUBDIR($cf_item,cf_subdir)
 
@@ -154,7 +154,7 @@ do
 			$AWK -f $srcdir/mk-1st.awk \
 				name=${cf_libname}${cf_dir_suffix} \
 				traces=$LIB_TRACING \
-				MODEL=$CF_ITEM \
+				MODEL=$cf_ITEM \
 				model=$cf_subdir \
 				prefix=$cf_prefix \
 				suffix=$cf_suffix \
@@ -179,7 +179,7 @@ do
 			$AWK -f $srcdir/mk-2nd.awk \
 				name=$cf_dir \
 				traces=$LIB_TRACING \
-				MODEL=$CF_ITEM \
+				MODEL=$cf_ITEM \
 				model=$cf_subdir \
 				subset=$cf_subset \
 				srcdir=$srcdir \

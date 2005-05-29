@@ -1,10 +1,21 @@
-dnl CF_LARGEFILE version: 2 updated: 2005/05/27 19:45:59
+dnl CF_LARGEFILE version: 3 updated: 2005/05/28 18:40:35
 dnl ------------
 dnl Add checks for large file support.
 AC_DEFUN([CF_LARGEFILE],[
 ifdef([AC_FUNC_FSEEKO],[
 	AC_FUNC_FSEEKO
 	AC_SYS_LARGEFILE
+
+	# Normally we would collect these definitions in the config.h,
+	# but (like _XOPEN_SOURCE), some environments rely on having these
+	# defined before any of the system headers are included.  Another
+	# case comes up with C++, e.g., on AIX the compiler compiles the
+	# header files by themselves before looking at the body files it is
+	# told to compile.  For ncurses, those header files do not include
+	# the config.h
+	test "$ac_cv_sys_large_files"      != no && CPPFLAGS="$CPPFLAGS -D_LARGE_FILES "
+	test "$ac_cv_sys_largefile_source" != no && CPPFLAGS="$CPPFLAGS -D_LARGEFILE_SOURCE "
+
 	AC_CACHE_CHECK(for struct dirent64, cf_cv_struct_dirent64,[
 		AC_TRY_COMPILE([
 #include <sys/types.h>

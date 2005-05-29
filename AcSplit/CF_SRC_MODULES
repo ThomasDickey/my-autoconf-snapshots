@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 17 updated: 2005/01/22 15:26:37
+dnl CF_SRC_MODULES version: 18 updated: 2005/05/28 12:58:54
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -12,10 +12,13 @@ AC_MSG_CHECKING(for src modules)
 
 # dependencies and linker-arguments for test-programs
 TEST_DEPS="${LIB_DIR}/${LIB_PREFIX}${LIB_NAME}${DFT_DEP_SUFFIX} $TEST_DEPS"
+TEST_DEP2="${LIB_2ND}/${LIB_PREFIX}${LIB_NAME}${DFT_DEP_SUFFIX} $TEST_DEP2"
 if test "$DFT_LWR_MODEL" = "libtool"; then
 	TEST_ARGS="${TEST_DEPS}"
+	TEST_ARG2="${TEST_DEP2}"
 else
 	TEST_ARGS="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARGS"
+	TEST_ARG2="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARG2"
 fi
 
 cf_cv_src_modules=
@@ -48,18 +51,27 @@ do
 			AC_DEFINE_UNQUOTED(HAVE_${cf_have_include}_H)
 			AC_DEFINE_UNQUOTED(HAVE_LIB${cf_have_include})
 			TEST_DEPS="${LIB_DIR}/${LIB_PREFIX}${cf_dir}${DFT_DEP_SUFFIX} $TEST_DEPS"
+			TEST_DEP2="${LIB_2ND}/${LIB_PREFIX}${cf_dir}${DFT_DEP_SUFFIX} $TEST_DEP2"
 			if test "$DFT_LWR_MODEL" = "libtool"; then
 				TEST_ARGS="${TEST_DEPS}"
+				TEST_ARG2="${TEST_DEP2}"
 			else
 				TEST_ARGS="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARGS"
+				TEST_ARG2="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARG2"
 			fi
 		fi
 	fi
 done
 AC_MSG_RESULT($cf_cv_src_modules)
+
 TEST_ARGS="-L${LIB_DIR} $TEST_ARGS"
-AC_SUBST(TEST_DEPS)
+TEST_ARG2="-L${LIB_2ND} $TEST_ARG2"
+
 AC_SUBST(TEST_ARGS)
+AC_SUBST(TEST_DEPS)
+
+AC_SUBST(TEST_ARG2)
+AC_SUBST(TEST_DEP2)
 
 SRC_SUBDIRS="man include"
 for cf_dir in $cf_cv_src_modules
