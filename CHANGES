@@ -1,3 +1,25 @@
+2005-06-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES: typo
+
+	* AcSplit/CF_MANPAGE_RENAMES:
+	move edit_man.sed into top-level directory
+
+	* AcSplit/CF_MAN_PAGES:
+	moved the manlinks.sed and edit_man.* stuff into top directory to simplify
+	reuse for tack
+
+2005-06-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPEOF_CHTYPE:
+	simplified this - we need 31 bits for ncurses' chtype.
+	Dan Jacobowitz (Debian maintainer) pointed out that the 'x' variable was
+	not initialized, making the test always say "long".  It turns out that the
+	test has been broken that way since I first implemented it in 1997.
+	Will probably rewrite the test, but decided first to repair it to make it
+	do what I intended.  (Also remove the ifdef for WANT_BITS - I don't need
+	39 bits in any configuration).
+
 2005-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LARGEFILE:

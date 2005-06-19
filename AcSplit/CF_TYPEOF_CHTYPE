@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 4 updated: 2000/10/04 09:18:40
+dnl CF_TYPEOF_CHTYPE version: 5 updated: 2005/06/11 21:37:37
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -10,31 +10,19 @@ AC_REQUIRE([CF_UNSIGNED_LITERALS])
 AC_MSG_CHECKING([for type of chtype])
 AC_CACHE_VAL(cf_cv_typeof_chtype,[
 		AC_TRY_RUN([
-#ifdef USE_WIDEC_SUPPORT
-#include <stddef.h>	/* we want wchar_t */
-#define WANT_BITS 39
-#else
 #define WANT_BITS 31
-#endif
 #include <stdio.h>
 int main()
 {
 	FILE *fp = fopen("cf_test.out", "w");
 	if (fp != 0) {
 		char *result = "long";
-#ifdef USE_WIDEC_SUPPORT
-		/*
-		 * If wchar_t is smaller than a long, it must be an int or a
-		 * short.  We prefer not to use a short anyway.
-		 */
-		if (sizeof(unsigned long) > sizeof(wchar_t))
-			result = "int";
-#endif
 		if (sizeof(unsigned long) > sizeof(unsigned int)) {
 			int n;
-			unsigned int x;
+			unsigned int x, y;
 			for (n = 0; n < WANT_BITS; n++) {
-				unsigned int y = (x >> n);
+				x = (1 << n);
+				y = (x >> n);
 				if (y != 1 || x == 0) {
 					x = 0;
 					break;

@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 27 updated: 2003/12/20 20:39:45
+dnl CF_MAN_PAGES version: 29 updated: 2005/06/18 19:42:52
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -47,7 +47,7 @@ case "$MANPAGE_FORMAT" in #(vi
   ;;
 esac
 
-cf_edit_man=man/edit_man.sh
+cf_edit_man=./edit_man.sh
 
 cat >$cf_edit_man <<CF_EOF
 #! /bin/sh
@@ -74,6 +74,7 @@ mandir=\[$]1
 shift || exit 1
 
 srcdir=\[$]1
+top_srcdir=\[$]srcdir/..
 shift || exit 1
 
 if test "\$form" = normal ; then
@@ -113,7 +114,7 @@ CF_EOF
 
 if test "$MANPAGE_ALIASES" != no ; then
 cat >>$cf_edit_man <<CF_EOF
-	aliases=\`sed -f \$srcdir/manlinks.sed \$inalias | sort -u\`
+	aliases=\`sed -f \$top_srcdir/man/manlinks.sed \$inalias | sort -u\`
 CF_EOF
 fi
 
@@ -164,7 +165,7 @@ CF_EOF
 
 if test -f $MANPAGE_RENAMES ; then
 cat >>$cf_edit_man <<CF_EOF
-		< \$i | sed -f $srcdir/edit_man.sed >\$TMP
+		< \$i | sed -f `pwd`/edit_man.sed >\$TMP
 CF_EOF
 else
 cat >>$cf_edit_man <<CF_EOF

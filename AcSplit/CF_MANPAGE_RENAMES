@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_RENAMES version: 6 updated: 2002/01/19 22:51:32
+dnl CF_MANPAGE_RENAMES version: 7 updated: 2005/06/18 18:51:57
 dnl ------------------
 dnl The Debian people have their own naming convention for manpages.  This
 dnl option lets us override the name of the file containing renaming, or
@@ -37,7 +37,7 @@ if test "$MANPAGE_RENAMES" != no ; then
   # Construct a sed-script to perform renaming within man-pages
   if test -n "$MANPAGE_RENAMES" ; then
     test ! -d man && mkdir man
-    sh $srcdir/man/make_sed.sh $MANPAGE_RENAMES >man/edit_man.sed
+    sh $srcdir/man/make_sed.sh $MANPAGE_RENAMES >./edit_man.sed
   fi
 fi
 
