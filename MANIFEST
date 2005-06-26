@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20050621
+MANIFEST for my-autoconf, version t20050625
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -151,6 +151,7 @@ AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
 AcSplit/CF_LIBUTF8              check for libutf8
 AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
 AcSplit/CF_LIB_RULES            append library-rules (ncurses)
+AcSplit/CF_LIB_SONAME           find path and soname of a shared library
 AcSplit/CF_LIB_SUFFIX           derive the library-suffix from the model
 AcSplit/CF_LIB_TYPE             derive the library type (suffix) from the model
 AcSplit/CF_LINK_DATAONLY        test for linker that doesn't link data-only references
@@ -307,6 +308,7 @@ AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
 AcSplit/CF_WITH_DBMALLOC        configure with dbmalloc (add)
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
+AcSplit/CF_WITH_GPM             command-line options for gpm
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool

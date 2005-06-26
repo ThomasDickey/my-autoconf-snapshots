@@ -290,8 +290,8 @@ case $basic_machine in
 	# because (1) that's what they normally are, and
 	# (2) the word "unknown" tends to confuse beginning users.
 	i*86 | x86_64)
-		basic_machine=$basic_machine-pc
-		;;
+	  basic_machine=$basic_machine-pc
+	  ;;
 	# Object if more than one company name word.
 	*-*-*)
 		echo Invalid configuration \`$1\': machine \`$basic_machine\' not recognized 1>&2
@@ -375,7 +375,7 @@ case $basic_machine in
 		basic_machine=a29k-amd
 		os=-udi
 		;;
-	abacus)
+    	abacus)
 		basic_machine=abacus-unknown
 		;;
 	adobe68k)
@@ -1147,8 +1147,8 @@ esac
 if [ x"$os" != x"" ]
 then
 case $os in
-	# First match some system type aliases
-	# that might get confused with valid system types.
+        # First match some system type aliases
+        # that might get confused with valid system types.
 	# -solaris* is a basic system type, with this one exception.
 	-solaris1 | -solaris1.*)
 		os=`echo $os | sed -e 's|solaris1|sunos4|'`
@@ -1228,7 +1228,7 @@ case $os in
 	-opened*)
 		os=-openedition
 		;;
-	-os400*)
+        -os400*)
 		os=-os400
 		;;
 	-wince*)
@@ -1277,7 +1277,7 @@ case $os in
 	-sinix*)
 		os=-sysv4
 		;;
-	-tpf*)
+        -tpf*)
 		os=-tpf
 		;;
 	-triton*)
@@ -1350,9 +1350,9 @@ case $basic_machine in
 	arm*-semi)
 		os=-aout
 		;;
-	c4x-* | tic4x-*)
-		os=-coff
-		;;
+    c4x-* | tic4x-*)
+        os=-coff
+        ;;
 	# This must come before the *-dec entry.
 	pdp10-*)
 		os=-tops20
@@ -1399,7 +1399,7 @@ case $basic_machine in
 	*-ibm)
 		os=-aix
 		;;
-	*-knuth)
+    	*-knuth)
 		os=-mmixware
 		;;
 	*-wec)

@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 5 updated: 2005/06/11 21:37:37
+dnl CF_TYPEOF_CHTYPE version: 6 updated: 2005/06/25 16:16:34
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -6,7 +6,6 @@ dnl long, but on newer 64-bit machines, probably want an int.  If we're using
 dnl wide characters, we have to have a type compatible with that, as well.
 AC_DEFUN([CF_TYPEOF_CHTYPE],
 [
-AC_REQUIRE([CF_UNSIGNED_LITERALS])
 AC_MSG_CHECKING([for type of chtype])
 AC_CACHE_VAL(cf_cv_typeof_chtype,[
 		AC_TRY_RUN([
@@ -49,10 +48,4 @@ AC_MSG_RESULT($cf_cv_typeof_chtype)
 
 AC_SUBST(cf_cv_typeof_chtype)
 AC_DEFINE_UNQUOTED(TYPEOF_CHTYPE,$cf_cv_typeof_chtype)
-
-cf_cv_1UL="1"
-test "$cf_cv_unsigned_literals" = yes && cf_cv_1UL="${cf_cv_1UL}U"
-test "$cf_cv_typeof_chtype"    = long && cf_cv_1UL="${cf_cv_1UL}L"
-AC_SUBST(cf_cv_1UL)
-
 ])dnl
