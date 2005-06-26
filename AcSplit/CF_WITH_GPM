@@ -1,0 +1,28 @@
+dnl CF_WITH_GPM version: 1 updated: 2005/06/25 15:47:45
+dnl -----------
+AC_DEFUN([CF_WITH_GPM],
+[
+AC_MSG_CHECKING(if you want to link with the GPM mouse library)
+AC_ARG_WITH(gpm,
+	[  --with-gpm              use Alessandro Rubini's GPM library],
+	[with_gpm=$withval],
+	[with_gpm=maybe])
+AC_MSG_RESULT($with_gpm)
+if test "$with_gpm" != no ; then
+	AC_CHECK_LIB(gpm,Gpm_Open,[
+		AC_CHECK_HEADER(gpm.h,[
+			AC_DEFINE(HAVE_GPM_H)
+			with_gpm=yes
+		],[
+			if test "$with_gpm" = yes ; then
+				AC_ERROR(Cannot find GPM header)
+			fi
+		])
+	],[
+		if test "$with_gpm" = yes ; then
+			AC_ERROR(Cannot link with GPM library)
+		fi
+		with_gpm=no
+	])
+fi
+])

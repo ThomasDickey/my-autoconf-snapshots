@@ -1,3 +1,19 @@
+2005-06-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPEOF_CHTYPE:
+	split-out the code that invokes CF_UNSIGNED_LITERALS, move that to
+	configure.in (ncurses) so I can make --with-chtype=XXX option set the
+	$cf_cv_1UL option properly
+
+	* AcSplit/CF_LIB_SONAME:
+	I don't want the path - just the soname, since that's what dlsym() needs
+
+	* AcSplit/CF_LIB_SONAME, AcSplit/CF_WITH_GPM:
+	ci-aclocal generated header
+
+	* config.sub, config.guess:
+	from http://subversions.gnu.org/cgi-bin/viewcvs/config/config/
+
 2005-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_INTL:
