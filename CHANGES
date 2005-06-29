@@ -1,3 +1,14 @@
+2005-06-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_ALLOCA: ci-aclocal generated header
+
+	* AcSplit/CF_GNU_SOURCE:
+	tin - long discussion with Urs regarding icc 9.0, decided to revert the
+	change that excluded Intel compiler from using -D_GNU_SOURCE, since it
+	seems icc is moving closer to gcc and it's a nuisance to try to duplicate
+	the ifdef's that _GNU_SOURCE sets.  Also for some such as vasprintf(),
+	that has to be defined anyway.
+
 2005-06-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TYPEOF_CHTYPE:

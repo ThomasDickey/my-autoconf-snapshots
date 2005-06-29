@@ -1,4 +1,4 @@
-dnl CF_GNU_SOURCE version: 4 updated: 2004/12/03 20:43:00
+dnl CF_GNU_SOURCE version: 5 updated: 2005/06/29 04:28:43
 dnl -------------
 dnl Check if we must define _GNU_SOURCE to get a reasonable value for
 dnl _XOPEN_SOURCE, upon which many POSIX definitions depend.  This is a defect
@@ -10,7 +10,6 @@ AC_DEFUN([CF_GNU_SOURCE],
 [
 AC_REQUIRE([CF_INTEL_COMPILER])
 
-if test "$INTEL_COMPILER" = no ; then
 AC_CACHE_CHECK(if we must define _GNU_SOURCE,cf_cv_gnu_source,[
 AC_TRY_COMPILE([#include <sys/types.h>],[
 #ifndef _XOPEN_SOURCE
@@ -29,5 +28,4 @@ make an error
 	])
 ])
 test "$cf_cv_gnu_source" = yes && CPPFLAGS="$CPPFLAGS -D_GNU_SOURCE"
-fi
 ])dnl
