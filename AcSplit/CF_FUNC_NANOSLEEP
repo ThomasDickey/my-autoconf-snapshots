@@ -1,0 +1,33 @@
+dnl CF_FUNC_NANOSLEEP version: 1 updated: 2005/07/02 15:38:12
+dnl -----------------
+dnl Check for existence of workable nanosleep() function.  Some systems, e.g.,
+dnl AIX 4.x, provide a non-working version.
+AC_DEFUN([CF_FUNC_NANOSLEEP],[
+AC_CACHE_CHECK(if nanosleep really works,cf_cv_func_nanosleep,[
+AC_TRY_RUN([
+#include <stdio.h>
+#include <errno.h>
+#include <time.h>
+
+#ifdef HAVE_SYS_TIME_H
+#include <sys/time.h>
+#endif
+
+int main() {
+	struct timespec ts1, ts2;
+	int code;
+	ts1.tv_sec  = 0;
+	ts1.tv_nsec = 750000000;
+	ts2.tv_sec  = 0;
+	ts2.tv_nsec = 0;
+	errno = 0;
+	code = nanosleep(&ts1, &ts2); /* on failure errno is ENOSYS. */
+	exit(code != 0);
+}
+],
+	[cf_cv_func_nanosleep=yes],
+	[cf_cv_func_nanosleep=no],
+	[cf_cv_func_nanosleep=unknown])])
+
+test "$cf_cv_func_nanosleep" = "yes" && AC_DEFINE(HAVE_NANOSLEEP)
+])
