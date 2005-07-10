@@ -1,3 +1,32 @@
+2005-07-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	If we have to define _XOPEN_SOURCE, don't try to cancel a previous -D option
+	with a -U: Urs Jansen reported that the Intel compiler and Cray compilers
+	don't process -U/-D options left-right right, but apparently all -D's and
+	then all -U's.
+
+	* AcSplit/CF_POSIX_C_SOURCE:
+	Urs Jansen reported that the Intel compiler and the Cray compiler both do
+	not process -U and -D options left-to-right.  That is
+		cc -Dxx -Uxx -Dxx=5
+	would result in a program that does not define xx.  So I modified this to
+	not use the -U to cancel, but to strip the conflicting -D from $CFLAGS and
+	$CPPFLAGS
+
+	* AcSplit/CF_REMOVE_DEFINE:
+	add the pattern for removing the final option
+	make this more readable
+
+	* AcSplit/CF_REMOVE_DEFINE: ci-aclocal generated header
+
+	* AcSplit/CF_GNU_SOURCE:
+	don't need an AC_REQUIRE for CF_INTEL_COMPILER anymore
+
+	* AcSplit/CF_GCC_WARNINGS:
+	updated to incorporate options for the Intel 9.0 compiler running on 64-bit
+	platform (some additional nuisances regarding loss of precision).
+
 2005-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_NANOSLEEP: ci-aclocal generated header
