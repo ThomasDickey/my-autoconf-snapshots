@@ -1,3 +1,9 @@
+2005-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE:
+	hedge that check for dirent64 - it comes in Solaris header only, and seems
+	to be for a compiler model that I cannot build.
+
 2005-07-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
