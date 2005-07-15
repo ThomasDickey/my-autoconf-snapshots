@@ -1,4 +1,4 @@
-dnl CF_POSIX_C_SOURCE version: 4 updated: 2005/07/09 16:12:18
+dnl CF_POSIX_C_SOURCE version: 5 updated: 2005/07/14 16:57:23
 dnl -----------------
 dnl Define _POSIX_C_SOURCE to the given level, and _POSIX_SOURCE if needed.
 dnl
@@ -59,13 +59,19 @@ make an error
 #endif],,
 	 [cf_cv_posix_c_source=no])
 	 CFLAGS="$cf_save_CFLAGS"
-	 CPPFLAGS="$cf_save_CPPFLAGS $cf_cv_posix_c_source"
+	 CPPFLAGS="$cf_save_CPPFLAGS"
 	])
 ])
 
 if test "$cf_cv_posix_c_source" != no ; then
 	CFLAGS="$cf_trim_CFLAGS"
-	CPPFLAGS="$cf_trim_CPPFLAGS $cf_cv_posix_c_source"
+	CPPFLAGS="$cf_trim_CPPFLAGS"
+	if test "$cf_cv_cc_u_d_options" = yes ; then
+		cf_temp_posix_c_source=`$cf_cv_posix_c_source | \
+				sed -e 's/-D/-U/' -e 's/=[[^ ]]*//'`
+		CPPFLAGS="$CPPFLAGS $cf_temp_posix_c_source"
+	fi
+	CPPFLAGS="$CPPFLAGS $cf_cv_posix_c_source"
 fi
 
 ])dnl

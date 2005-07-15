@@ -1,3 +1,13 @@
+2005-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_C_SOURCE: fix quoting (tested on cygwin)
+
+	* AcSplit/CF_XOPEN_SOURCE: use CF_PROG_CC_U_D
+
+	* AcSplit/CF_PROG_CC_U_D: ci-aclocal generated header
+
+	* AcSplit/CF_POSIX_C_SOURCE: use CF_CC_U_D_OPTIONS
+
 2005-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LARGEFILE:
