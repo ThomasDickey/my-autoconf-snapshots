@@ -1,3 +1,8 @@
+2005-07-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE:
+	oops - that is "struct dirent64", not "dirent64".
+
 2005-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_C_SOURCE: fix quoting (tested on cygwin)
