@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20050717
+MANIFEST for my-autoconf, version t20050723
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -62,6 +62,7 @@ AcSplit/CF_COREFILE             see if the application can dump a core file
 AcSplit/CF_CPP_CONCATS          check if cpp can do token-concatenation
 AcSplit/CF_CPP_EXPANDS          check if cpp can expand #token
 AcSplit/CF_CPP_PARAM_INIT       check for special C++ problem with param-init
+AcSplit/CF_CPP_STATIC_CAST      configure-check for static_cast c++ (ncurses)
 AcSplit/CF_CPP_VSCAN_FUNC       check for C++ usable vscan function (ncurses)
 AcSplit/CF_CRYPT_FUNC           check for existing/working crypt() function
 AcSplit/CF_CURSES_ACS_MAP       check for acs_map[] array (ncurses)

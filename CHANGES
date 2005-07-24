@@ -1,3 +1,10 @@
+2005-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GXX_WARNINGS:
+	suppress -Weffc++ warning in g++ 2.x (header files just aren't good enough)
+
+	* AcSplit/CF_CPP_STATIC_CAST: ci-aclocal generated header
+
 2005-07-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LARGEFILE:
