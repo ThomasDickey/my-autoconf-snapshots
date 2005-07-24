@@ -1,0 +1,55 @@
+dnl CF_CPP_STATIC_CAST version: 1 updated: 2005/07/23 16:52:43
+dnl ------------------
+dnl Check if the C++ compiler accepts static_cast in generics.  This appears to
+dnl not be supported in g++ before 3.0
+AC_DEFUN([CF_CPP_STATIC_CAST],
+[
+if test -n "$CXX"; then
+
+AC_CACHE_CHECK(if $CXX accepts static_cast,cf_cv_cpp_static_cast,[
+	AC_LANG_SAVE
+	AC_LANG_CPLUSPLUS
+
+	AC_TRY_COMPILE([
+class NCursesPanel
+{
+public:
+  NCursesPanel(int nlines,
+	       int ncols,
+	       int begin_y = 0,
+	       int begin_x = 0)
+  {
+  }
+
+  ~NCursesPanel();
+};
+
+template<class T> class NCursesUserPanel : public NCursesPanel
+{
+public:
+  NCursesUserPanel (int nlines,
+		    int ncols,
+		    int begin_y = 0,
+		    int begin_x = 0,
+		    const T* p_UserData = static_cast<T*>(0))
+    : NCursesPanel (nlines, ncols, begin_y, begin_x)
+  {
+  };
+  NCursesUserPanel(const T* p_UserData = static_cast<T*>(0)) : NCursesPanel()
+  {
+  };
+
+  virtual ~NCursesUserPanel() {};
+};
+],[
+	const char* p_UserData = static_cast<char*>(0)],
+	[cf_cv_cpp_static_cast=yes],
+	[cf_cv_cpp_static_cast=no])
+
+	AC_LANG_RESTORE
+])
+
+fi
+
+test "$cf_cv_cpp_static_cast" = yes && AC_DEFINE(CPP_HAS_STATIC_CAST)
+])dnl
