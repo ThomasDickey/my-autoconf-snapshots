@@ -1,32 +1,35 @@
-dnl CF_INTEL_COMPILER version: 1 updated: 2004/12/03 20:27:48
+dnl CF_INTEL_COMPILER version: 2 updated: 2005/07/25 16:48:46
 dnl -----------------
-dnl Check if the given compiler is really the Intel compiler for Linux.
-dnl It tries to imitate gcc, but does not return an error when it finds a
-dnl mismatch between prototypes, e.g., as exercised by CF_MISSING_CHECK.
+dnl Check if the given compiler is really the Intel compiler for Linux.  It
+dnl tries to imitate gcc, but does not return an error when it finds a mismatch
+dnl between prototypes, e.g., as exercised by CF_MISSING_CHECK.
 dnl
-dnl This macro should be run "soon" after AC_PROG_CC, to ensure that it is
-dnl not mistaken for gcc.
+dnl This macro should be run "soon" after AC_PROG_CC or AC_PROG_CPLUSPLUS, to
+dnl ensure that it is not mistaken for gcc/g++.  It is normally invoked from
+dnl the wrappers for gcc and g++ warnings.
+dnl
+dnl $1 = GCC (default) or GXX
+dnl $2 = INTEL_COMPILER (default) or INTEL_CPLUSPLUS
+dnl $3 = CFLAGS (default) or CXXFLAGS
 AC_DEFUN([CF_INTEL_COMPILER],[
-AC_REQUIRE([AC_PROG_CC])
+ifelse($2,,INTEL_COMPILER,[$2])=no
 
-INTEL_COMPILER=no
-
-if test "$GCC" = yes ; then
+if test "$ifelse($1,,[$1],GCC)" = yes ; then
 	case $host_os in
 	linux*|gnu*)
 		AC_MSG_CHECKING(if this is really Intel compiler)
-		cf_save_CFLAGS="$CFLAGS"
-		CFLAGS="$CFLAGS -no-gcc"
+		cf_save_CFLAGS="$ifelse($3,,CFLAGS,[$3])"
+		ifelse($3,,CFLAGS,[$3])="$ifelse($3,,CFLAGS,[$3]) -no-gcc"
 		AC_TRY_COMPILE([],[
 #ifdef __INTEL_COMPILER
 #else
 make an error
 #endif
-],[INTEL_COMPILER=yes
+],[ifelse($2,,INTEL_COMPILER,[$2])=yes
 cf_save_CFLAGS="$cf_save_CFLAGS -we147 -no-gcc"
 ],[])
-		CFLAGS="$cf_save_CFLAGS"
-		AC_MSG_RESULT($INTEL_COMPILER)
+		ifelse($3,,CFLAGS,[$3])="$cf_save_CFLAGS"
+		AC_MSG_RESULT($ifelse($2,,INTEL_COMPILER,[$2]))
 		;;
 	esac
 fi

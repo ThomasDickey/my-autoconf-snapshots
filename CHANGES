@@ -1,3 +1,13 @@
+2005-07-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GXX_VERSION:
+	make the pattern the same as for CF_GCC_VERSION
+
+	* AcSplit/CF_GXX_WARNINGS: add compiler-check for Intel-compiler
+
+	* AcSplit/CF_INTEL_COMPILER:
+	parameterized better to share between CF_GCC_WARNINGS and CF_GXX_WARNINGS
+
 2005-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_WARNINGS:

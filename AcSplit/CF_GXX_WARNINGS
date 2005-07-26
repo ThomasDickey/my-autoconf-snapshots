@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 3 updated: 2005/07/23 17:01:03
+dnl CF_GXX_WARNINGS version: 4 updated: 2005/07/25 16:48:46
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -19,36 +19,58 @@ dnl	If $with_ext_const is "yes", add a check for -Wwrite-strings
 dnl
 AC_DEFUN([CF_GXX_WARNINGS],
 [
-AC_REQUIRE([CF_INTEL_COMPILER])
+
+CF_INTEL_COMPILER(GXX,INTEL_CPLUSPLUS,CXXFLAGS)
+
 AC_REQUIRE([CF_GXX_VERSION])
 
 AC_LANG_SAVE
 AC_LANG_CPLUSPLUS
 
-if test "$INTEL_COMPILER" = yes
+cat > conftest.$ac_ext <<EOF
+#line __oline__ "configure"
+int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == 0) ; }
+EOF
+
+if test "$INTEL_CPLUSPLUS" = yes
 then
 # The "-wdXXX" options suppress warnings:
 # remark #1419: external declaration in primary source file
+# remark #1682: implicit conversion of a 64-bit integral type to a smaller integral type (potential portability problem)
+# remark #1683: explicit conversion of a 64-bit integral type to a smaller integral type (potential portability problem)
+# remark #1684: conversion from pointer to same-sized integral type (potential portability problem)
 # remark #193: zero used for undefined preprocessing identifier
 # remark #593: variable "curs_sb_left_arrow" was set but never used
 # remark #810: conversion from "int" to "Dimension={unsigned short}" may lose significant bits
 # remark #869: parameter "tw" was never referenced
 # remark #981: operands are evaluated in unspecified order
 # warning #269: invalid format string conversion
-	EXTRA_CXXFLAGS="$EXTRA_CXXFLAGS -Wall \
- -wd1419 \
- -wd193 \
- -wd279 \
- -wd593 \
- -wd810 \
- -wd869 \
- -wd981"
+
+	AC_CHECKING([for $CC warning options])
+	cf_save_CXXFLAGS="$CXXFLAGS"
+	EXTRA_CXXFLAGS="-Wall"
+	for cf_opt in $1 \
+		wd1419 \
+		wd1682 \
+		wd1683 \
+		wd1684 \
+		wd193 \
+		wd279 \
+		wd593 \
+		wd810 \
+		wd869 \
+		wd981
+	do
+		CXXFLAGS="$cf_save_CXXFLAGS $EXTRA_CXXFLAGS -$cf_opt"
+		if AC_TRY_EVAL(ac_compile); then
+			test -n "$verbose" && AC_MSG_RESULT(... -$cf_opt)
+			EXTRA_CXXFLAGS="$EXTRA_CXXFLAGS -$cf_opt"
+		fi
+	done
+	CXXFLAGS="$cf_save_CXXFLAGS"
+
 elif test "$GXX" = yes
 then
-	cat > conftest.$ac_ext <<EOF
-#line __oline__ "configure"
-int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == 0) ; }
-EOF
 	AC_CHECKING([for $CXX warning options])
 	cf_save_CXXFLAGS="$CXXFLAGS"
 	EXTRA_CXXFLAGS="-W -Wall"
@@ -84,9 +106,10 @@ EOF
 			test -n "$verbose" && AC_MSG_RESULT(... no -$cf_opt)
 		fi
 	done
-	rm -f conftest*
 	CXXFLAGS="$cf_save_CXXFLAGS"
 fi
+
+rm -f conftest*
 AC_LANG_RESTORE
 AC_SUBST(EXTRA_CXXFLAGS)
 ])dnl
