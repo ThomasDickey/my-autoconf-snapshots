@@ -1,4 +1,4 @@
-dnl CF_INTEL_COMPILER version: 2 updated: 2005/07/25 16:48:46
+dnl CF_INTEL_COMPILER version: 3 updated: 2005/08/06 18:37:29
 dnl -----------------
 dnl Check if the given compiler is really the Intel compiler for Linux.  It
 dnl tries to imitate gcc, but does not return an error when it finds a mismatch
@@ -17,7 +17,7 @@ ifelse($2,,INTEL_COMPILER,[$2])=no
 if test "$ifelse($1,,[$1],GCC)" = yes ; then
 	case $host_os in
 	linux*|gnu*)
-		AC_MSG_CHECKING(if this is really Intel compiler)
+		AC_MSG_CHECKING(if this is really Intel ifelse($1,GXX,C++,C) compiler)
 		cf_save_CFLAGS="$ifelse($3,,CFLAGS,[$3])"
 		ifelse($3,,CFLAGS,[$3])="$ifelse($3,,CFLAGS,[$3]) -no-gcc"
 		AC_TRY_COMPILE([],[
