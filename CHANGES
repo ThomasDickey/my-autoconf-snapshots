@@ -1,3 +1,14 @@
+2005-08-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INTEL_COMPILER: show which type of compiler we're checking
+
+	* AcSplit/CF_GCC_WARNINGS:
+	use explicit-params call to CF_INTEL_COMPILER - I think that autoconf was
+	confused by the two different calls and was only doing one until I did this.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	tweak to make ncurses build with QNX - to get strdup, etc.
+
 2005-07-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_VERSION:
