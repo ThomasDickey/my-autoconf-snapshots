@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 4 updated: 2005/07/25 16:48:46
+dnl CF_GXX_WARNINGS version: 5 updated: 2005/08/13 14:54:38
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -49,7 +49,7 @@ then
 	AC_CHECKING([for $CC warning options])
 	cf_save_CXXFLAGS="$CXXFLAGS"
 	EXTRA_CXXFLAGS="-Wall"
-	for cf_opt in $1 \
+	for cf_opt in \
 		wd1419 \
 		wd1682 \
 		wd1683 \

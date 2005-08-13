@@ -1,3 +1,7 @@
+2005-08-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GXX_WARNINGS: don't look for -Wno-undef for Intel compiler
+
 2005-08-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INTEL_COMPILER: show which type of compiler we're checking
