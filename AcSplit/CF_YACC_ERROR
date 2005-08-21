@@ -1,4 +1,4 @@
-dnl CF_YACC_ERROR version: 3 updated: 2003/04/05 12:23:48
+dnl CF_YACC_ERROR version: 4 updated: 2005/08/21 13:46:00
 dnl -------------
 dnl	Test the supplied version of yacc to see which (if any) of the
 dnl	error-reporting enhancements will work.
@@ -17,7 +17,7 @@ cat >yacctest.y <<EOF
 #include <ctype.h>
 #include "yyerror.c"
 static void yaccError(s) char *s; { exit(0); }
-int yylex ARGS((void))
+int yylex (void)
 { return 1; }
 %}
 %%
