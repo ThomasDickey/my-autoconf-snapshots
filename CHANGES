@@ -1,3 +1,8 @@
+2005-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POPEN_TEST, AcSplit/CF_YACC_ERROR:
+	we don't use ARGS() macro anymore
+
 2005-08-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_WARNINGS: don't look for -Wno-undef for Intel compiler
