@@ -1,3 +1,19 @@
+2005-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_VERSION, AcSplit/CF_GXX_VERSION:
+	fix to work with output from cross-compilers that emit a platform name, e.g.,
+		i586-pc-msdosdjgpp-c++ (GCC) 3.3
+	The "586" would be interpreted as a version number (ncurses report by
+	Frank van Vugt <ftm.van.vugt@foxi.nl>, regarding a different compiler
+	arm-sa1100-linux-gnu-g++ (GCC) 4.0.1").
+
+2005-08-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TAR_OPTIONS:
+	Doug Kaufman (lynx) added $EXEEXT to the paths used for tar, etc.
+	But I'm pretty sure that on cygwin I'll not be getting the extension
+	from CF_PATH_PROG, so I duplicated the pattern, so it has with/without.
+
 2005-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POPEN_TEST, AcSplit/CF_YACC_ERROR:
