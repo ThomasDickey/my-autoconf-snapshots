@@ -1,3 +1,7 @@
+2005-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_CHAR_CLASSES: ci-aclocal generated header
+
 2005-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_VERSION, AcSplit/CF_GXX_VERSION:

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20050827
+MANIFEST for my-autoconf, version t20050904
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -148,6 +148,7 @@ AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
 AcSplit/CF_LARGEFILE            macro for large-file stuff
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
+AcSplit/CF_LEX_CHAR_CLASSES     check for character-classes in (f)lex
 AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LEX_VERSION          check for flex's version
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
