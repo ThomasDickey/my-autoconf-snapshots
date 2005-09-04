@@ -1,0 +1,25 @@
+dnl CF_LEX_CHAR_CLASSES version: 1 updated: 2005/09/04 14:56:57
+dnl -------------------
+dnl Check if the lex/flex program accepts character-classes, i.e., [:alpha:],
+dnl which are said to be a POSIX feature.
+AC_DEFUN([CF_LEX_CHAR_CLASSES],[
+AC_MSG_CHECKING(if $LEX supports character classes)
+cat >conftest.l <<CF_EOF
+%%
+IDENT	[[[[:alpha:]]]][[[[:alnum:]]]]+
+%%
+nothing	ECHO;
+CF_EOF
+cf_lex_char_classes="$LEX conftest.l 1>&AC_FD_CC"
+if AC_TRY_EVAL(cf_lex_char_classes); then
+	LEX_CHAR_CLASSES=yes
+else
+	LEX_CHAR_CLASSES=no
+fi
+AC_MSG_RESULT($LEX_CHAR_CLASSES)
+rm -f conftest.* $LEX_OUTPUT_ROOT.c
+if test "$LEX_CHAR_CLASSES" != yes ; then
+	AC_WARN(Your $LEX program does not support character classes.  Get flex.)
+fi
+AC_SUBST(LEX_CHAR_CLASSES)
+])dnl
