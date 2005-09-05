@@ -1,3 +1,25 @@
+2005-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIG_ATOMIC_T: ci-aclocal generated header
+
+	* AcSplit/CF_LEX_CHAR_CLASSES:
+	oops - HPUX reported that DATE wasn't defined, but didn't complain about
+	IDENT.  By reversing the two, I could see the other broke.  Finally saw
+	that I had an unnecessary "%%" in the first line of the test case which
+	flex ignored, but HPUX lex did not.
+
+	* AcSplit/CF_LEX_CHAR_CLASSES:
+	dispense with the states (want to keep the test independent).
+	Tweaked the pattern for DATE so the generated brackets work - though I
+	don't see why it's counted different from IDENT.  Verified that it does
+	work for 2.13, 2.52 and 2.59 (gives the same result).
+
+	* AcSplit/CF_LEX_CHAR_CLASSES:
+	ensure that the pattern is used in a rule, just in case lex doesn't bother
+	to look at it til then.  Also, add [:blank:], since that seems to be a
+	problem area.  Finally, fix the quotes - I thought I had to double each
+	square bracket, but it turns out not.
+
 2005-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_CHAR_CLASSES: ci-aclocal generated header

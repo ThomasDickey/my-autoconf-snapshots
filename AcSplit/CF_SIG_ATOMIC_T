@@ -1,0 +1,34 @@
+dnl CF_SIG_ATOMIC_T version: 1 updated: 2005/09/05 14:01:18
+dnl ---------------
+dnl signal handler, but there are some gcc depedencies in that recommendation.
+dnl Try anyway.
+AC_DEFUN([CF_SIG_ATOMIC_T],
+[
+AC_MSG_CHECKING(for signal global datatype)
+AC_CACHE_VAL(cf_cv_sig_atomic_t,[
+	for cf_type in \
+		"volatile sig_atomic_t" \
+		"sig_atomic_t" \
+		"int"
+	do
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <signal.h>
+#include <stdio.h>
+
+$cf_type x;
+
+static void handler(int sig)
+{
+	x = 5;
+}],
+		[signal(SIGINT, handler);
+		 x = 1],
+		[cf_cv_sig_atomic_t=$cf_type],
+		[cf_cv_sig_atomic_t=no])
+		test "$cf_cv_sig_atomic_t" != no && break
+	done
+	])
+AC_MSG_RESULT($cf_cv_sig_atomic_t)
+test "$cf_cv_sig_atomic_t" != no && AC_DEFINE_UNQUOTED(SIG_ATOMIC_T, $cf_cv_sig_atomic_t)
+])dnl
