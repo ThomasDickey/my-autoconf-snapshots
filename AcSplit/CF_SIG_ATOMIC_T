@@ -1,4 +1,4 @@
-dnl CF_SIG_ATOMIC_T version: 1 updated: 2005/09/05 14:01:18
+dnl CF_SIG_ATOMIC_T version: 2 updated: 2005/09/18 17:27:12
 dnl ---------------
 dnl signal handler, but there are some gcc depedencies in that recommendation.
 dnl Try anyway.
@@ -16,8 +16,8 @@ AC_CACHE_VAL(cf_cv_sig_atomic_t,[
 #include <signal.h>
 #include <stdio.h>
 
+extern $cf_type x;
 $cf_type x;
-
 static void handler(int sig)
 {
 	x = 5;

@@ -1,3 +1,16 @@
+2005-09-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIG_ATOMIC_T:
+	make this a little more stringent by ensuring it's for an extern type.
+
+	* AcSplit/CF_SYSV:
+	ensure we've got X11/Intrinsic.h before trying to include it.
+
+	* AcSplit/CF_FUNC_TGETENT:
+	I noticed in one of Nelson Beebe's logs that it was complaining about
+	a "buffer0" value which wasn't defined.  That was improperly-quoted
+	text.
+
 2005-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_ABI_6: ci-aclocal generated header
