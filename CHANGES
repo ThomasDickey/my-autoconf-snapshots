@@ -1,3 +1,17 @@
+2005-09-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	Dan Jacobiwitz pointed out that I'd defined a fallback for $BUILD_CC that
+	overrode the AC_CHECK_TOOL() usage in --with-build-cc=XX (fixed).
+	I also made the macro more verbose.
+
+	* AcSplit/CF_CFG_DEFAULTS:
+	remove netbsd from the list of systems that install by default in /usr
+
+	* config.guess: 2005-9-19
+
+	* config.sub: 2005-7-8
+
 2005-09-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SIG_ATOMIC_T:
