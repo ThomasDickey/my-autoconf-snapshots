@@ -1,4 +1,4 @@
-dnl CF_DEFAULT_SHELL version: 5 updated: 2002/12/04 00:06:27
+dnl CF_DEFAULT_SHELL version: 6 updated: 2005/09/29 07:32:03
 dnl ----------------
 dnl Look for a Bourne-shell compatible program from a list that we know about:
 dnl	ash	Almquist Shell (sh based)
@@ -7,6 +7,7 @@ dnl	dash	Debian Almquist Shell (sh based)
 dnl	jsh	Job Control Bourne Shell (sh based)
 dnl	keysh	Key Shell (ksh based)
 dnl	ksh	Korn Shell (sh based)
+dnl	mksh	MirBSD Korn shell (pdksh based)
 dnl	pdksh	Public-domain ksh
 dnl	sh	Bourne Shell or POSIX Shell
 dnl	zsh	Z Shell (sh, ksh based)
@@ -18,7 +19,7 @@ AC_DEFUN([CF_DEFAULT_SHELL],
 AC_MSG_CHECKING(for the default shell program)
 cf_shell_progs="ifelse($1,,sh,[$1])"
 if test -z "$cf_shell_progs" ; then
-	cf_shell_progs="sh ksh bash zsh pdksh jsh keysh ash dash"
+	cf_shell_progs="sh ksh bash zsh pdksh mksh jsh keysh ash dash"
 	# TIN preferred default shell for BSD systems is csh. Others are sh.
 	AC_TRY_COMPILE([
 #include <sys/params.h>],[
