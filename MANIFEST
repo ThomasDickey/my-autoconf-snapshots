@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20050929
+MANIFEST for my-autoconf, version t20051015
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -296,6 +296,7 @@ AcSplit/CF_UPPERCASE            uppercase a name
 AcSplit/CF_UTEMPTER             test for Redhat's utempter library
 AcSplit/CF_UTF8_LIB             check for -lutf8 (needed in some ncursesw configs)
 AcSplit/CF_UTMP                 check for struct utmp (or similar)
+AcSplit/CF_UTMP_GROUP           check for utmp file's group
 AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
 AcSplit/CF_UTMP_UT_NAME         check for utmp ut_name member (lynx)
 AcSplit/CF_UTMP_UT_SESSION      check for utmp.ut_session
