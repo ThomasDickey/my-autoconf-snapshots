@@ -1,3 +1,13 @@
+2005-10-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	remove the special case for Darwin.  Emanuele Giaquinta asserts that the
+	problems with this platform can be addressed (lynx and xterm).
+
+2005-10-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTMP_GROUP: ci-aclocal generated header
+
 2005-09-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DEFAULT_SHELL: from tin: add mksh before jsh

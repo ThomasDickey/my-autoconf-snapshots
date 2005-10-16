@@ -1,0 +1,47 @@
+dnl CF_UTMP_GROUP version: 1 updated: 2005/10/06 20:29:29
+dnl -------------
+dnl Find the utmp/utmpx file and determine its group to allow setgid programs
+dnl to manipulate it, e.g., when there is no intermediary.
+AC_DEFUN([CF_UTMP_GROUP],[
+AC_REQUIRE([CF_UTMP])
+if test $cf_cv_have_utmp != no ; then
+AC_CACHE_CHECK(for utmp/utmpx group,cf_cv_utmp_group,[
+for cf_utmp_path in /var/adm /var/run
+do
+	for cf_utmp_file in utmpx utmp
+	do
+		if test -f $cf_utmp_path/$cf_utmp_file
+		then
+			cf_cv_utmp_group=root
+
+			cf_option="-l -L"
+
+			# Expect listing to have fields like this:
+			#-r--r--r--   1 user      group       34293 Jul 18 16:29 pathname
+			ls $cf_option $cf_utmp_path/$cf_utmp_file >conftest
+			read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest
+			if test -z "$cf_rest" ; then
+				cf_option="$cf_option -g"
+				ls $cf_option $cf_utmp_path/$cf_utmp_file >conftest
+				read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest
+			fi
+			rm -f conftest
+
+			# If we have a pathname, and the date fields look right, assume we've
+			# captured the group as well.
+			if test -n "$cf_rest" ; then
+				cf_test=`echo "${cf_date2}${cf_date3}" | sed -e 's/[[0-9:]]//g'`
+				if test -z "$cf_test" ; then
+					cf_cv_utmp_group=$cf_grp;
+				fi
+			fi
+			break
+		fi
+	done
+	test -n "$cf_cv_utmp_group" && break
+done
+])
+else
+	AC_MSG_ERROR(cannot find utmp group)
+fi
+])dnl
