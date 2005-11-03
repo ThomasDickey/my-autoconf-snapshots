@@ -1,9 +1,10 @@
-dnl CF_WITH_IMAKE_CFLAGS version: 7 updated: 2005/04/05 18:26:15
+dnl CF_WITH_IMAKE_CFLAGS version: 8 updated: 2005/11/02 15:04:41
 dnl --------------------
 dnl xterm and similar programs build more readily when propped up with imake's
 dnl hand-tuned definitions.  If we do not use imake, provide fallbacks for the
 dnl most common definitions that we're not likely to do by autoconf tests.
 AC_DEFUN([CF_WITH_IMAKE_CFLAGS],[
+AC_REQUIRE([CF_ENABLE_NARROWPROTO])
 
 AC_MSG_CHECKING(if we should use imake to help)
 CF_ARG_DISABLE(imake,
@@ -50,10 +51,9 @@ else
 	IMAKE_CFLAGS="-DFUNCPROTO=15 $IMAKE_CFLAGS"
 
 	# If this is not set properly, Xaw's scrollbars will not work
-	case `$ac_config_guess` in
-	*freebsd*|*gnu*|*irix5*|*irix6*|*linux-gnu*|*netbsd*|*openbsd*)
+	if test "$enable_narrowproto" = yes ; then
 		IMAKE_CFLAGS="-DNARROWPROTO=1 $IMAKE_CFLAGS"
-	esac
+	fi
 
 	# Other special definitions:
 	case $host_os in

@@ -1,0 +1,26 @@
+dnl CF_ENABLE_NARROWPROTO version: 1 updated: 2005/11/02 15:04:41
+dnl ---------------------
+dnl If this is not set properly, Xaw's scrollbars will not work.
+dnl The so-called "modular" configuration for Xorg omits most of the
+dnl configure checks that would be needed to provide compatibility with
+dnl older X builds.  This one breaks things noticeably.
+AC_DEFUN([CF_ENABLE_NARROWPROTO],
+[
+AC_MSG_CHECKING(if you want narrow prototypes for X libraries)
+
+case `$ac_config_guess` in #(vi
+*cygwin*|*freebsd*|*gnu*|*irix5*|*irix6*|*linux-gnu*|*netbsd*|*openbsd*|*qnx*|*sco*|*sgi*) #(vi
+	cf_default_narrowproto=yes
+	;;
+*)
+	cf_default_narrowproto=no
+	;;
+esac
+
+CF_ARG_OPTION(narrowproto,
+	[  --enable-narrowproto    enable narrow prototypes for X libraries],
+	[enable_narrowproto=$enableval],
+	[enable_narrowproto=$default_narrowproto],
+	[$cf_default_narrowproto])
+AC_MSG_RESULT($enable_narrowproto)
+])

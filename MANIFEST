@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20051015
+MANIFEST for my-autoconf, version t20051102
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -91,6 +91,7 @@ AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
+AcSplit/CF_ENABLE_NARROWPROTO   make -DNARROWPROTO configurable to work about botched Xorg "modular" build.
 AcSplit/CF_ENABLE_WARNINGS      enable warnings (add)
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h

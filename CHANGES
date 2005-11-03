@@ -1,3 +1,9 @@
+2005-11-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_NARROWPROTO: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_IMAKE_CFLAGS: split-out CF_ENABLE_NARROWPROTO
+
 2005-10-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
