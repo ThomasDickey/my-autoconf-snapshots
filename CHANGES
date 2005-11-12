@@ -1,3 +1,7 @@
+2005-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: from tin 2005-11-11
+
 2005-11-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_NARROWPROTO: ci-aclocal generated header
