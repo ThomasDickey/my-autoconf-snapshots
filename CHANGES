@@ -1,3 +1,19 @@
+2005-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: Date: Mon, 07 Nov 2005 12:02:53 +0100
+	From: Andrea -XFox- Govoni <xfox@mac.com>
+	Subject: Re: Compile on MacOS
+	To: Christian Gennerat <cgennerat@cna-cefag.org>
+	Cc: bug-ncurses@gnu.org
+	--------TD
+	Andrea reported that there's an option for ld which changes the search
+	rules (see email).  This fixes (sort of) ld's behavior which searches
+	for any shared library anywhere before looking at the -L options and
+	noticing that there's a static library in the -L directory.  I adapted
+	this from a chunk that google showed me in
+	http://cvs.sourceforge.net/viewcvs.py/tcl/tclconfig/tcl.m4?rev=1.74
+	(which is interesting, since it contains code like this macro).
+
 2005-11-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: from tin, 2005-11-13
