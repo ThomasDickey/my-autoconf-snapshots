@@ -1,3 +1,21 @@
+2005-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NC_ALLOC_H:
+	CF_CURSES_FUNCS couldn't find _nc_free_and_exit (should revisit).
+	I worked around that by moving the check for _nc_free_and_exit here,
+	to use AC_CHECK_FUNCS
+
+	* AcSplit/CF_WITH_NC_ALLOC_H: ci-aclocal generated header
+
+2005-11-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE: add parameter for pkg-config
+
+	* AcSplit/CF_X_FREETYPE:
+	add a configure check for pkg-config (the latest variation of FreeType
+	configuration wrappers).  Fixes Redhat #173541.   Jason Vas Dias forwarded
+	a patch by  Nalin Dahyabhai but it was incorrect, so I did this one myself.
+
 2005-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: Date: Mon, 07 Nov 2005 12:02:53 +0100

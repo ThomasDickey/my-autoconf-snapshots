@@ -1,0 +1,27 @@
+dnl CF_WITH_NC_ALLOC_H version: 2 updated: 2005/12/26 17:09:34
+dnl ------------------
+dnl Applications that use ncurses can provide better leak-checking if they
+dnl call ncurses' functions to free its memory on exit.  That is normally not
+dnl configured (--disable-leaks), but is useful in a debugging library.
+dnl
+dnl Use this after checking for ncurses/ncursesw libraries.
+AC_DEFUN([CF_WITH_NC_ALLOC_H],
+[
+case $LIBS in #(vi
+*ncurses*)
+
+AC_MSG_CHECKING(if you want to check for memory leaks)
+cf_disable_leaks=no
+AC_ARG_ENABLE(leaks,
+	[  --disable-leaks         test: suppress permanent memory-leaks],
+	[test "$enableval" = no && cf_disable_leaks=yes])
+AC_MSG_RESULT($cf_disable_leaks)
+
+if test "$cf_disable_leaks" = yes ; then
+	AC_DEFINE(NO_LEAKS)
+	AC_CHECK_HEADER(nc_alloc.h)
+	AC_CHECK_FUNCS(_nc_free_and_exit)
+fi
+;;
+esac
+])dnl

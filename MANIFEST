@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20051119
+MANIFEST for my-autoconf, version t20051226
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -322,6 +322,7 @@ AcSplit/CF_WITH_GPM             command-line options for gpm
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
+AcSplit/CF_WITH_NC_ALLOC_H      check for nc_alloc.h if --disable-leaks is set
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
