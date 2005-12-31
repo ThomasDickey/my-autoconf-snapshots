@@ -1,3 +1,15 @@
+2005-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_HEADER, AcSplit/CF_CURSES_HEADER, AcSplit/CF_TERM_HEADER:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	split out CF_NCURSES_HEADER to simplify comparison with CF_CURSES_HEADER
+	use CF_TERM_HEADER
+
+	* AcSplit/CF_CURSES_CPPFLAGS:
+	split-out CF_CURSES_HEADER to simplify comparison with CF_NCURSES_HEADER
+
 2005-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NC_ALLOC_H:

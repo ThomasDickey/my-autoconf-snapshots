@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20051226
+MANIFEST for my-autoconf, version t20051231
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -72,6 +72,7 @@ AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
 AcSplit/CF_CURSES_CPPFLAGS      check for curses/ncurses header file
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
 AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
+AcSplit/CF_CURSES_HEADER        check for curses.h
 AcSplit/CF_CURSES_LIBS          check for standard (not ncurses!) curses libraries
 AcSplit/CF_CURSES_MOUSE         test for SVr4 curses support for mouse (td_lib)
 AcSplit/CF_CURSES_SETBEGYX      check if we can set a window's beginning x,y coordinates (cdk)
@@ -183,6 +184,7 @@ AcSplit/CF_NCURSES_ABI_6        utility for bumping ncurses' version to 6 (ncurs
 AcSplit/CF_NCURSES_BROKEN       check for broken 1.9.9e ncurses
 AcSplit/CF_NCURSES_CC_CHECK     check to ensure right ncurses/ncursesw header (ded)
 AcSplit/CF_NCURSES_CPPFLAGS     set up CFLAGS (ncurses)
+AcSplit/CF_NCURSES_HEADER       check for ncurses.h
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NETLIBS              check for network-libraries
@@ -281,6 +283,7 @@ AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
 AcSplit/CF_TERMIO_AND_CURSES    check if we can include both curses.h and termio.h
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
 AcSplit/CF_TERMIO_C_ISPEED      check for missing .c_ispeed member
+AcSplit/CF_TERM_HEADER          check for term.h
 AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
 AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)
