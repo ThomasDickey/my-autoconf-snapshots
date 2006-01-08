@@ -1,3 +1,26 @@
+2006-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE: Date: Fri, 6 Jan 2006 17:29:48 +0100
+	From: Emanuele Giaquinta <e.giaquinta@glauco.it>
+	Subject: xterm freetype fix
+	To: Thomas Dickey <dickey@his.com>
+
+	[-- Attachment #1 --]
+	[-- Type: text/plain, Encoding: 7bit, Size: 0.3K --]
+
+	Hi Thomas,
+
+	Your last change to CF_X_FREETYPE breaks xterm on darwin; the problem
+	is that it is not enough to check that pkg-config exists, we must also
+	check that xft.pc exists too, which is not the case on darwin where we
+	must so revert to xft-config.  The attached patch fixes it.
+	------TD looks ok, will test
+
+2006-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PATH_SYNTAX:
+	check for "no", which may be the value if "--without-XXX" was used.
+
 2005-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_HEADER, AcSplit/CF_CURSES_HEADER, AcSplit/CF_TERM_HEADER:

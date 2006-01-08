@@ -1,4 +1,4 @@
-dnl CF_PATH_SYNTAX version: 9 updated: 2002/09/17 23:03:38
+dnl CF_PATH_SYNTAX version: 10 updated: 2006/01/02 19:36:00
 dnl --------------
 dnl Check the argument to see that it looks like a pathname.  Rewrite it if it
 dnl begins with one of the prefix/exec_prefix variables, and then again if the
@@ -20,7 +20,7 @@ case ".[$]$1" in #(vi
     ;;
   esac
   ;; #(vi
-.NONE/*)
+.no|.NONE/*)
   $1=`echo [$]$1 | sed -e s%NONE%$ac_default_prefix%`
   ;;
 *)
