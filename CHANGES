@@ -1,3 +1,8 @@
+2006-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_NARROWPROTO:
+	fix a typo - missing "cf_" from a variable name
+
 2006-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FREETYPE: Date: Fri, 6 Jan 2006 17:29:48 +0100

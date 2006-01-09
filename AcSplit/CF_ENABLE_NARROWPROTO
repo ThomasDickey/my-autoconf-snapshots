@@ -1,4 +1,4 @@
-dnl CF_ENABLE_NARROWPROTO version: 1 updated: 2005/11/02 15:04:41
+dnl CF_ENABLE_NARROWPROTO version: 2 updated: 2006/01/08 17:07:48
 dnl ---------------------
 dnl If this is not set properly, Xaw's scrollbars will not work.
 dnl The so-called "modular" configuration for Xorg omits most of the
@@ -20,7 +20,7 @@ esac
 CF_ARG_OPTION(narrowproto,
 	[  --enable-narrowproto    enable narrow prototypes for X libraries],
 	[enable_narrowproto=$enableval],
-	[enable_narrowproto=$default_narrowproto],
+	[enable_narrowproto=$cf_default_narrowproto],
 	[$cf_default_narrowproto])
 AC_MSG_RESULT($enable_narrowproto)
 ])
