@@ -1,3 +1,18 @@
+2006-01-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TTY_GROUP:
+	add --with-tty-group option, allow that to override environment
+
+2006-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_WITH_NLS:
+	FreeBSD's ports system puts "everything" except for the base system in
+	/usr/local (actually not - there are some inconsistencies).  Make the
+	configure script work in spite of that.
+
+	* AcSplit/CF_FIND_HEADER, AcSplit/CF_FIND_LINKAGE:
+	ci-aclocal generated header
+
 2006-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_NARROWPROTO:

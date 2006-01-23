@@ -1,0 +1,31 @@
+dnl CF_FIND_HEADER version: 1 updated: 2006/01/22 20:26:00
+dnl --------------
+dnl Find a header file, searching for it if it is not already in the include
+dnl path.
+dnl
+dnl	$1 = the header filename
+dnl	$2 = the package name
+dnl	$3 = action to perform if successful
+dnl	$4 = action to perform if not successful
+AC_DEFUN([CF_FIND_HEADER],[
+AC_CHECK_HEADER([$1],
+	cf_find_header=yes,[
+	cf_find_header=no
+CF_HEADER_PATH(cf_search,$2)
+for cf_incdir in $cf_search
+do
+	if test -f $cf_incdir/$1 ; then
+		CF_ADD_CFLAGS(-I$cf_incdir)
+		CF_VERBOSE(... found in $cf_incdir)
+		cf_find_header=yes
+		break
+	fi
+	CF_VERBOSE(... tested $cf_incdir)
+done
+])
+if test "$cf_find_header" = yes ; then
+ifelse([$3],,:,[$3])
+ifelse([$4],,,[else
+$4])
+fi
+])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060108
+MANIFEST for my-autoconf, version t20060123
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -98,9 +98,11 @@ AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
 AcSplit/CF_FANCY_CURSES         check for Lynx's notion of "fancy" curses
 AcSplit/CF_FCNTL_VS_IOCTL       check usable ioctl with FIONREAD, or fcntl.h (vttest)
+AcSplit/CF_FIND_HEADER          find a header-file
 AcSplit/CF_FIND_IPV6_LIBS       based on the IPV6 type, find libraries
 AcSplit/CF_FIND_IPV6_TYPE       determine the IPV6 type
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
+AcSplit/CF_FIND_LINKAGE         find an entrypoint in a library
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
