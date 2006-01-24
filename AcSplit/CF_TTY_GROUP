@@ -1,9 +1,19 @@
-dnl CF_TTY_GROUP version: 5 updated: 2003/03/19 23:52:35
+dnl CF_TTY_GROUP version: 6 updated: 2006/01/23 19:42:39
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
 AC_DEFUN([CF_TTY_GROUP],
 [
+AC_MSG_CHECKING(for explicit tty group name)
+AC_ARG_WITH(tty-group,
+	[  --with-tty-group=XXX    use XXX for the tty-group],
+	[cf_tty_group=$withval],
+	[cf_tty_group=auto...])
+test -z "$cf_tty_group"    && cf_tty_group=auto...
+test "$cf_tty_group" = yes && cf_tty_group=auto...
+AC_MSG_RESULT($cf_tty_group)
+
+if test "$cf_tty_group" = "auto..." ; then
 AC_CACHE_CHECK(for tty group name,cf_cv_tty_group_name,[
 
 # If we are configuring as root, it is hard to get a clue about the tty group.
@@ -11,6 +21,7 @@ AC_CACHE_CHECK(for tty group name,cf_cv_tty_group_name,[
 # properly.
 
 cf_uid=`id | sed -e 's/^[^=]*=//' -e 's/(.*$//'`
+# )vi
 if test "$cf_uid" != 0 ; then
 cf_cv_tty_group_name=
 cf_tty_name=`tty`
@@ -51,14 +62,19 @@ osf*) #(vi
 esac
 fi
 ])
+cf_tty_group="$cf_cv_tty_group_name"
+else
+	# if configure option, always do this
+	AC_DEFINE(USE_TTY_GROUP)
+fi
 
-AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_cv_tty_group_name")
+AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_tty_group")
 
 # This is only a double-check that the group-name we obtained above really
 # does apply to the device.  We cannot perform this test if we are in batch
 # mode, or if we are cross-compiling.
 
-AC_CACHE_CHECK(if we may use $cf_cv_tty_group_name group,cf_cv_tty_group,[
+AC_CACHE_CHECK(if we may use the $cf_tty_group group,cf_cv_tty_group,[
 cf_tty_name=`tty`
 if test "$cf_tty_name" != "not a tty"
 then
@@ -93,5 +109,10 @@ else
 	cf_cv_tty_group=yes
 fi
 ])
-test $cf_cv_tty_group = yes && AC_DEFINE(USE_TTY_GROUP)
+
+if test $cf_cv_tty_group = no ; then
+	AC_MSG_WARN(Cannot use $cf_tty_group group)
+else
+	AC_DEFINE(USE_TTY_GROUP)
+fi
 ])dnl
