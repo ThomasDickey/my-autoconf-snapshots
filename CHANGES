@@ -1,3 +1,14 @@
+2006-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PCRE: fix the help-message
+
+	* AcSplit/CF_WITH_PCRE: ci-aclocal generated header
+
+2006-02-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS:
+	don't use curses_colr on HPUX 11
+
 2006-01-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TTY_GROUP:
