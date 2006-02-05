@@ -1,0 +1,29 @@
+dnl CF_WITH_PCRE version: 2 updated: 2006/02/05 11:39:07
+dnl ------------
+dnl Add PCRE (Perl-compatible regular expressions) to the build if it is
+dnl available and the user requests it.  Assume the application will otherwise
+dnl use the POSIX interface.
+dnl
+dnl TODO allow $withval to specify package location
+AC_DEFUN([CF_WITH_PCRE],
+[
+AC_MSG_CHECKING(if you want to use PCRE for regular-expressions)
+AC_ARG_WITH(pcre,
+	[  --with-pcre             use PCRE for regular-expressions])
+test -z "$withval" && withval=no
+with_pcre="$withval"
+AC_MSG_RESULT($with_pcre)
+
+if test "$with_pcre" != no ; then
+	AC_CHECK_LIB(pcre,pcre_compile,
+		[AC_CHECK_HEADER(pcreposix.h,
+			[AC_CHECK_LIB(pcreposix,pcreposix_regcomp,
+				[AC_DEFINE(HAVE_LIB_PCRE)
+				 AC_DEFINE(HAVE_PCREPOSIX_H)
+				 LIBS="-lpcreposix -lpcre $LIBS"],
+				AC_MSG_ERROR(Cannot find PCRE POSIX library),
+				"-lpcre")],
+			AC_MSG_ERROR(Cannot find PCRE POSIX header))],
+		AC_MSG_ERROR(Cannot find PCRE library))
+fi
+])dnl
