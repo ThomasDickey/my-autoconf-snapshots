@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 14 updated: 2006/01/07 14:31:43
+dnl CF_X_FREETYPE version: 15 updated: 2006/02/12 17:30:04
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -35,7 +35,7 @@ else
 fi
 
 if test -n "$FREETYPE_CONFIG" ; then
-
+withval=
 AC_ARG_WITH(freetype-cflags,
 	[  --with-freetype-cflags  -D/-I options for compiling with FreeType],
 [cf_cv_x_freetype_incs="$withval"
@@ -44,7 +44,7 @@ AC_ARG_WITH(freetype-cflags,
 AC_CACHE_CHECK(for X FreeType headers,cf_cv_x_freetype_incs,[
 	cf_cv_x_freetype_incs="`$FREETYPE_CONFIG $FREETYPE_PARAMS --cflags 2>/dev/null`"
 ])])
-
+withval=
 AC_ARG_WITH(freetype-libs,
 	[  --with-freetype-libs    -L/-l options to link FreeType],
 [cf_cv_x_freetype_libs="$withval"

@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE version: 2 updated: 2006/02/05 11:39:07
+dnl CF_WITH_PCRE version: 3 updated: 2006/02/12 17:28:56
 dnl ------------
 dnl Add PCRE (Perl-compatible regular expressions) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -10,8 +10,7 @@ AC_DEFUN([CF_WITH_PCRE],
 AC_MSG_CHECKING(if you want to use PCRE for regular-expressions)
 AC_ARG_WITH(pcre,
 	[  --with-pcre             use PCRE for regular-expressions])
-test -z "$withval" && withval=no
-with_pcre="$withval"
+test -z "$with_pcre" && with_pcre=no
 AC_MSG_RESULT($with_pcre)
 
 if test "$with_pcre" != no ; then

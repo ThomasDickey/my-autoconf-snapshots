@@ -1,3 +1,14 @@
+2006-02-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_NARROWPROTO: it's "X.org", not "Xorg"
+
+	* AcSplit/CF_X_FREETYPE:
+	oops - noticed in CF_WITH_PCRE that $withval isn't set by the default of
+	a --with-OPTION.  q/d fix by setting it to an empty value before the
+	existing AC_ARG_WITH's
+
+	* AcSplit/CF_WITH_PCRE: don't use $withval outside of the AC_ARG_WITH
+
 2006-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PCRE: fix the help-message
