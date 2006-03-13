@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060212
+MANIFEST for my-autoconf, version t20060312
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -255,6 +255,7 @@ AcSplit/CF_STDCPP_LIBRARY       check for -lstdc++
 AcSplit/CF_STRERROR             combined check for strerror() with sys_errlist[] (tin)
 AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
 AcSplit/CF_STRIP_O_OPT          strip the "-O" option from CFLAGS
+AcSplit/CF_STRUCT_LASTLOG       check if we can use lastlog.ll_time
 AcSplit/CF_STRUCT_SCREEN        check if curses defines 'struct screen' (td_lib)
 AcSplit/CF_STRUCT_SIGACTION     test for struct sigaction
 AcSplit/CF_STRUCT_TERMIOS       test for struct termios
