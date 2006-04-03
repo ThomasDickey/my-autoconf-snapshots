@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060312
+MANIFEST for my-autoconf, version t20060402
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -235,6 +235,7 @@ AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
 AcSplit/CF_SET_ERRNO            check if we can set errno
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions
 AcSplit/CF_SHARED_OPTS          derive CC/LD options for shared libraries
+AcSplit/CF_SIGWINCH             workaround for SIGWINCH on Mac OS X
 AcSplit/CF_SIG_ARGS             check for signal-values w/o prototypes
 AcSplit/CF_SIG_ATOMIC_T         check for "volatile sig_atomic_t" variations
 AcSplit/CF_SIG_CONST            check for signal constants that could be prototyped

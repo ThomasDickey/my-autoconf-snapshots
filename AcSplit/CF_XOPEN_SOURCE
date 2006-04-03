@@ -1,7 +1,8 @@
-dnl CF_XOPEN_SOURCE version: 23 updated: 2005/10/15 16:39:05
+dnl CF_XOPEN_SOURCE version: 24 updated: 2006/04/02 16:41:09
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
-dnl or adapt to the vendor's definitions to get equivalent functionality.
+dnl or adapt to the vendor's definitions to get equivalent functionality,
+dnl without losing the common non-POSIX features.
 dnl
 dnl Parameters:
 dnl	$1 is the nominal value for _XOPEN_SOURCE
