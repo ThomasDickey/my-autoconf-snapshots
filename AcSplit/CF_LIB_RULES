@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 36 updated: 2005/05/28 13:16:28
+dnl CF_LIB_RULES version: 37 updated: 2006/04/15 13:38:12
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -22,7 +22,7 @@ do
 		IMPORT_LIB=
 		SHARED_LIB=
 		LIBS_TO_MAKE=
-		for cf_item in $CF_LIST_MODELS
+		for cf_item in $cf_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix)
 			if test $cf_item = shared ; then
@@ -99,7 +99,7 @@ do
 		for cf_subset in $cf_subsets
 		do
 			cf_subdirs=
-			for cf_item in $CF_LIST_MODELS
+			for cf_item in $cf_LIST_MODELS
 			do
 			echo "Appending rules for ${cf_item} model (${cf_dir}: ${cf_subset})"
 			CF_UPPER(cf_ITEM,$cf_item)
