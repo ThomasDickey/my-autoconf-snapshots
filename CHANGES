@@ -1,3 +1,8 @@
+2006-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_MULTIBYTE_ABLE:
+	tin - Urs commented out the check for wscnlen()
+
 2006-04-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:

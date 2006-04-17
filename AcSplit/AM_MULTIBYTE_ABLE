@@ -1,4 +1,4 @@
-dnl AM_MULTIBYTE_ABLE version: 6 updated: 2004/01/19 12:11:07
+dnl AM_MULTIBYTE_ABLE version: 7 updated: 2006/04/17 08:26:33
 dnl -----------------
 dnl
 dnl check for required multibyte/widechar functions
@@ -31,7 +31,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
       mbstowcs(wcb, icb, 5);
       iswprint((wint_t) wcb[0]);
       wcslen(wcb);
-      wcsnlen(wcb, 4);
+      /* wcsnlen(wcb, 4); */
       wcwidth((wint_t) wcb[0]);
       wcswidth(wcb, 5);
       wcstombs(ocb, wcb, 5);
@@ -55,7 +55,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
         mbstowcs(wcb, icb, 5);
         iswprint((wint_t) wcb[0]);
         wcslen(wcb);
-        wcsnlen(wcb, 4);
+        /* wcsnlen(wcb, 4); */
         wcwidth((wint_t) wcb[0]);
         wcswidth(wcb, 5);
         wcstombs(ocb, wcb, 5);
