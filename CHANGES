@@ -1,3 +1,15 @@
+2006-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	add ncurses major/minor/patch variables so I can expand them inside manpages.
+	(It's hard to see which one I have).
+
+	* config.sub: 2006-05-13
+	http://subversions.gnu.org/cgi-bin/viewcvs/config/config/
+
+	* config.guess: 2006-04-26
+	http://subversions.gnu.org/cgi-bin/viewcvs/config/config/
+
 2006-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_MULTIBYTE_ABLE:
