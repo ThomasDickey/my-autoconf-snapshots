@@ -1,3 +1,17 @@
+2006-05-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_PATH_PROG_WITH_TEST:
+	Date: Fri, 27 Jan 2006 01:22:54 -0800 (PST)
+	From: Doug Kaufman <dkaufman@rahul.net>
+	Subject: [Lynx-dev] DOS / PDCurses patch for dev.17
+	To: lynx-dev@nongnu.org
+	-------TD: comment said:
+	One of the macros in aclocal.m4 isn't portable, and so
+	didn't properly detect the DJGPP gettext executables. I think this
+	patch makes the macro more portable.
+	------- which in this case means that the script didn't expect a DOS drive
+	letter, and it didn't override $PATHSEP with $PATH_SEPARATOR.
+
 2006-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES:
