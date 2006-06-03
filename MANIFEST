@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060529
+MANIFEST for my-autoconf, version t20060603
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -209,6 +209,7 @@ AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
 AcSplit/CF_POSIX_WAIT           check for POSIX wait functions
 AcSplit/CF_PREDEFINE            check for symbols we must predefine (ncurses)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
+AcSplit/CF_PRG_RULES            generate program-linking rules for test (ncurses)
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
 AcSplit/CF_PROG_CC_C_O          check if the compiler (given by its shell-variable name) can use -c -o
