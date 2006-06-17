@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060603
+MANIFEST for my-autoconf, version t20060617
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -263,6 +263,7 @@ AcSplit/CF_STRUCT_SIGACTION     test for struct sigaction
 AcSplit/CF_STRUCT_TERMIOS       test for struct termios
 AcSplit/CF_SUBDIR_PATH          setup a directory search-path, used by CF_HEADER_PATH and CF_LIBRARY_PATH
 AcSplit/CF_SUBST                better version of AC_SUBST
+AcSplit/CF_SUBST_IF             quiet utility for constructing AC_SUBST, e.g., for HAVE_xxx symbols
 AcSplit/CF_SUBST_NCURSES_VERSION  obtain ncurses version for use in substitution
 AcSplit/CF_SVR4                 define SVR4 if needed (for xterm)
 AcSplit/CF_SYSRELV              derive the system release-version

@@ -1,3 +1,16 @@
+2006-06-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SUBST_IF:
+	I needed success/fail values for the HAVE_xxx usage.
+	Move the cache-variable (cf_cv_subst_XXX) back to CF_SUBST
+
+	* AcSplit/CF_SUBST:
+	moved the assignment to the cache variable back from CF_SUBST_IF
+
+	* AcSplit/CF_SUBST_IF: ci-aclocal generated header
+
+	* AcSplit/CF_SUBST: split-out CF_SUBST_IF
+
 2006-06-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PRG_RULES: ci-aclocal generated header
