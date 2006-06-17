@@ -1,0 +1,18 @@
+dnl CF_SUBST_IF version: 2 updated: 2006/06/17 12:33:03
+dnl -----------
+dnl	Shorthand macro for substituting things that the user may override
+dnl	with an environment variable.
+dnl
+dnl	$1 = condition to pass to "test"
+dnl	$2 = environment variable
+dnl	$3 = value if the test succeeds
+dnl	$4 = value if the test fails
+AC_DEFUN([CF_SUBST_IF],
+[
+if test $1 ; then
+	$2=$3
+ifelse($4,,,[else
+	$2=$4])
+fi
+AC_SUBST($2)
+])dnl
