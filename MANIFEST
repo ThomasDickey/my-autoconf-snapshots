@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060617
+MANIFEST for my-autoconf, version t20060618
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -205,6 +205,7 @@ AcSplit/CF_PDCURSES_X11         check for PDCurses' XCurses library
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_C_SOURCE       split-out from CF_XOPEN_SOURCE, and improved (takes into account value of
 AcSplit/CF_POSIX_JC             check for POSIX-style sigaction
+AcSplit/CF_POSIX_SAVED_IDS      check for _POSIX_SAVED_IDS
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
 AcSplit/CF_POSIX_WAIT           check for POSIX wait functions
 AcSplit/CF_PREDEFINE            check for symbols we must predefine (ncurses)
