@@ -1,4 +1,4 @@
-dnl CF_SYSV version: 10 updated: 2005/09/18 15:42:35
+dnl CF_SYSV version: 12 updated: 2006/06/21 16:52:31
 dnl -------
 dnl Check if this is a SYSV platform, e.g., as used in <X11/Xos.h>, and whether
 dnl defining it will be helpful.  The following features are used to check:
@@ -14,6 +14,7 @@ dnl c) compile with type definitions that differ on SYSV hosts from standard C.
 AC_DEFUN([CF_SYSV],
 [
 AC_CHECK_HEADERS( \
+termios.h \
 stdlib.h \
 X11/Intrinsic.h \
 )
@@ -30,12 +31,18 @@ AC_TRY_COMPILE([
 #ifdef HAVE_X11_INTRINSIC_H
 #include <X11/Intrinsic.h>	/* Intrinsic.h has other traps... */
 #endif
+#ifdef HAVE_TERMIOS_H		/* needed for HPUX 10.20 */ 
+#include <termios.h> 
+#define STRUCT_TERMIOS struct termios 
+#else 
+#define STRUCT_TERMIOS struct termio 
+#endif 
 #include <curses.h>
 #include <term.h>		/* eliminate most BSD hacks */
 #include <errno.h>		/* declare sys_errlist on older systems */
 #include <sys/termio.h>		/* eliminate most of the remaining ones */
 ],[
-static struct termio d_tio;
+static STRUCT_TERMIOS d_tio;
 	d_tio.c_cc[VINTR] = 0;
 	d_tio.c_cc[VQUIT] = 0;
 	d_tio.c_cc[VERASE] = 0;
