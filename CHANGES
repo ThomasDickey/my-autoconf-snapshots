@@ -1,3 +1,27 @@
+2006-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_SAVED_IDS:
+	extend thiss to include the quasi-POSIX BSD's
+
+	* AcSplit/CF_SYSV: Date: Wed, 21 Jun 2006 12:21:34 +0200
+	From: Emanuele Giaquinta <e.giaquinta@glauco.it>
+	To: Thomas Dickey <dickey@his.com>
+	Subject: Re: xterm utmp
+	Seems the termios change has a typo:
+
+	static STRUCT_TERMIO d_tio;
+
+	should be
+
+	static STRUCT_TERMIOS d_tio;
+
+2006-06-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SYSV:
+	xterm - on HPUX 10.20 with gcc, I wasn't able to build it because that
+	combination relies on including <termios.h> before <term.h> (though it
+	builds fine with cc).  Will have to rebuild all platforms...
+
 2006-06-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_SAVED_IDS:
