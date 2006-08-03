@@ -1,3 +1,17 @@
+2006-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PATH:
+	xterm: change to not use "eval" since it breaks for the appsdir substitution
+	on AIX 5.x by trying to evaluate the "$(exec_prefix)" as "$exec_prefix, or
+	something like that.
+
+2006-08-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_SAVED_IDS:
+	HPUX doesn't have seteuid/geteuid, and its linker only warns - does not
+	error - when trying to link to those.  Do a quick fix by trying to assign
+	the address to a pointer.
+
 2006-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2006-7-2

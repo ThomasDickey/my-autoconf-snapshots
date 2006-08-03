@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 5 updated: 2006/06/21 18:21:40
+dnl CF_POSIX_SAVED_IDS version: 6 updated: 2006/08/02 20:37:21
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -18,11 +18,11 @@ AC_TRY_LINK(
 #endif
 ],[
 #if defined(_POSIX_SAVED_IDS) && (_POSIX_SAVED_IDS > 0)
-int x = seteuid(geteuid());
+	void *p = (void *) seteuid;
+	int x = seteuid(geteuid());
 #elif defined(BSD) && (BSD >= 199103)
 /* The BSD's may implement the runtime check - and it fails.
  * However, saved-ids work almost like POSIX (close enough for most uses).
- * Forgive them...
  */
 #else
 make an error
@@ -36,6 +36,7 @@ AC_TRY_RUN([
 #include <unistd.h>
 int main()
 {
+	void *p = (void *) seteuid;
 	long code = sysconf(_SC_SAVED_IDS);
 	exit ((code > 0) ? 0 : 1);
 }],
