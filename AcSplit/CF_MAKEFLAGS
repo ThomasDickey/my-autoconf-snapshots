@@ -1,4 +1,4 @@
-dnl CF_MAKEFLAGS version: 9 updated: 2001/12/30 18:17:27
+dnl CF_MAKEFLAGS version: 10 updated: 2006/08/05 09:56:13
 dnl ------------
 dnl Some 'make' programs support $(MAKEFLAGS), some $(MFLAGS), to pass 'make'
 dnl options to lower-levels.  It's very useful for "make -n" -- if we have it.
@@ -27,7 +27,8 @@ CF_EOF
 			esac
 			break
 			;;
-		*)	echo no match "$cf_result"
+		.-)	;;
+		*)	echo "given option \"$cf_option\", no match \"$cf_result\""
 			;;
 		esac
 	done
