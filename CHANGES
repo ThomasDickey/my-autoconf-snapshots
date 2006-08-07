@@ -1,3 +1,25 @@
+2006-08-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_PATH_PROG_WITH_TEST:
+	Date: Sun, 23 Jul 2006 22:09:51 -0700 (PDT)
+	From: Doug Kaufman <dkaufman@rahul.net>
+	Subject: [Lynx-dev] DJGPP patch for 2.8.6dev.18
+	To: lynx-dev@nongnu.org
+
+	This is a minor patch for two items that affect portability to DJGPP.
+
+	The first is a change to aclocal.m4 from "test -f" to "test -x". This
+	is important because if testing for "xgettext" and a file exists
+	called "xgettext.exe", "test -f" fails and "test -x" succeeds. Since
+	the line in aclocal.m4 is testing for an executable file, the change
+	shouldn't affect other platforms adversely. Without the patch, the
+	lynx configuration script doesn't find the utilities needed for NLS.
+	The change will be propagated to "configure" when autoconf is run.
+
+	------TD: I pointed out that "test -f" wasn't portable, and DK resubmitted
+	the change modifying the test to include the executable suffix, which
+	should work.
+
 2006-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKEFLAGS:
