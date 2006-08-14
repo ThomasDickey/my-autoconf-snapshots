@@ -1,3 +1,7 @@
+2006-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2006-08-14
+
 2006-08-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_PATH_PROG_WITH_TEST:
