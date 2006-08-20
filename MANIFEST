@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060814
+MANIFEST for my-autoconf, version t20060819
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -136,6 +136,9 @@ AcSplit/CF_GNU_SOURCE           check if _GNU_SOURCE is needed to define _XOPEN_
 AcSplit/CF_GPP_LIBRARY          check for -lg++
 AcSplit/CF_GXX_VERSION          check for version of g++
 AcSplit/CF_GXX_WARNINGS         check for g++ warning options
+AcSplit/CF_HASHED_DB            find hashed-database header, version and corresponding libraries
+AcSplit/CF_HASHED_DB_LIBS       find hashed-database libraries
+AcSplit/CF_HASHED_DB_VERSION    find hashed-database version (needed for finding the libraries)
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
 AcSplit/CF_HEADER_RESOURCE      test for sys/resource.h vs wait.h and time.h

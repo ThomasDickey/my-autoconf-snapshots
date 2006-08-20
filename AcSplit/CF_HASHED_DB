@@ -1,0 +1,21 @@
+dnl CF_HASHED_DB version: 1 updated: 2006/08/19 09:16:14
+dnl ------------
+dnl Look for an instance of the Berkeley hashed database.
+AC_DEFUN([CF_HASHED_DB],
+[
+AC_CHECK_HEADER(db.h,[
+CF_HASHED_DB_VERSION
+if test "$cf_cv_hashed_db_version" = unknown ; then
+	AC_MSG_ERROR(Cannot determine version of db)
+else
+	CF_HASHED_DB_LIBS
+	if test "$cf_cv_hashed_db_libs" = unknown ; then
+		AC_MSG_ERROR(Cannot determine library for db)
+	elif test "$cf_cv_hashed_db_libs" != default ; then
+		LIBS="-l$cf_cv_hashed_db_libs $LIBS"
+	fi
+fi
+],[
+	AC_MSG_ERROR(Cannot find db.h)
+])
+])dnl

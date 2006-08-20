@@ -1,3 +1,23 @@
+2006-08-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	Redhat #199369 wanted to add $(CFLAGS) for sparc/64-bit; I noted that the
+	same issue applied to a few other places.
+
+	* AcSplit/CF_HASHED_DB_LIBS:
+	make this work for db4 (tested with db 4.2, 4.3)
+
+	* AcSplit/CF_HASHED_DB_LIBS: add a check for db3
+
+	* AcSplit/CF_HASHED_DB_VERSION: minor tidying
+
+	* AcSplit/CF_HASHED_DB_LIBS:
+	don't use the reference to O_CREAT|O_RDWR in db 1.85 test since application
+	should test for fcntl.h separately.
+
+	* AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_HASHED_DB_VERSION:
+	ci-aclocal generated header
+
 2006-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2006-08-14
