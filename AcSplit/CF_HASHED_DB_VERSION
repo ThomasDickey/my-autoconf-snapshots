@@ -1,0 +1,37 @@
+dnl CF_HASHED_DB_VERSION version: 2 updated: 2006/08/19 15:12:49
+dnl --------------------
+dnl Given that we have the header file for hashed database, find the version
+dnl information.
+AC_DEFUN([CF_HASHED_DB_VERSION],
+[
+AC_CACHE_CHECK(for version of db, cf_cv_hashed_db_version,[
+cf_cv_hashed_db_version=unknown
+
+for cf_db_version in 1 2 3 4
+do
+	CF_MSG_LOG(checking for db version $cf_db_version)
+	AC_TRY_COMPILE([
+$ac_includes_default
+#include <db.h>
+
+#ifdef DB_VERSION_MAJOR
+	/* db2 (DB_VERSION_MAJOR=2) has also DB_VERSION_MINOR, tested with 7 */
+#if $cf_db_version == DB_VERSION_MAJOR
+	/* ok */
+#else
+	make an error
+#endif
+#else
+#if $cf_db_version == 1
+	/* ok: assuming this is DB 1.8.5 */
+#else
+	make an error
+#endif
+#endif
+],[DBT *foo = 0],[
+	cf_cv_hashed_db_version=$cf_db_version
+	break
+	])
+done
+])
+])dnl
