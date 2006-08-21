@@ -1,0 +1,15 @@
+dnl CF_WITH_LOCALE_ALIAS version: 2 updated: 2006/08/20 16:52:53
+dnl --------------------
+dnl Configure option to specify the location of locale.alias, for programs that
+dnl must read it directly.
+AC_DEFUN([CF_WITH_LOCALE_ALIAS],
+[
+AC_MSG_CHECKING(for location of locale alias file)
+AC_ARG_WITH(locale-alias,
+[  --with-locale-alias=XXX file used for locale aliases
+                          (default: LIBDIR/X11/locale/locale.alias)],
+[LOCALE_ALIAS_FILE=$withval],
+[LOCALE_ALIAS_FILE="$libdir/X11/locale/locale.alias"])
+AC_MSG_RESULT($LOCALE_ALIAS_FILE)
+AC_SUBST(LOCALE_ALIAS_FILE)
+])dnl
