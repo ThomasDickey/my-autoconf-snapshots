@@ -1,0 +1,75 @@
+dnl CF_X_FONTENC version: 1 updated: 2006/08/20 13:51:03
+dnl ------------
+dnl
+dnl First check for the appropriate config program, since the developers for
+dnl these libraries change their configuration (and config program) more or
+dnl less randomly.  If we cannot find the config program, do not bother trying
+dnl to guess the latest variation of include/lib directories.
+dnl
+dnl If the package-config program is not found, rely on the configure script's
+dnl options to provide the cflags/libs options:
+dnl	--with-fontenc-cflags
+dnl	--with-fontenc-libs
+AC_DEFUN([CF_X_FONTENC],
+[
+AC_REQUIRE([CF_PKG_CONFIG])
+
+cf_extra_fontenc_libs=
+FONTENC_CONFIG=
+FONTENC_PARAMS=
+
+AC_PATH_PROG(PKG_CONFIG, pkg-config, none)
+if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists fontenc; then
+	FONTENC_CONFIG=$PKG_CONFIG
+	FONTENC_PARAMS="fontenc x11"
+else
+	cf_extra_fontenc_libs="-lXfont -lX11"
+fi
+
+if test -n "$FONTENC_CONFIG" ; then
+withval=
+AC_ARG_WITH(fontenc-cflags,
+	[  --with-fontenc-cflags   -D/-I options for compiling with Xfont],
+[cf_cv_x_fontenc_incs="$withval"
+ CF_VERBOSE(fontenc-cflags $cf_cv_x_fontenc_incs)
+],[
+AC_CACHE_CHECK(for X font-encoding headers,cf_cv_x_fontenc_incs,[
+	cf_cv_x_fontenc_incs="`$FONTENC_CONFIG $FONTENC_PARAMS --cflags 2>/dev/null`"
+])])
+withval=
+AC_ARG_WITH(fontenc-libs,
+	[  --with-fontenc-libs     -L/-l options to link Xfont],
+[cf_cv_x_fontenc_libs="$withval"
+ CF_VERBOSE(fontenc-libs $cf_cv_x_fontenc_libs)
+],[
+AC_CACHE_CHECK(for X font-encoding libraries,cf_cv_x_fontenc_libs,[
+
+cf_save_LIBS="$LIBS"
+cf_save_INCS="$CPPFLAGS"
+
+cf_cv_x_fontenc_libs="$cf_extra_fontenc_libs `$FONTENC_CONFIG $FONTENC_PARAMS --libs 2>/dev/null`"
+
+LIBS="$cf_cv_x_fontenc_libs $LIBS"
+CPPFLAGS="$cf_cv_x_fontenc_incs $CPPFLAGS"
+
+AC_TRY_LINK([
+$ac_includes_default
+#include <X11/Xlib.h>
+#include <X11/fonts/fontenc.h>],[
+	FontMapPtr mapping = FontEncMapFind(0, FONT_ENCODING_UNICODE, -1, -1, NULL);
+	],[],[cf_cv_x_fontenc_libs=])
+	LIBS="$cf_save_LIBS"
+	CPPFLAGS="$cf_save_INCS"
+])])
+
+if test -n "$cf_cv_x_fontenc_libs" ; then
+	LIBS="$cf_cv_x_fontenc_libs $LIBS"
+	CF_ADD_CFLAGS($cf_cv_x_fontenc_incs)
+else
+	AC_MSG_WARN(No libraries found for font-encoding)
+fi
+
+else
+	AC_MSG_WARN(Cannot find font-encoding configuration program)
+fi
+])
