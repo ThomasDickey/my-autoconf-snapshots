@@ -1,0 +1,8 @@
+dnl CF_PROG_AWK version: 1 updated: 2006/09/16 11:40:59
+dnl -----------
+dnl Check for awk, ensure that the check found something.
+AC_DEFUN([CF_PROG_AWK],
+[
+AC_PROG_AWK
+test -z "$AWK" && AC_MSG_ERROR(No awk program found)
+])dnl
