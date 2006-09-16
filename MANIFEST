@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20060902
+MANIFEST for my-autoconf, version t20060916
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -217,11 +217,14 @@ AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of conf
 AcSplit/CF_PRG_RULES            generate program-linking rules for test (ncurses)
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
+AcSplit/CF_PROG_AWK             find awk - and check that the search succeeded
 AcSplit/CF_PROG_CC_C_O          check if the compiler (given by its shell-variable name) can use -c -o
 AcSplit/CF_PROG_CC_U_D          macro to test if I can use -U to pre-undefine a symbol that I want to
+AcSplit/CF_PROG_EGREP           adapted from autoconf 2.57 (AC_PROG_EGREP comes from 2.53)
 AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
+AcSplit/CF_PROG_LINT            find the "lint" program
 AcSplit/CF_PROG_PERL            check for perl program
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca

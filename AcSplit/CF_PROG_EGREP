@@ -1,0 +1,14 @@
+dnl CF_PROG_EGREP version: 1 updated: 2006/09/16 11:40:59
+dnl -------------
+dnl AC_PROG_EGREP was introduced in autoconf 2.53.
+dnl This macro adds a check to ensure the script found something.
+AC_DEFUN([CF_PROG_EGREP],
+[AC_CACHE_CHECK([for egrep], [ac_cv_prog_egrep],
+   [if echo a | (grep -E '(a|b)') >/dev/null 2>&1
+    then ac_cv_prog_egrep='grep -E'
+    else ac_cv_prog_egrep='egrep'
+    fi])
+ EGREP=$ac_cv_prog_egrep
+ AC_SUBST([EGREP])
+test -z "$EGREP" && AC_MSG_ERROR(No egrep program found)
+])dnl
