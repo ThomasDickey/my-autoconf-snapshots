@@ -1,3 +1,25 @@
+2006-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE: Date: Thu, 21 Sep 2006 19:26:42 +0200
+	From: ThMO <thmo-13@gmx.de>
+	Subject: ncurses v5.5 - some problems
+	To: bug-ncurses@gnu.org
+	X-Mailer: Mozilla 4.08 [en] (X11; U; Linux 2.0.35 i686)
+
+	[-- Attachment #1 --]
+	[-- Type: text/plain, Encoding: 8bit, Size: 1.4K --]
+
+	Hello,
+
+	I've decided to upgrade ncurses from v4.2 -> v5.5 and there were
+	two problems:
+
+	? ./configure --disable-largefile
+
+	  the symbol _LARGE_FILES gets defined, which shouldn't with the
+	  above option
+	--------TD: oops the enable option is tested in one part of the macro only.
+
 2006-09-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_AWK, AcSplit/CF_PROG_EGREP, AcSplit/CF_PROG_LINT:
