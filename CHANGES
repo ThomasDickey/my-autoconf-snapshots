@@ -1,3 +1,16 @@
+2006-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	widened the FreeBSD check to version 6 (should invert the case to cover
+	versions 2,3).  Fix for cygwin as well, to cover changes in awk files.
+
+	* AcSplit/CF_SHARED_OPTS:
+	another bit of breakage from the 2000 rewrite of -rpath
+
+	* AcSplit/CF_LIB_RULES:
+	move the directory-name out of the SHARED_LIB and IMPORT_LIB variables
+	to allow reuse in the install-rule
+
 2006-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LARGEFILE: Date: Thu, 21 Sep 2006 19:26:42 +0200
