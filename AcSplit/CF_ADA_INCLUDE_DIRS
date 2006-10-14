@@ -1,4 +1,4 @@
-dnl CF_ADA_INCLUDE_DIRS version: 4 updated: 2002/12/01 00:12:15
+dnl CF_ADA_INCLUDE_DIRS version: 5 updated: 2006/10/14 15:23:15
 dnl -------------------
 dnl Construct the list of include-options for the C programs in the Ada95
 dnl binding.
@@ -6,17 +6,17 @@ AC_DEFUN([CF_ADA_INCLUDE_DIRS],
 [
 ACPPFLAGS="-I. -I../../include $ACPPFLAGS"
 if test "$srcdir" != "."; then
-	ACPPFLAGS="-I\$(srcdir)/../../include $ACPPFLAGS"
+	ACPPFLAGS="-I\${srcdir}/../../include $ACPPFLAGS"
 fi
 if test "$GCC" != yes; then
-	ACPPFLAGS="$ACPPFLAGS -I\$(includedir)"
+	ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
 elif test "$includedir" != "/usr/include"; then
 	if test "$includedir" = '${prefix}/include' ; then
 		if test $prefix != /usr ; then
-			ACPPFLAGS="$ACPPFLAGS -I\$(includedir)"
+			ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
 		fi
 	else
-		ACPPFLAGS="$ACPPFLAGS -I\$(includedir)"
+		ACPPFLAGS="$ACPPFLAGS -I\${includedir}"
 	fi
 fi
 AC_SUBST(ACPPFLAGS)

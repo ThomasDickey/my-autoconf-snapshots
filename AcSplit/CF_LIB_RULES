@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 39 updated: 2006/10/07 15:43:39
+dnl CF_LIB_RULES version: 40 updated: 2006/10/14 15:23:15
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -36,14 +36,14 @@ do
 					case .${LIB_SUFFIX} in
 					.w*)
 						cf_suffix=`echo $cf_suffix | sed 's/^w//'`
-						cf_suffix=w'.$(REL_VERSION)'"$cf_suffix"
+						cf_suffix=w'.${REL_VERSION}'"$cf_suffix"
 						;;
 					*)
-						cf_suffix='.$(REL_VERSION)'"$cf_suffix"
+						cf_suffix='.${REL_VERSION}'"$cf_suffix"
 						;;
 					esac
 					;; #(vi
-					*) cf_suffix="$cf_suffix"'.$(REL_VERSION)' ;;
+					*) cf_suffix="$cf_suffix"'.${REL_VERSION}' ;;
 					esac
 					;;
 				abi)
@@ -52,14 +52,14 @@ do
 					case .${LIB_SUFFIX} in
 					.w*)
 						cf_suffix=`echo $cf_suffix | sed 's/^w//'`
-						cf_suffix=w'.$(ABI_VERSION)'"$cf_suffix"
+						cf_suffix=w'.${ABI_VERSION}'"$cf_suffix"
 						;;
 					*)
-						cf_suffix='.$(ABI_VERSION)'"$cf_suffix"
+						cf_suffix='.${ABI_VERSION}'"$cf_suffix"
 						;;
 					esac
 					;; #(vi
-					*) cf_suffix="$cf_suffix"'.$(ABI_VERSION)' ;;
+					*) cf_suffix="$cf_suffix"'.${ABI_VERSION}' ;;
 					esac
 					;;
 				esac
@@ -68,9 +68,9 @@ do
 			# use autodetected ${cf_prefix} for import lib and static lib, but
 			# use 'cyg' prefix for shared lib.
 			if test $cf_cv_shlib_version = cygdll ; then
-				SHARED_LIB="cyg${cf_dir}\$(ABI_VERSION).dll"
+				SHARED_LIB="cyg${cf_dir}\${ABI_VERSION}.dll"
 				IMPORT_LIB="${cf_prefix}${cf_dir}.dll.a"
-				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/\$(SHARED_LIB) ../lib/\$(IMPORT_LIB)"
+				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/\${SHARED_LIB} ../lib/\${IMPORT_LIB}"
 				continue
 			fi
 			fi
@@ -130,7 +130,7 @@ do
 			if test "$srcdir" = "."; then
 				cf_reldir="."
 			else
-				cf_reldir="\$(srcdir)"
+				cf_reldir="\${srcdir}"
 			fi
 
 			if test -f $srcdir/$cf_dir/$cf_dir.priv.h; then
@@ -194,7 +194,7 @@ do
 		done
 	fi
 
-	echo '	cd '$cf_dir' && $(MAKE) $(CF_MFLAGS) [$]@' >>Makefile
+	echo '	cd '$cf_dir' && ${MAKE} ${CF_MFLAGS} [$]@' >>Makefile
 done
 
 for cf_dir in $SRC_SUBDIRS
@@ -209,7 +209,7 @@ do
 			echo 'libs \' >> Makefile
 			echo 'install.libs \' >> Makefile
 			echo 'uninstall.libs ::' >> Makefile
-			echo '	cd '$cf_dir' && $(MAKE) $(CF_MFLAGS) [$]@' >> Makefile
+			echo '	cd '$cf_dir' && ${MAKE} ${CF_MFLAGS} [$]@' >> Makefile
 			;;
 		esac
 	fi
@@ -232,7 +232,7 @@ install.libs \\
 uninstall.libs \\
 install.$cf_dir \\
 uninstall.$cf_dir ::
-	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
+	cd $cf_dir && \${MAKE} \${CF_MFLAGS} \[$]@
 CF_EOF
 	elif test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
@@ -242,7 +242,7 @@ install.libs \\
 uninstall.libs \\
 install.includes \\
 uninstall.includes ::
-	cd $cf_dir && \$(MAKE) \$(CF_MFLAGS) \[$]@
+	cd $cf_dir && \${MAKE} \${CF_MFLAGS} \[$]@
 CF_EOF
 fi
 done
@@ -251,16 +251,16 @@ cat >> Makefile <<CF_EOF
 
 install.data \\
 uninstall.data ::
-$MAKE_TERMINFO	cd misc && \$(MAKE) \$(CF_MFLAGS) \[$]@
+$MAKE_TERMINFO	cd misc && \${MAKE} \${CF_MFLAGS} \[$]@
 
 install.man \\
 uninstall.man ::
-	cd man && \$(MAKE) \$(CF_MFLAGS) \[$]@
+	cd man && \${MAKE} \${CF_MFLAGS} \[$]@
 
 distclean ::
 	rm -f config.cache config.log config.status Makefile include/ncurses_cfg.h
 	rm -f headers.sh headers.sed
-	rm -rf \$(DIRS_TO_MAKE)
+	rm -rf \${DIRS_TO_MAKE}
 CF_EOF
 
 # Special case: tack's manpage lives in its own directory.
@@ -270,7 +270,7 @@ cat >> Makefile <<CF_EOF
 
 install.man \\
 uninstall.man ::
-	cd tack && \$(MAKE) \$(CF_MFLAGS) \[$]@
+	cd tack && \${MAKE} \${CF_MFLAGS} \[$]@
 CF_EOF
 fi
 fi
@@ -371,12 +371,12 @@ do
 
 	if test -f $srcdir/$cf_dir/headers; then
 	cat >>$cf_dir/Makefile <<CF_EOF
-\$(DESTDIR)\$(includedir) :
-	sh \$(srcdir)/../mkinstalldirs \[$]@
+\${DESTDIR}\${includedir} :
+	sh \${srcdir}/../mkinstalldirs \[$]@
 
 install \\
 install.libs \\
-install.includes :: \$(AUTO_SRC) \$(DESTDIR)\$(includedir) \\
+install.includes :: \${AUTO_SRC} \${DESTDIR}\${includedir} \\
 CF_EOF
 		j=""
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
@@ -389,8 +389,8 @@ CF_EOF
 
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
-			echo "	@ (cd \$(DESTDIR)\$(includedir) && rm -f `basename $i`) ; ../headers.sh \$(INSTALL_DATA) \$(DESTDIR)\$(includedir) \$(srcdir) $i" >>$cf_dir/Makefile
-			test $i = curses.h && test $WITH_CURSES_H = yes && echo "	@ (cd \$(DESTDIR)\$(includedir) && rm -f ncurses.h && \$(LN_S) curses.h ncurses.h)" >>$cf_dir/Makefile
+			echo "	@ (cd \${DESTDIR}\${includedir} && rm -f `basename $i`) ; ../headers.sh \${INSTALL_DATA} \${DESTDIR}\${includedir} \${srcdir} $i" >>$cf_dir/Makefile
+			test $i = curses.h && test $WITH_CURSES_H = yes && echo "	@ (cd \${DESTDIR}\${includedir} && rm -f ncurses.h && \${LN_S} curses.h ncurses.h)" >>$cf_dir/Makefile
 		done
 
 	cat >>$cf_dir/Makefile <<CF_EOF
@@ -402,16 +402,16 @@ CF_EOF
 		for i in `cat $srcdir/$cf_dir/headers |fgrep -v "#"`
 		do
 			i=`basename $i`
-			echo "	-@ (cd \$(DESTDIR)\$(includedir) && rm -f $i)" >>$cf_dir/Makefile
-			test $i = curses.h && echo "	-@ (cd \$(DESTDIR)\$(includedir) && rm -f ncurses.h)" >>$cf_dir/Makefile
+			echo "	-@ (cd \${DESTDIR}\${includedir} && rm -f $i)" >>$cf_dir/Makefile
+			test $i = curses.h && echo "	-@ (cd \${DESTDIR}\${includedir} && rm -f ncurses.h)" >>$cf_dir/Makefile
 		done
 	fi
 
 	if test -f $srcdir/$cf_dir/modules; then
 		if test "$cf_dir" != "c++" ; then
 			cat >>$cf_dir/Makefile <<"CF_EOF"
-depend : $(AUTO_SRC)
-	makedepend -- $(CPPFLAGS) -- $(C_SRC)
+depend : ${AUTO_SRC}
+	makedepend -- ${CPPFLAGS} -- ${C_SRC}
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 CF_EOF

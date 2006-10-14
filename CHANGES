@@ -1,3 +1,8 @@
+2006-10-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BUILD_CC, AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL:
+	use curly-braces in makefile symbols so they can be reused in shell scripts
+
 2006-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
