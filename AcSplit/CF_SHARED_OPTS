@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 36 updated: 2006/10/14 15:23:15
+dnl CF_SHARED_OPTS version: 37 updated: 2006/10/15 16:33:23
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
 dnl library.
@@ -125,7 +125,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	linux*|gnu*|k*bsd*-gnu)
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,`pwd`/lib"
+			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_ld_rpath" = yes ; then
@@ -144,7 +144,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		MK_SHARED_LIB='${LD} -Bshareable -soname=`basename $[@]` -o $[@]'
 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
-			LOCAL_LDFLAGS="-rpath `pwd`/lib"
+			LOCAL_LDFLAGS="-rpath \$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="-rpath \${libdir} $LOCAL_LDFLAGS"
 			cf_ld_rpath_opt="-rpath "
 			EXTRA_LDFLAGS="-rpath \${libdir} $EXTRA_LDFLAGS"
@@ -159,7 +159,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		test "$cf_cv_ld_rpath" = yes && cf_ld_rpath_opt="-Wl,-rpath,"
 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,`pwd`/lib"
+			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
 			MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,`basename $[@] .${REL_VERSION}`.${ABI_VERSION} -o $[@]'
@@ -184,7 +184,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		esac
 		MK_SHARED_LIB="${MK_SHARED_LIB}"' -o $[@]'
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,`pwd`/lib"
+			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_ld_rpath" = yes ; then
@@ -222,7 +222,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		fi
 		MK_SHARED_LIB='${LD} -dy -G -h `basename $[@] .${REL_VERSION}`.${ABI_VERSION} -o $[@]'
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-R `pwd`/lib:\${libdir}"
+			LOCAL_LDFLAGS="-R \$(LOCAL_LIBDIR):\${libdir}"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_ld_rpath" = yes ; then

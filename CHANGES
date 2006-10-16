@@ -1,3 +1,11 @@
+2006-10-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TOP_BUILDDIR: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	factor out symbol $(LOCAL_LIBDIR) so I can make an install-rule for the
+	test programs in ncurses that will work with the -rpath option.
+
 2006-10-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BUILD_CC, AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL:
