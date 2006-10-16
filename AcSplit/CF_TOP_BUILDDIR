@@ -1,0 +1,8 @@
+dnl CF_TOP_BUILDDIR version: 1 updated: 2006/10/15 16:33:23
+dnl ---------------
+dnl Define a top_builddir symbol, for applications that need an absolute path.
+AC_DEFUN([CF_TOP_BUILDDIR],
+[
+top_builddir=`pwd`
+AC_SUBST(top_builddir)
+])dnl
