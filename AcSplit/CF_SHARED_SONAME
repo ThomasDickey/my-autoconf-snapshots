@@ -1,0 +1,17 @@
+dnl CF_SHARED_SONAME version: 2 updated: 2006/10/21 12:33:41
+dnl ----------------
+dnl utility macro for CF_SHARED_OPTS, constructs "$cf_shared_soname" for
+dnl substitution into MK_SHARED_LIB string for the "-soname" (or similar)
+dnl option.
+dnl
+dnl $1 is the default that should be used for "$cf_cv_shlib_version".
+dnl If missing, use "rel".
+define([CF_SHARED_SONAME],
+[
+	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=ifelse($1,,rel,$1)
+	if test "$cf_cv_shlib_version" = rel; then
+		cf_shared_soname='`basename $[@] .${REL_VERSION}`.${ABI_VERSION}'
+	else
+		cf_shared_soname='`basename $[@]`'
+	fi
+])

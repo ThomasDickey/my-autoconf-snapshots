@@ -1,3 +1,26 @@
+2006-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	add CF_SHARED_SONAME for several places where I had the appropriate
+	basename construct
+
+	* AcSplit/CF_SHARED_SONAME:
+	ensure we have a useful default value for $cf_cv_shlib_version
+
+	* AcSplit/CF_SHARED_SONAME: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS: make shared abi/rel work for netbsd 2.0
+
+	* AcSplit/CF_SHARED_OPTS:
+	reverse the cases for FreeBSD so I can easily make rpath work up to version 19.
+
+	* AcSplit/CF_MAKEFLAGS:
+	NetBSD 2.0 spits out a trailing blank on the testcase I made for the -k
+	option.  That made it not handle the case ".*k)".  I tried adding a
+	pattern for blanks after - but NetBSD's shell couldn't handle _that_
+	either.  Dumbed it down by trimming the trailing blank(s) with a sed
+	script.
+
 2006-10-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TOP_BUILDDIR: ci-aclocal generated header

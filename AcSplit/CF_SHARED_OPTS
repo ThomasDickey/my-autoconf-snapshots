@@ -1,4 +1,5 @@
-dnl CF_SHARED_OPTS version: 37 updated: 2006/10/15 16:33:23
+dnl CF_SHARED_OPTS version: 40 updated: 2006/10/21 12:33:41
+dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
 dnl library.
@@ -132,28 +133,28 @@ AC_DEFUN([CF_SHARED_OPTS],
 			cf_ld_rpath_opt="-Wl,-rpath,"
 			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
 		fi
-		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
-		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,`basename $[@] .${REL_VERSION}`.${ABI_VERSION},-stats,-lc -o $[@]'
+		CF_SHARED_SONAME
+		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_shared_soname',-stats,-lc -o $[@]'
 		;;
 	openbsd2*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		MK_SHARED_LIB='${LD} -Bshareable -soname,`basename $[@].${ABI_VERSION}` -o $[@]'
 		;;
-	freebsd[[456]]*)
+	openbsd*|freebsd[[23]]*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		MK_SHARED_LIB='${LD} -Bshareable -soname=`basename $[@]` -o $[@]'
+		MK_SHARED_LIB='${LD} -Bshareable -o $[@]'
 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+		;;
+	freebsd*)
+		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
 			LOCAL_LDFLAGS="-rpath \$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="-rpath \${libdir} $LOCAL_LDFLAGS"
 			cf_ld_rpath_opt="-rpath "
 			EXTRA_LDFLAGS="-rpath \${libdir} $EXTRA_LDFLAGS"
 		fi
-		;;
-	openbsd*|freebsd*)
-		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		MK_SHARED_LIB='${LD} -Bshareable -o $[@]'
-		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+		CF_SHARED_SONAME
+		MK_SHARED_LIB='${LD} -Bshareable -soname=`basename $[@]` -o $[@]'
 		;;
 	netbsd*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
@@ -162,12 +163,15 @@ AC_DEFUN([CF_SHARED_OPTS],
 			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
-			MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,`basename $[@] .${REL_VERSION}`.${ABI_VERSION} -o $[@]'
 			if test "$cf_cv_shlib_version" = auto; then
-			if test ! -f /usr/libexec/ld.elf_so; then
+			if test -f /usr/libexec/ld.elf_so; then
+				cf_cv_shlib_version=abi
+			else
 				cf_cv_shlib_version=rel
 			fi
 			fi
+			CF_SHARED_SONAME
+			MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_shared_soname' -o $[@]'
 		else
 			MK_SHARED_LIB='${LD} -Bshareable -o $[@]'
 		fi
@@ -220,7 +224,6 @@ AC_DEFUN([CF_SHARED_OPTS],
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-KPIC'
 		fi
-		MK_SHARED_LIB='${LD} -dy -G -h `basename $[@] .${REL_VERSION}`.${ABI_VERSION} -o $[@]'
 		if test "$DFT_LWR_MODEL" = "shared" ; then
 			LOCAL_LDFLAGS="-R \$(LOCAL_LIBDIR):\${libdir}"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
@@ -229,7 +232,8 @@ AC_DEFUN([CF_SHARED_OPTS],
 			cf_ld_rpath_opt="-R"
 			EXTRA_LDFLAGS="$LOCAL_LDFLAGS $EXTRA_LDFLAGS"
 		fi
-		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
+		CF_SHARED_SONAME
+		MK_SHARED_LIB='${LD} -dy -G -h '$cf_shared_soname' -o $[@]'
 		;;
 	sysv5uw7*|unix_sv*)
 		# tested with UnixWare 7.1.0 (gcc 2.95.2 and cc)
