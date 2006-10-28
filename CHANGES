@@ -1,3 +1,21 @@
+2006-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	move the calls to CF_NCURSES_CPPFLAGS and CF_NCURSES_LIBS into CF_NCURSES_CONFIG
+
+	* AcSplit/CF_NCURSES_CONFIG: fix one error
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	first cut (not correct) using the ncurses5-config (or aliases)
+
+	* AcSplit/CF_NCURSES_CONFIG: corrected the use of ifelse()
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	use curly-braces ${symbol} for better reuse in shell-scripts
+
+	* AcSplit/CF_CURSES_CONFIG, AcSplit/CF_NCURSES_CONFIG:
+	ci-aclocal generated header
+
 2006-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:

@@ -1,0 +1,10 @@
+dnl CF_CURSES_CONFIG version: 1 updated: 2006/10/28 13:50:41
+dnl ----------------
+dnl Tie together the configure-script macros for curses.
+dnl It might be ncurses - check for that as well.
+AC_DEFUN([CF_CURSES_CONFIG],
+[
+CF_CURSES_CPPFLAGS
+CF_NCURSES_VERSION
+CF_CURSES_LIBS
+])dnl
