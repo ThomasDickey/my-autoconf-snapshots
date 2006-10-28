@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 27 updated: 2005/04/05 18:26:15
+dnl CF_IMAKE_CFLAGS version: 28 updated: 2006/10/28 14:00:40
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -53,8 +53,8 @@ CF_EOF
 
 	cat >> ./Imakefile <<'CF_EOF'
 findstddefs:
-	@echo IMAKE $(ALLDEFINES)ifelse($1,,,[ $1])       | sed -f fix_cflags.sed
-	@echo IMAKE $(EXTRA_LOAD_FLAGS)ifelse($2,,,[ $2]) | sed -f fix_lflags.sed
+	@echo IMAKE ${ALLDEFINES}ifelse($1,,,[ $1])       | sed -f fix_cflags.sed
+	@echo IMAKE ${EXTRA_LOAD_FLAGS}ifelse($2,,,[ $2]) | sed -f fix_lflags.sed
 CF_EOF
 
 	if ( $IMAKE $cf_imake_opts 1>/dev/null 2>&AC_FD_CC && test -f Makefile)
@@ -95,7 +95,7 @@ CF_EOF
 	cd ..
 	rm -rf conftestdir
 
-	# We use $(ALLDEFINES) rather than $(STD_DEFINES) because the former
+	# We use ${ALLDEFINES} rather than ${STD_DEFINES} because the former
 	# declares XTFUNCPROTO there.  However, some vendors (e.g., SGI) have
 	# modified it to support site.cf, adding a kludge for the /usr/include
 	# directory.  Try to filter that out, otherwise gcc won't find its

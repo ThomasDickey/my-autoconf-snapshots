@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20061021
+MANIFEST for my-autoconf, version t20061028
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -69,6 +69,7 @@ AcSplit/CF_CURSES_ACS_MAP       check for acs_map[] array (ncurses)
 AcSplit/CF_CURSES_CCHAR_T       check for 'cchar_t'
 AcSplit/CF_CURSES_CHECK_TYPE    check for a datatype which is defined in curses.h
 AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
+AcSplit/CF_CURSES_CONFIG        common macros for curses
 AcSplit/CF_CURSES_CPPFLAGS      check for curses/ncurses header file
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
 AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
@@ -188,6 +189,7 @@ AcSplit/CF_MSG_LOG              write to configure's log
 AcSplit/CF_NCURSES_ABI_6        utility for bumping ncurses' version to 6 (ncurses)
 AcSplit/CF_NCURSES_BROKEN       check for broken 1.9.9e ncurses
 AcSplit/CF_NCURSES_CC_CHECK     check to ensure right ncurses/ncursesw header (ded)
+AcSplit/CF_NCURSES_CONFIG       common configure macro (ncurses)
 AcSplit/CF_NCURSES_CPPFLAGS     set up CFLAGS (ncurses)
 AcSplit/CF_NCURSES_HEADER       check for ncurses.h
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
