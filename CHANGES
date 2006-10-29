@@ -1,3 +1,7 @@
+2006-10-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CONFIG: comment
+
 2006-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TERMCAP_LIBS:
