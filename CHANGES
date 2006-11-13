@@ -1,3 +1,8 @@
+2006-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PDCURSES_X11:
+	use xcurses-config if we have it, to fix rpath issues on *BSD
+
 2006-10-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CONFIG: comment
