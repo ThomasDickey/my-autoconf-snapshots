@@ -1,3 +1,9 @@
+2006-11-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SUBDIR_PATH:
+	quote $HOME as "$HOME" (prompted by report on lynx-dev of problems with cygwin by
+	"Veley" (Vepa Velmu?) (Vebazu?)
+
 2006-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PDCURSES_X11:
