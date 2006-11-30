@@ -1,3 +1,18 @@
+2006-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA_LIBS:
+	CF_X_TOOLKIT adds $X_PRE_LIBS and $X_EXTRA_LIBS to $LIBS, so I don't want to
+	repeat that here.
+
+	* AcSplit/CF_X_TOOLKIT:
+	add $X_EXTRA_LIBS when completing the library list.
+	(this isn't the autoconf assumption, but does simplify building up other tests).
+
+	* AcSplit/CF_X_FREETYPE:
+	rewrote so I can nominally support pre-package versions of FreeType.
+	This worked for Debian 2.2 (may work for Redhat 7.2 - haven't tested if
+	I also need -lrender).
+
 2006-11-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SUBDIR_PATH:
