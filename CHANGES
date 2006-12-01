@@ -1,3 +1,10 @@
+2006-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA_LIBS: sigh...
+
+	* AcSplit/CF_X_ATHENA_LIBS: oops - missed that I had to reset $LIBS
+	(that didn't build on HPUX 10.20, probably because of command-length)
+
 2006-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA_LIBS:
