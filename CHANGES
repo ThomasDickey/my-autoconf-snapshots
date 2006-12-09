@@ -1,3 +1,83 @@
+2006-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	use ${CC} rather than ${LD} in two cases where "cc" passes the options
+	properly to "ld":  IRIX64 and Solaris.
+
+	For Solaris, this is motivated by this reply from Casper Dik:
+
+	(on comp.unix.solaris)
+
+	Date: 04 Dec 2006 14:04:44 GMT
+	From: Casper H.S. Dik <Casper.Dik@Sun.COM>
+	Subject: Re: Help needed for migrating HPUX tool to Solaris
+
+	Thomas Dickey <dickey@saltmine.radix.net> writes:
+
+	>Most people (well, perhaps not on this newsgroup) are aware that it
+	>doesn't work for the first case (not a shared library), because one must
+	>include the c runtime.  Your comment does not provide any useful
+	>information on what "runtime glue" is needed to make a shared library
+	>which is lacking by using ld directly(*).
+
+
+	a.out and lib.so use the same glue but a.out adds one extra bit,
+	the call to main.  The particular object files in question are
+	crti.o and crtn.o, they're used to bracket all .o files like this:
+
+
+	        crti.o .... *.o .... crtn.o
+
+	crti.o contains an .init section with the _init function preamble
+	and a .fini section with the _fini function preamble
+
+	crtn.o contains an .init section with a function epilogue
+	and a .fini with the same.
+
+	It generally works without it except when you:
+
+	        - use #pragma init
+	        - use #pragma fini
+	        - use __attribute__((constructor))
+	        - use __attribute__((destructor))
+
+	and C++ code which needs static initalizers.
+
+	>(*) I've used it both ways, but generally directly.  It's nice to hear
+	>    from the experts that programs that I use every day - including
+	>    the copy of tin that I'm using for posting - do not work.
+
+	It mostly works, but I remember one particular occasion when someone
+	change libc.so to contain a different crypt() an dhe then proceeded
+	to relink the library with "ld".  The resulting library did not
+	call fflush() on exit causing no end to trouble.
+
+	Casper
+
+	--------- reviewing, I see Linux already did use "${CC}".
+
+	Checking, I see IRIX64 can do this also, though the sections do not add
+	and .init/.fini -- rather, it adds a ".conflict" section:
+
+	[18]    |   4205076|       8|SECT |LOCL |DEFAULT  |MIPS_DATA|.conflict
+
+	also some weak symbols
+
+	[32]    |   4205092|       0|FUNC |WEAK |DEFAULT  |UNDEF  |attr_get
+	[33]    |   4205092|       0|FUNC |WEAK |DEFAULT  |UNDEF  |attr_set
+
+	Finally - I see that nm's listing for libc symbols contains offset
+	values rather than 0's.  I think that is an improvement.
+
+	* AcSplit/CF_MAN_PAGES:
+	rename "$target" to "$cf_target" and "$source" to "$cf_source".
+	Inspecting SuSE's ncurses package, I saw they (unknown changelog entry)
+	changed "$target" to "$t" (which is not good for grep's).  I can see
+	the apparent reason is that someone thought it conflicted with "$target"
+	in other places in the script.  But it doesn't (didn't), since this
+	chunk uses it only in a generated script.  Renamed it anyway to avoid
+	seeing junk in the rpm package...
+
 2006-12-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2006-12-08
