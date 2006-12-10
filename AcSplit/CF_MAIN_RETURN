@@ -1,0 +1,11 @@
+dnl CF_MAIN_RETURN version: 1 updated: 2006/12/10 09:51:54
+dnl --------------
+dnl Check if a return from main to the shell actually returns the same exit
+dnl code.  This is true for almost any POSIX environment.
+dnl
+dnl Some very old environments did not flush stdout, etc., on an exit.  That
+dnl would be a useful case to test for also.
+AC_DEFUN([CF_MAIN_RETURN],
+[
+cf_cv_main_return=return
+])dnl

@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 6 updated: 2005/06/25 16:16:34
+dnl CF_TYPEOF_CHTYPE version: 7 updated: 2006/12/10 09:51:54
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -36,7 +36,7 @@ int main()
 		fputs(result, fp);
 		fclose(fp);
 	}
-	exit(0);
+	${cf_cv_main_return:return}(0);
 }
 		],
 		[cf_cv_typeof_chtype=`cat cf_test.out`],
