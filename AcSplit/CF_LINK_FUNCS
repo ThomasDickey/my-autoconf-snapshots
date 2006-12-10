@@ -1,4 +1,4 @@
-dnl CF_LINK_FUNCS version: 5 updated: 2003/02/02 01:41:46
+dnl CF_LINK_FUNCS version: 6 updated: 2006/12/10 09:51:54
 dnl -------------
 dnl Most Unix systems have both link and symlink, a few don't have symlink.
 dnl A few non-Unix systems implement symlink, but not link.
@@ -40,7 +40,7 @@ int main()
 #else
 	remove(dst);
 #endif
-	exit (fail);
+	${cf_cv_main_return:return} (fail);
 }
 			],[
 			cf_cv_link_funcs="$cf_cv_link_funcs $cf_func"

@@ -1,4 +1,4 @@
-dnl CF_LINK_DATAONLY version: 6 updated: 2003/02/02 01:41:46
+dnl CF_LINK_DATAONLY version: 7 updated: 2006/12/10 09:51:54
 dnl ----------------
 dnl Some systems have a non-ANSI linker that doesn't pull in modules that have
 dnl only data (i.e., no functions), for example NeXT.  On those systems we'll
@@ -23,7 +23,7 @@ EOF
 int	testfunc()
 {
 #if defined(NeXT)
-	exit(1);	/* I'm told this linker is broken */
+	${cf_cv_main_return:return}(1);	/* I'm told this linker is broken */
 #else
 	extern int testdata[[3]];
 	return testdata[[0]] == 123
@@ -44,7 +44,7 @@ EOF
 	int main()
 	{
 		extern int testfunc();
-		exit (!testfunc());
+		${cf_cv_main_return:return} (!testfunc());
 	}
 	],
 	[cf_cv_link_dataonly=yes],

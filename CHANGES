@@ -1,3 +1,10 @@
+2006-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAIN_RETURN: ci-aclocal generated header
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_MKSTEMP, AcSplit/CF_TYPEOF_CHTYPE:
+	use $cf_cv_main_return
+
 2006-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
