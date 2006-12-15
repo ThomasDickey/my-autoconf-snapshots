@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20061210
+MANIFEST for my-autoconf, version t20061214
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -197,6 +197,7 @@ AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
+AcSplit/CF_NO_LEAKS_OPTION      support for CF_WITH_NO_LEAKS
 AcSplit/CF_NUMBER_SYNTAX        check if a variable is a number
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
 AcSplit/CF_OUR_MESSAGES         macro for i18n support (lynx)
@@ -346,12 +347,15 @@ AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_LOCALE_ALIAS    option to provide locale-alias file
 AcSplit/CF_WITH_NC_ALLOC_H      check for nc_alloc.h if --disable-leaks is set
+AcSplit/CF_WITH_NO_LEAKS        wrapper for leak-related configure options
 AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
 AcSplit/CF_WITH_PCRE            optionally add PCRE to a build
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
+AcSplit/CF_WITH_PURIFY          configure --with-purify
 AcSplit/CF_WITH_REL_VERSION     allow release-version to be altered (ncurses)
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
+AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_WITH_WARNINGS        make option for gcc warnings
 AcSplit/CF_WITH_ZLIB            check for zlib

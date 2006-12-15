@@ -1,0 +1,9 @@
+dnl CF_WITH_PURIFY version: 2 updated: 2006/12/14 18:43:43
+dnl --------------
+AC_DEFUN([CF_WITH_PURIFY],[
+CF_NO_LEAKS_OPTION(purify,
+	[  --with-purify           test: use Purify],
+	[USE_PURIFY],
+	[LINK_PREFIX="$LINK_PREFIX purify"])
+AC_SUBST(LINK_PREFIX)
+])dnl

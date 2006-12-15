@@ -1,0 +1,22 @@
+dnl CF_NO_LEAKS_OPTION version: 2 updated: 2006/12/14 18:43:43
+dnl ------------------
+dnl see CF_WITH_NO_LEAKS
+AC_DEFUN([CF_NO_LEAKS_OPTION],[
+AC_MSG_CHECKING(if you want to use $1 for testing)
+AC_ARG_WITH($1,
+	$2,
+	[AC_DEFINE($3)ifelse([$4],,[
+	 $4
+])
+	: ${with_cflags:=-g}
+	: ${with_no_leaks:=yes}
+	 with_$1=yes],
+	[with_$1=])
+AC_MSG_RESULT(${with_$1:-no})
+
+case .$with_cflags in
+.*-g*)
+	CF_ADD_CFLAGS([-g])
+	;;
+esac
+])dnl
