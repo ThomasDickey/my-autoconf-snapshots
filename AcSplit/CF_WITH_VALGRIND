@@ -1,0 +1,7 @@
+dnl CF_WITH_VALGRIND version: 1 updated: 2006/12/14 18:00:21
+dnl ----------------
+AC_DEFUN([CF_WITH_VALGRIND],[
+CF_NO_LEAKS_OPTION(valgrind,
+	[  --with-valgrind         test: use valgrind],
+	[USE_VALGRIND])
+])dnl

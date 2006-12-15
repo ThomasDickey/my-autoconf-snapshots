@@ -1,0 +1,22 @@
+dnl CF_WITH_NO_LEAKS version: 1 updated: 2006/12/14 18:00:21
+dnl ----------------
+AC_DEFUN([CF_WITH_NO_LEAKS],[
+
+AC_REQUIRE([CF_WITH_DMALLOC])
+AC_REQUIRE([CF_WITH_DBMALLOC])
+AC_REQUIRE([CF_WITH_PURIFY])
+AC_REQUIRE([CF_WITH_VALGRIND])
+
+AC_MSG_CHECKING(if you want to perform memory-leak testing)
+AC_ARG_WITH(no-leaks,
+	[  --with-no-leaks         test: free permanent memory, analyze leaks],
+	[AC_DEFINE(NO_LEAKS)
+	 cf_doalloc=".${with_dmalloc}${with_dbmalloc}${with_purify}${with_valgrind}"
+	 case ${cf_doalloc} in #(vi
+	 *yes*) ;;
+	 *) AC_DEFINE(DOALLOC,10000) ;;
+	 esac
+	 with_no_leaks=yes],
+	[with_no_leaks=])
+AC_MSG_RESULT($with_no_leaks)
+])dnl

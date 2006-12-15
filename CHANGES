@@ -1,3 +1,15 @@
+2006-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NO_LEAKS_OPTION: add a 4th param for CF_WITH_PURIFY
+
+	* AcSplit/CF_WITH_PURIFY: use CF_NO_LEAKS
+
+	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	use CF_NO_LEAKS_OPTION
+
+	* AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF_WITH_PURIFY, AcSplit/CF_WITH_VALGRIND:
+	ci-aclocal generated header
+
 2006-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAIN_RETURN: ci-aclocal generated header
