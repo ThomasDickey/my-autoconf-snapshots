@@ -1,3 +1,37 @@
+2006-12-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_GPM: needed a non-empty field to make this work
+
+	* AcSplit/CF_WITH_GPM: closer - still working on providing a _value_
+
+	* AcSplit/CF_WITH_GPM:
+	oops - forgot to actually allow the option value to work.
+
+	* AcSplit/CF_WITH_GPM:
+	minor tidying up to allow --with-gpm to have a useful value
+
+	* AcSplit/CF_LIB_SONAME, AcSplit/CF_PROG_CC_C_O: use $cf_cv_main_return
+
+	* AcSplit/CF_DISABLE_LEAKS: don't add purify to ncurses
+
+	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC: put back the test:
+
+	* AcSplit/CF_NO_LEAKS_OPTION:
+	quote the help-text, otherwise blanks are removed
+
+	* AcSplit/CF_NO_LEAKS_OPTION: better kludge for adding -g
+
+	* AcSplit/CF_DISABLE_LEAKS:
+	moved the #define for NO_LEAKS outside the option, so the contributing
+	options can provide a default value for it.
+
+	* AcSplit/CF_DISABLE_LEAKS: ncurses has another way to set -g option
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_MKSTEMP, AcSplit/CF_TYPEOF_CHTYPE:
+	typo
+
+	* AcSplit/CF_DISABLE_LEAKS: ci-aclocal generated header
+
 2006-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NO_LEAKS_OPTION: add a 4th param for CF_WITH_PURIFY

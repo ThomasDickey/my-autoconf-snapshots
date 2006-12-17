@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB_LIBS version: 5 updated: 2006/12/10 09:51:54
+dnl CF_HASHED_DB_LIBS version: 6 updated: 2006/12/16 12:33:30
 dnl -----------------
 dnl Given that we have the header and version for hashed database, find the
 dnl library information.
@@ -55,7 +55,7 @@ $ac_includes_default
 		     DB_HASH,
 		     0);
 #endif
-	${cf_cv_main_return:return}(result != 0)
+	${cf_cv_main_return:-return}(result != 0)
 ],[
 	if test -n "$cf_db_libs" ; then
 		cf_cv_hashed_db_libs=$cf_db_libs

@@ -1,4 +1,4 @@
-dnl CF_FUNC_POLL version: 3 updated: 2006/12/10 09:51:54
+dnl CF_FUNC_POLL version: 4 updated: 2006/12/16 12:33:30
 dnl ------------
 dnl See if the poll function really works.  Some platforms have poll(), but
 dnl it does not work for terminals or files.
@@ -19,7 +19,7 @@ int main() {
 	myfds.events = POLLIN;
 
 	ret = poll(&myfds, 1, 100);
-	${cf_cv_main_return:return}(ret != 0);
+	${cf_cv_main_return:-return}(ret != 0);
 }],
 	[cf_cv_working_poll=yes],
 	[cf_cv_working_poll=no],
