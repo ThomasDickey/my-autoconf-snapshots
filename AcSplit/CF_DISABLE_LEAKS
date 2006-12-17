@@ -1,0 +1,21 @@
+dnl CF_DISABLE_LEAKS version: 4 updated: 2006/12/16 15:10:42
+dnl ----------------
+dnl Combine no-leak checks with the libraries or tools that are used for the
+dnl checks.
+AC_DEFUN([CF_DISABLE_LEAKS],[
+
+AC_REQUIRE([CF_WITH_DMALLOC])
+AC_REQUIRE([CF_WITH_DBMALLOC])
+AC_REQUIRE([CF_WITH_VALGRIND])
+
+AC_MSG_CHECKING(if you want to perform memory-leak testing)
+AC_ARG_ENABLE(leaks,
+	[  --disable-leaks         test: free permanent memory, analyze leaks],
+	[with_no_leaks=yes],
+	: ${with_no_leaks:=no})
+AC_MSG_RESULT($with_no_leaks)
+
+if test "$with_no_leaks" = yes ; then
+	AC_DEFINE(NO_LEAKS)
+fi
+])dnl
