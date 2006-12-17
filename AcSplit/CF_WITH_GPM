@@ -1,4 +1,4 @@
-dnl CF_WITH_GPM version: 3 updated: 2006/12/16 16:05:28
+dnl CF_WITH_GPM version: 6 updated: 2006/12/17 11:12:09
 dnl -----------
 dnl
 dnl The option parameter (if neither yes/no) is assumed to be the name of
@@ -15,16 +15,18 @@ AC_MSG_RESULT($with_gpm)
 if test "$with_gpm" != no ; then
 	AC_CHECK_HEADER(gpm.h,[
 		AC_DEFINE(HAVE_GPM_H)
-		if test "$with_gpm" != yes ; then
+		if test "$with_gpm" != yes && test "$with_gpm" != maybe ; then
 			CF_VERBOSE(assuming we really have GPM library)
 			AC_DEFINE(HAVE_LIBGPM)
 		else
-			AC_CHECK_LIB(gpm,Gpm_Open,,[
+			AC_CHECK_LIB(gpm,Gpm_Open,[:],[
 				AC_ERROR(Cannot link with GPM library)
 		fi
+		with_gpm=yes
 		])
 	],[
-		AC_ERROR(Cannot find GPM header)
+		test "$with_gpm" != maybe && AC_MSG_WARN(Cannot find GPM header)
+		with_gpm=no
 	])
 fi
 ])
