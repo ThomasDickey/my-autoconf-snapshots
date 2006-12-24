@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 41 updated: 2006/12/09 12:32:00
+dnl CF_SHARED_OPTS version: 42 updated: 2006/12/23 18:04:51
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -136,11 +136,11 @@ AC_DEFUN([CF_SHARED_OPTS],
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_shared_soname',-stats,-lc -o $[@]'
 		;;
-	openbsd2*)
+	openbsd[[2-9]].*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		MK_SHARED_LIB='${LD} -Bshareable -soname,`basename $[@].${ABI_VERSION}` -o $[@]'
 		;;
-	openbsd*|freebsd[[23]]*)
+	openbsd*|freebsd[[12]].*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		MK_SHARED_LIB='${LD} -Bshareable -o $[@]'
 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
