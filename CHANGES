@@ -1,3 +1,14 @@
+2006-12-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	make misc/Makefile in ncurses handle install.libs - use that for installing
+	the ncurses5-config script
+
+	* AcSplit/CF_SHARED_OPTS:
+	make openbsd2.* and up use the "newer" rule for shared libraries.
+	make freebsd3.1 use rpath - and added a "." to ensure I don't get caught by
+	FreeBSD 10.x
+
 2006-12-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2006-12-22
