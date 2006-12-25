@@ -1,3 +1,11 @@
+2006-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	rather than executing the big inline-sed stuff, generate a new script
+	man_alias.sed, and use that also when filtering the list of aliases.
+	That's needed since I changed "all" of the program references to use
+	the transformed names, e.g,. tic -> ntic.
+
 2006-12-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
