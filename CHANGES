@@ -1,3 +1,9 @@
+2007-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	oops - I constructed a sed-command that would delete the whole thing if
+	the first line was blank.
+
 2007-01-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
