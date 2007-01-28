@@ -1,3 +1,9 @@
+2007-01-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: correct typo that made
+		cfg-shared --with-termlib
+	not work (reported by Rong-En Fan)
+
 2007-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL:
