@@ -1,3 +1,13 @@
+2007-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE: Debian Bug report logs - Debian #404111
+	xterm: FTBFS on GNU/kFreeBSD
+	From: Petr Salinger <Petr.Salinger@seznam.cz>
+	To: submit@bugs.debian.org
+	Subject: xterm: FTBFS on GNU/kFreeBSD
+	Date: Thu, 21 Dec 2006 20:32:18 +0100 (CET)
+	----TD: this is the same change as for CF_SHARED_OPTS
+
 2007-01-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: correct typo that made
