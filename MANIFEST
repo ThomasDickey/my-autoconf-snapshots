@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070129
+MANIFEST for my-autoconf, version t20070217
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -243,6 +243,7 @@ AcSplit/CF_REGEXPR_H_FUNCS      checks for <regexpr.h> and related functions (td
 AcSplit/CF_REGEX_H_FUNCS        checks for <regex.h> and related functions (td_lib)
 AcSplit/CF_REMOVE_BROKEN        check if the 'remove()' function is broken (a SCO bug)
 AcSplit/CF_REMOVE_DEFINE        macro to remove -U/-D options for a given symbol from C compiler options
+AcSplit/CF_REMOVE_LIB           remove a library from the given symbol
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads
 AcSplit/CF_RE_COMP_FUNCS        check for re_comp/re_exec functions (td_lib)
 AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
