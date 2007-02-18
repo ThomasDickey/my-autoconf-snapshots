@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 44 updated: 2007/01/28 11:40:44
+dnl CF_LIB_RULES version: 46 updated: 2007/02/17 16:49:32
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -186,8 +186,10 @@ do
 				prefix=$cf_prefix \
 				suffix=$cf_suffix \
 				subset=$cf_subset \
+				TermlibRoot=$TINFO_NAME \
 				ShlibVer=$cf_cv_shlib_version \
 				ShlibVerInfix=$cf_cv_shlib_version_infix \
+				ReLink=${cf_cv_do_relink-no} \
 				DoLinks=$cf_cv_do_symlinks \
 				rmSoLocs=$cf_cv_rm_so_locs \
 				ldconfig="$LDCONFIG" \

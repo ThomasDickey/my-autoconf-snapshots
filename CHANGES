@@ -1,3 +1,54 @@
+2007-02-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	for cygwin, build a script (mk_shared_lib.sh) and use that to construct
+	the two output files.
+
+	* AcSplit/CF_LIB_RULES:
+	start changing to fix cygwin wrt ncurses termlib
+	that means I drop the $(IMPORT_LIB) symbol, and just build it as a side-effect
+	of building the SHARED_LIB
+
+	* AcSplit/CF_LIB_RULES: pass Relink to mk-1st.awk
+
+	* AcSplit/CF_LIB_RULES: add TermlibRoot to mk-1st.awk call
+
+	* AcSplit/CF_REMOVE_LIB: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS: Date: Wed, 14 Feb 2007 07:37:40 +0300 (MSK)
+	From: Michail Vidiassov <master@iaas.msu.ru>
+	Subject: ncurses installation on Mac OS
+	To: Thomas Dickey <dickey@his.com>
+	cc: Ncurses Mailing List <bug-ncurses@gnu.org>
+
+	Dear Thomas,
+
+	since you applied the following change
+
+	Rather than copying the build-tree's libraries, link the shared
+	  objects into the install directory.
+
+	a problem surfaced on Mac OS X (whith --disable-libtool, --enable-shared),
+	installed libraries are linked against libraries in build locations,
+	 not instal locations (as described at
+	http://lists.macosforge.org/pipermail/macports-users/2007-January/001342.html)
+
+	I suspect that DESTDIR in the following configure line breaks things.
+
+	MK_SHARED_LIB='${CC} ${CFLAGS} -dynamiclib -install_name
+	${DESTDIR}${libdir}/`basename $@` -compatibility_version ${ABI_VERSION}
+	-current_version ${ABI_VERSION} -o $@'
+
+	Since DESTDIR sets temporary location where things are installed before
+	being moved to a proper place by package management system, there is
+	no reason to include DESTDIR in their install_names (Mac OS analog of
+	rpath).
+
+	     Sincerely, Michail
+	------TD: the relinking is going to be a problem (address that with an
+	option), while the ${DESTDIR} dates to Jason Evan's initial mods for
+	Darwin in 2001.  I agree that it doesn't appear to be needed/wanted - removed.
+
 2007-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE: Debian Bug report logs - Debian #404111
