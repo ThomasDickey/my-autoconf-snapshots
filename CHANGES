@@ -1,3 +1,22 @@
+2007-02-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	fixes to make cygdll to work with "cfg-shared --with-ticlib" (also worked
+	for just "cfg-shared" - did not try --with-termlib).
+
+	* AcSplit/CF_SHARED_OPTS:
+	mk_shared_lib.sh script will live in the top-level build-directoryu
+
+	* AcSplit/CF_LIB_RULES:
+	cygdll case doesn't use SHARED_LIB variable anymore
+
+	* AcSplit/CF_LIB_RULES:
+	use TINFO_ARG_SUFFIX for TermlibRoot, since that's closer to what I need
+	for termlib
+
+	* AcSplit/CF_MAN_PAGES:
+	reduce error-messages on uninstall by checking if the target exists
+
 2007-02-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:

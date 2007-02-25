@@ -1,8 +1,8 @@
-dnl CF_LIB_RULES version: 46 updated: 2007/02/17 16:49:32
+dnl CF_LIB_RULES version: 49 updated: 2007/02/24 17:12:45
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
-dnl subdirectory is a library-source directory, modify the LIBRARIES list in
+dnl subdirectory is a library-source directory, modify the LIBS_TO_MAKE list in
 dnl the corresponding makefile to list the models that we'll generate.
 dnl
 dnl For shared libraries, make a list of symbolic links to construct when
@@ -21,7 +21,6 @@ do
 		continue
 	elif test -f $srcdir/$cf_dir/modules; then
 
-		IMPORT_LIB=
 		SHARED_LIB=
 		LIBS_TO_MAKE=
 		for cf_item in $cf_LIST_MODELS
@@ -68,9 +67,7 @@ do
 			# use autodetected ${cf_prefix} for import lib and static lib, but
 			# use 'cyg' prefix for shared lib.
 			if test $cf_cv_shlib_version = cygdll ; then
-				SHARED_LIB="cyg${cf_dir}\${ABI_VERSION}.dll"
-				IMPORT_LIB="${cf_prefix}${cf_dir}.dll.a"
-				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/\${SHARED_LIB} ../lib/\${IMPORT_LIB}"
+				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/cyg${cf_dir}\${ABI_VERSION}.dll"
 				continue
 			fi
 			fi
@@ -107,7 +104,6 @@ do
 		fi
 
 		sed -e "s%@LIBS_TO_MAKE@%$LIBS_TO_MAKE%" \
-		    -e "s%@IMPORT_LIB@%$IMPORT_LIB%" \
 		    -e "s%@SHARED_LIB@%$SHARED_LIB%" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
@@ -186,7 +182,7 @@ do
 				prefix=$cf_prefix \
 				suffix=$cf_suffix \
 				subset=$cf_subset \
-				TermlibRoot=$TINFO_NAME \
+				TermlibRoot=$TINFO_ARG_SUFFIX \
 				ShlibVer=$cf_cv_shlib_version \
 				ShlibVerInfix=$cf_cv_shlib_version_infix \
 				ReLink=${cf_cv_do_relink-no} \
@@ -286,7 +282,7 @@ uninstall.man ::
 
 distclean ::
 	rm -f config.cache config.log config.status Makefile include/ncurses_cfg.h
-	rm -f headers.sh headers.sed
+	rm -f headers.sh headers.sed mk_shared_lib.sh
 	rm -rf \${DIRS_TO_MAKE}
 CF_EOF
 
