@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 43 updated: 2007/02/17 13:35:29
+dnl CF_SHARED_OPTS version: 46 updated: 2007/02/24 18:58:09
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -75,9 +75,22 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	cygwin*)
 		CC_SHARED_OPTS=
-		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,--out-implib=../lib/${IMPORT_LIB} -Wl,--export-all-symbols -o ../lib/${SHARED_LIB}'
+		MK_SHARED_LIB='sh ../mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
 		cf_cv_shlib_version=cygdll
 		cf_cv_shlib_version_infix=cygdll
+		cat >mk_shared_lib.sh <<-CF_EOF
+		#!/bin/sh
+		SHARED_LIB=\[$]1
+		IMPORT_LIB=\`echo "\[$]1" | sed -e 's/cyg/lib/' -e 's/[[0-9]]*\.dll[$]/.dll.a/'\`
+		shift
+		cat <<-EOF
+		Linking shared library
+		** SHARED_LIB \[$]SHARED_LIB
+		** IMPORT_LIB \[$]IMPORT_LIB
+EOF
+		exec \[$]* -shared -Wl,--out-implib=../lib/\[$]{IMPORT_LIB} -Wl,--export-all-symbols -o ../lib/\[$]{SHARED_LIB}
+CF_EOF
+		chmod +x mk_shared_lib.sh 
 		;;
 	darwin*)
 		EXTRA_CFLAGS="-no-cpp-precomp"
