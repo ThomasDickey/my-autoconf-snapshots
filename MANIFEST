@@ -1,8 +1,9 @@
-MANIFEST for my-autoconf, version t20070224
+MANIFEST for my-autoconf, version t20070225
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
+headers-sh                      utility for installing/transforming header files
 install-sh                      generic install-script
 install.sh                      alternate install-script
 mkdirs.sh                       generic mkdirs script
