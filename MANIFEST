@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070225
+MANIFEST for my-autoconf, version t20070311
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -221,6 +221,7 @@ AcSplit/CF_POSIX_WAIT           check for POSIX wait functions
 AcSplit/CF_PREDEFINE            check for symbols we must predefine (ncurses)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
 AcSplit/CF_PRG_RULES            generate program-linking rules for test (ncurses)
+AcSplit/CF_PROCFS_CWD           check for /proc/$$/cwd
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
 AcSplit/CF_PROG_AWK             find awk - and check that the search succeeded
