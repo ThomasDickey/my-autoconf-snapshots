@@ -1,15 +1,16 @@
-dnl CF_PROCFS_CWD version: 1 updated: 2007/03/11 14:12:51
+dnl CF_PROCFS_CWD version: 2 updated: 2007/03/12 20:39:04
 dnl -------------
 dnl Find /proc tree (may be in a different place) which implements the "cwd"
 dnl link.
 AC_DEFUN([CF_PROCFS_CWD],[
 AC_CACHE_CHECK(for proc tree with cwd-support,cf_cv_procfs_cwd,[
 cf_cv_procfs_cwd=no
-for cf_path in /proc /compat/proc /compat/linux/proc
+for cf_path in /proc /compat/linux/proc /usr/compat/linux/proc
 do
 	if test -d $cf_path && \
 	   test -d $cf_path/$$ && \
-	   test -d $cf_path/$$/cwd ; then
+	   ( test -d $cf_path/$$/cwd || \
+	     test -L $cf_path/$$/cwd ); then
 		cf_cv_procfs_cwd=$cf_path
 		break
 	fi
