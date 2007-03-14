@@ -1,3 +1,13 @@
+2007-03-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME:
+	improved message to show utmp or utmpx as appropriate
+
+2007-03-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROCFS_CWD:
+	tested on FreeBSD 6.0, got this to work there...
+
 2007-03-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROCFS_CWD: ci-aclocal generated header
