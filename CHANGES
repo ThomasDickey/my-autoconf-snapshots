@@ -1,3 +1,8 @@
+2007-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TTY_GROUP, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_FUNC_TGETENT:
+	use $cf_cv_main_return
+
 2007-03-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME:

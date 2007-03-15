@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 6 updated: 2006/08/02 20:37:21
+dnl CF_POSIX_SAVED_IDS version: 7 updated: 2007/03/14 16:43:53
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -38,7 +38,7 @@ int main()
 {
 	void *p = (void *) seteuid;
 	long code = sysconf(_SC_SAVED_IDS);
-	exit ((code > 0) ? 0 : 1);
+	${cf_cv_main_return:-return}  ((code > 0) ? 0 : 1);
 }],
 	cf_cv_posix_saved_ids=yes,
 	cf_cv_posix_saved_ids=no,

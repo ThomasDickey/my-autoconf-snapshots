@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 6 updated: 2006/01/23 19:42:39
+dnl CF_TTY_GROUP version: 7 updated: 2007/03/14 16:43:59
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -95,9 +95,9 @@ int main()
 	 && stat(name, &sb) == 0
 	 && sb.st_gid != getgid()
 	 && sb.st_gid == ttygrp->gr_gid) {
-		exit(0);
+		${cf_cv_main_return:-return} (0);
 	}
-	exit(1);
+	${cf_cv_main_return:-return} (1);
 }
 	],
 	[cf_cv_tty_group=yes],
