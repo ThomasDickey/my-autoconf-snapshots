@@ -1,3 +1,54 @@
+2007-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: Date: Sun, 11 Mar 2007 21:33:48 +0300 (MSK)
+	From: Michail Vidiassov <master@iaas.msu.ru>
+	Subject: Mac OS X - libtool problems
+	To: Thomas Dickey <dickey@his.com>
+	cc: Ncurses Mailing List <bug-ncurses@gnu.org>, sci-fi@hush.ai
+
+	Dear Thomas,
+
+	I do not compile ncurses via libtool, but just to have things fixed.
+
+	Apple provides libtool that is not command-line compatible with GNU libtool.
+	Apple provides GNU libtool as glibtool (/usr/bin/glibtool).
+	Package managment system Macports provides GNU libtool as
+	glibtool (/opt/local/bin/glibtool)
+	Its competitor Fink installs GNU libtool as  /sw/bin/glibtool or
+	/sw/bin/libtool, I am not sure.
+
+	Ergo it looks like a good idea to look for glibtool, if search
+	for libtool fails, or libtool turns out not to be GNU libtool.
+
+	I am not sure.
+	May be the user MUST manually point configure to the correct libtool
+	using command-line option if anything is non-standart?
+
+	      Sincerely, Michail
+
+	--------also:
+
+	libtool --version
+
+	libtool: unknown option character `-' in: --version
+	Usage: libtool -static [-] file [...] [-filelist listfile[,dirname]]
+	[-arch_only arch] [-sacLT]
+	Usage: libtool -dynamic [-] file [...] [-filelist listfile[,dirname]]
+	[-arch_only arch] [-o output] [-install_name name] [-compatibility_version
+	#] [-current_version #] [-seg1addr 0x#] [-segs_read_only_addr 0x#]
+	[-segs_read_write_addr 0x#] [-seg_addr_table <filename>]
+	[-seg_addr_table_filename <file_system_path>] [-all_load] [-noall_load]
+
+
+	libtool -V
+
+	Apple Computer, Inc. version cctools-622.5
+
+	  Sincerely, Michail
+
+	* AcSplit/CF_MAN_PAGES:
+	change sed-script for @DATADIR@, etc., to do all instances per line.
+
 2007-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TTY_GROUP, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_FUNC_TGETENT:
