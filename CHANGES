@@ -1,3 +1,43 @@
+2007-03-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* mkdirs.sh: Date: Mon, 19 Mar 2007 07:20:21 +0100
+	From: Harald van D??k <truedfx@gentoo.org>
+	Subject: Gentoo bug #171348: dialog fails parallel install
+	To: dickey@invisible-island.net
+
+	[-- PGP output follows (current time: Sun Mar 25 18:22:13 2007) --]
+	gpg: Signature made Mon Mar 19 02:20:44 2007 EDT using DSA key ID 2C28B87C
+	gpg: Can't check signature: public key not found
+	[-- End of PGP output --]
+
+	[-- The following data is signed --]
+
+	Hi,
+
+	When installing dialog with 'make -j# install', it's possible to get an
+	error when several processes try to create the same directory at the
+	same time. This can happen because mkdir fails when a directory already
+	exists, and the directory can be created between the test ! -d and the
+	mkdir in mkdirs.sh. This can easily be solved by changing mkdir to mkdir
+	-p, which silently returns if the directory already exists. If there are
+	systems you support that do not provide the -p option to mkdir, an
+	alternative approach is to ignore mkdir's return value, and run test -d
+	afterwards. A third option is to say you don't support parallel
+	installs, but I'm hoping you don't take that approach. :)
+
+	Thanks,
+	Harald .
+	-------TD: I did the alternative approach, since I'm unsure about mkdir -p.
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	duh - I broke the assignment to LIB_OBJECT in my ncurses fix, did not
+	notice til rebuilding dialog
+
+	* AcSplit/CF_MBSTATE_T:
+	include stdio.h as well since OSF/1's wchar.h uses __VA_LIST__ (from
+	/usr/include.dtk/wchar.h), but that symbol is defined in stdio.h
+	rather than stdarg.h !
+
 2007-03-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:

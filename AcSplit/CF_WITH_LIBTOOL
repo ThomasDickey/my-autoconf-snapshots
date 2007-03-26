@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 15 updated: 2007/03/17 16:15:10
+dnl CF_WITH_LIBTOOL version: 16 updated: 2007/03/25 18:05:48
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -74,7 +74,7 @@ ifdef([AC_PROG_LIBTOOL],[
  	fi
 ])dnl
 	LIB_CREATE='${LIBTOOL} --mode=link ${CC} -rpath ${DESTDIR}${libdir} -version-info `cut -f1 ${srcdir}/VERSION` -o'
-	LIB_OBJECT='${OBJECTS}.o=.lo)'
+	LIB_OBJECT='${OBJECTS:.o=.lo}'
 	LIB_SUFFIX=.la
 	LIB_CLEAN='${LIBTOOL} --mode=clean'
 	LIB_COMPILE='${LIBTOOL} --mode=compile'
