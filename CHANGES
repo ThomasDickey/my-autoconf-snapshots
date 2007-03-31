@@ -1,3 +1,8 @@
+2007-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	use mkdirs.sh in ncurses (that's what I maintain in my-autoconf)
+
 2007-03-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* mkdirs.sh: Date: Mon, 19 Mar 2007 07:20:21 +0100
