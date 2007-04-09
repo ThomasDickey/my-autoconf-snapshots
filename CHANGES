@@ -1,3 +1,16 @@
+2007-04-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: LIB_LINK has to contain ${CC} now
+
+	* AcSplit/CF_WITH_LIBTOOL_OPTS: typo
+
+	* AcSplit/CF_WITH_LIBTOOL_OPTS: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_LIBTOOL: add LIBTOOL_OPTS
+	this is inserted as a MODE-ARG in LIB_CREATE and LIB_LINK.
+	To make this work, LIB_LINK now has ${CC} (so each package must be updated).
+	This is for dialog - will apply to cdk, ncurses...
+
 2007-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES:

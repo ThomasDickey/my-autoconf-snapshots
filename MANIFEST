@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070331
+MANIFEST for my-autoconf, version t20070408
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -349,6 +349,7 @@ AcSplit/CF_WITH_GPM             command-line options for gpm
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
+AcSplit/CF_WITH_LIBTOOL_OPTS    pass "-static" into libtool options (dialog)
 AcSplit/CF_WITH_LOCALE_ALIAS    option to provide locale-alias file
 AcSplit/CF_WITH_NC_ALLOC_H      check for nc_alloc.h if --disable-leaks is set
 AcSplit/CF_WITH_NO_LEAKS        wrapper for leak-related configure options
