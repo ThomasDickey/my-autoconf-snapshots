@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 17 updated: 2007/04/08 17:15:30
+dnl CF_WITH_LIBTOOL version: 18 updated: 2007/04/08 20:02:38
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -47,7 +47,7 @@ LIB_PREP="$RANLIB"
 # doing:
 LIB_CLEAN=
 LIB_COMPILE=
-LIB_LINK=
+LIB_LINK='${CC}'
 LIB_INSTALL=
 LIB_UNINSTALL=
 

@@ -1,3 +1,11 @@
+2007-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND_PARSE: ci-aclocal generated header
+
+	* AcSplit/CF_SRAND:
+	support the OpenBSD flavor of arc4random(), noting that it is asymmetric
+	without a good reason -lynx
+
 2007-04-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL: LIB_LINK has to contain ${CC} now
