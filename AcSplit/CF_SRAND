@@ -1,16 +1,18 @@
-dnl CF_SRAND version: 7 updated: 2004/05/23 13:00:30
+dnl CF_SRAND version: 8 updated: 2007/04/22 12:01:07
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
 dnl which usually is only 16-bits.
+dnl
 dnl On MirOS, use arc4random_push() and arc4random().
+dnl Some systems support an asymmetric variation of this interface.
 AC_DEFUN([CF_SRAND],[
 AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
-for cf_func in arc4random_push/arc4random srandom/random srand48/lrand48 srand/rand
+for cf_func in arc4random_push/arc4random arc4random_stir/arc4random srandom/random srand48/lrand48 srand/rand
 do
-	cf_srand_func=`echo $cf_func | sed -e 's%/.*%%'`
-	cf_rand_func=`echo  $cf_func | sed -e 's%.*/%%'`
+	CF_SRAND_PARSE($cf_func,cf_srand_func,cf_rand_func)
+
 AC_TRY_LINK([
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
@@ -30,7 +32,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 			cf_cv_rand_max=RAND_MAX
 			cf_rand_max=16
 			;;
-		arc4random_push/arc4random)
+		*/arc4random)
 			cf_cv_rand_max=0xFFFFFFFFUL
 			cf_rand_max=32
 			;;
@@ -49,8 +51,8 @@ if test "$cf_cv_srand_func" != unknown ; then
 		],[long x = $cf_cv_rand_max],,
 		[cf_cv_rand_max="(1L<<$cf_rand_max)-1"])
 	])
-	cf_srand_func=`echo $cf_func | sed -e 's%/.*%%'`
-	cf_rand_func=`echo  $cf_func | sed -e 's%.*/%%'`
+	CF_SRAND_PARSE($cf_func,cf_srand_func,cf_rand_func)
+
 	CF_UPPER(cf_rand_max,ifelse($1,,my_,$1)rand_max)
 	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)srand,$cf_srand_func)
 	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)rand, $cf_rand_func)

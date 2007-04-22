@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070408
+MANIFEST for my-autoconf, version t20070422
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -266,6 +266,7 @@ AcSplit/CF_SOCKS                option/test for socks library
 AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type
 AcSplit/CF_SRAND                check for srand/rand functions, or alternatives
+AcSplit/CF_SRAND_PARSE          utility for CF_SRAND
 AcSplit/CF_SRC_MAKEFILE         expand modules list into makefile lists
 AcSplit/CF_SRC_MODULES          obtain the list of source-directories with modules listed
 AcSplit/CF_SSL                  configure-macro for SSL

@@ -1,0 +1,14 @@
+dnl CF_SRAND_PARSE version: 1 updated: 2007/04/22 12:01:07
+dnl --------------
+dnl Parse the loop variable for CF_SRAND, with a workaround for asymmetric
+dnl variations.
+define([CF_SRAND_PARSE],[
+	$2=`echo $1 | sed -e 's%/.*%%'`
+	$3=`echo $1 | sed -e 's%.*/%%'`
+
+	case [$]$2 in #(vi
+	arc4random_stir)
+		$2='(void)'
+		;;
+	esac
+])dnl
