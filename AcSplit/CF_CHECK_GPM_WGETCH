@@ -1,0 +1,43 @@
+dnl CF_CHECK_GPM_WGETCH version: 1 updated: 2007/04/28 14:38:06
+dnl -------------------
+dnl Check if GPM is already linked with curses.  If so - and if the linkage
+dnl is not "weak" - warn about this because it can create problems linking
+dnl applications with ncurses.
+AC_DEFUN([CF_CHECK_GPM_WGETCH],[
+AC_CHECK_LIB(gpm,Gpm_Wgetch,[
+
+AC_CACHE_CHECK(if GPM is weakly bound to curses library, cf_cv_check_gpm_wgetch,[
+cf_cv_check_gpm_wgetch=unknown
+if test "$cross_compiling" != yes ; then
+
+cat >conftest.$ac_ext <<CF_EOF
+#include <gpm.h>
+int main()
+{
+	Gpm_Wgetch();
+	${cf_cv_main_return:-return}(0);
+}
+CF_EOF
+
+	cf_save_LIBS="$LIBS"
+	# This only works if we can look at the symbol table.  If a shared
+	# library is stripped for install, we cannot use that.  So we're forced
+	# to rely on the static library, noting that some packagers may not
+	# include it.
+	LIBS="-static -lgpm -dynamic $LIBS"
+	if AC_TRY_EVAL(ac_compile) ; then
+		if AC_TRY_EVAL(ac_link) ; then
+			cf_cv_check_gpm_wgetch=`nm conftest$ac_exeext | egrep '\<wgetch\>' | egrep '\<[[vVwW]]\>'`
+			test -n "$cf_cv_check_gpm_wgetch" && cf_cv_check_gpm_wgetch=yes
+			test -z "$cf_cv_check_gpm_wgetch" && cf_cv_check_gpm_wgetch=no
+		fi
+	fi
+	rm -f conftest*
+	LIBS="$cf_save_LIBS"
+fi
+])
+
+if test "$cf_cv_check_gpm_wgetch" != yes ; then
+	AC_MSG_WARN(GPM library is already linked with curses - read the FAQ)
+fi
+])])dnl

@@ -1,4 +1,4 @@
-dnl CF_KILLPG version: 3 updated: 2001/12/30 18:17:27
+dnl CF_KILLPG version: 4 updated: 2007/05/05 10:45:50
 dnl ---------
 dnl Note: must follow AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
 dnl messes up the messages...
@@ -24,7 +24,7 @@ main()
 #endif
     (void) signal(SIGINT, handler);
     (void) kill(-getpid(), SIGINT);
-    exit(1);
+    ${cf_cv_main_return-return}(1);
 }],
 	[cf_cv_need_killpg=no],
 	[cf_cv_need_killpg=yes],

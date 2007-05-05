@@ -1,4 +1,4 @@
-dnl CF_ANSI_CPP version: 2 updated: 1997/09/07 15:13:55
+dnl CF_ANSI_CPP version: 3 updated: 2007/04/28 09:17:29
 dnl -----------
 dnl Test if "##" is substituted properly, or failing that, if /**/ can do
 dnl the trick.  We can test concatenation with a compile, but quoting has to
@@ -29,13 +29,13 @@ fi
 AC_MSG_CHECKING(for ANSI CPP token-quoting)
 AC_CACHE_VAL(cf_cv_ansi_quote,[
 	AC_TRY_RUN([#define quote(name) #name
-		int main() { char *y = quote(a); exit (*y != 'a');} ],
+		int main() { char *y = quote(a); ${cf_cv_main_return-return} (*y != 'a');} ],
 		[cf_cv_ansi_quote=new],
 		[cf_cv_ansi_quote=unknown],
 		[cf_cv_ansi_quote=unknown])
 	if test $cf_cv_ansi_quote = unknown; then
 		AC_TRY_RUN([#define quote(name) "name"
-			int main() { char *y = quote(a); exit (*y != 'a');} ],
+			int main() { char *y = quote(a); ${cf_cv_main_return-return} (*y != 'a');} ],
 			[cf_cv_ansi_quote=old],
 			[cf_cv_ansi_quote=unknown],
 			[cf_cv_ansi_quote=unknown])

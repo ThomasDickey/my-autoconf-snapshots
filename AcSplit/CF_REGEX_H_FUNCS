@@ -1,4 +1,4 @@
-dnl CF_REGEX_H_FUNCS version: 3 updated: 2001/12/11 13:49:56
+dnl CF_REGEX_H_FUNCS version: 4 updated: 2007/04/28 09:15:55
 dnl ----------------
 dnl Tests for the <regex.h> include-file, and the functions associated with it.
 AC_DEFUN([CF_REGEX_H_FUNCS],
@@ -14,9 +14,9 @@ AC_CACHE_CHECK(regcomp/regexec functions, cf_cv_REGEX_H,[
 		char *s = "foobar";
 		if (regcomp(&e, p, 0) != 0
 		 || regexec(&e, s, 0, (regmatch_t*)0, 0) < 0)
-			exit(1);
+			${cf_cv_main_return-return}(1);
 		regfree(&e);
-		exit(0);
+		${cf_cv_main_return-return}(0);
 	} ],
 	[cf_cv_REGEX_H=yes],
 	[cf_cv_REGEX_H=no],

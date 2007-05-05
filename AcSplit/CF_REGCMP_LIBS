@@ -1,4 +1,4 @@
-dnl CF_REGCMP_LIBS version: 2 updated: 1997/09/07 15:13:55
+dnl CF_REGCMP_LIBS version: 3 updated: 2007/04/28 09:15:55
 dnl --------------
 dnl Tests for the presence of regcmp/regex functions (no include-file?)
 dnl Some systems (CLIX) use <pw.h> for this purpose.  CLIX requires the -lPW,
@@ -23,9 +23,9 @@ AC_TRY_RUN([
 		char *s = "foobar";
 		if ((e = (char *)regcmp(p, 0)) == 0
 		 || regex(e, s, 0) == 0)
-		 	exit(1);
+		 	${cf_cv_main_return-return}(1);
 		free(e);
-		exit(0);
+		${cf_cv_main_return-return}(0);
 	} ],
 	[cf_cv_REGCMP_func=yes],
 	[cf_cv_REGCMP_func=no],

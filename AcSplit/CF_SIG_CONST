@@ -1,4 +1,4 @@
-dnl CF_SIG_CONST version: 2 updated: 1997/08/28 23:57:55
+dnl CF_SIG_CONST version: 3 updated: 2007/04/28 09:15:55
 dnl ------------
 dnl Check for systems where the special signal constants aren't prototyped
 dnl (there's a lot of them, and the compiler can generate a lot of warning
@@ -31,9 +31,9 @@ int main()
 #define SIG_IGN NEW_IGN
 #define SIG_ERR NEW_ERR
 	 || NEW_DFL != SIG_DFL)
-	 	exit(1);
+	 	${cf_cv_main_return-return}(1);
 	signal(SIGINT, SIG_DFL);
-	exit(0);
+	${cf_cv_main_return-return}(0);
 }],
 	[cf_cv_sig_const=yes],
 	[cf_cv_sig_const=no],

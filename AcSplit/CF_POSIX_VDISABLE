@@ -1,4 +1,4 @@
-dnl CF_POSIX_VDISABLE version: 4 updated: 2000/01/22 00:19:54
+dnl CF_POSIX_VDISABLE version: 5 updated: 2007/04/28 09:15:55
 dnl -----------------
 dnl Special test to workaround gcc 2.6.2, which cannot parse C-preprocessor
 dnl conditionals.
@@ -18,7 +18,7 @@ AC_CACHE_VAL(cf_cv_posix_vdisable,[
 #include <unistd.h>
 #endif
 #if defined(_POSIX_VDISABLE)
-int main() { exit(_POSIX_VDISABLE == -1); }
+int main() { ${cf_cv_main_return-return}(_POSIX_VDISABLE == -1); }
 #endif],
 	[cf_cv_posix_vdisable=yes],
 	[cf_cv_posix_vdisable=no],
