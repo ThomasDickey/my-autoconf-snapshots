@@ -1,0 +1,10 @@
+dnl CF_STDIO_UNLOCKED version: 1 updated: 2007/05/05 11:11:12
+dnl -----------------
+dnl The four functions getc_unlocked(), getchar_unlocked(), putc_unlocked(),
+dnl putchar_unlocked() are in POSIX.1-2001.
+AC_DEFUN([CF_STDIO_UNLOCKED],[
+AC_HAVE_FUNCS( \
+getc_unlocked \
+putc_unlocked \
+)
+])dnl

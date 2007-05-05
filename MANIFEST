@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070428
+MANIFEST for my-autoconf, version t20070505
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 config.guess                    autoconf's config.guess
@@ -275,6 +275,7 @@ AcSplit/CF_SRC_MODULES          obtain the list of source-directories with modul
 AcSplit/CF_SSL                  configure-macro for SSL
 AcSplit/CF_STAT_ST_BLOCKS       check if 'stat' struct defines 'st_blocks' (td_lib)
 AcSplit/CF_STDCPP_LIBRARY       check for -lstdc++
+AcSplit/CF_STDIO_UNLOCKED       configure-check for unlocked stdio
 AcSplit/CF_STRERROR             combined check for strerror() with sys_errlist[] (tin)
 AcSplit/CF_STRIP_G_OPT          strip the "-g" option from CFLAGS
 AcSplit/CF_STRIP_O_OPT          strip the "-O" option from CFLAGS
