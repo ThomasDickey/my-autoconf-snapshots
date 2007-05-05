@@ -1,0 +1,41 @@
+dnl CF_LDFLAGS_STATIC version: 2 updated: 2007/04/28 15:25:27
+dnl -----------------
+dnl Check for compiler/linker flags used to temporarily force usage of static
+dnl libraries.  This depends on the compiler and platform.  Use this to help
+dnl ensure that the linker picks up a given library based on its position in
+dnl the list of linker options and libraries.
+AC_DEFUN([CF_LDFLAGS_STATIC],[
+
+if test "$GCC" = yes ; then
+	LDFLAGS_STATIC=-static
+	LDFLAGS_SHARED=-dynamic
+else
+	case $cf_cv_system_name in #(
+	aix[[45]]*) 	#( from ld manpage
+		LDFLAGS_STATIC=-bstatic
+		LDFLAGS_SHARED=-bdynamic
+		;;
+	hpux*)		#( from ld manpage for hpux10.20, hpux11.11
+		# We could also use just "archive" and "shared".
+		LDFLAGS_STATIC=-Wl,-a,archive_shared
+		LDFLAGS_SHARED=-Wl,-a,shared_archive
+		;;
+	irix*)		#( from ld manpage IRIX64
+		LDFLAGS_STATIC=-Bstatic
+		LDFLAGS_SHARED=-Bdynamic
+		;;
+	osf[[45]]*)	#( from ld manpage osf4.0d, osf5.1
+		# alternative "-oldstyle_liblookup" (not in cc manpage)
+		LDFLAGS_STATIC=-noso 
+		LDFLAGS_SHARED=-so_archive
+		;;
+	solaris2*)
+		LDFLAGS_STATIC=-Bstatic
+		LDFLAGS_SHARED=-Bdynamic
+		;;
+	esac
+fi
+
+AC_SUBST(LDFLAGS_STATIC)
+AC_SUBST(LDFLAGS_SHARED)
+])

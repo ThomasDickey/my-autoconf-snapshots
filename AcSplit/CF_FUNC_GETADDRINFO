@@ -1,4 +1,4 @@
-dnl CF_FUNC_GETADDRINFO version: 5 updated: 2000/09/28 06:18:08
+dnl CF_FUNC_GETADDRINFO version: 6 updated: 2007/04/28 09:15:55
 dnl -------------------
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
 AC_DEFUN([CF_FUNC_GETADDRINFO],[
@@ -71,12 +71,12 @@ int main()
 
    if (aitop)
      freeaddrinfo(aitop);
-   exit(0);
+   ${cf_cv_main_return-return}(0);
 
   bad:
    if (aitop)
      freeaddrinfo(aitop);
-   exit(1);
+   ${cf_cv_main_return-return}(1);
 }
 ],
 [cf_cv_getaddrinfo=yes],

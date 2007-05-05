@@ -1,3 +1,19 @@
+2007-05-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_STDIO_UNLOCKED: ci-aclocal generated header
+
+	* AcSplit/CF_KILLPG: use $cf_cv_main_return
+
+2007-04-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC: typo
+
+	* AcSplit/CF_C_INLINE, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_LDFLAGS_STATIC:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_YACC_ERROR:
+	use $cf_cv_main_return
+
 2007-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND_PARSE: ci-aclocal generated header
