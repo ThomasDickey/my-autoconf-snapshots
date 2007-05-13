@@ -1,3 +1,9 @@
+2007-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PATH:
+	if the "real" default value can be empty, don't insist that the result is
+	nonempty
+
 2007-05-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_STDIO_UNLOCKED: ci-aclocal generated header
