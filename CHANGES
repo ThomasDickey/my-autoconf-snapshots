@@ -1,3 +1,26 @@
+2007-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LARGEFILE:
+	add definition for _FILE_OFFSET_BITS to fix redefinition problems on Solaris
+	2.6 and 7 (patch by Peter O'Gorman).
+
+2007-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS:
+	bug report for xterm with Solaris sed noted that the script I'd
+	written didn't pass through the quoted stuff for X.Org's version.
+	Tested with Heirloom sed (since it was simpler than getting
+	an imake configuration on Solaris to match X.Org), and found two
+	main problems:
+		a) some bogus bug prevented "[^- ]" from matching where "[^ -]" does.
+		b) sed didn't like the nested \(...\) I was using - didn't even assign
+		   it a different \3 or something like that.  It just didn't match.
+	So I filtered out the tabs first, then wrote a loop in the sed script to
+	convert "embedded" spaces in a parameter value to tabs (since that seems
+	to be the safest character for a magic replacement).  Then I could simplify
+	the name=value part to an expression that didn't need any nesting of \(...\).
+	Finally restore the embedded blank (should be one!).
+
 2007-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PATH:
