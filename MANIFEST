@@ -1,6 +1,8 @@
-MANIFEST for my-autoconf, version t20070602
+MANIFEST for my-autoconf, version t20070617
 --------------------------------------------------------------------------------
 MANIFEST                        this file
+COPYING                         copyright notice
+README                          description of "my-autoconf"
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 headers-sh                      utility for installing/transforming header files
