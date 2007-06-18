@@ -1,0 +1,15 @@
+-- $Id: README,v 1.1 2007/06/17 20:06:56 tom Exp $
+
+These are the autoconf macros which I use for maintaining several programs,
+including ncurses, xterm, lynx, vile.  They are maintained in a split form,
+one macro per file.  I wrote utilities to split/join these (acsplit/acmerge)
+in August 1997, and much later (April 2003) wrote a checkin-script which
+provides the version numbers in each file.
+
+The files are named according to the macro they contain.  A few are customized
+or improved versions from other packages.  All of the ones which I wrote are
+named using a "CF_" prefix.  A few macros are useful only for specific
+programs; most are useful building blocks for the configure scripts which I
+maintain.
+
+-- Thomas E. Dickey
