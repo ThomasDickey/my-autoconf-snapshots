@@ -1,3 +1,9 @@
+2007-06-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* README.asc, COPYING.asc: RCS_BASE
+
+	* README: make the scope of COPYING clearer
+
 2007-06-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING, README: RCS_BASE

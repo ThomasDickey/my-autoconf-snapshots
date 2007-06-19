@@ -1,8 +1,10 @@
-MANIFEST for my-autoconf, version t20070617
+MANIFEST for my-autoconf, version t20070618
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
+COPYING.asc                     gpg signature for COPYING
 README                          description of "my-autoconf"
+README.asc                      gpg signature for README
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 headers-sh                      utility for installing/transforming header files
