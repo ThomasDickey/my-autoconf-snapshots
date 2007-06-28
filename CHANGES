@@ -1,3 +1,8 @@
+2007-06-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	take "$1" out of the Intel list, since it's unreliable
+
 2007-06-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* README.asc, COPYING.asc: RCS_BASE
