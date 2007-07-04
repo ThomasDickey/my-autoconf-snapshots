@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070627
+MANIFEST for my-autoconf, version t20070704
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -149,6 +149,7 @@ AcSplit/CF_HASHED_DB            find hashed-database header, version and corresp
 AcSplit/CF_HASHED_DB_LIBS       find hashed-database libraries
 AcSplit/CF_HASHED_DB_VERSION    find hashed-database version (needed for finding the libraries)
 AcSplit/CF_HAVE_FUNCS           enhanced AC_HAVE_FUNCS checks if prototypes needed (td_lib)
+AcSplit/CF_HEADERS_SH           setup for "headers-sh" script
 AcSplit/CF_HEADER_PATH          construct search-list for nonstandard header
 AcSplit/CF_HEADER_RESOURCE      test for sys/resource.h vs wait.h and time.h
 AcSplit/CF_HEADER_SELECT        test for select.h vc time.h

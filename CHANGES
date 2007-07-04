@@ -1,3 +1,11 @@
+2007-07-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HEADERS_SH: ci-aclocal generated header
+
+	* config.sub: 2007/6/28
+
+	* config.guess: 2007/5/17
+
 2007-06-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:

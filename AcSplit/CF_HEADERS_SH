@@ -1,0 +1,10 @@
+dnl CF_HEADERS_SH version: 1 updated: 2007/07/04 15:37:05
+dnl -------------
+dnl Setup variables needed to construct headers-sh
+AC_DEFUN([CF_HEADERS_SH],[
+PACKAGE_PREFIX=$1
+PACKAGE_CONFIG=$2
+AC_SUBST(PACKAGE_PREFIX)
+AC_SUBST(PACKAGE_CONFIG)
+EXTRA_OUTPUT="$EXTRA_OUTPUT headers-sh:$srcdir/headers-sh.in"
+])
