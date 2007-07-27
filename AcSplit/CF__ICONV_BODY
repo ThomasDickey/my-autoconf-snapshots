@@ -1,0 +1,8 @@
+dnl CF__ICONV_BODY version: 2 updated: 2007/07/26 17:35:47
+dnl --------------
+dnl Test-code needed for iconv compile-checks
+define([CF__ICONV_BODY],[
+	iconv_t cd = iconv_open("","");
+	iconv(cd,NULL,NULL,NULL,NULL);
+	iconv_close(cd);]
+)dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070704
+MANIFEST for my-autoconf, version t20070726
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -25,6 +25,7 @@ AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directorie
 AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
+AcSplit/CF_ADD_SEARCHPATH       add a directory to -I/-L searchpath(s)
 AcSplit/CF_ALL_MAKEFILES        list all makefiles
 AcSplit/CF_ALT_CHAR_SET         check for alternate character-set in curses
 AcSplit/CF_ANSI_CC_CHECK        check if we have an ANSI compiler (no preprocessor check)
@@ -387,4 +388,10 @@ AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
+AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
+AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
+AcSplit/CF__INTL_BODY           test-code for libintl lookup
+AcSplit/CF__INTL_HEAD           test-headers for libintl lookup
+AcSplit/CF__SSL_BODY            test-code for SSL compiles
+AcSplit/CF__SSL_HEAD            headers for SSL test-compiles
 AcSplit/jm_GLIBC21              from gettext 0.10.40 (tin)

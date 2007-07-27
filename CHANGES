@@ -1,3 +1,46 @@
+2007-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__SSL_BODY, AcSplit/CF__SSL_HEAD:
+	ci-aclocal generated header
+
+	* AcSplit/AM_WITH_NLS: get the -L option from CF_FIND_LINKAGE data
+
+	* AcSplit/CF_FIND_LINKAGE:
+	to compile the test-code in the AC_TRY_LINK, we need the CPPFLAGS from
+	the AC_TRY_COMPILE
+
+	* AcSplit/AM_WITH_NLS:
+	broaden/simplify the search using CF_FIND_LINKAGE
+	also cleanup the untidy indents to make this readable...
+
+	* AcSplit/AM_ICONV:
+	modified CF_FIND_LINKAGE to generate per-library cache names, so we don't
+	have to worry about symbol conflicts.
+
+	* AcSplit/CF_FIND_LINKAGE:
+	ensure that the associated variables for header and library paths are
+	unique, making them into cache variables suffixed by the library name.
+
+	* AcSplit/CF__INTL_BODY, AcSplit/CF__INTL_HEAD:
+	ci-aclocal generated header
+
+	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF__ICONV_BODY: comment
+
+	* AcSplit/AM_ICONV:
+	make it clearer that the second part of this macro is using a cache variable,
+	and discard the overly verbose recitation of the derived prototype.
+
+	* AcSplit/CF_FIND_LINKAGE:
+	add CF_HEADER_PATH also - considered merging the two more closely as in
+	CF_ADD_SEARCHPATH but for the moment too complex.
+
+	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF__ICONV_BODY, AcSplit/CF__ICONV_HEAD:
+	ci-aclocal generated header
+
+	* AcSplit/AM_ICONV:
+	rewrote, splitting out CF__ICONV_HEAD, CF__ICONV_BODY, CF_ADD_SEARCHPATH
+	(actually from CF_SSL), CF_FIND_LINKAGE
+
 2007-07-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HEADERS_SH: ci-aclocal generated header
