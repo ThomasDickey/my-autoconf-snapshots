@@ -1,0 +1,7 @@
+dnl CF__INTL_HEAD version: 1 updated: 2007/07/26 17:35:47
+dnl -------------
+dnl Header-files needed for libintl compile-checks
+define([CF__INTL_HEAD],[
+#include <libintl.h>
+extern int _nl_msg_cat_cntr;
+])dnl
