@@ -1,3 +1,30 @@
+2007-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_LINKAGE:
+	AC_TRY_LINK doesn't add optional libraries - modified to work around
+
+	* AcSplit/CF_GNUTLS:
+	second cut - fix some typos, make the check for -lgnutls-openssl work.
+
+	* AcSplit/CF_SSL:
+	separate the checks for <openssh/xxx> versus -I/usr/include
+
+	* AcSplit/CF_SSL:
+	add 7th param to CF_FIND_LINKAGE to pass in additional libraries
+
+	* AcSplit/CF_FIND_LINKAGE: add 7th parameter for additional libraries
+
+	* AcSplit/CF_GNUTLS:
+	rewrite/simplify using CF_FIND_LINKAGE and CF_ADD_SEARCHPATH
+
+	* AcSplit/CF_SSL: rewrote to use CF_FIND_LINKAGE and CF_ADD_SEARCHPATH
+
+	* AcSplit/AM_ICONV: typo
+
+	* AcSplit/CF_FIND_LINKAGE:
+	mods to support CF_SSL, which uses "openssl" module name as 6th parameter.
+	The module name is not necessarily the same as the library name.
+
 2007-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__SSL_BODY, AcSplit/CF__SSL_HEAD:
