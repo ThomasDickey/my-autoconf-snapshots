@@ -1,4 +1,4 @@
-dnl AM_ICONV version: 7 updated: 2007/07/26 18:28:33
+dnl AM_ICONV version: 8 updated: 2007/07/28 11:15:05
 dnl --------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -65,7 +65,7 @@ size_t iconv();
     fi
     if test -n "$cf_cv_library_path_iconv" ; then
       LIBICONV="-liconv"
-      LDFLAGS="-I$cf_cv_library_path_iconv $LDFLAGS"
+      LDFLAGS="-L$cf_cv_library_path_iconv $LDFLAGS"
     fi
   fi
 

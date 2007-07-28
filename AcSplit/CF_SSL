@@ -1,79 +1,49 @@
-dnl CF_SSL version: 5 updated: 2004/04/26 20:08:48
+dnl CF_SSL version: 8 updated: 2007/07/28 12:51:36
 dnl ------
 dnl Check for ssl library
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_SSL],[
-cf_ssl_root=
-cf_ssl_library="-lssl -lcrypto"
-case "$1" in #(vi
-no) #(vi
-	;;
-yes) #(vi
-	AC_CHECK_LIB(ssl, SSL_get_version,[],[
-		cf_ssl_root=/usr/local/ssl
-		if test -d $cf_ssl_root ; then
-			CF_VERBOSE(assume it is in $cf_ssl_root)
-			cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
-		else
-			AC_MSG_ERROR(cannot find ssl library)
-		fi
-	],
-	[-lcrypto])
-	;;
-*)
-	if test -d $1 ; then
-		if test -d $1/include ; then
-			cf_ssl_root=$1
-		elif test -d $1/../include ; then
-			cf_ssl_root=$1/..
-		else
-			AC_MSG_ERROR(cannot find ssl library under $1)
-		fi
-		cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
-	else
-		AC_MSG_WARN(expected a directory: $1)
-	fi
-	;;
-esac
-LIBS="$cf_ssl_library $LIBS"
+  case "$1" in #(vi
+  no) #(vi
+      ;;
+  yes) #(vi
+      ;;
+  *)
+      CF_ADD_SEARCHPATH([$1], [AC_MSG_ERROR(cannot find ssl library under $1)])
+      ;;
+  esac
 
-cf_ssl_subincs=yes
-if test -n "$cf_ssl_root" ; then
-	if test -d $cf_ssl_root/include ; then
-		CF_ADD_CFLAGS(-I$cf_ssl_root/include)
-		test -d $cf_ssl_root/include/openssl || cf_ssl_subincs=no
-	fi
-fi
+  CF_FIND_LINKAGE(CF__SSL_HEAD,
+      CF__SSL_BODY,
+      ssl,
+      cf_cv_have_ssl=yes,
+      cf_cv_have_ssl=no,
+      openssl,
+      [-lcrypto])
 
-if test "$cf_ssl_subincs" = yes ; then
-AC_MSG_CHECKING(for openssl include directory)
-AC_TRY_COMPILE([
-#include <stdio.h>
-#include <openssl/ssl.h>],
-	[SSL_shutdown((SSL *)0)],
-	[cf_openssl_incl=yes],
-	[cf_openssl_incl=no])
-AC_MSG_RESULT($cf_openssl_incl)
-test "$cf_openssl_incl" = yes && AC_DEFINE(USE_OPENSSL_INCL)
-fi
+  if test "$cf_cv_have_ssl" = yes ; then
+    if test -n "$cf_cv_header_path_ssl" ; then
+      AC_DEFINE(USE_SSL)
+      AC_DEFINE(USE_X509_SUPPORT)
 
-AC_MSG_CHECKING(if we can link to ssl library)
-AC_TRY_LINK([
-#include <stdio.h>
-#ifdef USE_OPENSSL_INCL
-#include <openssl/ssl.h>
-#else
-#include <ssl.h>
-#endif
-],
-	[SSL_shutdown((SSL *)0)],
-	[cf_ssl_library=yes],
-	[cf_ssl_library=no])
-AC_MSG_RESULT($cf_ssl_library)
-if test "$cf_ssl_library" = yes ; then
-	AC_DEFINE(USE_SSL)
-	AC_DEFINE(USE_X509_SUPPORT)
-else
-	AC_ERROR(Cannot link with ssl library)
-fi
+      case $cf_cv_header_path_ssl in
+      */openssl)
+          AC_DEFINE(USE_OPENSSL_INCL)
+          ;;
+      esac
+
+      case $cf_cv_header_path_ssl in
+      /usr/include/openssl)
+          ;;
+      *)
+          CF_ADD_CFLAGS([-I$cf_cv_header_path_ssl])
+          ;;
+      esac
+
+    fi
+    if test -n "$cf_cv_library_path_ssl" ; then
+      LDFLAGS="-L$cf_cv_library_path_ssl $LDFLAGS"
+    fi
+    LIBS="-lssl -lcrypto $LIBS"
+  fi
 ])dnl

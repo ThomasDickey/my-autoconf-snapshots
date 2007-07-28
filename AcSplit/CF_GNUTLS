@@ -1,50 +1,48 @@
-dnl CF_GNUTLS version: 4 updated: 2004/04/26 20:08:48
+dnl CF_GNUTLS version: 6 updated: 2007/07/28 12:51:36
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_GNUTLS],[
-cf_ssl_library="-lgnutls -lcrypt"
-AC_MSG_CHECKING(if we know what directory gnutls is in)
-case "$1" in #(vi
-no) #(vi
-	cf_ssl_root=no
-	;;
-yes) #(vi
-	AC_CHECK_LIB(gnutls, gnutls_init,[],[
-		cf_ssl_root=/usr/local/gnutls
-		if test -d $cf_ssl_root ; then
-			CF_VERBOSE(assume it is in $cf_ssl_root)
-		else
-			AC_MSG_ERROR(cannot find gnutls library)
-		fi
-	],
-	[-lgnutls-extra -lgnutls -lcrypt])
-	;;
-*)
-	if test -d $1 ; then
-		if test -d $1/include ; then
-			cf_ssl_root=$1
-		elif test -d $1/../include ; then
-			cf_ssl_root=$1/..
-		else
-			AC_MSG_ERROR(cannot find ssl library under $1)
-		fi
-	else
-		AC_MSG_WARN(expected a directory: $1)
-	fi
-	;;
-esac
-AC_MSG_RESULT($cf_ssl_root)
-LIBS="$cf_ssl_library $LIBS"
+  case "$1" in #(vi
+  no) #(vi
+      ;;
+  yes) #(vi
+      ;;
+  *)
+      CF_ADD_SEARCHPATH([$1], [AC_MSG_ERROR(cannot find ssl library under $1)])
+      ;;
+  esac
 
-cf_ssl_subincs=yes
-if test "$cf_ssl_root" != no ; then
-	cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
-	if test -d $cf_ssl_root/include ; then
-		CF_ADD_CFLAGS(-I$cf_ssl_root/include)
-		test -d $cf_ssl_root/include/gnutls || cf_ssl_subincs=no
-	fi
-fi
+  cf_gnutls_CPPFLAGS=$CPPFLAGS
+  CPPFLAGS="-DUSE_GNUTLS_INCL $CPPFLAGS"
+
+  CF_FIND_LINKAGE(CF__SSL_HEAD,
+      CF__SSL_BODY,
+      gnutls,
+      cf_cv_have_gnutls=yes,
+      cf_cv_have_gnutls=no,
+      ,
+      [-lgnutls-openssl -lgnutls-extra -lgnutls -lcrypt])
+
+  CPPFLAGS=$cf_gnutls_CPPFLAGS
+
+  if test "$cf_cv_have_gnutls" = yes ; then
+    if test -n "$cf_cv_header_path_gnutls" ; then
+      AC_DEFINE(USE_SSL)
+      AC_DEFINE(USE_X509_SUPPORT)
+      case $cf_cv_header_path_gnutls in
+      /usr/include/gnutls)
+          ;;
+      *)
+          CF_ADD_CFLAGS([-I$cf_cv_header_path_gnutls])
+          ;;
+      esac
+    fi
+    if test -n "$cf_cv_library_path_gnutls" ; then
+      LDFLAGS="-L$cf_cv_library_path_gnutls $LDFLAGS"
+    fi
+    LIBS="-lgnutls -lcrypt $LIBS"
+  fi
 
 AC_CHECK_LIB(gnutls-openssl,SSL_connect,
 	[LIBS="-lgnutls-openssl $LIBS"],
@@ -52,50 +50,13 @@ AC_CHECK_LIB(gnutls-openssl,SSL_connect,
 		[LIBS="-lgnutls-extra $LIBS"],
 		[AC_MSG_ERROR(cannot find gnutls openssl functions)])])
 
-if test "$cf_ssl_subincs" = yes ; then
-AC_MSG_CHECKING(for gnutls include directory)
-AC_TRY_COMPILE([
-#include <stdio.h>
-#include <gnutls/openssl.h>],
-	[SSL_shutdown((SSL *)0)],
-	[cf_openssl_incl=yes],
-	[cf_openssl_incl=no])
-AC_MSG_RESULT($cf_openssl_incl)
-test "$cf_openssl_incl" = yes && AC_DEFINE(USE_GNUTLS_INCL)
-fi
-
-AC_MSG_CHECKING(if we can link to gnutls library)
-AC_TRY_LINK([
-#include <stdio.h>
-#ifdef USE_GNUTLS_INCL
-#include <gnutls/openssl.h>
-#else
-#include <ssl.h>
-#endif
-],
-	[SSL_shutdown((SSL *)0)],
-	[cf_ssl_library=yes],
-	[cf_ssl_library=no])
-AC_MSG_RESULT($cf_ssl_library)
-if test "$cf_ssl_library" = yes ; then
-	AC_DEFINE(USE_SSL)
-else
-	AC_ERROR(Cannot link with gnutls library)
-fi
-
 AC_MSG_CHECKING(for X509 support)
-AC_TRY_LINK([
-#include <stdio.h>
-#ifdef USE_GNUTLS_INCL
-#include <gnutls/openssl.h>
-#else
-#include <ssl.h>
-#endif
-],
+AC_TRY_LINK(CF__SSL_HEAD,
 	[X509_verify_cert_error_string(X509_STORE_CTX_get_error(X509_STORE_CTX *0))];
 	[cf_x509_support=yes],
 	[cf_x509_support=no])
 AC_MSG_RESULT($cf_x509_support)
+
 if test "$cf_x509_support" = yes ; then
 	AC_DEFINE(USE_X509_SUPPORT)
 fi
