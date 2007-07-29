@@ -1,4 +1,4 @@
-dnl CF_NCURSES_LIBS version: 12 updated: 2004/04/27 16:26:05
+dnl CF_NCURSES_LIBS version: 13 updated: 2007/07/29 10:29:20
 dnl ---------------
 dnl Look for the ncurses library.  This is a little complicated on Linux,
 dnl because it may be linked with the gpm (general purpose mouse) library.
@@ -38,7 +38,8 @@ LIBS="$cf_ncurses_LIBS $LIBS"
 
 if ( test -n "$cf_cv_curses_dir" && test "$cf_cv_curses_dir" != "no" )
 then
-	LIBS="-L$cf_cv_curses_dir/lib -l$cf_nculib_root $LIBS"
+	CF_ADD_LIBDIR($cf_cv_curses_dir/lib)
+	LIBS="-l$cf_nculib_root $LIBS"
 else
 	CF_FIND_LIBRARY($cf_nculib_root,$cf_nculib_root,
 		[#include <${cf_cv_ncurses_header-curses.h}>],

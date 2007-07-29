@@ -1,3 +1,85 @@
+2007-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_LINKAGE: in the default case, must update $LIBS too
+
+	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_NCURSES_CPPFLAGS:
+	use CF_ADD_INCDIR
+
+	* AcSplit/AM_WITH_NLS: use CF_ADD_INCDIR
+	don't need check for empty param before CF_ADD_LIBDIR
+
+	* AcSplit/CF_WITH_BZLIB, AcSplit/CF_WITH_ZLIB:
+	rewrote using CF_FIND_LINKAGE
+
+	* AcSplit/CF_FIND_LINKAGE: use CF_ADD_INCDIR
+
+	* AcSplit/CF_SOCKS5: use CF_ADD_OPTIONAL_PATH
+	Considered using CF_FIND_LINKAGE, but decided not to, since this is used
+	rarely (in lynx), and because the logic for finding socks5 versus the
+	socks4 prefix is fragile.
+
+	* AcSplit/CF_ADD_OPTIONAL_PATH: ci-aclocal generated header
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR:
+	ensure that the parameter is non-empty
+
+	* AcSplit/CF_SOCKS: rewrote using CF_FIND_LINKAGE
+
+	* AcSplit/CF_FIND_LINKAGE:
+	tweak messages to avoid leaving unneeded "CF_" strings in the configure script
+
+	* AcSplit/AM_ICONV, AcSplit/CF_GNUTLS, AcSplit/CF_SSL:
+	use CF_ADD_OPTIONAL_PATH
+
+	* AcSplit/CF_ADD_INCDIR:
+	amend a comment (I don't have a nice way to express the lobotomization of
+	gcc done for BSD ports...)
+
+	* AcSplit/CF_CHECK_SSL_X509: ci-aclocal generated header
+
+	* AcSplit/CF_GNUTLS: misc fixes - got this working with lynx.
+
+	* AcSplit/CF_FIND_HEADER, AcSplit/CF_SSL, AcSplit/CF_WITH_BZLIB, AcSplit/CF_WITH_ZLIB:
+	use CF_ADD_INCDIR
+
+	* AcSplit/CF_NCURSES_CC_CHECK:
+	parameter-2 wasn't used in one case where the usual-parameter $cf_header
+	was - fix.
+
+	* AcSplit/CF_CURSES_LIBS: detab'd
+
+	* AcSplit/AM_WITH_NLS: use CF_ADD_LIBDIR
+
+	* AcSplit/CF_ADD_LIBDIR:
+	rewrote - don't simply suppress tokens that are not directories, but also
+	filter out /usr/lib and check for directories already in $LDFLAGS.
+	change the variable from $LIBS to $LDFLAGS, but allow it to be overridden
+	for macros that collect the options in a separate variable.
+
+	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GNUTLS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SSL:
+	use CF_ADD_LIBDIR
+
+	* AcSplit/CF_ADD_SUBDIR_PATH: make a message clearer
+
+	* AcSplit/CF_VERBOSE:
+	add a call to CF_MSG_LOG so the same information goes to config.log
+
+	* AcSplit/CF_ADD_SUBDIR_PATH: ci-aclocal generated header
+
+	* AcSplit/CF_FIND_LINKAGE:
+	put the CF_VERBOSE in the loops _before_ the test, to make it simpler to
+	see what was tested before the "found" message.
+
+	* AcSplit/CF_SUBDIR_PATH: split-out CF_ADD_SUBDIR_PATH
+	also change order of tests to put /usr, $prefix first to lessen user surprise
+
+	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS:
+	use $as_me if defined
+
+	* AcSplit/CF_MSG_LOG:
+	use autoconf 2.5x's $as_me variable if defined, to put the script name in the log.
+	make the line-number formatted like the other configure-lineno stuff.
+
 2007-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_LINKAGE:

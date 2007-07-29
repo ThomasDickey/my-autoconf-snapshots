@@ -1,4 +1,4 @@
-dnl CF_ADD_SEARCHPATH version: 2 updated: 2007/07/26 17:35:47
+dnl CF_ADD_SEARCHPATH version: 4 updated: 2007/07/29 13:35:20
 dnl -----------------
 dnl Set $CPPFLAGS and $LDFLAGS with the directories given via the parameter.
 dnl They can be either the common root of include- and lib-directories, or the
@@ -11,16 +11,16 @@ AC_DEFUN([CF_ADD_SEARCHPATH],
 [
 for cf_searchpath in `echo "$1" | tr : ' '`; do
 	if test -d $cf_searchpath/include; then
-		CPPFLAGS="$CPPFLAGS -I$cf_searchpath/include"
+		CF_ADD_INCDIR($cf_searchpath/include)
 	elif test -d $cf_searchpath/../include ; then
-		CPPFLAGS="$CPPFLAGS -I$cf_searchpath/../include"
+		CF_ADD_INCDIR($cf_searchpath/../include)
 	ifelse([$2],,,[else
 $2])
 	fi
 	if test -d $cf_searchpath/lib; then
-		LDFLAGS="$LDFLAGS -L$cf_searchpath/lib"
+		CF_ADD_LIBDIR($cf_searchpath/lib)
 	elif test -d $cf_searchpath ; then
-		LDFLAGS="$LDFLAGS -L$cf_searchpath"
+		CF_ADD_LIBDIR($cf_searchpath)
 	ifelse([$2],,,[else
 $2])
 	fi

@@ -1,4 +1,4 @@
-dnl CF_FIND_LINKAGE version: 7 updated: 2007/07/28 12:51:36
+dnl CF_FIND_LINKAGE version: 11 updated: 2007/07/29 13:19:54
 dnl ---------------
 dnl Find a library (specifically the linkage used in the code fragment),
 dnl searching for it if it is not already in the library path.
@@ -25,13 +25,13 @@ AC_DEFUN([CF_FIND_LINKAGE],[
 cf_cv_header_path_$3=
 cf_cv_library_path_$3=
 
-CF_MSG_LOG([Starting [CF_FIND_LINKAGE]($3,$6)])
+CF_MSG_LOG([Starting [FIND_LINKAGE]($3,$6)])
 
 AC_TRY_LINK([$1],[$2],
     cf_cv_find_linkage_$3=yes,[
     cf_cv_find_linkage_$3=no
 
-    CF_MSG_LOG([Searching for headers in [CF_FIND_LINKAGE]($3,$6)])
+    CF_MSG_LOG([Searching for headers in [FIND_LINKAGE]($3,$6)])
 
     cf_save_CPPFLAGS="$CPPFLAGS"
     cf_test_CPPFLAGS="$CPPFLAGS"
@@ -40,6 +40,7 @@ AC_TRY_LINK([$1],[$2],
     for cf_cv_header_path_$3 in $cf_search
     do
       if test -d $cf_cv_header_path_$3 ; then
+        CF_VERBOSE(... testing $cf_cv_header_path_$3)
         CPPFLAGS="$cf_save_CPPFLAGS -I$cf_cv_header_path_$3"
         AC_TRY_COMPILE([$1],[$2],[
             CF_VERBOSE(... found $3 headers in $cf_cv_header_path_$3)
@@ -49,12 +50,11 @@ AC_TRY_LINK([$1],[$2],
             CPPFLAGS="$cf_save_CPPFLAGS"
             ])
       fi
-      CF_VERBOSE(... tested $cf_cv_header_path_$3)
     done
 
     if test "$cf_cv_find_linkage_$3" = maybe ; then
 
-      CF_MSG_LOG([Searching for $3 library in [CF_FIND_LINKAGE]($3,$6)])
+      CF_MSG_LOG([Searching for $3 library in [FIND_LINKAGE]($3,$6)])
 
       cf_save_LIBS="$LIBS"
       cf_save_LDFLAGS="$LDFLAGS"
@@ -74,6 +74,7 @@ AC_TRY_LINK([$1],[$2],
         for cf_cv_library_path_$3 in $cf_search
         do
           if test -d $cf_cv_library_path_$3 ; then
+            CF_VERBOSE(... testing $cf_cv_library_path_$3)
             CPPFLAGS="$cf_test_CPPFLAGS"
             LIBS="-l$3 $7 $cf_save_LIBS"
             LDFLAGS="$cf_save_LDFLAGS -L$cf_cv_library_path_$3"
@@ -87,7 +88,6 @@ AC_TRY_LINK([$1],[$2],
                 LDFLAGS="$cf_save_LDFLAGS"
                 ])
           fi
-          CF_VERBOSE(... tested $cf_cv_library_path_$3)
         done
         LIBS="$cf_save_LIBS"
         CPPFLAGS="$cf_save_CPPFLAGS"
@@ -100,7 +100,10 @@ AC_TRY_LINK([$1],[$2],
     ],$7)
 
 if test "$cf_cv_find_linkage_$3" = yes ; then
-ifelse([$4],,[CPPFLAGS="-I$cf_cv_header_path_$3 $CPPFLAGS"; LDFLAGS="-L$cf_cv_library_path_$3 $LDFLAGS"],[$4])
+ifelse([$4],,[
+  CF_ADD_INCDIR($cf_cv_header_path_$3)
+  CF_ADD_LIBDIR($cf_cv_library_path_$3)
+],[$4])
 else
 ifelse([$5],,AC_MSG_WARN(Cannot find $3 library),[$5])
 fi

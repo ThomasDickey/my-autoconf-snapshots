@@ -1,4 +1,4 @@
-dnl CF_FIND_IPV6_LIBS version: 6 updated: 2002/11/09 09:05:18
+dnl CF_FIND_IPV6_LIBS version: 7 updated: 2007/07/29 13:35:20
 dnl -----------------
 dnl Based on the IPV6 stack type, look for the corresponding library.
 AC_DEFUN([CF_FIND_IPV6_LIBS],[
@@ -54,7 +54,7 @@ if test "$cf_ipv6lib" != "none"; then
 		cf_header=$cf_incdir/netinet/ip6.h
 		if test -f $cf_header
 		then
-			CPPFLAGS="$CPPFLAGS -I$cf_incdir"
+			CF_ADD_INCDIR($cf_incdir)
 			test -n "$verbose" && echo "	... found $cf_header" 1>&AC_FD_MSG
 			break
 		fi

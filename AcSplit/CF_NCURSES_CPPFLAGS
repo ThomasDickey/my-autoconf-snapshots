@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CPPFLAGS version: 18 updated: 2005/12/31 13:26:39
+dnl CF_NCURSES_CPPFLAGS version: 19 updated: 2007/07/29 13:35:20
 dnl -------------------
 dnl Look for the SVr4 curses clone 'ncurses' in the standard places, adjusting
 dnl the CPPFLAGS variable so we can include its header.
@@ -26,8 +26,9 @@ AC_PROVIDE([CF_CURSES_CPPFLAGS])dnl
 cf_ncuhdr_root=ifelse($1,,ncurses,$1)
 
 test -n "$cf_cv_curses_dir" && \
-test "$cf_cv_curses_dir" != "no" && \
-CPPFLAGS="-I$cf_cv_curses_dir/include -I$cf_cv_curses_dir/include/$cf_ncuhdr_root $CPPFLAGS"
+test "$cf_cv_curses_dir" != "no" && { \
+  CF_ADD_INCDIR($cf_cv_curses_dir/include $cf_cv_curses_dir/include/$cf_ncuhdr_root)
+}
 
 AC_CACHE_CHECK(for $cf_ncuhdr_root header in include-path, cf_cv_ncurses_h,[
 	cf_header_list="$cf_ncuhdr_root/curses.h $cf_ncuhdr_root/ncurses.h"
