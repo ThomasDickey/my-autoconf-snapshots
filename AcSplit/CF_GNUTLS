@@ -1,20 +1,12 @@
-dnl CF_GNUTLS version: 6 updated: 2007/07/28 12:51:36
+dnl CF_GNUTLS version: 9 updated: 2007/07/29 12:32:41
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_GNUTLS],[
-  case "$1" in #(vi
-  no) #(vi
-      ;;
-  yes) #(vi
-      ;;
-  *)
-      CF_ADD_SEARCHPATH([$1], [AC_MSG_ERROR(cannot find ssl library under $1)])
-      ;;
-  esac
+  CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
+  AC_DEFINE(USE_GNUTLS_INCL)
   cf_gnutls_CPPFLAGS=$CPPFLAGS
-  CPPFLAGS="-DUSE_GNUTLS_INCL $CPPFLAGS"
 
   CF_FIND_LINKAGE(CF__SSL_HEAD,
       CF__SSL_BODY,
@@ -29,35 +21,25 @@ AC_DEFUN([CF_GNUTLS],[
   if test "$cf_cv_have_gnutls" = yes ; then
     if test -n "$cf_cv_header_path_gnutls" ; then
       AC_DEFINE(USE_SSL)
-      AC_DEFINE(USE_X509_SUPPORT)
       case $cf_cv_header_path_gnutls in
       /usr/include/gnutls)
           ;;
       *)
-          CF_ADD_CFLAGS([-I$cf_cv_header_path_gnutls])
+          CF_ADD_INCDIR($cf_cv_header_path_gnutls)
           ;;
       esac
     fi
     if test -n "$cf_cv_library_path_gnutls" ; then
-      LDFLAGS="-L$cf_cv_library_path_gnutls $LDFLAGS"
+      CF_ADD_LIBDIR($cf_cv_library_path_gnutls)
     fi
     LIBS="-lgnutls -lcrypt $LIBS"
   fi
 
-AC_CHECK_LIB(gnutls-openssl,SSL_connect,
-	[LIBS="-lgnutls-openssl $LIBS"],
-	[AC_CHECK_LIB(gnutls-extra,SSL_connect,
-		[LIBS="-lgnutls-extra $LIBS"],
-		[AC_MSG_ERROR(cannot find gnutls openssl functions)])])
+  AC_CHECK_LIB(gnutls-openssl,SSL_connect,
+      [LIBS="-lgnutls-openssl $LIBS"],
+      [AC_CHECK_LIB(gnutls-extra,SSL_connect,
+          [LIBS="-lgnutls-extra $LIBS"],
+          [AC_MSG_ERROR(cannot find gnutls openssl functions)])])
 
-AC_MSG_CHECKING(for X509 support)
-AC_TRY_LINK(CF__SSL_HEAD,
-	[X509_verify_cert_error_string(X509_STORE_CTX_get_error(X509_STORE_CTX *0))];
-	[cf_x509_support=yes],
-	[cf_x509_support=no])
-AC_MSG_RESULT($cf_x509_support)
-
-if test "$cf_x509_support" = yes ; then
-	AC_DEFINE(USE_X509_SUPPORT)
-fi
+  CF_CHECK_SSL_X509
 ])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070728
+MANIFEST for my-autoconf, version t20070729
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -25,7 +25,9 @@ AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directorie
 AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
+AcSplit/CF_ADD_OPTIONAL_PATH    wrapper for CF_ADD_SEARCHPATH
 AcSplit/CF_ADD_SEARCHPATH       add a directory to -I/-L searchpath(s)
+AcSplit/CF_ADD_SUBDIR_PATH      for CF_SUBDIR_PATH, check subdirs of one directory
 AcSplit/CF_ALL_MAKEFILES        list all makefiles
 AcSplit/CF_ALT_CHAR_SET         check for alternate character-set in curses
 AcSplit/CF_ANSI_CC_CHECK        check if we have an ANSI compiler (no preprocessor check)
@@ -62,6 +64,7 @@ AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> d
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
+AcSplit/CF_CHECK_SSL_X509       check for X509 support in the SSL library
 AcSplit/CF_CHECK_TYPE           AC_CHECK_TYPE extended compatibly with 2.13
 AcSplit/CF_COLOR_CURSES         check if curses supports color
 AcSplit/CF_COMPTYPE             obtain qsort's compare-type

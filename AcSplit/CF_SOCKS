@@ -1,37 +1,34 @@
-dnl CF_SOCKS version: 3 updated: 2001/01/01 09:54:40
+dnl CF_SOCKS version: 5 updated: 2007/07/29 12:32:41
 dnl --------
 dnl Check for socks library
 dnl $1 = the [optional] directory in which the library may be found
 AC_DEFUN([CF_SOCKS],[
-case "$1" in #(vi
-no|yes) #(vi
-  ;;
-*)
-  if test -d $1 ; then
-    if test -d $1/include ; then
-      CPPFLAGS="$CPPFLAGS -I$1/include"
-      LIBS="$LIBS -L$1/lib"
-    else
-      LIBS="$LIBS -L$1"
-      test -d $1/../include && CPPFLAGS="$CPPFLAGS -I$1/../include"
-    fi
+  CF_ADD_OPTIONAL_PATH($1, [socks library])
+  CF_FIND_LINKAGE([
+#include <stdio.h>
+],[
+      Raccept((char *)0)
+],
+      socks,
+      cf_cv_have_socks=yes,
+      cf_cv_have_socks=no)
+
+  if test "$cf_cv_have_socks" = yes ; then
+    AC_DEFINE(SOCKS)
+
+    AC_DEFINE(accept,Raccept)
+    AC_DEFINE(bind,Rbind)
+    AC_DEFINE(connect,Rconnect)
+    AC_DEFINE(getpeername,Rgetpeername)
+    AC_DEFINE(getsockname,Rgetsockname)
+    AC_DEFINE(listen,Rlisten)
+    AC_DEFINE(recvfrom,Rrecvfrom)
+    AC_DEFINE(select,Rselect)
+
+    CF_ADD_INCDIR($cf_cv_header_path_socks)
+    CF_ADD_LIBDIR($cf_cv_library_path_socks)
+    LIBS="$LIBS -lsocks"
   else
-    AC_MSG_WARN(expected a directory: $1)
+    AC_ERROR(cannot link with socks library)
   fi
-  ;;
-esac
-LIBS="$LIBS -lsocks"
-AC_DEFINE(SOCKS)
-AC_DEFINE(accept,Raccept)
-AC_DEFINE(bind,Rbind)
-AC_DEFINE(connect,Rconnect)
-AC_DEFINE(getpeername,Rgetpeername)
-AC_DEFINE(getsockname,Rgetsockname)
-AC_DEFINE(listen,Rlisten)
-AC_DEFINE(recvfrom,Rrecvfrom)
-AC_DEFINE(select,Rselect)
-AC_TRY_LINK([
-#include <stdio.h>],[
-	accept((char *)0)],,
-	[AC_ERROR(Cannot link with socks library)])
 ])dnl

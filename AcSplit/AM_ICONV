@@ -1,4 +1,4 @@
-dnl AM_ICONV version: 8 updated: 2007/07/28 11:15:05
+dnl AM_ICONV version: 11 updated: 2007/07/29 13:35:20
 dnl --------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -20,7 +20,7 @@ AC_DEFUN([AM_ICONV],
   AC_ARG_WITH([libiconv-prefix],
 [  --with-libiconv-prefix=DIR
                           search for libiconv in DIR/include and DIR/lib], [
-    CF_ADD_SEARCHPATH($withval)
+    CF_ADD_OPTIONAL_PATH($withval, libiconv)
    ])
 
   AC_CACHE_CHECK(for iconv, am_cv_func_iconv, [
@@ -60,12 +60,10 @@ size_t iconv();
 
   LIBICONV=
   if test "$cf_cv_find_linkage_iconv" = yes; then
-    if test -n "$cf_cv_header_path_iconv" ; then
-      CPPFLAGS="-I$cf_cv_header_path_iconv $CPPFLAGS"
-    fi
+    CF_ADD_INCDIR($cf_cv_header_path_iconv)
     if test -n "$cf_cv_library_path_iconv" ; then
       LIBICONV="-liconv"
-      LDFLAGS="-L$cf_cv_library_path_iconv $LDFLAGS"
+      CF_ADD_LIBDIR($cf_cv_library_path_iconv)
     fi
   fi
 

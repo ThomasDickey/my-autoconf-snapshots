@@ -1,4 +1,4 @@
-dnl CF_FIND_HEADER version: 1 updated: 2006/01/22 20:26:00
+dnl CF_FIND_HEADER version: 2 updated: 2007/07/29 11:32:00
 dnl --------------
 dnl Find a header file, searching for it if it is not already in the include
 dnl path.
@@ -15,7 +15,7 @@ CF_HEADER_PATH(cf_search,$2)
 for cf_incdir in $cf_search
 do
 	if test -f $cf_incdir/$1 ; then
-		CF_ADD_CFLAGS(-I$cf_incdir)
+		CF_ADD_INCDIR($cf_incdir)
 		CF_VERBOSE(... found in $cf_incdir)
 		cf_find_header=yes
 		break
