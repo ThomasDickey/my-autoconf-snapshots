@@ -1,3 +1,17 @@
+2007-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_INCDIR: typo
+
+	* AcSplit/CF_ADD_LIBDIR:
+	combine check on $LDFLAGS and $LIBS just in case
+
+	* AcSplit/AM_ICONV: corrected check for libiconv.*
+
+	* AcSplit/CF_CHECK_SSL_X509: q/d hack to make this work...
+
+	* AcSplit/CF_ADD_INCDIR:
+	use the check-for-duplicates from CF_ADD_LIBDIR
+
 2007-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_LINKAGE: in the default case, must update $LIBS too

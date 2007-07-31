@@ -1,4 +1,4 @@
-dnl CF_ADD_INCDIR version: 6 updated: 2007/07/29 12:32:41
+dnl CF_ADD_INCDIR version: 8 updated: 2007/07/30 19:22:58
 dnl -------------
 dnl Add an include-directory to $CPPFLAGS.  Don't add /usr/include, since it's
 dnl redundant.  We don't normally need to add -I/usr/local/include for gcc,
@@ -10,30 +10,47 @@ AC_DEFUN([CF_ADD_INCDIR],
 if test -n "$1" ; then
   for cf_add_incdir in $1
   do
-      while true
-      do
-          case $cf_add_incdir in
-          /usr/include) # (vi
-              ;;
-          /usr/local/include) # (vi
-              if test "$GCC" = yes
-              then
-                  cf_save_CPPFLAGS="$CPPFLAGS"
-                  CPPFLAGS="$CPPFLAGS -I$cf_add_incdir"
-                  AC_TRY_COMPILE([#include <stdio.h>],
-                          [printf("Hello")],
-                          [],
-                          [CPPFLAGS="$cf_save_CPPFLAGS"])
-              fi
-              ;;
-          *) # (vi
-              CPPFLAGS="$CPPFLAGS -I$cf_add_incdir"
-              ;;
-          esac
+	while test $cf_add_incdir != /usr/include
+	do
+	  if test -d $cf_add_incdir
+	  then
+		cf_have_incdir=no
+		if test -n "$CFLAGS$CPPFLAGS" ; then
+		  # a loop is needed to ensure we can add subdirs of existing dirs
+		  for cf_test_incdir in $CFLAGS $CPPFLAGS ; do
+			if test ".$cf_test_incdir" = ".-I$cf_add_incdir" ; then
+			  cf_have_incdir=yes; break
+			fi
+		  done
+		fi
+
+		if test "$cf_have_incdir" = no ; then
+          if test "$cf_add_incdir" = /usr/local/include ; then
+			if test "$GCC" = yes
+			then
+			  cf_save_CPPFLAGS=$CPPFLAGS
+			  CPPFLAGS="$CPPFLAGS -I$cf_add_incdir"
+			  AC_TRY_COMPILE([#include <stdio.h>],
+				  [printf("Hello")],
+				  [],
+				  [cf_have_incdir=yes])
+			  CPPFLAGS=$cf_save_CPPFLAGS
+			fi
+		  fi
+		fi
+
+		if test "$cf_have_incdir" = no ; then
+		  AC_VERBOSE(adding $cf_add_incdir to include-path)
+		  ifelse($2,,CPPFLAGS,$2)="-I$cf_add_incdir $ifelse($2,,CPPFLAGS,[$]$2)"
+
           cf_top_incdir=`echo $cf_add_incdir | sed -e 's%/include/.*$%/include%'`
           test "$cf_top_incdir" = "$cf_add_incdir" && break
           cf_add_incdir="$cf_top_incdir"
-      done
+		else
+		  break
+		fi
+	  fi
+	done
   done
 fi
 ])dnl

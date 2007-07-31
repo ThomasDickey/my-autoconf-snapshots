@@ -1,4 +1,4 @@
-dnl CF_FIND_LINKAGE version: 11 updated: 2007/07/29 13:19:54
+dnl CF_FIND_LINKAGE version: 12 updated: 2007/07/29 20:13:53
 dnl ---------------
 dnl Find a library (specifically the linkage used in the code fragment),
 dnl searching for it if it is not already in the library path.
@@ -103,6 +103,7 @@ if test "$cf_cv_find_linkage_$3" = yes ; then
 ifelse([$4],,[
   CF_ADD_INCDIR($cf_cv_header_path_$3)
   CF_ADD_LIBDIR($cf_cv_library_path_$3)
+  LIBS="-l$3 $LIBS"
 ],[$4])
 else
 ifelse([$5],,AC_MSG_WARN(Cannot find $3 library),[$5])
