@@ -1,3 +1,9 @@
+2007-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_C_INLINE:
+	don't try to apply the --param to Intel compiler (it complains about a -fp
+	option and gives occasional error returns though not on _this_ test).
+
 2007-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_INCDIR: typo
