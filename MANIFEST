@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20070811
+MANIFEST for my-autoconf, version t20071124
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -260,6 +260,7 @@ AcSplit/CF_REMOVE_DEFINE        macro to remove -U/-D options for a given symbol
 AcSplit/CF_REMOVE_LIB           remove a library from the given symbol
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads
 AcSplit/CF_RE_COMP_FUNCS        check for re_comp/re_exec functions (td_lib)
+AcSplit/CF_RPATH_HACK           q/d hack to piggyback rpath options in ncurses from its own shared-lib opts
 AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
 AcSplit/CF_SET_ERRNO            check if we can set errno
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions

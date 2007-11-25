@@ -1,3 +1,16 @@
+2007-11-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK:
+	put the custom paths in front of the others in case we're starting with the
+	system -L/usr/lib
+
+	* AcSplit/CF_RPATH_HACK: ci-aclocal generated header
+
+	* AcSplit/CF_HASHED_DB: typo
+
+	* AcSplit/CF_HASHED_DB:
+	add optional param to specify the include- and lib-directories
+
 2007-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_C_INLINE:

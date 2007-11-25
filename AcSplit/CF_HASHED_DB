@@ -1,8 +1,21 @@
-dnl CF_HASHED_DB version: 1 updated: 2006/08/19 09:16:14
+dnl CF_HASHED_DB version: 3 updated: 2007/11/24 17:43:37
 dnl ------------
 dnl Look for an instance of the Berkeley hashed database.
+dnl
+dnl $1 = optional parameter, to specify install-prefix for the database.
 AC_DEFUN([CF_HASHED_DB],
 [
+ifelse([$1],,,[
+case $1 in #(vi
+yes|*able*) #(vi
+    ;;
+*)
+    if test -d "$1" ; then
+        CF_ADD_INCDIR($1/include)
+        CF_ADD_LIBDIR($1/lib)
+    fi
+esac
+])
 AC_CHECK_HEADER(db.h,[
 CF_HASHED_DB_VERSION
 if test "$cf_cv_hashed_db_version" = unknown ; then
