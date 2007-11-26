@@ -1,3 +1,9 @@
+2007-11-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_VERSION:
+	lex on AIX (even 5.1) doesn't stop on error from illegal option - it starts
+	reading the data from stdin.  Adjust test to avoid hanging.
+
 2007-11-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RPATH_HACK:
