@@ -1,3 +1,13 @@
+2007-12-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HASHED_DB_VERSION:
+	for grins, look for db5 - I see Debian has a package
+
+	* AcSplit/CF_HASHED_DB_LIBS: look also for -ldb-3, etc.
+
+	* AcSplit/CF_RPATH_HACK:
+	don't try to update LDFLAGS if there's no applicable rpath-hack
+
 2007-11-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_VERSION:
