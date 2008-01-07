@@ -1,11 +1,11 @@
-dnl CF_CHECK_SSL_X509 version: 2 updated: 2007/07/30 19:12:03
+dnl CF_CHECK_SSL_X509 version: 3 updated: 2008/01/06 14:56:47
 dnl -----------------
 dnl Check for X509 support in the SSL library.
 AC_DEFUN([CF_CHECK_SSL_X509],[
 AC_MSG_CHECKING(for X509 support)
 AC_TRY_LINK(CF__SSL_HEAD [
 #include <openssl/x509.h>],
-	[X509_verify_cert_error_string(X509_STORE_CTX_get_error(X509_STORE_CTX *0))],
+	[X509_verify_cert_error_string(X509_STORE_CTX_get_error(NULL))],
 	[cf_x509_support=yes],
 	[cf_x509_support=no])
 AC_MSG_RESULT($cf_x509_support)

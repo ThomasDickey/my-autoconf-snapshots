@@ -1,3 +1,22 @@
+2008-01-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_SSL_X509:
+	TG insists that he's got a const or something like that in the
+	prototype for (X509_STORE_CTX_get_error() - tweak the check.
+
+	* AcSplit/CF_CHECK_TYPE:
+	Thorsten Glaser patch to use AC_CHECK_TYPE as/is with autoconf 2.13
+
+	* AcSplit/CF_SSL:
+	patch to check X509 support after establishing libraries - Thorsten Glaser
+
+2007-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_ICONV:
+	tweak to make cf_cv_func_iconv set to "yes" if I do find the function in
+	"-liconv".  Noticed on cygwin that I had to do this (a shame that cygwin
+	doesn't provide locale support).
+
 2007-12-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HASHED_DB_VERSION:
