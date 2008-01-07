@@ -1,13 +1,16 @@
-dnl CF_CHECK_TYPE version: 1 updated: 2005/01/01 12:49:48
+dnl CF_CHECK_TYPE version: 2 updated: 2008/01/06 14:56:47
 dnl -------------
 dnl Add a 3rd parameter to AC_CHECK_TYPE, working around autoconf 2.5x's
 dnl deliberate incompatibility.
 dnl	$1 = name of type to check for
 dnl	$2 = default type
 dnl	$3 = additional #include's and related preprocessor lines.
+ifdef([m4_HAS_AC_CT_FOURARGS], [m4_undefine([m4_HAS_AC_CT_FOURARGS])])dnl
+ifelse(m4_PACKAGE_VERSION, [fnord_acsalt], [],
+[ifdef([m4_version_compare],[m4_define([m4_HAS_AC_CT_FOURARGS])])])dnl
 AC_DEFUN([CF_CHECK_TYPE],
 [
-ifdef([m4_version_compare],[
+ifdef([m4_HAS_AC_CT_FOURARGS],[
 	AC_CHECK_TYPE([$1],ac_cv_type_$1=yes,ac_cv_type_$1=no,[$3])
 	],[
 	AC_MSG_CHECKING(for $1)

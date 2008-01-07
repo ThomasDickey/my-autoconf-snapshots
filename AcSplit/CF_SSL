@@ -1,4 +1,4 @@
-dnl CF_SSL version: 11 updated: 2007/07/29 12:32:41
+dnl CF_SSL version: 12 updated: 2008/01/06 14:56:47
 dnl ------
 dnl Check for ssl library
 dnl $1 = the [optional] directory in which the library may be found
@@ -32,10 +32,10 @@ AC_DEFUN([CF_SSL],[
       esac
 
     fi
-    CF_CHECK_SSL_X509
     if test -n "$cf_cv_library_path_ssl" ; then
       CF_ADD_LIBDIR($cf_cv_library_path_ssl)
     fi
     LIBS="-lssl -lcrypto $LIBS"
+    CF_CHECK_SSL_X509
   fi
 ])dnl
