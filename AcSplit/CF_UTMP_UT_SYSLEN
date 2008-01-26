@@ -1,0 +1,19 @@
+dnl CF_UTMP_UT_SYSLEN version: 1 updated: 2008/01/25 17:18:00
+dnl -----------------
+dnl Check if UTMP/UTMPX struct defines ut_syslen member
+AC_DEFUN([CF_UTMP_UT_SYSLEN],
+[
+if test $cf_cv_have_utmp != no ; then
+AC_MSG_CHECKING(if ${cf_cv_have_utmp}.ut_syslen is declared)
+AC_CACHE_VAL(cf_cv_have_utmp_ut_syslen,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <${cf_cv_have_utmp}.h>],
+	[struct $cf_cv_have_utmp x; int y = x.ut_syslen],
+	[cf_cv_have_utmp_ut_syslen=yes],
+	[cf_cv_have_utmp_ut_syslen=no])
+	])
+AC_MSG_RESULT($cf_cv_have_utmp_ut_syslen)
+test $cf_cv_have_utmp_ut_syslen != no && AC_DEFINE(HAVE_UTMP_UT_SYSLEN)
+fi
+])dnl
