@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080106
+MANIFEST for my-autoconf, version t20080125
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -343,6 +343,7 @@ AcSplit/CF_UTMP_GROUP           check for utmp file's group
 AcSplit/CF_UTMP_UT_HOST         check for utmp.ut_host data
 AcSplit/CF_UTMP_UT_NAME         check for utmp ut_name member (lynx)
 AcSplit/CF_UTMP_UT_SESSION      check for utmp.ut_session
+AcSplit/CF_UTMP_UT_SYSLEN       from Alan Coopersmith bug-report - see
 AcSplit/CF_UTMP_UT_XSTATUS      checks for utmp.ut_xstatus
 AcSplit/CF_UTMP_UT_XTIME        check for utmp.ut_xtime member
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
