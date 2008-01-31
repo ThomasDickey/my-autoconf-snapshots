@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080125
+MANIFEST for my-autoconf, version t20080130
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -212,6 +212,7 @@ AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
 AcSplit/CF_NO_LEAKS_OPTION      support for CF_WITH_NO_LEAKS
+AcSplit/CF_NSS_COMPAT           Date: Thu, 07 Feb 2008 09:45:36 +0100
 AcSplit/CF_NUMBER_SYNTAX        check if a variable is a number
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
 AcSplit/CF_OUR_MESSAGES         macro for i18n support (lynx)
