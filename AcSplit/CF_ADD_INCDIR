@@ -1,4 +1,4 @@
-dnl CF_ADD_INCDIR version: 8 updated: 2007/07/30 19:22:58
+dnl CF_ADD_INCDIR version: 9 updated: 2008/02/09 13:15:34
 dnl -------------
 dnl Add an include-directory to $CPPFLAGS.  Don't add /usr/include, since it's
 dnl redundant.  We don't normally need to add -I/usr/local/include for gcc,
@@ -40,7 +40,7 @@ if test -n "$1" ; then
 		fi
 
 		if test "$cf_have_incdir" = no ; then
-		  AC_VERBOSE(adding $cf_add_incdir to include-path)
+		  CF_VERBOSE(adding $cf_add_incdir to include-path)
 		  ifelse($2,,CPPFLAGS,$2)="-I$cf_add_incdir $ifelse($2,,CPPFLAGS,[$]$2)"
 
           cf_top_incdir=`echo $cf_add_incdir | sed -e 's%/include/.*$%/include%'`
