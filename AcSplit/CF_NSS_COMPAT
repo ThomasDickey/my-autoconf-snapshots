@@ -1,4 +1,4 @@
-dnl CF_NSS_COMPAT version: 1 updated: 2008/01/30 18:00:00
+dnl CF_NSS_COMPAT version: 2 updated: 2008/03/23 14:48:54
 dnl -------------
 dnl Check for NSS compatible SSL libraries
 dnl $1 = the [optional] directory in which the library may be found
@@ -85,6 +85,6 @@ if test "$cf_ssl_library" = yes ; then
 	AC_DEFINE(USE_SSL)
 	AC_DEFINE(USE_X509_SUPPORT)
 else
-	AC_ERROR(Cannot link with NSS compilant libraries)
+	AC_MSG_ERROR(Cannot link with NSS compilant libraries)
 fi
 ])dnl

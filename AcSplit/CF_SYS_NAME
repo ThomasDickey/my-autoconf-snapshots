@@ -1,4 +1,4 @@
-dnl CF_SYS_NAME version: 2 updated: 1997/08/28 23:57:55
+dnl CF_SYS_NAME version: 3 updated: 2008/03/23 14:48:54
 dnl -----------
 dnl Derive the system name, as a check for reusing the autoconf cache
 AC_DEFUN([CF_SYS_NAME],
@@ -11,5 +11,5 @@ AC_CACHE_VAL(cf_cv_system_name,[cf_cv_system_name="$SYS_NAME"])
 
 if test ".$SYS_NAME" != ".$cf_cv_system_name" ; then
 	AC_MSG_RESULT("Cached system name does not agree with actual")
-	AC_ERROR("Please remove config.cache and try again.")
+	AC_MSG_ERROR("Please remove config.cache and try again.")
 fi])

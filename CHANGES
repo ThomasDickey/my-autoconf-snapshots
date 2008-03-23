@@ -1,3 +1,14 @@
+2008-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_LEX_CHAR_CLASSES, AcSplit/CF_LEX_STATES, AcSplit/CF_X_TOOLKIT:
+	use AC_MSG_WARN (new name works with 2.13)
+
+	* AcSplit/CF_ANSI_CC_REQD, AcSplit/CF_ARG_WITH, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FIND_TDLIB, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PDCURSES_X11, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SYS_NAME, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_GPM, AcSplit/CF_WITH_PROGRAM, AcSplit/CF_X_MOTIF, AcSplit/CF_X_OPENLOOK:
+	use AC_MSG_ERROR (new name, works with 2.13)
+
+	* AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_CHECK_CACHE, AcSplit/CF_PATH_SYNTAX:
+	use AC_MSG_ERROR
+
 2008-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2008-03-08 (from tin beta)

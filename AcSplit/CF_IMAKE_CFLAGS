@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 29 updated: 2007/05/24 20:53:19
+dnl CF_IMAKE_CFLAGS version: 30 updated: 2008/03/23 15:04:54
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -79,14 +79,14 @@ CF_EOF
 			esac
 		done
 		if test -z "$cf_config" ; then
-			AC_WARN(Could not find imake config-directory)
+			AC_MSG_WARN(Could not find imake config-directory)
 		else
 			cf_imake_opts="$cf_imake_opts -I$cf_config"
 			if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
 			then
 				CF_VERBOSE(Using $IMAKE $cf_config)
 			else
-				AC_WARN(Cannot run $IMAKE)
+				AC_MSG_WARN(Cannot run $IMAKE)
 			fi
 		fi
 	fi

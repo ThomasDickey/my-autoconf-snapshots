@@ -1,4 +1,4 @@
-dnl CF_MAKE_INCLUDE version: 7 updated: 2001/07/15 16:04:43
+dnl CF_MAKE_INCLUDE version: 8 updated: 2008/03/23 14:48:54
 dnl ---------------
 dnl Check for the use of 'include' in 'make' (BSDI is a special case)
 dnl The symbol $ac_make is set in AC_MAKE_SET, as a side-effect.
@@ -43,7 +43,7 @@ done
 rm -rf $cf_inc $cf_dir
 
 if test -z "$make_include_left" ; then
-	AC_ERROR(Your $ac_make program does not support includes)
+	AC_MSG_ERROR(Your $ac_make program does not support includes)
 fi
 if test ".$make_include_quote" != .unknown ; then
 	make_include_left="$make_include_left $make_include_quote"

@@ -1,4 +1,4 @@
-dnl CF_X_OPENLOOK version: 2 updated: 1998/07/22 22:20:11
+dnl CF_X_OPENLOOK version: 3 updated: 2008/03/23 14:48:54
 dnl -------------
 AC_DEFUN([CF_X_OPENLOOK],
 [AC_REQUIRE([CF_X_TOOLKIT])dnl
@@ -10,6 +10,6 @@ LDFLAGS="$LDFLAGS $X_LIBS"
 AC_CHECK_LIB(Xmu,XmuClientWindow)
 AC_CHECK_LIB(Xol, OlToolkitInitialize,
 	[LIBS="-lXol -lm $LIBS"],
-	AC_ERROR(
+	AC_MSG_ERROR(
 [Unable to successfully link OpenLook library (-lXol) with test program])) dnl
 ])dnl

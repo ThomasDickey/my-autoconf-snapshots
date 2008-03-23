@@ -1,4 +1,4 @@
-dnl CF_SOCKS version: 5 updated: 2007/07/29 12:32:41
+dnl CF_SOCKS version: 6 updated: 2008/03/23 14:48:54
 dnl --------
 dnl Check for socks library
 dnl $1 = the [optional] directory in which the library may be found
@@ -29,6 +29,6 @@ AC_DEFUN([CF_SOCKS],[
     CF_ADD_LIBDIR($cf_cv_library_path_socks)
     LIBS="$LIBS -lsocks"
   else
-    AC_ERROR(cannot link with socks library)
+    AC_MSG_ERROR(cannot link with socks library)
   fi
 ])dnl

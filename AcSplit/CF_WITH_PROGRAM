@@ -1,4 +1,4 @@
-dnl CF_WITH_PROGRAM version: 5 updated: 2001/07/22 23:07:22
+dnl CF_WITH_PROGRAM version: 6 updated: 2008/03/23 14:48:54
 dnl ---------------
 dnl Wrapper for AC_PATH_PROG, with command-line option.
 dnl Params:
@@ -13,7 +13,7 @@ define([cf_have_name], HAVE_[]translit($1, [a-z], [A-Z]))dnl
 AC_ARG_WITH($1,[$2],ifelse($3,,
 [case "$withval" in #(vi
   yes[)]
-   AC_ERROR(expected a value for --with-$1)
+   AC_MSG_ERROR(expected a value for --with-$1)
    ;; #(vi
   no[)]
    ;; #(vi

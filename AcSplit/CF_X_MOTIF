@@ -1,4 +1,4 @@
-dnl CF_X_MOTIF version: 2 updated: 1998/07/22 22:20:11
+dnl CF_X_MOTIF version: 3 updated: 2008/03/23 14:48:54
 dnl ----------
 dnl Check for Motif or Lesstif libraries (they should be indistinguishable)
 AC_DEFUN([CF_X_MOTIF],
@@ -14,7 +14,7 @@ AC_CHECK_LIB(Xpm, XpmCreatePixmapFromXpmImage,
 	[$LIBS $X_EXTRA_LIBS])
 AC_CHECK_LIB(XIM,XmbTextListToTextProperty)dnl needed for Unixware's Xm
 AC_CHECK_LIB(Xm, XmProcessTraversal, [LIBS="-lXm $LIBS"],
-	AC_ERROR(
+	AC_MSG_ERROR(
 [Unable to successfully link Motif library (-lXm) with test program]),
 	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS]) dnl
 ])dnl
