@@ -1,4 +1,4 @@
-dnl CF_ARG_WITH version: 3 updated: 2000/07/20 00:41:18
+dnl CF_ARG_WITH version: 4 updated: 2008/03/23 14:48:54
 dnl -----------
 dnl Restricted form of AC_ARG_WITH that requires user to specify a value
 dnl $1 = option name
@@ -14,7 +14,7 @@ ifelse($4,,[test -n "$withval" && \
 ])dnl
 case "$withval" in #(vi
 yes)
-  AC_ERROR(expected a value for --with-$1)
+  AC_MSG_ERROR(expected a value for --with-$1)
   ;; #(vi
 no) withval=""
   ;;

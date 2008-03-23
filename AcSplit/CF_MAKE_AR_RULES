@@ -1,4 +1,4 @@
-dnl CF_MAKE_AR_RULES version: 3 updated: 2001/07/15 16:04:43
+dnl CF_MAKE_AR_RULES version: 4 updated: 2008/03/23 14:48:54
 dnl ----------------
 dnl Check if the 'make' program knows how to interpret archive rules.  Though
 dnl this is common practice since the mid-80's, there are some holdouts (1997).
@@ -53,7 +53,7 @@ if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=no
 else
-	AC_ERROR(I do not know how to construct a library)
+	AC_MSG_ERROR(I do not know how to construct a library)
 fi
 fi
 rm -rf $cf_dir

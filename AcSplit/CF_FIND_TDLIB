@@ -1,4 +1,4 @@
-dnl CF_FIND_TDLIB version: 5 updated: 2000/11/02 01:20:47
+dnl CF_FIND_TDLIB version: 6 updated: 2008/03/23 14:48:54
 dnl -------------
 dnl Locate TD_LIB, which is either installed, with headers, library and
 dnl include-file for make, or in a directory side-by-side with the current
@@ -55,7 +55,7 @@ if test "$cf_cv_tdlib_devel" = no ; then
 				break
 			fi
 		done
-		test $cf_td_lib_rules = no && AC_ERROR(Cannot find td_lib.mk)
+		test $cf_td_lib_rules = no && AC_MSG_ERROR(Cannot find td_lib.mk)
 	fi
 	TD_LIB_rules=$cf_libdir
 fi

@@ -1,4 +1,4 @@
-dnl CF_PDCURSES_X11 version: 7 updated: 2006/11/12 17:31:59
+dnl CF_PDCURSES_X11 version: 8 updated: 2008/03/23 14:48:54
 dnl ---------------
 dnl Configure for PDCurses' X11 library
 AC_DEFUN([CF_PDCURSES_X11],[
@@ -37,6 +37,6 @@ if test $cf_cv_lib_XCurses = yes ; then
 	AC_DEFINE(XCURSES)
 	AC_DEFINE(HAVE_XCURSES)
 else
-	AC_ERROR(Cannot link with XCurses)
+	AC_MSG_ERROR(Cannot link with XCurses)
 fi
 ])dnl
