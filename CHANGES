@@ -1,3 +1,37 @@
+2008-03-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: from bug-ncurses:
+	From: 	Michael Haubenwallner
+	Subject: 	minor issues when building ncurses-5.6 with libtool
+	Date: 	Thu, 20 Mar 2008 17:52:58 +0100
+
+	Hi,
+
+	there are two minor issues (depending on libtool and compiler used).
+	1) The libtool object files are still called '.o' (should be '.lo').
+	2) libtool might not detect that it should use tag 'CC'.
+
+	Can't remember the actual error messages, but those two have shown up on
+	aix when using CC=powerpc-ibm-aix5.3.0.0-gcc.
+
+	Attached patch fixes them.
+
+	Thanks!
+
+	/haubi/
+
+	ncurses-5.6-libtool.patch.
+
+	* AcSplit/CF_WITH_PTHREAD: ci-aclocal generated header
+
+2008-03-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPE_FD_MASK: fix to make the CSRG_BASED ifdef work
+
+	* AcSplit/CF_TYPE_FD_MASK: ci-aclocal generated header
+
+	* AcSplit/CF_TYPE_FD_SET: minor cleanup
+
 2008-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_LEX_CHAR_CLASSES, AcSplit/CF_LEX_STATES, AcSplit/CF_X_TOOLKIT:
