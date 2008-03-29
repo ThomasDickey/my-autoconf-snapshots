@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 18 updated: 2007/04/08 20:02:38
+dnl CF_WITH_LIBTOOL version: 19 updated: 2008/03/29 15:46:43
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -99,6 +99,7 @@ ifdef([AC_PROG_LIBTOOL],[
 	case $cf_cv_libtool_version in
 	1.[[5-9]]*|[[2-9]]*)
 		LIBTOOL_CXX="$LIBTOOL --tag=CXX"
+		LIBTOOL="$LIBTOOL --tag=CC"
 		;;
 	*)
 		LIBTOOL_CXX="$LIBTOOL"
