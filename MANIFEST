@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080329
+MANIFEST for my-autoconf, version t20080412
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -129,6 +129,7 @@ AcSplit/CF_FUNC_ICONV           macro to check for iconv() function and related 
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_NANOSLEEP       configure check for (working) nanosleep()
+AcSplit/CF_FUNC_OPENPTY         ncurses - check for openpty function, used for test/ditto.c
 AcSplit/CF_FUNC_POLL            functional test for poll()
 AcSplit/CF_FUNC_SIGACTION       check for sigaction function and related structs
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
