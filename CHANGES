@@ -1,3 +1,15 @@
+2008-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__SSL_BODY: let USE_GNUTLS_FUNCS override OpenSSL check
+
+	* AcSplit/CF__SSL_HEAD:
+	let USE_GNUTLS_FUNCS override OpenSSL compat header
+
+	* AcSplit/CF_GNUTLS:
+	q/d hack to use presence of 2nd parameter to make this use only gnutls functions
+	via a wrapper/stub, for lynx to co-exist with the restrictive GPLv3 relicensing
+	of gnutls-openssl library.
+
 2008-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_OPENPTY:

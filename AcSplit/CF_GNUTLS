@@ -1,11 +1,12 @@
-dnl CF_GNUTLS version: 9 updated: 2007/07/29 12:32:41
+dnl CF_GNUTLS version: 10 updated: 2008/04/13 10:56:06
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
+dnl $2 = the [optional] stub file to provide OpenSSL compatibility
 AC_DEFUN([CF_GNUTLS],[
   CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
-  AC_DEFINE(USE_GNUTLS_INCL)
+  ifelse($2,,[AC_DEFINE(USE_GNUTLS_INCL)],[AC_DEFINE(USE_GNUTLS_FUNCS)])
   cf_gnutls_CPPFLAGS=$CPPFLAGS
 
   CF_FIND_LINKAGE(CF__SSL_HEAD,
@@ -14,7 +15,7 @@ AC_DEFUN([CF_GNUTLS],[
       cf_cv_have_gnutls=yes,
       cf_cv_have_gnutls=no,
       ,
-      [-lgnutls-openssl -lgnutls-extra -lgnutls -lcrypt])
+      ifelse($2,,[-lgnutls-openssl -lgnutls-extra -lgnutls -lcrypt],[-lgnutls -lcrypt]))
 
   CPPFLAGS=$cf_gnutls_CPPFLAGS
 
@@ -35,11 +36,12 @@ AC_DEFUN([CF_GNUTLS],[
     LIBS="-lgnutls -lcrypt $LIBS"
   fi
 
+  ifelse($2,,[
   AC_CHECK_LIB(gnutls-openssl,SSL_connect,
       [LIBS="-lgnutls-openssl $LIBS"],
       [AC_CHECK_LIB(gnutls-extra,SSL_connect,
           [LIBS="-lgnutls-extra $LIBS"],
-          [AC_MSG_ERROR(cannot find gnutls openssl functions)])])
+          [AC_MSG_ERROR(cannot find gnutls openssl functions)])])],[EXTRA_OBJS="$EXTRA_OBJS $2"])
 
   CF_CHECK_SSL_X509
 ])dnl
