@@ -1,3 +1,39 @@
+2008-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: Date: Tue, 10 Jun 2008 05:46:38 +0000
+	From: Poor Yorick <org.gnu.bug-ncurses@pooryorick.com>
+	Subject: undefined symbol "main" when compiling libXpm,
+	        which depends on ncurses
+	To: bug-ncurses@gnu.org
+	X-Mailer: WebMail 2.55
+
+	For the record:  compiling ncurses on SunOS 5.9, with gcc-4.2.2 and, it was
+	necessary to patch ncurses install with a '-shared' flag.  Otherwise,
+	libncurses(w).so.5.6 was linked as an executable with a "main" symbol, causing
+	a subsequent install of any software package depending on libncurses to fail,
+	complaining about undefined "main" symbol:
+	-------TD: tww's using gcc 3.4.3, which works fine w/o the "-shared" option.
+	It is specific to gcc.  While reading Sun's cc manpage, I see this note
+	about the PIC options:
+
+	     -KPIC
+	          (SPARC) Obsolete. You should not use this option. Use
+	          -xcode=pic32 instead. For a complete list of obsolete
+	          options and flags, see the C User's Guide.
+
+	          (x86) -KPIC is identical to -Kpic on x86 architectures.
+
+	     -Kpic
+	          (SPARC) Obsolete. You should not use this option. Use
+	          -xcode=pic13 instead. For a complete list of obsolete
+	          options and flags, see the C User's Guide.
+
+	          (x86) Generate position-independent code for use in
+	          shared libraries (small model). Permits references to,
+	          at most, 2**11 unique external symbols
+
+	So I changed to use the -xcode option.
+
 2008-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__SSL_BODY: let USE_GNUTLS_FUNCS override OpenSSL check
