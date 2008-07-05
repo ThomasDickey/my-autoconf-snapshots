@@ -1,3 +1,11 @@
+2008-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC:
+	suppress gcc's own static/dynamic flags on AIX, since the latest (gcc 4.2.4)
+	does not link test/bs anymore.  That is because bs.c uses getlogin, which
+	isn't picked up properly.  For details, I added -Wl,b,noquiet to the end
+	of the link-line.  Here's the properly-working linkage:
+
 2008-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: Date: Tue, 10 Jun 2008 05:46:38 +0000
