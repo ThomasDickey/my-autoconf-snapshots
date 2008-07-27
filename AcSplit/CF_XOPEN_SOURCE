@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 25 updated: 2007/01/29 18:36:38
+dnl CF_XOPEN_SOURCE version: 26 updated: 2008/07/27 11:26:57
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality,
@@ -18,7 +18,7 @@ case $host_os in #(vi
 aix[[45]]*) #(vi
 	CPPFLAGS="$CPPFLAGS -D_ALL_SOURCE"
 	;;
-freebsd*) #(vi
+freebsd*|dragonfly*) #(vi
 	# 5.x headers associate
 	#	_XOPEN_SOURCE=600 with _POSIX_C_SOURCE=200112L
 	#	_XOPEN_SOURCE=500 with _POSIX_C_SOURCE=199506L

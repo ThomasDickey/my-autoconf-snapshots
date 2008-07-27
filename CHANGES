@@ -1,3 +1,27 @@
+2008-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE: Date: Tue, 1 Jul 2008 22:29:26 +0300
+	From: Hasso Tepper <hasso@estpak.ee>
+	Subject: xterm problem in DragonFly BSD
+	To: dickey@invisible-island.net
+
+	[-- Attachment #1 --]
+	[-- Type: text/plain, Encoding: 7bit, Size: 0.5K --]
+
+	Xterm doesn't compile in latest DragonFly BSD:
+
+	../charproc.c: In function 'in_put':
+	../charproc.c:3242: error: 'fd_mask' undeclared (first use in this function)
+	../charproc.c:3242: error: (Each undeclared identifier is reported only once
+	../charproc.c:3242: error: for each function it appears in.)
+	*** Error code 1
+
+	It worked in older versions because fd_mask wasn't guarded by __BSD_VISIBLE.
+
+	Attached patch seems to reasonable to apply and is tested to be working by
+	many DragonFly BSD users.
+	-------TD: of course this is used by other programs (will see).
+
 2008-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:
