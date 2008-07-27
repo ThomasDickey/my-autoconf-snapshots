@@ -1,3 +1,9 @@
+2008-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	give up on -Winline for a while - gcc 4.3.1 appears to have no workable
+	settings that make ncurses's inlining work w/o warnings.
+
 2008-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LDFLAGS_STATIC:
