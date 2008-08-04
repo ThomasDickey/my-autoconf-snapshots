@@ -1,3 +1,7 @@
+2008-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HASHED_DB_LIBS: allow $LIBS to override
+
 2008-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE: Date: Tue, 1 Jul 2008 22:29:26 +0300

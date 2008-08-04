@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB_LIBS version: 7 updated: 2007/12/01 15:01:37
+dnl CF_HASHED_DB_LIBS version: 8 updated: 2008/08/04 06:18:06
 dnl -----------------
 dnl Given that we have the header and version for hashed database, find the
 dnl library information.
@@ -6,7 +6,7 @@ AC_DEFUN([CF_HASHED_DB_LIBS],
 [
 AC_CACHE_CHECK(for db libraries, cf_cv_hashed_db_libs,[
 cf_cv_hashed_db_libs=unknown
-for cf_db_libs in db$cf_cv_hashed_db_version db-$cf_cv_hashed_db_version db ''
+for cf_db_libs in "" db$cf_cv_hashed_db_version db-$cf_cv_hashed_db_version db ''
 do
 	cf_save_libs="$LIBS"
 	if test -n "$cf_db_libs"; then
