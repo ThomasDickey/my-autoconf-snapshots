@@ -1,3 +1,11 @@
+2008-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PERL:
+	rename LINK_PREFIX to avoid conflict(?) with old Purify hack.
+	add a link-test, in case the library is actually missing (casualty of packagers)
+
+	* AcSplit/CF_WITH_PERL: ci-aclocal generated header
+
 2008-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HASHED_DB_LIBS: allow $LIBS to override
