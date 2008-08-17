@@ -1,0 +1,25 @@
+dnl CF_WEAK_SYMBOLS version: 1 updated: 2008/08/16 19:18:06
+dnl ---------------
+dnl Check for compiler-support for weak symbols.
+dnl This works with "recent" gcc.
+AC_DEFUN([CF_WEAK_SYMBOLS],[
+AC_CACHE_CHECK(if $CC supports weak symbols,cf_cv_weak_symbols,[
+
+AC_TRY_COMPILE([
+#include <stdio.h>],
+[
+#if defined(__GNUC__)
+#  if defined __USE_ISOC99
+#    define _cat_pragma(exp)	_Pragma(#exp)
+#    define _weak_pragma(exp)	_cat_pragma(weak name)
+#  else
+#    define _weak_pragma(exp)
+#  endif
+#  define _declare(name)	__extension__ extern __typeof__(name) name
+#  define weak_symbol(name)	_weak_pragma(name) _declare(name) __attribute__((weak))
+#endif
+
+weak_symbol(fopen);
+],[cf_cv_weak_symbols=yes],[cf_cv_weak_symbols=no])
+])
+])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080811
+MANIFEST for my-autoconf, version t20080816
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -356,6 +356,7 @@ AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_li
 AcSplit/CF_WAIT_HEADERS         construct a set of headers for testing wait/waitpid/union-wait
 AcSplit/CF_WCHAR_TYPE           check for wchar_t, wint_t, headers (ncurses)
 AcSplit/CF_WCTYPE               check for wide-ctype stuff (vile)
+AcSplit/CF_WEAK_SYMBOLS         check for (at least) recent gcc support for weak symbols via _Pragma()
 AcSplit/CF_WIDEC_CURSES         check for wide-character curses
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_ABI_VERSION     option to allow changing ABI version (ncurses)

@@ -1,3 +1,7 @@
+2008-08-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WEAK_SYMBOLS: ci-aclocal generated header
+
 2008-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PERL:
