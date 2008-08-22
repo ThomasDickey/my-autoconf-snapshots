@@ -1,4 +1,4 @@
-dnl CF_X_FONTENC version: 1 updated: 2006/08/20 13:51:03
+dnl CF_X_FONTENC version: 3 updated: 2008/08/21 16:01:19
 dnl ------------
 dnl
 dnl First check for the appropriate config program, since the developers for
@@ -14,62 +14,79 @@ AC_DEFUN([CF_X_FONTENC],
 [
 AC_REQUIRE([CF_PKG_CONFIG])
 
-cf_extra_fontenc_libs=
+cf_extra_fontenc_incs=
+cf_extra_fontenc_libs="-lfontenc -lX11"
 FONTENC_CONFIG=
 FONTENC_PARAMS=
 
-AC_PATH_PROG(PKG_CONFIG, pkg-config, none)
-if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists fontenc; then
-	FONTENC_CONFIG=$PKG_CONFIG
-	FONTENC_PARAMS="fontenc x11"
-else
-	cf_extra_fontenc_libs="-lXfont -lX11"
+if test "$PKG_CONFIG" != none;  then
+    if "$PKG_CONFIG" --exists fontenc; then
+        FONTENC_CONFIG=$PKG_CONFIG
+        FONTENC_PARAMS="fontenc x11"
+        cf_extra_fontenc_libs=
+    fi
 fi
 
-if test -n "$FONTENC_CONFIG" ; then
-withval=
+AC_MSG_CHECKING(for optional font-encoding cflags)
 AC_ARG_WITH(fontenc-cflags,
-	[  --with-fontenc-cflags   -D/-I options for compiling with Xfont],
-[cf_cv_x_fontenc_incs="$withval"
- CF_VERBOSE(fontenc-cflags $cf_cv_x_fontenc_incs)
-],[
-AC_CACHE_CHECK(for X font-encoding headers,cf_cv_x_fontenc_incs,[
-	cf_cv_x_fontenc_incs="`$FONTENC_CONFIG $FONTENC_PARAMS --cflags 2>/dev/null`"
-])])
-withval=
+	[  --with-fontenc-cflags   -D/-I options for compiling with font encoding library],
+    [cf_x_fontenc_incs="$withval"],[cf_x_fontenc_incs=auto])
+test "$cf_x_fontenc_incs" = yes && cf_x_fontenc_incs=auto
+AC_MSG_RESULT($cf_x_fontenc_incs)
+
+AC_MSG_CHECKING(for optional font-encoding libraries)
 AC_ARG_WITH(fontenc-libs,
-	[  --with-fontenc-libs     -L/-l options to link Xfont],
-[cf_cv_x_fontenc_libs="$withval"
- CF_VERBOSE(fontenc-libs $cf_cv_x_fontenc_libs)
-],[
+	[  --with-fontenc-libs     -L/-l options to link font encoding library],
+    [cf_x_fontenc_libs="$withval"],[cf_x_fontenc_libs=auto])
+test "$cf_x_fontenc_libs" = yes && cf_x_fontenc_libs=auto
+AC_MSG_RESULT($cf_x_fontenc_libs)
+
+if test "$cf_x_fontenc_incs" = auto ; then
+AC_CACHE_CHECK(for X font-encoding headers,cf_cv_x_fontenc_incs,[
+    if test -n "$FONTENC_CONFIG" ; then
+        cf_cv_x_fontenc_incs="`$FONTENC_CONFIG $FONTENC_PARAMS --cflags 2>/dev/null`"
+    else
+        cf_cv_x_fontenc_incs=$cf_extra_fontenc_incs
+    fi
+])
+else
+	cf_cv_x_fontenc_incs=$cf_x_fontenc_incs
+fi
+
+if test "$cf_x_fontenc_libs" = auto ; then
 AC_CACHE_CHECK(for X font-encoding libraries,cf_cv_x_fontenc_libs,[
+    if test -n "$FONTENC_CONFIG" ; then
+        cf_cv_x_fontenc_libs="`$FONTENC_CONFIG $FONTENC_PARAMS --libs 2>/dev/null`"
+    else
+        cf_cv_x_fontenc_libs=$cf_extra_fontenc_libs
+    fi
+])
+else
+	cf_cv_x_fontenc_libs=$cf_x_fontenc_libs
+fi
 
 cf_save_LIBS="$LIBS"
 cf_save_INCS="$CPPFLAGS"
 
-cf_cv_x_fontenc_libs="$cf_extra_fontenc_libs `$FONTENC_CONFIG $FONTENC_PARAMS --libs 2>/dev/null`"
-
 LIBS="$cf_cv_x_fontenc_libs $LIBS"
 CPPFLAGS="$cf_cv_x_fontenc_incs $CPPFLAGS"
 
+AC_MSG_CHECKING(if we can link with font encoding library)
 AC_TRY_LINK([
 $ac_includes_default
 #include <X11/Xlib.h>
 #include <X11/fonts/fontenc.h>],[
 	FontMapPtr mapping = FontEncMapFind(0, FONT_ENCODING_UNICODE, -1, -1, NULL);
-	],[],[cf_cv_x_fontenc_libs=])
-	LIBS="$cf_save_LIBS"
-	CPPFLAGS="$cf_save_INCS"
-])])
+	],[cf_have_fontenc_libs=yes],[cf_have_fontenc_libs=no])
+AC_MSG_RESULT($cf_have_fontenc_libs)
 
-if test -n "$cf_cv_x_fontenc_libs" ; then
+LIBS="$cf_save_LIBS"
+CPPFLAGS="$cf_save_INCS"
+
+if test $cf_have_fontenc_libs = yes ; then
 	LIBS="$cf_cv_x_fontenc_libs $LIBS"
 	CF_ADD_CFLAGS($cf_cv_x_fontenc_incs)
 else
-	AC_MSG_WARN(No libraries found for font-encoding)
-fi
-
-else
-	AC_MSG_WARN(Cannot find font-encoding configuration program)
+	AC_MSG_ERROR(No libraries found for font-encoding)
 fi
 ])

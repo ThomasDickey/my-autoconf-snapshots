@@ -1,3 +1,15 @@
+2008-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FONTENC:
+	second cut of rewrite - needs some testing, but should be minor fixes.
+
+2008-08-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FONTENC:
+	start rewriting this so it will work w/o pkg-config
+	it's not complete - $withval could be "yes" if not given.
+	but I did fix the name of the library (fontenc, not Xfont).
+
 2008-08-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WEAK_SYMBOLS: ci-aclocal generated header
