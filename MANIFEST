@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080821
+MANIFEST for my-autoconf, version t20080822
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -54,6 +54,7 @@ AcSplit/CF_CHECK_1_DECL         check one declaration
 AcSplit/CF_CHECK_CACHE          check for conflicting configure-cache
 AcSplit/CF_CHECK_CFLAGS         wrapper for CF_ADD_CFLAGS to check the $CFLAGS changes with a test-compile
 AcSplit/CF_CHECK_DECL           check one or more missing-prototypes
+AcSplit/CF_CHECK_ENVIRON        clone of CF_CHECK_ERRNO, from unistd.h
 AcSplit/CF_CHECK_ERRNO          check for declaration of items in errno.h
 AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
 AcSplit/CF_CHECK_FD_SET         check existence of fd_set type

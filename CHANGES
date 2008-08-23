@@ -1,3 +1,11 @@
+2008-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_ENVIRON: fix comment
+
+	* AcSplit/CF_CHECK_ENVIRON: ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_ERRNO: implement a second parameter
+
 2008-08-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FONTENC:
