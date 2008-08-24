@@ -1,3 +1,13 @@
+2008-08-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PTHREAD:
+	change from AC_CHECK_LIB to AC_TRY_LINK, since OSF/1 5.1 (at least) does
+	symbol mangling, e.g., puts "__" in the front of the symbol name in the
+	library.  An explicit link makes the test work.
+
+	* AcSplit/CF_WITH_LOCALE_ALIAS:
+	rewrote to make the default value "smart" (based on a list)
+
 2008-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_ENVIRON: fix comment

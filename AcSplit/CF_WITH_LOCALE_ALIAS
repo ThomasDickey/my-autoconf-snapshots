@@ -1,4 +1,4 @@
-dnl CF_WITH_LOCALE_ALIAS version: 2 updated: 2006/08/20 16:52:53
+dnl CF_WITH_LOCALE_ALIAS version: 3 updated: 2008/08/23 10:16:26
 dnl --------------------
 dnl Configure option to specify the location of locale.alias, for programs that
 dnl must read it directly.
@@ -6,10 +6,35 @@ AC_DEFUN([CF_WITH_LOCALE_ALIAS],
 [
 AC_MSG_CHECKING(for location of locale alias file)
 AC_ARG_WITH(locale-alias,
-[  --with-locale-alias=XXX file used for locale aliases
-                          (default: LIBDIR/X11/locale/locale.alias)],
+[  --with-locale-alias=XXX file used for locale aliases (default: auto)],
 [LOCALE_ALIAS_FILE=$withval],
-[LOCALE_ALIAS_FILE="$libdir/X11/locale/locale.alias"])
+[LOCALE_ALIAS_FILE=auto])
+
+CF_VERBOSE()
+case "x$LOCALE_ALIAS_FILE" in #(vi
+xauto|xyes|xno)
+    LOCALE_ALIAS_FILE=unknown
+    for cf_path in \
+        /usr/lib/X11/locale \
+        /usr/share/X11/locale \
+        /usr/X11R6/lib/X11/locale \
+        /usr/X11R5/lib/X11/locale \
+        /usr/X11/lib/X11/locale
+        do
+            cf_alias_file=$cf_path/locale.alias
+            CF_VERBOSE(testing $cf_alias_file)
+            if test -f $cf_alias_file ; then
+                LOCALE_ALIAS_FILE=$cf_alias_file
+                break
+            fi
+        done
+    ;; #(vi
+*)
+    if test ! -f "$LOCALE_ALIAS_FILE" ; then
+        AC_MSG_WARN(Alias file not found: $LOCALE_ALIAS_FILE)
+    fi
+    ;;
+esac
 AC_MSG_RESULT($LOCALE_ALIAS_FILE)
 AC_SUBST(LOCALE_ALIAS_FILE)
 ])dnl
