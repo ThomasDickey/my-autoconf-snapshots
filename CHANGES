@@ -1,3 +1,11 @@
+2008-08-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2008-04-14 from
+		http://savannah.gnu.org/projects/config
+
+	* config.sub: 2008-06-16 from
+		http://savannah.gnu.org/projects/config
+
 2008-08-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PTHREAD:
