@@ -1,3 +1,13 @@
+2008-09-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: fix for gcc on IRIX64
+
+	* AcSplit/CF_AWK_BIG_PRINTF: ci-aclocal generated header
+
+	* AcSplit/CF_AWK_BIGSTRING: rewrote, adding a special case for mawk.
+
+	* AcSplit/CF_AWK_BIGSTRING: ci-aclocal generated header
+
 2008-08-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2008-04-14 from

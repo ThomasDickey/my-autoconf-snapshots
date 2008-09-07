@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 48 updated: 2008/06/14 15:08:17
+dnl CF_SHARED_OPTS version: 49 updated: 2008/09/06 17:36:03
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -133,8 +133,10 @@ CF_EOF
 		# tested with IRIX 5.2 and 'cc'.
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-KPIC'
+            MK_SHARED_LIB='${CC} -shared -rdata_shared -soname `basename $[@]` -o $[@]'
+        else
+            MK_SHARED_LIB='${CC} -shared -Wl,-soname,`basename $[@]` -o $[@]'
 		fi
-		MK_SHARED_LIB='${CC} -shared -rdata_shared -soname `basename $[@]` -o $[@]'
 		cf_cv_rm_so_locs=yes
 		;;
 	linux*|gnu*|k*bsd*-gnu)

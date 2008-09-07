@@ -1,0 +1,23 @@
+dnl CF_AWK_BIG_PRINTF version: 1 updated: 2008/09/06 17:17:18
+dnl -----------------
+dnl Check if awk can handle big strings using printf.  Some older versions of
+dnl awk choke on large strings passed via "%s".
+dnl
+dnl $1 = desired string size
+dnl $2 = variable to set with result
+AC_DEFUN([CF_AWK_BIG_PRINTF],
+[
+    case x$AWK in #(vi
+    x)
+        eval $2=no
+        ;;
+    *) #(vi
+        if ( ${AWK} 'BEGIN { xx = "x"; while (length(xx) < $1) { xx = xx "x"; }; printf("%s\n", xx); }' \
+            | $AWK '{ if (length([$]0) != $1) exit 1; }' 2>/dev/null >/dev/null ); then
+            eval $2=yes
+        else
+            eval $2=no
+        fi
+        ;;
+    esac
+])dnl
