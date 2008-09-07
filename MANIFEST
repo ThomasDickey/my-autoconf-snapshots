@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080830
+MANIFEST for my-autoconf, version t20080906
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -39,6 +39,8 @@ AcSplit/CF_ARG_ENABLE           utility for command-option enable
 AcSplit/CF_ARG_MSG_ENABLE       verbose form of AC_ARG_ENABLE
 AcSplit/CF_ARG_OPTION           restricted form of AC_ARG_ENABLE
 AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no values
+AcSplit/CF_AWK_BIGSTRING        script to check for big-string support in awk
+AcSplit/CF_AWK_BIG_PRINTF       check for string-limit in awk "%s" printf's
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
