@@ -1,6 +1,6 @@
-dnl CF_SHARED_SONAME version: 2 updated: 2006/10/21 12:33:41
+dnl CF_SHARED_SONAME version: 3 updated: 2008/09/08 18:34:43
 dnl ----------------
-dnl utility macro for CF_SHARED_OPTS, constructs "$cf_shared_soname" for
+dnl utility macro for CF_SHARED_OPTS, constructs "$cf_cv_shared_soname" for
 dnl substitution into MK_SHARED_LIB string for the "-soname" (or similar)
 dnl option.
 dnl
@@ -10,8 +10,8 @@ define([CF_SHARED_SONAME],
 [
 	test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=ifelse($1,,rel,$1)
 	if test "$cf_cv_shlib_version" = rel; then
-		cf_shared_soname='`basename $[@] .${REL_VERSION}`.${ABI_VERSION}'
+		cf_cv_shared_soname='`basename $[@] .${REL_VERSION}`.${ABI_VERSION}'
 	else
-		cf_shared_soname='`basename $[@]`'
+		cf_cv_shared_soname='`basename $[@]`'
 	fi
 ])
