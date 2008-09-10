@@ -1,0 +1,17 @@
+dnl CF_MAWK_MATHLIB version: 1 updated: 2008/09/09 19:18:22
+dnl ---------------
+dnl Look for math library.
+AC_DEFUN([CF_MAWK_MATHLIB],[
+if test "${MATHLIB+set}" != set  ; then
+AC_CHECK_LIB(m,log,[MATHLIB=-lm ; LIBS="$LIBS -lm"],
+[# maybe don't need separate math library
+AC_CHECK_FUNC(log, log=yes)
+if test "$log$" = yes
+then
+   MATHLIB='' # evidently don't need one
+else
+   AC_MSG_ERROR(
+Cannot find a math library. You need to set MATHLIB in config.user)
+fi])dnl
+fi
+AC_SUBST(MATHLIB)])dnl

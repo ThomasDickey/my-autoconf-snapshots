@@ -1,0 +1,5 @@
+dnl CF_MAWK_XADD_NO version: 1 updated: 2008/09/09 19:18:22
+dnl ---------------
+dnl mawk wants #define NO_STRERROR
+dnl instead of #define HAVE_STRERROR
+AC_DEFUN([CF_MAWK_XADD_NO],[NO_[$1]])dnl 

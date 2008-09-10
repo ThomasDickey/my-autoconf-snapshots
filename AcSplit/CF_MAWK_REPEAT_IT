@@ -1,0 +1,9 @@
+dnl CF_MAWK_REPEAT_IT version: 1 updated: 2008/09/09 19:18:22
+dnl -----------------
+dnl how to repeat a macro on a list of args
+dnl (probably won't work if the args are expandable
+AC_DEFUN([CF_MAWK_REPEAT_IT],
+[ifelse($#,1,[$1],$#,2,[$1($2)],
+[$1($2) 
+CF_MAWK_REPEAT_IT([$1],
+builtin(shift,builtin(shift,$*)))])])dnl

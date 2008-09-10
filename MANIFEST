@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20080908
+MANIFEST for my-autoconf, version t20080909
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -199,6 +199,33 @@ AcSplit/CF_MANPAGE_SYMLINKS     accept configure option for manpage symbolic lin
 AcSplit/CF_MANPAGE_TBL          handle --with-manpage-tbl option (ncurses)
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
 AcSplit/CF_MATH_LIB             check if math libs are needed for math functions
+AcSplit/CF_MAWK_ADD_NO          mawk autoconf macro
+AcSplit/CF_MAWK_CC_FEATURES     mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_FPRINTF   mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_FUNC      mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_FUNCS     mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_HEADER    mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_HEADERS   mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_LIMITS_MSG  mawk autoconf macro
+AcSplit/CF_MAWK_CHECK_SIZE_T    mawk autoconf macro
+AcSplit/CF_MAWK_CONFIG_H_HEADER mawk autoconf macro
+AcSplit/CF_MAWK_CONFIG_H_TRAILER  mawk autoconf macro
+AcSplit/CF_MAWK_DEFINE          mawk autoconf macro
+AcSplit/CF_MAWK_DEFINE2         mawk autoconf macro
+AcSplit/CF_MAWK_FIND_MAX_INT    mawk autoconf macro
+AcSplit/CF_MAWK_FIND_SIZE_T     mawk autoconf macro
+AcSplit/CF_MAWK_FPE_SIGINFO     mawk autoconf macro
+AcSplit/CF_MAWK_GET_CONFIG_USER mawk autoconf macro
+AcSplit/CF_MAWK_MAINTAINER      mawk autoconf macro
+AcSplit/CF_MAWK_MATHLIB         mawk autoconf macro
+AcSplit/CF_MAWK_MAX__INT_PROGRAM  mawk autoconf macro
+AcSplit/CF_MAWK_OUTPUT_CONFIG_H mawk autoconf macro
+AcSplit/CF_MAWK_PROG_GCC        mawk autoconf macro
+AcSplit/CF_MAWK_PROG_YACC       mawk autoconf macro
+AcSplit/CF_MAWK_REPEAT_IT       mawk autoconf macro
+AcSplit/CF_MAWK_RUN_FPE_TESTS   mawk autoconf macro
+AcSplit/CF_MAWK_SET_IF_UNSET    mawk autoconf macro
+AcSplit/CF_MAWK_XADD_NO         mawk autoconf macro
 AcSplit/CF_MBSTATE_T            check for mbstate_t in wchar.h
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
 AcSplit/CF_MISSING_EXTERN       check for missing extern-declaration

@@ -1,0 +1,7 @@
+dnl CF_MAWK_CHECK_FUNCS version: 2 updated: 2008/09/09 19:49:23
+dnl -------------------
+AC_DEFUN([CF_MAWK_CHECK_FUNCS],[
+for cf_func in $1
+do
+  CF_MAWK_CHECK_FUNC($cf_func)
+done])dnl

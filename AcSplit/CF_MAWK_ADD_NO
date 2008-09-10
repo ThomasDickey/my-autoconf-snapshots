@@ -1,0 +1,3 @@
+dnl CF_MAWK_ADD_NO version: 1 updated: 2008/09/09 19:18:22
+dnl --------------
+AC_DEFUN([CF_MAWK_ADD_NO], [CF_MAWK_XADD_NO(translit($1, a-z. , A-Z_))])dnl

@@ -1,0 +1,3 @@
+dnl CF_MAWK_MAINTAINER version: 1 updated: 2008/09/09 19:18:22
+dnl ------------------
+AC_DEFUN([CF_MAWK_MAINTAINER], [brennan@whidbey.com])

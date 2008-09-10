@@ -1,0 +1,14 @@
+dnl CF_MAWK_CHECK_SIZE_T version: 1 updated: 2008/09/09 19:18:22
+dnl --------------------
+dnl Find size_t.
+AC_DEFUN([CF_MAWK_CHECK_SIZE_T],[
+  [if test "$size_t_defed" != 1 ; then]
+   AC_CHECK_HEADER($1,size_t_header=ok)
+   [if test "$size_t_header" = ok ; then]
+   AC_TRY_COMPILE([
+#include <$1>],
+[size_t *n ;
+], [size_t_defed=1;
+CF_MAWK_DEFINE2($2,1)
+echo getting size_t from '<$1>'])
+[fi;fi]])dnl

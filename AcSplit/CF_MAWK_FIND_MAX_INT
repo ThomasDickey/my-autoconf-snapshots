@@ -1,0 +1,27 @@
+dnl CF_MAWK_FIND_MAX_INT version: 1 updated: 2008/09/09 19:18:22
+dnl --------------------
+dnl Try to find a definition of MAX__INT from limits.h else compute.
+AC_DEFUN([CF_MAWK_FIND_MAX_INT],
+[AC_CHECK_HEADER(limits.h,limits_h=yes)
+if test "$limits_h" = yes ; then :
+else
+AC_CHECK_HEADER(values.h,values_h=yes)
+   if test "$values_h" = yes ; then
+   AC_TRY_RUN(
+[#include <values.h>
+#include <stdio.h>
+int main()
+{   FILE *out = fopen("maxint.out", "w") ;
+    if ( ! out ) exit(1) ;
+    fprintf(out, "X MAX__INT 0x%x\n", MAXINT) ;
+    fprintf(out, "X MAX__LONG 0x%lx\n", MAXLONG) ;
+    exit(0) ; return(0) ;
+}
+], maxint_set=1,[CF_MAWK_CHECK_LIMITS_MSG])
+   fi
+if test "$maxint_set" != 1 ; then 
+# compute it  --  assumes two's complement
+AC_TRY_RUN(CF_MAWK_MAX__INT_PROGRAM,:,[CF_MAWK_CHECK_LIMITS_MSG])
+fi
+cat maxint.out >> defines.out ; rm -f maxint.out
+fi ;])dnl

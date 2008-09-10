@@ -1,0 +1,6 @@
+dnl CF_MAWK_PROG_YACC version: 1 updated: 2008/09/09 19:18:22
+dnl -----------------
+dnl Which yacc.
+AC_DEFUN([CF_MAWK_PROG_YACC],
+[AC_CHECK_PROGS(YACC, byacc bison yacc)
+test "$YACC" = bison && YACC='bison -y'])dnl
