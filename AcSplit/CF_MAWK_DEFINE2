@@ -1,0 +1,4 @@
+dnl CF_MAWK_DEFINE2 version: 1 updated: 2008/09/09 19:18:22
+dnl ---------------
+AC_DEFUN([CF_MAWK_DEFINE2],
+[echo  X '$1' '$2' >> defines.out])dnl

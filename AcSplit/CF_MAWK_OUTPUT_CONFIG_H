@@ -1,0 +1,12 @@
+dnl CF_MAWK_OUTPUT_CONFIG_H version: 1 updated: 2008/09/09 19:18:22
+dnl -----------------------
+dnl Build config.h
+AC_DEFUN([CF_MAWK_OUTPUT_CONFIG_H],
+[# output config.h
+rm -f config.h
+(
+CF_MAWK_CONFIG_H_HEADER
+[sed 's/^X/#define/' defines.out]
+CF_MAWK_CONFIG_H_TRAILER
+) | tee config.h
+rm defines.out])dnl

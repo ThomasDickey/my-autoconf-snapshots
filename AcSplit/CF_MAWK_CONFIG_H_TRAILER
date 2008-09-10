@@ -1,0 +1,9 @@
+dnl CF_MAWK_CONFIG_H_TRAILER version: 1 updated: 2008/09/09 19:18:22
+dnl ------------------------
+dnl Footer for config.h
+AC_DEFUN([CF_MAWK_CONFIG_H_TRAILER],
+[cat<<'EOF'
+
+#define HAVE_REAL_PIPES 1
+#endif /* CONFIG_H */
+EOF])dnl

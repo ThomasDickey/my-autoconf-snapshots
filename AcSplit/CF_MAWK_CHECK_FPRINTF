@@ -1,0 +1,8 @@
+dnl CF_MAWK_CHECK_FPRINTF version: 1 updated: 2008/09/09 19:18:22
+dnl ---------------------
+dnl [sf]printf checks needed for print.c
+dnl
+dnl sometimes fprintf() and sprintf() are not proto'ed in stdio.h
+AC_DEFUN([CF_MAWK_CHECK_FPRINTF],
+[AC_EGREP_HEADER([[[^v]]fprintf],stdio.h,,CF_MAWK_DEFINE(NO_FPRINTF_IN_STDIO))
+AC_EGREP_HEADER([[[^v]]sprintf],stdio.h,,CF_MAWK_DEFINE(NO_SPRINTF_IN_STDIO))])dnl

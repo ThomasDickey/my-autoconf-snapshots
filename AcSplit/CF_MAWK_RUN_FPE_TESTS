@@ -1,0 +1,97 @@
+dnl CF_MAWK_RUN_FPE_TESTS version: 1 updated: 2008/09/09 19:18:22
+dnl ---------------------
+dnl These are mawk's dreaded FPE tests.
+AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
+[if echo "$USER_DEFINES" | grep FPE_TRAPS_ON >/dev/null
+then echo skipping fpe tests based on '$'USER_DEFINES
+else
+AC_TYPE_SIGNAL
+[
+echo checking handling of floating point exceptions
+rm -f fpe_check
+$CC $CFLAGS -DRETSIGTYPE=$ac_cv_type_signal -o fpe_check fpe_check.c $MATHLIB
+if test -f fpe_check  ; then
+   ./fpe_check 2>/dev/null
+   status=$?
+else 
+   echo fpe_check.c failed to compile 1>&2
+   status=100
+fi
+
+case $status in
+   0)  ;;  # good news do nothing
+   3)      # reasonably good news]
+CF_MAWK_DEFINE(FPE_TRAPS_ON)
+CF_MAWK_FPE_SIGINFO ;;
+
+   1|2|4)   # bad news have to turn off traps
+	    # only know how to do this on systemV and solaris
+AC_CHECK_HEADER(ieeefp.h, ieeefp_h=1)
+AC_CHECK_FUNC(fpsetmask, fpsetmask=1)
+[if test "$ieeefp_h" = 1 && test "$fpsetmask" = 1 ; then]
+CF_MAWK_DEFINE(FPE_TRAPS_ON)
+CF_MAWK_DEFINE(USE_IEEEFP_H)
+CF_MAWK_DEFINE2([TURN_ON_FPE_TRAPS()],
+[fpsetmask(fpgetmask()|FP_X_DZ|FP_X_OFL)])
+CF_MAWK_FPE_SIGINFO 
+# look for strtod overflow bug
+AC_MSG_CHECKING([strtod bug on overflow])
+rm -f fpe_check
+$CC $CFLAGS -DRETSIGTYPE=$ac_cv_type_signal -DUSE_IEEEFP_H \
+	    -o fpe_check fpe_check.c $MATHLIB
+if ./fpe_check phoney_arg phoney_arg 2>/dev/null
+then 
+   AC_MSG_RESULT([no bug])
+else
+   AC_MSG_RESULT([buggy -- will use work around])
+   CF_MAWK_DEFINE2([HAVE_STRTOD_OVF_BUG],1)
+fi
+
+else
+   [if test $status != 4 ; then]
+      CF_MAWK_DEFINE(FPE_TRAPS_ON)
+      CF_MAWK_FPE_SIGINFO 
+    fi
+
+    [case $status in
+    1) 
+cat 1>&2 <<'EOF'
+Warning: Your system defaults generate floating point exception 
+on divide by zero but not on overflow.  You need to 
+#define TURN_ON_FPE_TRAPS() to handle overflow.
+Please report this so I can fix this script to do it automatically.
+EOF
+;;
+    2)
+cat 1>&2 <<'EOF'
+Warning: Your system defaults generate floating point exception 
+on overflow  but not on divide by zero.  You need to 
+#define TURN_ON_FPE_TRAPS() to handle divide by zero.
+Please report this so I can fix this script to do it automatically.
+EOF
+;;
+    4)
+cat 1>&2 <<'EOF'
+Warning: Your system defaults do not generate floating point
+exceptions, but your math library does not support this behavior.
+You need to
+#define TURN_ON_FPE_TRAPS() to use fp exceptions for consistency.
+Please report this so I can fix this script to do it automatically.
+EOF
+;;
+    esac]
+echo CF_MAWK_MAINTAINER
+[echo You can continue with the build and the resulting mawk will be
+echo useable, but getting FPE_TRAPS_ON correct eventually is best.
+fi  ;;
+
+  *)  # some sort of disaster
+cat 1>&2 <<'EOF'
+The program `fpe_check' compiled from fpe_check.c seems to have
+unexpectly blown up.  Please report this to ]CF_MAWK_MAINTAINER.[
+EOF
+# quit or not ???
+;;
+esac 
+rm -f fpe_check  # whew!!]
+fi])

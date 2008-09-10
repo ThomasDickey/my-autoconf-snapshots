@@ -1,0 +1,10 @@
+dnl CF_MAWK_GET_CONFIG_USER version: 1 updated: 2008/09/09 19:18:22
+dnl -----------------------
+dnl Input config.user
+AC_DEFUN([CF_MAWK_GET_CONFIG_USER],
+[cat < /dev/null > defines.out
+test -f config.user && . ./config.user
+CF_MAWK_SET_IF_UNSET(BINDIR,/usr/local/bin)
+CF_MAWK_SET_IF_UNSET(MANDIR,/usr/local/man/man1)
+CF_MAWK_SET_IF_UNSET(MANEXT,1)
+echo "$USER_DEFINES" >> defines.out])

@@ -1,0 +1,6 @@
+dnl CF_MAWK_CHECK_LIMITS_MSG version: 1 updated: 2008/09/09 19:18:22
+dnl ------------------------
+dnl Write error-message if CF_MAWK_FIND_MAX_INT fails.
+AC_DEFUN([CF_MAWK_CHECK_LIMITS_MSG],
+[AC_MSG_ERROR(C program to compute maxint and maxlong failed.
+Please send bug report to CF_MAWK_MAINTAINER.)])dnl

@@ -1,0 +1,5 @@
+dnl CF_MAWK_FIND_SIZE_T version: 1 updated: 2008/09/09 19:18:22
+dnl -------------------
+AC_DEFUN([CF_MAWK_FIND_SIZE_T],
+[CF_MAWK_CHECK_SIZE_T(stddef.h,SIZE_T_STDDEF_H)
+CF_MAWK_CHECK_SIZE_T(sys/types.h,SIZE_T_TYPES_H)])dnl

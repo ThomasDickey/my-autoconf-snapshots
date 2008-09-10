@@ -1,0 +1,6 @@
+dnl CF_MAWK_SET_IF_UNSET version: 1 updated: 2008/09/09 19:18:22
+dnl --------------------
+dnl Set a variable if it is not set by configure script.
+AC_DEFUN([CF_MAWK_SET_IF_UNSET],
+[test "[$]{$1+set}" = set || $1="$2"
+AC_SUBST($1)])dnl
