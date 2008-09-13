@@ -1,3 +1,29 @@
+2008-09-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK:
+	don't remove the -L option, since we may have static libraries in the same
+	directory.
+
+	* AcSplit/CF_SHARED_OPTS:
+	paste-in chunk which seems to make openbsd do rpath, adapted from linux
+
+	* AcSplit/CF_LIB_SUFFIX: tabsd
+
+	* AcSplit/CF_LIB_RULES: add cf_depsuf params to CF_LIB_SUFFIX calls.
+
+	* AcSplit/CF_LIB_PREFIX: reformatted
+
+	* AcSplit/CF_LIB_SUFFIX:
+	merge in the 3rd parameter used in ncurses, so we set both lib- and dep-suffixes
+	That's so I can move a chunk of cygwin-specific stuff out of configure.in
+
+	* AcSplit/CF_ENABLE_RPATH: ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	for openbsd 2.x on, build shared libraries with a release-version appended.
+	OpenBSD doesn't have symbolic links in /usr/lib, but does append the
+	release xx.yy to each ".so" filename.
+
 2008-09-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_CHECK_HEADER: use CF_UPPER for case-conversion].

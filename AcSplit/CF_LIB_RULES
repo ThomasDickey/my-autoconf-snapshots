@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 50 updated: 2007/03/24 18:26:59
+dnl CF_LIB_RULES version: 51 updated: 2008/09/13 11:34:16
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -25,7 +25,7 @@ do
 		LIBS_TO_MAKE=
 		for cf_item in $cf_LIST_MODELS
 		do
-			CF_LIB_SUFFIX($cf_item,cf_suffix)
+			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
 			if test $cf_item = shared ; then
 			if test "$cf_cv_do_symlinks" = yes ; then
 				case "$cf_cv_shlib_version" in #(vi
@@ -119,7 +119,7 @@ do
 			do
 			echo "Appending rules for ${cf_item} model (${cf_dir}: ${cf_subset})"
 			CF_UPPER(cf_ITEM,$cf_item)
-			CF_LIB_SUFFIX($cf_item,cf_suffix)
+			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
 			CF_OBJ_SUBDIR($cf_item,cf_subdir)
 
 			# Test for case where we build libtinfo with a different name.
