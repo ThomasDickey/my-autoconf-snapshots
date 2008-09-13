@@ -1,7 +1,7 @@
-dnl CF_MAWK_CHECK_HEADERS version: 2 updated: 2008/09/09 19:49:23
+dnl CF_MAWK_CHECK_HEADERS version: 3 updated: 2008/09/09 20:32:43
 dnl ---------------------
 AC_DEFUN([CF_MAWK_CHECK_HEADERS],[
 for cf_func in $1
 do
-    CF_MAWK_CHECK_HEADER($cf_func)
+    CF_MAWK_CHECK_HEADER(${cf_func})
 done])dnl

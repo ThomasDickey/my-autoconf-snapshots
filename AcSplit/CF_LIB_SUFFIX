@@ -1,29 +1,57 @@
-dnl CF_LIB_SUFFIX version: 13 updated: 2003/11/01 16:09:07
+dnl CF_LIB_SUFFIX version: 15 updated: 2008/09/13 11:54:48
 dnl -------------
 dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
-dnl $2 = variable to set
+dnl $2 = variable to set (the nominal library suffix)
+dnl $3 = dependency variable to set (actual filename)
 dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_SUFFIX],
 [
 	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 	case $1 in
-	libtool) $2='.la'  ;;
-	normal)  $2='.a'   ;;
-	debug)   $2='_g.a' ;;
-	profile) $2='_p.a' ;;
+	libtool)
+		$2='.la'
+		$3=[$]$2
+		;;
+	normal)
+		$2='.a'
+		$3=[$]$2
+		;;
+	debug)
+		$2='_g.a'
+		$3=[$]$2
+		;;
+	profile)
+		$2='_p.a'
+		$3=[$]$2
+		;;
 	shared)
 		case $cf_cv_system_name in
-		cygwin*) $2='.dll' ;;
-		darwin*) $2='.dylib' ;;
+		cygwin*)
+			$2='.dll'
+			$3='.dll.a'
+			;;
+		darwin*)
+			$2='.dylib'
+			$3=[$]$2
+			;;
 		hpux*)
 			case $target in
-			ia64*)	$2='.so' ;;
-			*)	$2='.sl' ;;
+			ia64*)
+				$2='.so'
+				$3=[$]$2
+				;;
+			*)
+				$2='.sl'
+				$3=[$]$2
+				;;
 			esac
 			;;
-		*)	$2='.so'  ;;
+		*)	$2='.so'
+			$3=[$]$2
+			;;
 		esac
 	esac
 	test -n "$LIB_SUFFIX" && $2="${LIB_SUFFIX}[$]{$2}"
+	test -n "$LIB_SUFFIX" && $3="${LIB_SUFFIX}[$]{$3}"
 ])dnl

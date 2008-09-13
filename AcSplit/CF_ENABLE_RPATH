@@ -1,0 +1,13 @@
+dnl CF_ENABLE_RPATH version: 1 updated: 2008/09/13 10:22:30
+dnl ---------------
+dnl Check if the rpath option should be used, setting cache variable
+dnl cf_cv_ld_rpath if so.
+AC_DEFUN([CF_ENABLE_RPATH],
+[
+AC_MSG_CHECKING(if rpath option should be used)
+AC_ARG_ENABLE(rpath,
+[  --enable-rpath          use rpath option when generating shared libraries],
+[cf_cv_ld_rpath=$enableval],
+[cf_cv_ld_rpath=no])
+AC_MSG_RESULT($cf_cv_ld_rpath)
+])dnl

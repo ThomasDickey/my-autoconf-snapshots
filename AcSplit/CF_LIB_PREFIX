@@ -1,13 +1,15 @@
-dnl CF_LIB_PREFIX version: 7 updated: 2001/01/12 01:23:48
+dnl CF_LIB_PREFIX version: 8 updated: 2008/09/13 11:34:16
 dnl -------------
 dnl Compute the library-prefix for the given host system
 dnl $1 = variable to set
 AC_DEFUN([CF_LIB_PREFIX],
 [
-	case $cf_cv_system_name in
-	OS/2*)	LIB_PREFIX=''     ;;
-	os2*)	LIB_PREFIX=''     ;;
-	*)	LIB_PREFIX='lib'  ;;
+	case $cf_cv_system_name in #(vi
+	OS/2*|os2*) #(vi
+        LIB_PREFIX=''
+        ;;
+	*)	LIB_PREFIX='lib'
+        ;;
 	esac
 ifelse($1,,,[$1=$LIB_PREFIX])
 	AC_SUBST(LIB_PREFIX)

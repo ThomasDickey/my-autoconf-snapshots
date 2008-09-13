@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 50 updated: 2008/09/08 18:34:43
+dnl CF_SHARED_OPTS version: 52 updated: 2008/09/13 11:54:48
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -152,8 +152,17 @@ CF_EOF
 		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $[@]'
 		;;
 	openbsd[[2-9]].*)
+		if test "$DFT_LWR_MODEL" = "shared" ; then
+			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
+		fi
+		if test "$cf_cv_ld_rpath" = yes ; then
+			cf_ld_rpath_opt="-Wl,-rpath,"
+			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
+		fi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		MK_SHARED_LIB='${LD} -Bshareable -soname,`basename $[@].${ABI_VERSION}` -o $[@]'
+		CF_SHARED_SONAME
+		MK_SHARED_LIB='${CC} ${CFLAGS} -Wl,-Bshareable,-soname,'$cf_cv_shared_soname',-stats,-lc -o $[@]'
 		;;
 	openbsd*|freebsd[[12]].*)
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
