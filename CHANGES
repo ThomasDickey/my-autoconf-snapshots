@@ -1,3 +1,12 @@
+2008-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	another tweak - this built both cfg-shared and cfg-thread on cygwin
+
+	* AcSplit/CF_LIB_RULES:
+	fixes for cygwin and cfg-thread (which builds libtic, libtinfo and libncurses).
+	The problem was that the "t" was appended after the $(ABI_VERSION).
+
 2008-09-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RPATH_HACK:
