@@ -1,3 +1,10 @@
+2008-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_AWK_BIG_PRINTF:
+	AIX 5.1's nawk choked on printf's bigger than the threshold, writing zero
+	bytes.  That fooled my check for record length (since nawk found no records).
+	Replace the second stage with a check for number of records and record length.
+
 2008-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
