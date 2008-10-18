@@ -1,3 +1,10 @@
+2008-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTF8_LIB:
+	rewrote using CF_FIND_LINKAGE; the problem is that the BSDs put packages
+	where gcc is not likely to find them, so for any unusual libraries we need
+	to add -I and -L options.
+
 2008-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_AWK_BIG_PRINTF:
