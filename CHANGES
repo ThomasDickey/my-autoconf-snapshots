@@ -1,3 +1,9 @@
+2008-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC:
+	have to cancel these symbols for OS/2 EMX as well, since the -static
+	conflicts with -Zcrtdll
+
 2008-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_UTF8_LIB:
