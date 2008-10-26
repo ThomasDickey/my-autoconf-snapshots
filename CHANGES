@@ -1,3 +1,7 @@
+2008-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: add case for QNX 6 (works for me)
+
 2008-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LDFLAGS_STATIC:
