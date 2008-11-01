@@ -1,3 +1,17 @@
+2008-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NC_ALLOC_H: let's use --disable-leaks instead.
+
+	* AcSplit/CF_WITH_NC_ALLOC_H:
+	make this use --with-no-leaks option (since I changed CDK's configure script
+	to use that macro).
+
+2008-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	add pdcurses library to search list, used in CDK by Gregory Sharp (from
+	patch  7 Jul 2007).
+
 2008-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: add case for QNX 6 (works for me)
