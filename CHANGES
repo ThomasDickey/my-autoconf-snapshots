@@ -1,3 +1,7 @@
+2008-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: implement "--without-manpages" option
+
 2008-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NC_ALLOC_H: let's use --disable-leaks instead.
