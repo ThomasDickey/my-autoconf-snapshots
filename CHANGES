@@ -1,3 +1,13 @@
+2008-12-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HEADER_PATH:
+	lynx - someone reported a problem using --with-ssl=XXX, and I realized that
+	I'd added the XXX to CPPFLAGS, which wouldn't be tested in CF_SUBDIR_PATH.
+
+	* AcSplit/CF_LIBRARY_PATH:
+	lynx: add-back values from LDFLAGS/LIBS which happen to be -L's, in case
+	an option (such as --with-ssl=XXX) set the environment variables.
+
 2008-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: implement "--without-manpages" option
