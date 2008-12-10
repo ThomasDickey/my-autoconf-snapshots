@@ -1,41 +1,94 @@
-dnl CF_SSL version: 12 updated: 2008/01/06 14:56:47
+dnl CF_SSL version: 14 updated: 2008/12/09 19:45:44
 dnl ------
 dnl Check for ssl library
-dnl $1 = the [optional] directory in which the library may be found
+dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
 AC_DEFUN([CF_SSL],[
-  CF_ADD_OPTIONAL_PATH([$1], [ssl library])
+	AC_REQUIRE([CF_PKG_CONFIG])
+	cf_cv_have_ssl=no
 
-  CF_FIND_LINKAGE(CF__SSL_HEAD,
-      CF__SSL_BODY,
-      ssl,
-      cf_cv_have_ssl=yes,
-      cf_cv_have_ssl=no,
-      openssl,
-      [-lcrypto])
+	# command-line option, etc., override default behavior
+	CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
-  if test "$cf_cv_have_ssl" = yes ; then
-    if test -n "$cf_cv_header_path_ssl" ; then
-      AC_DEFINE(USE_SSL)
+	if test "x$PKG_CONFIG" != xnone; then
+		case $1 in #(vi
+		no) #(vi
+			;;
+		yes)
+			if "$PKG_CONFIG" --exists openssl ; then
+				cf_cv_have_ssl=yes
 
-      case $cf_cv_header_path_ssl in
-      */openssl)
-          AC_DEFINE(USE_OPENSSL_INCL)
-          ;;
-      esac
+				cf_cflags_ssl=`$PKG_CONFIG --cflags openssl`
+				cf_libs_ssl=`$PKG_CONFIG --libs openssl`
 
-      case $cf_cv_header_path_ssl in
-      /usr/include/openssl)
-          ;;
-      *)
-          CF_ADD_INCDIR($cf_cv_header_path_ssl)
-          ;;
-      esac
+				if test -n "$cf_cflags_ssl" ; then
+					case "$cf_cflags_ssl" in #(vi
+					*-I*) #(vi
+						cf_cv_header_path_ssl=`echo "$cf_cflags_ssl" | sed -e 's/^.*-I//' -e 's/ .*//'`
+						;;
+					*)
+						cf_cv_header_path_ssl=/usr/include
+						;;
+					esac
+					if test -d $cf_cv_header_path_ssl/openssl ; then
+						cf_cv_header_path_ssl=$cf_cv_header_path_ssl/openssl
+					fi
+					CF_ADD_CFLAGS($cf_cflags_ssl)
+				fi
 
-    fi
-    if test -n "$cf_cv_library_path_ssl" ; then
-      CF_ADD_LIBDIR($cf_cv_library_path_ssl)
-    fi
-    LIBS="-lssl -lcrypto $LIBS"
-    CF_CHECK_SSL_X509
-  fi
+				if test -n "$cf_libs_ssl" ; then
+					case "x$cf_libs_ssl" in #(vi
+					*-L*) #(vi
+						cf_cv_library_path_ssl=`echo "$cf_libs_ssl" | sed -e 's/^.*-L//' -e 's/ .*//'`
+						;;
+					*)
+						cf_cv_library_path_ssl=/usr/lib
+						;;
+					esac
+					CF_VERBOSE(adding $cf_libs_ssl to LIBS)
+					LIBS="$cf_libs_ssl $LIBS"
+				fi
+			fi
+			;;
+		esac
+	fi
+
+	if test "$cf_cv_have_ssl" != yes; then
+		case $1 in #(vi
+		no)
+			CF_FIND_LINKAGE(CF__SSL_HEAD,
+				CF__SSL_BODY,
+				ssl,
+				cf_cv_have_ssl=yes,
+				cf_cv_have_ssl=no,
+				openssl,
+				[-lcrypto])
+			;;
+		esac
+	fi
+
+	if test "$cf_cv_have_ssl" = yes ; then
+		if test -n "$cf_cv_header_path_ssl" ; then
+			AC_DEFINE(USE_SSL)
+
+			case $cf_cv_header_path_ssl in
+			*/openssl)
+				AC_DEFINE(USE_OPENSSL_INCL)
+				;;
+			esac
+
+			case $cf_cv_header_path_ssl in
+			/usr/include/openssl)
+				;;
+			*)
+				CF_ADD_INCDIR($cf_cv_header_path_ssl)
+				;;
+			esac
+
+		fi
+		if test -n "$cf_cv_library_path_ssl" ; then
+			CF_ADD_LIBDIR($cf_cv_library_path_ssl)
+		fi
+		LIBS="-lssl -lcrypto $LIBS"
+		CF_CHECK_SSL_X509
+	fi
 ])dnl

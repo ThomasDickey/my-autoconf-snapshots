@@ -1,3 +1,13 @@
+2008-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS: start integrating pkg-config
+
+	* AcSplit/CF_GNUTLS: reindent'd
+
+	* AcSplit/CF_SSL: make this properly verbose
+
+	* AcSplit/CF_SSL: revised to use pkg-config, if available
+
 2008-12-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HEADER_PATH:
