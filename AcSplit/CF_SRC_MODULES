@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 18 updated: 2005/05/28 12:58:54
+dnl CF_SRC_MODULES version: 19 updated: 2008/12/13 16:10:19
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -73,7 +73,11 @@ AC_SUBST(TEST_DEPS)
 AC_SUBST(TEST_ARG2)
 AC_SUBST(TEST_DEP2)
 
-SRC_SUBDIRS="man include"
+SRC_SUBDIRS=
+if test "x$cf_with_manpages" != xno ; then
+	SRC_SUBDIRS="$SRC_SUBDIRS man"
+fi
+SRC_SUBDIRS="$SRC_SUBDIRS include"
 for cf_dir in $cf_cv_src_modules
 do
 	SRC_SUBDIRS="$SRC_SUBDIRS $cf_dir"

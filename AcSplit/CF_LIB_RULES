@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 54 updated: 2008/11/08 11:03:00
+dnl CF_LIB_RULES version: 55 updated: 2008/12/13 16:17:38
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -302,6 +302,7 @@ cat >> Makefile <<CF_EOF
 distclean ::
 	rm -f config.cache config.log config.status Makefile include/ncurses_cfg.h
 	rm -f headers.sh headers.sed mk_shared_lib.sh
+	rm -f edit_man.* man_alias.*
 	rm -rf \${DIRS_TO_MAKE}
 CF_EOF
 

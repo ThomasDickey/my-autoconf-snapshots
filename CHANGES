@@ -1,3 +1,31 @@
+2008-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	for ncurses, if I use --without-manpages, then the man/Makefile will not
+	be executed.  Move the distclean action to delete edit_man.* to the parent
+	directory.
+
+	* AcSplit/CF_SRC_MODULES:
+	duh - overlooked first assignment to SRC_SUBDIRS when implementing the
+	"--without-manpages" option.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add FreeMiNT ncurses support, from GenToo #250454
+
+	* AcSplit/CF_PROG_LDCONFIG:
+	build-fix for dragonfly, from NetBSD patch for ncurses port
+
+2008-12-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS:
+	hmm - unsure if Debian simply does not package the gnutls-openssl script
+	for pkg-config, but leave it as a possibility
+
+	* AcSplit/CF_GNUTLS: looks ok - pkg-config checks.
+
+	* AcSplit/CF_CHECK_SSL_X509:
+	make this a "define" to avoid odd problems including it from CF_SSL and CF_GNUTLS
+
 2008-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS: start integrating pkg-config
