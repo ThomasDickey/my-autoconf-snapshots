@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 12 updated: 2008/12/09 20:50:59
+dnl CF_GNUTLS version: 14 updated: 2008/12/11 20:01:57
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -9,16 +9,20 @@ AC_DEFUN([CF_GNUTLS],[
 
 	CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
+	cf_pkg_gnutls=none
 	if test "x$PKG_CONFIG" != xnone; then
+		cf_pkg_gnutls=ifelse($2,,gnutls-openssl,gnutls)
 		case $1 in #(vi
 		no) #(vi
 			;;
 		yes)
-			if "$PKG_CONFIG" --exists gnutls ; then
+			CF_VERBOSE(checking pkg-config for $cf_pkg_gnutls)
+			if "$PKG_CONFIG" --exists $cf_pkg_gnutls ; then
+				CF_VERBOSE(... found $cf_pkg_gnutls in pkg-config)
 				cf_cv_have_gnutls=yes
 
-				cf_cflags_ssl=`$PKG_CONFIG --cflags gnutls`
-				cf_libs_ssl=`$PKG_CONFIG --libs gnutls`
+				cf_cflags_ssl=`$PKG_CONFIG --cflags $cf_pkg_gnutls`
+				cf_libs_ssl=`$PKG_CONFIG --libs $cf_pkg_gnutls`
 
 				if test -n "$cf_cflags_ssl" ; then
 					case "$cf_cflags_ssl" in #(vi
@@ -47,6 +51,9 @@ AC_DEFUN([CF_GNUTLS],[
 					CF_VERBOSE(adding $cf_libs_ssl to LIBS)
 					LIBS="$cf_libs_ssl $LIBS"
 				fi
+			else
+				CF_VERBOSE(... did not find $cf_pkg_gnutls in pkg-config)
+				cf_pkg_gnutls=none
 			fi
 			;;
 		esac
@@ -82,14 +89,16 @@ AC_DEFUN([CF_GNUTLS],[
 			CF_ADD_LIBDIR($cf_cv_library_path_gnutls)
 		fi
 		LIBS="-lgnutls -lcrypt $LIBS"
+
+		ifelse($2,,
+			[if test "$cf_pkg_gnutls" = none ; then
+				AC_CHECK_LIB(gnutls-openssl,SSL_connect,
+					[LIBS="-lgnutls-openssl $LIBS"],
+					[AC_CHECK_LIB(gnutls-extra,SSL_connect,
+					[LIBS="-lgnutls-extra $LIBS"],
+					[AC_MSG_ERROR(cannot find gnutls openssl functions)])])
+			fi],[EXTRA_OBJS="$EXTRA_OBJS $2"])
+
+		CF_CHECK_SSL_X509
 	fi
-
-	ifelse($2,,[
-		AC_CHECK_LIB(gnutls-openssl,SSL_connect,
-			[LIBS="-lgnutls-openssl $LIBS"],
-			[AC_CHECK_LIB(gnutls-extra,SSL_connect,
-			[LIBS="-lgnutls-extra $LIBS"],
-			[AC_MSG_ERROR(cannot find gnutls openssl functions)])])],[EXTRA_OBJS="$EXTRA_OBJS $2"])
-
-	CF_CHECK_SSL_X509
 ])dnl
