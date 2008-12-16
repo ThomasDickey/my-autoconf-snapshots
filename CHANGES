@@ -1,3 +1,9 @@
+2008-12-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL:
+	correct second check of the $1 parameter, which broke configuration without
+	the pkg-config file.
+
 2008-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
