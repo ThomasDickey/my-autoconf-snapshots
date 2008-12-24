@@ -1,3 +1,19 @@
+2008-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_LINKAGE:
+	add a verbose message, to tell what we're searching for.
+
+	* AcSplit/CF_PKG_CONFIG:
+	add a --with option, to allow this to be disabled (per lynx-dev complaint
+	that pkg-config was found in ports, and did not have a way to suppress it,
+	to build solely from base libraries).
+
+2008-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2008-12-11
+
+	* config.guess: 2008-12-19
+
 2008-12-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SSL:
