@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 14 updated: 2008/12/11 20:01:57
+dnl CF_GNUTLS version: 15 updated: 2008/12/25 09:30:14
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -15,7 +15,7 @@ AC_DEFUN([CF_GNUTLS],[
 		case $1 in #(vi
 		no) #(vi
 			;;
-		yes)
+		yes) # if no explicit directory given, try pkg-config
 			CF_VERBOSE(checking pkg-config for $cf_pkg_gnutls)
 			if "$PKG_CONFIG" --exists $cf_pkg_gnutls ; then
 				CF_VERBOSE(... found $cf_pkg_gnutls in pkg-config)

@@ -1,4 +1,4 @@
-dnl CF_SSL version: 15 updated: 2008/12/15 20:14:33
+dnl CF_SSL version: 16 updated: 2008/12/25 09:30:14
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -13,7 +13,7 @@ AC_DEFUN([CF_SSL],[
 		case $1 in #(vi
 		no) #(vi
 			;;
-		yes)
+		yes) # if no explicit directory given, try pkg-config
 			if "$PKG_CONFIG" --exists openssl ; then
 				cf_cv_have_ssl=yes
 
