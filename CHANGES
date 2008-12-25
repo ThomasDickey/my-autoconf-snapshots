@@ -1,3 +1,7 @@
+2008-12-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS, AcSplit/CF_SSL: add comment
+
 2008-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_LINKAGE:
