@@ -1,3 +1,18 @@
+2008-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: tabs
+
+	* AcSplit/CF_LDFLAGS_STATIC: add case for AIX 5 and AIX 6
+
+	* AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS:
+	add case for AIX 5 and AIX 6 using gcc
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	ncurses patch for AIX mentions AIX 6.1 - add aix6 to case for _ALL_SOURCE
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_AWK_BIG_PRINTF, AcSplit/CF_SRC_MODULES:
+	tabs
+
 2008-12-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS, AcSplit/CF_SSL: add comment
