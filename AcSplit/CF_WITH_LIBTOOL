@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 19 updated: 2008/03/29 15:46:43
+dnl CF_WITH_LIBTOOL version: 20 updated: 2008/12/27 12:31:39
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -18,18 +18,18 @@ dnl	elif test ! -f $ACLOCAL/libtool.m4 ; then
 dnl		echo cannot find libtool.m4 file
 dnl		exit 1
 dnl	fi
-dnl	
+dnl
 dnl	LOCAL=aclocal.m4
 dnl	ORIG=aclocal.m4.orig
-dnl	
+dnl
 dnl	trap "mv $ORIG $LOCAL" 0 1 2 5 15
 dnl	rm -f $ORIG
 dnl	mv $LOCAL $ORIG
-dnl	
+dnl
 dnl	# sed the LIBTOOL= assignment to omit the current directory?
 dnl	sed -e 's/^LIBTOOL=.*/LIBTOOL=${LIBTOOL-libtool}/' $ACLOCAL/libtool.m4 >>$LOCAL
 dnl	cat $ORIG >>$LOCAL
-dnl	
+dnl
 dnl	autoconf-257 $*
 dnl
 AC_DEFUN([CF_WITH_LIBTOOL],
@@ -63,15 +63,15 @@ ifdef([AC_PROG_LIBTOOL],[
 	AC_PROG_LIBTOOL
 	# missing_content_AC_PROG_LIBTOOL}}
 ],[
- 	if test "$with_libtool" != "yes" ; then
+	if test "$with_libtool" != "yes" ; then
 		CF_PATH_SYNTAX(with_libtool)
 		LIBTOOL=$with_libtool
 	else
- 		AC_PATH_PROG(LIBTOOL,libtool)
- 	fi
- 	if test -z "$LIBTOOL" ; then
- 		AC_MSG_ERROR(Cannot find libtool)
- 	fi
+		AC_PATH_PROG(LIBTOOL,libtool)
+	fi
+	if test -z "$LIBTOOL" ; then
+		AC_MSG_ERROR(Cannot find libtool)
+	fi
 ])dnl
 	LIB_CREATE='${LIBTOOL} --mode=link ${CC} -rpath ${DESTDIR}${libdir} -version-info `cut -f1 ${srcdir}/VERSION` ${LIBTOOL_OPTS} -o'
 	LIB_OBJECT='${OBJECTS:.o=.lo}'

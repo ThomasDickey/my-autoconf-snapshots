@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 53 updated: 2008/10/25 18:14:20
+dnl CF_SHARED_OPTS version: 54 updated: 2008/12/27 12:30:03
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -70,6 +70,12 @@ AC_DEFUN([CF_SHARED_OPTS],
 	cf_cv_shlib_version_infix=no
 
 	case $cf_cv_system_name in
+	aix[[56]]*)
+		if test "$GCC" = yes; then
+			CC_SHARED_OPTS=
+			MK_SHARED_LIB="$(CC) -shared"
+		fi
+		;;
 	beos*)
 		MK_SHARED_LIB='${CC} ${CFLAGS} -o $[@] -Xlinker -soname=`basename $[@]` -nostart -e 0'
 		;;
@@ -90,7 +96,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 EOF
 		exec \[$]* -shared -Wl,--out-implib=../lib/\[$]{IMPORT_LIB} -Wl,--export-all-symbols -o ../lib/\[$]{SHARED_LIB}
 CF_EOF
-		chmod +x mk_shared_lib.sh 
+		chmod +x mk_shared_lib.sh
 		;;
 	darwin*)
 		EXTRA_CFLAGS="-no-cpp-precomp"
