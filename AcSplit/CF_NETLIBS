@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 4 updated: 1999/12/23 15:20:39
+dnl CF_NETLIBS version: 5 updated: 2008/12/29 08:43:47
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -11,32 +11,77 @@ dnl	-lsocket
 dnl	-lbsd
 AC_DEFUN([CF_NETLIBS],[
 cf_test_netlibs=no
+
 AC_MSG_CHECKING(for network libraries)
+
 AC_CACHE_VAL(cf_cv_netlibs,[
 AC_MSG_RESULT(working...)
+
 cf_cv_netlibs=""
 cf_test_netlibs=yes
-AC_CHECK_FUNCS(gethostname,,[
-	CF_RECHECK_FUNC(gethostname,nsl,cf_cv_netlibs,[
-		CF_RECHECK_FUNC(gethostname,socket,cf_cv_netlibs)])])
-#
-# FIXME:  sequent needs this library (i.e., -lsocket -linet -lnsl), but
-# I don't know the entrypoints - 97/7/22 TD
-# AC_HAVE_LIBRARY(inet,cf_cv_netlibs="-linet $cf_cv_netlibs")
-AC_CHECK_LIB(inet, main, cf_cv_netlibs="-linet $cf_cv_netlibs")
-#
-if test "$ac_cv_func_lsocket" != no ; then
-AC_CHECK_FUNCS(socket,,[
-	CF_RECHECK_FUNC(socket,socket,cf_cv_netlibs,[
-		CF_RECHECK_FUNC(socket,bsd,cf_cv_netlibs)])])
-fi
-#
-AC_CHECK_FUNCS(gethostbyname,,[
-	CF_RECHECK_FUNC(gethostbyname,nsl,cf_cv_netlibs)])
-#
-AC_CHECK_FUNCS(strcasecmp,,[
-	CF_RECHECK_FUNC(strcasecmp,resolv,cf_cv_netlibs)])
+
+case $host_os in #(vi
+mingw32) # (vi
+	AC_CHECK_HEADERS( windows.h winsock.h winsock2.h )
+
+	if test "$ac_cv_header_winsock2_h" = "yes" ; then
+		cf_winsock_lib="-lws2_32"
+	elif test "$ac_cv_header_winsock_h" = "yes" ; then
+		cf_winsock_lib="-lwsock32"
+	fi
+
+	cf_save_LIBS="$LIBS"
+	LIBS="$cf_winsock_lib $LIBS"
+
+	AC_TRY_LINK([
+#ifdef HAVE_WINDOWS_H
+#undef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#ifdef HAVE_WINSOCK2_H
+#include <winsock2.h>
+#else
+#ifdef HAVE_WINSOCK_H
+#include <winsock.h>
+#endif
+#endif
+#endif
+],[
+	char buffer[1024];
+	gethostname(buffer, sizeof(buffer));],
+	[cf_cv_netlibs="$cf_winsock_lib $cf_cv_netlibs"],
+	[AC_MSG_ERROR(Cannot link against winsock library)])
+
+	LIBS="$cf_save_LIBS"
+	;;
+*)
+	AC_CHECK_FUNCS(gethostname,,[
+		CF_RECHECK_FUNC(gethostname,nsl,cf_cv_netlibs,[
+			CF_RECHECK_FUNC(gethostname,socket,cf_cv_netlibs)])])
+
+	AC_CHECK_LIB(inet, main, cf_cv_netlibs="-linet $cf_cv_netlibs")
+
+	if test "$ac_cv_func_lsocket" != no ; then
+	AC_CHECK_FUNCS(socket,,[
+		CF_RECHECK_FUNC(socket,socket,cf_cv_netlibs,[
+			CF_RECHECK_FUNC(socket,bsd,cf_cv_netlibs)])])
+	fi
+
+	AC_CHECK_FUNCS(gethostbyname,,[
+		CF_RECHECK_FUNC(gethostbyname,nsl,cf_cv_netlibs)])
+
+	AC_CHECK_FUNCS(strcasecmp,,[
+		CF_RECHECK_FUNC(strcasecmp,resolv,cf_cv_netlibs)])
+	;;
+esac
 ])
+
+case $cf_cv_netlibs in #(vi
+*ws2_32*)
+	AC_DEFINE(USE_WINSOCK2_H)
+	;;
+esac
+
 LIBS="$LIBS $cf_cv_netlibs"
 test $cf_test_netlibs = no && echo "$cf_cv_netlibs" >&AC_FD_MSG
 ])dnl
