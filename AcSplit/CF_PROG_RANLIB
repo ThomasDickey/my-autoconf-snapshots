@@ -1,0 +1,9 @@
+dnl CF_PROG_RANLIB version: 1 updated: 2009/01/01 20:15:22
+dnl --------------
+dnl Check for ranlib.
+dnl
+dnl TODO: make this conditionally depend on autoconf version, since the later
+dnl versions of autoconf use check-tool.
+AC_DEFUN([CF_PROG_RANLIB],[
+AC_CHECK_TOOL(RANLIB, ranlib, ':')
+])

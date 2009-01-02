@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20081229
+MANIFEST for my-autoconf, version t20090101
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -39,6 +39,7 @@ AcSplit/CF_ARG_ENABLE           utility for command-option enable
 AcSplit/CF_ARG_MSG_ENABLE       verbose form of AC_ARG_ENABLE
 AcSplit/CF_ARG_OPTION           restricted form of AC_ARG_ENABLE
 AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no values
+AcSplit/CF_AR_FLAGS             check for archiver flags
 AcSplit/CF_AWK_BIGSTRING        script to check for big-string support in awk
 AcSplit/CF_AWK_BIG_PRINTF       check for string-limit in awk "%s" printf's
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
@@ -269,6 +270,7 @@ AcSplit/CF_PRG_RULES            generate program-linking rules for test (ncurses
 AcSplit/CF_PROCFS_CWD           check for /proc/$$/cwd
 AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
+AcSplit/CF_PROG_AR              check for archiver
 AcSplit/CF_PROG_AWK             find awk - and check that the search succeeded
 AcSplit/CF_PROG_CC_C_O          check if the compiler (given by its shell-variable name) can use -c -o
 AcSplit/CF_PROG_CC_U_D          macro to test if I can use -U to pre-undefine a symbol that I want to
@@ -278,6 +280,7 @@ AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
 AcSplit/CF_PROG_LINT            find the "lint" program
 AcSplit/CF_PROG_PERL            check for perl program
+AcSplit/CF_PROG_RANLIB          check for ranlib
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option
 AcSplit/CF_PROG_YACC            improved test for yacc, in case we don't have alloca
 AcSplit/CF_PW_GECOS             check if <pwd.h> declared .pw_gecos member
