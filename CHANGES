@@ -1,3 +1,10 @@
+2009-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: fix for Solaris vs xcode
+
+	* AcSplit/CF_SHARED_OPTS:
+	export the LD_RPATH_OPT, to use in ncurses's gen-pkgconfig.in
+
 2009-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_AR_FLAGS: completed first cut, for testing.
