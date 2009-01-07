@@ -1,3 +1,16 @@
+2009-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_AR_FLAGS: ac 2.13 uses single param for AC_SUBST()
+
+2009-01-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_TDLIB:  append (not prepend) to CFLAGS/CPPFLAGS
+
+	* AcSplit/CF_CURSES_STYLE: append (not prepend) to CFLAGS/CPPFLAGS
+
+	* AcSplit/CF_X_FREETYPE, AcSplit/CF_X_FONTENC, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_FUNC_ALLOCA, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_ADD_CFLAGS:
+	 append (not prepend) to CFLAGS/CPPFLAGS
+
 2009-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: fix for Solaris vs xcode

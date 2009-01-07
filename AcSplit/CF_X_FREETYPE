@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 18 updated: 2007/03/21 18:06:17
+dnl CF_X_FREETYPE version: 19 updated: 2009/01/06 19:39:38
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -79,7 +79,7 @@ cf_save_LIBS="$LIBS"
 cf_save_INCS="$CPPFLAGS"
 
 LIBS="$cf_cv_x_freetype_libs $LIBS"
-CPPFLAGS="$cf_cv_x_freetype_incs $CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $cf_cv_x_freetype_incs"
 
 AC_TRY_LINK([
 #include <X11/Xlib.h>
