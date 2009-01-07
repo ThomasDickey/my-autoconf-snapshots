@@ -1,4 +1,4 @@
-dnl CF_CURSES_STYLE version: 3 updated: 1997/09/07 18:01:49
+dnl CF_CURSES_STYLE version: 4 updated: 2009/01/06 19:42:07
 dnl ---------------
 dnl See which (if any!) of the styles of curses' line/row struct fit.
 AC_DEFUN([CF_CURSES_STYLE],
@@ -7,7 +7,7 @@ AC_MSG_CHECKING(for curses struct-style)
 AC_CACHE_VAL(cf_cv_curses_style,[
 	cf_cv_curses_style=unknown
 	save_CFLAGS="$CFLAGS"
-	CFLAGS="-I./include $CFLAGS"
+	CFLAGS="$CFLAGS -I./include"
 	for cf_type in ncurses sysv bsd bsd44
 	do
 		CF_UPPER(cf_tr_type,$cf_type)

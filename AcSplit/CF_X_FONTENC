@@ -1,4 +1,4 @@
-dnl CF_X_FONTENC version: 3 updated: 2008/08/21 16:01:19
+dnl CF_X_FONTENC version: 4 updated: 2009/01/06 19:39:28
 dnl ------------
 dnl
 dnl First check for the appropriate config program, since the developers for
@@ -69,7 +69,7 @@ cf_save_LIBS="$LIBS"
 cf_save_INCS="$CPPFLAGS"
 
 LIBS="$cf_cv_x_fontenc_libs $LIBS"
-CPPFLAGS="$cf_cv_x_fontenc_incs $CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $cf_cv_x_fontenc_incs"
 
 AC_MSG_CHECKING(if we can link with font encoding library)
 AC_TRY_LINK([

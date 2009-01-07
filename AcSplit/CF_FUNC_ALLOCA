@@ -1,4 +1,4 @@
-dnl CF_FUNC_ALLOCA version: 1 updated: 2005/06/29 04:28:43
+dnl CF_FUNC_ALLOCA version: 2 updated: 2009/01/06 19:35:17
 dnl --------------
 dnl workaround for bison 1.875c (compound breakage in Linux stdlib.h and
 dnl bison's output make bison try to use alloca()).
@@ -11,10 +11,10 @@ linux*|gnu*)
 	# workaround for bison 1.875c (compound breakage in Linux stdlib.h
 	# and bison's output make bison try to use alloca()).
 	if test -z "$GCC" ; then
-		CPPFLAGS="-DYYSTACK_USE_ALLOCA=0 $CPPFLAGS"
+		CPPFLAGS="$CPPFLAGS -DYYSTACK_USE_ALLOCA=0"
 		ALLOCA=""
 	elif test "$INTEL_COMPILER" = yes ; then
-		CPPFLAGS="-DYYSTACK_USE_ALLOCA=0 $CPPFLAGS"
+		CPPFLAGS="$CPPFLAGS -DYYSTACK_USE_ALLOCA=0"
 		ALLOCA=""
 	fi
 	;;

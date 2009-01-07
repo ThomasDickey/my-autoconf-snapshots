@@ -1,4 +1,4 @@
-dnl CF_INCLUDE_DIRS version: 5 updated: 2006/10/14 15:23:15
+dnl CF_INCLUDE_DIRS version: 6 updated: 2009/01/06 19:37:40
 dnl ---------------
 dnl Construct the list of include-options according to whether we're building
 dnl in the source directory or using '--srcdir=DIR' option.  If we're building
@@ -6,9 +6,9 @@ dnl with gcc, don't append the includedir if it happens to be /usr/include,
 dnl since that usually breaks gcc's shadow-includes.
 AC_DEFUN([CF_INCLUDE_DIRS],
 [
-CPPFLAGS="-I. -I../include $CPPFLAGS"
+CPPFLAGS="$CPPFLAGS -I. -I../include"
 if test "$srcdir" != "."; then
-	CPPFLAGS="-I\${srcdir}/../include $CPPFLAGS"
+	CPPFLAGS="$CPPFLAGS -I\${srcdir}/../include"
 fi
 if test "$GCC" != yes; then
 	CPPFLAGS="$CPPFLAGS -I\${includedir}"
