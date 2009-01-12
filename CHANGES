@@ -1,3 +1,21 @@
+2009-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_PATH_PROG, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_PATHSEP, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_WITH_PATHLIST:
+	change variable from PATHSEP to PATH_SEPARATOR
+
+2009-01-11  Doug.Kaufman
+
+	* AcSplit/AM_WITH_NLS:
+	provide iconv library in $LIBS when checking for intl library
+
+2009-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_LIBDIR:
+	remove spurious dollar-sign, report by José H. Espinosa on lynx-dev.
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_PDCURSES_X11, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_BUNDLED_INTL:
+	 append (not prepend) to CFLAGS/CPPFLAGS
+
 2009-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_AR_FLAGS: ac 2.13 uses single param for AC_SUBST()

@@ -1,4 +1,4 @@
-dnl CF_ADD_LIBDIR version: 6 updated: 2008/02/09 13:15:34
+dnl CF_ADD_LIBDIR version: 7 updated: 2009/01/11 15:55:55
 dnl -------------
 dnl	Adds to the library-path
 dnl
@@ -27,7 +27,7 @@ if test -n "$1" ; then
       fi
       if test "$cf_have_libdir" = no ; then
         CF_VERBOSE(adding $cf_add_libdir to library-path)
-        ifelse($2,,LDFLAGS,$2)="-L$cf_add_libdir $ifelse($2,,LDFLAGS,[$]$2)"
+        ifelse($2,,LDFLAGS,$2)="-L$cf_add_libdir ifelse($2,,LDFLAGS,[$]$2)"
       fi
     fi
   done
