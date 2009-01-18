@@ -1,4 +1,4 @@
-dnl AM_WITH_NLS version: 22 updated: 2007/07/29 13:35:20
+dnl AM_WITH_NLS version: 23 updated: 2009/01/11 19:52:42
 dnl -----------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -89,6 +89,8 @@ AC_DEFUN([AM_WITH_NLS],
       dnl to fall back to GNU NLS library.
       CATOBJEXT=NONE
 
+      cf_save_LIBS_1="$LIBS"
+      LIBS="$LIBICONV $LIBS"
       AC_CACHE_CHECK([for libintl.h and gettext()], cf_cv_func_gettext,[
         CF_FIND_LINKAGE(CF__INTL_HEAD,
         CF__INTL_BODY,
@@ -96,6 +98,7 @@ AC_DEFUN([AM_WITH_NLS],
         cf_cv_func_gettext=yes,
         cf_cv_func_gettext=no)
       ])
+      LIBS="$cf_save_LIBS_1"
 
       if test "$cf_cv_func_gettext" = yes ; then
         AC_DEFINE(HAVE_LIBINTL_H)

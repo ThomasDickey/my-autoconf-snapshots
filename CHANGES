@@ -1,3 +1,9 @@
+2009-01-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	add a -shared option to MK_SHARED_LIB where we have a -Bsharable
+	This fixes (for OpenBSD at least) a dangling reference to "main" in libncurses
+
 2009-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_PATH_PROG, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_PATHSEP, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_WITH_PATHLIST:

@@ -1,4 +1,4 @@
-dnl CF_ADD_SEARCHPATH version: 4 updated: 2007/07/29 13:35:20
+dnl CF_ADD_SEARCHPATH version: 5 updated: 2009/01/11 20:40:21
 dnl -----------------
 dnl Set $CPPFLAGS and $LDFLAGS with the directories given via the parameter.
 dnl They can be either the common root of include- and lib-directories, or the
@@ -9,7 +9,8 @@ dnl $1 is the list of colon-separated directory names to search.
 dnl $2 is the action to take if a parameter does not yield a directory.
 AC_DEFUN([CF_ADD_SEARCHPATH],
 [
-for cf_searchpath in `echo "$1" | tr : ' '`; do
+AC_REQUIRE([CF_PATHSEP])
+for cf_searchpath in `echo "$1" | tr $PATH_SEPARATOR ' '`; do
 	if test -d $cf_searchpath/include; then
 		CF_ADD_INCDIR($cf_searchpath/include)
 	elif test -d $cf_searchpath/../include ; then

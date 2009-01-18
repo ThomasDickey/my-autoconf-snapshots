@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 7 updated: 2003/12/20 19:30:34
+dnl CF_MANPAGE_FORMAT version: 8 updated: 2009/01/11 20:30:50
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -40,7 +40,7 @@ unknown)
   cf_catonly=yes
   cf_example=date
 
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATHSEP}"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
   for cf_dir in $MANPATH; do
     test -z "$cf_dir" && cf_dir=/usr/man
     for cf_name in $cf_dir/man*/$cf_example.[[01]]* $cf_dir/cat*/$cf_example.[[01]]* $cf_dir/man*/$cf_example $cf_dir/cat*/$cf_example
