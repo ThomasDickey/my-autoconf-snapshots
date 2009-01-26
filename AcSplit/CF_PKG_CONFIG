@@ -1,4 +1,4 @@
-dnl CF_PKG_CONFIG version: 2 updated: 2008/12/24 07:57:28
+dnl CF_PKG_CONFIG version: 3 updated: 2009/01/25 10:55:09
 dnl -------------
 dnl Check for the package-config program, unless disabled by command-line.
 AC_DEFUN([CF_PKG_CONFIG],
@@ -10,11 +10,11 @@ AC_ARG_WITH(pkg-config,
 	[cf_pkg_config=yes])
 AC_MSG_RESULT($cf_pkg_config)
 
-case $cf_pkg_config in
-no)
+case $cf_pkg_config in #(vi
+no) #(vi
 	PKG_CONFIG=none
 	;;
-yes)
+yes) #(vi
 	AC_PATH_PROG(PKG_CONFIG, pkg-config, none)
 	;;
 *)

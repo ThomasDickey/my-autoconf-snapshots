@@ -1,3 +1,12 @@
+2009-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE: fix overrun progress message
+
+	* AcSplit/CF_PKG_CONFIG: parenthesis tweaks
+
+	* AcSplit/CF_X_FREETYPE: use CF_PKG_CONFIG
+	tidy up messages a little
+
 2009-01-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_LIBDIR: better fix - I'd removed the wrong "$"
