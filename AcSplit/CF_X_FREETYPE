@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 19 updated: 2009/01/06 19:39:38
+dnl CF_X_FREETYPE version: 21 updated: 2009/01/25 18:17:50
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -13,28 +13,29 @@ dnl	--with-freetype-cflags
 dnl	--with-freetype-libs
 AC_DEFUN([CF_X_FREETYPE],
 [
+AC_REQUIRE([CF_PKG_CONFIG])
+
 cf_extra_freetype_libs=
-FREETYPE_CONFIG=
+FREETYPE_CONFIG=none
 FREETYPE_PARAMS=
 
 AC_MSG_CHECKING(if you specified -D/-I options for FreeType)
 AC_ARG_WITH(freetype-cflags,
 	[  --with-freetype-cflags  -D/-I options for compiling with FreeType],
-[cf_cv_x_freetype_incs="$with_freetype_cflags"],
-[cf_cv_x_freetype_incs=no])
+	[cf_cv_x_freetype_incs="$with_freetype_cflags"],
+	[cf_cv_x_freetype_incs=no])
 AC_MSG_RESULT($cf_cv_x_freetype_incs)
 
 
 AC_MSG_CHECKING(if you specified -L/-l options for FreeType)
 AC_ARG_WITH(freetype-libs,
 	[  --with-freetype-libs    -L/-l options to link FreeType],
-[cf_cv_x_freetype_libs="$with_freetype_libs"],
-[cf_cv_x_freetype_libs=no])
+	[cf_cv_x_freetype_libs="$with_freetype_libs"],
+	[cf_cv_x_freetype_libs=no])
 AC_MSG_RESULT($cf_cv_x_freetype_libs)
 
-AC_PATH_PROG(FREETYPE_PKG_CONFIG, pkg-config, none)
-if test "$FREETYPE_PKG_CONFIG" != none && "$FREETYPE_PKG_CONFIG" --exists xft; then
-	FREETYPE_CONFIG=$FREETYPE_PKG_CONFIG
+if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists xft; then
+	FREETYPE_CONFIG=$PKG_CONFIG
 	FREETYPE_PARAMS=xft
 else
 	AC_PATH_PROG(FREETYPE_XFT_CONFIG, xft-config, none)
@@ -48,20 +49,22 @@ else
 		fi
 	fi
 fi
+AC_MSG_CHECKING(for FreeType config)
+AC_MSG_RESULT($FREETYPE_CONFIG $FREETYPE_PARAMS)
 
-if test -n "$FREETYPE_CONFIG" ; then
+if test "$FREETYPE_CONFIG" != none ; then
 
-if test "$cf_cv_x_freetype_incs" = no ; then
-AC_MSG_CHECKING(for $FREETYPE_CONFIG cflags)
-cf_cv_x_freetype_incs="`$FREETYPE_CONFIG $FREETYPE_PARAMS --cflags 2>/dev/null`"
-AC_MSG_RESULT($cf_cv_x_freetype_incs)
-fi
+	if test "$cf_cv_x_freetype_incs" = no ; then
+		AC_MSG_CHECKING(for $FREETYPE_CONFIG cflags)
+		cf_cv_x_freetype_incs="`$FREETYPE_CONFIG $FREETYPE_PARAMS --cflags 2>/dev/null`"
+		AC_MSG_RESULT($cf_cv_x_freetype_incs)
+	fi
 
-if test "$cf_cv_x_freetype_libs" = no ; then
-AC_MSG_CHECKING(for $FREETYPE_CONFIG libs)
-cf_cv_x_freetype_libs="$cf_extra_freetype_libs `$FREETYPE_CONFIG $FREETYPE_PARAMS --libs 2>/dev/null`"
-AC_MSG_RESULT($cf_cv_x_freetype_libs)
-fi
+	if test "$cf_cv_x_freetype_libs" = no ; then
+		AC_MSG_CHECKING(for $FREETYPE_CONFIG libs)
+		cf_cv_x_freetype_libs="$cf_extra_freetype_libs `$FREETYPE_CONFIG $FREETYPE_PARAMS --libs 2>/dev/null`"
+		AC_MSG_RESULT($cf_cv_x_freetype_libs)
+	fi
 
 fi
 
