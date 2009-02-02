@@ -1,4 +1,4 @@
-dnl CF_SSL version: 16 updated: 2008/12/25 09:30:14
+dnl CF_SSL version: 19 updated: 2009/02/01 15:26:31
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -53,42 +53,58 @@ AC_DEFUN([CF_SSL],[
 	fi
 
 	if test "$cf_cv_have_ssl" != yes; then
-		case $1 in #(vi
-		yes)
-			CF_FIND_LINKAGE(CF__SSL_HEAD,
-				CF__SSL_BODY,
-				ssl,
-				cf_cv_have_ssl=yes,
-				cf_cv_have_ssl=no,
-				openssl,
-				[-lcrypto])
+		case $host_os in #(vi
+		mingw*) #(vi
+			cf_extra_ssl_libs="-lcrypto -lgdi32"
+			;;
+		*)
+			# openssl 0.9.6 and up use dynamic loading for engines.
+			cf_extra_ssl_libs="-lcrypto"
+			case "x$LIBS" in #(vi
+			*-ldl) #(vi
+				;;
+			*)
+				AC_CHECK_LIB(dl,dlsym,
+					[cf_extra_ssl_libs="$cf_extra_ssl_libs -ldl"])
+				;;
+			esac
 			;;
 		esac
+
+		CF_FIND_LINKAGE(CF__SSL_HEAD,
+			CF__SSL_BODY,
+			ssl,
+			cf_cv_have_ssl=yes,
+			cf_cv_have_ssl=no,
+			openssl,
+			$cf_extra_ssl_libs)
+
+		if test "$cf_cv_have_ssl" = yes ; then
+			if test -n "$cf_cv_library_path_ssl" ; then
+				CF_ADD_LIBDIR($cf_cv_library_path_ssl)
+			fi
+			LIBS="-lssl $cf_extra_ssl_libs $LIBS"
+			if test -n "$cf_cv_header_path_ssl" ; then
+				case $cf_cv_header_path_ssl in #(vi
+				/usr/include/openssl) #(vi
+					;;
+				*)
+					CF_ADD_INCDIR($cf_cv_header_path_ssl)
+					;;
+				esac
+			fi
+		fi
 	fi
 
 	if test "$cf_cv_have_ssl" = yes ; then
+		AC_DEFINE(USE_SSL)
 		if test -n "$cf_cv_header_path_ssl" ; then
-			AC_DEFINE(USE_SSL)
-
-			case $cf_cv_header_path_ssl in
+			case $cf_cv_header_path_ssl in #(vi
 			*/openssl)
 				AC_DEFINE(USE_OPENSSL_INCL)
 				;;
 			esac
-
-			case $cf_cv_header_path_ssl in
-			/usr/include/openssl)
-				;;
-			*)
-				CF_ADD_INCDIR($cf_cv_header_path_ssl)
-				;;
-			esac
-
 		fi
-		if test -n "$cf_cv_library_path_ssl" ; then
-			CF_ADD_LIBDIR($cf_cv_library_path_ssl)
-		fi
-		LIBS="-lssl -lcrypto $LIBS"
 		CF_CHECK_SSL_X509
 	fi
 ])dnl
