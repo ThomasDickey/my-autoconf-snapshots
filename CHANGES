@@ -1,3 +1,18 @@
+2009-02-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL: add check for -ldl
+
+	* AcSplit/CF_GCC_WARNINGS: correct a comment for icc9
+	allow warning for implicit conversion of 64-bit stuff
+
+	* AcSplit/CF_SSL:
+	eliminate duplicate -lssl/-lcrypto from pkg-config by moving the CF_ADD_LIBDIR
+	and CF_ADD_INCDIR to the non pkg-config logic.
+
+2009-01-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL: fixes to build lynx --with-ssl using msys (for mingw)
+
 2009-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FREETYPE: fix overrun progress message
