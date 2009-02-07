@@ -1,4 +1,4 @@
-dnl CF_AR_FLAGS version: 3 updated: 2009/01/07 19:36:13
+dnl CF_AR_FLAGS version: 4 updated: 2009/02/07 13:42:23
 dnl -----------
 dnl Check for suitable "ar" (archiver) options for updating an archive.
 AC_DEFUN([CF_AR_FLAGS],[
@@ -28,7 +28,6 @@ EOF
 	done
 	rm -f conftest.a conftest.$ac_ext conftest.$ac_cv_objext
 ])
-
 test -z "$ARFLAGS" && ARFLAGS=$cf_cv_ar_flags
 AC_SUBST(ARFLAGS,$cf_cv_ar_flags)
 ])
