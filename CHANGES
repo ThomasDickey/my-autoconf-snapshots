@@ -1,3 +1,10 @@
+2009-02-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XKB_BELL_EXT:
+	configure check needed Intrinsic.h since X's headers as a rule are not
+	self-contained.  Add a check while I'm here to ensure that XkbBell()
+	can be linked, since that's what I'm using.
+
 2009-02-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_AR_FLAGS: tweak to avoid changing line-count

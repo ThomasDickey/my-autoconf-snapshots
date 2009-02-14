@@ -1,19 +1,17 @@
-dnl CF_XKB_BELL_EXT version: 2 updated: 2003/05/18 17:28:57
+dnl CF_XKB_BELL_EXT version: 3 updated: 2009/02/13 16:00:39
 dnl ---------------
 dnl Check for XKB bell extension
 AC_DEFUN([CF_XKB_BELL_EXT],[
 AC_CACHE_CHECK(for XKB Bell extension, cf_cv_xkb_bell_ext,[
 AC_TRY_LINK([
+#include <X11/Intrinsic.h>
 #include <X11/XKBlib.h>		/* has the prototype */
 #include <X11/extensions/XKBbells.h>	/* has the XkbBI_xxx definitions */
 ],[
-int x = XkbBI_Info
-	|XkbBI_MinorError
-	|XkbBI_MajorError
-	|XkbBI_TerminalBell
-	|XkbBI_MarginBell;
+	int x = (XkbBI_Info |XkbBI_MinorError |XkbBI_MajorError |XkbBI_TerminalBell |XkbBI_MarginBell);
+	Atom y;
+	XkbBell((Display *)0, (Widget)0, 0, y);
 ],[cf_cv_xkb_bell_ext=yes],[cf_cv_xkb_bell_ext=no])
 ])
-
 test "$cf_cv_xkb_bell_ext" = yes && AC_DEFINE(HAVE_XKB_BELL_EXT)
 ])
