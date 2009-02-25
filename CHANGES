@@ -1,3 +1,10 @@
+2009-02-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PERL:
+	give warning, but do not error out to avoid the nuisance of a failed build
+	due to gcc error when it sees "main()" after encountering perl's prototype
+	for main().
+
 2009-02-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XKB_BELL_EXT:
