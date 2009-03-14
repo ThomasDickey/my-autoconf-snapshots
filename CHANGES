@@ -1,3 +1,12 @@
+2009-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC:
+	Solaris 10 (and presumably later versions) do not have a static libc,
+	and gcc gets confused when linking tic (even though I switch back to
+	dynamic after linking -
+
+		LIBS_TIC        = -Bstatic -L../lib -lncurses -L../lib -lncurses -Bdynamic
+
 2009-02-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PERL:
