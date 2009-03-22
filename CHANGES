@@ -1,3 +1,10 @@
+2009-03-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL: typo
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	add -no-undefined option for Cygwin, MinGW, UWIN and AIX (report by Charles Wilson)
+
 2009-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LDFLAGS_STATIC:
