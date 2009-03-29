@@ -1,11 +1,12 @@
-dnl CF_CURSES_ACS_MAP version: 3 updated: 2003/05/17 22:19:02
+dnl CF_CURSES_ACS_MAP version: 5 updated: 2009/03/28 16:08:10
 dnl -----------------
 dnl Check for likely values of acs_map[]:
 AC_DEFUN([CF_CURSES_ACS_MAP],
 [
+AC_REQUIRE([CF_NCURSES_WRAP_PREFIX])dnl
 AC_CACHE_CHECK(for alternate character set array, cf_cv_curses_acs_map,[
 cf_cv_curses_acs_map=unknown
-for name in acs_map _acs_map __acs_map _nc_acs_map
+for name in acs_map _acs_map __acs_map ${NCURSES_WRAP_PREFIX}acs_map
 do
 AC_TRY_LINK([
 #include <${cf_cv_ncurses_header-curses.h}>
