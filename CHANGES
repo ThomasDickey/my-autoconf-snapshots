@@ -1,3 +1,16 @@
+2009-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_WRAP_PREFIX: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_ACS_MAP: use CF_NCURSES_WRAP_PREFIX
+
+	* AcSplit/CF_CURSES_ACS_MAP: add ncwrap_acs_map (Charles Wilson)
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	better fix for adding -no-undefined (by setting a variable which can be
+	added as needed to libtool invocation).  Also, allow libtool versions to
+	end with a lowercase a-z letter.
+
 2009-03-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL: typo

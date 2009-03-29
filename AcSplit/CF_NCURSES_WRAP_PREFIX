@@ -1,0 +1,15 @@
+dnl CF_NCURSES_WRAP_PREFIX version: 1 updated: 2009/03/28 16:08:10
+dnl ----------------------
+dnl Check for ncurses "wrap-prefix" used for public variables which have been
+dnl wrapped with a function to help with concurrency control.
+AC_DEFUN([CF_NCURSES_WRAP_PREFIX],
+[
+AC_MSG_CHECKING(for ncurses wrap-prefix)
+AC_ARG_WITH(ncurses-wrap-prefix,
+	[  --with-ncurses-wrap-prefix naming-prefix for ncurses wrapped-variables],
+	[NCURSES_WRAP_PREFIX=$withval],
+	[NCURSES_WRAP_PREFIX=_nc_])
+AC_MSG_RESULT($NCURSES_WRAP_PREFIX)
+
+AC_SUBST(NCURSES_WRAP_PREFIX)
+])
