@@ -1,3 +1,8 @@
+2009-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_INSTALL_PREFIX:
+	remove extra '$' (report by Dagobert Michelsen)
+
 2009-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_WRAP_PREFIX: ci-aclocal generated header
