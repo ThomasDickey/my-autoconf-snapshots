@@ -1,4 +1,4 @@
-dnl CF_WITH_INSTALL_PREFIX version: 2 updated: 2003/01/04 14:03:33
+dnl CF_WITH_INSTALL_PREFIX version: 3 updated: 2009/03/30 15:01:47
 dnl ----------------------
 dnl Configure-script option to give a default value for the poorly-chosen name
 dnl $(DESTDIR).
@@ -11,7 +11,7 @@ AC_ARG_WITH(install-prefix,
 	[cf_opt_with_install_prefix=${DESTDIR-no}])
 AC_MSG_RESULT($cf_opt_with_install_prefix)
 if test "$cf_opt_with_install_prefix" != no ; then
-	CF_PATH_SYNTAX($cf_opt_with_install_prefix)
+	CF_PATH_SYNTAX(cf_opt_with_install_prefix)
 	DESTDIR=$cf_opt_with_install_prefix
 fi
 AC_SUBST(DESTDIR)
