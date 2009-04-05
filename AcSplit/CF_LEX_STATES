@@ -1,4 +1,4 @@
-dnl CF_LEX_STATES version: 3 updated: 2008/03/23 15:04:54
+dnl CF_LEX_STATES version: 4 updated: 2009/04/04 13:08:05
 dnl -------------
 dnl Check if the lex/flex program accepts states, i.e., %s and %x.  Older
 dnl implementations do not support these.
@@ -19,10 +19,7 @@ cf_lex_states=no
 fi
 AC_MSG_RESULT($cf_lex_states)
 rm -f conftest.* $LEX_OUTPUT_ROOT.c
-MAKE_LEX=
 if test "$cf_lex_states" != yes ; then
-	AC_MSG_WARN(Your $LEX program does not support states.  Get flex.)
-	MAKE_LEX="#"
+	AC_MSG_WARN(Your $LEX program does not support POSIX states.  Get flex.)
 fi
-AC_SUBST(MAKE_LEX)
 ])dnl

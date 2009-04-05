@@ -1,4 +1,4 @@
-dnl CF_LDFLAGS_STATIC version: 6 updated: 2009/03/14 14:03:25
+dnl CF_LDFLAGS_STATIC version: 7 updated: 2009/04/04 18:31:04
 dnl -----------------
 dnl Check for compiler/linker flags used to temporarily force usage of static
 dnl libraries.  This depends on the compiler and platform.  Use this to help
@@ -8,7 +8,7 @@ AC_DEFUN([CF_LDFLAGS_STATIC],[
 
 if test "$GCC" = yes ; then
 	case $cf_cv_system_name in #(
-	OS/2*|os2*|aix[[4]]*|solaris2.1[[0-9]]) 	#( vi
+	OS/2*|os2*|aix[[4]]*|solaris2.1[[0-9]]|darwin*) 	#( vi
 		LDFLAGS_STATIC=
 		LDFLAGS_SHARED=
 		;;

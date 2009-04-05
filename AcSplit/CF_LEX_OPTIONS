@@ -1,0 +1,25 @@
+dnl CF_LEX_OPTIONS version: 1 updated: 2009/04/04 13:08:05
+dnl --------------
+dnl Check if the lex/flex program accepts options, i.e., %o.  This is for
+dnl standard (POSIX) lex; there are some implementations that are nonstandard,
+dnl or simply too buggy to consider.
+AC_DEFUN([CF_LEX_OPTIONS],[
+AC_MSG_CHECKING(if $LEX supports options)
+cat >conftest.l <<CF_EOF
+%o 1000
+%%
+%%
+nothing	ECHO;
+CF_EOF
+cf_lex_options="$LEX conftest.l 1>&AC_FD_CC"
+if AC_TRY_EVAL(cf_lex_options); then
+cf_lex_options=yes
+else
+cf_lex_options=no
+fi
+AC_MSG_RESULT($cf_lex_options)
+rm -f conftest.* $LEX_OUTPUT_ROOT.c
+if test "$cf_lex_options" != yes ; then
+	AC_MSG_WARN(Your $LEX program does not support POSIX options.  Get flex.)
+fi
+])dnl

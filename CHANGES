@@ -1,3 +1,17 @@
+2009-04-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC:
+	add Darwin to the list where mixed -static/-dynamic doesn't work:
+	(gcc 4.0.1)
+
+	* AcSplit/CF_LEX_CHAR_CLASSES: amend message
+
+	* AcSplit/CF_LEX_OPTIONS, AcSplit/CF_LEX_POINTER:
+	ci-aclocal generated header
+
+	* AcSplit/CF_LEX_STATES:
+	move the MAKE_LEX variable out of here, to make it more configurable
+
 2009-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_INSTALL_PREFIX:
