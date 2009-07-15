@@ -1,4 +1,4 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 1 updated: 2008/09/09 19:18:22
+dnl CF_MAWK_RUN_FPE_TESTS version: 2 updated: 2009/07/14 18:24:42
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
@@ -8,9 +8,9 @@ else
 AC_TYPE_SIGNAL
 [
 echo checking handling of floating point exceptions
-rm -f fpe_check
+rm -f fpe_check$ac_exeext 
 $CC $CFLAGS -DRETSIGTYPE=$ac_cv_type_signal -o fpe_check fpe_check.c $MATHLIB
-if test -f fpe_check  ; then
+if test -f fpe_check$ac_exeext   ; then
    ./fpe_check 2>/dev/null
    status=$?
 else 
@@ -36,7 +36,7 @@ CF_MAWK_DEFINE2([TURN_ON_FPE_TRAPS()],
 CF_MAWK_FPE_SIGINFO 
 # look for strtod overflow bug
 AC_MSG_CHECKING([strtod bug on overflow])
-rm -f fpe_check
+rm -f fpe_check$ac_exeext 
 $CC $CFLAGS -DRETSIGTYPE=$ac_cv_type_signal -DUSE_IEEEFP_H \
 	    -o fpe_check fpe_check.c $MATHLIB
 if ./fpe_check phoney_arg phoney_arg 2>/dev/null
@@ -93,5 +93,5 @@ EOF
 # quit or not ???
 ;;
 esac 
-rm -f fpe_check  # whew!!]
+rm -f fpe_check$ac_exeext   # whew!!]
 fi])

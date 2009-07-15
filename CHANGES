@@ -1,3 +1,8 @@
+2009-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	fix to work with cygwin
+
 2009-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_MAINTAINER: update mawk maintainer email
