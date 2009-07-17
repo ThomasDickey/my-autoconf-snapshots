@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20090714
+MANIFEST for my-autoconf, version t20090716
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -81,6 +81,7 @@ AcSplit/CF_CPP_VSCAN_FUNC       check for C++ usable vscan function (ncurses)
 AcSplit/CF_CRYPT_FUNC           check for existing/working crypt() function
 AcSplit/CF_CURSES_ACS_MAP       check for acs_map[] array (ncurses)
 AcSplit/CF_CURSES_CCHAR_T       check for 'cchar_t'
+AcSplit/CF_CURSES_CHECK_DATA    check for data declared in curses.h/term.h (or only in library)
 AcSplit/CF_CURSES_CHECK_TYPE    check for a datatype which is defined in curses.h
 AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
 AcSplit/CF_CURSES_CONFIG        common macros for curses
@@ -231,6 +232,7 @@ AcSplit/CF_MAWK_RUN_FPE_TESTS   mawk autoconf macro
 AcSplit/CF_MAWK_SET_IF_UNSET    mawk autoconf macro
 AcSplit/CF_MAWK_XADD_NO         mawk autoconf macro
 AcSplit/CF_MBSTATE_T            check for mbstate_t in wchar.h
+AcSplit/CF_MIN_GETCCHAR         check if getcchar() counts trailing null
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
 AcSplit/CF_MISSING_EXTERN       check for missing extern-declaration
 AcSplit/CF_MIXEDCASE_FILENAMES  check if the filesystem is really case-dependent
@@ -436,6 +438,7 @@ AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
+AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
 AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
 AcSplit/CF__INTL_BODY           test-code for libintl lookup
