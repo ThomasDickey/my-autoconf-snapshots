@@ -1,3 +1,21 @@
+2009-07-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	HPUX 11.23 (at least) will declare mbstate_t in wchar.h only if an intermediate
+	#define is triggered, which happens only when _XOPEN_SOURCE is defined to 500.
+
+	* AcSplit/CF_MIN_GETCCHAR: add #define for MIN_GETCCHAR
+
+	* AcSplit/CF_CURSES_CHECK_DATA:
+	make this check for symbol in library if it's not declared in header
+
+	* AcSplit/CF_CURSES_FUNCS: split-out CF__CURSES_HEAD
+
+	* AcSplit/CF_CURSES_CHECK_DATA: RCS_BASE
+
+	* AcSplit/CF__CURSES_HEAD, AcSplit/CF_MIN_GETCCHAR:
+	ci-aclocal generated header
+
 2009-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
