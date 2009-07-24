@@ -1,7 +1,7 @@
-dnl CF_MAWK_CHECK_HEADER version: 3 updated: 2008/09/09 20:38:19
+dnl CF_MAWK_CHECK_HEADER version: 4 updated: 2009/07/23 05:15:39
 dnl --------------------
 AC_DEFUN([CF_MAWK_CHECK_HEADER],[
     AC_CHECK_HEADER($1,,[
         CF_UPPER(cf_check_header,NO_$1)
-        CF_MAWK_DEFINE($cf_check_header)])
+        AC_DEFINE($cf_check_header)])
 ])dnl

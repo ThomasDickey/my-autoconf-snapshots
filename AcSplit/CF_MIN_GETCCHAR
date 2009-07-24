@@ -1,4 +1,4 @@
-dnl CF_MIN_GETCCHAR version: 1 updated: 2009/07/16 06:11:42
+dnl CF_MIN_GETCCHAR version: 2 updated: 2009/07/16 21:03:10
 dnl ---------------
 dnl CF_MIN_GETCCHAR
 dnl Check whether getcchar's return value counts the trailing null in a wchar_t
@@ -18,10 +18,13 @@ int main()
 	data[0] = L'\0';
     setcchar(temp, data, 0, 0, (void *)0);
 	count = getcchar(temp, (wchar_t *)0, (attr_t *)0, (short *)0, (void *)0);
-	exit(count != 0);
+	${cf_cv_main_return-return}(count != 0);
 }],
 	[cf_cv_min_getcchar=no],
 	[cf_cv_min_getcchar=yes],
 	[cf_cv_min_getcchar=yes])
 ])
+if test "$cf_cv_min_getcchar" = yes ; then
+	AC_DEFINE(MIN_GETCCHAR,1)
+fi
 ])dnl

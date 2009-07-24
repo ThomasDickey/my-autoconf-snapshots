@@ -1,4 +1,4 @@
-dnl CF_MAWK_CC_FEATURES version: 1 updated: 2008/09/09 19:18:22
+dnl CF_MAWK_CC_FEATURES version: 2 updated: 2009/07/23 05:15:39
 dnl -------------------
 dnl Check compiler.
 AC_DEFUN([CF_MAWK_CC_FEATURES],
@@ -8,10 +8,10 @@ AC_TRY_COMPILE(
 void *foo() ;] ,
 [cp = (char*)(void*)(int*)foo() ;],void_star=yes,void_star=no)
 AC_MSG_RESULT($void_star)
-test "$void_star" = no && CF_MAWK_DEFINE2(NO_VOID_STAR,1)
+test "$void_star" = no && AC_DEFINE_UNQUOTED(NO_VOID_STAR,1)
 AC_MSG_CHECKING(compiler groks prototypes)
 AC_TRY_COMPILE(,[int x(char*);],protos=yes,protos=no)
 AC_MSG_RESULT([$protos])
-test "$protos" = no && CF_MAWK_DEFINE2(NO_PROTOS,1)
+test "$protos" = no && AC_DEFINE_UNQUOTED(NO_PROTOS,1)
 AC_C_CONST
-test "$ac_cv_c_const" = no && CF_MAWK_DEFINE2(const)])dnl
+test "$ac_cv_c_const" = no && AC_DEFINE_UNQUOTED(const)])dnl

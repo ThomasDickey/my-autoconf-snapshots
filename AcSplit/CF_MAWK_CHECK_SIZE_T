@@ -1,14 +1,25 @@
-dnl CF_MAWK_CHECK_SIZE_T version: 1 updated: 2008/09/09 19:18:22
+dnl CF_MAWK_CHECK_SIZE_T version: 2 updated: 2009/07/23 05:15:39
 dnl --------------------
+dnl Check if size_t is found in the given header file, unless we have already
+dnl found it.
+dnl $1 = header to check
+dnl $2 = symbol to define if size_t is found there.
 dnl Find size_t.
 AC_DEFUN([CF_MAWK_CHECK_SIZE_T],[
-  [if test "$size_t_defed" != 1 ; then]
-   AC_CHECK_HEADER($1,size_t_header=ok)
-   [if test "$size_t_header" = ok ; then]
-   AC_TRY_COMPILE([
-#include <$1>],
-[size_t *n ;
-], [size_t_defed=1;
-CF_MAWK_DEFINE2($2,1)
-echo getting size_t from '<$1>'])
-[fi;fi]])dnl
+if test "x$cf_mawk_check_size_t" != xyes ; then
+
+AC_CACHE_VAL(cf_cv_size_t_$2,[
+	AC_CHECK_HEADER($1,cf_mawk_check_size=ok)
+	if test "x$cf_mawk_check_size" = xok ; then
+		AC_CACHE_CHECK(if size_t is declared in $1,cf_cv_size_t_$2,[
+			AC_TRY_COMPILE([#include <$1>],[size_t *n],
+				[cf_cv_size_t_$2=yes],
+				[cf_cv_size_t_$2=no])])
+	fi
+])
+	if test "x$cf_cv_size_t_$2" = xyes ; then
+		AC_DEFINE_UNQUOTED($2,1)
+		cf_mawk_check_size_t=yes
+	fi
+fi
+])dnl
