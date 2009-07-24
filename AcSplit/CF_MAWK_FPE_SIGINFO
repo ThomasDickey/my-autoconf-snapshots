@@ -1,14 +1,14 @@
-dnl CF_MAWK_FPE_SIGINFO version: 2 updated: 2009/07/14 18:24:42
+dnl CF_MAWK_FPE_SIGINFO version: 3 updated: 2009/07/23 05:15:39
 dnl -------------------
 dnl SYSv and Solaris FPE checks
 AC_DEFUN([CF_MAWK_FPE_SIGINFO],
 [AC_CHECK_FUNC(sigaction, sigaction=1)
 AC_CHECK_HEADER(siginfo.h,siginfo_h=1)
 if test "$sigaction" = 1 && test "$siginfo_h" = 1 ; then
-   CF_MAWK_DEFINE(SV_SIGINFO)
+   AC_DEFINE(MAWK_SV_SIGINFO)
 else
    AC_CHECK_FUNC(sigvec,sigvec=1)
    if test "$sigvec" = 1 && ./fpe_check$ac_exeext  phoney_arg >> defines.out ; then :
-   else CF_MAWK_DEFINE(NOINFO_SIGFPE)
+   else AC_DEFINE(NOINFO_SIGFPE)
    fi
 fi])

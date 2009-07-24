@@ -1,3 +1,22 @@
+2009-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	add #define's for GCC_PRINTFLIKE and GCC_SCANFLIKE to output.
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS: don't add()
+
+	* AcSplit/CF_MAWK_CHECK_FUNC, AcSplit/CF_MAWK_CHECK_HEADER, AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	obsoleting CF_MAWK_DEFINE
+
+	* AcSplit/CF_MAWK_CC_FEATURES: obsoleting CF_MAWK_DEFINE2()
+
+	* AcSplit/CF_MAWK_CHECK_SIZE_T: revise to use AC_DEFINE_UNQUOTED
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT:
+	revise to use AC_DEFINE_UNQUOTED rather than using defines.out
+
+	* AcSplit/CF_MAWK_MAX__INT_PROGRAM: write to conftest.out
+
 2009-07-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
