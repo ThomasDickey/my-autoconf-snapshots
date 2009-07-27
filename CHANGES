@@ -1,3 +1,13 @@
+2009-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_WARNINGS: add CF_GCC_ATTRIBUTES
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT: typo
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT: compute MAXINT
+
+	* AcSplit/CF_MAWK_MAX__INT_PROGRAM: compute MAX__UINT
+
 2009-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_ATTRIBUTES:
