@@ -1,4 +1,4 @@
-dnl CF_X_FONTENC version: 4 updated: 2009/01/06 19:39:28
+dnl CF_X_FONTENC version: 5 updated: 2009/08/12 16:55:32
 dnl ------------
 dnl
 dnl First check for the appropriate config program, since the developers for
@@ -12,6 +12,7 @@ dnl	--with-fontenc-cflags
 dnl	--with-fontenc-libs
 AC_DEFUN([CF_X_FONTENC],
 [
+AC_REQUIRE([CF_WITH_ZLIB])
 AC_REQUIRE([CF_PKG_CONFIG])
 
 cf_extra_fontenc_incs=
@@ -68,8 +69,8 @@ fi
 cf_save_LIBS="$LIBS"
 cf_save_INCS="$CPPFLAGS"
 
-LIBS="$cf_cv_x_fontenc_libs $LIBS"
-CPPFLAGS="$CPPFLAGS $cf_cv_x_fontenc_incs"
+LIBS="$cf_cv_x_fontenc_libs $LIBS $X_LIBS"
+CPPFLAGS="$CPPFLAGS $X_CFLAGS $cf_cv_x_fontenc_incs"
 
 AC_MSG_CHECKING(if we can link with font encoding library)
 AC_TRY_LINK([

@@ -1,4 +1,4 @@
-dnl CF_GCC_ATTRIBUTES version: 12 updated: 2009/07/23 17:08:33
+dnl CF_GCC_ATTRIBUTES version: 13 updated: 2009/08/11 20:19:56
 dnl -----------------
 dnl Test for availability of useful gcc __attribute__ directives to quiet
 dnl compiler warnings.  Though useful, not all are supported -- and contrary
@@ -75,24 +75,30 @@ EOF
 		if AC_TRY_EVAL(ac_compile); then
 			test -n "$verbose" && AC_MSG_RESULT(... $cf_attribute)
 			cat conftest.h >>confdefs.h
-			if test "$cf_printf_attribute" = no ; then
-				cat >>confdefs.h <<EOF
+			case $cf_attribute in #(vi
+			printf) #(vi
+				if test "$cf_printf_attribute" = no ; then
+					cat >>confdefs.h <<EOF
 #define GCC_PRINTFLIKE(fmt,var) /* nothing */
 EOF
-			else
-				cat >>confdefs.h <<EOF
+				else
+					cat >>confdefs.h <<EOF
 #define GCC_PRINTFLIKE(fmt,var) __attribute__((format(printf,fmt,var)))
 EOF
-			fi
-			if test "$cf_scanf_attribute" = no ; then
-				cat >>confdefs.h <<EOF
+				fi
+				;;
+			scanf) #(vi
+				if test "$cf_scanf_attribute" = no ; then
+					cat >>confdefs.h <<EOF
 #define GCC_SCANFLIKE(fmt,var) /* nothing */
 EOF
-			else
-				cat >>confdefs.h <<EOF
+				else
+					cat >>confdefs.h <<EOF
 #define GCC_SCANFLIKE(fmt,var)  __attribute__((format(scanf,fmt,var)))
 EOF
-			fi
+				fi
+				;;
+			esac
 		fi
 	done
 else
