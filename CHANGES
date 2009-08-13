@@ -1,3 +1,15 @@
+2009-08-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FONTENC: fontenc library normally requires z library
+	on conventional X systems, I also need the macros from AC_PATH_XTRA - fix
+
+	* AcSplit/CF_PROG_LINT: add splint and lclint
+
+2009-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	that last change needs a case-statement to prevent extra #define's
+
 2009-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_WARNINGS: add CF_GCC_ATTRIBUTES

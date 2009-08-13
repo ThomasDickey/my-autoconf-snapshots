@@ -1,7 +1,7 @@
-dnl CF_PROG_LINT version: 1 updated: 2006/09/16 11:40:59
+dnl CF_PROG_LINT version: 2 updated: 2009/08/12 04:43:14
 dnl ------------
 AC_DEFUN([CF_PROG_LINT],
 [
-AC_CHECK_PROGS(LINT, tdlint lint alint)
+AC_CHECK_PROGS(LINT, tdlint lint alint splint lclint)
 AC_SUBST(LINT_OPTS)
 ])dnl
