@@ -1,3 +1,8 @@
+2009-08-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_STATES:
+	modify to determine the number of states supported in the lex implementation
+
 2009-08-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FONTENC: fontenc library normally requires z library
