@@ -1,25 +1,45 @@
-dnl CF_LEX_STATES version: 4 updated: 2009/04/04 13:08:05
+dnl CF_LEX_STATES version: 5 updated: 2009/08/24 06:40:08
 dnl -------------
 dnl Check if the lex/flex program accepts states, i.e., %s and %x.  Older
 dnl implementations do not support these.
+dnl
+dnl $1 = optional parameter for number of states needed
 AC_DEFUN([CF_LEX_STATES],[
 AC_MSG_CHECKING(if $LEX supports states)
+
+cf_lex_statemax=ifelse($1,,32,$1)
+cf_lex_statenum=0
+cf_lex_states_s=
+cf_lex_states_x=
+
+cf_lex_states=no
+while test 0 != `expr $cf_lex_statenum \< $cf_lex_statemax`
+do
+cf_lex_statenum=`expr $cf_lex_statenum + 1`
+cf_lex_states_s="$cf_lex_states_s S$cf_lex_statenum"
+cf_lex_states_x="$cf_lex_states_x X$cf_lex_statenum"
 cat >conftest.l <<CF_EOF
-%s X Y Z
-%x A B C
+%s $cf_lex_states_s
+%x $cf_lex_states_x
 %%
 %%
 nothing	ECHO;
 CF_EOF
-cf_lex_states="$LEX conftest.l 1>&AC_FD_CC"
-if AC_TRY_EVAL(cf_lex_states); then
-cf_lex_states=yes
-else
-cf_lex_states=no
-fi
+	cf_lex_states="$LEX conftest.l 1>&AC_FD_CC"
+	if AC_TRY_EVAL(cf_lex_states); then
+		if test $cf_lex_statenum = $cf_lex_statemax; then
+			cf_lex_states=yes
+			break
+		else
+			cf_lex_states=$cf_lex_statenum
+		fi
+	else
+		break
+	fi
+done
 AC_MSG_RESULT($cf_lex_states)
 rm -f conftest.* $LEX_OUTPUT_ROOT.c
-if test "$cf_lex_states" != yes ; then
+if test "$cf_lex_states" = no ; then
 	AC_MSG_WARN(Your $LEX program does not support POSIX states.  Get flex.)
 fi
 ])dnl
