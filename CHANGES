@@ -1,3 +1,7 @@
+2009-08-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2009-08-19
+
 2009-08-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_STATES:
