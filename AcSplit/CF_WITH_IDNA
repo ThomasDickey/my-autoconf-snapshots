@@ -1,0 +1,19 @@
+dnl CF_WITH_IDNA version: 2 updated: 2009/08/27 16:24:24
+dnl ------------
+dnl Check for libidn, use it if found.
+dnl
+dnl $1 = optional path for headers/library
+AC_DEFUN([CF_WITH_IDNA],[
+  CF_ADD_OPTIONAL_PATH($1)
+
+  CF_FIND_LINKAGE([
+#include <stdio.h>
+#include <idna.h>
+],[
+	char *output = 0;
+    int code = idna_to_ascii_8z("name", &output, IDNA_USE_STD3_ASCII_RULES);
+],idn,[
+	AC_DEFINE(USE_IDNA)
+	LIBS="-lidn $LIBS"
+])
+])dnl
