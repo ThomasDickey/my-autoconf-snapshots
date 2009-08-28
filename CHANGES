@@ -1,3 +1,9 @@
+2009-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_IDNA: add libs too
+
+	* AcSplit/CF_WITH_IDNA: ci-aclocal generated header
+
 2009-08-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2009-08-19
