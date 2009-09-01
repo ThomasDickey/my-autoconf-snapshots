@@ -1,3 +1,9 @@
+2009-08-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GETOPT_HEADER: fix redefinition error for msys
+
+	* AcSplit/CF_GETOPT_HEADER: currently, Linux puts getopt() in unistd.h
+
 2009-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IDNA: add libs too
