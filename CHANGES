@@ -1,3 +1,11 @@
+2009-09-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_VERSION:
+	ensure that we start looking for version on the second token (still), which
+	must begin with a numeric digit.  Then trim off following tokens.  This works
+	for reflex's latest change, e.g.
+		reflex 2.5.4 (20090902)
+
 2009-08-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GETOPT_HEADER: fix redefinition error for msys
