@@ -1,3 +1,15 @@
+2009-10-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_STDIO_UNLOCKED: fix typo
+
+	* AcSplit/CF_STDIO_UNLOCKED:
+	changes for diffstat, which doesn't care about putc_unlocked, but does give
+	a warning on HPUX and Tru64 for lack of prototype
+
+2009-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS: allow build outside source-tree
+
 2009-09-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_VERSION:

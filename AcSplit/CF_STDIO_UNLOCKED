@@ -1,10 +1,32 @@
-dnl CF_STDIO_UNLOCKED version: 1 updated: 2007/05/05 11:11:12
+dnl CF_STDIO_UNLOCKED version: 3 updated: 2009/10/06 19:54:39
 dnl -----------------
 dnl The four functions getc_unlocked(), getchar_unlocked(), putc_unlocked(),
 dnl putchar_unlocked() are in POSIX.1-2001.
-AC_DEFUN([CF_STDIO_UNLOCKED],[
-AC_HAVE_FUNCS( \
-getc_unlocked \
-putc_unlocked \
-)
-])dnl
+dnl
+dnl Test for one or more of the "unlocked" stdio getc/putc functions, and (if
+dnl the system requires it to declare the prototype) define _REENTRANT
+dnl
+dnl $1 = one or more stdio functions to check for existence and prototype.
+AC_DEFUN([CF_STDIO_UNLOCKED],
+[
+cf_stdio_unlocked=no
+AC_CHECK_FUNCS(ifelse([$1],,[getc_unlocked putc_unlocked],[$1]),
+	[cf_stdio_unlocked=$ac_func])
+if test "$cf_stdio_unlocked" != no ; then
+	case "$CPPFLAGS" in #(vi
+	*-D_REENTRANT*) #(vi
+		;;
+	*)
+	AC_CACHE_CHECK(if we should define _REENTRANT,cf_cv_stdio_unlocked,[
+	AC_TRY_COMPILE([#include <stdio.h>],[
+		extern void *$cf_stdio_unlocked(void *);
+		void *dummy = $cf_stdio_unlocked(0)],
+			[cf_cv_stdio_unlocked=yes],
+			[cf_cv_stdio_unlocked=no])])
+		if test "$cf_cv_stdio_unlocked" = yes ; then
+			AC_DEFINE(_REENTRANT)
+		fi
+		;;
+	esac
+fi
+])
