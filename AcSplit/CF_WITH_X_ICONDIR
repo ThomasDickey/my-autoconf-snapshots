@@ -1,0 +1,24 @@
+dnl CF_WITH_X_ICONDIR version: 1 updated: 2009/10/08 05:20:04
+dnl -----------------
+dnl Option for specifying the location of the X icon directory.
+dnl
+dnl The entire feature can be suppressed by --without-icondir 
+dnl which makes $no_icondir become a comment-marker.
+AC_DEFUN([CF_WITH_X_ICONDIR],
+[
+	AC_MSG_CHECKING(for directory to install icons)
+	CF_WITH_PATH(icondir,
+		[  --with-icondir=DIR      directory in which to install icons],
+		[icondir],[EPREFIX/share/pixmaps],
+		['\${exec_prefix}/share/pixmaps'])
+	AC_MSG_RESULT($icondir)
+	AC_SUBST(icondir)
+
+	no_icondir=
+	if test "$icondir" = no ; then
+		no_icondir="#"
+	else
+		EXTRA_INSTALL_DIRS="$EXTRA_INSTALL_DIRS \$(ICONDIR)"
+	fi
+	AC_SUBST(no_icondir)
+])

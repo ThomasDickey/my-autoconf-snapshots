@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20091006
+MANIFEST for my-autoconf, version t20091008
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -425,6 +425,9 @@ AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
 AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_WITH_WARNINGS        make option for gcc warnings
+AcSplit/CF_WITH_X_APP_DEFAULTS  option for getting X's app-defaults directory
+AcSplit/CF_WITH_X_DESKTOP_UTILS option for getting X's desktop-utils
+AcSplit/CF_WITH_X_ICONDIR       option for getting X's icon directory
 AcSplit/CF_WITH_ZLIB            check for zlib
 AcSplit/CF_XKB_BELL_EXT         check for XKB Bell extension (xterm)
 AcSplit/CF_XOPEN_CURSES         check for X/Open curses
