@@ -1,3 +1,13 @@
+2009-10-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_FUNCDECL:
+	fix cut/paste typo: "$ac_func" was used where "$2" should be.
+
+2009-10-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_X_APP_DEFAULTS, AcSplit/CF_WITH_X_ICONDIR:
+	use $(name) form rather than ${name} for default-value, to work on Tru64
+
 2009-10-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_X_APP_DEFAULTS, AcSplit/CF_WITH_X_DESKTOP_UTILS, AcSplit/CF_WITH_X_ICONDIR:
