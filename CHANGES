@@ -1,3 +1,15 @@
+2009-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS:
+	investigation of Debian #555579 noticed that gnutls depends on gcrypt library
+	rather than crypt (though I seem to recall that library was renamed at some
+	point).  Just rename it now, perhaps fix as needed later.
+
+2009-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: update from
+		http://savannah.gnu.org/projects/config
+
 2009-10-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RCS_SCCS: add SVN
