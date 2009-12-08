@@ -1,3 +1,10 @@
+2009-12-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_VERSION:
+	if no lex is found, autoconf uses ":", which is not reasonable.  replace
+	that by "lex", to ensure a build-failure if the output of lex is really
+	needed (patch by Brendan O'Dea).
+
 2009-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS:
