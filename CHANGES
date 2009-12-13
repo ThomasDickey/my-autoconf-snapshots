@@ -1,3 +1,10 @@
+2009-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_ECHO:
+	modify to put tab outside the macro, so the substitution marker would always
+	be prefixed in the makefile with a tab, like other commands (patch by
+	Jonathan Nieder).
+
 2009-12-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING: update copyright date
