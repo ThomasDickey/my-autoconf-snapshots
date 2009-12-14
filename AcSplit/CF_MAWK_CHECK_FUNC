@@ -1,7 +1,7 @@
-dnl CF_MAWK_CHECK_FUNC version: 4 updated: 2009/07/23 05:15:39
+dnl CF_MAWK_CHECK_FUNC version: 5 updated: 2009/12/14 04:19:08
 dnl ------------------
 AC_DEFUN([CF_MAWK_CHECK_FUNC],[
     AC_CHECK_FUNC($1,,[
         CF_UPPER(cf_check_func,NO_$1)
-        AC_DEFINE($cf_check_func)])
+        AC_DEFINE_UNQUOTED($cf_check_func)])
 ])dnl

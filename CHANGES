@@ -1,3 +1,16 @@
+2009-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_FPE_SIGINFO: change test-variable to a cache variable
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	pass configure #define's to compile of fpe_check, to setup sigaction/signal choice.
+
+	* AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	eliminate redundant use of CF_MAWK_FPE_SIGINFO in CF_MAWK_RUN_FPE_TESTS
+
+	* AcSplit/CF_MAWK_CHECK_FUNC:
+	use the unquoted define, otherwise the shell variable name is #define'd
+
 2009-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_ECHO:
