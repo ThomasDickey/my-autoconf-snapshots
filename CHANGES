@@ -1,3 +1,8 @@
+2009-12-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	fix comment
+
 2009-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_FPE_SIGINFO: change test-variable to a cache variable
