@@ -1,15 +1,16 @@
-dnl CF_MAWK_FPE_SIGINFO version: 5 updated: 2009/12/14 20:32:04
+dnl CF_MAWK_FPE_SIGINFO version: 7 updated: 2009/12/18 05:50:47
 dnl -------------------
 dnl SYSv and Solaris FPE checks
 AC_DEFUN([CF_MAWK_FPE_SIGINFO],
 [
 if test "x$cf_cv_use_sv_siginfo" = "xno"
 then
-   AC_CHECK_FUNC(sigvec,sigvec=1)
-   # 1:check_fpe_traps
-   if test "$sigvec" = 1 && ./fpe_check$ac_exeext  phoney_arg >> defines.out ; then
-	   :
-   else
-	   AC_DEFINE(NOINFO_SIGFPE)
+    AC_CHECK_FUNC(sigvec,cf_have_sigvec=1)
+    echo "FPE_CHECK 2:get_fpe_codes" >&AC_FD_CC
+    if test "$cf_have_sigvec" = 1 && ./fpe_check$ac_exeext  phoney_arg >> defines.out ; then
+	:
+    else
+	dnl FIXME - look for sigprocmask if we have sigaction
+	AC_DEFINE(NOINFO_SIGFPE)
    fi
 fi])
