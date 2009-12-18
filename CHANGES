@@ -1,3 +1,12 @@
+2009-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	improve check for NaN, and write progress to config.log
+
+	* AcSplit/CF_MAWK_FPE_SIGINFO: minor cleanup, write to config.log
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT: trim blanks
+
 2009-12-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
