@@ -1,33 +1,45 @@
-dnl CF_REGEX version: 3 updated: 1997/11/01 14:26:01
+dnl CF_REGEX version: 5 updated: 2009/12/19 13:18:53
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
 AC_DEFUN([CF_REGEX],
 [
-AC_MSG_CHECKING([for regular-expression headers])
-AC_CACHE_VAL(cf_cv_regex,[
+
+AC_CHECK_FUNC(regcomp,,[
+	AC_CHECK_LIB(regex,regcomp,[LIBS="-lregex $LIBS"],[
+		AC_CHECK_LIB(re,regcomp,[LIBS="-lre $LIBS"],[
+			AC_CHECK_FUNC(compile,,[
+				AC_CHECK_LIB(gen,compile,[LIBS="-lgen $LIBS"],[
+					AC_MSG_WARN(cannot find regular expression library)
+				])
+			])
+		])
+	])
+])
+
+AC_CACHE_CHECK(for regular-expression headers,cf_cv_regex_hdrs,[
+cf_cv_regex_hdrs=no
 AC_TRY_LINK([#include <sys/types.h>
 #include <regex.h>],[
 	regex_t *p;
 	int x = regcomp(p, "", 0);
 	int y = regexec(p, "", 0, 0, 0);
 	regfree(p);
-	],[cf_cv_regex="regex.h"],[
+	],[cf_cv_regex_hdrs="regex.h"],[
 	AC_TRY_LINK([#include <regexp.h>],[
 		char *p = compile("", "", "", 0);
 		int x = step("", "");
-	],[cf_cv_regex="regexp.h"],[
-		cf_save_LIBS="$LIBS"
-		LIBS="-lgen $LIBS"
+	],[cf_cv_regex_hdrs="regexp.h"],[
 		AC_TRY_LINK([#include <regexpr.h>],[
 			char *p = compile("", "", "");
 			int x = step("", "");
-		],[cf_cv_regex="regexpr.h"],[LIBS="$cf_save_LIBS"])])])
+		],[cf_cv_regex_hdrs="regexpr.h"])])])
 ])
-AC_MSG_RESULT($cf_cv_regex)
-case $cf_cv_regex in
-	regex.h)   AC_DEFINE(HAVE_REGEX_H_FUNCS) ;;
-	regexp.h)  AC_DEFINE(HAVE_REGEXP_H_FUNCS) ;;
-	regexpr.h) AC_DEFINE(HAVE_REGEXPR_H_FUNCS) ;;
+
+case $cf_cv_regex_hdrs in #(vi
+    no)	       AC_MSG_WARN(no regular expression header found) ;; #(vi
+    regex.h)   AC_DEFINE(HAVE_REGEX_H_FUNCS) ;; #(vi
+    regexp.h)  AC_DEFINE(HAVE_REGEXP_H_FUNCS) ;; #(vi
+    regexpr.h) AC_DEFINE(HAVE_REGEXPR_H_FUNCS) ;;
 esac
 ])dnl

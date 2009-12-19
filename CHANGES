@@ -1,3 +1,12 @@
+2009-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_MATH_LIB, AcSplit/CF_SHARED_OPTS, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_MAWK_MATHLIB, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_REGEX:
+	put new libraries before $LIBS
+
+	* AcSplit/CF_REGEX:
+	check for regular expression library before doing AC_TRY_LINK's since the
+	default runtime libraries may not have regular expression support.
+
 2009-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_RUN_FPE_TESTS:

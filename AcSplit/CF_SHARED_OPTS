@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 57 updated: 2009/01/17 16:10:05
+dnl CF_SHARED_OPTS version: 58 updated: 2009/12/19 13:46:49
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -306,7 +306,7 @@ CF_EOF
 	if test -n "$LD_RPATH_OPT" ; then
 		AC_MSG_CHECKING(if we need a space after rpath option)
 		cf_save_LIBS="$LIBS"
-		LIBS="$LIBS ${LD_RPATH_OPT}$libdir"
+		LIBS="${LD_RPATH_OPT}$libdir $LIBS"
 		AC_TRY_LINK(, , cf_rpath_space=no, cf_rpath_space=yes)
 		LIBS="$cf_save_LIBS"
 		AC_MSG_RESULT($cf_rpath_space)
