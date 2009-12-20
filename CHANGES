@@ -1,3 +1,8 @@
+2009-12-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	re-create test-program for running the second check
+
 2009-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_MATH_LIB, AcSplit/CF_SHARED_OPTS, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_MAWK_MATHLIB, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_REGEX:
