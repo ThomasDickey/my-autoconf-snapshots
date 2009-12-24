@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_PCRE version: 3 updated: 2002/04/17 21:09:56
+dnl CF_BUNDLED_PCRE version: 4 updated: 2009/12/24 04:20:51
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the pcre library.
@@ -13,7 +13,7 @@ PCREDIR_CPPFLAGS=
 case .$cf_pcre_home in #(vi
 .no) #(vi
 	# setup to compile the bundled PCRE:
-	. $srcdir/pcre/version.sh
+#	. $srcdir/pcre/version.sh
 	AC_SUBST(PCRE_MAJOR)
 	AC_SUBST(PCRE_MINOR)
 	AC_SUBST(PCRE_DATE)

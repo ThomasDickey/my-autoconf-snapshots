@@ -1,3 +1,14 @@
+2009-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NETLIBS: add check for -lnetwork, from tin
+
+	* AcSplit/CF_BUNDLED_PCRE:
+	suppress sourcing pcre's version.sh, from tin
+
+	* AcSplit/AM_MULTIBYTE_ABLE: updated check, from tin
+
+	* config.sub, config.guess: 2009-12-13
+
 2009-12-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_RUN_FPE_TESTS:
