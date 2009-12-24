@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 5 updated: 2008/12/29 08:43:47
+dnl CF_NETLIBS version: 6 updated: 2009/12/24 04:20:51
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -9,6 +9,7 @@ dnl	-lresolv -lsocket -lnsl
 dnl	-lnsl -lsocket
 dnl	-lsocket
 dnl	-lbsd
+dnl	-lnetwork
 AC_DEFUN([CF_NETLIBS],[
 cf_test_netlibs=no
 
@@ -69,6 +70,9 @@ mingw32) # (vi
 
 	AC_CHECK_FUNCS(gethostbyname,,[
 		CF_RECHECK_FUNC(gethostbyname,nsl,cf_cv_netlibs)])
+
+	AC_CHECK_FUNCS(gethostbyname,,[
+		CF_RECHECK_FUNC(gethostbyname,network,cf_cv_netlibs)])
 
 	AC_CHECK_FUNCS(strcasecmp,,[
 		CF_RECHECK_FUNC(strcasecmp,resolv,cf_cv_netlibs)])
