@@ -1,3 +1,8 @@
+2009-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add special case for Darwin to use its extensions (patch by Dennis Preiser)
+
 2009-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NETLIBS: add check for -lnetwork, from tin
