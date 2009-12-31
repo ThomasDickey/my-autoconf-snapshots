@@ -1,3 +1,10 @@
+2009-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess:
+	2009-12-30 (however copyright date is for the next year)
+
+	* config.sub: 2009-12-31 (however, copyright date is for the next year)
+
 2009-12-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
