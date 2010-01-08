@@ -1,3 +1,15 @@
+2010-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	restore the fix for hpux11, lost in last checkin
+
+2010-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT:
+	modify the check for termcap.h to only reject it if no full tgetent was
+	found (which would correspond to ncurses' termcap.h).  This allows matching
+	termcap.h on older FreeBSD's which provided a custom tgetent().
+
 2009-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess:
