@@ -1,3 +1,20 @@
+2010-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REMOVE_DEFINE:
+	allow the third parameter (the symbol name) to be a variable.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	use CF_ADD_CFLAGS to consistently add (and remove duplicates) for -D's to
+	CPPFLAGS
+
+	* AcSplit/CF_POSIX_C_SOURCE:
+	use CF_ADD_CFLAGS to consistently add (and remove duplicates) for -D's to
+	CPPFLAGS.
+
+	* AcSplit/CF_ADD_CFLAGS:
+	when adding a -D, use CF_REMOVE_DEFINE to remove previous occurrences,
+	to avoid redefinition warnings.
+
 2010-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
