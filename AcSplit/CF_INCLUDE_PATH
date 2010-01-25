@@ -1,4 +1,4 @@
-dnl CF_INCLUDE_PATH version: 4 updated: 2001/04/15 21:21:45
+dnl CF_INCLUDE_PATH version: 5 updated: 2010/01/17 20:36:17
 dnl ---------------
 dnl	Adds to the include-path
 dnl
@@ -7,6 +7,7 @@ dnl	the cpp-tests.
 dnl
 AC_DEFUN([CF_INCLUDE_PATH],
 [
+$1=
 for cf_path in $1
 do
 	cf_result="no"

@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 13 updated: 2009/01/11 15:30:48
+dnl CF_BUNDLED_INTL version: 14 updated: 2010/01/17 20:37:27
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -7,6 +7,8 @@ dnl $1 specifies either Makefile or makefile, defaulting to the former.
 dnl $2 if nonempty sets the option to --enable-nls rather than to --disable-nls
 dnl
 dnl Sets variables which can be used to substitute in makefiles:
+dnl	GT_YES       - "#" comment unless building intl library, otherwise empty
+dnl	GT_NO        - "#" comment if building intl library, otherwise empty
 dnl	INTLDIR_MAKE - to make ./intl directory
 dnl	MSG_DIR_MAKE - to make ./po directory
 dnl	SUB_MAKEFILE - list of makefiles in ./intl, ./po directories
