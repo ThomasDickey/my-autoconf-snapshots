@@ -1,3 +1,16 @@
+2010-01-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_TERM_H:
+	modify to handle cases such as cygwin where packager has installed curses.h
+	and term.h in different directories, e.g., to wedge in a termcap library.
+
+2010-01-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL: add comment for GT_YES/GT_NO substitutions
+
+	* AcSplit/CF_HEADER_PATH, AcSplit/CF_INCLUDE_PATH:
+	always clear target variable before appending
+
 2010-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REMOVE_DEFINE:
