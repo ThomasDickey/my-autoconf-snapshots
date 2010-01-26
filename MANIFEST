@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100124
+MANIFEST for my-autoconf, version t20100126
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -40,6 +40,7 @@ AcSplit/CF_ARG_MSG_ENABLE       verbose form of AC_ARG_ENABLE
 AcSplit/CF_ARG_OPTION           restricted form of AC_ARG_ENABLE
 AcSplit/CF_ARG_WITH             restricted form of AC_ARG_WITH, rejects yes/no values
 AcSplit/CF_AR_FLAGS             check for archiver flags
+AcSplit/CF_AUTO_SYMLINK         automatically compute symbolic link based on version.sh script
 AcSplit/CF_AWK_BIGSTRING        script to check for big-string support in awk
 AcSplit/CF_AWK_BIG_PRINTF       check for string-limit in awk "%s" printf's
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
@@ -367,6 +368,7 @@ AcSplit/CF_TIOCGWINSZ           check for working TIOCGWINSZ function
 AcSplit/CF_TM_GMTOFF            check for tm_gmtoff offset in struct tm
 AcSplit/CF_TOP_BUILDDIR         make an absolute pathname for the top-build directory.
 AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)
+AcSplit/CF_TRANSFORM_PROGRAM    extract reusable portion of AC_ARG_PROGRAM
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TTY_GROUP            check for existence of tty group
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
@@ -421,6 +423,7 @@ AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_PTHREAD         configure option --with-pthread
 AcSplit/CF_WITH_PURIFY          configure --with-purify
 AcSplit/CF_WITH_REL_VERSION     allow release-version to be altered (ncurses)
+AcSplit/CF_WITH_SYMLINK         handle --with-XXX-symlink option, originally in xterm, for vile, etc.,
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
 AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
@@ -445,6 +448,7 @@ AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
 AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
+AcSplit/CF__INIT_TRANSFORM      initial value for $program_transform_name
 AcSplit/CF__INTL_BODY           test-code for libintl lookup
 AcSplit/CF__INTL_HEAD           test-headers for libintl lookup
 AcSplit/CF__SSL_BODY            test-code for SSL compiles

@@ -1,0 +1,5 @@
+dnl CF__INIT_TRANSFORM version: 1 updated: 2010/01/26 06:48:38
+dnl ------------------
+dnl The initial/inactive value for $program_transform_name is a dummy
+dnl substitution.
+define([CF__INIT_TRANSFORM],[s,x,x,])dnl

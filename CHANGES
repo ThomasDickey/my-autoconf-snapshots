@@ -1,3 +1,22 @@
+2010-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SYMLINK: align comment-text
+
+	* AcSplit/CF__INIT_TRANSFORM: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_SYMLINK: use CF__INIT_TRANSFORM
+
+	* AcSplit/CF_WITH_SYMLINK: change to make more generic
+
+	* AcSplit/CF_AUTO_SYMLINK, AcSplit/CF_TRANSFORM_PROGRAM:
+	ci-aclocal generated header
+
+2010-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SYMLINK: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_X_DESKTOP_UTILS: make comment generic
+
 2010-01-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_TERM_H:
