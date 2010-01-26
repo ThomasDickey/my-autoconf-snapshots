@@ -1,4 +1,4 @@
-dnl CF_WITH_X_DESKTOP_UTILS version: 1 updated: 2009/10/08 05:20:04
+dnl CF_WITH_X_DESKTOP_UTILS version: 2 updated: 2010/01/25 20:34:54
 dnl -----------------------
 dnl Option for specifying desktop-utils program and flags.
 AC_DEFUN([CF_WITH_X_DESKTOP_UTILS],
@@ -6,7 +6,7 @@ AC_DEFUN([CF_WITH_X_DESKTOP_UTILS],
 	# Comment-out the install-desktop rule if the desktop-utils are not found.
 	AC_MSG_CHECKING(if you want to install desktop files)
 	CF_ARG_OPTION(desktop,
-		[  --disable-desktop       disable install of xterm desktop files],
+		[  --disable-desktop       disable install of X desktop files],
 		[enable_desktop=$enableval],
 		[enable_desktop=$enableval],yes)
 	AC_MSG_RESULT($enable_desktop)

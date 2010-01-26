@@ -1,0 +1,19 @@
+dnl CF_TRANSFORM_PROGRAM version: 1 updated: 2010/01/26 05:55:00
+dnl --------------------
+dnl From AC_ARG_PROGRAM, (re)compute $program_transform_name based on the
+dnl $program_prefix and $program_suffix values.
+AC_DEFUN([CF_TRANSFORM_PROGRAM],[
+program_transform_name=s,x,x,
+test "$program_prefix" != NONE &&
+  program_transform_name="s,^,$program_prefix,;$program_transform_name"
+# Use a double $ so make ignores it.
+test "$program_suffix" != NONE &&
+  program_transform_name="s,\$,$program_suffix,;$program_transform_name"
+# Double any \ or $.  echo might interpret backslashes.
+# By default was `s,x,x', remove it if useless.
+cat <<\_ACEOF >conftest.sed
+s/[\\$]/&&/g;s/;s,x,x,$//
+_ACEOF
+program_transform_name=`echo $program_transform_name | sed -f conftest.sed`
+rm conftest.sed
+])
