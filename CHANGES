@@ -1,3 +1,10 @@
+2010-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_AUTO_SYMLINK:
+	use $SHELL in case version.sh's permissions are incorrect
+
+	* AcSplit/CF_TRANSFORM_PROGRAM: add quotes
+
 2010-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SYMLINK: align comment-text
