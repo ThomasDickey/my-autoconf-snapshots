@@ -1,4 +1,4 @@
-dnl CF_TRANSFORM_PROGRAM version: 1 updated: 2010/01/26 05:55:00
+dnl CF_TRANSFORM_PROGRAM version: 2 updated: 2010/01/27 20:20:39
 dnl --------------------
 dnl From AC_ARG_PROGRAM, (re)compute $program_transform_name based on the
 dnl $program_prefix and $program_suffix values.
@@ -12,7 +12,7 @@ test "$program_suffix" != NONE &&
 # Double any \ or $.  echo might interpret backslashes.
 # By default was `s,x,x', remove it if useless.
 cat <<\_ACEOF >conftest.sed
-s/[\\$]/&&/g;s/;s,x,x,$//
+s/[[\\$]]/&&/g;s/;s,x,x,$//
 _ACEOF
 program_transform_name=`echo $program_transform_name | sed -f conftest.sed`
 rm conftest.sed

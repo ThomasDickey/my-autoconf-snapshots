@@ -1,3 +1,7 @@
+2010-01-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc, COPYING: bump
+
 2010-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_AUTO_SYMLINK:
