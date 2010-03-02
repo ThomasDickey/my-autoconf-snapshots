@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100130
+MANIFEST for my-autoconf, version t20100302
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -240,6 +240,7 @@ AcSplit/CF_MIXEDCASE_FILENAMES  check if the filesystem is really case-dependent
 AcSplit/CF_MKSTEMP              check for working mkstemp() (vile)
 AcSplit/CF_MSG_LOG              write to configure's log
 AcSplit/CF_NCURSES_ABI_6        utility for bumping ncurses' version to 6 (ncurses)
+AcSplit/CF_NCURSES_ADDON        macro to link ncurses/ncursesw for an add-on
 AcSplit/CF_NCURSES_BROKEN       check for broken 1.9.9e ncurses
 AcSplit/CF_NCURSES_CC_CHECK     check to ensure right ncurses/ncursesw header (ded)
 AcSplit/CF_NCURSES_CONFIG       common configure macro (ncurses)
@@ -391,6 +392,7 @@ AcSplit/CF_UTMP_UT_SYSLEN       from Alan Coopersmith bug-report - see
 AcSplit/CF_UTMP_UT_XSTATUS      checks for utmp.ut_xstatus
 AcSplit/CF_UTMP_UT_XTIME        check for utmp.ut_xtime member
 AcSplit/CF_VARARGS              check for ANSI stdargs vs varargs (td_lib)
+AcSplit/CF_VA_COPY              check for va_copy (or __va_copy)
 AcSplit/CF_VERBOSE              use AC_VERBOSE w/o getting warnings from autoconf
 AcSplit/CF_VERSION_INFO         derive version-info from top-level VERSION file
 AcSplit/CF_WAIT                 check for <sys/wait.h>, 'union wait', etc (td_lib)
