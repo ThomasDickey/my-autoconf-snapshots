@@ -1,3 +1,20 @@
+2010-03-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_VA_COPY: ci-aclocal generated header
+
+2010-02-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_ADDON: fix typo
+	fill in non-config case
+
+	* AcSplit/CF_NCURSES_ADDON: ci-aclocal generated header
+
+2010-02-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS:
+	modify ACPPFLAGS to support Ada95 as separate tarball, and slightly different
+	directory structure.
+
 2010-01-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc, COPYING: bump
