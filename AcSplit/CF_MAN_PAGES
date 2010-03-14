@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 35 updated: 2007/03/31 11:47:29
+dnl CF_MAN_PAGES version: 36 updated: 2010/03/13 13:41:01
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -129,7 +129,7 @@ CF_EOF
 		cf_NAME=`echo "$cf_name" | sed y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%`
 		cf_name=`echo $cf_name|sed "$program_transform_name"`
 cat >>$cf_edit_man <<-CF_EOF
-		s,@$cf_NAME@,$cf_name,
+		s,@$cf_NAME@,$cf_name,g
 CF_EOF
 	done
 	])
