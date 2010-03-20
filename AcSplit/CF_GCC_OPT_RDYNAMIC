@@ -1,0 +1,37 @@
+dnl CF_GCC_OPT_RDYNAMIC version: 1 updated: 2010/03/20 12:37:42
+dnl -------------------
+dnl "Newer" versions of gcc support the -rdynamic option:
+dnl		Pass the flag -export-dynamic to the ELF linker, on targets that
+dnl		support it. This instructs the linker to add all symbols, not only
+dnl		used ones, to the dynamic symbol table. This option is needed for
+dnl		some uses of "dlopen" or to allow obtaining backtraces from within
+dnl		a program.
+dnl Check for the option, and add it to $CFLAGS if available.
+AC_DEFUN([CF_GCC_OPT_RDYNAMIC],[
+AC_CACHE_CHECK([if $CC has -rdynamic option],cf_cv_gcc_opt_rdynamic,[
+
+cf_save_CFLAGS="$CFLAGS"
+CFLAGS="-Wall -rdynamic $CFLAGS"
+
+# gcc usually does not return an error for unrecognized options.
+AC_TRY_LINK([#include <stdio.h>],
+	[printf("Hello");],
+	[
+	# refine check...
+	case testing`eval $ac_link 2>&1` in #(vi
+	*unrecog*) #(vi
+		cf_cv_gcc_opt_rdynamic=no
+		;;
+	*)
+		cf_cv_gcc_opt_rdynamic=yes
+		;;
+	esac
+	],
+	[cf_cv_gcc_opt_rdynamic=no])
+
+CFLAGS="$cf_save_CFLAGS"
+])
+if test "$cf_cv_gcc_opt_rdynamic" = yes ; then
+	CF_ADD_CFLAGS([-rdynamic])
+fi
+])dnl
