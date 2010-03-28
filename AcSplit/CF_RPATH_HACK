@@ -1,50 +1,18 @@
-dnl CF_RPATH_HACK version: 4 updated: 2008/09/13 12:53:26
+dnl CF_RPATH_HACK version: 5 updated: 2010/03/27 18:39:42
 dnl -------------
 AC_DEFUN([CF_RPATH_HACK],
 [
+AC_REQUIRE([CF_LD_RPATH_OPT])
 AC_REQUIRE([CF_SHARED_OPTS])
 AC_MSG_CHECKING(for updated LDFLAGS)
-if test -n "$LDFLAGS" ; then
-AC_MSG_RESULT(maybe)
-CF_VERBOSE(...checking LDFLAGS $LDFLAGS)
-CF_VERBOSE(...checking EXTRA_LDFLAGS $EXTRA_LDFLAGS)
-case "$EXTRA_LDFLAGS" in #(vi
--Wl,-rpath,*) #(vi
-	cf_rpath_hack="-Wl,-rpath,"
-	;;
--R\ *)
-	cf_rpath_hack="-R "
-	;;
--R*)
-	cf_rpath_hack="-R"
-	;;
-*)
-	cf_rpath_hack=
-	;;
-esac
-if test -n "$cf_rpath_hack" ; then
-	cf_rpath_dst=
-	for cf_rpath_src in $LDFLAGS
-	do
-		CF_VERBOSE(Filtering $cf_rpath_src)
-		case $cf_rpath_src in #(vi
-		-L*) #(vi
-			if test "$cf_rpath_hack" = "-R " ; then
-				cf_rpath_tmp=`echo "$cf_rpath_src" |sed -e 's%-L%-R %'`
-			else
-				cf_rpath_tmp=`echo "$cf_rpath_src" |sed -e s%-L%$cf_rpath_hack%`
-			fi
-			CF_VERBOSE(...Filter $cf_rpath_tmp)
-			EXTRA_LDFLAGS="$cf_rpath_tmp $EXTRA_LDFLAGS"
-			;;
-		esac
-		cf_rpath_dst="$cf_rpath_dst $cf_rpath_src"
-	done
-	LDFLAGS=$cf_rpath_dst
-	CF_VERBOSE(...checked LDFLAGS $LDFLAGS)
+if test -n "$LD_RPATH_OPT" ; then
+	AC_MSG_RESULT(maybe)
+
+	CF_VERBOSE(...checking EXTRA_LDFLAGS $EXTRA_LDFLAGS)
+
+	CF_RPATH_HACK_2(LDFLAGS)
+	CF_RPATH_HACK_2(LIBS)
+
 	CF_VERBOSE(...checked EXTRA_LDFLAGS $EXTRA_LDFLAGS)
-fi
-else
-AC_MSG_RESULT(no)
 fi
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 58 updated: 2009/12/19 13:46:49
+dnl CF_SHARED_OPTS version: 59 updated: 2010/03/27 18:39:42
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -25,9 +25,9 @@ dnl Some loaders leave 'so_locations' lying around.  It's nice to clean up.
 AC_DEFUN([CF_SHARED_OPTS],
 [
 	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
+	AC_REQUIRE([CF_LD_RPATH_OPT])
 	LOCAL_LDFLAGS=
 	LOCAL_LDFLAGS2=
-	LD_RPATH_OPT=
 	LD_SHARED_OPTS=
 	INSTALL_LIB="-m 644"
 
@@ -70,17 +70,17 @@ AC_DEFUN([CF_SHARED_OPTS],
 
 	cf_cv_shlib_version_infix=no
 
-	case $cf_cv_system_name in
-	aix[[56]]*)
+	case $cf_cv_system_name in #(vi
+	aix[[56]]*) #(vi
 		if test "$GCC" = yes; then
 			CC_SHARED_OPTS=
 			MK_SHARED_LIB="$(CC) -shared"
 		fi
 		;;
-	beos*)
+	beos*) #(vi
 		MK_SHARED_LIB='${CC} ${CFLAGS} -o $[@] -Xlinker -soname=`basename $[@]` -nostart -e 0'
 		;;
-	cygwin*)
+	cygwin*) #(vi
 		CC_SHARED_OPTS=
 		MK_SHARED_LIB='sh ../mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
 		cf_cv_shlib_version=cygdll
@@ -99,7 +99,7 @@ EOF
 CF_EOF
 		chmod +x mk_shared_lib.sh
 		;;
-	darwin*)
+	darwin*) #(vi
 		EXTRA_CFLAGS="-no-cpp-precomp"
 		CC_SHARED_OPTS="-dynamic"
 		MK_SHARED_LIB='${CC} ${CFLAGS} -dynamiclib -install_name ${libdir}/`basename $[@]` -compatibility_version ${ABI_VERSION} -current_version ${ABI_VERSION} -o $[@]'
@@ -114,7 +114,7 @@ CF_EOF
 			LDFLAGS="$LDFLAGS -Wl,-search_paths_first"
 		fi
 		;;
-	hpux*)
+	hpux*) #(vi
 		# (tested with gcc 2.7.2 -- I don't have c89)
 		if test "$GCC" = yes; then
 			LD_SHARED_OPTS='-Xlinker +b -Xlinker ${libdir}'
@@ -127,15 +127,9 @@ CF_EOF
 		# readonly to exploit a quirk in the memory manager.
 		INSTALL_LIB="-m 555"
 		;;
-	irix*)
-		if test "$cf_cv_ld_rpath" = yes ; then
-			if test "$GCC" = yes; then
-				LD_RPATH_OPT="-Wl,-rpath,"
-				EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
-			else
-				LD_RPATH_OPT="-rpath "
-				EXTRA_LDFLAGS="-rpath \${libdir} $EXTRA_LDFLAGS"
-			fi
+	irix*) #(vi
+		if test "$cf_cv_enable_rpath" = yes ; then
+			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		# tested with IRIX 5.2 and 'cc'.
 		if test "$GCC" != yes; then
@@ -146,54 +140,50 @@ CF_EOF
 		fi
 		cf_cv_rm_so_locs=yes
 		;;
-	linux*|gnu*|k*bsd*-gnu)
+	linux*|gnu*|k*bsd*-gnu) #(vi
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
-		if test "$cf_cv_ld_rpath" = yes ; then
-			LD_RPATH_OPT="-Wl,-rpath,"
-			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
+		if test "$cf_cv_enable_rpath" = yes ; then
+			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $[@]'
 		;;
-	openbsd[[2-9]].*)
+	openbsd[[2-9]].*) #(vi
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
-		if test "$cf_cv_ld_rpath" = yes ; then
-			LD_RPATH_OPT="-Wl,-rpath,"
-			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
+		if test "$cf_cv_enable_rpath" = yes ; then
+			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-Bshareable,-soname,'$cf_cv_shared_soname',-stats,-lc -o $[@]'
 		;;
-	nto-qnx*|openbsd*|freebsd[[12]].*)
+	nto-qnx*|openbsd*|freebsd[[12]].*) #(vi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		MK_SHARED_LIB='${LD} -Bshareable -o $[@]'
 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		;;
-	freebsd*)
+	freebsd*) #(vi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
-			LOCAL_LDFLAGS="-rpath \$(LOCAL_LIBDIR)"
-			LOCAL_LDFLAGS2="-rpath \${libdir} $LOCAL_LDFLAGS"
-			LD_RPATH_OPT="-rpath "
-			EXTRA_LDFLAGS="-rpath \${libdir} $EXTRA_LDFLAGS"
+		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_enable_rpath" = yes ; then
+			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS2="${LD_RPATH_OPT}\${libdir} $LOCAL_LDFLAGS"
+			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${LD} -shared -Bshareable -soname=`basename $[@]` -o $[@]'
 		;;
-	netbsd*)
+	netbsd*) #(vi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
-		test "$cf_cv_ld_rpath" = yes && LD_RPATH_OPT="-Wl,-rpath,"
-		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_ld_rpath" = yes ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
+		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_enable_rpath" = yes ; then
+			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
-			EXTRA_LDFLAGS="-Wl,-rpath,\${libdir} $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
 			if test "$cf_cv_shlib_version" = auto; then
 			if test -f /usr/libexec/ld.elf_so; then
 				cf_cv_shlib_version=abi
@@ -207,34 +197,30 @@ CF_EOF
 			MK_SHARED_LIB='${LD} -shared -Bshareable -o $[@]'
 		fi
 		;;
-	osf*|mls+*)
+	osf*|mls+*) #(vi
 		# tested with OSF/1 V3.2 and 'cc'
 		# tested with OSF/1 V3.2 and gcc 2.6.3 (but the c++ demo didn't
 		# link with shared libs).
 		MK_SHARED_LIB='${LD} -set_version ${REL_VERSION}:${ABI_VERSION} -expect_unresolved "*" -shared -soname `basename $[@]`'
-		case $host_os in
+		case $host_os in #(vi
 		osf4*)
 			MK_SHARED_LIB="${MK_SHARED_LIB} -msym"
 			;;
 		esac
 		MK_SHARED_LIB="${MK_SHARED_LIB}"' -o $[@]'
 		if test "$DFT_LWR_MODEL" = "shared" ; then
-			LOCAL_LDFLAGS="-Wl,-rpath,\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
-		fi
-		if test "$cf_cv_ld_rpath" = yes ; then
-			LD_RPATH_OPT="-rpath"
-			# EXTRA_LDFLAGS="$LOCAL_LDFLAGS $EXTRA_LDFLAGS"
 		fi
 		cf_cv_rm_so_locs=yes
 		;;
-	sco3.2v5*)  # (also uw2* and UW7) hops 13-Apr-98
+	sco3.2v5*)  # (also uw2* and UW7: hops 13-Apr-98
 		# tested with osr5.0.5
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-belf -KPIC'
 		fi
 		MK_SHARED_LIB='${LD} -dy -G -h `basename $[@] .${REL_VERSION}`.${ABI_VERSION} -o [$]@'
-		if test "$cf_cv_ld_rpath" = yes ; then
+		if test "$cf_cv_enable_rpath" = yes ; then
 			# only way is to set LD_RUN_PATH but no switch for it
 			RUN_PATH=$libdir
 		fi
@@ -242,7 +228,7 @@ CF_EOF
 		LINK_PROGS='LD_RUN_PATH=${libdir}'
 		LINK_TESTS='Pwd=`pwd`;LD_RUN_PATH=`dirname $${Pwd}`/lib'
 		;;
-	sunos4*)
+	sunos4*) #(vi
 		# tested with SunOS 4.1.1 and gcc 2.7.0
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-KPIC'
@@ -250,15 +236,14 @@ CF_EOF
 		MK_SHARED_LIB='${LD} -assert pure-text -o $[@]'
 		test "$cf_cv_shlib_version" = auto && cf_cv_shlib_version=rel
 		;;
-	solaris2*)
+	solaris2*) #(vi
 		# tested with SunOS 5.5.1 (solaris 2.5.1) and gcc 2.7.2
 		# tested with SunOS 5.10 (solaris 10) and gcc 3.4.3
 		if test "$DFT_LWR_MODEL" = "shared" ; then
 			LOCAL_LDFLAGS="-R \$(LOCAL_LIBDIR):\${libdir}"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
-		if test "$cf_cv_ld_rpath" = yes ; then
-			LD_RPATH_OPT="-R"
+		if test "$cf_cv_enable_rpath" = yes ; then
 			EXTRA_LDFLAGS="$LOCAL_LDFLAGS $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
@@ -276,7 +261,7 @@ CF_EOF
 			MK_SHARED_LIB='${CC} -shared -dy -G -h '$cf_cv_shared_soname' -o $[@]'
 		fi
 		;;
-	sysv5uw7*|unix_sv*)
+	sysv5uw7*|unix_sv*) #(vi
 		# tested with UnixWare 7.1.0 (gcc 2.95.2 and cc)
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='-KPIC'
@@ -293,7 +278,7 @@ CF_EOF
 	case "$cf_cv_shlib_version" in #(vi
 	rel|abi)
 		case "$MK_SHARED_LIB" in #(vi
-		*'-o $[@]')
+		*'-o $[@]') #(vi
 			test "$cf_cv_do_symlinks" = no && cf_cv_do_symlinks=yes
 			;;
 		*)
@@ -304,13 +289,6 @@ CF_EOF
 	esac
 
 	if test -n "$LD_RPATH_OPT" ; then
-		AC_MSG_CHECKING(if we need a space after rpath option)
-		cf_save_LIBS="$LIBS"
-		LIBS="${LD_RPATH_OPT}$libdir $LIBS"
-		AC_TRY_LINK(, , cf_rpath_space=no, cf_rpath_space=yes)
-		LIBS="$cf_save_LIBS"
-		AC_MSG_RESULT($cf_rpath_space)
-		test "$cf_rpath_space" = yes && LD_RPATH_OPT="$LD_RPATH_OPT "
 		MK_SHARED_LIB="$MK_SHARED_LIB $LD_RPATH_OPT\${libdir}"
 	fi
 
