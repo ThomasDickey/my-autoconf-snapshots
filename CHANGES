@@ -1,3 +1,30 @@
+2010-03-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK: no longer depends on CF_SHARED_OPTS
+
+	* AcSplit/CF_SHARED_OPTS: more fixes (NetBSD 5.02 is working again)
+
+	* AcSplit/CF_SHARED_OPTS:
+	separate $LD_RPATH_OPT (available option) from the part used to satisfy
+	--enable-rpath
+
+	* AcSplit/CF_LD_RPATH_OPT: typo
+
+	* AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_RPATH_HACK_2:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	refactor, splitting out CF_LD_RPATH_OPT which makes CF_RPATH_HACK reusable
+
+	* AcSplit/CF_ENABLE_RPATH: rename variable for consistency
+
+	* AcSplit/CF_RPATH_HACK:
+	revise to use CF_RPATH_OPT macro's LD_RPATH_OPT, as well as moving redundant
+	chunk into new macro CF_RPATH_HACK_2
+
+	* AcSplit/CF_REGEX:
+	split-up the nested macros to make this simpler to change.
+
 2010-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_TDLIB:

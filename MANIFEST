@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100323
+MANIFEST for my-autoconf, version t20100327
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -179,6 +179,7 @@ AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-gr
 AcSplit/CF_LARGEFILE            macro for large-file stuff
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
 AcSplit/CF_LDFLAGS_STATIC       tell the options that switch linkage to/from static/shared
+AcSplit/CF_LD_RPATH_OPT         compute $LD_RPATH_OPT, the symbol that holds compiler's rpath option.
 AcSplit/CF_LEX_CHAR_CLASSES     check for character-classes in (f)lex
 AcSplit/CF_LEX_OPTIONS          test for lex "%o" options
 AcSplit/CF_LEX_POINTER          test for lex "%pointer"
@@ -305,6 +306,7 @@ AcSplit/CF_REMOVE_LIB           remove a library from the given symbol
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads
 AcSplit/CF_RE_COMP_FUNCS        check for re_comp/re_exec functions (td_lib)
 AcSplit/CF_RPATH_HACK           q/d hack to piggyback rpath options in ncurses from its own shared-lib opts
+AcSplit/CF_RPATH_HACK_2         utility for CF_RPATH_HACK
 AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
 AcSplit/CF_SET_ERRNO            check if we can set errno
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions

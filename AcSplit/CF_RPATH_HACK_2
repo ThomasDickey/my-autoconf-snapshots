@@ -1,0 +1,32 @@
+dnl CF_RPATH_HACK_2 version: 1 updated: 2010/03/27 18:39:42
+dnl ---------------
+dnl Do one set of substitutions for CF_RPATH_HACK, adding an rpath option to
+dnl EXTRA_LDFLAGS for each -L option found.
+dnl
+dnl $1 = variable name to update.  The LDFLAGS variable should be the only one,
+dnl      but LIBS often has misplaced -L options.
+AC_DEFUN([CF_RPATH_HACK_2],
+[
+CF_VERBOSE(...checking $1 [$]$1)
+
+cf_rpath_dst=
+for cf_rpath_src in [$]$1
+do
+	CF_VERBOSE(Filtering $cf_rpath_src)
+	case $cf_rpath_src in #(vi
+	-L*) #(vi
+		if test "$LD_RPATH_OPT" = "-R " ; then
+			cf_rpath_tmp=`echo "$cf_rpath_src" |sed -e 's%-L%-R %'`
+		else
+			cf_rpath_tmp=`echo "$cf_rpath_src" |sed -e s%-L%$LD_RPATH_OPT%`
+		fi
+		CF_VERBOSE(...Filter $cf_rpath_tmp)
+		EXTRA_LDFLAGS="$cf_rpath_tmp $EXTRA_LDFLAGS"
+		;;
+	esac
+	cf_rpath_dst="$cf_rpath_dst $cf_rpath_src"
+done
+$1=$cf_rpath_dst
+
+CF_VERBOSE(...checked $1 [$]$1)
+])dnl
