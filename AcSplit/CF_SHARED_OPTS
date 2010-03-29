@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 59 updated: 2010/03/27 18:39:42
+dnl CF_SHARED_OPTS version: 62 updated: 2010/03/28 16:12:30
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -32,6 +32,8 @@ AC_DEFUN([CF_SHARED_OPTS],
 	INSTALL_LIB="-m 644"
 
 	cf_cv_do_symlinks=no
+	cf_ld_rpath_opt=
+	test "$cf_cv_enable_rpath" = yes && cf_ld_rpath_opt="$LD_RPATH_OPT"
 
 	AC_MSG_CHECKING(if release/abi version should be used for shared libs)
 	AC_ARG_WITH(shlib-version,
@@ -129,7 +131,7 @@ CF_EOF
 		;;
 	irix*) #(vi
 		if test "$cf_cv_enable_rpath" = yes ; then
-			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="${cf_ld_rpath_opt}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		# tested with IRIX 5.2 and 'cc'.
 		if test "$GCC" != yes; then
@@ -146,7 +148,7 @@ CF_EOF
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_enable_rpath" = yes ; then
-			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="${cf_ld_rpath_opt}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${CC} ${CFLAGS} -shared -Wl,-soname,'$cf_cv_shared_soname',-stats,-lc -o $[@]'
@@ -157,7 +159,7 @@ CF_EOF
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_enable_rpath" = yes ; then
-			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="${cf_ld_rpath_opt}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		CF_SHARED_SONAME
@@ -171,9 +173,9 @@ CF_EOF
 	freebsd*) #(vi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_enable_rpath" = yes ; then
-			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
-			LOCAL_LDFLAGS2="${LD_RPATH_OPT}\${libdir} $LOCAL_LDFLAGS"
-			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
+			LOCAL_LDFLAGS="${cf_ld_rpath_opt}\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS2="${cf_ld_rpath_opt}\${libdir} $LOCAL_LDFLAGS"
+			EXTRA_LDFLAGS="${cf_ld_rpath_opt}\${libdir} $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
 		MK_SHARED_LIB='${LD} -shared -Bshareable -soname=`basename $[@]` -o $[@]'
@@ -181,9 +183,9 @@ CF_EOF
 	netbsd*) #(vi
 		CC_SHARED_OPTS="$CC_SHARED_OPTS -DPIC"
 		if test "$DFT_LWR_MODEL" = "shared" && test "$cf_cv_enable_rpath" = yes ; then
-			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
+			LOCAL_LDFLAGS="${cf_ld_rpath_opt}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
-			EXTRA_LDFLAGS="${LD_RPATH_OPT}\${libdir} $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="${cf_ld_rpath_opt}\${libdir} $EXTRA_LDFLAGS"
 			if test "$cf_cv_shlib_version" = auto; then
 			if test -f /usr/libexec/ld.elf_so; then
 				cf_cv_shlib_version=abi
@@ -244,7 +246,7 @@ CF_EOF
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
 		if test "$cf_cv_enable_rpath" = yes ; then
-			EXTRA_LDFLAGS="$LOCAL_LDFLAGS $EXTRA_LDFLAGS"
+			EXTRA_LDFLAGS="-R \${libdir} $EXTRA_LDFLAGS"
 		fi
 		CF_SHARED_SONAME
 		if test "$GCC" != yes; then
@@ -288,8 +290,8 @@ CF_EOF
 		;;
 	esac
 
-	if test -n "$LD_RPATH_OPT" ; then
-		MK_SHARED_LIB="$MK_SHARED_LIB $LD_RPATH_OPT\${libdir}"
+	if test -n "$cf_ld_rpath_opt" ; then
+		MK_SHARED_LIB="$MK_SHARED_LIB $cf_ld_rpath_opt\${libdir}"
 	fi
 
 	AC_SUBST(CC_SHARED_OPTS)

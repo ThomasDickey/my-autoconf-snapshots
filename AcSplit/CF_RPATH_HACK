@@ -1,9 +1,8 @@
-dnl CF_RPATH_HACK version: 5 updated: 2010/03/27 18:39:42
+dnl CF_RPATH_HACK version: 6 updated: 2010/03/27 20:52:14
 dnl -------------
 AC_DEFUN([CF_RPATH_HACK],
 [
 AC_REQUIRE([CF_LD_RPATH_OPT])
-AC_REQUIRE([CF_SHARED_OPTS])
 AC_MSG_CHECKING(for updated LDFLAGS)
 if test -n "$LD_RPATH_OPT" ; then
 	AC_MSG_RESULT(maybe)

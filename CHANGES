@@ -1,3 +1,21 @@
+2010-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: fix for OpenSolaris with rpath
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add solaris2.11 (OpenSolaris) special case.  ncurses needs __EXTENSIONS__
+	for vsscanf() function, but must define _XOPEN_SOURCE to override
+	_XOPEN_SOURCE_EXTENDED for wide-character includes.
+
+	* AcSplit/CF_WITH_IDNA:
+	add the include- and lib-directories, e.g., for Solaris which puts the
+	headers in /usr/include/idn
+
+	* AcSplit/CF_LIBRARY_PATH:
+	reset target at beginning, to avoid symbol conflict
+
+	* AcSplit/CF_RPATH_HACK_2: make this less verbose
+
 2010-03-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RPATH_HACK: no longer depends on CF_SHARED_OPTS
