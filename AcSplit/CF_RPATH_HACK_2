@@ -1,4 +1,4 @@
-dnl CF_RPATH_HACK_2 version: 1 updated: 2010/03/27 18:39:42
+dnl CF_RPATH_HACK_2 version: 2 updated: 2010/03/28 10:14:24
 dnl ---------------
 dnl Do one set of substitutions for CF_RPATH_HACK, adding an rpath option to
 dnl EXTRA_LDFLAGS for each -L option found.
@@ -12,7 +12,6 @@ CF_VERBOSE(...checking $1 [$]$1)
 cf_rpath_dst=
 for cf_rpath_src in [$]$1
 do
-	CF_VERBOSE(Filtering $cf_rpath_src)
 	case $cf_rpath_src in #(vi
 	-L*) #(vi
 		if test "$LD_RPATH_OPT" = "-R " ; then
@@ -20,7 +19,7 @@ do
 		else
 			cf_rpath_tmp=`echo "$cf_rpath_src" |sed -e s%-L%$LD_RPATH_OPT%`
 		fi
-		CF_VERBOSE(...Filter $cf_rpath_tmp)
+		CF_VERBOSE(...Filter $cf_rpath_src ->$cf_rpath_tmp)
 		EXTRA_LDFLAGS="$cf_rpath_tmp $EXTRA_LDFLAGS"
 		;;
 	esac
