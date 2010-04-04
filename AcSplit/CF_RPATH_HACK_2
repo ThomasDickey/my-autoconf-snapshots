@@ -1,4 +1,4 @@
-dnl CF_RPATH_HACK_2 version: 2 updated: 2010/03/28 10:14:24
+dnl CF_RPATH_HACK_2 version: 3 updated: 2010/04/02 20:27:47
 dnl ---------------
 dnl Do one set of substitutions for CF_RPATH_HACK, adding an rpath option to
 dnl EXTRA_LDFLAGS for each -L option found.
@@ -28,4 +28,5 @@ done
 $1=$cf_rpath_dst
 
 CF_VERBOSE(...checked $1 [$]$1)
+AC_SUBST(EXTRA_LDFLAGS)
 ])dnl

@@ -1,6 +1,8 @@
-dnl CF_SLANG_LIBS version: 7 updated: 2002/09/17 19:03:38
+dnl CF_SLANG_LIBS version: 8 updated: 2010/04/03 15:30:05
 dnl -------------
 dnl Look for the slang library.
+dnl
+dnl $1 = the actual library name, usually "slang"
 AC_DEFUN([CF_SLANG_LIBS],
 [
 cf_slang_LIBS1="$LIBS"
@@ -15,12 +17,12 @@ os2*)
 		v_init)
 	;;
 esac
-CF_FIND_LIBRARY(slang,slang,
+CF_FIND_LIBRARY($1,$1,
 	[#include <slang.h>],
 	[SLtt_get_screen_size()],
 	SLtt_get_screen_size)
 cf_slang_LIBS3="$LIBS"
-AC_MSG_CHECKING(if we can link slang without termcap)
+AC_MSG_CHECKING(if we can link $1 without termcap)
 if test -n "`echo $cf_slang_LIBS1 | sed -e 's/ //g'`" ; then
 	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s%$cf_slang_LIBS1%%" -e 's%^.%%'`
 else
