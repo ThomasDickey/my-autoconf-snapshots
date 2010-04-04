@@ -1,15 +1,17 @@
-dnl CF_SLANG_CPPFLAGS version: 8 updated: 2008/03/23 14:48:54
+dnl CF_SLANG_CPPFLAGS version: 9 updated: 2010/04/03 15:30:05
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
 dnl
+dnl $1 = parameter to search for "slang2" class, e.g., for pkgsrc.
 AC_DEFUN([CF_SLANG_CPPFLAGS],
 [
-AC_CACHE_CHECK(for slang header file,cf_cv_slang_header,[
+AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
+	cf_cv_$1_header=no
 	AC_TRY_COMPILE([#include <slang.h>],
 	[printf("%s\n", SLANG_VERSION)],
-	[cf_cv_slang_header=predefined],[
-	CF_HEADER_PATH(cf_search,slang)
+	[cf_cv_$1_header=predefined],[
+	CF_HEADER_PATH(cf_search,$1)
 	for cf_incdir in $cf_search
 	do
 		for cf_header in \
@@ -17,43 +19,26 @@ AC_CACHE_CHECK(for slang header file,cf_cv_slang_header,[
 		do
 			echo trying $cf_incdir/$cf_header 1>&AC_FD_CC
 			if egrep "SLANG_VERSION" $cf_incdir/$cf_header 1>&AC_FD_CC 2>&1; then
-				cf_cv_slang_header=$cf_incdir/$cf_header
+				cf_cv_$1_header=$cf_incdir/$cf_header
 				break
 			fi
 		done
-		test -n "$cf_cv_slang_header" && break
+		test "$cf_cv_$1_header" != no && break
 	done
-	test -z "$cf_cv_slang_header" && AC_MSG_ERROR(not found)
 	])])
-AC_DEFINE(USE_SLANG)
 
-CF_DIRNAME(cf_incdir,$cf_cv_slang_header)
+if test "x$cf_cv_$1_header" != xno
+then
+	AC_DEFINE(USE_SLANG)
 
-case $cf_cv_slang_header in # (vi
-predefined) # (vi
-	;;
-*)
-	CF_ADD_INCDIR($cf_incdir)
-	;;
-esac
+	CF_DIRNAME(cf_incdir,$cf_cv_$1_header)
 
-# There's an unofficial set of patches for slang that gives it some limited
-# UTF8 capability.  Unfortunately it won't compile unless one defines UTF8.
-AC_CACHE_CHECK(if we must define UTF8,cf_cv_slang_utf8,[
-	AC_TRY_COMPILE([
-#include <slang.h>],
-	[SLtt_get_screen_size()],
-	[cf_cv_slang_utf8=no],
-	[
-	AC_TRY_COMPILE([
-#define UTF8
-#include <slang.h>],
-	[SLtt_get_screen_size()],
-	[cf_cv_slang_utf8=yes],
-	[cf_cv_slang_utf8=unknown])])
-])
-
-if test "$cf_cv_slang_utf8" = yes ; then
-	AC_DEFINE(UTF8)
+	case $cf_cv_$1_header in # (vi
+	predefined) # (vi
+		;;
+	*)
+		CF_ADD_INCDIR($cf_incdir)
+		;;
+	esac
 fi
 ])dnl

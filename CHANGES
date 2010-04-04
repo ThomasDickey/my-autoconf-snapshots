@@ -1,3 +1,35 @@
+2010-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKE_TAGS: typo
+
+	* AcSplit/CF_FIND_LINKAGE:
+	must set cache for library_file in the special case where no directory
+	search is made.
+
+	* AcSplit/CF_WITH_IDNA: remove redundant assignment to LIBS
+
+	* AcSplit/CF_SLANG_UNIX_DEFS:
+	move a chunk from CF_SLANG_CPPFLAGS, modify to work with slang2 package in pkgsrc
+
+	* AcSplit/CF_SLANG_CPPFLAGS:
+	parameterize to work with "slang2" header-path in pkgsrc
+
+	* AcSplit/CF_SLANG_LIBS:
+	parameterize to work with "slang2" library name in pkgsrc
+
+	* AcSplit/CF_MAKE_TAGS: fill in default value if program is not found
+
+	* AcSplit/CF_NCURSES_EXT_FUNCS: ci-aclocal generated header
+
+	* AcSplit/CF_MAKE_TAGS:
+	add check for exctags and exetags, prefer to ctags and etags to work around
+	pkgsrc (NetBSD) renaming.
+
+2010-04-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK, AcSplit/CF_RPATH_HACK_2:
+	ensure that EXTRA_LDFLAGS is substituted
+
 2010-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: fix for OpenSolaris with rpath

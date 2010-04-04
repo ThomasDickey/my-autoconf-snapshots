@@ -1,4 +1,4 @@
-dnl CF_RPATH_HACK version: 6 updated: 2010/03/27 20:52:14
+dnl CF_RPATH_HACK version: 7 updated: 2010/04/02 20:27:47
 dnl -------------
 AC_DEFUN([CF_RPATH_HACK],
 [
@@ -14,4 +14,5 @@ if test -n "$LD_RPATH_OPT" ; then
 
 	CF_VERBOSE(...checked EXTRA_LDFLAGS $EXTRA_LDFLAGS)
 fi
+AC_SUBST(EXTRA_LDFLAGS)
 ])dnl
