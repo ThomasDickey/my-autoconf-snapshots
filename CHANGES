@@ -1,3 +1,12 @@
+2010-04-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_RPATH_HACK: ci-aclocal generated header
+
+2010-04-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK_2:
+	add double-quotes on the substitution of $LD_RPATH_OPT, needed for FreeBSD
+
 2010-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKE_TAGS: typo
