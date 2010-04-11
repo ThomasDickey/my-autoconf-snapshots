@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100404
+MANIFEST for my-autoconf, version t20100411
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -110,6 +110,7 @@ AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_DISABLE_LEAKS        the "--disable-leaks" option (ncurses)
+AcSplit/CF_DISABLE_RPATH_HACK   option to disable rpath-hack
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
 AcSplit/CF_ENABLE_NARROWPROTO   make -DNARROWPROTO configurable to work about botched Xorg "modular" build.
 AcSplit/CF_ENABLE_RPATH         process "--enable-rpath" option
