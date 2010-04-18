@@ -1,3 +1,17 @@
+2010-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK_2:
+	bugfix for last change- "break" from a case/esac is incorrect.
+
+	* AcSplit/CF_RPATH_HACK_2: improve filtering by:
+		a) using $cf_rpath_list (from calling macro) to find directories to
+		   ignore, e.g., /lib64 on 64-bit platforms.
+		b) check for repeated appends of the given rpath option.
+
+	* AcSplit/CF_RPATH_HACK:
+	look for ldd.  If we find it, try to use it to obtain a list of standard
+	directories used.
+
 2010-04-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_RPATH_HACK: ci-aclocal generated header
