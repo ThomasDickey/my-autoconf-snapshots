@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100417
+MANIFEST for my-autoconf, version t20100420
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -380,6 +380,7 @@ AcSplit/CF_TTY_GROUP            check for existence of tty group
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
 AcSplit/CF_TYPE_FD_MASK         special tweak for fd_mask type
 AcSplit/CF_TYPE_FD_SET          check for a header that will define fd_set.
+AcSplit/CF_TYPE_LONG_LONG       add check for long-long, to use for lynx to quiet warnings due to error in slang headers
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()
 AcSplit/CF_TYPE_SIGACTION       check for type sigaction_t
 AcSplit/CF_UNION_WAIT           check for union wait

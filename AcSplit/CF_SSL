@@ -1,4 +1,4 @@
-dnl CF_SSL version: 19 updated: 2009/02/01 15:26:31
+dnl CF_SSL version: 20 updated: 2010/04/20 18:27:30
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -33,6 +33,13 @@ AC_DEFUN([CF_SSL],[
 						cf_cv_header_path_ssl=$cf_cv_header_path_ssl/openssl
 					fi
 					CF_ADD_CFLAGS($cf_cflags_ssl)
+
+					# workaround for broken openssl package using kerberos
+					case "$cf_cflags_ssl" in #(vi
+					*kerberos*)
+						cf_cv_have_ssl=maybe
+						;;
+					esac
 				fi
 
 				if test -n "$cf_libs_ssl" ; then
