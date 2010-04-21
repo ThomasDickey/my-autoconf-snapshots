@@ -1,3 +1,16 @@
+2010-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HEADER_PATH:
+	don't search for variations of everything in the current include-path
+
+	* AcSplit/CF_WITH_IDNA: update $LIBS also
+
+	* AcSplit/CF_UTF8_LIB: use cache variable for consistency
+
+	* AcSplit/CF_SOCKS: use cache-variable for consistency
+
+	* AcSplit/CF_FIND_LINKAGE, AcSplit/CF_SUBDIR_PATH: whitespace
+
 2010-04-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TYPE_LONG_LONG: ci-aclocal generated header
