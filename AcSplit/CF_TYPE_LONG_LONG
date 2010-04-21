@@ -1,0 +1,14 @@
+dnl CF_TYPE_LONG_LONG version: 1 updated: 2010/04/20 19:05:14
+dnl -----------------
+dnl Check for long long type.
+AC_DEFUN([CF_TYPE_LONG_LONG],[
+AC_CACHE_CHECK(for long long type,cf_cv_type_long_long,[
+	AC_TRY_COMPILE([],[long long foo = 123456789123456789LL],
+	[cf_cv_type_long_long=yes],
+	[cf_cv_type_long_long=no])
+])
+
+if test "$cf_cv_type_long_long" = yes ; then
+	AC_DEFINE(HAVE_LONG_LONG)
+fi
+])dnl

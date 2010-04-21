@@ -1,3 +1,11 @@
+2010-04-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPE_LONG_LONG: ci-aclocal generated header
+
+	* AcSplit/CF_SSL:
+	workaround for broken openssl pkg-config scripts (need a followup check to
+	get the openssl subdirectory for includes)
+
 2010-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RPATH_HACK_2:
