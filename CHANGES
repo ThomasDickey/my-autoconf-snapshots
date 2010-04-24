@@ -1,3 +1,11 @@
+2010-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	move -W and -Wall into the list to check, since c89 alias for gcc complains
+	about these options.
+
+	* AcSplit/CF_GCC_VERSION: ignore stderr, e.g., from c89 alias for gcc
+
 2010-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HEADER_PATH:
