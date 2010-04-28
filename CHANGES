@@ -1,3 +1,16 @@
+2010-04-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_HEADER:
+	add parameter to allow looking for specific subdirectory ncurses/ncursesw/etc
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	use CF_CURSES_HEADER to pick out the particular flavor of ncurses.h, e.g.,
+	<ncursesw/curses.h>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	workaround for (temporary) problem with ncurses headers, which did not account
+	for the fact that _XOPEN_SOURCE_EXTENDED may be defined in a system header.
+
 2010-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:
