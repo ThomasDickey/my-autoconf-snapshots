@@ -1,3 +1,7 @@
+2010-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_C_INLINE: show the compiler name
+
 2010-04-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_HEADER:
