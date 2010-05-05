@@ -1,3 +1,29 @@
+2010-05-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS, AcSplit/CF_SSL:
+	eliminate duplicate libraries when configuring with pkg-config
+
+	* AcSplit/CF_FIND_LINKAGE: simplify save/restore of $LIBS
+
+	* AcSplit/CF_WITH_IDNA:
+	use $cf_cv_find_linkage_idn to allow CF_FIND_LINKAGE to update $CPPFLAGS and $LIBS
+
+	* AcSplit/CF_SOCKS:
+	use $cf_cv_find_linkage_socks variable set in CF_FIND_LINKAGE to allow that
+	macro to also update $CPPFLAGS, $LIBS
+
+	* AcSplit/CF_FIND_LINKAGE:
+	add assignments to cf_cv_header_path_$3 and cf_cv_library_path_$3 for the
+	case where the function is found in predefined libraries, to work with logic
+	in CF_GNUTLS
+
+	* AcSplit/CF_WITH_IDNA:
+	remove redundant update of CFLAGS, LIBS since CF_FIND_LINKAGE does this
+
+	* AcSplit/CF_HEADER_PATH:
+	revert part of last change: lynx configure script needs search for variations
+	in the predefined paths to pick up /usr/include/gnutls
+
 2010-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_C_INLINE: show the compiler name
