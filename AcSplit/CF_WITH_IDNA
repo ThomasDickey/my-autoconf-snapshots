@@ -1,4 +1,4 @@
-dnl CF_WITH_IDNA version: 5 updated: 2010/04/21 06:20:50
+dnl CF_WITH_IDNA version: 6 updated: 2010/05/05 05:22:40
 dnl ------------
 dnl Check for libidn, use it if found.
 dnl
@@ -14,8 +14,5 @@ AC_DEFUN([CF_WITH_IDNA],[
     int code = idna_to_ascii_8z("name", &output, IDNA_USE_STD3_ASCII_RULES);
 ],idn,[
 	AC_DEFINE(USE_IDNA)
-	CF_ADD_INCDIR($cf_cv_header_path_idn)
-	CF_ADD_LIBDIR($cf_cv_library_path_idn)
-	LIBS="$cf_cv_library_file_idn $LIBS"
 ])
 ])dnl

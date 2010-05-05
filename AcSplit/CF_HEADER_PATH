@@ -1,4 +1,4 @@
-dnl CF_HEADER_PATH version: 11 updated: 2010/04/21 06:20:50
+dnl CF_HEADER_PATH version: 12 updated: 2010/05/05 05:22:40
 dnl --------------
 dnl Construct a search-list of directories for a nonstandard header-file
 dnl
@@ -17,7 +17,8 @@ if test -n "${CFLAGS}${CPPFLAGS}" ; then
 		case $cf_header_path in #(vi
 		-I*)
 			cf_header_path=`echo ".$cf_header_path" |sed -e 's/^...//' -e 's,/include$,,'`
-			cf_header_path_list="$cf_header_path_list $cf_header_path"
+			CF_ADD_SUBDIR_PATH($1,$2,include,$cf_header_path,NONE)
+			cf_header_path_list="$cf_header_path_list [$]$1"
 			;;
 		esac
 	done
