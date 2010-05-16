@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 55 updated: 2008/12/13 16:17:38
+dnl CF_LIB_RULES version: 56 updated: 2010/05/15 15:19:46
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -203,6 +203,7 @@ do
 				overwrite=$WITH_OVERWRITE \
 				depend="$cf_depend" \
 				host="$host" \
+				libtool_version="$LIBTOOL_VERSION" \
 				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 
 			cf_suffix="$old_cf_suffix"

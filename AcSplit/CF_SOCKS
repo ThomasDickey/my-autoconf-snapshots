@@ -1,4 +1,4 @@
-dnl CF_SOCKS version: 7 updated: 2010/04/21 06:20:50
+dnl CF_SOCKS version: 8 updated: 2010/05/05 20:27:55
 dnl --------
 dnl Check for socks library
 dnl $1 = the [optional] directory in which the library may be found
@@ -9,11 +9,9 @@ AC_DEFUN([CF_SOCKS],[
 ],[
       Raccept((char *)0)
 ],
-      socks,
-      cf_cv_have_socks=yes,
-      cf_cv_have_socks=no)
+      socks)
 
-  if test "$cf_cv_have_socks" = yes ; then
+  if test "x$cf_cv_find_linkage_socks" = "xyes" ; then
     AC_DEFINE(SOCKS)
 
     AC_DEFINE(accept,Raccept)
@@ -24,10 +22,6 @@ AC_DEFUN([CF_SOCKS],[
     AC_DEFINE(listen,Rlisten)
     AC_DEFINE(recvfrom,Rrecvfrom)
     AC_DEFINE(select,Rselect)
-
-    CF_ADD_INCDIR($cf_cv_header_path_socks)
-    CF_ADD_LIBDIR($cf_cv_library_path_socks)
-	LIBS="$cf_cv_library_file_socks $LIBS"
   else
     AC_MSG_ERROR(cannot link with socks library)
   fi

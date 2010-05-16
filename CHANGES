@@ -1,3 +1,15 @@
+2010-05-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES: use "mkdir -p" rather than mkdirs.sh
+
+	* AcSplit/CF_DISABLE_LIBTOOL_VERSION: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_LIBTOOL: rename for consistency
+
+	* AcSplit/CF_LIB_RULES: use $LIBTOOL_VERSION
+
+	* AcSplit/CF_WITH_LIBTOOL: use CF_ENABLE_LIBTOOL_VERSION
+
 2010-05-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS, AcSplit/CF_SSL:
