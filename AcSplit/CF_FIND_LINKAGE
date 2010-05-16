@@ -1,4 +1,4 @@
-dnl CF_FIND_LINKAGE version: 17 updated: 2010/05/05 05:22:40
+dnl CF_FIND_LINKAGE version: 18 updated: 2010/05/05 20:27:55
 dnl ---------------
 dnl Find a library (specifically the linkage used in the code fragment),
 dnl searching for it if it is not already in the library path.
@@ -27,13 +27,14 @@ cf_cv_library_path_$3=
 
 CF_MSG_LOG([Starting [FIND_LINKAGE]($3,$6)])
 
+cf_save_LIBS="$LIBS"
+
 AC_TRY_LINK([$1],[$2],[
 	cf_cv_find_linkage_$3=yes
 	cf_cv_header_path_$3=/usr/include
 	cf_cv_library_path_$3=/usr/lib
 ],[
 
-cf_save_LIBS="$LIBS"
 LIBS="-l$3 $7 $cf_save_LIBS"
 
 AC_TRY_LINK([$1],[$2],[
@@ -104,7 +105,6 @@ AC_TRY_LINK([$1],[$2],[
                 ])
           fi
         done
-        LIBS="$cf_save_LIBS"
         CPPFLAGS="$cf_save_CPPFLAGS"
         LDFLAGS="$cf_save_LDFLAGS"
       fi
@@ -114,6 +114,8 @@ AC_TRY_LINK([$1],[$2],[
     fi
     ],$7)
 ])
+
+LIBS="$cf_save_LIBS"
 
 if test "$cf_cv_find_linkage_$3" = yes ; then
 ifelse([$4],,[

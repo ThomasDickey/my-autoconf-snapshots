@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 36 updated: 2010/03/13 13:41:01
+dnl CF_MAN_PAGES version: 37 updated: 2010/05/15 16:05:34
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -64,8 +64,6 @@ NCURSES_PATCH="$NCURSES_PATCH"
 NCURSES_OSPEED="$NCURSES_OSPEED"
 TERMINFO="$TERMINFO"
 
-MKDIRS="sh `cd $srcdir && pwd`/mkdirs.sh"
-
 INSTALL="$INSTALL"
 INSTALL_DATA="$INSTALL_DATA"
 
@@ -109,7 +107,7 @@ case \$i in #(vi
 	section=\`expr "\$i" : '.*\\.\\([[0-9]]\\)[[xm]]*'\`;
 	if test \$verb = installing ; then
 	if test ! -d \$cf_subdir\${section} ; then
-		\$MKDIRS \$cf_subdir\$section
+		mkdir -p \$cf_subdir\$section
 	fi
 	fi
 
