@@ -1,3 +1,15 @@
+2010-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MKSTEMP:
+	add check for cache variable set by AC_CHECK_FUNC, whose naming convention
+	differs from the CF_xxx macros (report by Pierre Labastie).
+
+2010-05-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_AR_FLAGS:
+	allow $ARFLAGS to override the choice of ar-flags, in particular check if
+	a given choice is part of the current $ARFLAGS
+
 2010-05-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES: use "mkdir -p" rather than mkdirs.sh
