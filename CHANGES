@@ -1,3 +1,16 @@
+2010-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_X_EXT:
+	ci-aclocal generated header
+
+	* AcSplit/CF_WITH_PCRE:
+	improve the pkg-config check using CF_TRY_PKG_CONFIG
+
+	* AcSplit/CF_X_ATHENA: split-out CF_X_EXT
+
+	* AcSplit/CF_WITH_PCRE:
+	use pkg-config for libpcre, if available (tested with Fedora 12)
+
 2010-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MKSTEMP:
