@@ -1,4 +1,4 @@
-dnl CF_ADD_CFLAGS version: 9 updated: 2010/01/09 11:05:50
+dnl CF_ADD_CFLAGS version: 10 updated: 2010/05/26 05:38:42
 dnl -------------
 dnl Copy non-preprocessor flags to $CFLAGS, preprocessor flags to $CPPFLAGS
 dnl The second parameter if given makes this macro verbose.
@@ -68,17 +68,17 @@ esac
 done
 
 if test -n "$cf_new_cflags" ; then
-	ifelse($2,,,[CF_VERBOSE(add to \$CFLAGS $cf_new_cflags)])
+	ifelse([$2],,,[CF_VERBOSE(add to \$CFLAGS $cf_new_cflags)])
 	CFLAGS="$CFLAGS $cf_new_cflags"
 fi
 
 if test -n "$cf_new_cppflags" ; then
-	ifelse($2,,,[CF_VERBOSE(add to \$CPPFLAGS $cf_new_cppflags)])
+	ifelse([$2],,,[CF_VERBOSE(add to \$CPPFLAGS $cf_new_cppflags)])
 	CPPFLAGS="$CPPFLAGS $cf_new_cppflags"
 fi
 
 if test -n "$cf_new_extra_cppflags" ; then
-	ifelse($2,,,[CF_VERBOSE(add to \$EXTRA_CPPFLAGS $cf_new_extra_cppflags)])
+	ifelse([$2],,,[CF_VERBOSE(add to \$EXTRA_CPPFLAGS $cf_new_extra_cppflags)])
 	EXTRA_CPPFLAGS="$cf_new_extra_cppflags $EXTRA_CPPFLAGS"
 fi
 

@@ -1,4 +1,4 @@
-dnl CF_POSIX_C_SOURCE version: 7 updated: 2010/01/09 11:05:50
+dnl CF_POSIX_C_SOURCE version: 8 updated: 2010/05/26 05:38:42
 dnl -----------------
 dnl Define _POSIX_C_SOURCE to the given level, and _POSIX_SOURCE if needed.
 dnl
@@ -14,7 +14,7 @@ dnl Parameters:
 dnl	$1 is the nominal value for _POSIX_C_SOURCE
 AC_DEFUN([CF_POSIX_C_SOURCE],
 [
-cf_POSIX_C_SOURCE=ifelse($1,,199506L,$1)
+cf_POSIX_C_SOURCE=ifelse([$1],,199506L,[$1])
 
 cf_save_CFLAGS="$CFLAGS"
 cf_save_CPPFLAGS="$CPPFLAGS"

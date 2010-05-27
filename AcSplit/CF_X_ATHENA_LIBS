@@ -1,10 +1,10 @@
-dnl CF_X_ATHENA_LIBS version: 7 updated: 2008/03/23 14:46:03
+dnl CF_X_ATHENA_LIBS version: 8 updated: 2010/05/26 05:38:42
 dnl ----------------
 dnl Normally invoked by CF_X_ATHENA, with $1 set to the appropriate flavor of
 dnl the Athena widgets, e.g., Xaw, Xaw3d, neXtaw.
 AC_DEFUN([CF_X_ATHENA_LIBS],
 [AC_REQUIRE([CF_X_TOOLKIT])
-cf_x_athena_root=ifelse($1,,Xaw,$1)
+cf_x_athena_root=ifelse([$1],,Xaw,[$1])
 cf_x_athena_lib=""
 
 for cf_path in default \

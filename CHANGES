@@ -1,3 +1,19 @@
+2010-05-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA: use pkg-config to find the library if possible
+
+	* AcSplit/CF_X_ATHENA_CPPFLAGS: rename variable for consistency
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR, AcSplit/CF_CHECK_ENVIRON, AcSplit/CF_GNUTLS, AcSplit/CF_MATH_LIB, AcSplit/CF_MAWK_DEFINE, AcSplit/CF_PREDEFINE, AcSplit/CF_WCHAR_TYPE:
+	quote params of ifelse()
+
+	* AcSplit/CF_X_TOOLKIT: use pkg-config if available
+
+	* AcSplit/CF_X_EXT: *** empty log message ***
+
+	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_ARG_OPTION, AcSplit/CF_CHECK_ERRNO, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_INTEL_COMPILER, AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_WITH_IMAKE_CFLAGS, AcSplit/CF_WITH_PATH, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_X_ATHENA_LIBS:
+	quote params of ifelse()
+
 2010-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_X_EXT:

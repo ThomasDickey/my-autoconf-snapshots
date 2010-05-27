@@ -1,11 +1,11 @@
-dnl CF_X_ATHENA_CPPFLAGS version: 3 updated: 2009/01/11 15:33:39
+dnl CF_X_ATHENA_CPPFLAGS version: 5 updated: 2010/05/26 17:35:30
 dnl --------------------
 dnl Normally invoked by CF_X_ATHENA, with $1 set to the appropriate flavor of
 dnl the Athena widgets, e.g., Xaw, Xaw3d, neXtaw.
 AC_DEFUN([CF_X_ATHENA_CPPFLAGS],
 [
-cf_x_athena_root=ifelse($1,,Xaw,$1)
-cf_x_athena_include=""
+cf_x_athena_root=ifelse([$1],,Xaw,[$1])
+cf_x_athena_inc=""
 
 for cf_path in default \
 	/usr/contrib/X11R6 \
@@ -13,7 +13,7 @@ for cf_path in default \
 	/usr/lib/X11R5 \
 	/usr/local
 do
-	if test -z "$cf_x_athena_include" ; then
+	if test -z "$cf_x_athena_inc" ; then
 		cf_save="$CPPFLAGS"
 		cf_test=X11/$cf_x_athena_root/SimpleMenu.h
 		if test $cf_path != default ; then
@@ -29,7 +29,7 @@ do
 			[cf_result=no])
 		AC_MSG_RESULT($cf_result)
 		if test "$cf_result" = yes ; then
-			cf_x_athena_include=$cf_path
+			cf_x_athena_inc=$cf_path
 			break
 		else
 			CPPFLAGS="$cf_save"
@@ -37,10 +37,10 @@ do
 	fi
 done
 
-if test -z "$cf_x_athena_include" ; then
+if test -z "$cf_x_athena_inc" ; then
 	AC_MSG_WARN(
 [Unable to successfully find Athena header files with test program])
-elif test "$cf_x_athena_include" != default ; then
-	CPPFLAGS="$CPPFLAGS -I$cf_x_athena_include"
+elif test "$cf_x_athena_inc" != default ; then
+	CPPFLAGS="$CPPFLAGS -I$cf_x_athena_inc"
 fi
 ])

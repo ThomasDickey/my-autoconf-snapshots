@@ -1,10 +1,10 @@
-dnl CF_X_ATHENA version: 12 updated: 2004/06/15 21:14:41
+dnl CF_X_ATHENA version: 14 updated: 2010/05/26 19:19:58
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
 dnl Sets $cf_x_athena according to the flavor of Xaw which is used.
 AC_DEFUN([CF_X_ATHENA],
-[AC_REQUIRE([CF_X_TOOLKIT])
+[
 cf_x_athena=${cf_x_athena-Xaw}
 
 AC_MSG_CHECKING(if you want to link with Xaw 3d library)
@@ -40,11 +40,36 @@ else
 	AC_MSG_RESULT(no)
 fi
 
-AC_CHECK_LIB(Xext,XextCreateExtension,
-	[LIBS="-lXext $LIBS"])
-
 cf_x_athena_lib=""
 
-CF_X_ATHENA_CPPFLAGS($cf_x_athena)
-CF_X_ATHENA_LIBS($cf_x_athena)
+if test "$PKG_CONFIG" != none ; then
+	cf_athena_list=
+	test "$cf_x_athena" = Xaw && cf_athena_list="xaw8 xaw7 xaw6"
+	for cf_athena_pkg in \
+		$cf_athena_list \
+		${cf_x_athena} \
+		${cf_x_athena}-devel \
+		lib${cf_x_athena} \
+		lib${cf_x_athena}-devel
+	do
+		if "$PKG_CONFIG" --exists $cf_athena_pkg; then
+			CF_VERBOSE(found package $cf_athena_pkg)
+			cf_x_athena_inc="`$PKG_CONFIG --cflags $cf_athena_pkg 2>/dev/null`"
+			cf_x_athena_lib="`$PKG_CONFIG --libs   $cf_athena_pkg 2>/dev/null`"
+			CF_ADD_CFLAGS($cf_x_athena_inc)
+			LIBS="$cf_x_athena_lib $LIBS"
+
+			CF_UPPER(cf_x_athena_LIBS,HAVE_LIB_$cf_x_athena)
+			AC_DEFINE_UNQUOTED($cf_x_athena_LIBS)
+			break
+		fi
+	done
+fi
+
+if test -z "$cf_x_athena_lib" ; then
+	CF_X_EXT
+	CF_X_TOOLKIT
+	CF_X_ATHENA_CPPFLAGS($cf_x_athena)
+	CF_X_ATHENA_LIBS($cf_x_athena)
+fi
 ])dnl

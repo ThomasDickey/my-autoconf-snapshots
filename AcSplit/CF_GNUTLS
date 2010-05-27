@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 17 updated: 2010/05/05 20:27:55
+dnl CF_GNUTLS version: 18 updated: 2010/05/26 16:44:57
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -12,7 +12,7 @@ AC_DEFUN([CF_GNUTLS],[
 
 	cf_pkg_gnutls=none
 	if test "x$PKG_CONFIG" != xnone; then
-		cf_pkg_gnutls=ifelse($2,,gnutls-openssl,gnutls)
+		cf_pkg_gnutls=ifelse([$2],,gnutls-openssl,gnutls)
 		case $1 in #(vi
 		no) #(vi
 			;;
@@ -62,7 +62,7 @@ AC_DEFUN([CF_GNUTLS],[
 	fi
 
 	if test "$cf_cv_have_gnutls" = no ; then
-		ifelse($2,,[AC_DEFINE(USE_GNUTLS_INCL)],[AC_DEFINE(USE_GNUTLS_FUNCS)])
+		ifelse([$2],,[AC_DEFINE(USE_GNUTLS_INCL)],[AC_DEFINE(USE_GNUTLS_FUNCS)])
 		cf_gnutls_CPPFLAGS=$CPPFLAGS
 
 		CF_FIND_LINKAGE(CF__SSL_HEAD,
@@ -71,7 +71,7 @@ AC_DEFUN([CF_GNUTLS],[
 			cf_cv_have_gnutls=yes,
 			cf_cv_have_gnutls=no,
 			,
-			ifelse($2,,[-lgnutls-openssl -lgnutls-extra -lgnutls -lgcrypt],[-lgnutls -lgcrypt]))
+			ifelse([$2],,[-lgnutls-openssl -lgnutls-extra -lgnutls -lgcrypt],[-lgnutls -lgcrypt]))
 
 		CPPFLAGS=$cf_gnutls_CPPFLAGS
 	fi
@@ -96,7 +96,7 @@ AC_DEFUN([CF_GNUTLS],[
 			AC_DEFINE(USE_SSL)
 		fi
 
-		ifelse($2,,
+		ifelse([$2],,
 			[if test "$cf_pkg_gnutls" = none ; then
 				AC_CHECK_LIB(gnutls-openssl,SSL_connect,
 					[LIBS="-lgnutls-openssl $LIBS"],

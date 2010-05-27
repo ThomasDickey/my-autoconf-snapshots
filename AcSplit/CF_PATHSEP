@@ -1,4 +1,4 @@
-dnl CF_PATHSEP version: 4 updated: 2009/01/11 20:30:23
+dnl CF_PATHSEP version: 5 updated: 2010/05/26 05:38:42
 dnl ----------
 dnl Provide a value for the $PATH and similar separator
 AC_DEFUN([CF_PATHSEP],
@@ -7,6 +7,6 @@ AC_DEFUN([CF_PATHSEP],
 	os2*)	PATH_SEPARATOR=';'  ;;
 	*)	PATH_SEPARATOR=':'  ;;
 	esac
-ifelse($1,,,[$1=$PATH_SEPARATOR])
+ifelse([$1],,,[$1=$PATH_SEPARATOR])
 	AC_SUBST(PATH_SEPARATOR)
 ])dnl

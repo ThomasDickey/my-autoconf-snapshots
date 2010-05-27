@@ -1,4 +1,4 @@
-dnl CF_CHECK_ENVIRON version: 2 updated: 2008/08/22 16:34:45
+dnl CF_CHECK_ENVIRON version: 3 updated: 2010/05/26 16:44:57
 dnl ----------------
 dnl Check for data that is usually declared in <unistd.h>, e.g., the 'environ'
 dnl variable.  Define a DECL_xxx symbol if we must declare it ourselves.
@@ -13,7 +13,7 @@ AC_CACHE_CHECK(if external $1 is declared, cf_cv_dcl_$1,[
 #include <stdlib.h>
 #endif
 #include <unistd.h> ],
-    ifelse($2,,int,$2) x = (ifelse($2,,int,$2)) $1,
+    ifelse([$2],,int,[$2]) x = (ifelse([$2],,int,[$2])) $1,
     [cf_cv_dcl_$1=yes],
     [cf_cv_dcl_$1=no])
 ])
@@ -24,5 +24,5 @@ if test "$cf_cv_dcl_$1" = no ; then
 fi
 
 # It's possible (for near-UNIX clones) that the data doesn't exist
-CF_CHECK_EXTERN_DATA($1,ifelse($2,,int,$2))
+CF_CHECK_EXTERN_DATA($1,ifelse([$2],,int,[$2]))
 ])dnl

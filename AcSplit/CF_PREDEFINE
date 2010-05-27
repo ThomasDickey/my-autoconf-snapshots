@@ -1,4 +1,4 @@
-dnl CF_PREDEFINE version: 1 updated: 2003/07/26 17:53:56
+dnl CF_PREDEFINE version: 2 updated: 2010/05/26 16:44:57
 dnl ------------
 dnl Add definitions to CPPFLAGS to ensure they're predefined for all compiles.
 dnl
@@ -15,7 +15,7 @@ make an error
 AC_MSG_RESULT($cf_result)
 
 if test "$cf_result" = yes ; then
-	CPPFLAGS="$CPPFLAGS ifelse($2,,-D$1,[-D$1=$2])"
+	CPPFLAGS="$CPPFLAGS ifelse([$2],,-D$1,[-D$1=$2])"
 elif test "x$2" != "x" ; then
 	AC_MSG_CHECKING(checking for compatible value versus $2)
 	AC_TRY_COMPILE([#include <sys/types.h>
