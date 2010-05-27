@@ -1,4 +1,4 @@
-dnl CF_WCHAR_TYPE version: 2 updated: 2004/01/17 19:18:20
+dnl CF_WCHAR_TYPE version: 3 updated: 2010/05/26 16:44:57
 dnl -------------
 dnl Check if type wide-character type $1 is declared, and if so, which header
 dnl file is needed.  The second parameter is used to set a shell variable when
@@ -34,7 +34,7 @@ if test "$cf_cv_$1" = yes ; then
 	NEED_WCHAR_H=1
 fi
 
-ifelse($2,,,[
+ifelse([$2],,,[
 # if we do not find $1 in either place, use substitution to provide a fallback.
 if test "$cf_cv_$1" = unknown ; then
 	$2=1

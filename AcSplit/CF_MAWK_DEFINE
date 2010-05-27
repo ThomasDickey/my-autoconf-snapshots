@@ -1,5 +1,5 @@
-dnl CF_MAWK_DEFINE version: 2 updated: 2008/09/09 20:32:43
+dnl CF_MAWK_DEFINE version: 3 updated: 2010/05/26 16:44:57
 dnl --------------
 dnl  I can't get AC_DEFINE_NOQUOTE to work so give up
 AC_DEFUN([CF_MAWK_DEFINE],[AC_DEFINE($1)
-echo  X $1 'ifelse($2,,1,$2)' >> defines.out])dnl
+echo  X $1 'ifelse([$2],,1,[$2])' >> defines.out])dnl

@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE version: 4 updated: 2010/05/25 19:42:59
+dnl CF_WITH_PCRE version: 5 updated: 2010/05/25 20:13:58
 dnl ------------
 dnl Add PCRE (Perl-compatible regular expressions) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -16,16 +16,11 @@ test -z "$with_pcre" && with_pcre=no
 AC_MSG_RESULT($with_pcre)
 
 if test "$with_pcre" != no ; then
-	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists libpcre; then
-		cf_libpcre_incs="`$PKG_CONFIG --cflags 2>/dev/null`"
-		cf_libpcre_libs="`$PKG_CONFIG --libs 2>/dev/null`"
-		CF_ADD_CFLAGS($cf_libpcre_incs)
-		LIBS="$cf_libpcre_libs $LIBS"
+	CF_TRY_PKG_CONFIG(libpcre,[
 		AC_CHECK_HEADER(pcreposix.h,[
 			AC_DEFINE(HAVE_LIB_PCRE)
 			AC_DEFINE(HAVE_PCREPOSIX_H)],[
-			AC_MSG_ERROR(Cannot find PCRE POSIX header)])
-	else
+			AC_MSG_ERROR(Cannot find PCRE POSIX header)])],[
 		AC_CHECK_LIB(pcre,pcre_compile,
 			[AC_CHECK_HEADER(pcreposix.h,
 				[AC_CHECK_LIB(pcreposix,pcre_compile,
@@ -35,7 +30,6 @@ if test "$with_pcre" != no ; then
 					AC_MSG_ERROR(Cannot find PCRE POSIX library),
 					"-lpcre")],
 				AC_MSG_ERROR(Cannot find PCRE POSIX header))],
-			AC_MSG_ERROR(Cannot find PCRE library))
-	fi
+			AC_MSG_ERROR(Cannot find PCRE library))])
 fi
 ])dnl
