@@ -1,4 +1,4 @@
-dnl CF_GPP_LIBRARY version: 9 updated: 2009/12/19 13:46:49
+dnl CF_GPP_LIBRARY version: 10 updated: 2010/05/29 16:31:02
 dnl --------------
 dnl If we're trying to use g++, test if libg++ is installed (a rather common
 dnl problem :-).  If we have the compiler but no library, we'll be able to
@@ -17,13 +17,13 @@ esac
 if test "$GXX" = yes; then
 	AC_MSG_CHECKING([for lib$cf_gpp_libname])
 	cf_save="$LIBS"
-	LIBS="-l$cf_gpp_libname $LIBS"
+	CF_ADD_LIB($cf_gpp_libname)
 	AC_TRY_LINK([
 #include <$cf_gpp_libname/builtin.h>
 	],
 	[two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
-	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname"
+	 CF_ADD_LIB($cf_gpp_libname,CXXLIBS)
 	 if test "$cf_gpp_libname" = cpp ; then
 	    AC_DEFINE(HAVE_GPP_BUILTIN_H)
 	 else
@@ -34,7 +34,7 @@ if test "$GXX" = yes; then
 	],
 	[two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
-	 CXXLIBS="$CXXLIBS -l$cf_gpp_libname"
+	 CF_ADD_LIB($cf_gpp_libname,CXXLIBS)
 	 AC_DEFINE(HAVE_BUILTIN_H)],
 	[cf_cxx_library=no])])
 	LIBS="$cf_save"

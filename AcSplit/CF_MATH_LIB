@@ -1,4 +1,4 @@
-dnl CF_MATH_LIB version: 7 updated: 2010/05/26 16:44:57
+dnl CF_MATH_LIB version: 8 updated: 2010/05/29 16:31:02
 dnl -----------
 dnl Checks for libraries.  At least one UNIX system, Apple Macintosh
 dnl Rhapsody 5.5, does not have -lm.  We cannot use the simpler
@@ -17,7 +17,7 @@ AC_CACHE_CHECK(if -lm needed for math functions,
 if test "$cf_cv_need_libm" = yes
 then
 ifelse($1,,[
-	LIBS="-lm $LIBS"
+	CF_ADD_LIB(m)
 ],[$1=-lm])
 fi
 ])

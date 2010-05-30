@@ -1,4 +1,4 @@
-dnl CF_WITH_PTHREAD version: 2 updated: 2008/08/23 18:26:05
+dnl CF_WITH_PTHREAD version: 3 updated: 2010/05/29 16:31:02
 dnl ---------------
 dnl Check for POSIX thread library.
 AC_DEFUN([CF_WITH_PTHREAD],
@@ -16,7 +16,7 @@ if test "$with_pthread" != no ; then
 
         AC_MSG_CHECKING(if we can link with the pthread library)
         cf_save_LIBS="$LIBS"
-        LIBS="-lpthread $LIBS"
+        CF_ADD_LIB(pthread)
         AC_TRY_LINK([
 #include <pthread.h>
 ],[
@@ -26,7 +26,7 @@ if test "$with_pthread" != no ; then
         AC_MSG_RESULT($with_pthread)
 
         if test "$with_pthread" = yes ; then
-            LIBS="-lpthread $LIBS"
+            CF_ADD_LIB(pthread)
             AC_DEFINE(HAVE_LIBPTHREADS)
         else
             AC_MSG_ERROR(Cannot link with pthread library)

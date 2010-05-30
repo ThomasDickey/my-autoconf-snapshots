@@ -1,4 +1,4 @@
-dnl CF_REGEX version: 6 updated: 2010/03/27 13:41:56
+dnl CF_REGEX version: 7 updated: 2010/05/29 16:31:02
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
@@ -11,7 +11,7 @@ AC_CHECK_FUNC(regcomp,[cf_regex_func=regcomp],[
 	for cf_regex_lib in regex re
 	do
 		AC_CHECK_LIB($cf_regex_lib,regcomp,[
-				LIBS="-l$cf_regex_lib $LIBS"
+				CF_ADD_LIB($cf_regex_lib)
 				cf_regex_func=regcomp
 				break])
 	done
@@ -20,7 +20,7 @@ AC_CHECK_FUNC(regcomp,[cf_regex_func=regcomp],[
 if test "$cf_regex_func" = no ; then
 	AC_CHECK_FUNC(compile,[cf_regex_func=compile],[
 		AC_CHECK_LIB(gen,compile,[
-				LIBS="-lgen $LIBS"
+				CF_ADD_LIB(gen)
 				cf_regex_func=compile])])
 fi
 
