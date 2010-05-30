@@ -1,3 +1,12 @@
+2010-05-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FUNC_DLSYM, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MATH_LIB, AcSplit/CF_REGEX, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_WITH_PTHREAD:
+	use CF_ADD_LIB
+
+	* AcSplit/CF_ADD_LIB: RCS_BASE
+
+	* AcSplit/CF_WITH_LOCALE_ALIAS: NetBSD uses /usr/X11R7
+
 2010-05-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA: use pkg-config to find the library if possible

@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB version: 3 updated: 2007/11/24 17:43:37
+dnl CF_HASHED_DB version: 4 updated: 2010/05/29 16:31:02
 dnl ------------
 dnl Look for an instance of the Berkeley hashed database.
 dnl
@@ -25,7 +25,7 @@ else
 	if test "$cf_cv_hashed_db_libs" = unknown ; then
 		AC_MSG_ERROR(Cannot determine library for db)
 	elif test "$cf_cv_hashed_db_libs" != default ; then
-		LIBS="-l$cf_cv_hashed_db_libs $LIBS"
+		CF_ADD_LIB($cf_cv_hashed_db_libs)
 	fi
 fi
 ],[
