@@ -1,7 +1,7 @@
-dnl CF_X_EXT version: 2 updated: 2010/05/26 05:38:42
+dnl CF_X_EXT version: 3 updated: 2010/06/02 05:03:05
 dnl --------
 AC_DEFUN([CF_X_EXT],[
 CF_TRY_PKG_CONFIG(Xext,,[
 	AC_CHECK_LIB(Xext,XextCreateExtension,
-		[LIBS="-lXext $LIBS"])])
+		[CF_ADD_LIB(Xext)])])
 ])dnl

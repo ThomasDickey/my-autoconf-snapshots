@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100529
+MANIFEST for my-autoconf, version t20100602
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -26,6 +26,7 @@ AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIB              consistent assignments to $LIBS
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
+AcSplit/CF_ADD_LIBS             less-specific form of CF_ADD_LIB
 AcSplit/CF_ADD_OPTIONAL_PATH    wrapper for CF_ADD_SEARCHPATH
 AcSplit/CF_ADD_SEARCHPATH       add a directory to -I/-L searchpath(s)
 AcSplit/CF_ADD_SUBDIR_PATH      for CF_SUBDIR_PATH, check subdirs of one directory
@@ -159,6 +160,7 @@ AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
 AcSplit/CF_GNUTLS               check for GNU TLS ("SSL") library
 AcSplit/CF_GNU_SOURCE           check if _GNU_SOURCE is needed to define _XOPEN_SOURCE
 AcSplit/CF_GPP_LIBRARY          check for -lg++
+AcSplit/CF_GRANTPT              check for grantpt and similar functions
 AcSplit/CF_GXX_VERSION          check for version of g++
 AcSplit/CF_GXX_WARNINGS         check for g++ warning options
 AcSplit/CF_HASHED_DB            find hashed-database header, version and corresponding libraries

@@ -1,11 +1,11 @@
-dnl CF_UTEMPTER version: 2 updated: 2000/01/22 22:50:59
+dnl CF_UTEMPTER version: 3 updated: 2010/06/02 05:03:05
 dnl -----------
 dnl Try to link with utempter library
 AC_DEFUN([CF_UTEMPTER],
 [
 AC_CACHE_CHECK(if we can link with utempter library,cf_cv_have_utempter,[
 cf_save_LIBS="$LIBS"
-LIBS="-lutempter $LIBS"
+CF_ADD_LIB(utempter)
 AC_TRY_LINK([
 #include <utempter.h>
 ],[
@@ -18,6 +18,6 @@ LIBS="$cf_save_LIBS"
 ])
 if test "$cf_cv_have_utempter" = yes ; then
 	AC_DEFINE(USE_UTEMPTER)
-	LIBS="-lutempter $LIBS"
+	CF_ADD_LIB(utempter)
 fi
 ])dnl

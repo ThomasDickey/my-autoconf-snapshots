@@ -1,3 +1,18 @@
+2010-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GRANTPT: ci-aclocal generated header
+
+	* AcSplit/CF_FUNC_TGETENT: typo
+
+	* AcSplit/CF_ADD_LIBS: RCS_BASE
+
+	* AcSplit/CF_ADD_LIB, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_UTEMPTER, AcSplit/CF_WITH_PCRE, AcSplit/CF_X_ATHENA, AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_X_EXT, AcSplit/CF_X_FREETYPE, AcSplit/CF_X_TOOLKIT:
+	use CF_ADD_LIB/CF_ADD_LIBS
+
+2010-06-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LOCALE_ALIAS: add case for OpenSolaris location
+
 2010-05-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FUNC_DLSYM, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MATH_LIB, AcSplit/CF_REGEX, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_WITH_PTHREAD:
