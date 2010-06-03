@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 13 updated: 2010/05/26 05:45:44
+dnl CF_X_TOOLKIT version: 14 updated: 2010/06/02 05:03:05
 dnl ------------
 dnl Check for X Toolkit libraries
 dnl
@@ -18,7 +18,7 @@ CF_TRY_PKG_CONFIG(xt,[
 
 	AC_CHECK_FUNC(XOpenDisplay,,[
 	AC_CHECK_LIB(X11,XOpenDisplay,
-		[LIBS="-lX11 $LIBS"],,
+		[CF_ADD_LIB(X11)],,
 		[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])])
 
 	AC_CHECK_FUNC(XtAppInitialize,,[

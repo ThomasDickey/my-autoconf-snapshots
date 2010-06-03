@@ -1,0 +1,23 @@
+dnl CF_GRANTPT version: 1 updated: 2010/06/02 17:26:29
+dnl ----------
+dnl Check for openpty() in -lutil if the UNIX98-style pty functions are not
+dnl available. E.g. for GNU libc 2.0.
+AC_DEFUN([CF_GRANTPT],[
+AC_CHECK_FUNCS(\
+grantpt \
+posix_openpt \
+)
+
+if test "x$ac_cv_func_grantpt" != "xyes" ; then
+	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])
+	if test "$cf_have_openpty" = yes ; then
+		CF_ADD_LIB(util)
+		AC_DEFINE(HAVE_OPENPTY)
+		AC_CHECK_HEADERS( \ 
+			util.h \
+			libutil.h \
+			pty.h \
+		)
+	fi
+fi
+])dnl

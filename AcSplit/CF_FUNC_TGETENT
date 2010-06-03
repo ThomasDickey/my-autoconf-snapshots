@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 12 updated: 2010/01/04 19:48:45
+dnl CF_FUNC_TGETENT version: 14 updated: 2010/06/02 17:26:28
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -43,7 +43,7 @@ else
 fi
 for cf_termlib in '' $cf_TERMLIB ; do
 	LIBS="$cf_save_LIBS"
-	test -n "$cf_termlib" && LIBS="$LIBS -l$cf_termlib"
+	test -n "$cf_termlib" && CF_ADD_LIB($cf_termlib)
 	AC_TRY_RUN([
 /* terminfo implementations ignore the buffer argument, making it useless for
  * the xterm application, which uses this information to make a new TERMCAP
@@ -73,7 +73,7 @@ LIBS="$cf_save_LIBS"
 # not have side effects other than setting the cache variable, because
 # they are not executed when a cached value exists.)
 if test "$cf_cv_lib_tgetent" != no ; then
-	test "$cf_cv_lib_tgetent" != yes && LIBS="$LIBS $cf_cv_lib_tgetent"
+	test "$cf_cv_lib_tgetent" != yes && CF_ADD_LIBS($cf_cv_lib_tgetent)
 	AC_DEFINE(USE_TERMCAP)
 	if test "$cf_full_tgetent" = no ; then
 		AC_TRY_COMPILE([
@@ -93,7 +93,7 @@ else
 	AC_CACHE_CHECK(for partial tgetent function,cf_cv_lib_part_tgetent,[
 	cf_cv_lib_part_tgetent=no
 	for cf_termlib in $cf_TERMLIB ; do
-		LIBS="$cf_save_LIBS -l$cf_termlib"
+		CF_ADD_LIB($cf_termlib)
 		AC_TRY_LINK([],[tgetent(0, "$cf_TERMVAR")],
 			[echo "there is a terminfo/tgetent in $cf_termlib" 1>&AC_FD_CC
 			 cf_cv_lib_part_tgetent="-l$cf_termlib"
@@ -103,7 +103,7 @@ else
 	])
 
 	if test "$cf_cv_lib_part_tgetent" != no ; then
-		LIBS="$LIBS $cf_cv_lib_part_tgetent"
+		CF_ADD_LIBS($cf_cv_lib_part_tgetent)
 		AC_CHECK_HEADERS(termcap.h)
 
                 # If this is linking against ncurses, we'll trigger the
