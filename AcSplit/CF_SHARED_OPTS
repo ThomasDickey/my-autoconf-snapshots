@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 62 updated: 2010/03/28 16:12:30
+dnl CF_SHARED_OPTS version: 64 updated: 2010/06/05 16:51:16
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -76,7 +76,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 	aix[[56]]*) #(vi
 		if test "$GCC" = yes; then
 			CC_SHARED_OPTS=
-			MK_SHARED_LIB="$(CC) -shared"
+			MK_SHARED_LIB='$(CC) -shared'
 		fi
 		;;
 	beos*) #(vi
@@ -251,7 +251,7 @@ CF_EOF
 		CF_SHARED_SONAME
 		if test "$GCC" != yes; then
 			cf_save_CFLAGS="$CFLAGS"
-			for cf_shared_opts in -xcode=pic13 -xcode=pic32 -Kpic -KPIC -O
+			for cf_shared_opts in -xcode=pic32 -xcode=pic13 -KPIC -Kpic -O
 			do
 				CFLAGS="$cf_shared_opts $cf_save_CFLAGS"
 				AC_TRY_COMPILE([#include <stdio.h>],[printf("Hello\n");],[break])

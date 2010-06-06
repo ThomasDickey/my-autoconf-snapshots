@@ -1,3 +1,21 @@
+2010-06-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	assignment in case for aix was improperly quoted
+
+	* AcSplit/CF_SHARED_OPTS:
+	for Solaris, prefix -xcode=32 / -K PIC over -xcode=13 / -K pic
+
+	* AcSplit/CF_WITH_PCRE:
+	libpcre package on Centos 5.4 uses different entrypoint for libpcreposix
+
+	* AcSplit/CF_WITH_PCRE:
+	not all pcre packages show the posix library with --libs option
+
+2010-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT: typo
+
 2010-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GRANTPT: ci-aclocal generated header

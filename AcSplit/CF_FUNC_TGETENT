@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 14 updated: 2010/06/02 17:26:28
+dnl CF_FUNC_TGETENT version: 15 updated: 2010/06/04 20:54:56
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -93,7 +93,7 @@ else
 	AC_CACHE_CHECK(for partial tgetent function,cf_cv_lib_part_tgetent,[
 	cf_cv_lib_part_tgetent=no
 	for cf_termlib in $cf_TERMLIB ; do
-		CF_ADD_LIB($cf_termlib)
+		LIBS="$cf_save_LIBS -l$cf_termlib"
 		AC_TRY_LINK([],[tgetent(0, "$cf_TERMVAR")],
 			[echo "there is a terminfo/tgetent in $cf_termlib" 1>&AC_FD_CC
 			 cf_cv_lib_part_tgetent="-l$cf_termlib"
