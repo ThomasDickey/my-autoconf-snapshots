@@ -1,3 +1,13 @@
+2010-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TRY_PKG_CONFIG:
+	add verbose output, to help see where the libraries come from.
+
+	* AcSplit/CF_X_ATHENA: use CF_TRY_PKG_CONFIG again, to reduce clitter
+
+	* AcSplit/CF_X_TOOLKIT:
+	workaround for broken ".pc" file for X Toolkit, which omits the ICE library.
+
 2010-06-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
