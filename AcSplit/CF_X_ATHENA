@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA version: 15 updated: 2010/06/02 05:03:05
+dnl CF_X_ATHENA version: 16 updated: 2010/06/14 17:42:30
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
@@ -52,17 +52,11 @@ if test "$PKG_CONFIG" != none ; then
 		lib${cf_x_athena} \
 		lib${cf_x_athena}-devel
 	do
-		if "$PKG_CONFIG" --exists $cf_athena_pkg; then
-			CF_VERBOSE(found package $cf_athena_pkg)
-			cf_x_athena_inc="`$PKG_CONFIG --cflags $cf_athena_pkg 2>/dev/null`"
-			cf_x_athena_lib="`$PKG_CONFIG --libs   $cf_athena_pkg 2>/dev/null`"
-			CF_ADD_CFLAGS($cf_x_athena_inc)
-			CF_ADD_LIBS($cf_x_athena_lib)
-
+		CF_TRY_PKG_CONFIG($cf_athena_pkg,[
+			cf_x_athena_lib="$cf_pkgconfig_libs"
 			CF_UPPER(cf_x_athena_LIBS,HAVE_LIB_$cf_x_athena)
 			AC_DEFINE_UNQUOTED($cf_x_athena_LIBS)
-			break
-		fi
+			break])
 	done
 fi
 

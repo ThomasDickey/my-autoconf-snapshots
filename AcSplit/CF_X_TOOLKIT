@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 14 updated: 2010/06/02 05:03:05
+dnl CF_X_TOOLKIT version: 15 updated: 2010/06/14 17:42:30
 dnl ------------
 dnl Check for X Toolkit libraries
 dnl
@@ -10,6 +10,23 @@ AC_REQUIRE([CF_CHECK_CACHE])
 cf_have_X_LIBS=no
 
 CF_TRY_PKG_CONFIG(xt,[
+
+	# workaround for broken ".pc" files used for X Toolkit.
+	case "x$X_PRE_LIBS" in #(vi
+	*-lICE*)
+		case "x$LIBS" in #(vi
+		*-lICE*) #(vi
+			;;
+		*)
+			CF_VERBOSE(work around broken package)
+			CF_VERBOSE(...before $LIBS)
+			LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt $X_PRE_LIBS ," -e 's/  / /g'`
+			CF_VERBOSE(...after  $LIBS)
+			;;
+		esac
+		;;
+	esac
+
 	cf_have_X_LIBS=yes
 ],[
 
