@@ -1,3 +1,15 @@
+2010-06-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA_SHAREDLIB: ci-aclocal generated header
+
+	* AcSplit/CF_GNAT_VERSION: add AC_SUBST's for variables set here
+
+	* AcSplit/CF_ADD_ADAFLAGS, AcSplit/CF_GNAT_PRAGMA_UNREF, AcSplit/CF_PROG_GNAT, AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_OBJECTS:
+	ci-aclocal generated header
+
+	* AcSplit/AM_GNU_GETTEXT:
+	drop $MKINSTALLDIRS, use "mkdir -p" consistently.
+
 2010-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TRY_PKG_CONFIG:

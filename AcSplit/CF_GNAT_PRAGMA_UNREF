@@ -1,0 +1,28 @@
+dnl CF_GNAT_PRAGMA_UNREF version: 1 updated: 2010/06/19 15:22:18
+dnl --------------------
+dnl Check if the gnat pragma "Unreferenced" works.
+AC_DEFUN([CF_GNAT_PRAGMA_UNREF],[
+AC_CACHE_CHECK(if GNAT pragma Unreferenced works,cf_cv_pragma_unreferenced,[
+CF_GNAT_TRY_LINK([procedure conftest;],
+[with Text_IO;
+with GNAT.OS_Lib;
+procedure conftest is
+   test : Integer;
+   pragma Unreferenced (test);
+begin
+   test := 1;
+   Text_IO.Put ("Hello World");
+   Text_IO.New_Line;
+   GNAT.OS_Lib.OS_Exit (0);
+end conftest;],
+	[cf_cv_pragma_unreferenced=yes],
+	[cf_cv_pragma_unreferenced=no])])
+
+# if the pragma is supported, use it (needed in the Trace code).
+if test $cf_cv_pragma_unreferenced = yes ; then
+	PRAGMA_UNREF=TRUE
+else
+	PRAGMA_UNREF=FALSE
+fi
+AC_SUBST(PRAGMA_UNREF)
+])dnl

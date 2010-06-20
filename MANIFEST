@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100614
+MANIFEST for my-autoconf, version t20100619
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -22,6 +22,7 @@ AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
 AcSplit/AM_WITH_NLS             macro to test for NLS
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
+AcSplit/CF_ADD_ADAFLAGS         add to $ADAFLAGS, which is substituted into makefiles and scripts.
 AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIB              consistent assignments to $LIBS
@@ -154,6 +155,7 @@ AcSplit/CF_GCC_VERSION          check for version of gcc
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GETOPT_HEADER        check for getopt variables in header file
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
+AcSplit/CF_GNAT_PRAGMA_UNREF    check if the gnat pragma "Unreferenced" works.
 AcSplit/CF_GNAT_TRY_LINK        test compile/link for GNAT
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
@@ -291,6 +293,7 @@ AcSplit/CF_PROG_CC_C_O          check if the compiler (given by its shell-variab
 AcSplit/CF_PROG_CC_U_D          macro to test if I can use -U to pre-undefine a symbol that I want to
 AcSplit/CF_PROG_EGREP           adapted from autoconf 2.57 (AC_PROG_EGREP comes from 2.53)
 AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
+AcSplit/CF_PROG_GNAT            check for gnatmake, ensure that it is complete
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
 AcSplit/CF_PROG_LINT            find the "lint" program
@@ -414,6 +417,10 @@ AcSplit/CF_WEAK_SYMBOLS         check for (at least) recent gcc support for weak
 AcSplit/CF_WIDEC_CURSES         check for wide-character curses
 AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITH_ABI_VERSION     option to allow changing ABI version (ncurses)
+AcSplit/CF_WITH_ADA_COMPILER    command-line option to specify the Ada95 compiler
+AcSplit/CF_WITH_ADA_INCLUDE     command-line option for path of Ada includes
+AcSplit/CF_WITH_ADA_OBJECTS     command-line option for path of Ada objects
+AcSplit/CF_WITH_ADA_SHAREDLIB   command-line option to tell if an Ada95-shared library should be built
 AcSplit/CF_WITH_BZLIB           check for libbz2
 AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
 AcSplit/CF_WITH_DBMALLOC        configure with dbmalloc (add)

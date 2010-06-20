@@ -1,0 +1,10 @@
+dnl CF_WITH_ADA_COMPILER version: 1 updated: 2010/06/19 15:22:18
+dnl --------------------
+dnl Command-line option to specify the Ada95 compiler.
+AC_DEFUN([CF_WITH_ADA_COMPILER],[
+AC_ARG_WITH(ada-compiler,
+	[  --with-ada-compiler=CMD specify Ada95 compiler command (default gnatmake)],
+	[cf_ada_compiler=$withval],
+	[cf_ada_compiler=gnatmake])
+AC_SUBST(cf_ada_compiler)
+])dnl
