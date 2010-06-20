@@ -1,0 +1,7 @@
+dnl CF_ADD_ADAFLAGS version: 1 updated: 2010/06/19 15:22:18
+dnl ---------------
+dnl Add to $ADAFLAGS, which is substituted into makefile and scripts.
+AC_DEFUN([CF_ADD_ADAFLAGS],[
+ 	ADAFLAGS="$ADAFLAGS $1"
+	AC_SUBST(ADAFLAGS)
+])dnl

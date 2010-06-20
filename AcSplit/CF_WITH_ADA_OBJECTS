@@ -1,0 +1,11 @@
+dnl CF_WITH_ADA_OBJECTS version: 1 updated: 2010/06/19 15:22:18
+dnl -------------------
+dnl Command-line option to specify where Ada objects will install.
+AC_DEFUN([CF_WITH_ADA_OBJECTS],[
+CF_WITH_PATH(ada-objects,
+   [  --with-ada-objects=DIR  Ada objects are in DIR],
+   ADA_OBJECTS,
+   PREFIX/lib/ada/adalib,
+   [$]prefix/lib/ada/adalib)
+AC_SUBST(ADA_OBJECTS)
+])dnl
