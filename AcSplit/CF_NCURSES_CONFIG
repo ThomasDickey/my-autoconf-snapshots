@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 6 updated: 2010/04/28 06:02:16
+dnl CF_NCURSES_CONFIG version: 7 updated: 2010/06/20 09:24:28
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses.
 dnl Prefer the "-config" script from ncurses 5.6, to simplify analysis.
@@ -15,7 +15,7 @@ AC_PATH_PROGS(NCURSES_CONFIG,${cf_ncuconfig_root}6-config ${cf_ncuconfig_root}5-
 if test "$NCURSES_CONFIG" != none ; then
 
 CPPFLAGS="$CPPFLAGS `$NCURSES_CONFIG --cflags`"
-LIBS="`$NCURSES_CONFIG --libs` $LIBS"
+CF_ADD_LIBS(`$NCURSES_CONFIG --libs`)
 
 # even with config script, some packages use no-override for curses.h
 CF_CURSES_HEADER(ifelse($1,,ncurses,$1))

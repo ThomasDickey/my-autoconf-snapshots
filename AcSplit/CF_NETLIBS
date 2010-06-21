@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 6 updated: 2009/12/24 04:20:51
+dnl CF_NETLIBS version: 7 updated: 2010/06/20 09:24:28
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -32,7 +32,7 @@ mingw32) # (vi
 	fi
 
 	cf_save_LIBS="$LIBS"
-	LIBS="$cf_winsock_lib $LIBS"
+	CF_ADD_LIBS($cf_winsock_lib)
 
 	AC_TRY_LINK([
 #ifdef HAVE_WINDOWS_H
@@ -86,6 +86,6 @@ case $cf_cv_netlibs in #(vi
 	;;
 esac
 
-LIBS="$LIBS $cf_cv_netlibs"
+CF_ADD_LIBS($cf_cv_netlibs)
 test $cf_test_netlibs = no && echo "$cf_cv_netlibs" >&AC_FD_MSG
 ])dnl

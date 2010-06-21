@@ -1,4 +1,4 @@
-dnl CF_INET_ADDR version: 4 updated: 1999/03/30 12:24:31
+dnl CF_INET_ADDR version: 5 updated: 2010/06/20 09:24:28
 dnl ------------
 dnl For Lynx, check if the libraries we have found give us inet_aton, or
 dnl inet_addr.  If not, try to find the latter function with -lbind or
@@ -44,7 +44,7 @@ else
 	    done
 	])
 	if test "$cf_cv_lib_inet_addr" != no ; then
-	    LIBS="$LIBS $cf_cv_lib_inet_addr"
+	    CF_ADD_LIBS($cf_cv_lib_inet_addr)
 	else
 	    AC_MSG_WARN(Unable to find library for inet_addr function)
 	fi

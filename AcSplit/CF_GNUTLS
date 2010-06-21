@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 18 updated: 2010/05/26 16:44:57
+dnl CF_GNUTLS version: 21 updated: 2010/06/20 18:21:35
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -29,14 +29,14 @@ AC_DEFUN([CF_GNUTLS],[
 				if test -n "$cf_cflags_ssl" ; then
 					case "$cf_cflags_ssl" in #(vi
 					*-I*) #(vi
-						cf_cv_header_path_ssl=`echo "$cf_cflags_ssl" | sed -e 's/^.*-I//' -e 's/ .*//'`
+						cf_cv_header_path_gnutls=`echo "$cf_cflags_ssl" | sed -e 's/^.*-I//' -e 's/ .*//'`
 						;;
 					*)
-						cf_cv_header_path_ssl=/usr/include
+						cf_cv_header_path_gnutls=/usr/include
 						;;
 					esac
-					if test -d $cf_cv_header_path_ssl/gnutls ; then
-						cf_cv_header_path_ssl=$cf_cv_header_path_ssl/gnutls
+					if test -d $cf_cv_header_path_gnutls/gnutls ; then
+						cf_cv_header_path_gnutls=$cf_cv_header_path_gnutls/gnutls
 					fi
 					CF_ADD_CFLAGS($cf_cflags_ssl)
 				fi
@@ -44,14 +44,14 @@ AC_DEFUN([CF_GNUTLS],[
 				if test -n "$cf_libs_ssl" ; then
 					case "x$cf_libs_ssl" in #(vi
 					*-L*) #(vi
-						cf_cv_library_path_ssl=`echo "$cf_libs_ssl" | sed -e 's/^.*-L//' -e 's/ .*//'`
+						cf_cv_library_path_gnutls=`echo "$cf_libs_ssl" | sed -e 's/^.*-L//' -e 's/ .*//'`
 						;;
 					*)
-						cf_cv_library_path_ssl=/usr/lib
+						cf_cv_library_path_gnutls=/usr/lib
 						;;
 					esac
 					CF_VERBOSE(adding $cf_libs_ssl to LIBS)
-					LIBS="$cf_libs_ssl $LIBS"
+					CF_ADD_LIBS($cf_libs_ssl)
 				fi
 			else
 				CF_VERBOSE(... did not find $cf_pkg_gnutls in pkg-config)
@@ -61,8 +61,9 @@ AC_DEFUN([CF_GNUTLS],[
 		esac
 	fi
 
+	ifelse([$2],,[AC_DEFINE(USE_GNUTLS_INCL)],[AC_DEFINE(USE_GNUTLS_FUNCS)])
+
 	if test "$cf_cv_have_gnutls" = no ; then
-		ifelse([$2],,[AC_DEFINE(USE_GNUTLS_INCL)],[AC_DEFINE(USE_GNUTLS_FUNCS)])
 		cf_gnutls_CPPFLAGS=$CPPFLAGS
 
 		CF_FIND_LINKAGE(CF__SSL_HEAD,
@@ -77,31 +78,27 @@ AC_DEFUN([CF_GNUTLS],[
 	fi
 
 	if test "$cf_cv_have_gnutls" = yes ; then
-		if test "$cf_cv_pkg_config_ssl" != yes ; then
-			if test -n "$cf_cv_header_path_gnutls" ; then
-				AC_DEFINE(USE_SSL)
-				case $cf_cv_header_path_gnutls in
-					/usr/include/gnutls)
-					;;
-				*)
-					CF_ADD_INCDIR($cf_cv_header_path_gnutls)
-					;;
-				esac
-			fi
-			if test -n "$cf_cv_library_path_gnutls" ; then
-				CF_ADD_LIBDIR($cf_cv_library_path_gnutls)
-			fi
-			LIBS="-lgnutls -lgcrypt $LIBS"
-		else
+		if test -n "$cf_cv_header_path_gnutls" ; then
 			AC_DEFINE(USE_SSL)
+			case $cf_cv_header_path_gnutls in
+				/usr/include/gnutls)
+				;;
+			*)
+				CF_ADD_INCDIR($cf_cv_header_path_gnutls)
+				;;
+			esac
 		fi
+		if test -n "$cf_cv_library_path_gnutls" ; then
+			CF_ADD_LIBDIR($cf_cv_library_path_gnutls)
+		fi
+		CF_ADD_LIBS(-lgnutls -lgcrypt)
 
 		ifelse([$2],,
 			[if test "$cf_pkg_gnutls" = none ; then
 				AC_CHECK_LIB(gnutls-openssl,SSL_connect,
-					[LIBS="-lgnutls-openssl $LIBS"],
+					[CF_ADD_LIBS(-lgnutls-openssl)],
 					[AC_CHECK_LIB(gnutls-extra,SSL_connect,
-					[LIBS="-lgnutls-extra $LIBS"],
+					[CF_ADD_LIBS(-lgnutls-extra)],
 					[AC_MSG_ERROR(cannot find gnutls openssl functions)])])
 			fi],[EXTRA_OBJS="$EXTRA_OBJS $2"])
 
