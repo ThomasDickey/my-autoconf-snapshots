@@ -1,4 +1,4 @@
-dnl CF_CURSES_LIBS version: 29 updated: 2009/01/06 19:34:57
+dnl CF_CURSES_LIBS version: 30 updated: 2010/06/20 09:24:28
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
@@ -15,16 +15,16 @@ AC_MSG_RESULT($cf_result)
 if test "$cf_result" = no ; then
 case $host_os in #(vi
 freebsd*) #(vi
-    AC_CHECK_LIB(mytinfo,tgoto,[LIBS="-lmytinfo $LIBS"])
+    AC_CHECK_LIB(mytinfo,tgoto,[CF_ADD_LIBS(-lmytinfo)])
     ;;
 hpux10.*) #(vi
     AC_CHECK_LIB(cur_colr,initscr,[
-        LIBS="-lcur_colr $LIBS"
+        CF_ADD_LIBS(-lcur_colr)
         ac_cv_func_initscr=yes
         ],[
     AC_CHECK_LIB(Hcurses,initscr,[
         # HP's header uses __HP_CURSES, but user claims _HP_CURSES.
-        LIBS="-lHcurses $LIBS"
+        CF_ADD_LIBS(-lHcurses)
         CPPFLAGS="$CPPFLAGS -D__HP_CURSES -D_HP_CURSES"
         ac_cv_func_initscr=yes
         ])])
@@ -35,7 +35,7 @@ linux*) # Suse Linux does not follow /usr/lib convention
 sunos3*|sunos4*)
     if test -d /usr/5lib ; then
       CF_ADD_LIBDIR(/usr/5lib)
-      LIBS="$LIBS -lcurses -ltermcap"
+      CF_ADD_LIBS(-lcurses -ltermcap)
     fi
     ac_cv_func_initscr=yes
     ;;

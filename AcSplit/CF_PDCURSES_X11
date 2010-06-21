@@ -1,4 +1,4 @@
-dnl CF_PDCURSES_X11 version: 9 updated: 2009/01/11 15:31:37
+dnl CF_PDCURSES_X11 version: 10 updated: 2010/06/20 09:24:28
 dnl ---------------
 dnl Configure for PDCurses' X11 library
 AC_DEFUN([CF_PDCURSES_X11],[
@@ -9,7 +9,7 @@ AC_PATH_PROGS(XCURSES_CONFIG,xcurses-config,none)
 if test "$XCURSES_CONFIG" != none ; then
 
 CPPFLAGS="$CPPFLAGS `$XCURSES_CONFIG --cflags`"
-LIBS="`$XCURSES_CONFIG --libs` $LIBS"
+CF_ADD_LIBS(`$XCURSES_CONFIG --libs`)
 
 cf_cv_lib_XCurses=yes
 
@@ -18,10 +18,10 @@ else
 LDFLAGS="$LDFLAGS $X_LIBS"
 CF_CHECK_CFLAGS($X_CFLAGS)
 AC_CHECK_LIB(X11,XOpenDisplay,
-	[LIBS="-lX11 $LIBS"],,
+	[CF_ADD_LIBS(-lX11)],,
 	[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])
 AC_CACHE_CHECK(for XCurses library,cf_cv_lib_XCurses,[
-LIBS="-lXCurses $LIBS"
+CF_ADD_LIBS(-lXCurses)
 AC_TRY_LINK([
 #include <xcurses.h>
 char *XCursesProgramName = "test";

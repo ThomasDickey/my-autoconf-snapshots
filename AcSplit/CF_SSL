@@ -1,4 +1,4 @@
-dnl CF_SSL version: 21 updated: 2010/05/05 20:27:55
+dnl CF_SSL version: 22 updated: 2010/06/20 09:24:28
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -54,7 +54,7 @@ AC_DEFUN([CF_SSL],[
 						;;
 					esac
 					CF_VERBOSE(adding $cf_libs_ssl to LIBS)
-					LIBS="$cf_libs_ssl $LIBS"
+					CF_ADD_LIBS($cf_libs_ssl)
 				fi
 			fi
 			;;
@@ -93,7 +93,7 @@ AC_DEFUN([CF_SSL],[
 				if test -n "$cf_cv_library_path_ssl" ; then
 					CF_ADD_LIBDIR($cf_cv_library_path_ssl)
 				fi
-				LIBS="-lssl $cf_extra_ssl_libs $LIBS"
+				CF_ADD_LIBS(-lssl $cf_extra_ssl_libs)
 				if test -n "$cf_cv_header_path_ssl" ; then
 					case $cf_cv_header_path_ssl in #(vi
 					/usr/include/openssl) #(vi

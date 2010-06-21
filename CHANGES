@@ -1,3 +1,15 @@
+2010-06-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS: further fixes for with/without gnutls-compat
+
+	* AcSplit/AM_WITH_NLS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_GNUTLS, AcSplit/CF_INET_ADDR, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PDCURSES_X11, AcSplit/CF_SOCKS5, AcSplit/CF_SSL, AcSplit/CF_TERMCAP_LIBS, AcSplit/CF_UTF8_LIB:
+	use CF_ADD_LIBS for consistency
+
+	* AcSplit/CF_GNUTLS:
+	amend the change for using pkg-config; the ".pc" file for gnutls provides
+	no useful information for the --cflags option, so it is still necessary to
+	check for the subdir feature of the -I options.
+
 2010-06-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA_SHAREDLIB: ci-aclocal generated header
