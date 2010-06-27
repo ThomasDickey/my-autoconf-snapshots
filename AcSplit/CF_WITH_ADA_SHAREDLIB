@@ -1,13 +1,17 @@
-dnl CF_WITH_ADA_SHAREDLIB version: 1 updated: 2010/06/19 16:12:21
+dnl CF_WITH_ADA_SHAREDLIB version: 2 updated: 2010/06/26 17:35:58
 dnl ---------------------
 dnl Command-line option to specify if an Ada95 shared-library should be built,
 dnl and optionally what its soname should be.
 AC_DEFUN([CF_WITH_ADA_SHAREDLIB],[
+AC_MSG_CHECKING(if an Ada95 shared-library should be built)
 AC_ARG_WITH(ada-sharedlib,
 	[  --with-ada-sharedlib=XX build Ada95 shared-library],
 	[with_ada_sharedlib=$withval],
 	[with_ada_sharedlib=no])
 AC_MSG_RESULT($with_ada_sharedlib)
+
+ADA_SHAREDLIB='lib$(LIB_NAME).so.1'
+MAKE_ADA_SHAREDLIB="#"
 
 if test "x$with_ada_sharedlib" != xno
 then
@@ -15,11 +19,7 @@ then
 	if test "x$with_ada_sharedlib" != xyes
 	then
 		ADA_SHAREDLIB="$with_ada_sharedlib"
-	else
-		ADA_SHAREDLIB='lib$(LIB_NAME).so.1'
 	fi
-else
-	MAKE_ADA_SHAREDLIB="#"
 fi
 
 AC_SUBST(ADA_SHAREDLIB)
