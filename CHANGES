@@ -1,3 +1,8 @@
+2010-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB:
+	add progress messages
+
 2010-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
