@@ -1,3 +1,15 @@
+2010-07-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_TDLIB:
+	td_lib.mk is now in the datadir, e.g., /usr/share/td
+
+	* AcSplit/CF_ADD_SUBDIR_PATH:
+	workaround - if $prefix was not mkdir'd yet, no directories were added.
+
+	* AcSplit/CF_GNAT_VERSION:
+	add substitution to distinguish between gnatmake's which do/don't support
+	project files
+
 2010-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB:
