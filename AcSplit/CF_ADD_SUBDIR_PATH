@@ -1,4 +1,4 @@
-dnl CF_ADD_SUBDIR_PATH version: 2 updated: 2007/07/29 10:12:59
+dnl CF_ADD_SUBDIR_PATH version: 3 updated: 2010/07/03 20:58:12
 dnl ------------------
 dnl Append to a search-list for a nonstandard header/lib-file
 dnl	$1 = the variable to return as result
@@ -10,7 +10,7 @@ AC_DEFUN([CF_ADD_SUBDIR_PATH],
 [
 test "$4" != "$5" && \
 test -d "$4" && \
-ifelse([$5],NONE,,[(test $5 = NONE || test -d $5) &&]) {
+ifelse([$5],NONE,,[(test $5 = NONE || test "$4" != "$5") &&]) {
 	test -n "$verbose" && echo "	... testing for $3-directories under $4"
 	test -d $4/$3 &&          $1="[$]$1 $4/$3"
 	test -d $4/$3/$2 &&       $1="[$]$1 $4/$3/$2"

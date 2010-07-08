@@ -1,7 +1,7 @@
-dnl CF_NCURSES_CONFIG version: 7 updated: 2010/06/20 09:24:28
+dnl CF_NCURSES_CONFIG version: 8 updated: 2010/07/08 05:17:30
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses.
-dnl Prefer the "-config" script from ncurses 5.6, to simplify analysis.
+dnl Prefer the "-config" script from ncurses 6.x, to simplify analysis.
 dnl Allow that to be overridden using the $NCURSES_CONFIG environment variable.
 dnl
 dnl $1 is the root library name (default: "ncurses")
