@@ -1,3 +1,15 @@
+2010-07-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_LN_S: ci-aclocal generated header
+
+	* AcSplit/CF_MAN_PAGES: modified to use results from CF_PROG_LN_S
+
+	* AcSplit/CF_MANPAGE_SYMLINKS: modify to work with CF_PROG_LN_S
+
+	* AcSplit/CF_LIB_RULES: pass LN_S value to mk-1st.awk
+
+	* AcSplit/CF_ENABLE_TRACE: ci-aclocal generated header
+
 2010-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_LEAKS: add YY_NO_LEAKS symbol recognized by byacc
