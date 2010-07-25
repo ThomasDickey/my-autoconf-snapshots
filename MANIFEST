@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100723
+MANIFEST for my-autoconf, version t20100724
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -118,6 +118,7 @@ AcSplit/CF_DISABLE_RPATH_HACK   option to disable rpath-hack
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
 AcSplit/CF_ENABLE_NARROWPROTO   make -DNARROWPROTO configurable to work about botched Xorg "modular" build.
 AcSplit/CF_ENABLE_RPATH         process "--enable-rpath" option
+AcSplit/CF_ENABLE_TRACE         configure --enable-trace option
 AcSplit/CF_ENABLE_WARNINGS      enable warnings (add)
 AcSplit/CF_ERRNO                check if errno is declared in errno.h
 AcSplit/CF_ETIP_DEFINES         special test for ncurses/c++/etip.h
@@ -297,6 +298,7 @@ AcSplit/CF_PROG_GNAT            check for gnatmake, ensure that it is complete
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
 AcSplit/CF_PROG_LINT            find the "lint" program
+AcSplit/CF_PROG_LN_S            AC_PROG_LN_S, with additional check for "-f" option.
 AcSplit/CF_PROG_PERL            check for perl program
 AcSplit/CF_PROG_RANLIB          check for ranlib
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option

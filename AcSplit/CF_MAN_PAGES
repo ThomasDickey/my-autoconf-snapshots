@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 37 updated: 2010/05/15 16:05:34
+dnl CF_MAN_PAGES version: 38 updated: 2010/07/24 17:12:40
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -41,7 +41,7 @@ case "$MANPAGE_FORMAT" in #(vi
 	cf_so_strip="Z"
 	cf_compress=compress
   ;;
-*gzip*) #(vi
+*gzip*)
 	cf_so_strip="gz"
 	cf_compress=gzip
   ;;
@@ -256,8 +256,21 @@ cat >>$cf_edit_man <<CF_EOF
 							fi
 						fi
 						echo .. \$verb alias \$cf_alias\${suffix}
+CF_EOF
+case "x$LN_S" in #(vi
+*-f) #(vi
+cat >>$cf_edit_man <<CF_EOF
+						$LN_S \$cf_target \$cf_alias\${suffix}
+CF_EOF
+	;;
+*)
+cat >>$cf_edit_man <<CF_EOF
 						rm -f \$cf_alias\${suffix}
 						$LN_S \$cf_target \$cf_alias\${suffix}
+CF_EOF
+	;;
+esac
+cat >>$cf_edit_man <<CF_EOF
 					elif test "\$cf_target" != "\$cf_alias\${suffix}" ; then
 						echo ".so \$cf_source" >\$TMP
 CF_EOF
