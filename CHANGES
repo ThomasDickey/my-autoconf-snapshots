@@ -1,3 +1,10 @@
+2010-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REGEX:
+	Building on/for MinGW, there's more than one variation of the name to use
+	when linking.  Add "-lregex.dll" as a possibility, since that seems to be
+	the most recent.  Don't add the older "-lgnurx.dll".
+
 2010-07-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_LN_S: ci-aclocal generated header
