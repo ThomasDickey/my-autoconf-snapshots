@@ -1,3 +1,13 @@
+2010-08-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PERL:
+	also redefine 'main' when including perl headers, since old perl versions
+	had a prototype for it which conflicts with autoconf's "main()"
+
+	* AcSplit/CF_WITH_PERL:
+	drop 2 details from the test-compile which are not in Perl 5.004 (the XSINIT_t
+	and aTHX_ symbols).
+
 2010-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REGEX:
