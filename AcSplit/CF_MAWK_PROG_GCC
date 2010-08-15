@@ -1,4 +1,4 @@
-dnl CF_MAWK_PROG_GCC version: 1 updated: 2008/09/09 19:18:22
+dnl CF_MAWK_PROG_GCC version: 2 updated: 2010/08/14 18:28:30
 dnl ----------------
 dnl AC_PROG_CC with default -g to cflags
 AC_DEFUN([CF_MAWK_PROG_GCC],
@@ -19,5 +19,5 @@ else
   ac_cv_prog_gcc=no
 fi])dnl
 AC_MSG_RESULT($ac_cv_prog_gcc)
-rm -f conftest*
+rm -rf conftest*
 ])dnl

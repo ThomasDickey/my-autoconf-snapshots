@@ -1,4 +1,4 @@
-dnl CF_GCC_WARNINGS version: 25 updated: 2010/04/24 11:03:31
+dnl CF_GCC_WARNINGS version: 26 updated: 2010/08/14 18:25:37
 dnl ---------------
 dnl Check if the compiler supports useful warning options.  There's a few that
 dnl we don't use, simply because they're too noisy:
@@ -102,7 +102,7 @@ then
 	done
 	CFLAGS="$cf_save_CFLAGS"
 fi
-rm -f conftest*
+rm -rf conftest*
 
 AC_SUBST(EXTRA_CFLAGS)
 ])dnl

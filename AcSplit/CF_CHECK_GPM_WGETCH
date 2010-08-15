@@ -1,4 +1,4 @@
-dnl CF_CHECK_GPM_WGETCH version: 1 updated: 2007/04/28 14:38:06
+dnl CF_CHECK_GPM_WGETCH version: 2 updated: 2010/08/14 18:25:37
 dnl -------------------
 dnl Check if GPM is already linked with curses.  If so - and if the linkage
 dnl is not "weak" - warn about this because it can create problems linking
@@ -32,7 +32,7 @@ CF_EOF
 			test -z "$cf_cv_check_gpm_wgetch" && cf_cv_check_gpm_wgetch=no
 		fi
 	fi
-	rm -f conftest*
+	rm -rf conftest*
 	LIBS="$cf_save_LIBS"
 fi
 ])

@@ -1,4 +1,4 @@
-dnl CF_PROG_LN_S version: 1 updated: 2010/07/24 17:12:40
+dnl CF_PROG_LN_S version: 2 updated: 2010/08/14 18:25:37
 dnl ------------
 dnl Combine checks for "ln -s" and "ln -sf", updating $LN_S to include "-f"
 dnl option if it is supported.
@@ -14,7 +14,7 @@ if $LN_S -f conf$$.src conf$$.dst 2>/dev/null; then
 else
 	cf_prog_ln_sf=no
 fi
-
+rm -f conf$$.dst conf$$src
 AC_MSG_RESULT($cf_prog_ln_sf)
 
 test "$cf_prog_ln_sf" = yes && LN_S="$LN_S -f"
