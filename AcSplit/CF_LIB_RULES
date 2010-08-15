@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 57 updated: 2010/07/24 17:12:40
+dnl CF_LIB_RULES version: 58 updated: 2010/08/14 19:00:32
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -21,6 +21,23 @@ if test $cf_cv_shlib_version = cygdll ; then
 	TINFO_SUFFIX=.dll
 fi
 
+if test -n "$TINFO_SUFFIX" ; then
+	case $TINFO_SUFFIX in
+	tw*)
+		TINFO_NAME="${TINFO_NAME}tw"
+		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^tw//'`
+		;;
+	t*)
+		TINFO_NAME="${TINFO_NAME}t"
+		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^t//'`
+		;;
+	w*)
+		TINFO_NAME="${TINFO_NAME}/w"
+		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^w//'`
+		;;
+	esac
+fi
+
 for cf_dir in $SRC_SUBDIRS
 do
 	if test ! -d $srcdir/$cf_dir ; then
@@ -39,6 +56,14 @@ do
 					case "$cf_cv_system_name" in #(vi
 					darwin*)
 					case .${LIB_SUFFIX} in
+					.tw*)
+						cf_suffix=`echo $cf_suffix | sed 's/^tw//'`
+						cf_suffix=tw'.${REL_VERSION}'"$cf_suffix"
+						;;
+					.t*)
+						cf_suffix=`echo $cf_suffix | sed 's/^t//'`
+						cf_suffix=t'.${REL_VERSION}'"$cf_suffix"
+						;;
 					.w*)
 						cf_suffix=`echo $cf_suffix | sed 's/^w//'`
 						cf_suffix=w'.${REL_VERSION}'"$cf_suffix"
@@ -55,6 +80,14 @@ do
 					case "$cf_cv_system_name" in #(vi
 					darwin*)
 					case .${LIB_SUFFIX} in
+					.tw*)
+						cf_suffix=`echo $cf_suffix | sed 's/^tw//'`
+						cf_suffix=tw'.${ABI_VERSION}'"$cf_suffix"
+						;;
+					.t*)
+						cf_suffix=`echo $cf_suffix | sed 's/^t//'`
+						cf_suffix=t'.${ABI_VERSION}'"$cf_suffix"
+						;;
 					.w*)
 						cf_suffix=`echo $cf_suffix | sed 's/^w//'`
 						cf_suffix=w'.${ABI_VERSION}'"$cf_suffix"
@@ -175,6 +208,16 @@ do
  			if test "$cf_cv_shlib_version_infix" = yes ; then
 			if test -n "$LIB_SUFFIX" ; then
 				case $LIB_SUFFIX in
+				tw*)
+					cf_libname=`echo $cf_libname | sed 's/tw$//'`
+					cf_suffix=`echo $cf_suffix | sed 's/^tw//'`
+					cf_dir_suffix=tw
+					;;
+				t*)
+					cf_libname=`echo $cf_libname | sed 's/t$//'`
+					cf_suffix=`echo $cf_suffix | sed 's/^t//'`
+					cf_dir_suffix=t
+					;;
 				w*)
 					cf_libname=`echo $cf_libname | sed 's/w$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^w//'`
@@ -434,5 +477,5 @@ CF_EOF
 		fi
 	fi
 done
-
+AC_SUBST(LIBS_TO_MAKE)
 ])dnl

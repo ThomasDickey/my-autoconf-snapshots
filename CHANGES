@@ -1,3 +1,12 @@
+2010-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	add cases for library-name transformation for "t" and "tw" to handle the
+	configurations where tic- and tinfo-libraries are built as shared libraries.
+
+	* AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNAT_TRY_LINK, AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_GXX_WARNINGS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MKSTEMP, AcSplit/CF_PROG_CC_C_O, AcSplit/CF_PROG_LN_S:
+	fix for Mac OS X (compiler makes conftest.dSYM directory)
+
 2010-08-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PERL:

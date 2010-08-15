@@ -1,4 +1,4 @@
-dnl CF_LIB_SONAME version: 4 updated: 2010/05/29 16:31:02
+dnl CF_LIB_SONAME version: 5 updated: 2010/08/14 18:25:37
 dnl -------------
 dnl Find the and soname for the given shared library.  Set the cache variable
 dnl cf_cv_$3_soname to this, unless it is not found.  Then set the cache
@@ -29,7 +29,7 @@ cf_save_LIBS="$LIBS"
 			test -z "$cf_cv_$3_soname" && cf_cv_$3_soname=unknown
 		fi
 	fi
-rm -f conftest*
+rm -rf conftest*
 LIBS="$cf_save_LIBS"
 fi
 ])
