@@ -1,3 +1,10 @@
+2010-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: fix a typo in the last change.
+
+	* AcSplit/CF_SRC_MODULES:
+	implement --without-tests option in ncurses configure script
+
 2010-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
