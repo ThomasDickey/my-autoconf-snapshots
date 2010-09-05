@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 20 updated: 2008/12/27 12:30:03
+dnl CF_SRC_MODULES version: 21 updated: 2010/09/04 17:37:40
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -82,14 +82,19 @@ for cf_dir in $cf_cv_src_modules
 do
 	SRC_SUBDIRS="$SRC_SUBDIRS $cf_dir"
 done
-SRC_SUBDIRS="$SRC_SUBDIRS test"
+if test "x$cf_with_tests" != "xno" ; then
+	SRC_SUBDIRS="$SRC_SUBDIRS test"
+fi
 test -z "$MAKE_TERMINFO" && SRC_SUBDIRS="$SRC_SUBDIRS misc"
 test "$cf_with_cxx_binding" != no && SRC_SUBDIRS="$SRC_SUBDIRS c++"
 
 ADA_SUBDIRS=
 if test "$cf_cv_prog_gnat_correct" = yes && test -f $srcdir/Ada95/Makefile.in; then
 	SRC_SUBDIRS="$SRC_SUBDIRS Ada95"
-	ADA_SUBDIRS="gen src samples"
+	ADA_SUBDIRS="gen src"
+	if test "x$cf_with_tests" != "xno" ; then
+		ADA_SUBDIRS="$ADA_SUBDIRS samples"
+	fi
 fi
 
 SUB_MAKEFILES=

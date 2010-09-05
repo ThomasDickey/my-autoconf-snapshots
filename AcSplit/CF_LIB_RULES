@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 58 updated: 2010/08/14 19:00:32
+dnl CF_LIB_RULES version: 59 updated: 2010/09/04 19:24:20
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -32,7 +32,7 @@ if test -n "$TINFO_SUFFIX" ; then
 		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^t//'`
 		;;
 	w*)
-		TINFO_NAME="${TINFO_NAME}/w"
+		TINFO_NAME="${TINFO_NAME}w"
 		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^w//'`
 		;;
 	esac
