@@ -1,4 +1,4 @@
-dnl CF_GCC_OPT_RDYNAMIC version: 1 updated: 2010/03/20 12:37:42
+dnl CF_GCC_OPT_RDYNAMIC version: 2 updated: 2010/09/06 19:26:50
 dnl -------------------
 dnl "Newer" versions of gcc support the -rdynamic option:
 dnl		Pass the flag -export-dynamic to the ELF linker, on targets that
@@ -19,7 +19,7 @@ AC_TRY_LINK([#include <stdio.h>],
 	[
 	# refine check...
 	case testing`eval $ac_link 2>&1` in #(vi
-	*unrecog*) #(vi
+	*unexpect*|*unrecog*) #(vi
 		cf_cv_gcc_opt_rdynamic=no
 		;;
 	*)
