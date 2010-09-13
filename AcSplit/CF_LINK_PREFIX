@@ -1,0 +1,21 @@
+dnl CF_LINK_PREFIX version: 1 updated: 2010/09/13 05:56:50
+dnl --------------
+dnl Use xterm's plink.sh script as a link-prefix, to trim unneeded libraries.
+dnl This is optional since in some obscure cases of weak-linkage it may be
+dnl possible to trim too much.
+AC_DEFUN([CF_LINK_PREFIX],
+[
+AC_MSG_CHECKING(if you want to trim unneeded libraries)
+CF_ARG_DISABLE(link-prefix,
+	[  --disable-link-prefix   do not trim unneeded libraries from link command],
+	[with_link_prefix=no],
+	[with_link_prefix=yes])
+AC_MSG_RESULT($with_link_prefix)
+if test $with_link_prefix = yes
+then
+	LINK_PREFIX='$(SHELL) $(top_srcdir)/plink.sh'
+else
+	LINK_PREFIX=
+fi
+AC_SUBST(LINK_PREFIX)
+])dnl
