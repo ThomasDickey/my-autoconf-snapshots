@@ -1,3 +1,7 @@
+2010-09-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LINK_PREFIX: ci-aclocal generated header
+
 2010-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2010-09-11

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20100910
+MANIFEST for my-autoconf, version t20100913
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -202,6 +202,7 @@ AcSplit/CF_LIB_SUFFIX           derive the library-suffix from the model
 AcSplit/CF_LIB_TYPE             derive the library type (suffix) from the model
 AcSplit/CF_LINK_DATAONLY        test for linker that doesn't link data-only references
 AcSplit/CF_LINK_FUNCS           macro to check for working link/symlink
+AcSplit/CF_LINK_PREFIX          optional feature for stripping unneeded libs
 AcSplit/CF_LOCALE               check if we have locale stuff
 AcSplit/CF_LOCKFILE             check for file-locking functions (tin).
 AcSplit/CF_MAIN_RETURN          check whether return/exit should be used in test-programs.
