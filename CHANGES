@@ -1,3 +1,8 @@
+2010-09-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL:
+	add --with-textdomain option, to use with lynx-dev package
+
 2010-09-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LINK_PREFIX: ci-aclocal generated header

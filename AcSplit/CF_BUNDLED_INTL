@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 14 updated: 2010/01/17 20:37:27
+dnl CF_BUNDLED_INTL version: 15 updated: 2010/09/19 15:09:44
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -12,12 +12,15 @@ dnl	GT_NO        - "#" comment if building intl library, otherwise empty
 dnl	INTLDIR_MAKE - to make ./intl directory
 dnl	MSG_DIR_MAKE - to make ./po directory
 dnl	SUB_MAKEFILE - list of makefiles in ./intl, ./po directories
-dnl Defines
+dnl
+dnl Defines:
 dnl	HAVE_LIBGETTEXT_H if we're using ./intl
+dnl	NLS_TEXTDOMAIN
 dnl
 dnl Environment:
 dnl	ALL_LINGUAS if set, lists the root names of the ".po" files.
 dnl	CONFIG_H assumed to be "config.h"
+dnl	PACKAGE must be set, used as default for textdomain
 dnl	VERSION may be set, otherwise extract from "VERSION" file.
 dnl
 AC_DEFUN([CF_BUNDLED_INTL],[
@@ -32,6 +35,10 @@ test -z "$ALL_LINGUAS" && ALL_LINGUAS=`test -d $srcdir/po && cd $srcdir/po && ec
 : ${CONFIG_H=config.h}
 AC_SUBST(CONFIG_H)
 
+if test -z "$PACKAGE" ; then
+	AC_MSG_ERROR([[CF_BUNDLED_INTL] used without setting [PACKAGE] variable])
+fi
+
 if test -z "$VERSION" ; then
 if test -f $srcdir/VERSION ; then
 	VERSION=`sed -e '2,$d' $srcdir/VERSION|cut -f1`
@@ -42,6 +49,15 @@ fi
 AC_SUBST(VERSION)
 
 AM_GNU_GETTEXT(,,,[$2])
+
+if test "$USE_NLS" = yes ; then
+	AC_ARG_WITH(textdomain,
+		[  --with-textdomain=PKG   NLS text-domain (default is package name)],
+		[NLS_TEXTDOMAIN=$withval],
+		[NLS_TEXTDOMAIN=$PACKAGE])
+	AC_DEFINE_UNQUOTED(NLS_TEXTDOMAIN,"$NLS_TEXTDOMAIN")
+	AC_SUBST(NLS_TEXTDOMAIN)
+fi
 
 INTLDIR_MAKE=
 MSG_DIR_MAKE=
