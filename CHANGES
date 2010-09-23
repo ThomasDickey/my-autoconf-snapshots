@@ -1,3 +1,10 @@
+2010-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPE_LONG_LONG:
+	revise test-compile to capture stderr, look for warning messages in case
+	compiler (as does gcc) warns about unsupported long-long but returns no
+	error status.
+
 2010-09-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_INTL:
