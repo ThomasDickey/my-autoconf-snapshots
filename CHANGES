@@ -1,3 +1,8 @@
+2010-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SLANG_UNIX_DEFS:
+	add checks for two slang-specific typedefs used in quieting warnings for lynx
+
 2010-09-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TYPE_LONG_LONG:
