@@ -1,4 +1,4 @@
-dnl CF_CURSES_FUNCS version: 14 updated: 2009/07/16 19:34:55
+dnl CF_CURSES_FUNCS version: 15 updated: 2010/10/23 15:52:32
 dnl ---------------
 dnl Curses-functions are a little complicated, since a lot of them are macros.
 AC_DEFUN([CF_CURSES_FUNCS],
@@ -18,7 +18,7 @@ do
 			[
 #ifndef ${cf_func}
 long foo = (long)(&${cf_func});
-${cf_cv_main_return-return}(foo == 0);
+${cf_cv_main_return:-return}(foo == 0);
 #endif
 			],
 			[cf_result=yes],

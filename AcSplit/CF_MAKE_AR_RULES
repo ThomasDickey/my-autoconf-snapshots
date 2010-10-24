@@ -1,10 +1,10 @@
-dnl CF_MAKE_AR_RULES version: 4 updated: 2008/03/23 14:48:54
+dnl CF_MAKE_AR_RULES version: 5 updated: 2010/10/23 15:52:32
 dnl ----------------
 dnl Check if the 'make' program knows how to interpret archive rules.  Though
 dnl this is common practice since the mid-80's, there are some holdouts (1997).
 AC_DEFUN([CF_MAKE_AR_RULES],
 [
-AC_MSG_CHECKING(if ${MAKE-make} program knows about archives)
+AC_MSG_CHECKING(if ${MAKE:-make} program knows about archives)
 AC_CACHE_VAL(cf_cv_ar_rules,[
 cf_dir=subd$$
 cf_cv_ar_rules=unknown
@@ -26,7 +26,7 @@ conf.a : conf.a(conftest.o)
 CF_EOF
 touch $cf_dir/conftest.c
 CDPATH=; export CDPATH
-if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+if ( cd $cf_dir && ${MAKE:-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=yes
 else
@@ -49,7 +49,7 @@ conf.a : conftest.o
 	\$(AR) \$[]@ \$?
 CF_EOF
 CDPATH=; export CDPATH
-if ( cd $cf_dir && ${MAKE-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+if ( cd $cf_dir && ${MAKE:-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=no
 else

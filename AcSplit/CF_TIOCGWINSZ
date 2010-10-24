@@ -1,4 +1,4 @@
-dnl CF_TIOCGWINSZ version: 4 updated: 2007/04/28 09:15:55
+dnl CF_TIOCGWINSZ version: 5 updated: 2010/10/23 15:52:32
 dnl -------------
 dnl On some systems ioctl(fd, TIOCGWINSZ, &size) will always return {0,0} until
 dnl ioctl(fd, TIOCSWINSZ, &size) is called to explicitly set the size of the
@@ -26,16 +26,16 @@ int main()
 		if (ioctl (0, TIOCGSIZE, &size) == 0
 		 && size.ts_lines > 0
 		 && size.ts_cols > 0)
-			${cf_cv_main_return-return}(0);
+			${cf_cv_main_return:-return}(0);
 #else
 		struct winsize size;
 		if (ioctl(0, TIOCGWINSZ, &size) == 0
 		 && size.ws_row > 0
 		 && size.ws_col > 0)
-			${cf_cv_main_return-return}(0);
+			${cf_cv_main_return:-return}(0);
 #endif
 	}
-	${cf_cv_main_return-return}(0);	/* we cannot guarantee this is run interactively */
+	${cf_cv_main_return:-return}(0);	/* we cannot guarantee this is run interactively */
 }],
 		[cf_cv_use_tiocgwinsz=yes],
 		[cf_cv_use_tiocgwinsz=no],

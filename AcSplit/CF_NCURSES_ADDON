@@ -1,4 +1,4 @@
-dnl CF_NCURSES_ADDON version: 2 updated: 2010/02/27 18:27:44
+dnl CF_NCURSES_ADDON version: 3 updated: 2010/10/23 15:54:49
 dnl ----------------
 dnl Configure an ncurses add-on, built outside the ncurses tree.
 AC_DEFUN([CF_NCURSES_ADDON],[
@@ -34,7 +34,7 @@ else
 for cf_name in MAJOR MINOR PATCH
 do
 cat >conftest.$ac_ext <<CF_EOF
-#include <${cf_cv_ncurses_header-curses.h}>
+#include <${cf_cv_ncurses_header:-curses.h}>
 AUTOCONF_$cf_name NCURSES_VERSION_$cf_name
 CF_EOF
 	cf_try="$ac_cpp conftest.$ac_ext 2>&5 | fgrep AUTOCONF_$cf_name >conftest.out"

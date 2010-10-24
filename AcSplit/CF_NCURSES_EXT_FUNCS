@@ -1,4 +1,4 @@
-dnl CF_NCURSES_EXT_FUNCS version: 1 updated: 2010/04/03 11:44:55
+dnl CF_NCURSES_EXT_FUNCS version: 2 updated: 2010/10/23 15:54:49
 dnl --------------------
 dnl Since 2007/11/17, ncurses has defined NCURSES_EXT_FUNCS; earlier versions
 dnl may provide these functions.  Define the symbol if it is not defined, and
@@ -7,12 +7,12 @@ AC_DEFUN([CF_NCURSES_EXT_FUNCS],
 [
 AC_CACHE_CHECK(for ncurses extended functions,cf_cv_ncurses_ext_funcs,[
 AC_TRY_COMPILE([
-#include <${cf_cv_ncurses_header-curses.h}>],
+#include <${cf_cv_ncurses_header:-curses.h}>],
 [
 int x = NCURSES_EXT_FUNCS
 ],[cf_cv_ncurses_ext_funcs=defined],[
 AC_TRY_LINK([
-#include <${cf_cv_ncurses_header-curses.h}>],
+#include <${cf_cv_ncurses_header:-curses.h}>],
 [
 	(void) assume_default_colors (0, 0);
 	(void) curses_version ();

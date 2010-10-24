@@ -1,10 +1,10 @@
-dnl CF_GNAT_VERSION version: 14 updated: 2010/07/03 17:45:09
+dnl CF_GNAT_VERSION version: 15 updated: 2010/10/23 15:52:32
 dnl ---------------
 dnl Verify version of GNAT.
 AC_DEFUN([CF_GNAT_VERSION],
 [
 AC_MSG_CHECKING(for gnat version)
-cf_gnat_version=`${cf_ada_make-gnatmake} -v 2>&1 | grep '[[0-9]].[[0-9]][[0-9]]*' |\
+cf_gnat_version=`${cf_ada_make:-gnatmake} -v 2>&1 | grep '[[0-9]].[[0-9]][[0-9]]*' |\
   sed -e '2,$d' -e 's/[[^0-9 \.]]//g' -e 's/^[[ ]]*//' -e 's/ .*//'`
 AC_MSG_RESULT($cf_gnat_version)
 
