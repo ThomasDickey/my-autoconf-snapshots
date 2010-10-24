@@ -1,4 +1,4 @@
-dnl CF_FUNC_SYSTEM version: 4 updated: 2007/04/28 09:15:55
+dnl CF_FUNC_SYSTEM version: 5 updated: 2010/10/23 15:52:32
 dnl --------------
 dnl Check if the 'system()' function returns a usable status, or if not, try
 dnl to use the status returned by a SIGCHLD.
@@ -24,7 +24,7 @@ RETSIGTYPE signal_handler (int sig)
 	int system_status;
 	wait (&wait_status);
 	system_status = WEXITSTATUS(wait_status); /* should be nonzero */
-	${cf_cv_main_return-return}(system_status != 23);
+	${cf_cv_main_return:-return}(system_status != 23);
 }
 
 int main()
@@ -34,12 +34,12 @@ int main()
 	 */
 	signal (SIGCHLD, signal_handler);
 	system("exit 23");
-	${cf_cv_main_return-return}(1);
+	${cf_cv_main_return:-return}(1);
 }
 ],
 	[cf_cv_system_status=no],
 	[AC_TRY_RUN(
-	[int main() { ${cf_cv_main_return-return}(system("exit 23") != (23 << 8)); }],
+	[int main() { ${cf_cv_main_return:-return}(system("exit 23") != (23 << 8)); }],
 	[cf_cv_system_status=yes],
 	[cf_cv_system_status=unknown],
 	[cf_cv_system_status=unknown])],

@@ -1,4 +1,4 @@
-dnl CF__CURSES_HEAD version: 1 updated: 2009/07/16 19:32:31
+dnl CF__CURSES_HEAD version: 2 updated: 2010/10/23 15:54:49
 dnl ---------------
 dnl Define a reusable chunk which includes <curses.h> and <term.h> when they
 dnl are both available.
@@ -7,7 +7,7 @@ define([CF__CURSES_HEAD],[
 #include <xcurses.h>
 char * XCursesProgramName = "test";
 #else
-#include <${cf_cv_ncurses_header-curses.h}>
+#include <${cf_cv_ncurses_header:-curses.h}>
 #if defined(NCURSES_VERSION) && defined(HAVE_NCURSESW_TERM_H)
 #include <ncursesw/term.h>
 #elif defined(NCURSES_VERSION) && defined(HAVE_NCURSES_TERM_H)

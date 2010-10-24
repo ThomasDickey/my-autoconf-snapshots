@@ -1,4 +1,4 @@
-dnl CF_MAKEFLAGS version: 12 updated: 2006/10/21 08:27:03
+dnl CF_MAKEFLAGS version: 13 updated: 2010/10/23 15:52:32
 dnl ------------
 dnl Some 'make' programs support ${MAKEFLAGS}, some ${MFLAGS}, to pass 'make'
 dnl options to lower-levels.  It's very useful for "make -n" -- if we have it.
@@ -15,10 +15,10 @@ SHELL = /bin/sh
 all :
 	@ echo '.$cf_option'
 CF_EOF
-		cf_result=`${MAKE-make} -k -f cf_makeflags.tmp 2>/dev/null | sed -e 's,[[ 	]]*$,,'`
+		cf_result=`${MAKE:-make} -k -f cf_makeflags.tmp 2>/dev/null | sed -e 's,[[ 	]]*$,,'`
 		case "$cf_result" in
 		.*k)
-			cf_result=`${MAKE-make} -k -f cf_makeflags.tmp CC=cc 2>/dev/null`
+			cf_result=`${MAKE:-make} -k -f cf_makeflags.tmp CC=cc 2>/dev/null`
 			case "$cf_result" in
 			.*CC=*)	cf_cv_makeflags=
 				;;

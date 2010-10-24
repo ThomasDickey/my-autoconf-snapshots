@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 15 updated: 2010/09/19 15:09:44
+dnl CF_BUNDLED_INTL version: 16 updated: 2010/10/23 15:55:05
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -32,7 +32,7 @@ dnl rather than $LC_ALL
 test -z "$ALL_LINGUAS" && ALL_LINGUAS=`test -d $srcdir/po && cd $srcdir/po && echo *.po|sed -e 's/\.po//g' -e 's/*//'`
 
 # Allow override of "config.h" definition:
-: ${CONFIG_H=config.h}
+: ${CONFIG_H:=config.h}
 AC_SUBST(CONFIG_H)
 
 if test -z "$PACKAGE" ; then

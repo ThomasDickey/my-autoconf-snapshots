@@ -1,4 +1,4 @@
-dnl CF_COREFILE version: 3 updated: 2007/04/28 09:15:55
+dnl CF_COREFILE version: 4 updated: 2010/10/23 15:52:32
 dnl -----------
 dnl Check if the application can dump core (for debugging).
 AC_DEFUN([CF_COREFILE],
@@ -23,13 +23,13 @@ int main()
 /* Nicholas d'Alterio (nagd@ic.ac.uk) reports that the check for ability to
  * core dump causes the machine to crash - reason unknown (gcc 2.7.2)
  */
-	${cf_cv_main_return-return}(1);
+	${cf_cv_main_return:-return}(1);
 #else
 	int	pid, status;
 	if (found())
 		unlink("core");
 	if (found())
-		${cf_cv_main_return-return}(1);
+		${cf_cv_main_return:-return}(1);
 	if ((pid = fork()) != 0) {
 		while (wait(&status) <= 0)
 			;
@@ -38,9 +38,9 @@ int main()
 	}
 	if (found()) {
 		unlink("core");
-		${cf_cv_main_return-return}(0);
+		${cf_cv_main_return:-return}(0);
 	}
-	${cf_cv_main_return-return}(1);
+	${cf_cv_main_return:-return}(1);
 #endif
 }],
 	[cf_cv_corefile=yes],

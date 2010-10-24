@@ -1,4 +1,4 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 4 updated: 2007/04/28 09:17:29
+dnl CF_RESTARTABLE_PIPEREAD version: 5 updated: 2010/10/23 15:52:32
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
@@ -45,12 +45,12 @@ main () {
       sleep (2);
       write(fd[1],"done",4);
       close(fd[1]);
-      ${cf_cv_main_return-return} (0);
+      ${cf_cv_main_return:-return} (0);
   }
   sigwrapper (SIGINT, ucatch);
   status = read(fd[0], buff, sizeof(buff));
   wait (&i);
-  ${cf_cv_main_return-return} (status == -1);
+  ${cf_cv_main_return:-return} (status == -1);
 }
 ],
 [cf_cv_can_restart_read=yes],

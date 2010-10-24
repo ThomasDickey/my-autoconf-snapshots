@@ -1,4 +1,4 @@
-dnl CF_AWK_BIGSTRING version: 2 updated: 2008/09/06 16:39:45
+dnl CF_AWK_BIGSTRING version: 3 updated: 2010/10/23 15:52:32
 dnl ----------------
 dnl Check if awk can handle big strings.
 dnl
@@ -25,7 +25,7 @@ AC_DEFUN([CF_AWK_BIGSTRING],
         fi
         ;;
     *) #(vi
-        if ( ${AWK-awk} 'BEGIN { xx = "xx"; while (length(xx) < $1) { xx = xx xx; }; yy = sprintf("%s\n", xx); if (length(yy) < $1) exit 1; }' 2>/dev/null >/dev/null ); then
+        if ( ${AWK:-awk} 'BEGIN { xx = "xx"; while (length(xx) < $1) { xx = xx xx; }; yy = sprintf("%s\n", xx); if (length(yy) < $1) exit 1; }' 2>/dev/null >/dev/null ); then
             eval $2=yes
         else
             eval $2=no

@@ -1,4 +1,4 @@
-dnl CF_FUNC_FORK version: 3 updated: 2007/04/28 09:15:55
+dnl CF_FUNC_FORK version: 4 updated: 2010/10/23 15:52:32
 dnl ------------
 dnl Check if 'fork()' is available, and working.  Amiga (and possibly other
 dnl machines) have a non-working 'fork()' entrypoint.
@@ -9,8 +9,8 @@ AC_TRY_RUN([
 int main()
 {
 	if (fork() < 0)
-		${cf_cv_main_return-return}(1);
-	${cf_cv_main_return-return}(0);
+		${cf_cv_main_return:-return}(1);
+	${cf_cv_main_return:-return}(0);
 }],	[cf_cv_func_fork=yes],
 	[cf_cv_func_fork=no],
 	[cf_cv_func_fork=unknown])

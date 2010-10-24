@@ -1,4 +1,4 @@
-dnl CF_GCC_ATTRIBUTES version: 13 updated: 2009/08/11 20:19:56
+dnl CF_GCC_ATTRIBUTES version: 14 updated: 2010/10/23 15:52:32
 dnl -----------------
 dnl Test for availability of useful gcc __attribute__ directives to quiet
 dnl compiler warnings.  Though useful, not all are supported -- and contrary
@@ -25,7 +25,7 @@ if test "$GCC" = yes
 then
 	AC_CHECKING([for $CC __attribute__ directives])
 cat > conftest.$ac_ext <<EOF
-#line __oline__ "${as_me-configure}"
+#line __oline__ "${as_me:-configure}"
 #include "confdefs.h"
 #include "conftest.h"
 #include "conftest.i"

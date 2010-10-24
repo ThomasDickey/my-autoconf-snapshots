@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 38 updated: 2010/07/24 17:12:40
+dnl CF_MAN_PAGES version: 39 updated: 2010/10/23 15:44:18
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -69,7 +69,7 @@ INSTALL_DATA="$INSTALL_DATA"
 
 transform="$program_transform_name"
 
-TMP=\${TMPDIR-/tmp}/man\$\$
+TMP=\${TMPDIR:=/tmp}/man\$\$
 trap "rm -f \$TMP" 0 1 2 5 15
 
 form=\[$]1

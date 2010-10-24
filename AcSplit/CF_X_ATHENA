@@ -1,11 +1,11 @@
-dnl CF_X_ATHENA version: 16 updated: 2010/06/14 17:42:30
+dnl CF_X_ATHENA version: 17 updated: 2010/10/23 15:52:32
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
 dnl Sets $cf_x_athena according to the flavor of Xaw which is used.
 AC_DEFUN([CF_X_ATHENA],
 [
-cf_x_athena=${cf_x_athena-Xaw}
+cf_x_athena=${cf_x_athena:-Xaw}
 
 AC_MSG_CHECKING(if you want to link with Xaw 3d library)
 withval=

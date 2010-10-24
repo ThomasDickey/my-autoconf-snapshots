@@ -1,4 +1,4 @@
-dnl CF_REGEXPR_H_FUNCS version: 4 updated: 2007/04/28 09:15:55
+dnl CF_REGEXPR_H_FUNCS version: 5 updated: 2010/10/23 15:52:32
 dnl ------------------
 dnl Tests for the <regexpr.h> include-file, and the functions associated with it.
 AC_DEFUN([CF_REGEXPR_H_FUNCS],
@@ -15,9 +15,9 @@ AC_CACHE_CHECK(compile/step functions, cf_cv_REGEXPR_H,[
 		char *s = "foobar";
 		if ((e = (char *)compile(p, (char *)0, (char *)0)) == 0
 		 || step(s, e) == 0)
-			${cf_cv_main_return-return}(1);
+			${cf_cv_main_return:-return}(1);
 		free(e);
-		${cf_cv_main_return-return}(0);
+		${cf_cv_main_return:-return}(0);
 	} ],
 	[cf_cv_REGEXPR_H=yes],
 	[cf_cv_REGEXPR_H=no],

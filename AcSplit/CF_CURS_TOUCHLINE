@@ -1,4 +1,4 @@
-dnl CF_CURS_TOUCHLINE version: 2 updated: 2001/05/13 13:42:46
+dnl CF_CURS_TOUCHLINE version: 3 updated: 2010/10/23 15:54:49
 dnl -----------------
 dnl Check for the flavor of the touchline function, to distinguish between BSD
 dnl and SYSV.  This is needed on NetBSD 1.5 which has a partial implementation
@@ -6,11 +6,11 @@ dnl of SVR4 curses.
 AC_DEFUN([CF_CURS_TOUCHLINE],[
 AC_CACHE_CHECK(for curses touchline function,cf_cv_curs_touchline,[
 	AC_TRY_LINK([
-#include <${cf_cv_ncurses_header-curses.h}>],
+#include <${cf_cv_ncurses_header:-curses.h}>],
 	[touchline(stdscr, 1,2,3);],
 	[cf_cv_curs_touchline=bsd],
 	[AC_TRY_LINK([
-#include <${cf_cv_ncurses_header-curses.h}>],
+#include <${cf_cv_ncurses_header:-curses.h}>],
 		[touchline(stdscr, 1,2);],
 		[cf_cv_curs_touchline=sysv],
 		[cf_cv_curs_touchline=bsd])])])

@@ -1,11 +1,11 @@
-dnl CF_FANCY_CURSES version: 4 updated: 2002/10/27 18:21:42
+dnl CF_FANCY_CURSES version: 5 updated: 2010/10/23 15:54:49
 dnl ---------------
 AC_DEFUN([CF_FANCY_CURSES],
 [
 AC_MSG_CHECKING(if curses supports fancy attributes)
 AC_CACHE_VAL(cf_cv_fancy_curses,[
 	AC_TRY_LINK([
-#include <${cf_cv_ncurses_header-curses.h}>
+#include <${cf_cv_ncurses_header:-curses.h}>
 ],
 	[attrset(A_UNDERLINE|A_BOLD|A_REVERSE);
 	 wattrset(stdscr, A_BLINK|A_DIM);

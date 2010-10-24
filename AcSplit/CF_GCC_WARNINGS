@@ -1,4 +1,4 @@
-dnl CF_GCC_WARNINGS version: 26 updated: 2010/08/14 18:25:37
+dnl CF_GCC_WARNINGS version: 27 updated: 2010/10/23 15:52:32
 dnl ---------------
 dnl Check if the compiler supports useful warning options.  There's a few that
 dnl we don't use, simply because they're too noisy:
@@ -23,7 +23,7 @@ AC_REQUIRE([CF_GCC_VERSION])
 CF_INTEL_COMPILER(GCC,INTEL_COMPILER,CFLAGS)
 
 cat > conftest.$ac_ext <<EOF
-#line __oline__ "${as_me-configure}"
+#line __oline__ "${as_me:-configure}"
 int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == 0) ; }
 EOF
 
