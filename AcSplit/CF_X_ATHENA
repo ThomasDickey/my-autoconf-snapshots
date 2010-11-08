@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA version: 17 updated: 2010/10/23 15:52:32
+dnl CF_X_ATHENA version: 18 updated: 2010/11/08 06:50:22
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
@@ -56,6 +56,20 @@ if test "$PKG_CONFIG" != none ; then
 			cf_x_athena_lib="$cf_pkgconfig_libs"
 			CF_UPPER(cf_x_athena_LIBS,HAVE_LIB_$cf_x_athena)
 			AC_DEFINE_UNQUOTED($cf_x_athena_LIBS)
+
+			# workaround for broken ".pc" files...
+			case "$cf_x_athena_lib" in #(vi
+			*-lXmu*) #(vi
+				;;
+			*)
+				CF_VERBOSE(work around broken package)
+				CF_VERBOSE(...before $LIBS)
+				CF_TRY_PKG_CONFIG(xmu,,[
+					LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt -lXmu ," -e 's/  / /g'`])
+				CF_VERBOSE(...after  $LIBS)
+				;;
+			esac
+
 			break])
 	done
 fi
