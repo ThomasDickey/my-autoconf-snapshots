@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 15 updated: 2010/06/14 17:42:30
+dnl CF_X_TOOLKIT version: 16 updated: 2010/11/08 05:35:16
 dnl ------------
 dnl Check for X Toolkit libraries
 dnl
@@ -20,7 +20,8 @@ CF_TRY_PKG_CONFIG(xt,[
 		*)
 			CF_VERBOSE(work around broken package)
 			CF_VERBOSE(...before $LIBS)
-			LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt $X_PRE_LIBS ," -e 's/  / /g'`
+			CF_TRY_PKG_CONFIG(ice,[CF_TRY_PKG_CONFIG(sm)],[
+				LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt $X_PRE_LIBS ," -e 's/  / /g'`])
 			CF_VERBOSE(...after  $LIBS)
 			;;
 		esac

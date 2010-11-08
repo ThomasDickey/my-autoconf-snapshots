@@ -1,3 +1,26 @@
+2010-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_LIB_AFTER:
+	make the caller supply "-l", so it can use a variable containing more than
+	one library
+
+	* AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_TOOLKIT:
+	use CF_ADD_LIB_AFTER
+
+	* AcSplit/CF_ADD_LIB_AFTER, AcSplit/CF_X_FONTCONFIG:
+	ci-aclocal generated header
+
+	* AcSplit/CF_X_FREETYPE:
+	xterm doesn't need XRENDERFONT substituted, only defined.
+
+	* AcSplit/CF_X_ATHENA:
+	workaround for more pc-file breakage (removing the Xmu dependency from
+	Xaw's --libs output).
+
+	* AcSplit/CF_X_TOOLKIT:
+	Xt's dependencies may be in "ice" and "sm" packages.
+	give those a try.
+
 2010-10-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PATH_PROG, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_LIB_RULES, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_WITH_PATHLIST, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_CURSES_SETBEGYX, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_FANCY_CURSES, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_MIN_GETCCHAR, AcSplit/CF_NCURSES_ADDON, AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERM_HEADER, AcSplit/CF_TTYTYPE, AcSplit/CF_WIDEC_CURSES, AcSplit/CF_XOPEN_CURSES, AcSplit/CF__CURSES_HEAD, AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_ANSI_CPP, AcSplit/CF_AWK_BIGSTRING, AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNAT_VERSION, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_MAKE_TAGS, AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_MSG_LOG, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_SRC_MAKEFILE, AcSplit/CF_TD_CONFIG, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_WITH_INSTALL_PREFIX, AcSplit/CF_X_ATHENA, AcSplit/CF_YACC_ERROR, AcSplit/CF_GXX_VERSION, AcSplit/CF_MAN_PAGES, AcSplit/CF_WITH_PATH:
