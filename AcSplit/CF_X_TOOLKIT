@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 16 updated: 2010/11/08 05:35:16
+dnl CF_X_TOOLKIT version: 19 updated: 2010/11/09 05:18:02
 dnl ------------
 dnl Check for X Toolkit libraries
 dnl
@@ -11,22 +11,30 @@ cf_have_X_LIBS=no
 
 CF_TRY_PKG_CONFIG(xt,[
 
-	# workaround for broken ".pc" files used for X Toolkit.
-	case "x$X_PRE_LIBS" in #(vi
-	*-lICE*)
-		case "x$LIBS" in #(vi
-		*-lICE*) #(vi
-			;;
-		*)
-			CF_VERBOSE(work around broken package)
-			CF_VERBOSE(...before $LIBS)
-			CF_TRY_PKG_CONFIG(ice,[CF_TRY_PKG_CONFIG(sm)],[
-				LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt $X_PRE_LIBS ," -e 's/  / /g'`])
-			CF_VERBOSE(...after  $LIBS)
+AC_CACHE_CHECK(for usable X Toolkit package,cf_cv_xt_compat,[
+AC_TRY_LINK([
+#include <X11/Shell.h>
+],[int num = IceConnectionNumber(0)
+],[cf_cv_xt_compat=no],[cf_cv_xt_compat=no])])
+
+	if test "$cf_cv_xt_compat" = no
+	then
+		# workaround for broken ".pc" files used for X Toolkit.
+		case "x$X_PRE_LIBS" in #(vi
+		*-lICE*)
+			case "x$LIBS" in #(vi
+			*-lICE*) #(vi
+				;;
+			*)
+				CF_VERBOSE(work around broken package)
+				CF_TRY_PKG_CONFIG(ice,
+					[CF_TRY_PKG_CONFIG(sm)],
+					[CF_ADD_LIB_AFTER(-lXt,$X_PRE_LIBS)])
+				;;
+			esac
 			;;
 		esac
-		;;
-	esac
+	fi
 
 	cf_have_X_LIBS=yes
 ],[
