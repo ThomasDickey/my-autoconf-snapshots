@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20101108
+MANIFEST for my-autoconf, version t20101109
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -28,6 +28,7 @@ AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIB              consistent assignments to $LIBS
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
 AcSplit/CF_ADD_LIBS             less-specific form of CF_ADD_LIB
+AcSplit/CF_ADD_LIB_AFTER        utility macro for adding a library's dependency
 AcSplit/CF_ADD_OPTIONAL_PATH    wrapper for CF_ADD_SEARCHPATH
 AcSplit/CF_ADD_SEARCHPATH       add a directory to -I/-L searchpath(s)
 AcSplit/CF_ADD_SUBDIR_PATH      for CF_SUBDIR_PATH, check subdirs of one directory
@@ -463,6 +464,7 @@ AcSplit/CF_X_ATHENA             check for Xaw library
 AcSplit/CF_X_ATHENA_CPPFLAGS    check for c-preprocessor flags for Athena-widgets
 AcSplit/CF_X_ATHENA_LIBS        check for X Athena-widget libraries
 AcSplit/CF_X_EXT                check for X extension library
+AcSplit/CF_X_FONTCONFIG         check for fontconfig library, used as part of Xft
 AcSplit/CF_X_FONTENC            check for X font-encoding library
 AcSplit/CF_X_FREETYPE           test for x freetype libs
 AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries

@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA version: 18 updated: 2010/11/08 06:50:22
+dnl CF_X_ATHENA version: 20 updated: 2010/11/09 05:18:02
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
@@ -57,18 +57,25 @@ if test "$PKG_CONFIG" != none ; then
 			CF_UPPER(cf_x_athena_LIBS,HAVE_LIB_$cf_x_athena)
 			AC_DEFINE_UNQUOTED($cf_x_athena_LIBS)
 
-			# workaround for broken ".pc" files...
-			case "$cf_x_athena_lib" in #(vi
-			*-lXmu*) #(vi
-				;;
-			*)
-				CF_VERBOSE(work around broken package)
-				CF_VERBOSE(...before $LIBS)
-				CF_TRY_PKG_CONFIG(xmu,,[
-					LIBS=`echo "$LIBS" | sed -e "s/[[ 	]][[ 	]]*/ /g" -e "s,-lXt ,-lXt -lXmu ," -e 's/  / /g'`])
-				CF_VERBOSE(...after  $LIBS)
-				;;
-			esac
+AC_CACHE_CHECK(for usable $cf_x_athena/Xmu package,cf_cv_xaw_compat,[
+AC_TRY_LINK([
+#include <X11/Xmu/CharSet.h>
+],[
+int check = XmuCompareISOLatin1("big", "small")
+],[cf_cv_xaw_compat=yes],[cf_cv_xaw_compat=no])])
+
+			if test "$cf_cv_xaw_compat" = no
+			then
+				# workaround for broken ".pc" files...
+				case "$cf_x_athena_lib" in #(vi
+				*-lXmu*) #(vi
+					;;
+				*)
+					CF_VERBOSE(work around broken package)
+					CF_TRY_PKG_CONFIG(xmu,,[CF_ADD_LIB_AFTER(-lXt,-lXmu)])
+					;;
+				esac
+			fi
 
 			break])
 	done

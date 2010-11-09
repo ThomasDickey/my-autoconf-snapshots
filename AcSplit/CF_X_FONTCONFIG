@@ -1,0 +1,31 @@
+dnl CF_X_FONTCONFIG version: 3 updated: 2010/11/09 05:18:02
+dnl ---------------
+dnl Check for fontconfig library, a dependency of the X FreeType library.
+AC_DEFUN([CF_X_FONTCONFIG],
+[
+AC_REQUIRE([CF_X_FREETYPE])
+
+AC_CACHE_CHECK(for usable Xft/fontconfig package,cf_cv_xft_compat,[
+AC_TRY_LINK([
+#include <X11/Xft/Xft.h>
+],[
+	XftPattern *pat;
+	XftPatternBuild(pat,
+					XFT_FAMILY, XftTypeString, "mono",
+					(void *) 0);
+],[cf_cv_xft_compat=yes],[cf_cv_xft_compat=no])
+])
+
+if test "$cf_cv_xft_compat" = no
+then
+	# workaround for broken ".pc" files used for Xft.
+	case "$cf_cv_x_freetype_libs" in #(vi
+	*-lfontconfig*) #(vi
+		;;
+	*)
+		CF_VERBOSE(work around broken package)
+		CF_TRY_PKG_CONFIG(fontconfig,,[CF_ADD_LIB_AFTER(-lXft,-lfontconfig)])
+		;;
+	esac
+fi
+])dnl

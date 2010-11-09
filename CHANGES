@@ -1,3 +1,16 @@
+2010-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA:
+	add a check for Xmu dependency before looking in other places
+
+	* AcSplit/CF_X_FONTCONFIG: formatting
+
+	* AcSplit/CF_X_TOOLKIT: remove redundant message
+
+	* AcSplit/CF_X_TOOLKIT:
+	add a check to see whether the Shell.h feature of Xt is usable before
+	looking in other places for ICE and SM libraries.
+
 2010-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_LIB_AFTER:
