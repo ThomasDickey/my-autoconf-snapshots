@@ -1,0 +1,34 @@
+dnl CF_GNAT_PROJECTS version: 1 updated: 2010/11/13 14:15:18
+dnl ----------------
+AC_DEFUN([CF_GNAT_PROJECTS],
+[
+AC_MSG_CHECKING(if GNAT supports project files)
+case $cf_gnat_version in #(vi
+3.[[0-9]]*) #(vi
+	cf_gnat_projects=no
+	;;
+*)
+	case $cf_cv_system_name in #(vi
+	cygwin*) #(vi
+		cf_gnat_projects=no
+		;;
+	*)
+		cf_gnat_projects=yes
+		;;
+	esac
+	;;
+esac
+AC_MSG_RESULT($cf_gnat_projects)
+
+if test "$cf_gnat_projects" = yes
+then
+	USE_OLD_MAKERULES="#"
+	USE_GNAT_PROJECTS=""
+else
+	USE_OLD_MAKERULES=""
+	USE_GNAT_PROJECTS="#"
+fi
+
+AC_SUBST(USE_OLD_MAKERULES)
+AC_SUBST(USE_GNAT_PROJECTS)
+])dnl

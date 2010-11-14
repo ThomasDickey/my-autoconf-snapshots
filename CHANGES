@@ -1,3 +1,13 @@
+2010-11-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_EXT_FUNCS: typo
+
+	* AcSplit/CF_GNAT_GENERICS, AcSplit/CF_GNAT_PROJECTS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_GNAT_VERSION:
+	split-out CF_GNAT_GENERICS and CF_GNAT_PROJECTS
+
 2010-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA:
