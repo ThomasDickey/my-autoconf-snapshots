@@ -1,4 +1,4 @@
-dnl CF_NCURSES_EXT_FUNCS version: 2 updated: 2010/10/23 15:54:49
+dnl CF_NCURSES_EXT_FUNCS version: 3 updated: 2010/11/13 19:43:23
 dnl --------------------
 dnl Since 2007/11/17, ncurses has defined NCURSES_EXT_FUNCS; earlier versions
 dnl may provide these functions.  Define the symbol if it is not defined, and
@@ -30,5 +30,5 @@ AC_TRY_LINK([
 	[cf_cv_ncurses_ext_funcs=no])
 ])
 ])
-test "$cf_cv_ncurses_ext_funcs" == yes && AC_DEFINE(NCURSES_EXT_FUNCS)
+test "$cf_cv_ncurses_ext_funcs" = yes && AC_DEFINE(NCURSES_EXT_FUNCS)
 ])dnl

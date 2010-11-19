@@ -1,3 +1,8 @@
+2010-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_TOOLKIT: add check for missing X11 dependency, see
+		https://bugs.launchpad.net/bugs/677129
+
 2010-11-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_EXT_FUNCS: typo
