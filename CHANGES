@@ -1,3 +1,16 @@
+2010-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CPPFLAGS:
+	move part of the CF_ADD_INCDIR to CF_WITH_CURSES_DIR
+
+	* AcSplit/CF_NCURSES_LIBS:
+	move part of the CF_ADD_LIBDIR to CF_WITH_CURSES_DIR
+
+	* AcSplit/CF_WITH_CURSES_DIR:
+	move the calls to CF_ADD_INCDIR and CF_ADD_LIBDIR for the curses-directory
+	here, from CF_NCURSES_CPPFLAGS and CF_NCURSES_LDFLAGS, so it will work
+	even with the default checking, e.g., no --with-ncurses, etc.
+
 2010-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_TOOLKIT: add check for missing X11 dependency, see
