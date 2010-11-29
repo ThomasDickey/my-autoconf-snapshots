@@ -1,3 +1,7 @@
+2010-11-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_TRACE: fill in default-value for $with_trace
+
 2010-11-26  Doug.Kaufman
 
 	* AcSplit/CF_WITH_IDNA:
