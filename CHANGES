@@ -1,3 +1,8 @@
+2010-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_VERSION:
+	remove extra '\' character in backreference (report by Mark McKinstry).
+
 2010-11-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_TRACE: fill in default-value for $with_trace
