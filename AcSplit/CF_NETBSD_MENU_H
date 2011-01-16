@@ -1,0 +1,18 @@
+dnl CF_NETBSD_MENU_H version: 1 updated: 2011/01/15 14:59:18
+dnl ----------------
+dnl Check for NetBSD's menu.h, which is incompatible with SVr4 and ncurses.
+dnl Some workarounds are needed in client programs to allow them to compile.
+AC_DEFUN([CF_NETBSD_MENU_H],[
+AC_CACHE_CHECK(for NetBSD menu.h,cf_cv_netbsd_menu_h,[
+AC_TRY_COMPILE([
+#include <${cf_cv_ncurses_header:-curses.h}>
+#include <menu.h>
+],[
+	MENU *menu;
+	int y = menu->max_item_width;
+],[cf_cv_netbsd_menu_h=yes
+],[cf_cv_netbsd_menu_h=no])
+])
+
+test "$cf_cv_netbsd_menu_h" = yes && AC_DEFINE(HAVE_NETBSD_MENU_H)
+])dnl

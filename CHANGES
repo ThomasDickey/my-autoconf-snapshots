@@ -1,3 +1,25 @@
+2011-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PDCURSES_X11:
+	only define HAVE_XCURSES if we found xcurses.h, since pkgsrc alters the
+	script and configuration to make it show curses.h
+
+	* AcSplit/CF_CURSES_CHECK_DATA:
+	work around BSD linker's weak linkage by running a program to test the case
+	where the symbol is present in the library, but not in the header.
+
+	* AcSplit/CF_NETBSD_FORM_H, AcSplit/CF_NETBSD_MENU_H, AcSplit/CF_CURSES_WACS_SYMBOLS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_WACS_MAP:
+	make this less stringent, to allow NetBSD curses to pass.
+
+2011-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_VERSION_INFO:
+	For dialog, modify to handle two parameters rather than one.  That allows me
+	to rename the package without renaming the #define'd symbols for the version.
+
 2010-11-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LEX_VERSION:
