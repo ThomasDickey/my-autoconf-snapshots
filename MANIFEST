@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20101129
+MANIFEST for my-autoconf, version t20110115
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -102,6 +102,7 @@ AcSplit/CF_CURSES_TERMCAP       check for prototypes in curses.h or termcap.h
 AcSplit/CF_CURSES_TERM_H        check for curses's term.h
 AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
 AcSplit/CF_CURSES_WACS_MAP      check for wacs_map[] (ncurses)
+AcSplit/CF_CURSES_WACS_SYMBOLS  check if we can use WACS_xxx symbols.
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
@@ -264,6 +265,8 @@ AcSplit/CF_NCURSES_HEADER       check for ncurses.h
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NCURSES_WRAP_PREFIX  macro to specify ncurses wrap-prefix
+AcSplit/CF_NETBSD_FORM_H        check for quirks in NetBSD's form.h
+AcSplit/CF_NETBSD_MENU_H        check for quirks in NetBSD's menu.h
 AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
 AcSplit/CF_NO_LEAKS_OPTION      support for CF_WITH_NO_LEAKS

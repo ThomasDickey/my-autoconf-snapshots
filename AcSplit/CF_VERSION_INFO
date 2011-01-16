@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 3 updated: 2003/11/22 12:22:45
+dnl CF_VERSION_INFO version: 4 updated: 2011/01/02 19:09:47
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -20,6 +20,10 @@ dnl		scripts can easily compare versions.
 dnl
 dnl If libtool is used, the first form is required, since CF_WITH_LIBTOOL
 dnl simply extracts the first field using 'cut -f1'.
+dnl
+dnl Optional parameters:
+dnl $1 = internal name for package
+dnl $2 = external name for package
 AC_DEFUN([CF_VERSION_INFO],
 [
 if test -f $srcdir/VERSION ; then
@@ -72,10 +76,11 @@ AC_SUBST(VERSION_PATCH)
 dnl if a package name is given, define its corresponding version info.  We
 dnl need the package name to ensure that the defined symbols are unique.
 ifelse($1,,,[
-	PACKAGE=$1
+	cf_PACKAGE=$1
+	PACKAGE=ifelse($2,,$1,$2)
 	AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
 	AC_SUBST(PACKAGE)
-	CF_UPPER(cf_PACKAGE,$PACKAGE)
+	CF_UPPER(cf_PACKAGE,$cf_PACKAGE)
 	AC_DEFINE_UNQUOTED(${cf_PACKAGE}_VERSION,"${VERSION_MAJOR}.${VERSION_MINOR}")
 	AC_DEFINE_UNQUOTED(${cf_PACKAGE}_PATCHDATE,${VERSION_PATCH})
 ])
