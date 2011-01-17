@@ -1,3 +1,8 @@
+2011-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	replace check for /lib with /lib64 and/or /lib, depending on architecture.
+
 2011-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PDCURSES_X11:

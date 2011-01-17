@@ -1,4 +1,4 @@
-dnl CF_CURSES_LIBS version: 31 updated: 2010/10/23 15:54:49
+dnl CF_CURSES_LIBS version: 32 updated: 2011/01/16 17:43:15
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
@@ -29,8 +29,20 @@ hpux10.*) #(vi
         ac_cv_func_initscr=yes
         ])])
     ;;
-linux*) # Suse Linux does not follow /usr/lib convention
-    CF_ADD_LIBDIR(/lib)
+linux*)
+	case `arch` in
+	x86_64)
+		if test -d /lib64
+		then
+			CF_ADD_LIBDIR(/lib64)
+		else
+			CF_ADD_LIBDIR(/lib)
+		fi
+		;;
+	*)
+		CF_ADD_LIBDIR(/lib)
+		;;
+	esac
     ;;
 sunos3*|sunos4*)
     if test -d /usr/5lib ; then
