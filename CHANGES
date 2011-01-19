@@ -1,3 +1,8 @@
+2011-01-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	fix typo in the workaround for _XOPEN_SOURCE_EXTENDED
+
 2011-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_LIBS:
