@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA_LIBS version: 9 updated: 2010/06/02 05:03:05
+dnl CF_X_ATHENA_LIBS version: 10 updated: 2011/02/13 13:31:33
 dnl ----------------
 dnl Normally invoked by CF_X_ATHENA, with $1 set to the appropriate flavor of
 dnl the Athena widgets, e.g., Xaw, Xaw3d, neXtaw.
@@ -28,7 +28,11 @@ do
 				CF_ADD_LIBS($cf_lib)
 				AC_MSG_CHECKING(for $cf_test in $cf_lib)
 			fi
-			AC_TRY_LINK([],[$cf_test()],
+			AC_TRY_LINK([
+#include <X11/Intrinsic.h>
+#include <X11/$cf_x_athena_root/SimpleMenu.h>
+],[
+$cf_test((XtAppContext) 0)],
 				[cf_result=yes],
 				[cf_result=no])
 			AC_MSG_RESULT($cf_result)
