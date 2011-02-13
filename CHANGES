@@ -1,3 +1,15 @@
+2011-02-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK:
+	add a check for libraries not found, e.g., from suppressed functionality
+	of gcc in linking from /usr/local/lib, and add a -L option to help work
+	around this.
+
+	* AcSplit/CF_DISABLE_RPATH_HACK: fix garbled message
+
+	* AcSplit/CF_X_ATHENA_LIBS:
+	make link-test use header and parameterized test-function.
+
 2011-02-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2011-01-01
