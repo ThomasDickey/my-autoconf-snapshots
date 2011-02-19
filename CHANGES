@@ -1,3 +1,9 @@
+2011-02-18  Thierry.Reding
+
+	* AcSplit/CF_PKG_CONFIG:
+	use AC_PATH_TOOL rather than AC_PATH_PROG for pkg-config search, to work
+	with cross-compiler environments.
+
 2011-02-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RPATH_HACK:
