@@ -1,3 +1,14 @@
+2011-03-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	Debian Lenny has no "arch" command (though more recent releases fix this).
+
+2011-02-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	workaround for cygwin to get ncurses' configure script to define _XOPEN_SOURCE_EXTENDED
+	(cygwin's features.h doesn't do anything, so it needs a crutch).
+
 2011-02-18  Thierry.Reding
 
 	* AcSplit/CF_PKG_CONFIG:
