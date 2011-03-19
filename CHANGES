@@ -1,3 +1,8 @@
+2011-03-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_TRY_LINK, AcSplit/CF_GNAT_TRY_RUN:
+	gnat can leave files named like b~conftest.ali
+
 2011-03-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_LIBS:
