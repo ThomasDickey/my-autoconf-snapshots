@@ -1,4 +1,4 @@
-dnl CF_GNAT_VERSION version: 16 updated: 2010/11/13 14:15:18
+dnl CF_GNAT_VERSION version: 17 updated: 2011/03/23 20:24:41
 dnl ---------------
 dnl Verify version of GNAT.
 AC_DEFUN([CF_GNAT_VERSION],
@@ -18,7 +18,4 @@ case $cf_gnat_version in #(vi
 	cf_cv_prog_gnat_correct=no
 	;;
 esac
-
-CF_GNAT_GENERICS
-CF_GNAT_PROJECTS
 ])

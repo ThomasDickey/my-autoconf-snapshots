@@ -1,7 +1,9 @@
-dnl CF_GNAT_GENERICS version: 1 updated: 2010/11/13 14:15:18
+dnl CF_GNAT_GENERICS version: 2 updated: 2011/03/23 20:24:41
 dnl ----------------
 AC_DEFUN([CF_GNAT_GENERICS],
 [
+AC_REQUIRE([CF_GNAT_VERSION])
+
 AC_MSG_CHECKING(if GNAT supports generics)
 case $cf_gnat_version in #(vi
 3.[[1-9]]*|[[4-9]].*) #(vi

@@ -1,4 +1,4 @@
-dnl CF_NCURSES_ADDON version: 3 updated: 2010/10/23 15:54:49
+dnl CF_NCURSES_ADDON version: 4 updated: 2011/03/27 17:10:13
 dnl ----------------
 dnl Configure an ncurses add-on, built outside the ncurses tree.
 AC_DEFUN([CF_NCURSES_ADDON],[
@@ -23,8 +23,8 @@ if test "$NCURSES_CONFIG" != none ; then
 cf_version=`$NCURSES_CONFIG --version`
 
 NCURSES_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
-NCURSES_MINOR=`echo "$cf_version" | sed -e 's/^[[0-9]]\+\.//' -e 's/\..*//'`
-NCURSES_PATCH=`echo "$cf_version" | sed -e 's/^[[0-9]]\+\.[[0-9]]\+\.//'`
+NCURSES_MINOR=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.//' -e 's/\..*//'`
+NCURSES_PATCH=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*\.//'`
 
 # ABI version is not available from headers
 cf_cv_abi_version=`$NCURSES_CONFIG --abi-version`
@@ -40,10 +40,10 @@ CF_EOF
 	cf_try="$ac_cpp conftest.$ac_ext 2>&5 | fgrep AUTOCONF_$cf_name >conftest.out"
 	AC_TRY_EVAL(cf_try)
 	if test -f conftest.out ; then
-		cf_result=`cat conftest.out | sed -e "s/^.*AUTOCONF_$cf_name[[ 	]]\+//"`
-		eval NCURSES_$cf_name=$cf_result
-		cat conftest.$ac_ext
-		cat conftest.out
+		cf_result=`cat conftest.out | sed -e "s/^.*AUTOCONF_$cf_name[[ 	]][[ 	]]*//"`
+		eval NCURSES_$cf_name=\"$cf_result\"
+		# cat conftest.$ac_ext
+		# cat conftest.out
 	fi
 done
 

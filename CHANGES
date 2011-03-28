@@ -1,3 +1,22 @@
+2011-03-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_SIGINT: ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_ADDON:
+	fix some portability issues ("+" modifier in sed, and quoting)
+
+2011-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_PROJECTS:
+	add a configure check to ensure that gnat project-files work.
+	also (as a side-effect) check if the library feature works.
+
+	* AcSplit/CF_GNAT_GENERICS: ensure this follows CF_GNAT_VERSION
+
+	* AcSplit/CF_GNAT_VERSION:
+	split-out CF_GNAT_PROJECTS and CF_GNAT_GENERICS so they can be used in the
+	more expected order - after verifying that gnat actually works.
+
 2011-03-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc, COPYING: bump
