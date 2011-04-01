@@ -1,3 +1,9 @@
+2011-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKEFLAGS:
+	filter out GNU make's entering/leaving messages.  This only appeared when
+	using the macro in a dpkg script, though it should have in other cases.
+
 2011-03-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_SIGINT: ci-aclocal generated header

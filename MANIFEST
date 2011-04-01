@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110327
+MANIFEST for my-autoconf, version t20110331
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -161,6 +161,7 @@ AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNAT_GENERICS        check if GNAT can compile generics
 AcSplit/CF_GNAT_PRAGMA_UNREF    check if the gnat pragma "Unreferenced" works.
 AcSplit/CF_GNAT_PROJECTS        check if GNAT supports project files (used to simplify library building)
+AcSplit/CF_GNAT_SIGINT          configure-check for SIGINT with gnat
 AcSplit/CF_GNAT_TRY_LINK        test compile/link for GNAT
 AcSplit/CF_GNAT_TRY_RUN         test if the ada compiler works
 AcSplit/CF_GNAT_VERSION         derive/verify GNAT (Ada) version
