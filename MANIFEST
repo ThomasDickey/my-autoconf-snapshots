@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110401
+MANIFEST for my-autoconf, version t20110409
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -101,6 +101,7 @@ AcSplit/CF_CURSES_STYLE         detect curses line-struct style (td_lib)
 AcSplit/CF_CURSES_TERMCAP       check for prototypes in curses.h or termcap.h
 AcSplit/CF_CURSES_TERM_H        check for curses's term.h
 AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
+AcSplit/CF_CURSES_UNCTRL_H      check for unctrl.h
 AcSplit/CF_CURSES_WACS_MAP      check for wacs_map[] (ncurses)
 AcSplit/CF_CURSES_WACS_SYMBOLS  check if we can use WACS_xxx symbols.
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define

@@ -1,3 +1,17 @@
+2011-04-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_FUNCS: add check for unctrl.h
+
+	* AcSplit/CF_CURSES_UNCTRL_H: ci-aclocal generated header
+
+	* AcSplit/CF_CURSES_TERM_H:
+	modify to avoid spurious check for <curses.hterm.h> if there is no ncurses
+	version.  Look for ncurses's term.h anyway, to work around breakage by packagers
+	who separate ncurses' header files.
+
+	* AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS:
+	make checks for special libraries on hpux10 and sunos4 optional
+
 2011-04-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2011-04-01
