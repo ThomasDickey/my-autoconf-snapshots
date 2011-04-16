@@ -1,10 +1,10 @@
-dnl CF_STRUCT_SIGACTION version: 3 updated: 2000/08/12 23:18:52
+dnl CF_STRUCT_SIGACTION version: 4 updated: 2011/04/16 11:52:53
 dnl -------------------
 dnl Check if we need _POSIX_SOURCE defined to use struct sigaction.  We'll only
 dnl do this if we've found the sigaction function.
-dnl
-dnl If needed, define SVR4_ACTION.
 AC_DEFUN([CF_STRUCT_SIGACTION],[
+AC_REQUIRE([CF_XOPEN_SOURCE])
+
 if test "$ac_cv_func_sigaction" = yes; then
 AC_MSG_CHECKING(whether sigaction needs _POSIX_SOURCE)
 AC_TRY_COMPILE([
@@ -19,7 +19,7 @@ AC_TRY_COMPILE([
 #include <signal.h>],
 	[struct sigaction act],
 	[sigact_bad=yes
-	 AC_DEFINE(SVR4_ACTION)],
+	 AC_DEFINE(_POSIX_SOURCE)],
 	 [sigact_bad=unknown])])
 AC_MSG_RESULT($sigact_bad)
 fi

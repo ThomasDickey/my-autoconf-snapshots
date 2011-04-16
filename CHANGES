@@ -1,3 +1,20 @@
+2011-04-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS:
+	relax ncurses-oriented change to make this work as fixup after CF_XOPEN_SOURCE
+
+2011-04-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ACVERSION_COMPARE:
+	need extra quoting around the inner ifelse's
+
+	* AcSplit/CF_ACVERSION_CHECK, AcSplit/CF_ACVERSION_COMPARE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_PKG_CONFIG:
+	use CF_ACVERSION_CHECK to select the AC_PATH_TOOL for "recent" autoconf,
+	and AC_PATH_PROG for "older".  For this purpose, 2.52 is recent.
+
 2011-04-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_FUNCS: add check for unctrl.h
