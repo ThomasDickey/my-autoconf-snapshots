@@ -1,4 +1,4 @@
-dnl CF_PKG_CONFIG version: 5 updated: 2011/04/14 20:28:42
+dnl CF_PKG_CONFIG version: 6 updated: 2011/04/17 06:36:21
 dnl -------------
 dnl Check for the package-config program, unless disabled by command-line.
 AC_DEFUN([CF_PKG_CONFIG],
@@ -15,9 +15,7 @@ no) #(vi
 	PKG_CONFIG=none
 	;;
 yes) #(vi
-	CF_ACVERSION_CHECK(2.52,
-		[AC_PATH_TOOL(PKG_CONFIG, pkg-config, none)],
-		[AC_PATH_PROG(PKG_CONFIG, pkg-config, none)])
+	AC_PATH_TOOL(PKG_CONFIG, pkg-config, none)
 	;;
 *)
 	PKG_CONFIG=$withval
