@@ -1,0 +1,27 @@
+dnl CF_DISABLE_DESKTOP version: 1 updated: 2011/04/21 17:57:48
+dnl ------------------
+dnl Handle a configure option "--disable-desktop", which sets a shell
+dnl variable $desktop_utils to a "#" if the feature is not wanted, or to an
+dnl empty string if enabled.  The variable is used to substitute in front of
+dnl corresponding makefile-rules.
+dnl
+dnl It also tells the configure script to substitute the environment variable
+dnl $DESKTOP_FLAGS, which can be used by external scripts to customize the
+dnl invocation of desktop-file-util.
+AC_DEFUN([CF_DISABLE_DESKTOP],[
+# Comment-out the install-desktop rule if the desktop-utils are not found.
+AC_MSG_CHECKING(if you want to install desktop files)
+CF_ARG_OPTION(desktop,
+	[  --disable-desktop       disable install of $1 desktop files],
+	[enable_desktop=$enableval],
+	[enable_desktop=$enableval],yes)
+AC_MSG_RESULT($enable_desktop)
+
+desktop_utils=
+if test "$enable_desktop" = yes ; then
+AC_CHECK_PROG(desktop_utils,desktop-file-install,yes,no)
+fi
+
+test "$desktop_utils" = yes && desktop_utils= || desktop_utils="#"
+AC_SUBST(DESKTOP_FLAGS)
+])
