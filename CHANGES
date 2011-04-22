@@ -1,3 +1,8 @@
+2011-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_APP_DEFAULTS, AcSplit/CF_WITH_ICONDIR, AcSplit/CF_DISABLE_DESKTOP:
+	ci-aclocal generated header
+
 2011-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PKG_CONFIG:

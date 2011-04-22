@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110417
+MANIFEST for my-autoconf, version t20110421
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -116,6 +116,7 @@ AcSplit/CF_DEFINE_PROG          check for program, defining its path
 AcSplit/CF_DEFINE_STRING        convert a shell variable to a #define which is a quoted string
 AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
+AcSplit/CF_DISABLE_DESKTOP      configure option --disable-desktop
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
 AcSplit/CF_DISABLE_LEAKS        the "--disable-leaks" option (ncurses)
 AcSplit/CF_DISABLE_LIBTOOL_VERSION  the "--disable-libtool-version" option
@@ -434,12 +435,14 @@ AcSplit/CF_WITH_ADA_COMPILER    command-line option to specify the Ada95 compile
 AcSplit/CF_WITH_ADA_INCLUDE     command-line option for path of Ada includes
 AcSplit/CF_WITH_ADA_OBJECTS     command-line option for path of Ada objects
 AcSplit/CF_WITH_ADA_SHAREDLIB   command-line option to tell if an Ada95-shared library should be built
+AcSplit/CF_WITH_APP_DEFAULTS    handle --with-app-defaults option
 AcSplit/CF_WITH_BZLIB           check for libbz2
 AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
 AcSplit/CF_WITH_DBMALLOC        configure with dbmalloc (add)
 AcSplit/CF_WITH_DFTENV          inherit/override environment variable with command-option
 AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
 AcSplit/CF_WITH_GPM             command-line options for gpm
+AcSplit/CF_WITH_ICONDIR         handle --with-icondir option
 AcSplit/CF_WITH_IDNA            add configure-check for idn library
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
