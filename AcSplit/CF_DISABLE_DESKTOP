@@ -1,4 +1,4 @@
-dnl CF_DISABLE_DESKTOP version: 1 updated: 2011/04/21 17:57:48
+dnl CF_DISABLE_DESKTOP version: 2 updated: 2011/04/22 05:17:37
 dnl ------------------
 dnl Handle a configure option "--disable-desktop", which sets a shell
 dnl variable $desktop_utils to a "#" if the feature is not wanted, or to an
@@ -8,6 +8,8 @@ dnl
 dnl It also tells the configure script to substitute the environment variable
 dnl $DESKTOP_FLAGS, which can be used by external scripts to customize the
 dnl invocation of desktop-file-util.
+dnl
+dnl $1 = program name
 AC_DEFUN([CF_DISABLE_DESKTOP],[
 # Comment-out the install-desktop rule if the desktop-utils are not found.
 AC_MSG_CHECKING(if you want to install desktop files)

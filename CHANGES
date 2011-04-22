@@ -1,3 +1,9 @@
+2011-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_DESKTOP: add comment about parameters
+
+	* AcSplit/CF_WITH_DESKTOP_CATEGORY: ci-aclocal generated header
+
 2011-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_APP_DEFAULTS, AcSplit/CF_WITH_ICONDIR, AcSplit/CF_DISABLE_DESKTOP:
