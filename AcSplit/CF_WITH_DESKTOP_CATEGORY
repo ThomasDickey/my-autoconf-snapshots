@@ -1,0 +1,78 @@
+dnl CF_WITH_DESKTOP_CATEGORY version: 1 updated: 2011/04/22 05:17:37
+dnl ------------------------
+dnl Taking into account the absence of standardization of desktop categories
+dnl take a look to see whether other applications on the current system are
+dnl assigned any/all of a set of suggested categories.
+dnl
+dnl $1 = program name
+dnl $2 = case-pattern to match comparable desktop files to obtain category
+dnl      This pattern may contain wildcards.
+dnl $3 = suggested categories, also a case-pattern but without wildcards,
+dnl      since it doubles as a default value.
+dnl
+dnl The macro tells the configure script to substitute the $DESKTOP_CATEGORY
+dnl value.
+AC_DEFUN([CF_WITH_DESKTOP_CATEGORY],[
+AC_REQUIRE([CF_DISABLE_DESKTOP])
+
+if test -z "$desktop_utils"
+then
+	AC_MSG_CHECKING(for requested desktop-category)
+	AC_ARG_WITH(desktop-category,
+		[  --with-desktop-category=XXX  one or more desktop catgories or auto],
+		[cf_desktop_want=$withval],
+		[cf_desktop_want=auto])
+	AC_MSG_RESULT($cf_desktop_want)
+
+	if test "$cf_desktop_want" = auto
+	then
+		rm -rf conftest*
+		cf_desktop_also=
+		for cf_desktop_dir in  \
+			/usr/share/app-install \
+			/usr/share/applications
+		do
+			if test -d $cf_desktop_dir
+			then
+				find $cf_desktop_dir -name '*.desktop' | \
+				while true
+				do
+					read cf_desktop_path
+					test -z "$cf_desktop_path" && break
+					cf_desktop_name=`basename $cf_desktop_path .desktop`
+					case $cf_desktop_name in #(vi
+					$1|*-$1|$2)
+						CF_VERBOSE(inspect $cf_desktop_path)
+						egrep '^Categories=' $cf_desktop_path | \
+							tr ';' '\n' | \
+							sed -e 's%^.*=%%' -e '/^$/d' >>conftest.1
+						;;
+					esac
+				done
+			fi
+		done
+		if test -s conftest.1
+		then
+			cf_desktop_last=
+			sort conftest.1 | \
+			while true
+			do
+				read cf_desktop_this
+				test -z "$cf_desktop_this" && break
+				case $cf_desktop_this in #(vi
+				Qt|GTK|KDE|GNOME) #(vi
+					;;
+				$3)
+					test "x$cf_desktop_last" != "x$cf_desktop_this" && echo $cf_desktop_this >>conftest.2
+					;;
+				esac
+				cf_desktop_last=$cf_desktop_this
+			done
+			cf_desktop_want=`cat conftest.2 | tr '\n' ';'`
+		fi
+	fi
+	DESKTOP_CATEGORY=`echo "$cf_desktop_want" | sed -e 's/[[ ,]]/;/g'`
+	CF_VERBOSE(resulting category=$DESKTOP_CATEGORY)
+	AC_SUBST(DESKTOP_CATEGORY)
+fi
+])
