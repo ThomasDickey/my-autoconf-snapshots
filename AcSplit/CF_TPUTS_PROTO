@@ -1,0 +1,43 @@
+dnl CF_TPUTS_PROTO version: 2 updated: 2011/04/23 19:25:50
+dnl --------------
+dnl Check for type of function-pointer passed to tputs.  Some old
+dnl implementations used functions that had different prototypes, making it
+dnl hard to compile portable programs using tputs.
+AC_DEFUN([CF_TPUTS_PROTO],[
+CF_CURSES_FUNCS(tputs)
+if test x$cf_cv_func_tputs = xyes
+then
+	cf_done=no
+	for cf_arg in int char
+	do
+		for cf_ret in int void
+		do
+			if test $cf_ret = void
+			then
+				cf_return="/* nothing */"
+			else
+				cf_return="return value"
+			fi
+			AC_TRY_COMPILE([
+#include <${cf_cv_ncurses_header:-curses.h}>
+#include <$cf_cv_term_header>
+
+static $cf_ret outc($cf_arg value) { $cf_return; }
+],[
+	tputs("hello", 0, outc); 
+	${cf_cv_main_return:-return}(0);
+],[
+		CF_VERBOSE([prototype $cf_ret func($cf_arg value)])
+		cat >>confdefs.h <<EOF
+#define TPUTS_ARG               $cf_arg
+#define TPUTS_PROTO(func,value) $cf_ret func(TPUTS_ARG value)
+#define TPUTS_RETURN(value)     $cf_return
+EOF
+		cf_done=yes
+		break
+])
+		done
+		test $cf_done = yes && break
+	done
+fi
+])dnl

@@ -1,3 +1,9 @@
+2011-04-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TPUTS_PROTO: build-fixes from HPUX and Solaris machines
+
+	* AcSplit/CF_TPUTS_PROTO: ci-aclocal generated header
+
 2011-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_DESKTOP: add comment about parameters
