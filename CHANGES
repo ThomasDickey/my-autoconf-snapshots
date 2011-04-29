@@ -1,3 +1,8 @@
+2011-04-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PKG_CONFIG:
+	retesting new CF_PKG_CONFIG with lynx, that works (did not work with tin).
+
 2011-04-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TPUTS_PROTO: build-fixes from HPUX and Solaris machines
