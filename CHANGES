@@ -1,3 +1,10 @@
+2011-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_HEADER:
+	change order for curses.h / ncurses.h pairs to put ncurses.h first, which
+	will tend to provide the same #define's as in CF_NCURSES_HEADER (report
+	by Dennis Preiser).
+
 2011-04-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PKG_CONFIG:
