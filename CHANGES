@@ -1,3 +1,8 @@
+2011-05-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ACVERSION_CHECK:
+	correct order of then/else for the 2.5x branch.
+
 2011-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_HEADER:

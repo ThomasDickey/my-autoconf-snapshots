@@ -1,4 +1,4 @@
-dnl CF_ACVERSION_CHECK version: 1 updated: 2011/04/14 20:28:42
+dnl CF_ACVERSION_CHECK version: 2 updated: 2011/05/08 11:22:03
 dnl ------------------
 dnl Conditionally generate script according to whether we're using a given autoconf.
 dnl
@@ -8,7 +8,7 @@ dnl $3 = code to use if AC_ACVERSION is older than $1.
 define(CF_ACVERSION_CHECK,
 [
 ifdef([m4_version_compare],
-[m4_if(m4_version_compare(m4_defn([AC_ACVERSION]), [$1]), -1, [$2],[$3])],
+[m4_if(m4_version_compare(m4_defn([AC_ACVERSION]), [$1]), -1, [$3], [$2])],
 [CF_ACVERSION_COMPARE(
 AC_PREREQ_CANON(AC_PREREQ_SPLIT([$1])),
 AC_PREREQ_CANON(AC_PREREQ_SPLIT(AC_ACVERSION)), AC_ACVERSION, [$2], [$3])])])dnl
