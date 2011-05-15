@@ -1,3 +1,12 @@
+2011-05-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_FUNCS:
+	workaround for bug in gcc 4.2.1 (FreeBSD 8.1) which caused part of test
+	program to be omitted, i.e., when it saw two return-statements in a row
+	it omitted the _first_ one.  Also add expression to pointer check to
+	help FreeBSD's linker decide it should be validated.  Just an assignment
+	was not enough.
+
 2011-05-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ACVERSION_CHECK:
