@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 8 updated: 2007/04/22 12:01:07
+dnl CF_SRAND version: 9 updated: 2011/05/28 12:10:58
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -51,6 +51,37 @@ if test "$cf_cv_srand_func" != unknown ; then
 		],[long x = $cf_cv_rand_max],,
 		[cf_cv_rand_max="(1L<<$cf_rand_max)-1"])
 	])
+
+	case $cf_cv_srand_func in
+	*/arc4random)
+		AC_MSG_CHECKING(if <bsd/stdlib.h> should be included)
+		AC_TRY_COMPILE([#include <bsd/stdlib.h>],
+					   [void *arc4random(int);
+						void *x = arc4random(1)],
+					   [cf_bsd_stdlib_h=no],
+					   [cf_bsd_stdlib_h=yes])
+	    AC_MSG_RESULT($cf_bsd_stdlib_h)
+		if test "$cf_bsd_stdlib_h" = yes
+		then
+			AC_DEFINE(HAVE_BSD_STDLIB_H)
+		else
+			AC_MSG_CHECKING(if <bsd/random.h> should be included)
+			AC_TRY_COMPILE([#include <bsd/random.h>],
+						   [void *arc4random(int);
+							void *x = arc4random(1)],
+						   [cf_bsd_random_h=no],
+						   [cf_bsd_random_h=yes])
+			AC_MSG_RESULT($cf_bsd_random_h)
+			if test "$cf_bsd_random_h" = yes
+			then
+				AC_DEFINE(HAVE_BSD_RANDOM_H)
+			else
+				AC_MSG_WARN(no header file found for arc4random)
+			fi
+		fi
+		;;
+	esac
+
 	CF_SRAND_PARSE($cf_func,cf_srand_func,cf_rand_func)
 
 	CF_UPPER(cf_rand_max,ifelse($1,,my_,$1)rand_max)

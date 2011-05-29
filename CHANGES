@@ -1,3 +1,14 @@
+2011-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	add case for interix (report/patch by Markus Duft)
+
+	* AcSplit/CF_SRAND:
+	add compile-checks for bsd/stdlib.h and bsd/random.h to select the correct
+	one needed for arc4random()
+
+	* AcSplit/CF_WITH_ZLIB: check for zError after finding the library
+
 2011-05-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_FUNCS:

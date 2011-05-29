@@ -1,4 +1,4 @@
-dnl CF_WITH_ZLIB version: 3 updated: 2007/07/29 13:19:54
+dnl CF_WITH_ZLIB version: 4 updated: 2011/05/28 12:10:58
 dnl ------------
 dnl check for libz aka "zlib"
 AC_DEFUN([CF_WITH_ZLIB],[
@@ -9,4 +9,8 @@ AC_DEFUN([CF_WITH_ZLIB],[
 ],[
 	gzopen("name","mode")
 ],z,,,zlib)
+
+AC_CHECK_FUNCS( \
+	zError \
+)
 ])dnl
