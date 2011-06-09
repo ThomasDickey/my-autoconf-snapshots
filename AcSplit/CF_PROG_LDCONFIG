@@ -1,4 +1,4 @@
-dnl CF_PROG_LDCONFIG version: 2 updated: 2008/12/13 14:08:40
+dnl CF_PROG_LDCONFIG version: 3 updated: 2011/06/04 20:09:13
 dnl ----------------
 dnl Check for ldconfig, needed to fixup shared libraries that would be built
 dnl and then used in the install.
@@ -7,7 +7,7 @@ if test "$cross_compiling" = yes ; then
   LDCONFIG=:
 else
 case "$cf_cv_system_name" in #(vi
-dragonfly*|freebsd*) #(vi
+dragonfly*|mirbsd*|freebsd*) #(vi
   test -z "$LDCONFIG" && LDCONFIG="/sbin/ldconfig -R"
   ;;
 *) LDPATH=$PATH:/sbin:/usr/sbin
