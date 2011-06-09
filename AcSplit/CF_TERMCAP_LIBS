@@ -1,4 +1,4 @@
-dnl CF_TERMCAP_LIBS version: 12 updated: 2010/06/20 09:24:28
+dnl CF_TERMCAP_LIBS version: 13 updated: 2011/06/08 18:09:57
 dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 dnl
@@ -48,7 +48,7 @@ if test "$cf_cv_termlib" = none; then
 fi
 if test "$cf_cv_termlib" = none; then
 	# allow curses library for broken AIX system.
-	AC_CHECK_LIB(curses, initscr, [CF_ADD_LIBS(-lcurses) cf_cv_termlib=termcap])
+	AC_CHECK_LIB(curses, initscr, [CF_ADD_LIBS(-lcurses)])
 	AC_CHECK_LIB(termcap, tgoto, [CF_ADD_LIBS(-ltermcap) cf_cv_termlib=termcap])
 fi
 ])

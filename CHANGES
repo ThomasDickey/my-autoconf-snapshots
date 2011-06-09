@@ -1,3 +1,18 @@
+2011-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	modify the workaround for old AIX system (from 1997 or before) to not
+	set $cf_cv_termlib if it succeeds in finding initscr in libcurses.
+	Doing that confused a check in tin's configure.in which looks at that
+	variable to decide if termcap/terminfo library was found.  The check
+	for tgoto in libtermcap on the next line is the actual check which is
+	needed, and should fail if there is no termcap library installed.
+
+2011-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_SHARED_OPTS:
+	add mirbsd
+
 2011-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
