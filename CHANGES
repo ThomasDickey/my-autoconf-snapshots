@@ -1,3 +1,9 @@
+2011-06-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND:
+	the compile-checks for <bsd/random.h> vs <bsd/stdlib.h> needed another level
+	to verify that the headers will really work.
+
 2011-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TERMCAP_LIBS:

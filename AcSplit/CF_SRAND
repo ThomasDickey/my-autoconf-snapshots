@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 9 updated: 2011/05/28 12:10:58
+dnl CF_SRAND version: 10 updated: 2011/06/12 19:28:32
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -59,7 +59,10 @@ if test "$cf_cv_srand_func" != unknown ; then
 					   [void *arc4random(int);
 						void *x = arc4random(1)],
 					   [cf_bsd_stdlib_h=no],
-					   [cf_bsd_stdlib_h=yes])
+					   [AC_TRY_COMPILE([#include <bsd/stdlib.h>],
+									   [unsigned x = arc4random()],
+									   [cf_bsd_stdlib_h=yes],
+									   [cf_bsd_stdlib_h=no])])
 	    AC_MSG_RESULT($cf_bsd_stdlib_h)
 		if test "$cf_bsd_stdlib_h" = yes
 		then
@@ -70,7 +73,10 @@ if test "$cf_cv_srand_func" != unknown ; then
 						   [void *arc4random(int);
 							void *x = arc4random(1)],
 						   [cf_bsd_random_h=no],
-						   [cf_bsd_random_h=yes])
+						   [AC_TRY_COMPILE([#include <bsd/random.h>],
+										   [unsigned x = arc4random()],
+										   [cf_bsd_random_h=yes],
+										   [cf_bsd_random_h=no])])
 			AC_MSG_RESULT($cf_bsd_random_h)
 			if test "$cf_bsd_random_h" = yes
 			then
