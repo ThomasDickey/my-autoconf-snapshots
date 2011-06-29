@@ -1,3 +1,11 @@
+2011-06-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	modify LIB_CREATE, adding $(LIBS).  This is needed by applications that
+	dynamically load the library, in contrast to the dialog program (which
+	is itself linked using the $(LIBS) list explicitly).  (report/analysis
+	by xDog Walker).
+
 2011-06-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND:
