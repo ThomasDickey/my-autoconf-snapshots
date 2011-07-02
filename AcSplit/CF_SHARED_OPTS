@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 66 updated: 2011/06/04 20:09:13
+dnl CF_SHARED_OPTS version: 67 updated: 2011/07/02 15:36:04
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -73,10 +73,14 @@ AC_DEFUN([CF_SHARED_OPTS],
 	cf_cv_shlib_version_infix=no
 
 	case $cf_cv_system_name in #(vi
-	aix[[56]]*) #(vi
+	aix4.[3-9]*|aix[[5-7]]*) #(vi
 		if test "$GCC" = yes; then
 			CC_SHARED_OPTS=
-			MK_SHARED_LIB='$(CC) -shared'
+			MK_SHARED_LIB='${CC} -shared -Wl,-brtl -Wl,-blibpath:${libdir}:/usr/lib -o [$]@'
+		else
+			# CC_SHARED_OPTS='-qpic=large -G'
+			# perhaps "-bM:SRE -bnoentry -bexpall"
+			MK_SHARED_LIB='${CC} -G -Wl,-brtl -Wl,-blibpath:${libdir}:/usr/lib -o [$]@'
 		fi
 		;;
 	beos*) #(vi

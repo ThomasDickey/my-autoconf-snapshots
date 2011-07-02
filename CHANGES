@@ -1,3 +1,20 @@
+2011-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_SUFFIX:
+	extend aix case to 7.x
+
+	* AcSplit/CF_XOPEN_SOURCE: extend aix case to aix 7.x
+
+	* AcSplit/CF_SHARED_OPTS:
+	extend aix case to aix 7.x, tested with cc on 7.1
+
+	* AcSplit/CF_WITH_DESKTOP_CATEGORY: filter out XFCE patterns
+
+	* AcSplit/CF_UNDO_CFLAGS: ci-aclocal generated header
+
+	* AcSplit/CF_FUNC_TGETENT:
+	prefix "$cf_cv_lib_tgetent" in tests, since it may begin with "-".
+
 2011-07-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ANSI_CC_CHECK:
