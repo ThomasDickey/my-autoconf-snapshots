@@ -1,0 +1,12 @@
+dnl CF_UNDO_CFLAGS version: 1 updated: 2011/07/02 09:27:51
+dnl --------------
+dnl Remove flags from $CFLAGS or similar shell variable using sed.
+dnl $1 = variable
+dnl $2 = message
+dnl $3 = pattern to remove
+AC_DEFUN([CF_UNDO_CFLAGS],
+[
+	CF_VERBOSE(removing $2 flags from $1)
+	$1=`echo "[$]$1" | sed -e 's/$3//'`
+	CF_VERBOSE(...result [$]$1)
+])dnl

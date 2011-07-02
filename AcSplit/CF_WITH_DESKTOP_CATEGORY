@@ -1,4 +1,4 @@
-dnl CF_WITH_DESKTOP_CATEGORY version: 1 updated: 2011/04/22 05:17:37
+dnl CF_WITH_DESKTOP_CATEGORY version: 2 updated: 2011/07/02 10:22:07
 dnl ------------------------
 dnl Taking into account the absence of standardization of desktop categories
 dnl take a look to see whether other applications on the current system are
@@ -60,7 +60,7 @@ then
 				read cf_desktop_this
 				test -z "$cf_desktop_this" && break
 				case $cf_desktop_this in #(vi
-				Qt|GTK|KDE|GNOME) #(vi
+				Qt*|GTK*|KDE*|GNOME*|*XFCE*|*Xfce*) #(vi
 					;;
 				$3)
 					test "x$cf_desktop_last" != "x$cf_desktop_this" && echo $cf_desktop_this >>conftest.2

@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 15 updated: 2010/06/04 20:54:56
+dnl CF_FUNC_TGETENT version: 16 updated: 2011/07/02 09:27:51
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -72,8 +72,8 @@ LIBS="$cf_save_LIBS"
 # (LIBS cannot be set inside AC_CACHE_CHECK; the commands there should
 # not have side effects other than setting the cache variable, because
 # they are not executed when a cached value exists.)
-if test "$cf_cv_lib_tgetent" != no ; then
-	test "$cf_cv_lib_tgetent" != yes && CF_ADD_LIBS($cf_cv_lib_tgetent)
+if test "x$cf_cv_lib_tgetent" != xno ; then
+	test "x$cf_cv_lib_tgetent" != xyes && CF_ADD_LIBS($cf_cv_lib_tgetent)
 	AC_DEFINE(USE_TERMCAP)
 	if test "$cf_full_tgetent" = no ; then
 		AC_TRY_COMPILE([
