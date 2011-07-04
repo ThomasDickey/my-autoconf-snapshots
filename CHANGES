@@ -1,3 +1,8 @@
+2011-07-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FONTCONFIG:
+	if CF_X_FREETYPE failed, do not compound it by attempting to fix the package.
+
 2011-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_SUFFIX:
