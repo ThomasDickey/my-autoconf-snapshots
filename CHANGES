@@ -1,3 +1,7 @@
+2011-07-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_APP_CLASS: ci-aclocal generated header
+
 2011-07-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FONTCONFIG:
