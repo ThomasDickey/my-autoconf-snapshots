@@ -1,0 +1,30 @@
+dnl CF_WITH_APP_CLASS version: 1 updated: 2011/07/08 04:54:40
+dnl -----------------
+dnl Handle configure option "--with-app-class", setting the $APP_CLASS
+dnl variable, used for X resources.
+dnl
+dnl $1 = default value.
+AC_DEFUN(CF_WITH_APP_CLASS,[
+AC_MSG_CHECKING(for X applications class)
+AC_ARG_WITH(app-class,
+	[  --with-app-class=XXX    override X applications class (default $1)],
+	[APP_CLASS=$withval],
+	[APP_CLASS=$1])
+
+case x$APP_CLASS in #(vi
+*[[/@,%]]*) #(vi
+	AC_MSG_WARN(X applications class cannot contain punctuation)
+	APP_CLASS=$1
+	;;
+x[[A-Z]]*) #(vi
+	;;
+*)
+	AC_MSG_WARN([X applications class must start with capital, ignoring $APP_CLASS])
+	APP_CLASS=$1
+	;;
+esac
+
+AC_MSG_RESULT($APP_CLASS)
+
+AC_SUBST(APP_CLASS)
+])dnl

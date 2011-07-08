@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110704
+MANIFEST for my-autoconf, version t20110708
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -437,6 +437,7 @@ AcSplit/CF_WITH_ADA_COMPILER    command-line option to specify the Ada95 compile
 AcSplit/CF_WITH_ADA_INCLUDE     command-line option for path of Ada includes
 AcSplit/CF_WITH_ADA_OBJECTS     command-line option for path of Ada objects
 AcSplit/CF_WITH_ADA_SHAREDLIB   command-line option to tell if an Ada95-shared library should be built
+AcSplit/CF_WITH_APP_CLASS       configure --with-app-class option
 AcSplit/CF_WITH_APP_DEFAULTS    handle --with-app-defaults option
 AcSplit/CF_WITH_BZLIB           check for libbz2
 AcSplit/CF_WITH_CURSES_DIR      wrapper for --with-curses-dir option
