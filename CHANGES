@@ -1,3 +1,10 @@
+2011-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT:
+	termcap, e.g,. with Slackware, does not know about the "screen" variants
+	such as "screen-bce.xterm-new", and dumps core (confusing this test).
+	Filter those out.
+
 2011-07-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_APP_CLASS: ci-aclocal generated header
