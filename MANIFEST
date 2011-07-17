@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110714
+MANIFEST for my-autoconf, version t20110716
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -123,6 +123,7 @@ AcSplit/CF_DISABLE_LIBTOOL_VERSION  the "--disable-libtool-version" option
 AcSplit/CF_DISABLE_RPATH_HACK   option to disable rpath-hack
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
 AcSplit/CF_ENABLE_NARROWPROTO   make -DNARROWPROTO configurable to work about botched Xorg "modular" build.
+AcSplit/CF_ENABLE_PC_FILES      the "--enable-pc-files" option.
 AcSplit/CF_ENABLE_RPATH         process "--enable-rpath" option
 AcSplit/CF_ENABLE_TRACE         configure --enable-trace option
 AcSplit/CF_ENABLE_WARNINGS      enable warnings (add)
