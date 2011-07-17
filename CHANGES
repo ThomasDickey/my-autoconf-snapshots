@@ -1,3 +1,12 @@
+2011-07-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES: typo
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	64-bit platforms may put pc-files in /usr/lib64/pkgconfig
+
+	* AcSplit/CF_ENABLE_PC_FILES: ci-aclocal generated header
+
 2011-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_TGETENT:
