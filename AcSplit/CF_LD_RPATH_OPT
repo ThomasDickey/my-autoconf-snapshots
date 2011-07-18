@@ -1,4 +1,4 @@
-dnl CF_LD_RPATH_OPT version: 4 updated: 2011/06/04 20:09:13
+dnl CF_LD_RPATH_OPT version: 5 updated: 2011/07/17 14:48:41
 dnl ---------------
 dnl For the given system and compiler, find the compiler flags to pass to the
 dnl loader to use the "rpath" feature.
@@ -22,7 +22,7 @@ linux*|gnu*|k*bsd*-gnu) #(vi
 openbsd[[2-9]].*|mirbsd*) #(vi
 	LD_RPATH_OPT="-Wl,-rpath,"
 	;;
-freebsd*) #(vi
+dragonfly*|freebsd*) #(vi
 	LD_RPATH_OPT="-rpath "
 	;;
 netbsd*) #(vi
