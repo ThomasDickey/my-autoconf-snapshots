@@ -1,4 +1,4 @@
-dnl CF_ENABLE_PC_FILES version: 2 updated: 2011/07/16 19:01:00
+dnl CF_ENABLE_PC_FILES version: 3 updated: 2011/07/16 20:37:23
 dnl ------------------
 dnl This is the "--enable-pc-files" option, which is available if there is a
 dnl pkg-config configuration on the local machine.
@@ -38,7 +38,7 @@ if test "$PKG_CONFIG" != no ; then
 				done
 				;;
 			*)
-				PKG_CONFIG_LIBDIR=$cf_config/pkgconfig
+				PKG_CONFIG_LIBDIR=$cf_path/lib/pkgconfig
 				;;
 			esac
 		fi
