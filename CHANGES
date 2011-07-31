@@ -1,3 +1,8 @@
+2011-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	add new variable RPATH_LIST which can extend the list of library directories
+
 2011-07-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA_LIBS: force exit from outer loop when done.
