@@ -1,22 +1,43 @@
-dnl CF_CGETENT version: 3 updated: 2000/08/12 23:18:52
+dnl CF_CGETENT version: 4 updated: 2011/08/07 14:54:41
 dnl ----------
 dnl Check if the terminal-capability database functions are available.  If not,
 dnl ncurses has a much-reduced version.
 AC_DEFUN([CF_CGETENT],[
-AC_MSG_CHECKING(for terminal-capability database functions)
-AC_CACHE_VAL(cf_cv_cgetent,[
+AC_CACHE_CHECK(for terminal-capability database functions,cf_cv_cgetent,[
 AC_TRY_LINK([
 #include <stdlib.h>],[
 	char temp[128];
 	char *buf = temp;
 	char *db_array = temp;
-	cgetent(&buf, /* int *, */ &db_array, "vt100");
+	cgetent(&buf, &db_array, "vt100");
 	cgetcap(buf, "tc", '=');
 	cgetmatch(buf, "tc");
 	],
 	[cf_cv_cgetent=yes],
 	[cf_cv_cgetent=no])
 ])
-AC_MSG_RESULT($cf_cv_cgetent)
-test "$cf_cv_cgetent" = yes && AC_DEFINE(HAVE_BSD_CGETENT)
+
+if test "$cf_cv_cgetent" = yes
+then
+	AC_DEFINE(HAVE_BSD_CGETENT)
+AC_CACHE_CHECK(if cgetent uses const parameter,cf_cv_cgetent_const,[
+AC_TRY_LINK([
+#include <stdlib.h>],[
+	char temp[128];
+	char *buf = temp;
+#ifndef _NETBSD_SOURCE			/* given, since April 2004 in stdlib.h */
+	const char *db_array = temp;
+	cgetent(&buf, &db_array, "vt100");
+#endif
+	cgetcap(buf, "tc", '=');
+	cgetmatch(buf, "tc");
+	],
+	[cf_cv_cgetent_const=yes],
+	[cf_cv_cgetent_const=no])
+])
+	if test "$cf_cv_cgetent_const" = yes
+	then
+		AC_DEFINE_UNQUOTED(CGETENT_CONST,const)
+	fi
+fi
 ])dnl
