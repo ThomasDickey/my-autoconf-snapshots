@@ -1,3 +1,18 @@
+2011-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CGETENT:
+	add check for const params used in NetBSD flavor of cgetent()
+
+2011-08-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	on NetBSD, define _NETBSD_SOURCE to ensure that vsscanf and strdup get
+	prototyped - seems that something in unistd.h triggers this need.
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	wrap invocation of "arch" in parentheses to help redirect stderr with NetBSD
+	which has no "arch" and uses csh as the default shell.
+
 2011-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
