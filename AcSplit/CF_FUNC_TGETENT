@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 17 updated: 2011/07/14 19:34:47
+dnl CF_FUNC_TGETENT version: 18 updated: 2011/08/09 21:06:37
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -45,7 +45,7 @@ AC_CACHE_CHECK(for $cf_test_message function,cf_cv_lib_tgetent,[
 cf_save_LIBS="$LIBS"
 cf_cv_lib_tgetent=no
 if test "$cf_full_tgetent" = yes ; then
-	cf_TERMLIB="termcap termlib ncurses curses"
+	cf_TERMLIB="otermcap termcap termlib ncurses curses"
 	cf_TERMTST="buffer[[0]] == 0"
 else
 	cf_TERMLIB="termlib ncurses curses"
