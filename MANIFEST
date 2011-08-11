@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20110807
+MANIFEST for my-autoconf, version t20110811
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -52,6 +52,7 @@ AcSplit/CF_AWK_BIG_PRINTF       check for string-limit in awk "%s" printf's
 AcSplit/CF_BOOL_DECL            check if 'bool' is a declared type
 AcSplit/CF_BOOL_DEFS            check if curses.h declares TRUE/FALSE
 AcSplit/CF_BOOL_SIZE            obtain sizeof(bool) from the C++ compiler
+AcSplit/CF_BROKEN_TGETENT_STATUS  check for broken tgetent() return-status
 AcSplit/CF_BUILD_CC             configure options to specify BUILD_CC, etc
 AcSplit/CF_BUNDLED_INTL         combine all libintl macros
 AcSplit/CF_BUNDLED_PCRE         macro to setup variables when configuriing for PCRE which may be bundled

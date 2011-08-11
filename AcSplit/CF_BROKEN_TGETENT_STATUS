@@ -1,0 +1,31 @@
+dnl CF_BROKEN_TGETENT_STATUS version: 1 updated: 2011/08/11 06:48:05
+dnl ------------------------
+dnl Some implementors read the (incorrect) X/Open documentation when providing
+dnl tgetent as part of the terminfo library.
+dnl tgetent should return
+dnl		>0 for success,
+dnl		0  for unknown entry
+dnl		<0 for no database
+dnl X/Open implied that the success would be OK (0) and failure ERR (-1).
+dnl
+dnl This test checks for an unknown entry rather than for success, since the
+dnl latter is not guaranteed.
+AC_DEFUN([CF_BROKEN_TGETENT_STATUS],
+[
+AC_CACHE_CHECK(for broken tgetent status returned, cf_cv_status_tgetent,[
+AC_TRY_RUN([
+int main(void)
+{
+	char buffer[[1024]];
+	static char name[[20]] = "..............";
+	int code = tgetent(buffer, name);
+	${cf_cv_main_return:-return} (code != 0);}],
+	[cf_cv_status_tgetent=yes],
+	[cf_cv_status_tgetent=no],
+	[cf_cv_status_tgetent=no])])
+
+if test $cf_cv_status_tgetent = yes
+then
+	AC_DEFINE(BROKEN_TGETENT_STATUS)
+fi
+])dnl
