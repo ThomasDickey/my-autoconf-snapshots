@@ -1,3 +1,7 @@
+2011-08-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE: add --with-freetype-config option
+
 2011-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BROKEN_TGETENT_STATUS: ci-aclocal generated header
