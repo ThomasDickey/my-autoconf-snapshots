@@ -1,3 +1,8 @@
+2011-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SVR4:
+	cygwin still misuses SVR4 symbol in X header - force this to fail on that platform.
+
 2011-08-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FREETYPE: add --with-freetype-config option
