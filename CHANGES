@@ -1,3 +1,14 @@
+2011-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	ensure $enable_pc_files has a value even if there's no pkg-config found
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR: ci-aclocal generated header
+
+	* AcSplit/CF_MAN_PAGES: improved --with-curses-h and --disable-override
+
+	* AcSplit/CF_ENABLE_PC_FILES: split-out CF_WITH_PKG_CONFIG_LIBDIR
+
 2011-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SVR4:
