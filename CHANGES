@@ -1,3 +1,9 @@
+2011-09-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LDFLAGS_STATIC:
+	improve check for broken linkers; some (noticed with Debian 5.0) simply
+	ignore the "-dynamic" used in the previous check.
+
 2011-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:
