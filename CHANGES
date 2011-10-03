@@ -1,3 +1,9 @@
+2011-10-03  Urs.Jansen
+
+	* AcSplit/CF_NETLIBS:
+	add check for inet_ntoa() in nsl library, fix needed for Control Data 4680-MP
+	with EP/IX 2.2.1AA in SysV mode.
+
 2011-09-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LDFLAGS_STATIC:
