@@ -1,0 +1,23 @@
+dnl CF_CURSES_WGETPARENT version: 1 updated: 2011/10/17 19:04:00
+dnl --------------------
+dnl Check for curses support for directly determining the parent of a given
+dnl window.  Some implementations make this difficult, so we provide for
+dnl defining an application-specific function that gives this functionality.
+dnl
+dnl $1 = name of function to use if the feature is missing
+AC_DEFUN([CF_CURSES_WGETPARENT],[
+CF_CURSES_FUNCS(wgetparent)
+if test "x$cf_cv_func_wgetparent" != xyes
+then
+	AC_MSG_CHECKING(if WINDOW has _parent member)
+	AC_TRY_COMPILE([#include <${cf_header}>],
+		[WINDOW *p = stdscr->_parent],
+		[cf_window__parent=yes],
+		[cf_window__parent=no])
+	AC_MSG_RESULT($cf_window__parent)
+	if test "$cf_window__parent" = yes
+	then
+		AC_DEFINE(HAVE_WINDOW__PARENT)
+	fi
+fi
+])dnl

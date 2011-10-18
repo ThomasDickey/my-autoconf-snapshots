@@ -1,3 +1,9 @@
+2011-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_WGETPARENT: fix typo
+
+	* AcSplit/CF_CURSES_WGETPARENT: ci-aclocal generated header
+
 2011-10-03  Urs.Jansen
 
 	* AcSplit/CF_NETLIBS:
