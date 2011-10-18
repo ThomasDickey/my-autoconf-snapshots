@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20111003
+MANIFEST for my-autoconf, version t20111017
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -107,6 +107,7 @@ AcSplit/CF_CURSES_TYPE          check for basic curses type (bsd vs sysv)
 AcSplit/CF_CURSES_UNCTRL_H      check for unctrl.h
 AcSplit/CF_CURSES_WACS_MAP      check for wacs_map[] (ncurses)
 AcSplit/CF_CURSES_WACS_SYMBOLS  check if we can use WACS_xxx symbols.
+AcSplit/CF_CURSES_WGETPARENT    check whether wgetparent() or its fallback win->_parent are supported
 AcSplit/CF_CURS_PERFORMANCE     check for curses "performance" #define
 AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
