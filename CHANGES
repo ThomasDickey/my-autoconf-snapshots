@@ -1,3 +1,11 @@
+2011-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT: ci-aclocal generated header
+
+	* AcSplit/CF_X_FONTENC:
+	don't error-out if the libraries are not found; calling script can choose
+	better alternatives
+
 2011-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_WGETPARENT: fix typo
