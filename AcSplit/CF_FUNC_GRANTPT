@@ -1,0 +1,24 @@
+dnl CF_FUNC_GRANTPT version: 1 updated: 2011/10/21 07:48:19
+dnl ---------------
+dnl Check for grantpt versus openpty, as well as functions that "should" be
+dnl available if grantpt is available.
+AC_DEFUN([CF_FUNC_GRANTPT],[
+
+AC_CHECK_FUNCS(\
+grantpt \
+posix_openpt \
+)
+
+if test "x$ac_cv_func_grantpt" != "xyes" ; then
+	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])
+	if test "$cf_have_openpty" = yes ; then
+		LIBS="-lutil $LIBS"
+		AC_DEFINE(HAVE_OPENPTY)
+		AC_CHECK_HEADERS( \ 
+			util.h \
+			libutil.h \
+			pty.h \
+		)
+	fi
+fi
+])dnl
