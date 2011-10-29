@@ -1,3 +1,9 @@
+2011-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FONTENC:
+	modify to add $X_LIBS when updating $LIBS, since otherwise configure-checks
+	for library functions will fail after this test succeeds
+
 2011-10-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LOCALE_ALIAS:
