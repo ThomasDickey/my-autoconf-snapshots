@@ -1,0 +1,20 @@
+dnl CF_CHECK_WCHAR_H version: 1 updated: 2011/10/29 15:01:05
+dnl ----------------
+dnl Check if wchar.h can be used, i.e., without defining _XOPEN_SOURCE_EXTENDED
+AC_DEFUN([CF_CHECK_WCHAR_H],[
+AC_CACHE_CHECK(if wchar.h can be used as is,cf_cv_wchar_h_okay,[
+AC_TRY_COMPILE(
+[
+#include <stdlib.h>
+#include <wchar.h>
+],[
+	wint_t foo = 0;
+	int bar = iswpunct(foo)],
+	[cf_cv_wchar_h_okay=yes],
+	[cf_cv_wchar_h_okay=no])])
+
+if test $cf_cv_wchar_h_okay = no
+then
+	CF_PREDEFINE(_XOPEN_SOURCE_EXTENDED)
+fi
+])dnl

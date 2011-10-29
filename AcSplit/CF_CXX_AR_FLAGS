@@ -1,0 +1,27 @@
+dnl CF_CXX_AR_FLAGS version: 1 updated: 2011/10/29 08:35:34
+dnl ---------------
+dnl Setup special archiver flags for given compilers.
+AC_DEFUN([CF_CXX_AR_FLAGS],[
+	CXX_AR='$(AR)'
+	CXX_ARFLAGS='$(ARFLAGS)'
+	case $cf_cv_system_name in #(vi
+	irix*) #(vi
+	    if test "$GXX" != yes ; then
+		CXX_AR='$(CXX)'
+		CXX_ARFLAGS='-ar -o'
+	    fi
+	    ;;
+	sco3.2v5*) #(vi
+	    CXXLDFLAGS="-u main"
+	    ;;
+	solaris2*)
+	    if test "$GXX" != yes ; then
+		CXX_AR='$(CXX)'
+		CXX_ARFLAGS='-xar -o'
+	    fi
+	    ;;
+	esac
+	AC_SUBST(CXXLDFLAGS)
+	AC_SUBST(CXX_AR)
+	AC_SUBST(CXX_ARFLAGS)
+])dnl
