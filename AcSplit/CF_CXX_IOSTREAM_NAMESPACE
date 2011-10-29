@@ -1,0 +1,19 @@
+dnl CF_CXX_IOSTREAM_NAMESPACE version: 1 updated: 2011/10/29 08:35:34
+dnl -------------------------
+dnl For c++, check if iostream uses "std::" namespace.
+AC_DEFUN([CF_CXX_IOSTREAM_NAMESPACE],[
+AC_CHECK_HEADERS(iostream)
+if test x"$ac_cv_header_iostream" = xyes ; then
+	AC_MSG_CHECKING(if iostream uses std-namespace)
+	AC_TRY_COMPILE([
+#include <iostream>
+using std::endl;
+using std::cerr;],[
+cerr << "testing" << endl;
+],[cf_iostream_namespace=yes],[cf_iostream_namespace=no])
+	AC_MSG_RESULT($cf_iostream_namespace)
+	if test "$cf_iostream_namespace" = yes ; then
+		AC_DEFINE(IOSTREAM_NAMESPACE)
+	fi
+fi
+])dnl

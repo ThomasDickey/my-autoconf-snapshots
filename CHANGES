@@ -1,3 +1,12 @@
+2011-10-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CXX_AR_FLAGS, AcSplit/CF_CXX_IOSTREAM_NAMESPACE:
+	ci-aclocal generated header
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	remove the solaris workaround for wide-character includes since it is
+	incompatible with gcc 4.6, and can be done in a different manner.
+
 2011-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FONTENC:
