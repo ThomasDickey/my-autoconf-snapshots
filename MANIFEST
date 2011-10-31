@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20111029
+MANIFEST for my-autoconf, version t20111030
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -405,6 +405,7 @@ AcSplit/CF_TOP_SRCDIR           generate an absolute reference for $(top_srcdir)
 AcSplit/CF_TPUTS_PROTO          check for type of function pointer passed to tputs().
 AcSplit/CF_TRANSFORM_PROGRAM    extract reusable portion of AC_ARG_PROGRAM
 AcSplit/CF_TRY_PKG_CONFIG       check for library that may/may not be available via pkg-config
+AcSplit/CF_TRY_XOPEN_SOURCE     check if _XOPEN_SOURCE is defined, otherwise check if it can be defined.
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TTY_GROUP            check for existence of tty group
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
