@@ -1,3 +1,15 @@
+2011-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TRY_XOPEN_SOURCE: RCS_BASE
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	fix for IRIX64 to try if _XOPEN_SOURCE can be defined even if the platform
+	specific symbol is defined.  This could happen for other platforms, so make
+	it general.
+
+	* AcSplit/CF_AWK_BIG_PRINTF:
+	suppress stderr in each use of $AWK, to quiet message from IRIX64 nawk.
+
 2011-10-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CXX_AR_FLAGS, AcSplit/CF_CXX_IOSTREAM_NAMESPACE:
