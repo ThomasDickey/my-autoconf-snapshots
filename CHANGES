@@ -1,3 +1,20 @@
+2011-11-26  Mike.Frysinger
+
+	* AcSplit/CF_SRC_MODULES: add PC_MODULES_TO_MAKE variable
+
+2011-11-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_PDCURSES_X11:
+	use AC_CHECK_TOOLS if available
+
+2011-11-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PTHREAD:
+	add check for libc_r, for old FreeBSD systems
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	workarounds for header inconsistencies with OpenBSD and MirBSD
+
 2011-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TRY_XOPEN_SOURCE: RCS_BASE
