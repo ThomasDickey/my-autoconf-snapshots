@@ -1,3 +1,13 @@
+2011-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CPP_PARAM_INIT: main has to return int
+
+	* AcSplit/CF_ETIP_DEFINES: workaround for generated ncurses_dll.h
+
+2011-11-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT: add check for ptsname.
+
 2011-11-26  Mike.Frysinger
 
 	* AcSplit/CF_SRC_MODULES: add PC_MODULES_TO_MAKE variable
