@@ -1,3 +1,21 @@
+2011-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PTHREAD:
+	add check for pthread_muxexattr_settype(), which is not provided by Solaris 2.6
+
+	* AcSplit/CF_SRC_MODULES:
+	add tic-lib and term-lib to $PC_MODULES_TO_MAKE, restoring behavior from
+	before the previous change.
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	correct comparison, when pkg-config is not found
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	correct comparison, when there is no pkg-config found
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	fix conflict for IRIX64 between _SGI_SOURCE and _XOPEN_SOURCE
+
 2011-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CPP_PARAM_INIT: main has to return int

@@ -1,8 +1,8 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 1 updated: 2011/09/10 16:20:21
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 2 updated: 2011/12/10 18:58:47
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
-if test "$PKG_CONFIG" != no ; then
+if test "$PKG_CONFIG" != none ; then
 	AC_MSG_CHECKING(for $PKG_CONFIG library directory)
 	AC_ARG_WITH(pkg-config-libdir,
 		[  --with-pkg-config-libdir=XXX use given directory for installing pc-files],
