@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 40 updated: 2011/11/12 21:08:44
+dnl CF_XOPEN_SOURCE version: 41 updated: 2011/12/10 18:58:47
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality,
@@ -42,6 +42,7 @@ hpux*) #(vi
 	;;
 irix[[56]].*) #(vi
 	cf_xopen_source="-D_SGI_SOURCE"
+	cf_XOPEN_SOURCE=
 	;;
 linux*|gnu*|mint*|k*bsd*-gnu) #(vi
 	CF_GNU_SOURCE
