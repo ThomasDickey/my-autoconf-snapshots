@@ -1,0 +1,23 @@
+dnl CF_TYPE_CC_T version: 1 updated: 2011/12/12 20:54:48
+dnl ------------
+dnl	Check for cc_t type, used in termio.
+AC_DEFUN([CF_TYPE_CC_T],
+[
+AC_MSG_CHECKING(for cc_t in <termios.h> or <termio.h>)
+AC_CACHE_VAL(cf_cv_type_cc_t,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#if defined(HAVE_TERMIOS_H)
+#include <termios.h>
+#else
+#include <termio.h>
+#include <sys/ioctl.h>
+#endif
+],
+		[cc_t x],
+		[cf_cv_type_cc_t=yes],
+		[cf_cv_type_cc_t=no])
+	])
+AC_MSG_RESULT($cf_cv_type_cc_t)
+test $cf_cv_type_cc_t = no && AC_DEFINE(cc_t, unsigned char)
+])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20111212
+MANIFEST for my-autoconf, version t20111217
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -409,6 +409,7 @@ AcSplit/CF_TRY_XOPEN_SOURCE     check if _XOPEN_SOURCE is defined, otherwise che
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TTY_GROUP            check for existence of tty group
 AcSplit/CF_TYPEOF_CHTYPE        determine type for 'chtype'
+AcSplit/CF_TYPE_CC_T            check for cc_t type
 AcSplit/CF_TYPE_FD_MASK         special tweak for fd_mask type
 AcSplit/CF_TYPE_FD_SET          check for a header that will define fd_set.
 AcSplit/CF_TYPE_LONG_LONG       add check for long-long, to use for lynx to quiet warnings due to error in slang headers
