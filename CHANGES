@@ -1,3 +1,13 @@
+2011-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	add param to mk-1st to tell if we're using term-driver.
+	this is needed to add ncurses to tinfo library
+
+2011-12-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPE_CC_T: ci-aclocal generated header
+
 2011-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PTHREAD:
