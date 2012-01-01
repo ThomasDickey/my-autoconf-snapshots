@@ -1,3 +1,10 @@
+2011-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRC_MODULES:
+	modified this (and the template script) so that $DFT_ARG_SUFFIX is applied
+	here, and also use $TICS_NAME, so that the naming for the pc-files is
+	consistent with whatever ticlib and termlib happen to be named.
+
 2011-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
