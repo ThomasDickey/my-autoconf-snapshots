@@ -1,3 +1,14 @@
+2012-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REGEX: change the regex library used for mingw
+
+	* AcSplit/CF_SRC_MODULES:
+	followup fix for ".pc" files to use different variable.
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	fix redefinition warning with Mac OS X (Darwin) of _XOPEN_SOURCE
+	fix missing typedef for fd_mask used by xterm with OpenBSD 4.9 by defining _BSD_SOURCE
+
 2011-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRC_MODULES:
