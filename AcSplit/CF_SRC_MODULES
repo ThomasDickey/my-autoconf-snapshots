@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 25 updated: 2011/12/31 15:32:02
+dnl CF_SRC_MODULES version: 26 updated: 2012/01/07 15:08:24
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -93,8 +93,8 @@ if test "$cf_with_cxx_binding" != no; then
 	SRC_SUBDIRS="$SRC_SUBDIRS c++"
 fi
 
-test "x$with_termlib" != xno && PC_MODULES_TO_MAKE="$PC_MODULES_TO_MAKE $TINFO_NAME"
-test "x$with_ticlib" != xno && PC_MODULES_TO_MAKE="$PC_MODULES_TO_MAKE $TICS_NAME"
+test "x$with_termlib" != xno && PC_MODULES_TO_MAKE="$PC_MODULES_TO_MAKE $TINFO_ARG_SUFFIX"
+test "x$with_ticlib" != xno && PC_MODULES_TO_MAKE="$PC_MODULES_TO_MAKE $TICS_ARG_SUFFIX"
 
 AC_SUBST(PC_MODULES_TO_MAKE)
 
