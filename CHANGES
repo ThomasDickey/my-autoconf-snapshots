@@ -1,3 +1,10 @@
+2012-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	modify check to exclude Darwin 9.x and lower from using posix_openpt.
+	Bug report for xterm by Christian Ebert for 9.8.0 says screensize does
+	not work for the pty.
+
 2012-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REGEX: change the regex library used for mingw
