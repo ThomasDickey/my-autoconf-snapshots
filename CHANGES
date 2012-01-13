@@ -1,3 +1,11 @@
+2012-01-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NCURSES_ETC:
+	change this from AC_DEFUN to define, to ensure that pdcurses is handled
+	in the proper order
+
+	* AcSplit/CF_WITH_NCURSES_ETC: ci-aclocal generated header
+
 2012-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GRANTPT:
