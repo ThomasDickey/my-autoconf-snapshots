@@ -1,0 +1,35 @@
+dnl CF__GRANTPT_BODY version: 1 updated: 2012/01/25 21:11:48
+dnl ----------------
+dnl Body for workability check of grantpt.
+define([CF__GRANTPT_BODY],[
+	int code = 0;
+	struct termios tio;
+	int rc;
+	int pty;
+
+	pty = posix_openpt(O_RDWR);
+	if (pty < 0) {
+		code = 1;
+	}
+
+	rc = grantpt(pty);
+	if (rc < 0) {
+		code = 2;
+	}
+
+	rc = unlockpt(pty);
+	if (rc < 0) {
+		code = 3;
+	}
+
+	if (!isatty(pty)) {
+		code = 4;
+	}
+
+	rc = tcgetattr(pty, &tio);
+	if (rc < 0) {
+		code = 5;
+	}
+
+	${cf_cv_main_return:-return}(code);
+])

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120125
+MANIFEST for my-autoconf, version t20120127
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -500,6 +500,8 @@ AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
+AcSplit/CF__GRANTPT_BODY        body for workability check of grantpt()
+AcSplit/CF__GRANTPT_HEAD        headers for workability check of grantpt()
 AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
 AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
 AcSplit/CF__INIT_TRANSFORM      initial value for $program_transform_name
