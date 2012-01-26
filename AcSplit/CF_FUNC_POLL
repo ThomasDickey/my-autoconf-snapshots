@@ -1,4 +1,4 @@
-dnl CF_FUNC_POLL version: 4 updated: 2006/12/16 12:33:30
+dnl CF_FUNC_POLL version: 5 updated: 2012/01/25 17:55:38
 dnl ------------
 dnl See if the poll function really works.  Some platforms have poll(), but
 dnl it does not work for terminals or files.
@@ -15,10 +15,29 @@ int main() {
 	struct pollfd myfds;
 	int ret;
 
-	myfds.fd = 0;
+	/* check for Darwin bug with respect to "devices" */
+	myfds.fd = open("/dev/null", 1);
+	if (myfds.fd < 0)
+		myfds.fd = 0;
 	myfds.events = POLLIN;
+	myfds.revents = 0;
 
 	ret = poll(&myfds, 1, 100);
+
+	if (ret < 0 || (myfds.revents & POLLNVAL)) {
+		ret = -1;
+	} else {
+
+		/* also check with standard input */
+		myfds.fd = 0;
+		myfds.events = POLLIN;
+		myfds.revents = 0;
+
+		ret = poll(&myfds, 1, 100);
+		if (ret < 0) {
+			ret = 0;
+		}
+	}
 	${cf_cv_main_return:-return}(ret != 0);
 }],
 	[cf_cv_working_poll=yes],
