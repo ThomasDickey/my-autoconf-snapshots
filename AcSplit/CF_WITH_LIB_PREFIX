@@ -1,0 +1,25 @@
+dnl CF_WITH_LIB_PREFIX version: 1 updated: 2012/01/21 19:28:10
+dnl ------------------
+dnl Allow the library-prefix to be overridden.  OS/2 EMX originally had no
+dnl "lib" prefix, e.g., because it used the dll naming convention.
+dnl
+dnl $1 = variable to set
+AC_DEFUN([CF_WITH_LIB_PREFIX],
+[
+AC_MSG_CHECKING(if you want to have a library-prefix)
+AC_ARG_WITH(lib-prefix,
+	[  --with-lib-prefix       override library-prefix],
+	[with_lib_prefix=$withval],
+	[with_lib_prefix=auto])
+AC_MSG_RESULT($with_lib_prefix)
+
+if test $with_lib_prefix = auto
+then
+	CF_LIB_PREFIX($1)
+elif test $with_lib_prefix = no
+then
+	LIB_PREFIX=
+else
+	LIB_PREFIX=$with_lib_prefix
+fi
+])dnl

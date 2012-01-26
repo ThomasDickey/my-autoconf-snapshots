@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120113
+MANIFEST for my-autoconf, version t20120125
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -461,6 +461,7 @@ AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xter
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_LIBTOOL_OPTS    pass "-static" into libtool options (dialog)
+AcSplit/CF_WITH_LIB_PREFIX      configure option --with-lib-prefix
 AcSplit/CF_WITH_LOCALE_ALIAS    option to provide locale-alias file
 AcSplit/CF_WITH_NCURSES_ETC     provide the --with-ncurses, --with-ncursew, etc., options needed for the
 AcSplit/CF_WITH_NC_ALLOC_H      check for nc_alloc.h if --disable-leaks is set

@@ -1,4 +1,4 @@
-dnl CF_GNAT_VERSION version: 17 updated: 2011/03/23 20:24:41
+dnl CF_GNAT_VERSION version: 18 updated: 2012/01/21 19:28:10
 dnl ---------------
 dnl Verify version of GNAT.
 AC_DEFUN([CF_GNAT_VERSION],
@@ -10,7 +10,7 @@ cf_gnat_version=`${cf_ada_make:-gnatmake} -v 2>&1 | \
 AC_MSG_RESULT($cf_gnat_version)
 
 case $cf_gnat_version in #(vi
-3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*) #(vi
+3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*|20[[0-9]][[0-9]]) #(vi
 	cf_cv_prog_gnat_correct=yes
 	;;
 *)

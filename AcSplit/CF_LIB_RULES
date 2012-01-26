@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 62 updated: 2011/12/17 16:17:33
+dnl CF_LIB_RULES version: 63 updated: 2012/01/21 19:28:10
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -13,7 +13,7 @@ dnl	lib<name>.so.<major>	->
 dnl	lib<name>.so.<maj>.<minor>
 AC_DEFUN([CF_LIB_RULES],
 [
-CF_LIB_PREFIX(cf_prefix)
+cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 
 if test $cf_cv_shlib_version = cygdll ; then

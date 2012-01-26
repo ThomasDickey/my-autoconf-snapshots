@@ -1,3 +1,29 @@
+2012-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	add a workability check for grantpt and indirectly posix_openpt, which
+	may be broken in Mac OS X 10.7 Lion (report by Kirby Zhou).
+
+	* AcSplit/CF__GRANTPT_BODY, AcSplit/CF__GRANTPT_HEAD:
+	ci-aclocal generated header
+
+	* AcSplit/CF_FUNC_POLL:
+	poll() does not work for devices (including ptys) on Darwin.  Adapt check
+	from curl (in turn from glib2) to extend the testcase.
+
+2012-01-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_VERSION:
+	FreeBSD port for gnat uses different version convention.
+
+	* AcSplit/CF_WITH_LIB_PREFIX: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES:
+	made CF_LIB_PREFIX a "define", which requires different handling
+
+	* AcSplit/CF_LIB_PREFIX:
+	use "define" to avoid autoconf moving this macro.
+
 2012-01-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NCURSES_ETC:
