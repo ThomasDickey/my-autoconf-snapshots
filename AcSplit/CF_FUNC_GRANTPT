@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 3 updated: 2012/01/12 08:07:51
+dnl CF_FUNC_GRANTPT version: 4 updated: 2012/01/25 21:11:48
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -14,6 +14,25 @@ darwin[[0-9]].*) #(vi
 esac
 
 AC_CHECK_FUNCS($cf_func_grantpt)
+
+if test "x$ac_cv_func_grantpt" = "xyes" ; then
+	AC_MSG_CHECKING(if grantpt really works)
+	AC_TRY_LINK(CF__GRANTPT_HEAD,CF__GRANTPT_BODY,[
+	AC_TRY_RUN(CF__GRANTPT_HEAD
+int main(void)
+{
+CF__GRANTPT_BODY
+}
+,
+,ac_cv_func_grantpt=no
+,ac_cv_func_grantpt=maybe)
+	],ac_cv_func_grantpt=no)
+	AC_MSG_RESULT($ac_cv_func_grantpt)
+
+	if test "x$ac_cv_func_grantpt" != "xno" ; then
+		AC_DEFINE(HAVE_WORKING_GRANTPT)
+	fi
+fi
 
 if test "x$ac_cv_func_grantpt" != "xyes" ; then
 	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])

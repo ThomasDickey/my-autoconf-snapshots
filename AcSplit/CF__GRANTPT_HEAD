@@ -1,0 +1,13 @@
+dnl CF__GRANTPT_HEAD version: 1 updated: 2012/01/25 21:11:48
+dnl ----------------
+dnl Headers for workability check of grantpt.
+define([CF__GRANTPT_HEAD],[
+#include <stdlib.h>
+#include <termios.h>
+#include <fcntl.h>
+
+#ifndef HAVE_FUNC_POSIX_OPENPT
+#undef posix_openpt
+#define posix_openpt(mode) open("/dev/ptmx", mode)
+#endif
+])
