@@ -1,13 +1,31 @@
-dnl CF__GRANTPT_HEAD version: 1 updated: 2012/01/25 21:11:48
+dnl CF__GRANTPT_HEAD version: 3 updated: 2012/01/29 17:13:14
 dnl ----------------
 dnl Headers for workability check of grantpt.
 define([CF__GRANTPT_HEAD],[
 #include <stdlib.h>
 #include <termios.h>
+#include <unistd.h>
+#include <signal.h>
 #include <fcntl.h>
+#include <errno.h>
 
-#ifndef HAVE_FUNC_POSIX_OPENPT
+#ifndef HAVE_POSIX_OPENPT
 #undef posix_openpt
 #define posix_openpt(mode) open("/dev/ptmx", mode)
 #endif
+
+#ifdef HAVE_STROPTS_H
+#include <stropts.h>
+#endif
+
+static void failed(int code)
+{
+	perror("conftest");
+	exit(code);
+}
+
+static void my_timeout(int sig)
+{
+	exit(99);
+}
 ])
