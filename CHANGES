@@ -1,3 +1,19 @@
+2012-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__GRANTPT_HEAD:
+	several improvements test on various Unix hosts
+
+	* AcSplit/CF__GRANTPT_BODY:
+	several improvements tested on various Unix hosts
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	several improvements tested with AIX, HPUX, IRIX64, Tru64 and Solaris.
+
+2012-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT, AcSplit/CF__GRANTPT_BODY, AcSplit/CF__GRANTPT_HEAD:
+	modify to check for Solaris and HPUX streams features
+
 2012-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GRANTPT:

@@ -1,8 +1,12 @@
-dnl CF_FUNC_GRANTPT version: 4 updated: 2012/01/25 21:11:48
+dnl CF_FUNC_GRANTPT version: 6 updated: 2012/01/29 17:13:14
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
 AC_DEFUN([CF_FUNC_GRANTPT],[
+
+AC_CHECK_HEADERS( \ 
+stropts.h \
+) 
 
 cf_func_grantpt="grantpt ptsname"
 case $host_os in #(vi
@@ -15,6 +19,7 @@ esac
 
 AC_CHECK_FUNCS($cf_func_grantpt)
 
+cf_grantpt_opts=
 if test "x$ac_cv_func_grantpt" = "xyes" ; then
 	AC_MSG_CHECKING(if grantpt really works)
 	AC_TRY_LINK(CF__GRANTPT_HEAD,CF__GRANTPT_BODY,[
@@ -30,13 +35,84 @@ CF__GRANTPT_BODY
 	AC_MSG_RESULT($ac_cv_func_grantpt)
 
 	if test "x$ac_cv_func_grantpt" != "xno" ; then
-		AC_DEFINE(HAVE_WORKING_GRANTPT)
+
+		if test "x$ac_cv_func_grantpt" = "xyes" ; then
+			AC_MSG_CHECKING(for pty features)
+dnl if we have no stropts.h, skip the checks for streams modules
+			if test "x$ac_cv_header_stropts_h" = xyes
+			then
+				cf_pty_this=0
+			else
+				cf_pty_this=3
+			fi
+
+			cf_pty_defines=
+			while test $cf_pty_this != 5
+			do
+
+				cf_pty_feature=
+				cf_pty_next=`expr $cf_pty_this + 1`
+				CF_MSG_LOG(pty feature test $cf_pty_next:5)
+				AC_TRY_RUN(#define CONFTEST $cf_pty_this
+$cf_pty_defines
+CF__GRANTPT_HEAD
+int main(void)
+{
+CF__GRANTPT_BODY
+}
+,
+[
+				case $cf_pty_next in #(vi
+				1) #(vi - streams
+					cf_pty_feature=ptem
+					;;
+				2) #(vi - streams
+					cf_pty_feature=ldterm
+					;;
+				3) #(vi - streams
+					cf_pty_feature=ttcompat
+					;;
+				4) #(vi
+					cf_pty_feature=isatty
+					;;
+				5) #(vi
+					cf_pty_feature=tcsetattr
+					;;
+				esac
+],[
+				case $cf_pty_next in #(vi
+				1|2|3)
+					CF_MSG_LOG(skipping remaining streams features $cf_pty_this..2)
+					cf_pty_next=3
+					;;
+				esac
+])
+				if test -n "$cf_pty_feature"
+				then
+					cf_pty_defines="$cf_pty_defines
+#define CONFTEST_$cf_pty_feature 1
+"
+					cf_grantpt_opts="$cf_grantpt_opts $cf_pty_feature"
+				fi
+
+				cf_pty_this=$cf_pty_next
+			done
+			AC_MSG_RESULT($cf_grantpt_opts)
+			cf_grantpt_opts=`echo "$cf_grantpt_opts" | sed -e 's/ isatty//'`
+		fi
 	fi
 fi
 
-if test "x$ac_cv_func_grantpt" != "xyes" ; then
+dnl If we found grantpt, but no features, e.g., for streams or if we are not
+dnl able to use tcsetattr, then give openpty a try.  In particular, Darwin 10.7
+dnl has a more functional openpty than posix_openpt.
+dnl
+dnl There is no configure run-test for openpty, since its implementations do
+dnl not always run properly as a non-root user.
+if test "x$ac_cv_func_grantpt" != "xyes" || test -z "$cf_grantpt_opts" ; then
 	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])
 	if test "$cf_have_openpty" = yes ; then
+		ac_cv_func_grantpt=no
 		LIBS="-lutil $LIBS"
 		AC_DEFINE(HAVE_OPENPTY)
 		AC_CHECK_HEADERS( \ 
@@ -45,5 +121,20 @@ if test "x$ac_cv_func_grantpt" != "xyes" ; then
 			pty.h \
 		)
 	fi
+fi
+
+dnl If we did not settle on using openpty, fill in the definitions for grantpt.
+if test "x$ac_cv_func_grantpt" != xno
+then
+	AC_DEFINE(HAVE_WORKING_GRANTPT)
+	for cf_feature in $cf_grantpt_opts
+	do
+		cf_feature=`echo "$cf_feature" | sed -e 's/ //g'`
+		CF_UPPER(cf_FEATURE,$cf_feature)
+		AC_DEFINE_UNQUOTED(HAVE_GRANTPT_$cf_FEATURE)
+	done
+elif test "x$cf_have_openpty" = xno
+then
+	CF_VERBOSE(will rely upon BSD-pseudoterminals)
 fi
 ])dnl
