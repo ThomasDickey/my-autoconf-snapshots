@@ -1,3 +1,19 @@
+2012-02-18  Pierre.Labastie
+
+	* AcSplit/CF_ETIP_DEFINES:
+	change break in inner loop to exit from both loops so that the test exits
+	properly on the first success (reported on ncurses-bug mailing list).
+
+2012-02-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MKSTEMP:
+	move existence-check for mkstemp out of the AC_TRY_RUN, to help with
+	cross-compiles
+
+	* AcSplit/CF_KILLPG:
+	move uses of AC_FUNC_SETPGRP and AC_FUNC_GETPGRP here since they need
+	special treatment for cross-compiling.
+
 2012-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__GRANTPT_HEAD:
