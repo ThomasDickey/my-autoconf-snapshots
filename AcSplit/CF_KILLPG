@@ -1,9 +1,35 @@
-dnl CF_KILLPG version: 5 updated: 2010/10/23 15:52:32
+dnl CF_KILLPG version: 6 updated: 2012/02/13 20:34:56
 dnl ---------
-dnl Note: must follow AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
+dnl Note: relies upon AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
 dnl messes up the messages...
-AC_DEFUN([CF_KILLPG],
+define([CF_KILLPG],
 [
+if test "$cross_compiling" = yes ; then
+	AC_CHECK_FUNC(setpgrp,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <signal.h>
+],[
+    (void) setpgrp();
+],
+	[AC_DEFINE(SETPGRP_VOID)])])
+else
+	AC_FUNC_SETPGRP
+fi
+
+if test "$cross_compiling" = yes ; then
+	AC_CHECK_FUNC(getpgrp,[
+	AC_TRY_COMPILE([
+#include <sys/types.h>
+#include <signal.h>
+],[
+    (void) getpgrp();
+],
+	[AC_DEFINE(GETPGRP_VOID)])])
+else
+	AC_FUNC_GETPGRP
+fi
+
 AC_CACHE_CHECK(if killpg is needed, cf_cv_need_killpg,[
 AC_TRY_RUN([
 #include <sys/types.h>

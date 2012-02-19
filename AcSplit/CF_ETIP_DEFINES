@@ -1,4 +1,4 @@
-dnl CF_ETIP_DEFINES version: 4 updated: 2011/12/03 16:54:03
+dnl CF_ETIP_DEFINES version: 5 updated: 2012/02/18 17:51:07
 dnl ---------------
 dnl Test for conflicting definitions of exception in gcc 2.8.0, etc., between
 dnl math.h and builtin.h, only for ncurses
@@ -26,7 +26,7 @@ AC_TRY_COMPILE([
 	test -n "$cf_math" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_math})
 	test -n "$cf_excp" && AC_DEFINE_UNQUOTED(ETIP_NEEDS_${cf_excp})
 	cf_result="$cf_math $cf_excp"
-	break
+	break 2
 ],[])
 done
 done
