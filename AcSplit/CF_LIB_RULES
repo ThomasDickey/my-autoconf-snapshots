@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 63 updated: 2012/01/21 19:28:10
+dnl CF_LIB_RULES version: 64 updated: 2012/02/25 15:20:07
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -16,10 +16,12 @@ AC_DEFUN([CF_LIB_RULES],
 cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 
-if test $cf_cv_shlib_version = cygdll ; then
+case $cf_cv_shlib_version in #(vi
+cygdll|mingw)
 	TINFO_NAME=$TINFO_ARG_SUFFIX
 	TINFO_SUFFIX=.dll
-fi
+	;;
+esac
 
 if test -n "$TINFO_SUFFIX" ; then
 	case $TINFO_SUFFIX in
@@ -105,11 +107,18 @@ do
 			# cygwin needs import library, and has unique naming convention
 			# use autodetected ${cf_prefix} for import lib and static lib, but
 			# use 'cyg' prefix for shared lib.
-			if test $cf_cv_shlib_version = cygdll ; then
+			case $cf_cv_shlib_version in #(vi
+			cygdll) #(vi
 				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/cyg${cf_dir}${cf_cygsuf}"
 				continue
-			fi
+				;;
+			mingw)
+				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
+				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/lib${cf_dir}${cf_cygsuf}"
+				continue
+				;;
+			esac
 			fi
 			LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
 		done
