@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120226
+MANIFEST for my-autoconf, version t20120331
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -144,6 +144,7 @@ AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FIND_LINKAGE         find an entrypoint in a library
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
+AcSplit/CF_FIXUP_ADAFLAGS       make ADAFLAGS consistent with CFLAGS by ensuring -g and -On options are
 AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_ALLOCA          wrapper for AC_FUNC_ALLOCA to work around combination of Linux headers
