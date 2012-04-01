@@ -1,3 +1,13 @@
+2012-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	ncurses change to (try to) use gnatgcc exposed gnatgcc 2.8.1 on my Sarge
+	system (versus 3.3.5 for the normal gcc).  The 2.8.1's pointer-arithmetic
+	checks fell afoul of gcc's misuse of void* in string.h; work around by
+	excluding that check for pre-3.x compilers.
+
+	* AcSplit/CF_FIXUP_ADAFLAGS: ci-aclocal generated header
+
 2012-02-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc, COPYING: bump

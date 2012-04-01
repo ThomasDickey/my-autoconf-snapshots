@@ -1,0 +1,18 @@
+dnl CF_FIXUP_ADAFLAGS version: 1 updated: 2012/03/31 18:48:10
+dnl -----------------
+dnl make ADAFLAGS consistent with CFLAGS
+AC_DEFUN([CF_FIXUP_ADAFLAGS],[
+	AC_MSG_CHECKING(optimization options for ADAFLAGS)
+	case "$CFLAGS" in
+	*-g*)
+		CF_ADD_ADAFLAGS(-g)
+		;;
+	esac
+	case "$CFLAGS" in
+	*-O*)
+		cf_O_flag=`echo "$CFLAGS" |sed -e 's/^.*-O/-O/' -e 's/[[ 	]].*//'`
+		CF_ADD_ADAFLAGS($cf_O_flag)
+		;;
+	esac
+	AC_MSG_RESULT($ADAFLAGS)
+])dnl
