@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120331
+MANIFEST for my-autoconf, version t20120429
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -226,6 +226,7 @@ AcSplit/CF_LOCKFILE             check for file-locking functions (tin).
 AcSplit/CF_MAIN_RETURN          check whether return/exit should be used in test-programs.
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
 AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
+AcSplit/CF_MAKE_DOCS            generate makefile rules for generating documentation.
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
 AcSplit/CF_MAKE_TAGS            generate tags/TAGS targets for makefile depending if the filesystem supports
 AcSplit/CF_MANPAGE_FORMAT       determine (optionally) the manpage format

@@ -1,3 +1,7 @@
+2012-04-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKE_DOCS: ci-aclocal generated header
+
 2012-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:
