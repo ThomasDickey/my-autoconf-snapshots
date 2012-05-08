@@ -1,3 +1,14 @@
+2012-05-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__GRANTPT_BODY:
+	add an ifdef'd chunk #5 for testing the 'tty' (rather than 'pty') and
+	moved the important 'pty' chunk before opening the slave device as a
+	simple way of making the test program lose any possible race between
+	parent/child processes in initializing both sides of the pseudoterminal
+	(report by Christian Weisgerber).
+
+	* AcSplit/CF_FUNC_GRANTPT: add another step to the test-program.
+
 2012-04-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKE_DOCS: ci-aclocal generated header
