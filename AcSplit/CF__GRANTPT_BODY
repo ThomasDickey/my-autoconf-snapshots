@@ -1,4 +1,4 @@
-dnl CF__GRANTPT_BODY version: 3 updated: 2012/01/29 17:13:14
+dnl CF__GRANTPT_BODY version: 4 updated: 2012/05/07 19:39:45
 dnl ----------------
 dnl Body for workability check of grantpt.
 define([CF__GRANTPT_BODY],[
@@ -21,6 +21,19 @@ define([CF__GRANTPT_BODY],[
 		failed(3);
 	else if ((slave = ptsname(pty)) == 0)
 		failed(4);
+#if (CONFTEST == 3) || defined(CONFTEST_isatty)
+	else if (!isatty(pty))
+		failed(4);
+#endif
+#if CONFTEST >= 4
+    else if ((rc = tcgetattr(pty, &tio)) < 0)
+		failed(20);
+    else if ((rc = tcsetattr(pty, TCSAFLUSH, &tio)) < 0)
+		failed(21);
+#endif
+	/* BSD posix_openpt does not treat pty as a terminal until slave is opened.
+	 * Linux does treat it that way.
+	 */
 	else if ((tty = open(slave, O_RDWR)) < 0)
 		failed(5);
 #ifdef CONFTEST
@@ -38,15 +51,11 @@ define([CF__GRANTPT_BODY],[
 		failed(12);
 #endif
 #endif /* I_PUSH */
-#if (CONFTEST == 3) || defined(CONFTEST_isatty)
-	else if (!isatty(pty))
-		failed(4);
-#endif
-#if CONFTEST >= 4
-    else if ((rc = tcgetattr(pty, &tio)) < 0)
-		failed(20);
-    else if ((rc = tcsetattr(pty, TCSAFLUSH, &tio)) < 0)
-		failed(21);
+#if CONFTEST >= 5
+    else if ((rc = tcgetattr(tty, &tio)) < 0)
+		failed(30);
+    else if ((rc = tcsetattr(tty, TCSAFLUSH, &tio)) < 0)
+		failed(31);
 #endif
 #endif /* CONFTEST */
 

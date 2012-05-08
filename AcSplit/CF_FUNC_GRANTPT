@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 6 updated: 2012/01/29 17:13:14
+dnl CF_FUNC_GRANTPT version: 7 updated: 2012/05/07 19:39:45
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -47,7 +47,7 @@ dnl if we have no stropts.h, skip the checks for streams modules
 			fi
 
 			cf_pty_defines=
-			while test $cf_pty_this != 5
+			while test $cf_pty_this != 6
 			do
 
 				cf_pty_feature=
@@ -73,10 +73,13 @@ CF__GRANTPT_BODY
 					cf_pty_feature=ttcompat
 					;;
 				4) #(vi
-					cf_pty_feature=isatty
+					cf_pty_feature=pty_isatty
 					;;
 				5) #(vi
-					cf_pty_feature=tcsetattr
+					cf_pty_feature=pty_tcsetattr
+					;;
+				6) #(vi
+					cf_pty_feature=tty_tcsetattr
 					;;
 				esac
 ],[
