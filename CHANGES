@@ -1,3 +1,14 @@
+2012-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_POLL:
+	fix the case where stdin is redirected, e.g., in rpm/dpkg builds (reported
+	in Debian #676461).  Also correct return-check, which could have been
+	confused by typing on the keyboard while the check was running.
+
+2012-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XBOOL_RESULT: ci-aclocal generated header
+
 2012-05-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__GRANTPT_BODY:
