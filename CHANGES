@@ -1,3 +1,7 @@
+2012-06-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_POLL: revised based on Debian #676461
+
 2012-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_POLL:
