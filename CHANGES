@@ -1,3 +1,12 @@
+2012-06-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICONDIR:
+	recognize "auto" as special case to look for existing directory in well-knownn
+	locations.
+
+	* AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_SYSV, AcSplit/CF_X_FREETYPE:
+	trim whitespace
+
 2012-06-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_POLL: revised based on Debian #676461
