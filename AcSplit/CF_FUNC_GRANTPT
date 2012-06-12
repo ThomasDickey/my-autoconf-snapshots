@@ -1,12 +1,12 @@
-dnl CF_FUNC_GRANTPT version: 7 updated: 2012/05/07 19:39:45
+dnl CF_FUNC_GRANTPT version: 8 updated: 2012/06/11 17:37:05
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
 AC_DEFUN([CF_FUNC_GRANTPT],[
 
-AC_CHECK_HEADERS( \ 
+AC_CHECK_HEADERS( \
 stropts.h \
-) 
+)
 
 cf_func_grantpt="grantpt ptsname"
 case $host_os in #(vi
@@ -118,7 +118,7 @@ if test "x$ac_cv_func_grantpt" != "xyes" || test -z "$cf_grantpt_opts" ; then
 		ac_cv_func_grantpt=no
 		LIBS="-lutil $LIBS"
 		AC_DEFINE(HAVE_OPENPTY)
-		AC_CHECK_HEADERS( \ 
+		AC_CHECK_HEADERS( \
 			util.h \
 			libutil.h \
 			pty.h \
