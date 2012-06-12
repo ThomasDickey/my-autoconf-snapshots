@@ -1,3 +1,8 @@
+2012-06-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_APP_DEFAULTS:
+	implement "auto" option, to search well-known locations
+
 2012-06-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ICONDIR:
