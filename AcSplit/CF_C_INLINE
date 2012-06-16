@@ -1,4 +1,4 @@
-dnl CF_C_INLINE version: 3 updated: 2010/05/01 15:14:41
+dnl CF_C_INLINE version: 4 updated: 2012/06/16 14:55:39
 dnl -----------
 dnl Check if the C compiler supports "inline".
 dnl $1 is the name of a shell variable to set if inline is supported
@@ -9,6 +9,9 @@ $1=
 if test "$ac_cv_c_inline" != no ; then
   $1=inline
   if test "$INTEL_COMPILER" = yes
+  then
+    :
+  elif test "$CLANG_COMPILER" = yes
   then
     :
   elif test "$GCC" = yes

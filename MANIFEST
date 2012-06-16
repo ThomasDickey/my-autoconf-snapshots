@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120612
+MANIFEST for my-autoconf, version t20120616
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -79,6 +79,7 @@ AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_CHECK_SSL_X509       check for X509 support in the SSL library
 AcSplit/CF_CHECK_TYPE           AC_CHECK_TYPE extended compatibly with 2.13
 AcSplit/CF_CHECK_WCHAR_H        check if wchar.h can be used without adding #define's
+AcSplit/CF_CLANG_COMPILER       check for clang compiler
 AcSplit/CF_COLOR_CURSES         check if curses supports color
 AcSplit/CF_COMPTYPE             obtain qsort's compare-type
 AcSplit/CF_COREFILE             see if the application can dump a core file
