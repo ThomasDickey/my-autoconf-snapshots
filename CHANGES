@@ -1,3 +1,16 @@
+2012-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS: add check for clang
+
+	* AcSplit/CF_GXX_WARNINGS: check for clang compiler
+
+	* AcSplit/CF_CLANG_COMPILER: ci-aclocal generated header
+
+	* AcSplit/CF_C_INLINE: clang does not support this option - fix
+
+	* AcSplit/CF_GXX_VERSION:
+	show the correct compiler name in checking-version-of message
+
 2012-06-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_APP_DEFAULTS:

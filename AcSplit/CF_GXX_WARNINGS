@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 6 updated: 2010/08/14 18:25:37
+dnl CF_GXX_WARNINGS version: 7 updated: 2012/06/16 14:55:39
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -21,6 +21,7 @@ AC_DEFUN([CF_GXX_WARNINGS],
 [
 
 CF_INTEL_COMPILER(GXX,INTEL_CPLUSPLUS,CXXFLAGS)
+CF_CLANG_COMPILER(GXX,CLANG_CPLUSPLUS,CXXFLAGS)
 
 AC_REQUIRE([CF_GXX_VERSION])
 
