@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120616
+MANIFEST for my-autoconf, version t20120620
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -460,6 +460,7 @@ AcSplit/CF_WITH_DFTENV          inherit/override environment variable with comma
 AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
 AcSplit/CF_WITH_GPM             command-line options for gpm
 AcSplit/CF_WITH_ICONDIR         handle --with-icondir option
+AcSplit/CF_WITH_ICON_THEME      provide configure --with-icon-theme, to override --with-pixmapdir and
 AcSplit/CF_WITH_IDNA            add configure-check for idn library
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
@@ -474,6 +475,7 @@ AcSplit/CF_WITH_PATH            command-option to specify a pathname
 AcSplit/CF_WITH_PATHLIST        process an option that accepts a colon-separated pathname list
 AcSplit/CF_WITH_PCRE            optionally add PCRE to a build
 AcSplit/CF_WITH_PERL            "--with-perl" option.
+AcSplit/CF_WITH_PIXMAPDIR       configure option --with-pixmapdir
 AcSplit/CF_WITH_PKG_CONFIG_LIBDIR  the --with-pkg-config-libdir option
 AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_PTHREAD         configure option --with-pthread

@@ -1,35 +1,36 @@
-dnl CF_WITH_ICONDIR version: 2 updated: 2012/06/11 17:37:05
+dnl CF_WITH_ICONDIR version: 3 updated: 2012/06/19 20:58:54
 dnl ---------------
-dnl Handle configure option "--with-icondir", setting these shell
-dnl variables:
-dnl $icondir is the option value, used for installing icon/pixmap files.
+dnl Handle configure option "--with-icondir", setting these shell variables:
+dnl
+dnl $ICONDIR is the option value, used for installing icon files.
 dnl $no_icondir is a "#" (comment) if "--without-icondir" is given.
 AC_DEFUN([CF_WITH_ICONDIR],[
 AC_MSG_CHECKING(for directory to install icons)
 AC_ARG_WITH(icondir,
-	[  --with-icondir=DIR      directory in which to install icons (EPREFIX/share/pixmaps)],
-	[icondir=$withval],
-	[icondir='${exec_prefix}/share/pixmaps'])
+	[  --with-icondir=DIR      directory in which to install icons (DATADIR/icons)],
+	[ICONDIR=$withval],
+	[ICONDIR='${datadir}/icons'])
 
-if test "x[$]icondir" = xauto
+if test "x[$]ICONDIR" = xauto
 then
-	icondir='${exec_prefix}/share/pixmaps'
+	ICONDIR='${datadir}/icons'
 	for cf_path in \
-		/usr/share/pixmaps \
-		/usr/X11R6/share/pixmaps
+		/usr/share/icons \
+		/usr/X11R6/share/icons
 	do
 		if test -d "$cf_path" ; then
-			icondir="$cf_path"
+			ICONDIR="$cf_path"
 			break
 		fi
 	done
 else
-	CF_PATH_SYNTAX(icondir)
+	cf_path=$ICONDIR
+	CF_PATH_SYNTAX(cf_path)
 fi
-AC_MSG_RESULT($icondir)
-AC_SUBST(icondir)
+AC_MSG_RESULT($ICONDIR)
+AC_SUBST(ICONDIR)
 
 no_icondir=
-test "$icondir" = no && no_icondir="#"
+test "$ICONDIR" = no && no_icondir="#"
 AC_SUBST(no_icondir)
 ])dnl
