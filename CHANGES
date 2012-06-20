@@ -1,3 +1,24 @@
+2012-06-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	add ICON_NAME variable, to use in desktop files
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	use the basename of the icon in derived mapping, not its full path
+
+2012-06-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PATH_SYNTAX:
+	also match (for substitution) variables such as ${includedir}
+
+	* AcSplit/CF_WITH_ICON_THEME, AcSplit/CF_WITH_PIXMAPDIR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_WITH_APP_DEFAULTS: rename the output variable to $APPSDIR
+
+	* AcSplit/CF_WITH_ICONDIR: rename the output variable to $ICONDIR
+	change the default value and search list to the "icons" directory for consistency.
+
 2012-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS: add check for clang

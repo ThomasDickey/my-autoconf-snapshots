@@ -1,8 +1,9 @@
-dnl CF_WITH_APP_DEFAULTS version: 2 updated: 2012/06/12 04:45:54
+dnl CF_WITH_APP_DEFAULTS version: 3 updated: 2012/06/19 20:58:54
 dnl --------------------
 dnl Handle configure option "--with-app-defaults", setting these shell
 dnl variables:
-dnl $appsdir is the option value, used for installing app-defaults files.
+dnl
+dnl $APPSDIR is the option value, used for installing app-defaults files.
 dnl $no_appsdir is a "#" (comment) if "--without-app-defaults" is given.
 dnl
 dnl Most Linux's use this:
@@ -35,12 +36,12 @@ AC_DEFUN(CF_WITH_APP_DEFAULTS,[
 AC_MSG_CHECKING(for directory to install resource files)
 AC_ARG_WITH(app-defaults,
 	[  --with-app-defaults=DIR directory in which to install resource files (EPREFIX/lib/X11/app-defaults)],
-	[appsdir=$withval],
-	[appsdir='$(exec_prefix)/lib/X11/app-defaults'])
+	[APPSDIR=$withval],
+	[APPSDIR='${exec_prefix}/lib/X11/app-defaults'])
 
-if test "x[$]appsdir" = xauto
+if test "x[$]APPSDIR" = xauto
 then
-	appsdir='${exec_prefix}/lib/X11/app-defaults'
+	APPSDIR='${exec_prefix}/lib/X11/app-defaults'
 	for cf_path in \
 		/usr/share/X11/app-defaults \
 		/usr/X11/share/X11/app-defaults \
@@ -57,18 +58,19 @@ then
 		/usr/lib64/X11/app-defaults
 	do
 		if test -d "$cf_path" ; then
-			appsdir="$cf_path"
+			APPSDIR="$cf_path"
 			break
 		fi
 	done
 else
-	CF_PATH_SYNTAX(appsdir)
+	cf_path=$APPSDIR
+	CF_PATH_SYNTAX(cf_path)
 fi
 
-AC_MSG_RESULT($appsdir)
-AC_SUBST(appsdir)
+AC_MSG_RESULT($APPSDIR)
+AC_SUBST(APPSDIR)
 
 no_appsdir=
-test "$appsdir" = no && no_appsdir="#"
+test "$APPSDIR" = no && no_appsdir="#"
 AC_SUBST(no_appsdir)
 ])dnl

@@ -1,0 +1,36 @@
+dnl CF_WITH_PIXMAPDIR version: 1 updated: 2012/06/19 20:58:54
+dnl -----------------
+dnl Handle configure option "--with-pixmapdir", setting these shell variables:
+dnl
+dnl $PIXMAPDIR is the option value, used for installing pixmap files.
+dnl $no_pixmapdir is a "#" (comment) if "--without-pixmapdir" is given.
+AC_DEFUN([CF_WITH_PIXMAPDIR],[
+AC_MSG_CHECKING(for directory to install pixmaps)
+AC_ARG_WITH(pixmapdir,
+	[  --with-pixmapdir=DIR    directory in which to install pixmaps (DATADIR/pixmaps)],
+	[PIXMAPDIR=$withval],
+	[test -z "$PIXMAPDIR" && PIXMAPDIR='${prefix}/share/pixmaps'])
+
+if test "x[$]PIXMAPDIR" = xauto
+then
+	PIXMAPDIR='${prefix}/share/pixmaps'
+	for cf_path in \
+		/usr/share/pixmaps \
+		/usr/X11R6/share/pixmaps
+	do
+		if test -d "$cf_path" ; then
+			PIXMAPDIR="$cf_path"
+			break
+		fi
+	done
+else
+	cf_path=$PIXMAPDIR
+	CF_PATH_SYNTAX(cf_path)
+fi
+AC_MSG_RESULT($PIXMAPDIR)
+AC_SUBST(PIXMAPDIR)
+
+no_pixmapdir=
+test "$PIXMAPDIR" = no && no_pixmapdir="#"
+AC_SUBST(no_pixmapdir)
+])dnl
