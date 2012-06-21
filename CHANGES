@@ -1,3 +1,12 @@
+2012-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	add 4th parameter, for non-desktop configurations.
+
+	* AcSplit/CF_WITH_ICONDIR: use "no" as default.
+
+	* AcSplit/CF_WITH_PIXMAPDIR: use ${datadir} in defaults
+
 2012-06-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ICON_THEME:
