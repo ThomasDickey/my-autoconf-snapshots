@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 2 updated: 2012/06/20 05:50:37
+dnl CF_WITH_ICON_THEME version: 3 updated: 2012/06/20 20:01:28
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -14,6 +14,7 @@ dnl $2 = default theme (defaults to hicolor)
 dnl $3 = formats (defaults to list [.svg .png .xpm])
 dnl
 dnl Result:
+dnl ICON_NAME = basename of first item in $1
 dnl ICON_LIST = reprocessed $1
 dnl ICON_THEME = reprocessed $2
 dnl ICON_FORMAT = reprocessed $3
@@ -54,29 +55,36 @@ else
 		AC_MSG_ERROR(icondir must be set for icon theme)
 	fi
 
-	: ${ICON_FORMAT:=ifelse([$3],,[.svg .png .xpm],[$3])}
+fi
 
-	AC_MSG_CHECKING([for icon(s) to install])
-	for cf_name in $1
+: ${ICON_FORMAT:=ifelse([$3],,[.svg .png .xpm],[$3])}
+
+ICON_NAME=
+ICON_LIST=
+
+AC_MSG_CHECKING([for icon(s) to install])
+for cf_name in $1
+do
+	for cf_suffix in $ICON_FORMAT
 	do
-		for cf_suffix in $ICON_FORMAT
-		do
-			cf_icon="${cf_name}${cf_suffix}"
-			cf_left=`echo "$cf_icon" | sed -e 's/:.*//'`
-			if test ! -f "${cf_left}"
+		cf_icon="${cf_name}${cf_suffix}"
+		cf_left=`echo "$cf_icon" | sed -e 's/:.*//'`
+		if test ! -f "${cf_left}"
+		then
+			if test "x$srcdir" != "x."
 			then
-				if test "x$srcdir" != "x."
+				cf_icon="${srcdir}/${cf_left}${cf_suffix}"
+				cf_left=`echo "$cf_icon" | sed -e 's/:.*//'`
+				if test ! -f "${cf_left}"
 				then
-					cf_icon="${srcdir}/${cf_left}${cf_suffix}"
-					cf_left=`echo "$cf_icon" | sed -e 's/:.*//'`
-					if test ! -f "${cf_left}"
-					then
-						continue
-					fi
-				else
 					continue
 				fi
+			else
+				continue
 			fi
+		fi
+		if test "x$ICON_THEME" != xno
+		then
 			cf_base=`basename $cf_left`
 			case "x${cf_icon}" in #(vi
 			*:*) #(vi
@@ -104,18 +112,24 @@ else
 				continue
 				;;
 			esac
-			ICON_LIST="$ICON_LIST ${cf_icon}"
-		done
+		fi
+		test -n "$ICON_LIST" && ICON_LIST="$ICON_LIST "
+		ICON_LIST="$ICON_LIST${cf_icon}"
+		if test -z "$ICON_NAME"
+		then
+			ICON_NAME=`basename $cf_icon | sed -e 's/[[.:]].*//'`
+		fi
 	done
-	AC_MSG_RESULT($ICON_LIST)
-	if test -z "$ICON_LIST"
-	then
-		AC_MSG_ERROR(no icons found)
-	fi
+done
+AC_MSG_RESULT($ICON_LIST)
+if test -z "$ICON_LIST"
+then
+	AC_MSG_ERROR(no icons found)
 fi
 ])
 
 AC_SUBST(ICON_FORMAT)
 AC_SUBST(ICON_THEME)
 AC_SUBST(ICON_LIST)
+AC_SUBST(ICON_NAME)
 ])dnl
