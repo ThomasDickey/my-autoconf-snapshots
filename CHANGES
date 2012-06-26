@@ -1,3 +1,10 @@
+2012-06-26  Thierry.Reding
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	If an icon cannot be found in the current directory, the suffix is no
+	longer added twice before the icon is looked up again in the source
+	directory.
+
 2012-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ICON_THEME:

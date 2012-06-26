@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 3 updated: 2012/06/20 20:01:28
+dnl CF_WITH_ICON_THEME version: 5 updated: 2012/06/26 05:55:35
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -12,6 +12,7 @@ dnl
 dnl $1 = application icon.  This can be a list, and is not optional.
 dnl $2 = default theme (defaults to hicolor)
 dnl $3 = formats (defaults to list [.svg .png .xpm])
+dnl $4 = alternate icon if no theme is used (defaults to $1).
 dnl
 dnl Result:
 dnl ICON_NAME = basename of first item in $1
@@ -23,6 +24,9 @@ AC_DEFUN([CF_WITH_ICON_THEME],
 ifelse([$1],,[
 	AC_MSG_ERROR([macro [CF_WITH_ICON_THEME] requires application-icon name])
 ],[
+
+CF_WITH_PIXMAPDIR
+CF_WITH_ICONDIR
 
 AC_MSG_CHECKING(if icon theme should be used)
 AC_ARG_WITH(icon-theme,
@@ -41,20 +45,16 @@ AC_MSG_RESULT($ICON_THEME)
 
 if test "x$ICON_THEME" = xno
 then
-
-	CF_WITH_PIXMAPDIR
-	no_icondir="#"
-
+	if test "x$ICONDIR" != xno
+	then
+		AC_MSG_WARN(ignoring icondir without theme)
+		no_icondir="#"
+	fi
 else
-
-	CF_WITH_ICONDIR
-	no_pixmapdir="#"
-
 	if test "x$ICONDIR" = xno
 	then
 		AC_MSG_ERROR(icondir must be set for icon theme)
 	fi
-
 fi
 
 : ${ICON_FORMAT:=ifelse([$3],,[.svg .png .xpm],[$3])}
@@ -62,8 +62,17 @@ fi
 ICON_NAME=
 ICON_LIST=
 
+ifelse([$4],,[cf_icon_list=$1],[
+if test "x$ICON_THEME" != xno
+then
+	cf_icon_list=$1
+else
+	cf_icon_list=$4
+fi
+])
+
 AC_MSG_CHECKING([for icon(s) to install])
-for cf_name in $1
+for cf_name in $cf_icon_list
 do
 	for cf_suffix in $ICON_FORMAT
 	do
@@ -73,7 +82,7 @@ do
 		then
 			if test "x$srcdir" != "x."
 			then
-				cf_icon="${srcdir}/${cf_left}${cf_suffix}"
+				cf_icon="${srcdir}/${cf_left}"
 				cf_left=`echo "$cf_icon" | sed -e 's/:.*//'`
 				if test ! -f "${cf_left}"
 				then
@@ -127,6 +136,9 @@ then
 	AC_MSG_ERROR(no icons found)
 fi
 ])
+
+AC_MSG_CHECKING(for icon name)
+AC_MSG_RESULT($ICON_NAME)
 
 AC_SUBST(ICON_FORMAT)
 AC_SUBST(ICON_THEME)
