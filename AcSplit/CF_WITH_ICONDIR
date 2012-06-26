@@ -1,4 +1,4 @@
-dnl CF_WITH_ICONDIR version: 3 updated: 2012/06/19 20:58:54
+dnl CF_WITH_ICONDIR version: 4 updated: 2012/06/21 21:03:13
 dnl ---------------
 dnl Handle configure option "--with-icondir", setting these shell variables:
 dnl
@@ -7,9 +7,9 @@ dnl $no_icondir is a "#" (comment) if "--without-icondir" is given.
 AC_DEFUN([CF_WITH_ICONDIR],[
 AC_MSG_CHECKING(for directory to install icons)
 AC_ARG_WITH(icondir,
-	[  --with-icondir=DIR      directory in which to install icons (DATADIR/icons)],
+	[  --with-icondir=DIR      directory in which to install icons for desktop],
 	[ICONDIR=$withval],
-	[ICONDIR='${datadir}/icons'])
+	[test -z "$ICONDIR" && ICONDIR=no])
 
 if test "x[$]ICONDIR" = xauto
 then

@@ -1,4 +1,4 @@
-dnl CF_WITH_PIXMAPDIR version: 1 updated: 2012/06/19 20:58:54
+dnl CF_WITH_PIXMAPDIR version: 2 updated: 2012/06/21 21:03:13
 dnl -----------------
 dnl Handle configure option "--with-pixmapdir", setting these shell variables:
 dnl
@@ -9,11 +9,11 @@ AC_MSG_CHECKING(for directory to install pixmaps)
 AC_ARG_WITH(pixmapdir,
 	[  --with-pixmapdir=DIR    directory in which to install pixmaps (DATADIR/pixmaps)],
 	[PIXMAPDIR=$withval],
-	[test -z "$PIXMAPDIR" && PIXMAPDIR='${prefix}/share/pixmaps'])
+	[test -z "$PIXMAPDIR" && PIXMAPDIR='${datadir}/pixmaps'])
 
 if test "x[$]PIXMAPDIR" = xauto
 then
-	PIXMAPDIR='${prefix}/share/pixmaps'
+	PIXMAPDIR='${datadir}/pixmaps'
 	for cf_path in \
 		/usr/share/pixmaps \
 		/usr/X11R6/share/pixmaps
