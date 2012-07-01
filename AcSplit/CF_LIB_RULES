@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 64 updated: 2012/02/25 15:20:07
+dnl CF_LIB_RULES version: 65 updated: 2012/06/30 17:25:25
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -162,7 +162,7 @@ do
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
 
 		$AWK -f $srcdir/mk-0th.awk \
-			libname="${cf_dir}${LIB_SUFFIX}" subsets="$LIB_SUBSETS" \
+			libname="${cf_dir}${LIB_SUFFIX}" subsets="$LIB_SUBSETS" ticlib="$TICS_LIB_SUFFIX" termlib="$TINFO_LIB_SUFFIX" \
 			$srcdir/$cf_dir/modules >>$cf_dir/Makefile
 
 		for cf_subset in $cf_subsets
