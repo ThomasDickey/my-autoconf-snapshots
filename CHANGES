@@ -1,3 +1,17 @@
+2012-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_XPM: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_ICONDIR, AcSplit/CF_WITH_PIXMAPDIR:
+	update EXTRA_INSTALL_DIRS, needed for vile
+
+2012-07-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_LIBS: check for tinfo library, which may be present
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	look for tinfo library ahead of curses/ncurses
+
 2012-06-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: add parameters to mk-0th.awk call

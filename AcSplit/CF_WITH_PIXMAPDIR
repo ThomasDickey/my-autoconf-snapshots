@@ -1,4 +1,4 @@
-dnl CF_WITH_PIXMAPDIR version: 2 updated: 2012/06/21 21:03:13
+dnl CF_WITH_PIXMAPDIR version: 3 updated: 2012/07/22 09:18:02
 dnl -----------------
 dnl Handle configure option "--with-pixmapdir", setting these shell variables:
 dnl
@@ -31,6 +31,11 @@ AC_MSG_RESULT($PIXMAPDIR)
 AC_SUBST(PIXMAPDIR)
 
 no_pixmapdir=
-test "$PIXMAPDIR" = no && no_pixmapdir="#"
+if test "$PIXMAPDIR" = no
+then
+	no_pixmapdir="#"
+else
+	EXTRA_INSTALL_DIRS="$EXTRA_INSTALL_DIRS \$(PIXMAPDIR)"
+fi
 AC_SUBST(no_pixmapdir)
 ])dnl

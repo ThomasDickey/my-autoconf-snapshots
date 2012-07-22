@@ -1,4 +1,4 @@
-dnl CF_WITH_ICONDIR version: 4 updated: 2012/06/21 21:03:13
+dnl CF_WITH_ICONDIR version: 5 updated: 2012/07/22 09:18:02
 dnl ---------------
 dnl Handle configure option "--with-icondir", setting these shell variables:
 dnl
@@ -31,6 +31,11 @@ AC_MSG_RESULT($ICONDIR)
 AC_SUBST(ICONDIR)
 
 no_icondir=
-test "$ICONDIR" = no && no_icondir="#"
+if test "$ICONDIR" = no
+then
+	no_icondir="#"
+else
+	EXTRA_INSTALL_DIRS="$EXTRA_INSTALL_DIRS \$(ICONDIR)"
+fi
 AC_SUBST(no_icondir)
 ])dnl
