@@ -1,4 +1,4 @@
-dnl CF_TERMCAP_LIBS version: 13 updated: 2011/06/08 18:09:57
+dnl CF_TERMCAP_LIBS version: 14 updated: 2012/07/07 21:02:48
 dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 dnl
@@ -25,23 +25,23 @@ if test "$cf_cv_termlib" = none; then
 	# FreeBSD's linker gives bogus results for AC_CHECK_LIB, saying that
 	# tgetstr lives in -lcurses when it is only an unsatisfied extern.
 	cf_save_LIBS="$LIBS"
-	for cf_lib in curses ncurses termlib termcap
+	for cf_lib in tinfo curses ncurses termlib termcap
 	do
-	LIBS="-l$cf_lib $cf_save_LIBS"
-	for cf_func in tigetstr tgetstr
-	do
-		AC_MSG_CHECKING(for $cf_func in -l$cf_lib)
-		AC_TRY_LINK([],[int x=$cf_func("")],[cf_result=yes],[cf_result=no])
-		AC_MSG_RESULT($cf_result)
-		if test "$cf_result" = yes ; then
-			if test "$cf_func" = tigetstr ; then
-				cf_cv_termlib=terminfo
-			else
-				cf_cv_termlib=termcap
+		LIBS="-l$cf_lib $cf_save_LIBS"
+		for cf_func in tigetstr tgetstr
+		do
+			AC_MSG_CHECKING(for $cf_func in -l$cf_lib)
+			AC_TRY_LINK([],[int x=$cf_func("")],[cf_result=yes],[cf_result=no])
+			AC_MSG_RESULT($cf_result)
+			if test "$cf_result" = yes ; then
+				if test "$cf_func" = tigetstr ; then
+					cf_cv_termlib=terminfo
+				else
+					cf_cv_termlib=termcap
+				fi
+				break
 			fi
-			break
-		fi
-	done
+		done
 		test "$cf_result" = yes && break
 	done
 	test "$cf_result" = no && LIBS="$cf_save_LIBS"
