@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 5 updated: 2012/06/26 05:55:35
+dnl CF_WITH_ICON_THEME version: 6 updated: 2012/07/24 06:49:05
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -65,15 +65,16 @@ ICON_LIST=
 ifelse([$4],,[cf_icon_list=$1],[
 if test "x$ICON_THEME" != xno
 then
-	cf_icon_list=$1
+	cf_icon_list="$1"
 else
-	cf_icon_list=$4
+	cf_icon_list="$4"
 fi
 ])
 
 AC_MSG_CHECKING([for icon(s) to install])
 for cf_name in $cf_icon_list
 do
+	CF_VERBOSE(using $ICON_FORMAT)
 	for cf_suffix in $ICON_FORMAT
 	do
 		cf_icon="${cf_name}${cf_suffix}"
@@ -95,14 +96,11 @@ do
 		if test "x$ICON_THEME" != xno
 		then
 			cf_base=`basename $cf_left`
-			case "x${cf_icon}" in #(vi
+			cf_trim=`echo "$cf_base" | sed -e 's/_[[0-9]][[0-9]]x[[0-9]][[0-9]]\././'`
+			case "x${cf_base}" in #(vi
 			*:*) #(vi
+				cf_next=$cf_base
 				# user-defined mapping
-				;;
-			*_[[0-9]][[0-9]]*x[[0-9]][[0-9]]*.*) #(vi
-				cf_size=`echo "$cf_left"|sed -e 's/^.*_\([[0-9]][[0-9]]*x[[0-9]][[0-9]]*\)\..*$/\1/'`
-				cf_left=`echo "$cf_left"|sed -e 's/^\(.*\)_\([[0-9]][[0-9]]*x[[0-9]][[0-9]]*\)\(\..*\)$/\1\3/'`
-				cf_icon="${cf_icon}:$cf_size/apps/$cf_base"
 				;;
 			*.png) #(vi
 				cf_size=`file "$cf_left"|sed -e 's/^[[^:]]*://' -e 's/^.*[[^0-9]]\([[0-9]][[0-9]]* x [[0-9]][[0-9]]*\)[[^0-9]].*$/\1/' -e 's/ //g'`
@@ -111,16 +109,23 @@ do
 					AC_MSG_WARN(cannot determine size of $cf_left)
 					continue
 				fi
-				cf_icon="${cf_icon}:$cf_size/apps/$cf_base"
+				cf_next="$cf_size/apps/$cf_trim"
 				;;
 			*.svg) #(vi
-				cf_icon="${cf_icon}:scalable/apps/`basename $cf_icon`"
+				cf_next="scalable/apps/$cf_trim"
 				;;
 			*.xpm)
-				AC_MSG_WARN(ignored XPM file in icon theme)
+				CF_VERBOSE(ignored XPM file in icon theme)
 				continue
 				;;
+			*_[[0-9]][[0-9]]*x[[0-9]][[0-9]]*.*) #(vi
+				cf_size=`echo "$cf_left"|sed -e 's/^.*_\([[0-9]][[0-9]]*x[[0-9]][[0-9]]*\)\..*$/\1/'`
+				cf_left=`echo "$cf_left"|sed -e 's/^\(.*\)_\([[0-9]][[0-9]]*x[[0-9]][[0-9]]*\)\(\..*\)$/\1\3/'`
+				cf_next="$cf_size/apps/$cf_base"
+				;;
 			esac
+			CF_VERBOSE(adding $cf_next)
+			cf_icon="${cf_icon}:${cf_next}"
 		fi
 		test -n "$ICON_LIST" && ICON_LIST="$ICON_LIST "
 		ICON_LIST="$ICON_LIST${cf_icon}"
@@ -130,7 +135,13 @@ do
 		fi
 	done
 done
+
+if test -n "$verbose"
+then
+	AC_MSG_CHECKING(result)
+fi
 AC_MSG_RESULT($ICON_LIST)
+
 if test -z "$ICON_LIST"
 then
 	AC_MSG_ERROR(no icons found)
