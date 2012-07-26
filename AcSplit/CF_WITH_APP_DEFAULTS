@@ -1,4 +1,4 @@
-dnl CF_WITH_APP_DEFAULTS version: 3 updated: 2012/06/19 20:58:54
+dnl CF_WITH_APP_DEFAULTS version: 4 updated: 2012/07/25 19:35:53
 dnl --------------------
 dnl Handle configure option "--with-app-defaults", setting these shell
 dnl variables:
@@ -71,6 +71,11 @@ AC_MSG_RESULT($APPSDIR)
 AC_SUBST(APPSDIR)
 
 no_appsdir=
-test "$APPSDIR" = no && no_appsdir="#"
+if test "$APPSDIR" = no
+then
+	no_appsdir="#"
+else
+	EXTRA_INSTALL_DIRS="$EXTRA_INSTALL_DIRS \$(APPSDIR)"
+fi
 AC_SUBST(no_appsdir)
 ])dnl
