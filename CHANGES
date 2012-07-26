@@ -1,3 +1,7 @@
+2012-07-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_APP_DEFAULTS: update EXTRA_INSTALL_DIRS
+
 2012-07-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ICON_THEME:
