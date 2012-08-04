@@ -1,3 +1,18 @@
+2012-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	limit the path-syntax check to the case where the --enable-pc-files option
+	is selected.
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	use the less-restrictive CF_PATH_SYNTAX check for the library directory,
+	noting that almost all valid uses are unchanged.
+
+2012-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	allow ICON_NAME to be pre-set, e.g., in vile using --with-icon-name=XXX
+
 2012-07-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_APP_DEFAULTS: update EXTRA_INSTALL_DIRS
