@@ -1,3 +1,8 @@
+2012-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	Solaris 10 /bin/sh objects to assignment of unquoted value containing blanks
+
 2012-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:
