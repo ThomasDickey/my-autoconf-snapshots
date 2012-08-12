@@ -1,3 +1,7 @@
+2012-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES: use datarootdir
+
 2012-08-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_SIZEOF: ci-aclocal generated header
