@@ -1,3 +1,7 @@
+2012-08-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_NAME: ci-aclocal generated header
+
 2012-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES: use datarootdir
