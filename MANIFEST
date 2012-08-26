@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120811
+MANIFEST for my-autoconf, version t20120825
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -461,6 +461,7 @@ AcSplit/CF_WITH_DFTENV          inherit/override environment variable with comma
 AcSplit/CF_WITH_DMALLOC         configure with dmalloc (add)
 AcSplit/CF_WITH_GPM             command-line options for gpm
 AcSplit/CF_WITH_ICONDIR         handle --with-icondir option
+AcSplit/CF_WITH_ICON_NAME       configure --with-icon-name option
 AcSplit/CF_WITH_ICON_THEME      provide configure --with-icon-theme, to override --with-pixmapdir and
 AcSplit/CF_WITH_IDNA            add configure-check for idn library
 AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xterm)
