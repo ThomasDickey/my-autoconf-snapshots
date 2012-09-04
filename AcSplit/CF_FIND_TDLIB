@@ -1,4 +1,4 @@
-dnl CF_FIND_TDLIB version: 9 updated: 2010/07/03 20:58:12
+dnl CF_FIND_TDLIB version: 10 updated: 2012/09/04 04:17:32
 dnl -------------
 dnl Locate TD_LIB, which is available in one of these configurations:
 dnl a) installed, with headers, library and include-file for make
@@ -14,7 +14,6 @@ dnl	TD_LIB_rules - actual path of td_lib.mk
 dnl
 AC_DEFUN([CF_FIND_TDLIB],
 [
-AC_REQUIRE([CF_LIB_PREFIX])
 AC_MSG_CHECKING(for td_lib in side-by-side directory)
 AC_CACHE_VAL(cf_cv_tdlib_devel,[
 	cf_cv_tdlib_devel=no
