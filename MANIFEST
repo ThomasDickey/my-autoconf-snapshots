@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20120904
+MANIFEST for my-autoconf, version t20120928
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -495,6 +495,8 @@ AcSplit/CF_WITH_X_ICONDIR       option for getting X's icon directory
 AcSplit/CF_WITH_ZLIB            check for zlib
 AcSplit/CF_XBOOL_RESULT         utility macro for xterm's manpage
 AcSplit/CF_XKB_BELL_EXT         check for XKB Bell extension (xterm)
+AcSplit/CF_XKB_KEYCODE_TO_KEYSYM  check compilability of XkbKeycodeToKeysym()
+AcSplit/CF_XKB_QUERY_EXTENSION  check compilability of XkbQueryExtension()
 AcSplit/CF_XOPEN_CURSES         check for X/Open curses
 AcSplit/CF_XOPEN_SOURCE         wrapper for CF_GNU_SOURCE and whatever else I need to get _XOPEN_SOURCE
 AcSplit/CF_XTERM_MODE           test if xterm is installed setuid
