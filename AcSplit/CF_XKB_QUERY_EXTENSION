@@ -1,0 +1,33 @@
+dnl CF_XKB_QUERY_EXTENSION version: 1 updated: 2012/09/28 17:09:45
+dnl ----------------------
+dnl see ifdef in scrollbar.c - iron out here
+AC_DEFUN([CF_XKB_QUERY_EXTENSION],[
+AC_CACHE_CHECK(if we can use XkbQueryExtension, cf_cv_xkb_query_extension,[
+AC_TRY_COMPILE([
+#include <X11/extensions/XKB.h>
+#include <X11/XKBlib.h>
+],[
+	int xkbmajor = XkbMajorVersion;
+	int xkbminor = XkbMinorVersion;
+	int xkbopcode, xkbevent, xkberror;
+
+	if (XkbLibraryVersion(&xkbmajor, &xkbminor)
+	    && XkbQueryExtension((Display *)0,
+				 &xkbopcode,
+				 &xkbevent,
+				 &xkberror,
+				 &xkbmajor,
+				 &xkbminor))
+		 return 0;
+],[
+cf_cv_xkb_query_extension=yes
+],[
+cf_cv_xkb_query_extension=no
+])
+])
+
+if test $cf_cv_xkb_query_extension = yes
+then
+	AC_CHECK_FUNCS(XkbQueryExtension)
+fi
+])

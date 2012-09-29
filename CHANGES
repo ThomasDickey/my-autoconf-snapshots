@@ -1,3 +1,11 @@
+2012-09-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XKB_QUERY_EXTENSION, AcSplit/CF_XKB_KEYCODE_TO_KEYSYM:
+	include <X11/Xlib.h> in test-program
+
+	* AcSplit/CF_XKB_KEYCODE_TO_KEYSYM, AcSplit/CF_XKB_QUERY_EXTENSION:
+	ci-aclocal generated header
+
 2012-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_TDLIB: CF_LIB_PREFIX is no longer AC_DEFUN'd
