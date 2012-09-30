@@ -1,4 +1,4 @@
-dnl CF_WITH_PATHLIST version: 7 updated: 2010/10/23 16:10:30
+dnl CF_WITH_PATHLIST version: 8 updated: 2012/09/29 15:04:19
 dnl ----------------
 dnl Process an option specifying a list of colon-separated paths.
 dnl
@@ -35,7 +35,7 @@ esac
 cf_dst_path=`echo "$cf_dst_path" | sed -e 's/\\\\/\\\\\\\\/g'`
 ])
 
-eval '$3="$cf_dst_path"'
+eval $3="$cf_dst_path"
 AC_SUBST($3)dnl
 
 ])dnl

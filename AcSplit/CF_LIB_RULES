@@ -1,8 +1,8 @@
-dnl CF_LIB_RULES version: 65 updated: 2012/06/30 17:25:25
+dnl CF_LIB_RULES version: 66 updated: 2012/09/29 15:28:14
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
-dnl subdirectory is a library-source directory, modify the LIBS_TO_MAKE list in
+dnl subdirectory is a library-source directory, modify the Libs_To_Make list in
 dnl the corresponding makefile to list the models that we'll generate.
 dnl
 dnl For shared libraries, make a list of symbolic links to construct when
@@ -11,6 +11,8 @@ dnl one:
 dnl	lib<name>.so	->
 dnl	lib<name>.so.<major>	->
 dnl	lib<name>.so.<maj>.<minor>
+dnl
+dnl Note: Libs_To_Make is mixed case, since it is not a pure autoconf variable.
 AC_DEFUN([CF_LIB_RULES],
 [
 cf_prefix=$LIB_PREFIX
@@ -47,7 +49,7 @@ do
 	elif test -f $srcdir/$cf_dir/modules; then
 
 		SHARED_LIB=
-		LIBS_TO_MAKE=
+		Libs_To_Make=
 		for cf_item in $cf_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
@@ -110,23 +112,23 @@ do
 			case $cf_cv_shlib_version in #(vi
 			cygdll) #(vi
 				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
-				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/cyg${cf_dir}${cf_cygsuf}"
+				Libs_To_Make="$Libs_To_Make ../lib/cyg${cf_dir}${cf_cygsuf}"
 				continue
 				;;
 			mingw)
 				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
-				LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/lib${cf_dir}${cf_cygsuf}"
+				Libs_To_Make="$Libs_To_Make ../lib/lib${cf_dir}${cf_cygsuf}"
 				continue
 				;;
 			esac
 			fi
-			LIBS_TO_MAKE="$LIBS_TO_MAKE ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
+			Libs_To_Make="$Libs_To_Make ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
 		done
 
 		if test $cf_dir = ncurses ; then
 			cf_subsets="$LIB_SUBSETS"
 			cf_r_parts="$cf_subsets"
-			cf_liblist="$LIBS_TO_MAKE"
+			cf_liblist="$Libs_To_Make"
 
 			while test -n "$cf_r_parts"
 			do
@@ -146,7 +148,7 @@ do
 						;;
 					esac
 					if test -n "$cf_item"; then
-						LIBS_TO_MAKE="$cf_item $LIBS_TO_MAKE"
+						Libs_To_Make="$cf_item $Libs_To_Make"
 					fi
 				else
 					break
@@ -156,7 +158,7 @@ do
 			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib.* //'`
 		fi
 
-		sed -e "s%@LIBS_TO_MAKE@%$LIBS_TO_MAKE%" \
+		sed -e "s%@Libs_To_Make@%$Libs_To_Make%" \
 		    -e "s%@SHARED_LIB@%$SHARED_LIB%" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
 		mv $cf_dir/Makefile.out $cf_dir/Makefile
@@ -487,5 +489,5 @@ CF_EOF
 		fi
 	fi
 done
-AC_SUBST(LIBS_TO_MAKE)
+AC_SUBST(Libs_To_Make)
 ])dnl
