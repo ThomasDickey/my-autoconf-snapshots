@@ -1,3 +1,16 @@
+2012-09-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PATHSEP: add message to show the actual value used.
+
+	* AcSplit/CF_LIB_RULES:
+	s/LIBS_TO_MAKE/Libs_To_Make/ to quiet autoconf-252 warning
+
+	* AcSplit/CF_WITH_PATH:
+	fix after changes in ncurses to use --datarootdir
+
+	* AcSplit/CF_WITH_PATHLIST:
+	fix eval after changes in ncurses to use datarootdir
+
 2012-09-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XKB_QUERY_EXTENSION, AcSplit/CF_XKB_KEYCODE_TO_KEYSYM:
