@@ -1,3 +1,10 @@
+2012-09-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	use AC_DEFINE_UNQUOTED() rather than appending to confdefs.h, since long-ago
+	concern about the ability to pass-through parameterized macros appears to be
+	not a problem, testing with 2.13 and 2.52
+
 2012-09-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PATHSEP: add message to show the actual value used.
