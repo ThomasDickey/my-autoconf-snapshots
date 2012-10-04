@@ -1,4 +1,4 @@
-dnl CF_FUNC_POLL version: 7 updated: 2012/06/09 16:22:17
+dnl CF_FUNC_POLL version: 8 updated: 2012/10/04 05:24:07
 dnl ------------
 dnl See if the poll function really works.  Some platforms have poll(), but
 dnl it does not work for terminals or files.
@@ -50,5 +50,5 @@ int main() {
 	[cf_cv_working_poll=yes],
 	[cf_cv_working_poll=no],
 	[cf_cv_working_poll=unknown])])
-test "$cf_cv_working_poll" = "yes" && AC_DEFINE(HAVE_WORKING_POLL)
+test "$cf_cv_working_poll" = "yes" && AC_DEFINE(HAVE_WORKING_POLL,1,[Define to 1 if the poll function seems to work])
 ])dnl

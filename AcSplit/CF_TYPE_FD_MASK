@@ -1,4 +1,4 @@
-dnl CF_TYPE_FD_MASK version: 2 updated: 2008/03/25 20:59:57
+dnl CF_TYPE_FD_MASK version: 3 updated: 2012/10/04 06:57:36
 dnl ---------------
 dnl Check for the declaration of fd_mask, which is like fd_set, associated
 dnl with select().  The check for fd_set should have pulled in this as well,
@@ -23,6 +23,6 @@ AC_CACHE_CHECK(for declaration of fd_mask,cf_cv_type_fd_mask,[
     fi
 ])
 if test x$cf_cv_type_fd_mask = xCSRG_BASED ; then
-    AC_DEFINE(CSRG_BASED)
+    AC_DEFINE(CSRG_BASED,1,[Define to 1 if needed for declaring fd_mask()])
 fi
 ])dnl

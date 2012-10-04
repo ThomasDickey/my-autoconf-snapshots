@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 20 updated: 2010/11/19 05:43:04
+dnl CF_X_TOOLKIT version: 21 updated: 2012/10/04 06:57:36
 dnl ------------
 dnl Check for X Toolkit libraries
 dnl
@@ -72,7 +72,7 @@ AC_TRY_LINK([
 
 	AC_CHECK_FUNC(XtAppInitialize,,[
 	AC_CHECK_LIB(Xt, XtAppInitialize,
-		[AC_DEFINE(HAVE_LIBXT)
+		[AC_DEFINE(HAVE_LIBXT,1,[Define to 1 if we can compile with the Xt library])
 		 cf_have_X_LIBS=Xt
 		 LIBS="-lXt $X_PRE_LIBS $LIBS $X_EXTRA_LIBS"],,
 		[$X_PRE_LIBS $LIBS $X_EXTRA_LIBS])])

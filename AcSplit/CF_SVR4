@@ -1,4 +1,4 @@
-dnl CF_SVR4 version: 4 updated: 2011/09/04 17:17:53
+dnl CF_SVR4 version: 5 updated: 2012/10/04 05:24:07
 dnl -------
 dnl Check if this is an SVR4 system.  We need the definition for xterm
 AC_DEFUN([CF_SVR4],
@@ -27,5 +27,5 @@ static struct termio d_tio;
 [cf_cv_svr4=no])
 ])
 ])
-test "$cf_cv_svr4" = yes && AC_DEFINE(SVR4)
+test "$cf_cv_svr4" = yes && AC_DEFINE(SVR4,1,[Define to 1 if this is an SVR4 system])
 ])dnl
