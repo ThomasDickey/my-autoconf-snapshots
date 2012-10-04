@@ -1,4 +1,4 @@
-dnl CF_MKSTEMP version: 8 updated: 2012/02/13 20:34:56
+dnl CF_MKSTEMP version: 9 updated: 2012/10/03 04:34:49
 dnl ----------
 dnl Check for a working mkstemp.  This creates two files, checks that they are
 dnl successfully created and distinct (AmigaOS apparently fails on the last).
@@ -46,6 +46,6 @@ if test "x$cf_cv_func_mkstemp" = xmaybe ; then
 	AC_CHECK_FUNC(mkstemp)
 fi
 if test "x$cf_cv_func_mkstemp" = xyes || test "x$ac_cv_func_mkstemp" = xyes ; then
-	AC_DEFINE(HAVE_MKSTEMP)
+	AC_DEFINE(HAVE_MKSTEMP,1,[Define to 1 if mkstemp() is available and working.])
 fi
 ])dnl

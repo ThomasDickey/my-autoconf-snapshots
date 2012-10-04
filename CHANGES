@@ -1,3 +1,35 @@
+2012-10-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_CC:
+	moved AC_PROG_CC_STDC call here, and conditionally wrap CF_ANSI_CC_REQD
+	to provide consistent functionality with 2.13/2.52 scripts.
+
+	* AcSplit/CF_ACVERSION_CHECK, AcSplit/CF_ACVERSION_COMPARE:
+	quote macro-name
+
+	* AcSplit/CF_PROG_CC: ci-aclocal generated header
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	split-out that last change as separate CF_CC_ENV_FLAGS
+
+	* AcSplit/CF_CC_ENV_FLAGS: ci-aclocal generated header
+
+2012-10-03  Adrian.Bunk
+
+	* AcSplit/CF_MKSTEMP:
+	add parameter to AC_DEFINE_UNQUOTED() to allow it to be recognized by autoheader
+
+2012-10-02  Adrian.Bunk
+
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_DISABLE_LEAKS, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NO_LEAKS_OPTION:
+	add parameter to AC_DEFINE_UNQUOTED() to allow it to be recognized by autoheader
+
+2012-10-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	modify so that autoheader is able to see the definitions provided by this
+	macro.
+
 2012-09-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_ATTRIBUTES:
