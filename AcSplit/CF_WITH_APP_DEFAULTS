@@ -1,4 +1,4 @@
-dnl CF_WITH_APP_DEFAULTS version: 4 updated: 2012/07/25 19:35:53
+dnl CF_WITH_APP_DEFAULTS version: 5 updated: 2012/10/04 04:29:52
 dnl --------------------
 dnl Handle configure option "--with-app-defaults", setting these shell
 dnl variables:
@@ -32,7 +32,7 @@ dnl 	/usr/X11/lib/amd64/X11/app-defaults
 dnl Solaris10 uses (in this order):
 dnl 	/usr/openwin/lib/X11/app-defaults
 dnl 	/usr/X11/lib/X11/app-defaults
-AC_DEFUN(CF_WITH_APP_DEFAULTS,[
+AC_DEFUN([CF_WITH_APP_DEFAULTS],[
 AC_MSG_CHECKING(for directory to install resource files)
 AC_ARG_WITH(app-defaults,
 	[  --with-app-defaults=DIR directory in which to install resource files (EPREFIX/lib/X11/app-defaults)],

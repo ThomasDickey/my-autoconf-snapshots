@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 8 updated: 2012/06/11 17:37:05
+dnl CF_FUNC_GRANTPT version: 9 updated: 2012/10/04 05:24:07
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -117,7 +117,7 @@ if test "x$ac_cv_func_grantpt" != "xyes" || test -z "$cf_grantpt_opts" ; then
 	if test "$cf_have_openpty" = yes ; then
 		ac_cv_func_grantpt=no
 		LIBS="-lutil $LIBS"
-		AC_DEFINE(HAVE_OPENPTY)
+		AC_DEFINE(HAVE_OPENPTY,1,[Define to 1 if you have the openpty function])
 		AC_CHECK_HEADERS( \
 			util.h \
 			libutil.h \
@@ -129,7 +129,7 @@ fi
 dnl If we did not settle on using openpty, fill in the definitions for grantpt.
 if test "x$ac_cv_func_grantpt" != xno
 then
-	AC_DEFINE(HAVE_WORKING_GRANTPT)
+	AC_DEFINE(HAVE_WORKING_GRANTPT,1,[Define to 1 if the grantpt function seems to work])
 	for cf_feature in $cf_grantpt_opts
 	do
 		cf_feature=`echo "$cf_feature" | sed -e 's/ //g'`

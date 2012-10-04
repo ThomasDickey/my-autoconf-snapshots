@@ -1,3 +1,13 @@
+2012-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LASTLOG, AcSplit/CF_PATH_PROG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_SYSV_UTMP, AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP, AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTEMPTER, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_WITH_PCRE, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_X_FREETYPE, AcSplit/CF_TYPE_FD_MASK, AcSplit/CF_WITH_XPM, AcSplit/CF_XBOOL_RESULT, AcSplit/CF_X_TOOLKIT:
+	add 3rd parameter to AC_DEFINE for autoheader
+
+	* AcSplit/CF_CHECK_TYPE, AcSplit/CF_ENABLE_TRACE, AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_FUNC_POLL, AcSplit/CF_SVR4, AcSplit/CF_SYSV, AcSplit/CF_SYS_TIME_SELECT:
+	add 3rd parameter to AC_DEFINE's to allow autoheader to run
+
+	* AcSplit/CF_WITH_APP_CLASS, AcSplit/CF_WITH_APP_DEFAULTS: quote-name
+
 2012-10-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_CC:

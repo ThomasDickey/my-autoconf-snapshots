@@ -1,4 +1,4 @@
-dnl CF_WITH_XPM version: 2 updated: 2012/09/03 05:42:04
+dnl CF_WITH_XPM version: 3 updated: 2012/10/04 06:57:36
 dnl -----------
 dnl Test for Xpm library, update compiler/loader flags if it is wanted and
 dnl found.
@@ -25,7 +25,7 @@ if test "$cf_Xpm_library" != no ; then
     fi
     AC_CHECK_HEADER(X11/xpm.h,[
 	AC_CHECK_LIB(Xpm, XpmCreatePixmapFromData,[
-	    AC_DEFINE(HAVE_LIBXPM)
+	    AC_DEFINE(HAVE_LIBXPM,1,[Define to 1 if we should use Xpm library])
 	    ICON_SUFFIX=.xpm
 	    LIBS="-lXpm $LIBS"],
 	    [CPPFLAGS="${cf_save_cppflags}" LDFLAGS="${cf_save_ldflags}"],

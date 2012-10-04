@@ -1,4 +1,4 @@
-dnl CF_ENABLE_TRACE version: 2 updated: 2010/11/28 16:26:20
+dnl CF_ENABLE_TRACE version: 3 updated: 2012/10/04 05:24:07
 dnl ---------------
 AC_DEFUN([CF_ENABLE_TRACE],[
 AC_MSG_CHECKING(if you want to enable debugging trace)
@@ -9,6 +9,6 @@ CF_ARG_ENABLE(trace,
 AC_MSG_RESULT($with_trace)
 if test "$with_trace" = "yes"
 then
-	AC_DEFINE(OPT_TRACE)
+	AC_DEFINE(OPT_TRACE,1,[Define to 1 if you want to enable debugging trace])
 fi
 ])dnl

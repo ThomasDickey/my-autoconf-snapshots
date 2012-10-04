@@ -1,4 +1,4 @@
-dnl CF_CHECK_TYPE version: 2 updated: 2008/01/06 14:56:47
+dnl CF_CHECK_TYPE version: 3 updated: 2012/10/04 05:24:07
 dnl -------------
 dnl Add a 3rd parameter to AC_CHECK_TYPE, working around autoconf 2.5x's
 dnl deliberate incompatibility.
@@ -27,6 +27,6 @@ $3
 	AC_MSG_RESULT($ac_cv_type_$1)
 ])dnl
 if test $ac_cv_type_$1 = no; then
-	AC_DEFINE($1, $2)
+	AC_DEFINE($1, $2, Define to $2 if $1 is not declared)
 fi
 ])dnl

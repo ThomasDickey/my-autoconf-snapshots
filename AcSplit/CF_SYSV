@@ -1,4 +1,4 @@
-dnl CF_SYSV version: 14 updated: 2012/06/11 17:37:05
+dnl CF_SYSV version: 15 updated: 2012/10/04 05:24:07
 dnl -------
 dnl Check if this is a SYSV platform, e.g., as used in <X11/Xos.h>, and whether
 dnl defining it will be helpful.  The following features are used to check:
@@ -58,5 +58,5 @@ sys_errlist[0] = "";		/* Cygwin mis-declares this */
 [cf_cv_sysv=yes],
 [cf_cv_sysv=no])
 ])
-test "$cf_cv_sysv" = yes && AC_DEFINE(SYSV)
+test "$cf_cv_sysv" = yes && AC_DEFINE(SYSV,1,[Define to 1 if this is an SYSV system])
 ])dnl

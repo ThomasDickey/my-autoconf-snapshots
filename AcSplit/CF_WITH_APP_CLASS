@@ -1,10 +1,10 @@
-dnl CF_WITH_APP_CLASS version: 1 updated: 2011/07/08 04:54:40
+dnl CF_WITH_APP_CLASS version: 2 updated: 2012/10/04 04:29:52
 dnl -----------------
 dnl Handle configure option "--with-app-class", setting the $APP_CLASS
 dnl variable, used for X resources.
 dnl
 dnl $1 = default value.
-AC_DEFUN(CF_WITH_APP_CLASS,[
+AC_DEFUN([CF_WITH_APP_CLASS],[
 AC_MSG_CHECKING(for X applications class)
 AC_ARG_WITH(app-class,
 	[  --with-app-class=XXX    override X applications class (default $1)],
