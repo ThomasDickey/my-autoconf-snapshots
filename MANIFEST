@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20121002
+MANIFEST for my-autoconf, version t20121003
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -56,6 +56,7 @@ AcSplit/CF_BROKEN_TGETENT_STATUS  check for broken tgetent() return-status
 AcSplit/CF_BUILD_CC             configure options to specify BUILD_CC, etc
 AcSplit/CF_BUNDLED_INTL         combine all libintl macros
 AcSplit/CF_BUNDLED_PCRE         macro to setup variables when configuriing for PCRE which may be bundled
+AcSplit/CF_CC_ENV_FLAGS         check for and repair misuse of $CC which puts $CFLAGS and/or $CPPFLAGS
 AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions
 AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
 AcSplit/CF_CFG_DEFAULTS         determine the default "--prefix" (ncurses)
@@ -314,6 +315,7 @@ AcSplit/CF_PROGRAM_FULLPATH     find a program's absolute path (td_lib)
 AcSplit/CF_PROGRAM_PREFIX       find directory for a given program (td_lib)
 AcSplit/CF_PROG_AR              check for archiver
 AcSplit/CF_PROG_AWK             find awk - and check that the search succeeded
+AcSplit/CF_PROG_CC              wraps AC_PROG_CC and CF_CC_ENV_FLAGS checks
 AcSplit/CF_PROG_CC_C_O          check if the compiler (given by its shell-variable name) can use -c -o
 AcSplit/CF_PROG_CC_U_D          macro to test if I can use -U to pre-undefine a symbol that I want to
 AcSplit/CF_PROG_EGREP           adapted from autoconf 2.57 (AC_PROG_EGREP comes from 2.53)

@@ -1,0 +1,10 @@
+dnl CF_PROG_CC version: 2 updated: 2012/10/03 18:53:04
+dnl ----------
+dnl standard check for CC, plus followup sanity checks
+AC_DEFUN([CF_PROG_CC],[
+AC_PROG_CC
+CF_ACVERSION_CHECK(2.52,
+	[AC_PROG_CC_STDC],
+	[CF_ANSI_CC_REQD])
+CF_CC_ENV_FLAGS 
+])dnl
