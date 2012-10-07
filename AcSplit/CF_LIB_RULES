@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 66 updated: 2012/09/29 15:28:14
+dnl CF_LIB_RULES version: 67 updated: 2012/10/06 13:36:35
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -285,7 +285,7 @@ do
 		done
 	fi
 
-	echo '	cd '$cf_dir' && ${MAKE} ${CF_MFLAGS} [$]@' >>Makefile
+	echo '	cd '$cf_dir' && ${MAKE} ${TOP_MFLAGS} [$]@' >>Makefile
 done
 
 for cf_dir in $SRC_SUBDIRS
@@ -300,7 +300,7 @@ do
 			echo 'libs \' >> Makefile
 			echo 'install.libs \' >> Makefile
 			echo 'uninstall.libs ::' >> Makefile
-			echo '	cd '$cf_dir' && ${MAKE} ${CF_MFLAGS} [$]@' >> Makefile
+			echo '	cd '$cf_dir' && ${MAKE} ${TOP_MFLAGS} [$]@' >> Makefile
 			;;
 		esac
 	fi
@@ -323,7 +323,7 @@ install.libs \\
 uninstall.libs \\
 install.$cf_dir \\
 uninstall.$cf_dir ::
-	cd $cf_dir && \${MAKE} \${CF_MFLAGS} \[$]@
+	cd $cf_dir && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 	elif test -f $srcdir/$cf_dir/headers; then
 cat >> Makefile <<CF_EOF
@@ -333,7 +333,7 @@ install.libs \\
 uninstall.libs \\
 install.includes \\
 uninstall.includes ::
-	cd $cf_dir && \${MAKE} \${CF_MFLAGS} \[$]@
+	cd $cf_dir && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 fi
 done
@@ -342,7 +342,7 @@ cat >> Makefile <<CF_EOF
 
 install.libs uninstall.libs \\
 install.data uninstall.data ::
-$MAKE_TERMINFO	cd misc && \${MAKE} \${CF_MFLAGS} \[$]@
+$MAKE_TERMINFO	cd misc && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 
 if test "x$cf_with_manpages" = xyes; then
@@ -350,7 +350,7 @@ cat >> Makefile <<CF_EOF
 
 install.man \\
 uninstall.man ::
-	cd man && \${MAKE} \${CF_MFLAGS} \[$]@
+	cd man && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 fi
 
@@ -371,7 +371,7 @@ cat >> Makefile <<CF_EOF
 
 install.man \\
 uninstall.man ::
-	cd tack && \${MAKE} \${CF_MFLAGS} \[$]@
+	cd tack && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 fi
 fi

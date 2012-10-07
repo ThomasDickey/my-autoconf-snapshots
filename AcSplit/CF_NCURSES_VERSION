@@ -1,4 +1,4 @@
-dnl CF_NCURSES_VERSION version: 13 updated: 2010/10/23 15:54:49
+dnl CF_NCURSES_VERSION version: 14 updated: 2012/10/06 08:57:51
 dnl ------------------
 dnl Check for the version of ncurses, to aid in reporting bugs, etc.
 dnl Call CF_CURSES_CPPFLAGS first, or CF_NCURSES_CPPFLAGS.  We don't use
@@ -57,5 +57,5 @@ EOF
 ])
 	rm -f $cf_tempfile
 ])
-test "$cf_cv_ncurses_version" = no || AC_DEFINE(NCURSES)
+test "$cf_cv_ncurses_version" = no || AC_DEFINE(NCURSES,1,[Define to 1 if we are using ncurses headers/libraries])
 ])dnl

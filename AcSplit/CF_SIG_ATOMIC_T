@@ -1,4 +1,4 @@
-dnl CF_SIG_ATOMIC_T version: 2 updated: 2005/09/18 17:27:12
+dnl CF_SIG_ATOMIC_T version: 3 updated: 2012/10/04 20:12:20
 dnl ---------------
 dnl signal handler, but there are some gcc depedencies in that recommendation.
 dnl Try anyway.
@@ -30,5 +30,5 @@ static void handler(int sig)
 	done
 	])
 AC_MSG_RESULT($cf_cv_sig_atomic_t)
-test "$cf_cv_sig_atomic_t" != no && AC_DEFINE_UNQUOTED(SIG_ATOMIC_T, $cf_cv_sig_atomic_t)
+test "$cf_cv_sig_atomic_t" != no && AC_DEFINE_UNQUOTED(SIG_ATOMIC_T, $cf_cv_sig_atomic_t,[Define to signal global datatype])
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_UNION_WAIT version: 5 updated: 1997/11/23 14:49:44
+dnl CF_UNION_WAIT version: 6 updated: 2012/10/06 08:57:51
 dnl -------------
 dnl Check to see if the BSD-style union wait is declared.  Some platforms may
 dnl use this, though it is deprecated in favor of the 'int' type in Posix.
@@ -41,5 +41,5 @@ AC_CACHE_VAL(cf_cv_type_unionwait,[
 	],
 	[cf_cv_type_unionwait=no])])])
 AC_MSG_RESULT($cf_cv_type_unionwait)
-test $cf_cv_type_unionwait = yes && AC_DEFINE(HAVE_TYPE_UNIONWAIT)
+test $cf_cv_type_unionwait = yes && AC_DEFINE(HAVE_TYPE_UNIONWAIT,1,[Define to 1 if type unionwait is declared])
 ])dnl

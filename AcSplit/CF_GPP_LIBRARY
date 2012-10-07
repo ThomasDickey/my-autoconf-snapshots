@@ -1,4 +1,4 @@
-dnl CF_GPP_LIBRARY version: 10 updated: 2010/05/29 16:31:02
+dnl CF_GPP_LIBRARY version: 11 updated: 2012/10/06 17:56:13
 dnl --------------
 dnl If we're trying to use g++, test if libg++ is installed (a rather common
 dnl problem :-).  If we have the compiler but no library, we'll be able to
@@ -25,9 +25,9 @@ if test "$GXX" = yes; then
 	[cf_cxx_library=yes
 	 CF_ADD_LIB($cf_gpp_libname,CXXLIBS)
 	 if test "$cf_gpp_libname" = cpp ; then
-	    AC_DEFINE(HAVE_GPP_BUILTIN_H)
+	    AC_DEFINE(HAVE_GPP_BUILTIN_H,1,[Define to 1 if we have gpp builtin.h])
 	 else
-	    AC_DEFINE(HAVE_GXX_BUILTIN_H)
+	    AC_DEFINE(HAVE_GXX_BUILTIN_H,1,[Define to 1 if we have g++ builtin.h])
 	 fi],
 	[AC_TRY_LINK([
 #include <builtin.h>
@@ -35,7 +35,7 @@ if test "$GXX" = yes; then
 	[two_arg_error_handler_t foo2 = lib_error_handler],
 	[cf_cxx_library=yes
 	 CF_ADD_LIB($cf_gpp_libname,CXXLIBS)
-	 AC_DEFINE(HAVE_BUILTIN_H)],
+	 AC_DEFINE(HAVE_BUILTIN_H,1,[Define to 1 if we have builtin.h])],
 	[cf_cxx_library=no])])
 	LIBS="$cf_save"
 	AC_MSG_RESULT($cf_cxx_library)

@@ -1,4 +1,4 @@
-dnl CF_CURSES_WACS_SYMBOLS version: 1 updated: 2011/01/15 11:28:59
+dnl CF_CURSES_WACS_SYMBOLS version: 2 updated: 2012/10/06 08:57:51
 dnl ----------------------
 dnl Do a check to see if the WACS_xxx constants are defined compatibly with
 dnl X/Open Curses.  In particular, NetBSD's implementation of the WACS_xxx
@@ -30,5 +30,5 @@ else
 fi
 ])
 
-test "$cf_cv_curses_wacs_symbols" != no && AC_DEFINE(CURSES_WACS_SYMBOLS)
+test "$cf_cv_curses_wacs_symbols" != no && AC_DEFINE(CURSES_WACS_SYMBOLS,1,[Define to 1 if (n)curses supports wide-character WACS_ symbols])
 ])dnl

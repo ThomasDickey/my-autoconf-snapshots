@@ -1,4 +1,4 @@
-dnl CF_XKB_BELL_EXT version: 3 updated: 2009/02/13 16:00:39
+dnl CF_XKB_BELL_EXT version: 4 updated: 2012/10/04 20:12:20
 dnl ---------------
 dnl Check for XKB bell extension
 AC_DEFUN([CF_XKB_BELL_EXT],[
@@ -13,5 +13,5 @@ AC_TRY_LINK([
 	XkbBell((Display *)0, (Widget)0, 0, y);
 ],[cf_cv_xkb_bell_ext=yes],[cf_cv_xkb_bell_ext=no])
 ])
-test "$cf_cv_xkb_bell_ext" = yes && AC_DEFINE(HAVE_XKB_BELL_EXT)
+test "$cf_cv_xkb_bell_ext" = yes && AC_DEFINE(HAVE_XKB_BELL_EXT,1,[Define 1 if we have XKB Bell extension])
 ])

@@ -1,4 +1,4 @@
-dnl CF_CURSES_ACS_MAP version: 6 updated: 2010/10/23 15:54:49
+dnl CF_CURSES_ACS_MAP version: 7 updated: 2012/10/06 16:39:58
 dnl -----------------
 dnl Check for likely values of acs_map[]:
 AC_DEFUN([CF_CURSES_ACS_MAP],
@@ -16,5 +16,5 @@ $name['k'] = ACS_PLUS
 done
 ])
 
-test "$cf_cv_curses_acs_map" != unknown && AC_DEFINE_UNQUOTED(CURSES_ACS_ARRAY,$cf_cv_curses_acs_map)
+test "$cf_cv_curses_acs_map" != unknown && AC_DEFINE_UNQUOTED(CURSES_ACS_ARRAY,$cf_cv_curses_acs_map,[Define as needed to override ncurses prefix _nc_])
 ])

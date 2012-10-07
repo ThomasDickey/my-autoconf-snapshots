@@ -1,4 +1,4 @@
-dnl CF_LINK_DATAONLY version: 9 updated: 2009/01/01 20:21:38
+dnl CF_LINK_DATAONLY version: 10 updated: 2012/10/06 17:41:51
 dnl ----------------
 dnl Some systems have a non-ANSI linker that doesn't pull in modules that have
 dnl only data (i.e., no functions), for example NeXT.  On those systems we'll
@@ -55,7 +55,7 @@ EOF
 AC_MSG_RESULT($cf_cv_link_dataonly)
 
 if test "$cf_cv_link_dataonly" = no ; then
-	AC_DEFINE(BROKEN_LINKER)
+	AC_DEFINE(BROKEN_LINKER,1,[if data-only library module does not link])
 	BROKEN_LINKER=1
 fi
 

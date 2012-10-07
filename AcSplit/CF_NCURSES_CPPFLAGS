@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CPPFLAGS version: 20 updated: 2010/11/20 17:02:38
+dnl CF_NCURSES_CPPFLAGS version: 21 updated: 2012/10/06 08:57:51
 dnl -------------------
 dnl Look for the SVr4 curses clone 'ncurses' in the standard places, adjusting
 dnl the CPPFLAGS variable so we can include its header.
@@ -44,7 +44,7 @@ CF_NCURSES_HEADER
 CF_TERM_HEADER
 
 # some applications need this, but should check for NCURSES_VERSION
-AC_DEFINE(NCURSES)
+AC_DEFINE(NCURSES,1,[Define to 1 if we are using ncurses headers/libraries])
 
 CF_NCURSES_VERSION
 ])dnl

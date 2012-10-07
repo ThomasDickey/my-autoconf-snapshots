@@ -1,4 +1,4 @@
-dnl CF_WCTYPE version: 5 updated: 2003/05/05 00:42:17
+dnl CF_WCTYPE version: 6 updated: 2012/10/06 11:17:15
 dnl ---------
 dnl Look for <wctype.h> and related functions.  This is needed with glibc to
 dnl see the codes above 127.
@@ -25,6 +25,6 @@ AC_TRY_COMPILE([
 	[cf_cv_have_wctype=no])
 ])
 if test "$cf_cv_have_wctype" = yes ; then
-	AC_SEARCH_LIBS(wctype,[w],[AC_DEFINE(HAVE_WCTYPE)])
+	AC_SEARCH_LIBS(wctype,[w],[AC_DEFINE(HAVE_WCTYPE,1,[Define to 1 if we have usable wctype.h])])
 fi
 ])dnl

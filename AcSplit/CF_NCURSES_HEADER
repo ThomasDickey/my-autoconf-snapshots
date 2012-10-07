@@ -1,4 +1,4 @@
-dnl CF_NCURSES_HEADER version: 2 updated: 2008/03/23 14:48:54
+dnl CF_NCURSES_HEADER version: 3 updated: 2012/10/06 08:57:51
 dnl -----------------
 dnl Find a "curses" header file, e.g,. "curses.h", or one of the more common
 dnl variations of ncurses' installs.
@@ -49,16 +49,16 @@ fi
 
 case $cf_cv_ncurses_header in # (vi
 *ncurses.h)
-	AC_DEFINE(HAVE_NCURSES_H)
+	AC_DEFINE(HAVE_NCURSES_H,1,[Define to 1 if we have ncurses.h])
 	;;
 esac
 
 case $cf_cv_ncurses_header in # (vi
 ncurses/curses.h|ncurses/ncurses.h)
-	AC_DEFINE(HAVE_NCURSES_NCURSES_H)
+	AC_DEFINE(HAVE_NCURSES_NCURSES_H,1,[Define to 1 if we have ncurses/ncurses.h])
 	;;
 ncursesw/curses.h|ncursesw/ncurses.h)
-	AC_DEFINE(HAVE_NCURSESW_NCURSES_H)
+	AC_DEFINE(HAVE_NCURSESW_NCURSES_H,1,[Define to 1 if we have ncursesw/ncurses.h])
 	;;
 esac
 

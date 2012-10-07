@@ -1,4 +1,4 @@
-dnl CF_TERM_HEADER version: 2 updated: 2010/10/23 15:54:49
+dnl CF_TERM_HEADER version: 3 updated: 2012/10/06 08:57:51
 dnl --------------
 dnl Look for term.h, which is part of X/Open curses.  It defines the interface
 dnl to terminfo database.  Usually it is in the same include-path as curses.h,
@@ -31,16 +31,16 @@ done
 
 case $cf_cv_term_header in # (vi
 *term.h)
-	AC_DEFINE(HAVE_TERM_H)
+	AC_DEFINE(HAVE_TERM_H,1,[Define to 1 if we have term.h])
 	;;
 esac
 
 case $cf_cv_term_header in # (vi
 ncurses/term.h) #(vi
-	AC_DEFINE(HAVE_NCURSES_TERM_H)
+	AC_DEFINE(HAVE_NCURSES_TERM_H,1,[Define to 1 if we have ncurses/term.h])
 	;;
 ncursesw/term.h)
-	AC_DEFINE(HAVE_NCURSESW_TERM_H)
+	AC_DEFINE(HAVE_NCURSESW_TERM_H,1,[Define to 1 if we have ncursesw/term.h])
 	;;
 esac
 ])dnl

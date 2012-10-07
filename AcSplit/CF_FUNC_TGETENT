@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 18 updated: 2011/08/09 21:06:37
+dnl CF_FUNC_TGETENT version: 19 updated: 2012/10/04 20:12:20
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -84,7 +84,7 @@ LIBS="$cf_save_LIBS"
 # they are not executed when a cached value exists.)
 if test "x$cf_cv_lib_tgetent" != xno ; then
 	test "x$cf_cv_lib_tgetent" != xyes && CF_ADD_LIBS($cf_cv_lib_tgetent)
-	AC_DEFINE(USE_TERMCAP)
+	AC_DEFINE(USE_TERMCAP,1,[Define 1 to indicate that working tgetent is found])
 	if test "$cf_full_tgetent" = no ; then
 		AC_TRY_COMPILE([
 #include <termcap.h>],[
@@ -118,7 +118,7 @@ else
 
                 # If this is linking against ncurses, we'll trigger the
                 # ifdef in resize.c that turns the termcap stuff back off.
-		AC_DEFINE(USE_TERMINFO)
+		AC_DEFINE(USE_TERMINFO,1,[Define to 1 to indicate that terminfo provides the tgetent interface])
 	fi
 fi
 ])dnl

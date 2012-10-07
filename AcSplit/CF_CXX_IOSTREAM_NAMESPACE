@@ -1,4 +1,4 @@
-dnl CF_CXX_IOSTREAM_NAMESPACE version: 1 updated: 2011/10/29 08:35:34
+dnl CF_CXX_IOSTREAM_NAMESPACE version: 2 updated: 2012/10/06 17:56:13
 dnl -------------------------
 dnl For c++, check if iostream uses "std::" namespace.
 AC_DEFUN([CF_CXX_IOSTREAM_NAMESPACE],[
@@ -13,7 +13,7 @@ cerr << "testing" << endl;
 ],[cf_iostream_namespace=yes],[cf_iostream_namespace=no])
 	AC_MSG_RESULT($cf_iostream_namespace)
 	if test "$cf_iostream_namespace" = yes ; then
-		AC_DEFINE(IOSTREAM_NAMESPACE)
+		AC_DEFINE(IOSTREAM_NAMESPACE,1,[Define to 1 if C++ has namespace iostream])
 	fi
 fi
 ])dnl

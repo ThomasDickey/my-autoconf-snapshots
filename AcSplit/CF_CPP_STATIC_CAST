@@ -1,4 +1,4 @@
-dnl CF_CPP_STATIC_CAST version: 1 updated: 2005/07/23 16:52:43
+dnl CF_CPP_STATIC_CAST version: 2 updated: 2012/10/06 17:56:13
 dnl ------------------
 dnl Check if the C++ compiler accepts static_cast in generics.  This appears to
 dnl not be supported in g++ before 3.0
@@ -51,5 +51,5 @@ public:
 
 fi
 
-test "$cf_cv_cpp_static_cast" = yes && AC_DEFINE(CPP_HAS_STATIC_CAST)
+test "$cf_cv_cpp_static_cast" = yes && AC_DEFINE(CPP_HAS_STATIC_CAST,1,[Define to 1 if C++ has static_cast])
 ])dnl

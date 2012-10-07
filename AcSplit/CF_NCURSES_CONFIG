@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 9 updated: 2011/11/26 15:42:05
+dnl CF_NCURSES_CONFIG version: 10 updated: 2012/10/06 08:57:51
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses.
 dnl Prefer the "-config" script from ncurses 6.x, to simplify analysis.
@@ -24,7 +24,7 @@ CF_ADD_LIBS(`$NCURSES_CONFIG --libs`)
 CF_CURSES_HEADER(ifelse($1,,ncurses,$1))
 
 dnl like CF_NCURSES_CPPFLAGS
-AC_DEFINE(NCURSES)
+AC_DEFINE(NCURSES,1,[Define to 1 if we are using ncurses headers/libraries])
 
 dnl like CF_NCURSES_LIBS
 CF_UPPER(cf_nculib_ROOT,HAVE_LIB$cf_ncuconfig_root)

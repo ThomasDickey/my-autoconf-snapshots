@@ -1,4 +1,4 @@
-dnl AM_WITH_NLS version: 24 updated: 2010/06/20 09:24:28
+dnl AM_WITH_NLS version: 25 updated: 2012/10/06 08:57:51
 dnl -----------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -101,7 +101,7 @@ AC_DEFUN([AM_WITH_NLS],
       LIBS="$cf_save_LIBS_1"
 
       if test "$cf_cv_func_gettext" = yes ; then
-        AC_DEFINE(HAVE_LIBINTL_H)
+        AC_DEFINE(HAVE_LIBINTL_H,1,[Define to 1 if we have libintl.h])
 
         dnl If an already present or preinstalled GNU gettext() is found,
         dnl use it.  But if this macro is used in GNU gettext, and GNU

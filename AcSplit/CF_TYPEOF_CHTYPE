@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 8 updated: 2006/12/16 12:33:30
+dnl CF_TYPEOF_CHTYPE version: 9 updated: 2012/10/06 17:56:13
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -47,5 +47,5 @@ int main()
 AC_MSG_RESULT($cf_cv_typeof_chtype)
 
 AC_SUBST(cf_cv_typeof_chtype)
-AC_DEFINE_UNQUOTED(TYPEOF_CHTYPE,$cf_cv_typeof_chtype)
+AC_DEFINE_UNQUOTED(TYPEOF_CHTYPE,$cf_cv_typeof_chtype,[Define to actual type if needed for chtype])
 ])dnl

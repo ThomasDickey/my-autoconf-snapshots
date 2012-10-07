@@ -1,4 +1,4 @@
-dnl CF_STDIO_UNLOCKED version: 3 updated: 2009/10/06 19:54:39
+dnl CF_STDIO_UNLOCKED version: 4 updated: 2012/10/06 11:17:15
 dnl -----------------
 dnl The four functions getc_unlocked(), getchar_unlocked(), putc_unlocked(),
 dnl putchar_unlocked() are in POSIX.1-2001.
@@ -24,7 +24,7 @@ if test "$cf_stdio_unlocked" != no ; then
 			[cf_cv_stdio_unlocked=yes],
 			[cf_cv_stdio_unlocked=no])])
 		if test "$cf_cv_stdio_unlocked" = yes ; then
-			AC_DEFINE(_REENTRANT)
+			AC_DEFINE(_REENTRANT,1,[Define to 1 if we should define _REENTRANT])
 		fi
 		;;
 	esac

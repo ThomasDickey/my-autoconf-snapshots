@@ -1,4 +1,4 @@
-dnl CF_TERMIO_C_ISPEED version: 2 updated: 2000/05/29 16:16:04
+dnl CF_TERMIO_C_ISPEED version: 3 updated: 2012/10/04 20:12:20
 dnl ------------------
 dnl Check for SGI's broken redefinition of baud rates introduced in IRIX 6.5
 dnl (there doesn't appear to be a useful predefined symbol).
@@ -14,5 +14,5 @@ foo.c_ospeed = B9600;
 ],[cf_cv_termio_c_ispeed=yes
 ],[cf_cv_termio_c_ispeed=no])
 ])
-test "$cf_cv_termio_c_ispeed" = yes && AC_DEFINE(HAVE_TERMIO_C_ISPEED)
+test "$cf_cv_termio_c_ispeed" = yes && AC_DEFINE(HAVE_TERMIO_C_ISPEED,1,[define 1 if we have IRIX 6.5 baud-rate redefinitions])
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE version: 9 updated: 2012/10/04 06:57:36
+dnl CF_WITH_PCRE version: 10 updated: 2012/10/04 20:12:20
 dnl ------------
 dnl Add PCRE (Perl-compatible regular expressions) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -27,10 +27,10 @@ if test "$with_pcre" != no ; then
 			;;
 		*)
 			AC_CHECK_LIB(pcreposix,pcreposix_regcomp,
-				[AC_DEFINE(HAVE_PCREPOSIX_H)
+				[AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
 				 CF_ADD_LIB(pcreposix)],
 				[AC_CHECK_LIB(pcreposix,regcomp,[
-					AC_DEFINE(HAVE_PCREPOSIX_H)
+					AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
 					CF_ADD_LIB(pcreposix)],
 					AC_MSG_ERROR(Cannot find PCRE POSIX library)]))
 			;;

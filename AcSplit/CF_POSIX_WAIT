@@ -1,4 +1,4 @@
-dnl CF_POSIX_WAIT version: 2 updated: 2000/05/29 16:16:04
+dnl CF_POSIX_WAIT version: 3 updated: 2012/10/04 20:12:20
 dnl -------------
 dnl Check for POSIX wait support
 AC_DEFUN([CF_POSIX_WAIT],
@@ -20,5 +20,5 @@ AC_TRY_LINK([
 [cf_cv_posix_wait=yes],
 [cf_cv_posix_wait=no])
 ])
-test "$cf_cv_posix_wait" = yes && AC_DEFINE(USE_POSIX_WAIT)
+test "$cf_cv_posix_wait" = yes && AC_DEFINE(USE_POSIX_WAIT,1,[Define to 1 if we have POSIX wait functions])
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_UTMP_UT_XTIME version: 8 updated: 2012/10/04 06:57:36
+dnl CF_UTMP_UT_XTIME version: 9 updated: 2012/10/04 20:12:20
 dnl ----------------
 dnl Check if UTMP/UTMPX struct defines ut_xtime member
 AC_DEFUN([CF_UTMP_UT_XTIME],
@@ -19,7 +19,7 @@ AC_CACHE_CHECK(if ${cf_cv_have_utmp}.ut_xtime is declared, cf_cv_have_utmp_ut_xt
 	])
 ])
 if test $cf_cv_have_utmp_ut_xtime != no ; then
-	AC_DEFINE(HAVE_UTMP_UT_XTIME)
+	AC_DEFINE(HAVE_UTMP_UT_XTIME,1,[Define to 1 if UTMP/UTMPX struct defines ut_xtime member])
 	if test $cf_cv_have_utmp_ut_xtime = define ; then
 		AC_DEFINE(ut_xtime,ut_tv.tv_sec,[Define if needed to alternate name for utmpx.ut_xtime member])
 	fi
