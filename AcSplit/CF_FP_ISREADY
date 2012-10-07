@@ -1,4 +1,4 @@
-dnl CF_FP_ISREADY version: 2 updated: 1998/04/18 20:51:42
+dnl CF_FP_ISREADY version: 3 updated: 2012/10/06 11:17:15
 dnl -------------
 dnl Test for the common variations of stdio structures that we can use to
 dnl test if a character is available for reading.
@@ -35,6 +35,6 @@ test -f conftest.env && cf_cv_fp_isready=`cat conftest.env`
 
 ])
 
-test "$cf_cv_fp_isready" != none && AC_DEFINE_UNQUOTED(isready_c(p),$cf_cv_fp_isready)
+test "$cf_cv_fp_isready" != none && AC_DEFINE_UNQUOTED(isready_c(p),$cf_cv_fp_isready,[Define to 1 if stdio structures permit checking if character is ready])
 
 ])dnl

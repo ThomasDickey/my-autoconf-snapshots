@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 7 updated: 2007/03/14 16:43:53
+dnl CF_POSIX_SAVED_IDS version: 8 updated: 2012/10/04 20:12:20
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -46,5 +46,5 @@ int main()
 ])
 ])
 
-test "$cf_cv_posix_saved_ids" = yes && AC_DEFINE(HAVE_POSIX_SAVED_IDS)
+test "$cf_cv_posix_saved_ids" = yes && AC_DEFINE(HAVE_POSIX_SAVED_IDS,1,[Define to 1 if POSIX saved-ids are supported])
 ])

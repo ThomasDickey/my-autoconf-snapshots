@@ -1,4 +1,4 @@
-dnl CF_WITH_SYSMOUSE version: 2 updated: 2003/03/22 19:13:43
+dnl CF_WITH_SYSMOUSE version: 3 updated: 2012/10/06 17:56:13
 dnl ----------------
 dnl If we can compile with sysmouse, make it available unless it is not wanted.
 AC_DEFUN([CF_WITH_SYSMOUSE],[
@@ -24,6 +24,6 @@ AC_ARG_WITH(sysmouse,
 ],[cf_with_sysmouse=yes],[cf_with_sysmouse=no])
 	fi
 AC_MSG_RESULT($cf_with_sysmouse)
-test "$cf_with_sysmouse" = yes && AC_DEFINE(USE_SYSMOUSE)
+test "$cf_with_sysmouse" = yes && AC_DEFINE(USE_SYSMOUSE,1,[Define to 1 if we can/should use the sysmouse interface])
 fi
 ])dnl

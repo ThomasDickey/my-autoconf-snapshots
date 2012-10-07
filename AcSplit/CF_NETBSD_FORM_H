@@ -1,4 +1,4 @@
-dnl CF_NETBSD_FORM_H version: 1 updated: 2011/01/15 14:59:18
+dnl CF_NETBSD_FORM_H version: 2 updated: 2012/10/06 16:39:58
 dnl ----------------
 dnl Check for NetBSD's form.h, which is incompatible with SVr4 and ncurses.
 dnl Some workarounds are needed in client programs to allow them to compile.
@@ -15,5 +15,5 @@ AC_TRY_COMPILE([
 ],[cf_cv_netbsd_form_h=no])
 ])
 
-test "$cf_cv_netbsd_form_h" = yes && AC_DEFINE(HAVE_NETBSD_FORM_H)
+test "$cf_cv_netbsd_form_h" = yes && AC_DEFINE(HAVE_NETBSD_FORM_H,1,[Define to 1 if we appear to be using NetBSD form.h])
 ])dnl

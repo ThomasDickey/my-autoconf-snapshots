@@ -1,4 +1,4 @@
-dnl CF_CC_INIT_UNIONS version: 2 updated: 1998/07/01 22:16:27
+dnl CF_CC_INIT_UNIONS version: 3 updated: 2012/10/06 11:17:15
 dnl -----------------
 dnl Check if the C compiler supports initialization of unions.
 AC_DEFUN([CF_CC_INIT_UNIONS],[
@@ -9,5 +9,5 @@ cf_cv_init_unions,[
 	[cf_cv_init_unions=yes],
 	[cf_cv_init_unions=no])
 	])
-test $cf_cv_init_unions = no && AC_DEFINE(CC_CANNOT_INIT_UNIONS)
+test $cf_cv_init_unions = no && AC_DEFINE(CC_CANNOT_INIT_UNIONS,1,[Define to 1 if C compiler cannot initialize unions])
 ])dnl

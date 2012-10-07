@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 25 updated: 2012/06/11 17:37:05
+dnl CF_X_FREETYPE version: 26 updated: 2012/10/04 20:12:20
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -129,7 +129,7 @@ CPPFLAGS="$cf_save_INCS"
 if test "$cf_cv_found_freetype" = yes ; then
 	CF_ADD_LIBS($cf_cv_x_freetype_libs)
 	CF_ADD_CFLAGS($cf_cv_x_freetype_incs)
-	AC_DEFINE(XRENDERFONT)
+	AC_DEFINE(XRENDERFONT,1,[Define to 1 if we can/should link with FreeType libraries])
 
 AC_CHECK_FUNCS( \
 	XftDrawCharSpec \

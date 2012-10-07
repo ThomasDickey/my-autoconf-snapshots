@@ -1,4 +1,4 @@
-dnl CF_FUNC_DLSYM version: 2 updated: 2010/05/29 16:31:02
+dnl CF_FUNC_DLSYM version: 3 updated: 2012/10/06 11:17:15
 dnl -------------
 dnl Test for dlsym() and related functions, as well as libdl.
 dnl
@@ -25,7 +25,7 @@ if test "$cf_have_dlsym" = yes ; then
 			dlclose(obj);
 			}
 		}],[
-		AC_DEFINE(HAVE_LIBDL)],[
+		AC_DEFINE(HAVE_LIBDL,1,[Define to 1 if we have dl library])],[
 		AC_MSG_ERROR(Cannot link test program for libdl)])
 	AC_MSG_RESULT(ok)
 else

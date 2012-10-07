@@ -1,4 +1,4 @@
-dnl CF_FUNC_MEMMOVE version: 7 updated: 2006/12/16 12:33:30
+dnl CF_FUNC_MEMMOVE version: 8 updated: 2012/10/04 20:12:20
 dnl ---------------
 dnl Check for memmove, or a bcopy that can handle overlapping copy.  If neither
 dnl is found, add our own version of memmove to the list of objects.
@@ -23,8 +23,8 @@ int main() {
 		])
 	],[cf_cv_good_bcopy=no])
 	if test "$cf_cv_good_bcopy" = yes ; then
-		AC_DEFINE(USE_OK_BCOPY)
+		AC_DEFINE(USE_OK_BCOPY,1,[Define to 1 to use bcopy when memmove is unavailable])
 	else
-		AC_DEFINE(USE_MY_MEMMOVE)
+		AC_DEFINE(USE_MY_MEMMOVE,1,[Define to 1 to use replacement function when memmove is unavailable])
 	fi
 ])])dnl

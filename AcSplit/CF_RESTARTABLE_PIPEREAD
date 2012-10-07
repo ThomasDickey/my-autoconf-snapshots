@@ -1,4 +1,4 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 5 updated: 2010/10/23 15:52:32
+dnl CF_RESTARTABLE_PIPEREAD version: 6 updated: 2012/10/06 11:17:15
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
@@ -58,5 +58,5 @@ main () {
 [cf_cv_can_restart_read=unknown])
 ])
 
-test $cf_cv_can_restart_read = yes && AC_DEFINE(HAVE_RESTARTABLE_PIPEREAD)
+test $cf_cv_can_restart_read = yes && AC_DEFINE(HAVE_RESTARTABLE_PIPEREAD,1,[Define to 1 if we can make restartable reads on pipes])
 ])dnl

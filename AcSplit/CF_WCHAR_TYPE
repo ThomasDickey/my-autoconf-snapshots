@@ -1,4 +1,4 @@
-dnl CF_WCHAR_TYPE version: 3 updated: 2010/05/26 16:44:57
+dnl CF_WCHAR_TYPE version: 4 updated: 2012/10/06 16:39:58
 dnl -------------
 dnl Check if type wide-character type $1 is declared, and if so, which header
 dnl file is needed.  The second parameter is used to set a shell variable when
@@ -30,7 +30,7 @@ AC_TRY_COMPILE([
 	[cf_cv_$1=unknown])])])
 
 if test "$cf_cv_$1" = yes ; then
-	AC_DEFINE(NEED_WCHAR_H)
+	AC_DEFINE(NEED_WCHAR_H,1,[Define to 1 if we must include wchar.h])
 	NEED_WCHAR_H=1
 fi
 

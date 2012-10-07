@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 7 updated: 2007/03/14 16:43:59
+dnl CF_TTY_GROUP version: 8 updated: 2012/10/04 20:12:20
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -65,10 +65,10 @@ fi
 cf_tty_group="$cf_cv_tty_group_name"
 else
 	# if configure option, always do this
-	AC_DEFINE(USE_TTY_GROUP)
+	AC_DEFINE(USE_TTY_GROUP,1,[Define to 1 if we have a tty groupname])
 fi
 
-AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_tty_group")
+AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_tty_group",[Define to the name use for tty group])
 
 # This is only a double-check that the group-name we obtained above really
 # does apply to the device.  We cannot perform this test if we are in batch

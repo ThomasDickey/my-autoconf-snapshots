@@ -1,4 +1,4 @@
-dnl CF_CURSES_CHTYPE version: 7 updated: 2010/10/23 15:54:49
+dnl CF_CURSES_CHTYPE version: 8 updated: 2012/10/06 08:57:51
 dnl ----------------
 dnl Test if curses defines 'chtype' (usually a 'long' type for SysV curses).
 AC_DEFUN([CF_CURSES_CHTYPE],
@@ -10,14 +10,14 @@ AC_CACHE_CHECK(for chtype typedef,cf_cv_chtype_decl,[
 		[cf_cv_chtype_decl=yes],
 		[cf_cv_chtype_decl=no])])
 if test $cf_cv_chtype_decl = yes ; then
-	AC_DEFINE(HAVE_TYPE_CHTYPE)
+	AC_DEFINE(HAVE_TYPE_CHTYPE,1,[Define to 1 if chtype is declared])
 	AC_CACHE_CHECK(if chtype is scalar or struct,cf_cv_chtype_type,[
 		AC_TRY_COMPILE([#include <${cf_cv_ncurses_header:-curses.h}>],
 			[chtype foo; long x = foo],
 			[cf_cv_chtype_type=scalar],
 			[cf_cv_chtype_type=struct])])
 	if test $cf_cv_chtype_type = scalar ; then
-		AC_DEFINE(TYPE_CHTYPE_IS_SCALAR)
+		AC_DEFINE(TYPE_CHTYPE_IS_SCALAR,1,[Define to 1 if chtype is a scaler/integer])
 	fi
 fi
 ])dnl

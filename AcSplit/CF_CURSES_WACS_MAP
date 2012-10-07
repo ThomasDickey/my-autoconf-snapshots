@@ -1,4 +1,4 @@
-dnl CF_CURSES_WACS_MAP version: 5 updated: 2011/01/15 11:28:59
+dnl CF_CURSES_WACS_MAP version: 6 updated: 2012/10/06 08:57:51
 dnl ------------------
 dnl Check for likely values of wacs_map[].
 AC_DEFUN([CF_CURSES_WACS_MAP],
@@ -17,5 +17,5 @@ AC_CACHE_CHECK(for wide alternate character set array, cf_cv_curses_wacs_map,[
 	 break])
 	done])
 
-test "$cf_cv_curses_wacs_map" != unknown && AC_DEFINE_UNQUOTED(CURSES_WACS_ARRAY,$cf_cv_curses_wacs_map)
+test "$cf_cv_curses_wacs_map" != unknown && AC_DEFINE_UNQUOTED(CURSES_WACS_ARRAY,$cf_cv_curses_wacs_map,[Define to name of (n)curses wide-character array])
 ])dnl

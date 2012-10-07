@@ -1,4 +1,4 @@
-dnl CF_FUNC_WAIT version: 2 updated: 1997/10/21 19:45:33
+dnl CF_FUNC_WAIT version: 3 updated: 2012/10/06 08:57:51
 dnl ------------
 dnl Test for the presence of <sys/wait.h>, 'union wait', arg-type of 'wait()'
 dnl and/or 'waitpid()'.
@@ -23,7 +23,7 @@ if test $cf_cv_type_unionwait = yes; then
 			[cf_cv_arg_union_wait=no])
 		])
 	AC_MSG_RESULT($cf_cv_arg_union_wait)
-	test $cf_cv_arg_union_wait = yes && AC_DEFINE(WAIT_USES_UNION)
+	test $cf_cv_arg_union_wait = yes && AC_DEFINE(WAIT_USES_UNION,1,[Define to 1 if wait() uses a union parameter])
 
 	AC_MSG_CHECKING(if union wait can be used as waitpid-arg)
 	AC_CACHE_VAL(cf_cv_arg_union_waitpid,[
@@ -33,7 +33,7 @@ if test $cf_cv_type_unionwait = yes; then
 			[cf_cv_arg_union_waitpid=no])
 		])
 	AC_MSG_RESULT($cf_cv_arg_union_waitpid)
-	test $cf_cv_arg_union_waitpid = yes && AC_DEFINE(WAITPID_USES_UNION)
+	test $cf_cv_arg_union_waitpid = yes && AC_DEFINE(WAITPID_USES_UNION,1,[Define to 1 if waitpid() uses a union parameter])
 
 fi
 ])dnl

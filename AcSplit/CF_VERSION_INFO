@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 4 updated: 2011/01/02 19:09:47
+dnl CF_VERSION_INFO version: 5 updated: 2012/10/06 08:57:51
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -78,7 +78,7 @@ dnl need the package name to ensure that the defined symbols are unique.
 ifelse($1,,,[
 	cf_PACKAGE=$1
 	PACKAGE=ifelse($2,,$1,$2)
-	AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE")
+	AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE",[Define to the package-name])
 	AC_SUBST(PACKAGE)
 	CF_UPPER(cf_PACKAGE,$cf_PACKAGE)
 	AC_DEFINE_UNQUOTED(${cf_PACKAGE}_VERSION,"${VERSION_MAJOR}.${VERSION_MINOR}")

@@ -1,3 +1,30 @@
+2012-10-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_VERSION:
+	amend workarounds to accommodate Debian's modification of version-message
+
+	* AcSplit/CF_CGETENT, AcSplit/CF_CPP_PARAM_INIT, AcSplit/CF_CPP_STATIC_CAST, AcSplit/CF_CXX_IOSTREAM_NAMESPACE, AcSplit/CF_ENABLE_STRING_HACKS, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_TERMIOS, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_ISASCII, AcSplit/CF_LINK_FUNCS, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_TYPEOF_CHTYPE, AcSplit/CF_TYPE_SIGACTION, AcSplit/CF_WITH_GPM, AcSplit/CF_WITH_SYSMOUSE, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_WITH_PTHREAD, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_GETOPT_HEADER, AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NETBSD_FORM_H, AcSplit/CF_NETBSD_MENU_H, AcSplit/CF_PDCURSES_X11, AcSplit/CF_WCHAR_TYPE:
+	add 3rd parameter to AC_DEFINE's to allow autoheader to run
+
+	* AcSplit/CF_DISABLE_ECHO: correct help message
+
+	* AcSplit/CF_BUILD_CC:
+	change dependency on CF_PROG_EXT to do this only for the 2.13-compat builds
+
+	* AcSplit/CF_PROG_CC:
+	ncurses uses the optional parameter of AC_PROG_CC - fix.
+	also (not just ncurses) show the gcc-version using CF_GCC_VERSION.
+
+	* AcSplit/CF_LIB_RULES:
+	s/CF_MFLAGS/TOP_MFLAGS/ to avoid confusing with my-autoconf macros.
+
+	* AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_FP_ISREADY, AcSplit/CF_FUNC_DLSYM, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_LOCALE, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_SIZECHANGE, AcSplit/CF_STDIO_UNLOCKED, AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_VA_COPY, AcSplit/CF_WCTYPE, AcSplit/CF_WITH_PERL, AcSplit/AM_WITH_NLS, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_CURSES_WGETPARENT, AcSplit/CF_FUNC_WAIT, AcSplit/CF_LARGEFILE, AcSplit/CF_MBSTATE_T, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PROG_EXT, AcSplit/CF_TERM_HEADER, AcSplit/CF_UNION_WAIT, AcSplit/CF_UTF8_LIB, AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_NO_LEAKS:
+	add 3rd parameter to AC_DEFINE's to allow autoheader to run
+
+	* config.sub: 2012-08-18
+
+	* config.guess: 2012-09-25
+
 2012-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LASTLOG, AcSplit/CF_PATH_PROG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_SYSV_UTMP, AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP, AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTEMPTER, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_WITH_PCRE, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_X_FREETYPE, AcSplit/CF_TYPE_FD_MASK, AcSplit/CF_WITH_XPM, AcSplit/CF_XBOOL_RESULT, AcSplit/CF_X_TOOLKIT:

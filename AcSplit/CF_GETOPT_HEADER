@@ -1,4 +1,4 @@
-dnl CF_GETOPT_HEADER version: 4 updated: 2009/08/31 20:07:52
+dnl CF_GETOPT_HEADER version: 5 updated: 2012/10/06 16:39:58
 dnl ----------------
 dnl Check for getopt's variables which are commonly defined in stdlib.h,
 dnl unistd.h or (nonstandard) in getopt.h
@@ -17,6 +17,6 @@ AC_TRY_COMPILE([
 done
 ])
 if test $cf_cv_getopt_header != none ; then
-	AC_DEFINE(HAVE_GETOPT_HEADER)
+	AC_DEFINE(HAVE_GETOPT_HEADER,1,[Define to 1 if we need to include getopt.h])
 fi
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_UTMP version: 9 updated: 2008/01/25 17:18:00
+dnl CF_UTMP version: 10 updated: 2012/10/04 20:12:20
 dnl -------
 dnl Check for UTMP/UTMPX headers
 AC_DEFUN([CF_UTMP],
@@ -34,8 +34,8 @@ done
 ])
 
 if test $cf_cv_have_utmp != no ; then
-	AC_DEFINE(HAVE_UTMP)
-	test $cf_cv_have_utmp = utmpx && AC_DEFINE(UTMPX_FOR_UTMP)
+	AC_DEFINE(HAVE_UTMP,1,[Define to 1 if the utmp interface is available])
+	test $cf_cv_have_utmp = utmpx && AC_DEFINE(UTMPX_FOR_UTMP,1,[Define if we have utmpx interface])
 	CF_UTMP_UT_HOST
 	CF_UTMP_UT_SYSLEN
 	CF_UTMP_UT_NAME

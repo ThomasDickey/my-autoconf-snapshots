@@ -1,4 +1,4 @@
-dnl CF_CURSES_WGETPARENT version: 2 updated: 2011/10/17 20:12:04
+dnl CF_CURSES_WGETPARENT version: 3 updated: 2012/10/06 08:57:51
 dnl --------------------
 dnl Check for curses support for directly determining the parent of a given
 dnl window.  Some implementations make this difficult, so we provide for
@@ -17,7 +17,7 @@ then
 	AC_MSG_RESULT($cf_window__parent)
 	if test "$cf_window__parent" = yes
 	then
-		AC_DEFINE(HAVE_WINDOW__PARENT)
+		AC_DEFINE(HAVE_WINDOW__PARENT,1,[Define to 1 if WINDOW struct has _parent member])
 	fi
 fi
 ])dnl

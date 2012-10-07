@@ -1,4 +1,4 @@
-dnl CF_HEADER_SELECT version: 4 updated: 2002/10/09 20:00:37
+dnl CF_HEADER_SELECT version: 5 updated: 2012/10/06 11:17:15
 dnl ----------------
 dnl like AC_HEADER_TIME, check for conflicts:
 dnl on SCO v4, sys/time.h conflicts with select.h
@@ -26,5 +26,5 @@ AC_TRY_COMPILE([
 #endif
 ],[],[cf_cv_select_with_time=yes],[cf_cv_select_with_time=no])
 ])
-test $cf_cv_select_with_time = yes && AC_DEFINE(SELECT_WITH_TIME)
+test $cf_cv_select_with_time = yes && AC_DEFINE(SELECT_WITH_TIME,1,[Define to 1 if we can include select.h with time.h])
 ])dnl

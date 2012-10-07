@@ -1,4 +1,4 @@
-dnl CF_TYPE_FD_SET version: 4 updated: 2008/03/25 20:56:03
+dnl CF_TYPE_FD_SET version: 5 updated: 2012/10/04 20:12:20
 dnl --------------
 dnl Check for the declaration of fd_set.  Some platforms declare it in
 dnl <sys/types.h>, and some in <sys/select.h>, which requires <sys/types.h>.
@@ -29,6 +29,6 @@ AC_TRY_COMPILE([
 	[cf_cv_type_fd_set=sys/select.h],
 	[cf_cv_type_fd_set=unknown])])])])
 if test $cf_cv_type_fd_set = sys/select.h ; then
-	AC_DEFINE(USE_SYS_SELECT_H)
+	AC_DEFINE(USE_SYS_SELECT_H,1,[Define to 1 to include sys/select.h to declare fd_set])
 fi
 ])

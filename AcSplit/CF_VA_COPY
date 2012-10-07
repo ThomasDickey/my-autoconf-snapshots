@@ -1,4 +1,4 @@
-dnl CF_VA_COPY version: 2 updated: 2010/03/04 05:37:29
+dnl CF_VA_COPY version: 3 updated: 2012/10/06 11:17:15
 dnl ----------
 dnl check for va_copy, part of stdarg.h
 dnl Also, workaround for glibc's __va_copy, by checking for both.
@@ -13,7 +13,7 @@ AC_TRY_LINK([
 	cf_cv_have_va_copy=yes,
 	cf_cv_have_va_copy=no)])
 
-test "$cf_cv_have_va_copy" = yes && AC_DEFINE(HAVE_VA_COPY)
+test "$cf_cv_have_va_copy" = yes && AC_DEFINE(HAVE_VA_COPY,1,[Define to 1 if we have va_copy])
 
 AC_CACHE_CHECK(for __va_copy, cf_cv_have___va_copy,[
 AC_TRY_LINK([
@@ -25,5 +25,5 @@ AC_TRY_LINK([
 	cf_cv_have___va_copy=yes,
 	cf_cv_have___va_copy=no)])
 
-test "$cf_cv_have___va_copy" = yes && AC_DEFINE(HAVE___VA_COPY)
+test "$cf_cv_have___va_copy" = yes && AC_DEFINE(HAVE___VA_COPY,1,[Define to 1 if we have __va_copy])
 ])

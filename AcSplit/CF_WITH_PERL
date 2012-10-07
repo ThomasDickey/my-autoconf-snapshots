@@ -1,4 +1,4 @@
-dnl CF_WITH_PERL version: 5 updated: 2010/08/13 04:43:13
+dnl CF_WITH_PERL version: 6 updated: 2012/10/06 11:17:15
 dnl ------------
 dnl Check if perl-extension (using embedded perl interpreter) is wanted, and
 dnl update symbols if we are able to use the extension.
@@ -44,7 +44,7 @@ if test "$with_perl" = yes ; then
 
 		CF_VERBOSE(adding perl library $PERLLIB)
 
-		AC_DEFINE(OPT_PERL)
+		AC_DEFINE(OPT_PERL,1,[Define to 1 if we should compile-in the perl extension])
 
 		EXTRAOBJS="$EXTRAOBJS perl\$o"
 		BUILTSRCS="$BUILTSRCS perl.c"
