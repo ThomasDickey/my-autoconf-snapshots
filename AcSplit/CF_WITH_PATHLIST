@@ -1,4 +1,4 @@
-dnl CF_WITH_PATHLIST version: 8 updated: 2012/09/29 15:04:19
+dnl CF_WITH_PATHLIST version: 9 updated: 2012/10/18 05:05:24
 dnl ----------------
 dnl Process an option specifying a list of colon-separated paths.
 dnl
@@ -19,7 +19,7 @@ cf_dst_path=
 for cf_src_path in $withval
 do
   CF_PATH_SYNTAX(cf_src_path)
-  test -n "$cf_dst_path" && cf_dst_path="${cf_dst_path}:"
+  test -n "$cf_dst_path" && cf_dst_path="${cf_dst_path}$PATH_SEPARATOR"
   cf_dst_path="${cf_dst_path}${cf_src_path}"
 done
 IFS="$ac_save_ifs"
@@ -35,7 +35,17 @@ esac
 cf_dst_path=`echo "$cf_dst_path" | sed -e 's/\\\\/\\\\\\\\/g'`
 ])
 
-eval $3="$cf_dst_path"
+# This may use the prefix/exec_prefix symbols which will only yield "NONE"
+# so we have to check/work around.  We do prefer the result of "eval"...
+eval cf_dst_eval="$cf_dst_path"
+case "x$cf_dst_eval" in #(vi
+xNONE*) #(vi
+	$3=$cf_dst_path
+	;;
+*)
+	$3="$cf_dst_eval"
+	;;
+esac
 AC_SUBST($3)dnl
 
 ])dnl
