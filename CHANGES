@@ -1,3 +1,14 @@
+2012-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_VERSION:
+	"\|" alternation is an ERE feature; work around for sed's BRE's
+
+	* AcSplit/CF_WITH_PATHLIST:
+	if the result expands to ${prefix} or ${exec_prefix}, autoconf treats those
+	specially and will have "NONE" for their value until config.status works.
+	check for this case and suppress the recent change for "eval", needed for
+	usage in vile.
+
 2012-10-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_VERSION:
