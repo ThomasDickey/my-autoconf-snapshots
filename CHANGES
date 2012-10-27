@@ -1,3 +1,13 @@
+2012-10-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	check for cross-compiling, provide a suitable message
+
+2012-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_CHECK_SIZE_T, AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	add 3rd parameter for AC_DEFINE
+
 2012-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_VERSION:

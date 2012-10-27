@@ -1,4 +1,4 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 11 updated: 2009/12/20 12:50:49
+dnl CF_MAWK_RUN_FPE_TESTS version: 13 updated: 2012/10/27 08:21:53
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
@@ -31,7 +31,7 @@ then
 fi
 ])
 
-test "$cf_cv_use_sa_sigaction" = yes && AC_DEFINE(HAVE_SIGACTION_SA_SIGACTION)
+test "$cf_cv_use_sa_sigaction" = yes && AC_DEFINE(HAVE_SIGACTION_SA_SIGACTION,1,[Define to 1 if we should use sigaction.sa_sigaction,cf_cv_use_sa_sigaction])
 
 cf_FPE_DEFS="$CPPFLAGS"
 cf_FPE_LIBS="$LIBS"
@@ -67,7 +67,7 @@ echo "FPE_CHECK status=$cf_status" >&AC_FD_CC
 case $cf_status in
    0)  ;;  # good news do nothing
    3)      # reasonably good news
-    AC_DEFINE(FPE_TRAPS_ON)
+    AC_DEFINE(FPE_TRAPS_ON,1,[Define to 1 if floating-point exception traps are enabled])
     CF_MAWK_FPE_SIGINFO ;;
 
    1|2|4)   # bad news have to turn off traps
@@ -77,11 +77,13 @@ case $cf_status in
 
     if test "$cf_have_ieeefp_h" = 1 && test "$cf_have_fpsetmask" = 1 ; then
 	AC_DEFINE(FPE_TRAPS_ON)
-	AC_DEFINE(USE_IEEEFP_H)
+	AC_DEFINE(USE_IEEEFP_H,1,[Define to 1 we should include ieeefp.h])
 	AC_DEFINE_UNQUOTED([TURN_ON_FPE_TRAPS],
-	    [fpsetmask(fpgetmask() | (FP_X_DZ|FP_X_OFL))])
+	    [fpsetmask(fpgetmask() | (FP_X_DZ|FP_X_OFL))],
+		[Define to expression for turning on FPE traps])
 	AC_DEFINE_UNQUOTED([TURN_OFF_FPE_TRAPS],
-	    [fpsetmask(fpgetmask() & ~(FP_X_DZ|FP_X_OFL))])
+	    [fpsetmask(fpgetmask() & ~(FP_X_DZ|FP_X_OFL))],
+		[Define to expression for turning off FPE traps])
 
 	CF_MAWK_FPE_SIGINFO
 
@@ -102,7 +104,7 @@ CF_EOF
 	       AC_MSG_RESULT([no bug])
 	    else
 	       AC_MSG_RESULT([buggy -- will use work around])
-	       AC_DEFINE_UNQUOTED([HAVE_STRTOD_OVF_BUG],1)
+	       AC_DEFINE_UNQUOTED(HAVE_STRTOD_OVF_BUG,1,[Define to 1 if strtod has overflow bug])
 	    fi
 	else
 		AC_MSG_RESULT([$cf_FPE_SRCS failed to compile])
@@ -147,11 +149,20 @@ fi
     ;;
 
   *)  # some sort of disaster
-    cat 1>&2 <<-'EOF'
-    The program `fpe_check' compiled from $cf_FPE_SRCS seems to have
+    if test "x$cross_compiling" = xno
+	then
+    cat 1>&2 <<-EOF
+    The program \`fpe_check' compiled from $cf_FPE_SRCS seems to have
     unexpectly blown up.  Please report this to CF_MAWK_MAINTAINER
 EOF
     # quit or not ???
+	else
+    cat 1>&2 <<-EOF
+    The program \`fpe_check' will not work for cross-compiling.
+    You can continue with the build and the resulting mawk will be
+    useable, but getting FPE_TRAPS_ON correct eventually is best.
+EOF
+	fi
     ;;
 esac
 
