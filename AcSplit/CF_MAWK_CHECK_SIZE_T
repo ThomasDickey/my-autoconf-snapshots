@@ -1,4 +1,4 @@
-dnl CF_MAWK_CHECK_SIZE_T version: 2 updated: 2009/07/23 05:15:39
+dnl CF_MAWK_CHECK_SIZE_T version: 3 updated: 2012/10/25 20:41:47
 dnl --------------------
 dnl Check if size_t is found in the given header file, unless we have already
 dnl found it.
@@ -18,7 +18,7 @@ AC_CACHE_VAL(cf_cv_size_t_$2,[
 	fi
 ])
 	if test "x$cf_cv_size_t_$2" = xyes ; then
-		AC_DEFINE_UNQUOTED($2,1)
+		AC_DEFINE_UNQUOTED($2,1,[Define to 1 if we have $1 header])
 		cf_mawk_check_size_t=yes
 	fi
 fi

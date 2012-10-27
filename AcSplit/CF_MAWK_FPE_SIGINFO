@@ -1,4 +1,4 @@
-dnl CF_MAWK_FPE_SIGINFO version: 7 updated: 2009/12/18 05:50:47
+dnl CF_MAWK_FPE_SIGINFO version: 8 updated: 2012/10/25 20:41:47
 dnl -------------------
 dnl SYSv and Solaris FPE checks
 AC_DEFUN([CF_MAWK_FPE_SIGINFO],
@@ -11,6 +11,6 @@ then
 	:
     else
 	dnl FIXME - look for sigprocmask if we have sigaction
-	AC_DEFINE(NOINFO_SIGFPE)
+	AC_DEFINE(NOINFO_SIGFPE,1,[Define to 1 if we cannot use SYSv siginfo])
    fi
 fi])
