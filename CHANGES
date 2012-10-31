@@ -1,3 +1,8 @@
+2012-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND: fixes for autoheader
+	document parameter
+
 2012-10-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_RUN_FPE_TESTS:

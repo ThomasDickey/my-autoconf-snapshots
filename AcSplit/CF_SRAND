@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 10 updated: 2011/06/12 19:28:32
+dnl CF_SRAND version: 11 updated: 2012/10/31 07:00:16
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -6,6 +6,10 @@ dnl which usually is only 16-bits.
 dnl
 dnl On MirOS, use arc4random_push() and arc4random().
 dnl Some systems support an asymmetric variation of this interface.
+dnl
+dnl $1 = optional prefix for resulting shell variables.  The default "my_"
+dnl      gives $my_srand and $my_rand to the caller, as well as MY_RAND_MAX.
+dnl      These are all AC_SUBST'd and AC_DEFINE'd.
 AC_DEFUN([CF_SRAND],[
 AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
@@ -66,7 +70,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 	    AC_MSG_RESULT($cf_bsd_stdlib_h)
 		if test "$cf_bsd_stdlib_h" = yes
 		then
-			AC_DEFINE(HAVE_BSD_STDLIB_H)
+			AC_DEFINE(HAVE_BSD_STDLIB_H,1,[Define to 1 if bsd/stdlib.h header should be used])
 		else
 			AC_MSG_CHECKING(if <bsd/random.h> should be included)
 			AC_TRY_COMPILE([#include <bsd/random.h>],
@@ -80,7 +84,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 			AC_MSG_RESULT($cf_bsd_random_h)
 			if test "$cf_bsd_random_h" = yes
 			then
-				AC_DEFINE(HAVE_BSD_RANDOM_H)
+				AC_DEFINE(HAVE_BSD_RANDOM_H,1,[Define to 1 if bsd/random.h header should be used])
 			else
 				AC_MSG_WARN(no header file found for arc4random)
 			fi
@@ -91,8 +95,8 @@ if test "$cf_cv_srand_func" != unknown ; then
 	CF_SRAND_PARSE($cf_func,cf_srand_func,cf_rand_func)
 
 	CF_UPPER(cf_rand_max,ifelse($1,,my_,$1)rand_max)
-	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)srand,$cf_srand_func)
-	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)rand, $cf_rand_func)
-	AC_DEFINE_UNQUOTED([$]cf_rand_max, $cf_cv_rand_max)
+	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)srand,$cf_srand_func,[Define to the name for the srand function])
+	AC_DEFINE_UNQUOTED(ifelse($1,,my_,$1)rand, $cf_rand_func,[Define to the name for the rand function])
+	AC_DEFINE_UNQUOTED([$]cf_rand_max, $cf_cv_rand_max,[Define to the name for the RAND_MAX constant])
 fi
 ])dnl
