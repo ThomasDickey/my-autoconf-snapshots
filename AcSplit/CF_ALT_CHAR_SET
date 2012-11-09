@@ -1,4 +1,4 @@
-dnl CF_ALT_CHAR_SET version: 7 updated: 2010/10/23 15:54:49
+dnl CF_ALT_CHAR_SET version: 8 updated: 2012/11/08 20:57:52
 dnl ---------------
 dnl Check for existence of alternate-character-set support in curses, so we
 dnl can decide to use it for box characters.
@@ -18,5 +18,5 @@ do
 done
 	])
 AC_MSG_RESULT($cf_cv_alt_char_set)
-test $cf_cv_alt_char_set != no && AC_DEFINE_UNQUOTED(ALT_CHAR_SET,$cf_cv_alt_char_set)
+test $cf_cv_alt_char_set != no && AC_DEFINE_UNQUOTED(ALT_CHAR_SET,$cf_cv_alt_char_set,[Define to 1 if if curses supports alternate-character set])
 ])dnl

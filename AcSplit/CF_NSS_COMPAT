@@ -1,4 +1,4 @@
-dnl CF_NSS_COMPAT version: 3 updated: 2010/06/20 09:24:28
+dnl CF_NSS_COMPAT version: 4 updated: 2012/11/08 20:57:52
 dnl -------------
 dnl Check for NSS compatible SSL libraries
 dnl $1 = the [optional] directory in which the library may be found
@@ -65,7 +65,7 @@ AC_TRY_COMPILE([
 	[cf_ssl_incl=yes],
 	[cf_ssl_incl=no])
 AC_MSG_RESULT($cf_ssl_incl)
-test "$cf_ssl_incl" = yes && AC_DEFINE(USE_NSS_COMPAT_INCL)
+test "$cf_ssl_incl" = yes && AC_DEFINE(USE_NSS_COMPAT_INCL,1,[Define to 1 if we should use nss compatibility header])
 fi
 
 AC_MSG_CHECKING(if we can link to NSS compilant library)
@@ -82,8 +82,8 @@ AC_TRY_LINK([
 	[cf_ssl_library=no])
 AC_MSG_RESULT($cf_ssl_library)
 if test "$cf_ssl_library" = yes ; then
-	AC_DEFINE(USE_SSL)
-	AC_DEFINE(USE_X509_SUPPORT)
+	AC_DEFINE(USE_SSL,1,[Define to 1 if we should use SSL])
+	AC_DEFINE(USE_X509_SUPPORT,1,[Define to 1 if the SSL library provides X509 support])
 else
 	AC_MSG_ERROR(Cannot link with NSS compilant libraries)
 fi

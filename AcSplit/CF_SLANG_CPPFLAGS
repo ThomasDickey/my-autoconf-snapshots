@@ -1,4 +1,4 @@
-dnl CF_SLANG_CPPFLAGS version: 9 updated: 2010/04/03 15:30:05
+dnl CF_SLANG_CPPFLAGS version: 10 updated: 2012/11/08 20:57:52
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
@@ -29,7 +29,7 @@ AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 
 if test "x$cf_cv_$1_header" != xno
 then
-	AC_DEFINE(USE_SLANG)
+	AC_DEFINE(USE_SLANG,1,[Define to 1 if we should use s-lang library])
 
 	CF_DIRNAME(cf_incdir,$cf_cv_$1_header)
 

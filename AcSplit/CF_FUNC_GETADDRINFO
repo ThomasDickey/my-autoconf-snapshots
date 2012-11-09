@@ -1,4 +1,4 @@
-dnl CF_FUNC_GETADDRINFO version: 7 updated: 2010/10/23 15:52:32
+dnl CF_FUNC_GETADDRINFO version: 8 updated: 2012/11/08 20:57:52
 dnl -------------------
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
 AC_DEFUN([CF_FUNC_GETADDRINFO],[
@@ -84,7 +84,7 @@ int main()
 [cf_cv_getaddrinfo=unknown])
 ])
 if test "$cf_cv_getaddrinfo" = yes ; then
-	AC_DEFINE(HAVE_GAI_STRERROR)
-	AC_DEFINE(HAVE_GETADDRINFO)
+	AC_DEFINE(HAVE_GAI_STRERROR,1,[Define to 1 if we have gai_strerror function])
+	AC_DEFINE(HAVE_GETADDRINFO,1,[Define to 1 if we have getaddrinfo function])
 fi
 ])dnl

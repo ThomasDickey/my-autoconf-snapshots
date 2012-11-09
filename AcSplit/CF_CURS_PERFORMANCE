@@ -1,4 +1,4 @@
-dnl CF_CURS_PERFORMANCE version: 4 updated: 2010/10/23 15:54:49
+dnl CF_CURS_PERFORMANCE version: 5 updated: 2012/11/08 20:57:52
 dnl -------------------
 dnl Solaris 2.x curses provides a "performance" tradeoff according to whether
 dnl CURS_PERFORMANCE is defined.  If defined, the implementation defines macros
@@ -26,5 +26,5 @@ AC_CACHE_VAL(cf_cv_curs_performance,[
 #endif
 	],[cf_cv_curs_performance=yes])])])
 AC_MSG_RESULT($cf_cv_curs_performance)
-test $cf_cv_curs_performance = yes && AC_DEFINE(CURS_PERFORMANCE)
+test $cf_cv_curs_performance = yes && AC_DEFINE(CURS_PERFORMANCE,1,[Define to 1 ifr curses performance tradeoff available])
 ])dnl

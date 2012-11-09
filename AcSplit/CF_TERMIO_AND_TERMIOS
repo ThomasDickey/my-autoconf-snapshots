@@ -1,4 +1,4 @@
-dnl CF_TERMIO_AND_TERMIOS version: 2 updated: 1997/08/28 20:22:00
+dnl CF_TERMIO_AND_TERMIOS version: 3 updated: 2012/11/08 20:57:52
 dnl ---------------------
 dnl Check if including both termio.h and termios.h die like on DG.UX
 AC_DEFUN([CF_TERMIO_AND_TERMIOS],
@@ -16,5 +16,5 @@ AC_CACHE_VAL(cf_cv_termio_and_termios,[
     [cf_cv_termio_and_termios=yes],
     [cf_cv_termio_and_termios=no])])
 AC_MSG_RESULT($cf_cv_termio_and_termios)
-test $cf_cv_termio_and_termios = no && AC_DEFINE(TERMIO_AND_TERMIOS)
+test $cf_cv_termio_and_termios = no && AC_DEFINE(TERMIO_AND_TERMIOS,1,[Define to 1 if we can include termio.h and termios.h])
 ])dnl

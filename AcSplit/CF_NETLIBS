@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 8 updated: 2011/10/03 05:24:34
+dnl CF_NETLIBS version: 9 updated: 2012/11/08 20:57:52
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -85,7 +85,7 @@ esac
 
 case $cf_cv_netlibs in #(vi
 *ws2_32*)
-	AC_DEFINE(USE_WINSOCK2_H)
+	AC_DEFINE(USE_WINSOCK2_H,1,[Define to 1 if we should include winsock2.h])
 	;;
 esac
 

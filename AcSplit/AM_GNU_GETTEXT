@@ -1,20 +1,18 @@
-dnl AM_GNU_GETTEXT version: 12 updated: 2010/06/19 07:02:11
+dnl AM_GNU_GETTEXT version: 13 updated: 2012/11/09 05:47:26
 dnl --------------
 dnl Usage: Just like AM_WITH_NLS, which see.
 AC_DEFUN([AM_GNU_GETTEXT],
   [AC_REQUIRE([AC_PROG_MAKE_SET])dnl
-   AC_REQUIRE([AC_PROG_CC])dnl
    AC_REQUIRE([AC_CANONICAL_HOST])dnl
    AC_REQUIRE([AC_PROG_RANLIB])dnl
-   AC_REQUIRE([AC_ISC_POSIX])dnl
    AC_REQUIRE([AC_HEADER_STDC])dnl
-   AC_REQUIRE([AC_C_CONST])dnl
    AC_REQUIRE([AC_C_INLINE])dnl
    AC_REQUIRE([AC_TYPE_OFF_T])dnl
    AC_REQUIRE([AC_TYPE_SIZE_T])dnl
    AC_REQUIRE([AC_FUNC_ALLOCA])dnl
    AC_REQUIRE([AC_FUNC_MMAP])dnl
    AC_REQUIRE([jm_GLIBC21])dnl
+   AC_REQUIRE([CF_PROG_CC])dnl
 
    AC_CHECK_HEADERS([argz.h limits.h locale.h nl_types.h malloc.h stddef.h \
 stdlib.h string.h unistd.h sys/param.h])
