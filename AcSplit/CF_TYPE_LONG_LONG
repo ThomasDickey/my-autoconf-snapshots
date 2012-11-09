@@ -1,4 +1,4 @@
-dnl CF_TYPE_LONG_LONG version: 2 updated: 2010/09/23 04:08:01
+dnl CF_TYPE_LONG_LONG version: 3 updated: 2012/11/08 20:57:52
 dnl -----------------
 dnl Check for long long type.
 AC_DEFUN([CF_TYPE_LONG_LONG],[
@@ -29,6 +29,6 @@ _CFEOF
 ])
 
 if test "$cf_cv_type_long_long" = yes ; then
-	AC_DEFINE(HAVE_LONG_LONG)
+	AC_DEFINE(HAVE_LONG_LONG,1,[Define to 1 if compiler supports long long type])
 fi
 ])dnl

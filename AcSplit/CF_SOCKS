@@ -1,4 +1,4 @@
-dnl CF_SOCKS version: 8 updated: 2010/05/05 20:27:55
+dnl CF_SOCKS version: 9 updated: 2012/11/08 20:57:52
 dnl --------
 dnl Check for socks library
 dnl $1 = the [optional] directory in which the library may be found
@@ -12,16 +12,16 @@ AC_DEFUN([CF_SOCKS],[
       socks)
 
   if test "x$cf_cv_find_linkage_socks" = "xyes" ; then
-    AC_DEFINE(SOCKS)
+    AC_DEFINE(SOCKS,1,[Define to 1 if we are using socks library])
 
-    AC_DEFINE(accept,Raccept)
-    AC_DEFINE(bind,Rbind)
-    AC_DEFINE(connect,Rconnect)
-    AC_DEFINE(getpeername,Rgetpeername)
-    AC_DEFINE(getsockname,Rgetsockname)
-    AC_DEFINE(listen,Rlisten)
-    AC_DEFINE(recvfrom,Rrecvfrom)
-    AC_DEFINE(select,Rselect)
+    AC_DEFINE(accept,Raccept,[Define to override function name if using socks library])
+    AC_DEFINE(bind,Rbind,[Define to override function name if using socks library])
+    AC_DEFINE(connect,Rconnect,[Define to override function name if using socks library])
+    AC_DEFINE(getpeername,Rgetpeername,[Define to override function name if using socks library])
+    AC_DEFINE(getsockname,Rgetsockname,[Define to override function name if using socks library])
+    AC_DEFINE(listen,Rlisten,[Define to override function name if using socks library])
+    AC_DEFINE(recvfrom,Rrecvfrom,[Define to override function name if using socks library])
+    AC_DEFINE(select,Rselect,[Define to override function name if using socks library])
   else
     AC_MSG_ERROR(cannot link with socks library)
   fi

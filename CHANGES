@@ -1,3 +1,14 @@
+2012-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_GNU_GETTEXT:
+	remove dependencies on AC_ISC_POSIX, AC_C_CONST and replace AC_PROG_CC
+	with CF_PROG_CC (essentially discarding pre-ANSI stuff).
+
+2012-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_FUNC_SIGACTION, AcSplit/CF_GNUTLS, AcSplit/CF_INET_ADDR, AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NETLIBS, AcSplit/CF_NGROUPS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_REMOVE_BROKEN, AcSplit/CF_SET_ERRNO, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_UNIX_DEFS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SSL, AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERMIO_AND_TERMIOS, AcSplit/CF_TM_GMTOFF, AcSplit/CF_TTYTYPE, AcSplit/CF_TYPE_LONG_LONG, AcSplit/CF_WIDEC_CURSES, AcSplit/CF_WITH_IDNA:
+	add third parameter for autoheader
+
 2012-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND: fixes for autoheader

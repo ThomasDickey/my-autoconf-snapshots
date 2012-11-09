@@ -1,4 +1,4 @@
-dnl CF_SET_ERRNO version: 4 updated: 2010/10/23 15:52:32
+dnl CF_SET_ERRNO version: 5 updated: 2012/11/08 20:57:52
 dnl ------------
 dnl Check if 'errno' is declared in a fashion that lets us set it.
 AC_DEFUN([CF_SET_ERRNO],
@@ -19,5 +19,5 @@ int main()
 		[cf_cv_set_errno=maybe],
 		[cf_cv_set_errno=no])])
 ])
-test "$cf_cv_set_errno" != no && AC_DEFINE(CAN_SET_ERRNO)
+test "$cf_cv_set_errno" != no && AC_DEFINE(CAN_SET_ERRNO,1,[Define to 1 if we can set errno])
 ])dnl

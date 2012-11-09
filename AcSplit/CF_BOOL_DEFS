@@ -1,4 +1,4 @@
-dnl CF_BOOL_DEFS version: 4 updated: 2010/10/23 15:54:49
+dnl CF_BOOL_DEFS version: 5 updated: 2012/11/08 20:57:52
 dnl ------------
 dnl Check if curses.h defines TRUE/FALSE (it does under SVr4).
 AC_DEFUN([CF_BOOL_DEFS],
@@ -12,7 +12,7 @@ AC_TRY_COMPILE([
 	[cf_cv_bool_defs=no])])
 AC_MSG_RESULT($cf_cv_bool_defs)
 if test "$cf_cv_bool_defs" = no ; then
-	AC_DEFINE(TRUE,(1))
-	AC_DEFINE(FALSE,(0))
+	AC_DEFINE(TRUE,(1),[Define to TRUE if curses.h does not define])
+	AC_DEFINE(FALSE,(0),[Define to FALSE if curses.h does not define])
 fi
 ])dnl

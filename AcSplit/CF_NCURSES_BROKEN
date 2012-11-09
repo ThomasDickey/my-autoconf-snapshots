@@ -1,4 +1,4 @@
-dnl CF_NCURSES_BROKEN version: 7 updated: 2010/10/23 15:54:49
+dnl CF_NCURSES_BROKEN version: 8 updated: 2012/11/08 20:57:52
 dnl -----------------
 dnl Check for pre-1.9.9g ncurses (among other problems, the most obvious is
 dnl that color combinations don't work).
@@ -22,7 +22,7 @@ AC_TRY_COMPILE([
 AC_MSG_RESULT($cf_cv_ncurses_broken)
 if test "$cf_cv_ncurses_broken" = yes ; then
 	AC_MSG_WARN(hmm... you should get an up-to-date version of ncurses)
-	AC_DEFINE(NCURSES_BROKEN)
+	AC_DEFINE(NCURSES_BROKEN,1,[Define to 1 if you have an obsolete version of ncurses])
 fi
 fi
 ])dnl

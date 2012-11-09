@@ -1,4 +1,4 @@
-dnl CF_WIDEC_CURSES version: 4 updated: 2010/10/23 15:54:49
+dnl CF_WIDEC_CURSES version: 5 updated: 2012/11/08 20:57:52
 dnl ---------------
 dnl Check for curses implementations that can handle wide-characters
 AC_DEFUN([CF_WIDEC_CURSES],
@@ -17,7 +17,7 @@ AC_TRY_LINK([
 ])
 
 if test "$cf_cv_widec_curses" = yes ; then
-	AC_DEFINE(WIDEC_CURSES)
+	AC_DEFINE(WIDEC_CURSES,1,[Define to 1 if curses supports wide characters])
 
 	# This is needed on Tru64 5.0 to declare mbstate_t
 	AC_CACHE_CHECK(if we must include wchar.h to declare mbstate_t,cf_cv_widec_mbstate,[
@@ -35,11 +35,11 @@ if test "$cf_cv_widec_curses" = yes ; then
 [cf_cv_widec_mbstate=unknown])])])
 
 if test "$cf_cv_widec_mbstate" = yes ; then
-	AC_DEFINE(NEED_WCHAR_H)
+	AC_DEFINE(NEED_WCHAR_H,1,[Define to 1 if we must include wchar.h])
 fi
 
 if test "$cf_cv_widec_mbstate" != unknown ; then
-	AC_DEFINE(HAVE_MBSTATE_T)
+	AC_DEFINE(HAVE_MBSTATE_T,1,[Define to 1 if we have mbstate_t type])
 fi
 
 fi

@@ -1,4 +1,4 @@
-dnl CF_REMOVE_BROKEN version: 3 updated: 1997/11/23 14:49:44
+dnl CF_REMOVE_BROKEN version: 4 updated: 2012/11/08 20:57:52
 dnl ----------------
 dnl Check for broken definition of 'remove()'.  This is (in particular) broken
 dnl on the older version of SCO (I'd cite version if I knew where to look) by
@@ -25,5 +25,5 @@ AC_TRY_LINK(
 	])
 ])
 AC_MSG_RESULT($cf_cv_baddef_remove)
-test "$cf_cv_baddef_remove" != no && AC_DEFINE(NEED_REMOVE)
+test "$cf_cv_baddef_remove" != no && AC_DEFINE(NEED_REMOVE,1,[Define to 1 if we should use remove rather than unlink])
 ])dnl

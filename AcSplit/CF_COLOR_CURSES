@@ -1,4 +1,4 @@
-dnl CF_COLOR_CURSES version: 7 updated: 2010/10/23 15:54:49
+dnl CF_COLOR_CURSES version: 8 updated: 2012/11/08 20:57:52
 dnl ---------------
 dnl Check if curses supports color.  (Note that while SVr3 curses supports
 dnl color, it does this differently from SVr4 curses; more work would be needed
@@ -23,7 +23,7 @@ AC_CACHE_VAL(cf_cv_color_curses,[
 	])
 AC_MSG_RESULT($cf_cv_color_curses)
 if test $cf_cv_color_curses = yes ; then
-	AC_DEFINE(COLOR_CURSES)
-	test ".$cf_cv_ncurses_broken" != .yes && AC_DEFINE(HAVE_GETBKGD)
+	AC_DEFINE(COLOR_CURSES,1,[Define to 1 if if curses supports color attributes])
+	test ".$cf_cv_ncurses_broken" != .yes && AC_DEFINE(HAVE_GETBKGD,1,[Define to 1 if curses has getbkgd function])
 fi
 ])dnl

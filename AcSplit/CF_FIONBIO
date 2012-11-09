@@ -1,4 +1,4 @@
-dnl CF_FIONBIO version: 2 updated: 1998/02/24 06:51:46
+dnl CF_FIONBIO version: 3 updated: 2012/11/08 20:57:52
 dnl ----------
 dnl Check for availability of fcntl versus ioctl(,FIONBIO,).  Lynx uses this
 dnl for Sequent (ptx), and it is needed for OS/2 EMX.
@@ -25,5 +25,5 @@ AC_TRY_LINK([
 	[cf_cv_fionbio=fcntl],
 	[cf_cv_fionbio=unknown])])
 ])
-test "$cf_cv_fionbio" = "fcntl" && AC_DEFINE(USE_FCNTL)
+test "$cf_cv_fionbio" = "fcntl" && AC_DEFINE(USE_FCNTL,1,[Define to 1 if we should use fcntl])
 ])dnl
