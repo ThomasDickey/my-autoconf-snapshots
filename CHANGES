@@ -1,3 +1,9 @@
+2012-11-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INCLUDE_DIRS:
+	modify so that this puts new variables before $CPPFLAGS, in case someone
+	has added -I options which conflict (report by Vassili Courzakis).
+
 2012-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_GNU_GETTEXT:
