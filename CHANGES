@@ -1,3 +1,22 @@
+2013-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_DESKTOP_CATEGORY:
+	improve this a little more by making the $4 really optional.
+
+	* AcSplit/CF_WITH_DESKTOP_CATEGORY:
+	add checks for failure of the "auto" default setting.  If building on
+	a server without a desktop (which is what packagers might do...) there
+	are no desktop files to inspect.  Also, since none of the first parameters
+	does exactly what I need for a fallback for this macro, provide that as
+	the 4th parameter.  From report by Julien Cristau.
+
+2012-12-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	move assignment to EXTRA_CFLAGS of -no-cpp-precomp into compile-check.
+	This was added 2001/12/02 for Darwin, and reportedly works only for Apple's
+	compiler.  However it works for the MacPorts configuration as well.
+
 2012-11-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INCLUDE_DIRS:
