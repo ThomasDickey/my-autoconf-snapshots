@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20130101
+MANIFEST for my-autoconf, version t20130126
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -321,6 +321,7 @@ AcSplit/CF_PROG_CC_U_D          macro to test if I can use -U to pre-undefine a 
 AcSplit/CF_PROG_EGREP           adapted from autoconf 2.57 (AC_PROG_EGREP comes from 2.53)
 AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
 AcSplit/CF_PROG_GNAT            check for gnatmake, ensure that it is complete
+AcSplit/CF_PROG_GROFF           check for groff availability versus nroff
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
 AcSplit/CF_PROG_LINT            find the "lint" program
@@ -487,6 +488,7 @@ AcSplit/CF_WITH_PURIFY          configure --with-purify
 AcSplit/CF_WITH_REL_VERSION     allow release-version to be altered (ncurses)
 AcSplit/CF_WITH_SYMLINK         handle --with-XXX-symlink option, originally in xterm, for vile, etc.,
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
+AcSplit/CF_WITH_SYSTYPE         the --with-systype option, works for mockups (compare with --host)
 AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_WITH_WARNINGS        make option for gcc warnings

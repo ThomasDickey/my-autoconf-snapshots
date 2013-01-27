@@ -1,4 +1,4 @@
-dnl CF_MAKE_DOCS version: 1 updated: 2012/04/29 11:02:32
+dnl CF_MAKE_DOCS version: 2 updated: 2013/01/02 20:04:08
 dnl ------------
 dnl $1 = name(s) to generate rules for
 dnl $2 = suffix of corresponding manpages used as input.
@@ -15,7 +15,7 @@ cat >>$cf_output <<"CF_EOF"
 .SUFFIXES : .html .$2 .man .ps .pdf .txt
 
 .$2.html :
-	GROFF_NO_SGR=stupid [$](SHELL) -c "tbl [$]*.$2 | groff -Thtml -man" >[$]@
+	GROFF_NO_SGR=stupid [$](SHELL) -c "tbl [$]*.$2 | groff -P -o0 -I$*_ -Thtml -man" >[$]@
 
 .$2.ps :
 	[$](SHELL) -c "tbl [$]*.$2 | groff -man" >[$]@

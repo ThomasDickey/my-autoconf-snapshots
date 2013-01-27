@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 71 updated: 2012/12/22 19:34:47
+dnl CF_SHARED_OPTS version: 72 updated: 2013/01/26 16:26:12
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -120,6 +120,14 @@ CF_EOF
 		if test $cf_cv_ldflags_search_paths_first = yes; then
 			LDFLAGS="$LDFLAGS -Wl,-search_paths_first"
 		fi
+		;;
+	hpux[[7-8]]*) #(vi
+		# HP-UX 8.07 ld lacks "+b" option used for libdir search-list 
+		if test "$GCC" != yes; then
+			CC_SHARED_OPTS='+Z'
+		fi
+		MK_SHARED_LIB='${LD} -b -o $[@]'
+		INSTALL_LIB="-m 555"
 		;;
 	hpux*) #(vi
 		# (tested with gcc 2.7.2 -- I don't have c89)
