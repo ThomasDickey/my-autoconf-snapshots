@@ -1,3 +1,11 @@
+2013-02-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES: add TERMINFO_DIRS symbol
+
+2013-01-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ENCODINGS_DIR: ci-aclocal generated header
+
 2013-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
