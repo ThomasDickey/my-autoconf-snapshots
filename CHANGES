@@ -1,3 +1,11 @@
+2013-02-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_LIBS:
+	modify to allow external script to set $cf_term_lib and/or $cf_curs_lib
+
+	* AcSplit/CF_MAN_PAGES:
+	ensure that the manpage substitutions have at least "no default value"
+
 2013-02-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAN_PAGES: add TERMINFO_DIRS symbol
