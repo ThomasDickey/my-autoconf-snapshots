@@ -1,3 +1,14 @@
+2013-02-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INTEL_COMPILER, AcSplit/CF_XOPEN_SOURCE:
+	$host_os needs AC_CANONICAL_HOST
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
+	* config.sub, config.guess: 2013-02-04
+
 2013-02-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_LIBS:
