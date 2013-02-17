@@ -1,4 +1,4 @@
-dnl CF_WITH_ENCODINGS_DIR version: 1 updated: 2013/01/28 19:04:42
+dnl CF_WITH_ENCODINGS_DIR version: 2 updated: 2013/02/16 20:11:32
 dnl ---------------------
 dnl Configure option to specify the location of encodings.dir, for programs
 dnl that must read it directly.
@@ -35,6 +35,7 @@ xauto|xyes|xno)
 	;;
 esac
 AC_MSG_RESULT($ENCODINGS_DIR_FILE)
+test $ENCODINGS_DIR_FILE = unknown && ENCODINGS_DIR_FILE=
 AC_SUBST(ENCODINGS_DIR_FILE)
 AC_DEFINE_UNQUOTED(ENCODINGS_DIR_FILE, "$ENCODINGS_DIR_FILE")
 ])dnl

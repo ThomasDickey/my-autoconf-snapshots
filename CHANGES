@@ -1,3 +1,8 @@
+2013-02-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ENCODINGS_DIR:
+	define an empty string if we found no encodings.dir file
+
 2013-02-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INTEL_COMPILER, AcSplit/CF_XOPEN_SOURCE:
