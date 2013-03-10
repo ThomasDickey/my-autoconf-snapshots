@@ -1,3 +1,17 @@
+2013-03-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: typo
+
+	* AcSplit/CF_LIB_RULES:
+	mods to permit building libncurses++ as shared library
+
+2013-03-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ACVERSION_CHECK:
+	add Dave Becket's change from byacc package to work around breakage introduced
+	in 1999 by Demaille and compounded in 2007 by Blake.  This is so the Debian
+	packagers can more/less use "newer" autoconf.
+
 2013-02-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ENCODINGS_DIR:

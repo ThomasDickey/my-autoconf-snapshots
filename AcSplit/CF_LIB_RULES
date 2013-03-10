@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 67 updated: 2012/10/06 13:36:35
+dnl CF_LIB_RULES version: 68 updated: 2013/03/09 16:13:05
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -53,6 +53,8 @@ do
 		for cf_item in $cf_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
+			cf_libname=$cf_dir
+			test "$cf_dir" = c++ && cf_libname=ncurses++
 			if test $cf_item = shared ; then
 			if test "$cf_cv_do_symlinks" = yes ; then
 				case "$cf_cv_shlib_version" in #(vi
@@ -112,17 +114,17 @@ do
 			case $cf_cv_shlib_version in #(vi
 			cygdll) #(vi
 				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
-				Libs_To_Make="$Libs_To_Make ../lib/cyg${cf_dir}${cf_cygsuf}"
+				Libs_To_Make="$Libs_To_Make ../lib/cyg${cf_libname}${cf_cygsuf}"
 				continue
 				;;
 			mingw)
 				cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
-				Libs_To_Make="$Libs_To_Make ../lib/lib${cf_dir}${cf_cygsuf}"
+				Libs_To_Make="$Libs_To_Make ../lib/lib${cf_libname}${cf_cygsuf}"
 				continue
 				;;
 			esac
 			fi
-			Libs_To_Make="$Libs_To_Make ../lib/${cf_prefix}${cf_dir}${cf_suffix}"
+			Libs_To_Make="$Libs_To_Make ../lib/${cf_prefix}${cf_libname}${cf_suffix}"
 		done
 
 		if test $cf_dir = ncurses ; then
@@ -158,6 +160,12 @@ do
 			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib.* //'`
 		fi
 
+		if test $cf_dir = c++; then
+			if test "x$with_shared_cxx" != xyes; then
+				Libs_To_Make='../lib/$(LIBNAME)'
+			fi
+		fi
+
 		sed -e "s%@Libs_To_Make@%$Libs_To_Make%" \
 		    -e "s%@SHARED_LIB@%$SHARED_LIB%" \
 			$cf_dir/Makefile >$cf_dir/Makefile.out
@@ -172,8 +180,15 @@ do
 			cf_subdirs=
 			for cf_item in $cf_LIST_MODELS
 			do
+
 			echo "Appending rules for ${cf_item} model (${cf_dir}: ${cf_subset})"
 			CF_UPPER(cf_ITEM,$cf_item)
+
+			CXX_MODEL=$cf_ITEM
+			if test "$CXX_MODEL" = SHARED; then
+				test "x$with_shared_cxx" = xno && CXX_MODEL=NORMAL
+			fi
+
 			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
 			CF_OBJ_SUBDIR($cf_item,cf_subdir)
 
@@ -191,6 +206,8 @@ do
 					cf_libname=$TICS_LIB_SUFFIX
 					;;
 				esac
+			elif test $cf_dir = c++ ; then
+				cf_libname=libncurses++$LIB_SUFFIX
 			else
 				cf_libname=${cf_libname}$LIB_SUFFIX
 			fi
@@ -242,6 +259,7 @@ do
 				name=${cf_libname}${cf_dir_suffix} \
 				traces=$LIB_TRACING \
 				MODEL=$cf_ITEM \
+				CXX_MODEL=$CXX_MODEL \
 				model=$cf_subdir \
 				prefix=$cf_prefix \
 				suffix=$cf_suffix \
