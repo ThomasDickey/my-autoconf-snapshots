@@ -1,3 +1,12 @@
+2013-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	refactored to make the differences for mingw/Linux more manageable, and used
+	that to help bridge shared libraries for mingw/Linux/OSX.
+
+	* AcSplit/CF_LIB_RULES:
+	build-fix for OS X to handle the CXX-shared feature (report by Christian Ebert)
+
 2013-03-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: typo
