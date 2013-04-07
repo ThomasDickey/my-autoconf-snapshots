@@ -1,3 +1,11 @@
+2013-04-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_LIBTOOL_VERSION, AcSplit/CF_FORGET_TOOL, AcSplit/CF_LIBTOOL_VERSION:
+	ci-aclocal generated header
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	modify to work around OS X's unrelated "libtool" program
+
 2013-03-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:

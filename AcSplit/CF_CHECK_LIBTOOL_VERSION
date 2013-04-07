@@ -1,0 +1,20 @@
+dnl CF_CHECK_LIBTOOL_VERSION version: 1 updated: 2013/04/06 18:03:09
+dnl ------------------------
+dnl Show the version of libtool
+dnl
+dnl Save the version in a cache variable - this is not entirely a good thing,
+dnl but the version string from libtool is very ugly, and for bug reports it
+dnl might be useful to have the original string.
+AC_DEFUN([CF_CHECK_LIBTOOL_VERSION],[
+if test -n "$LIBTOOL" && test "$LIBTOOL" != none
+then
+	AC_MSG_CHECKING(version of $LIBTOOL)
+	CF_LIBTOOL_VERSION
+	AC_MSG_RESULT($cf_cv_libtool_version)
+	if test -z "$cf_cv_libtool_version" ; then
+		AC_MSG_ERROR(This is not GNU libtool)
+	fi
+else
+	AC_MSG_ERROR(GNU libtool has not been found)
+fi
+])dnl

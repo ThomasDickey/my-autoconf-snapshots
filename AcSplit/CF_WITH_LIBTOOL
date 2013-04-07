@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 28 updated: 2011/07/02 15:40:32
+dnl CF_WITH_LIBTOOL version: 29 updated: 2013/04/06 18:03:09
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -68,7 +68,14 @@ ifdef([AC_PROG_LIBTOOL],[
 		CF_PATH_SYNTAX(with_libtool)
 		LIBTOOL=$with_libtool
 	else
-		AC_PATH_PROG(LIBTOOL,libtool)
+		AC_CHECK_TOOLS(LIBTOOL,[libtool glibtool],none)
+		CF_LIBTOOL_VERSION
+		if test -z "$cf_cv_libtool_version" && test "$LIBTOOL" = libtool
+		then
+			CF_FORGET_TOOL(LIBTOOL)
+			AC_CHECK_TOOLS(LIBTOOL,[glibtool],none)
+			CF_LIBTOOL_VERSION
+		fi
 	fi
 	if test -z "$LIBTOOL" ; then
 		AC_MSG_ERROR(Cannot find libtool)
@@ -84,17 +91,7 @@ ifdef([AC_PROG_LIBTOOL],[
 	LIB_UNINSTALL='${LIBTOOL} --mode=uninstall'
 	LIB_PREP=:
 
-	# Show the version of libtool
-	AC_MSG_CHECKING(version of libtool)
-
-	# Save the version in a cache variable - this is not entirely a good
-	# thing, but the version string from libtool is very ugly, and for
-	# bug reports it might be useful to have the original string. "("
-	cf_cv_libtool_version=`$LIBTOOL --version 2>&1 | sed -e '/^$/d' |sed -e '2,$d' -e 's/([[^)]]*)//g' -e 's/^[[^1-9]]*//' -e 's/[[^0-9.]].*//'`
-	AC_MSG_RESULT($cf_cv_libtool_version)
-	if test -z "$cf_cv_libtool_version" ; then
-		AC_MSG_ERROR(This is not GNU libtool)
-	fi
+	CF_CHECK_LIBTOOL_VERSION
 
 	# special hack to add -no-undefined (which libtool should do for itself)
 	LT_UNDEF=

@@ -1,0 +1,11 @@
+dnl CF_LIBTOOL_VERSION version: 1 updated: 2013/04/06 18:03:09
+dnl ------------------
+AC_DEFUN([CF_LIBTOOL_VERSION],[
+if test -n "$LIBTOOL" && test "$LIBTOOL" != none
+then
+	cf_cv_libtool_version=`$LIBTOOL --version 2>&1 | sed -e '/^$/d' |sed -e '2,$d' -e 's/([[^)]]*)//g' -e 's/^[[^1-9]]*//' -e 's/[[^0-9.]].*//'`
+else
+	cf_cv_libtool_version=
+fi
+test -z "$cf_cv_libtool_version" && unset cf_cv_libtool_version
+])dnl
