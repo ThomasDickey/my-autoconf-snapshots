@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20130324
+MANIFEST for my-autoconf, version t20130406
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -75,6 +75,7 @@ AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
 AcSplit/CF_CHECK_GPM_WGETCH     check for gpm/ncurses linkage problem
 AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> dependency
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
+AcSplit/CF_CHECK_LIBTOOL_VERSION  check if libtool has been found, and obtain its version, ensuring that it
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_CHECK_SIZEOF         fixup for AC_CHECK_SIZEOF
@@ -149,6 +150,7 @@ AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FIXUP_ADAFLAGS       make ADAFLAGS consistent with CFLAGS by ensuring -g and -On options are
 AcSplit/CF_FIX_SLASHES          fix/workaround for OS/2 backslashes in pathnames
+AcSplit/CF_FORGET_TOOL          forget that we saw a given tool
 AcSplit/CF_FP_ISREADY           check for isready_c macro for vile
 AcSplit/CF_FUNC_ALLOCA          wrapper for AC_FUNC_ALLOCA to work around combination of Linux headers
 AcSplit/CF_FUNC_CURSES_VERSION  check for a curses_version string vs curses_version() function
@@ -215,6 +217,7 @@ AcSplit/CF_LEX_POINTER          test for lex "%pointer"
 AcSplit/CF_LEX_STATES           test if LEX supports %s and %x
 AcSplit/CF_LEX_VERSION          check for flex's version
 AcSplit/CF_LIBRARY_PATH         construct search-list for nonstandard library
+AcSplit/CF_LIBTOOL_VERSION      obtain the version for the libtool program which was found.
 AcSplit/CF_LIBUTF8              check for libutf8
 AcSplit/CF_LIB_PREFIX           logic to generate a library-prefix (for EMX port)
 AcSplit/CF_LIB_RULES            append library-rules (ncurses)
