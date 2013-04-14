@@ -1,3 +1,12 @@
+2013-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CFG_DEFAULTS: mingw also uses ncurses
+
+	* AcSplit/CF_CPP_STATIC_CAST:
+	clang 3.2 needs default constructor declared
+
+	* AcSplit/CF_BOOL_SIZE: clang 3.2 needs type for main()
+
 2013-04-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_LIBTOOL_VERSION, AcSplit/CF_FORGET_TOOL, AcSplit/CF_LIBTOOL_VERSION:
