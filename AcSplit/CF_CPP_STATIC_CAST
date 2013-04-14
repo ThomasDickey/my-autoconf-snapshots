@@ -1,4 +1,4 @@
-dnl CF_CPP_STATIC_CAST version: 2 updated: 2012/10/06 17:56:13
+dnl CF_CPP_STATIC_CAST version: 3 updated: 2013/04/13 18:03:21
 dnl ------------------
 dnl Check if the C++ compiler accepts static_cast in generics.  This appears to
 dnl not be supported in g++ before 3.0
@@ -20,7 +20,7 @@ public:
 	       int begin_x = 0)
   {
   }
-
+  NCursesPanel();
   ~NCursesPanel();
 };
 
