@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 8 updated: 2012/08/07 20:14:58
+dnl CF_WITH_ICON_THEME version: 9 updated: 2013/04/17 05:31:24
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -47,7 +47,7 @@ if test "x$ICON_THEME" = xno
 then
 	if test "x$ICONDIR" != xno
 	then
-		AC_MSG_WARN(ignoring icondir without theme)
+		CF_VERBOSE(ignoring icondir without theme)
 		no_icondir="#"
 	fi
 else

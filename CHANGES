@@ -1,3 +1,12 @@
+2013-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	amend the check for openpty() to prefer it over posix_openpt(), to fix
+	problems with terminal-mode initialization on BSD systems.
+
+	* AcSplit/CF_WITH_ICON_THEME:
+	change warning to verbose message - usually I don't want the warning
+
 2013-04-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CFG_DEFAULTS: mingw also uses ncurses

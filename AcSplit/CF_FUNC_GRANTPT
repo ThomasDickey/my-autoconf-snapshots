@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 9 updated: 2012/10/04 05:24:07
+dnl CF_FUNC_GRANTPT version: 10 updated: 2013/04/17 05:31:24
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -110,9 +110,10 @@ dnl If we found grantpt, but no features, e.g., for streams or if we are not
 dnl able to use tcsetattr, then give openpty a try.  In particular, Darwin 10.7
 dnl has a more functional openpty than posix_openpt.
 dnl
-dnl There is no configure run-test for openpty, since its implementations do
-dnl not always run properly as a non-root user.
-if test "x$ac_cv_func_grantpt" != "xyes" || test -z "$cf_grantpt_opts" ; then
+dnl There is no configure run-test for openpty, since older implementations do
+dnl not always run properly as a non-root user.  For that reason, we also allow
+dnl the configure script to suppress this check entirely with $disable_openpty.
+if test "x$disable_openpty" != "xyes" || test -z "$cf_grantpt_opts" ; then
 	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])
 	if test "$cf_have_openpty" = yes ; then
 		ac_cv_func_grantpt=no
@@ -129,6 +130,7 @@ fi
 dnl If we did not settle on using openpty, fill in the definitions for grantpt.
 if test "x$ac_cv_func_grantpt" != xno
 then
+	CF_VERBOSE(will rely upon grantpt)
 	AC_DEFINE(HAVE_WORKING_GRANTPT,1,[Define to 1 if the grantpt function seems to work])
 	for cf_feature in $cf_grantpt_opts
 	do
@@ -139,5 +141,7 @@ then
 elif test "x$cf_have_openpty" = xno
 then
 	CF_VERBOSE(will rely upon BSD-pseudoterminals)
+else
+	CF_VERBOSE(will rely upon openpty)
 fi
 ])dnl
