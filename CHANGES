@@ -1,3 +1,7 @@
+2013-05-14  Brendan.O-Dea
+
+	* AcSplit/CF_WITH_PERL: improve lookup for xsubpp
+
 2013-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GRANTPT:
