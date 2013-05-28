@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_NAME version: 1 updated: 2012/08/25 19:05:08
+dnl CF_WITH_ICON_NAME version: 2 updated: 2013/05/27 18:34:42
 dnl -----------------
 dnl Allow a default icon-name to be overridden.
 dnl $1 = default icon name
@@ -13,5 +13,6 @@ xyes|xno|x)
 	ICON_NAME=$1
 	;;
 esac
+AC_SUBST(ICON_NAME)
 AC_MSG_RESULT($ICON_NAME)
 ])dnl
