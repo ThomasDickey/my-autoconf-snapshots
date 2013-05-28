@@ -1,3 +1,10 @@
+2013-05-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ICON_NAME:
+	add AC_SUBST so this option can be used by itself
+
+	* AcSplit/CF_WITH_ICON_SYMLINK: ci-aclocal generated header
+
 2013-05-14  Brendan.O-Dea
 
 	* AcSplit/CF_WITH_PERL: improve lookup for xsubpp
