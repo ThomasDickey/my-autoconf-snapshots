@@ -1,3 +1,17 @@
+2013-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_VERSION_INFO:
+	change message to make it clearer that $VERSION is intended to be the ABI version
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL: fix quoting
+
+	* AcSplit/CF__ADD_SHLIB_RULES:
+	fixes for quoting, etc - works for cdk now
+
+	* AcSplit/CF_LIB_SUFFIX:
+	move "normal" case to end, and make that match everything, to allow for
+	other terms such as "static".
+
 2013-06-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL, AcSplit/CF__ADD_SHLIB_DEFS, AcSplit/CF__ADD_SHLIB_RULES:
