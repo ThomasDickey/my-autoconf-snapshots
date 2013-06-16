@@ -1,4 +1,4 @@
-dnl CF_CURSES_SETBEGYX version: 2 updated: 2010/10/23 15:54:49
+dnl CF_CURSES_SETBEGYX version: 3 updated: 2013/06/15 11:12:27
 dnl ------------------
 dnl See if we can define a function to set a window's beginning y/x coordinates.
 AC_DEFUN([CF_CURSES_SETBEGYX],[
@@ -16,5 +16,5 @@ setbegyx(win, 2, 3);
 ],[cf_result=$cf_check; break])
 done
 AC_MSG_RESULT("$cf_result")
-AC_DEFINE_UNQUOTED(setbegyx(win,y,x),$cf_result)
+AC_DEFINE_UNQUOTED(setbegyx(win,y,x),$cf_result,[Define to function for setting window's y/x coordinates])
 ])dnl

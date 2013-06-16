@@ -1,4 +1,4 @@
-dnl CF_LIB_SUFFIX version: 18 updated: 2012/02/25 15:20:07
+dnl CF_LIB_SUFFIX version: 19 updated: 2013/06/15 11:58:48
 dnl -------------
 dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
@@ -7,7 +7,6 @@ dnl $3 = dependency variable to set (actual filename)
 dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_SUFFIX],
 [
-	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 	case $1 in #(vi
 	libtool) #(vi
 		$2='.la'
