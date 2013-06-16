@@ -1,0 +1,53 @@
+dnl CF_WITH_SHARED_OR_LIBTOOL version: 1 updated: 2013/06/15 17:27:51
+dnl -------------------------
+dnl Provide shared libraries using either autoconf macros (--with-shared) or
+dnl using the external libtool script (--with-libtool).
+dnl
+dnl $1 = program name (all caps preferred)
+dnl $1 = release version
+dnl $2 = ABI version
+define([CF_WITH_SHARED_OR_LIBTOOL],[
+
+REL_VERSION=$2
+ABI_VERSION=$3
+cf_cv_rel_version=$REL_VERSION
+AC_SUBST(ABI_VERSION)
+AC_SUBST(REL_VERSION)
+
+CF_WITH_REL_VERSION($1)
+CF_WITH_ABI_VERSION
+
+LIB_MODEL=static
+LIBTOOL_MAKE="#"
+
+CF_WITH_LIBTOOL
+
+LIB_CREATE="$LIB_CREATE \$@"
+
+if test "$with_libtool" = "yes" ; then
+	OBJEXT="lo"
+	LIB_MODEL=libtool
+	LIBTOOL_MAKE=
+	CF_WITH_LIBTOOL_OPTS
+else
+	AC_MSG_CHECKING(if you want to build shared libraries)
+	AC_ARG_WITH(shared,
+		[  --with-shared           generate shared-libraries],
+		[with_shared=$withval],
+		[with_shared=no])
+	AC_MSG_RESULT($with_shared)
+	if test "$with_shared" = "yes" ; then
+		LIB_MODEL=shared
+		CF_SHARED_OPTS
+		LIB_PREP=:
+		LIB_CREATE="[$]MK_SHARED_LIB"
+		CFLAGS="$CFLAGS $CC_SHARED_OPTS"
+	fi
+fi
+
+LIB_SUFFIX=
+CF_LIB_SUFFIX($LIB_MODEL, DFT_LIB_SUFFIX, DFT_DEP_SUFFIX)
+AC_SUBST(DFT_LIB_SUFFIX)
+AC_SUBST(DFT_DEP_SUFFIX)
+AC_SUBST(LIB_MODEL)
+])dnl

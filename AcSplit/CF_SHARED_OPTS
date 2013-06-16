@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 72 updated: 2013/01/26 16:26:12
+dnl CF_SHARED_OPTS version: 73 updated: 2013/06/15 12:17:19
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -24,7 +24,6 @@ dnl
 dnl Some loaders leave 'so_locations' lying around.  It's nice to clean up.
 AC_DEFUN([CF_SHARED_OPTS],
 [
-	AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 	AC_REQUIRE([CF_LD_RPATH_OPT])
 	LOCAL_LDFLAGS=
 	LOCAL_LDFLAGS2=

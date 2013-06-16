@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20130527
+MANIFEST for my-autoconf, version t20130615
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -491,6 +491,7 @@ AcSplit/CF_WITH_PROGRAM         command-option wrapper for AC_PATH_PROG
 AcSplit/CF_WITH_PTHREAD         configure option --with-pthread
 AcSplit/CF_WITH_PURIFY          configure --with-purify
 AcSplit/CF_WITH_REL_VERSION     allow release-version to be altered (ncurses)
+AcSplit/CF_WITH_SHARED_OR_LIBTOOL  macro to simplify choice between --with-shared and --with-libtool
 AcSplit/CF_WITH_SYMLINK         handle --with-XXX-symlink option, originally in xterm, for vile, etc.,
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
 AcSplit/CF_WITH_SYSTYPE         the --with-systype option, works for mockups (compare with --host)
@@ -520,6 +521,8 @@ AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
+AcSplit/CF__ADD_SHLIB_DEFS      add shlib-definitions to makefile
+AcSplit/CF__ADD_SHLIB_RULES     add shlib-rules to makefile
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__GRANTPT_BODY        body for workability check of grantpt()
 AcSplit/CF__GRANTPT_HEAD        headers for workability check of grantpt()

@@ -1,3 +1,16 @@
+2013-06-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL, AcSplit/CF__ADD_SHLIB_DEFS, AcSplit/CF__ADD_SHLIB_RULES:
+	ci-aclocal generated header
+
+	* AcSplit/CF_SHARED_OPTS:
+	remove unnecessary dependency upon CF_SUBST_NCURSES_VERSION
+
+	* AcSplit/CF_LIB_SUFFIX:
+	remove unnecessary dependency on CF_SUBST_NCURSES_VERSION
+
+	* AcSplit/CF_CURSES_SETBEGYX: appease autoheader
+
 2013-05-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ICON_NAME:
