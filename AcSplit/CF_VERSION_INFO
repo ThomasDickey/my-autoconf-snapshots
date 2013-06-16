@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 5 updated: 2012/10/06 08:57:51
+dnl CF_VERSION_INFO version: 6 updated: 2013/06/16 10:25:53
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -63,7 +63,7 @@ else
 fi
 
 # show the actual data that we have for versions:
-CF_VERBOSE(VERSION $VERSION)
+CF_VERBOSE(ABI VERSION $VERSION)
 CF_VERBOSE(VERSION_MAJOR $VERSION_MAJOR)
 CF_VERBOSE(VERSION_MINOR $VERSION_MINOR)
 CF_VERBOSE(VERSION_PATCH $VERSION_PATCH)
