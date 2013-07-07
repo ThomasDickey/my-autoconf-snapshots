@@ -1,4 +1,4 @@
-dnl CF_X_FONTCONFIG version: 4 updated: 2011/07/04 10:01:31
+dnl CF_X_FONTCONFIG version: 5 updated: 2013/07/06 21:27:06
 dnl ---------------
 dnl Check for fontconfig library, a dependency of the X FreeType library.
 AC_DEFUN([CF_X_FONTCONFIG],
@@ -25,7 +25,14 @@ then
 		;;
 	*)
 		CF_VERBOSE(work around broken package)
-		CF_TRY_PKG_CONFIG(fontconfig,,[CF_ADD_LIB_AFTER(-lXft,-lfontconfig)])
+		cf_save_fontconfig="$LIBS"
+		CF_TRY_PKG_CONFIG(fontconfig,[
+				CF_ADD_CFLAGS($cf_pkgconfig_incs)
+				LIBS="$cf_save_fontconfig"
+				CF_ADD_LIB_AFTER(-lXft,$cf_pkgconfig_libs)
+			],[
+				CF_ADD_LIB_AFTER(-lXft,-lfontconfig)
+			])
 		;;
 	esac
 fi

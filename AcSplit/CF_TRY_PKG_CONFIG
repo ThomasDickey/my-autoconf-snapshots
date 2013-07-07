@@ -1,4 +1,4 @@
-dnl CF_TRY_PKG_CONFIG version: 4 updated: 2010/06/14 17:42:30
+dnl CF_TRY_PKG_CONFIG version: 5 updated: 2013/07/06 21:27:06
 dnl -----------------
 dnl This is a simple wrapper to use for pkg-config, for libraries which may be
 dnl available in that form.
@@ -19,6 +19,8 @@ if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists $1; then
 	CF_ADD_LIBS($cf_pkgconfig_libs)
 	ifelse([$2],,:,[$2])
 else
+	cf_pkgconfig_incs=
+	cf_pkgconfig_libs=
 	ifelse([$3],,:,[$3])
 fi
 ])
