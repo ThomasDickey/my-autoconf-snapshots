@@ -1,3 +1,25 @@
+2013-07-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TRIM_X_LIBS: ci-aclocal generated header
+
+	* AcSplit/CF_X_FONTCONFIG:
+	put -lfontconfig (and any dependencies) after -lXft
+
+	* AcSplit/CF_TRY_PKG_CONFIG:
+	set variables for consistent usage of this macro
+
+	* AcSplit/CF_X_ATHENA:
+	trim extra X libraries after updating lists, to work with ld --as-needed
+	option which in effect uses only the first mention of the library.
+	If that does not follow everything that depends on the library, ld
+	will silently fail to resolve symbols.
+
+	* AcSplit/CF_LIB_SUFFIX:
+	remove the CF_VERBOSE - creates too much clutter
+
+	* AcSplit/CF_SHARED_OPTS:
+	add --enable-auto-import in mingw case - needed for ncurses
+
 2013-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_VERSION_INFO:
