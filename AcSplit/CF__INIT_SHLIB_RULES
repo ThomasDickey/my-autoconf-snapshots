@@ -1,0 +1,14 @@
+dnl CF__INIT_SHLIB_RULES version: 1 updated: 2013/07/22 18:27:50
+dnl --------------------
+dnl The third parameter to AC_OUTPUT, used to pass variables needed for
+dnl CF__ADD_SHLIB_RULES.
+define([CF__INIT_SHLIB_RULES],[
+ABI_VERSION="$ABI_VERSION"
+REL_VERSION="$REL_VERSION"
+LIB_MODEL="$LIB_MODEL"
+LIB_PREFIX="$LIB_PREFIX"
+LIB_ROOTNAME="$LIB_ROOTNAME"
+DFT_DEP_SUFFIX="$DFT_DEP_SUFFIX"
+cf_cv_do_symlinks="$cf_cv_do_symlinks"
+cf_cv_shlib_version="$cf_cv_shlib_version"
+])

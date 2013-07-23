@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20130709
+MANIFEST for my-autoconf, version t20130722
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -525,10 +525,13 @@ AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__ADD_SHLIB_DEFS      add shlib-definitions to makefile
 AcSplit/CF__ADD_SHLIB_RULES     add shlib-rules to makefile
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
+AcSplit/CF__DEFINE_LIB_TARGET   utility for CF__ADD_SHLIB_RULES
+AcSplit/CF__DEFINE_SHLIB_VARS   utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__GRANTPT_BODY        body for workability check of grantpt()
 AcSplit/CF__GRANTPT_HEAD        headers for workability check of grantpt()
 AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
 AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
+AcSplit/CF__INIT_SHLIB_RULES    utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__INIT_TRANSFORM      initial value for $program_transform_name
 AcSplit/CF__INTL_BODY           test-code for libintl lookup
 AcSplit/CF__INTL_HEAD           test-headers for libintl lookup

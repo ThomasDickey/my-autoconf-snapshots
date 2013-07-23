@@ -1,4 +1,4 @@
-dnl CF_TRIM_X_LIBS version: 1 updated: 2013/07/06 21:27:06
+dnl CF_TRIM_X_LIBS version: 2 updated: 2013/07/09 21:27:22
 dnl --------------
 dnl Trim extra base X libraries added as a workaround for inconsistent library
 dnl dependencies returned by "new" pkg-config files.
@@ -7,7 +7,7 @@ AC_DEFUN([CF_TRIM_X_LIBS],[
 	do
 		case "$LIBS" in
 		*-l$cf_trim_lib\ *-l$cf_trim_lib*)
-			LIBS=`echo "$LIBS " | sed -e 's/  / /g' -e 's/-l'$cf_trim_lib' //' -e 's/ $//'`
+			LIBS=`echo "$LIBS " | sed -e 's/  / /g' -e 's%-l'"$cf_trim_lib"' %%' -e 's/ $//'`
 			CF_VERBOSE(..trimmed $LIBS)
 			;;
 		esac
