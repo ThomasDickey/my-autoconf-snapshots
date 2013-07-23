@@ -1,4 +1,4 @@
-dnl CF_WITH_SHARED_OR_LIBTOOL version: 2 updated: 2013/06/16 10:25:53
+dnl CF_WITH_SHARED_OR_LIBTOOL version: 3 updated: 2013/07/22 18:27:50
 dnl -------------------------
 dnl Provide shared libraries using either autoconf macros (--with-shared) or
 dnl using the external libtool script (--with-libtool).
@@ -18,7 +18,13 @@ CF_WITH_REL_VERSION($1)
 CF_WITH_ABI_VERSION
 
 LIB_MODEL=static
+DFT_LWR_MODEL=$LIB_MODEL
 LIBTOOL_MAKE="#"
+
+# use to comment-out makefile lines
+MAKE_NORMAL=
+MAKE_STATIC=
+MAKE_SHARED="#"
 
 CF_WITH_LIBTOOL
 
@@ -27,8 +33,12 @@ LIB_CREATE="$LIB_CREATE \[$]@"
 if test "$with_libtool" = "yes" ; then
 	OBJEXT="lo"
 	LIB_MODEL=libtool
+	DFT_LWR_MODEL=$LIB_MODEL
 	LIBTOOL_MAKE=
 	CF_WITH_LIBTOOL_OPTS
+	MAKE_NORMAL="#"
+	MAKE_STATIC="#"
+	MAKE_SHARED=
 else
 	AC_MSG_CHECKING(if you want to build shared libraries)
 	AC_ARG_WITH(shared,
@@ -38,16 +48,26 @@ else
 	AC_MSG_RESULT($with_shared)
 	if test "$with_shared" = "yes" ; then
 		LIB_MODEL=shared
+		DFT_LWR_MODEL=$LIB_MODEL
 		CF_SHARED_OPTS
 		LIB_PREP=:
 		LIB_CREATE="[$]MK_SHARED_LIB"
 		CFLAGS="$CFLAGS $CC_SHARED_OPTS"
+		MAKE_NORMAL="#"
+		MAKE_STATIC="#"
+		MAKE_SHARED=
 	fi
 fi
 
 LIB_SUFFIX=
 CF_LIB_SUFFIX($LIB_MODEL, DFT_LIB_SUFFIX, DFT_DEP_SUFFIX)
+
+AC_SUBST(DFT_LWR_MODEL)
 AC_SUBST(DFT_LIB_SUFFIX)
 AC_SUBST(DFT_DEP_SUFFIX)
 AC_SUBST(LIB_MODEL)
+
+AC_SUBST(MAKE_NORMAL)
+AC_SUBST(MAKE_SHARED)
+AC_SUBST(MAKE_STATIC)
 ])dnl
