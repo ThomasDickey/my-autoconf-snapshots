@@ -1,3 +1,30 @@
+2013-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	change the symbol from top_builddir to rel_builddir to avoid possible
+	conflict with ncurses.
+
+	* AcSplit/CF_SHARED_OPTS:
+	reconsidered LOCAL_LIBDIR, since it is clutter
+
+	* AcSplit/CF_SHARED_OPTS: tidy
+
+	* AcSplit/CF_SHARED_OPTS: add RM_SHARED_OPT symbol
+
+	* AcSplit/CF__DEFINE_SHLIB_VARS, AcSplit/CF__INIT_SHLIB_RULES:
+	add RM_SHARED_OPTS
+
+	* AcSplit/CF_TOP_BUILDDIR:
+	allow optional parameter to override the use of absolute pathnames
+
+	* AcSplit/CF_SHARED_OPTS:
+	use LOCAL_LIBDIR symbol and $top_builddir to parameterize this better for
+	cross-compiling cdk and dialog.
+
+	* AcSplit/CF_SHARED_OPTS:
+	modify NetBSD and DragonFly to use ${CC} rather than ${LD} for consistency
+	with the --enable-rpath option.
+
 2013-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__ADD_SHLIB_RULES: fix inconsistent target
