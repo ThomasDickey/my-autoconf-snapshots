@@ -1,4 +1,4 @@
-dnl CF__DEFINE_SHLIB_VARS version: 1 updated: 2013/07/22 18:27:50
+dnl CF__DEFINE_SHLIB_VARS version: 2 updated: 2013/07/27 17:38:32
 dnl ---------------------
 dnl Substitute makefile variables useful for CF__ADD_SHLIB_RULES.
 dnl
@@ -15,6 +15,7 @@ LIB_BASENAME	= ${LIB_PREFIX}\${LIB_ROOTNAME}\${LIB_SUFFIX}\\
 LIB_REL_NAME	= \${LIB_BASENAME}.\${REL_VERSION}\\
 LIB_ABI_NAME	= \${LIB_BASENAME}.\${ABI_VERSION}\\
 LIB_TARGET	= $LIB_TARGET\\
+RM_SHARED_OPTS	= $RM_SHARED_OPTS\\
 # end CF__DEFINE_SHLIB_VARS"
 AC_SUBST(SET_SHLIB_VARS)
 AC_SUBST(LIB_TARGET)
