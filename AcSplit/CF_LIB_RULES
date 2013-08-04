@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 72 updated: 2013/03/24 17:10:41
+dnl CF_LIB_RULES version: 73 updated: 2013/08/03 18:18:08
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -370,12 +370,14 @@ CF_EOF
 fi
 done
 
+if test "x$cf_with_db_install" = xyes; then
 cat >> Makefile <<CF_EOF
 
 install.libs uninstall.libs \\
 install.data uninstall.data ::
 $MAKE_TERMINFO	cd misc && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
+fi
 
 if test "x$cf_with_manpages" = xyes; then
 cat >> Makefile <<CF_EOF

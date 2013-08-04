@@ -1,3 +1,10 @@
+2013-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
+	implement --with-db-install for ncurses
+
+	* AcSplit/CF_SHARED_OPTS: resync
+
 2013-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
