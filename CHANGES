@@ -1,3 +1,8 @@
+2013-09-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RPATH_HACK:
+	use sort and uniq rather than sort -u, to work with HPUX 11.11, etc.
+
 2013-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
