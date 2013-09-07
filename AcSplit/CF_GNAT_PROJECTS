@@ -1,4 +1,4 @@
-dnl CF_GNAT_PROJECTS version: 2 updated: 2011/03/23 20:24:41
+dnl CF_GNAT_PROJECTS version: 4 updated: 2013/09/07 14:05:46
 dnl ----------------
 dnl GNAT projects are configured with ".gpr" project files.
 dnl GNAT libraries are a further development, using the project feature.
@@ -15,7 +15,7 @@ case $cf_gnat_version in #(vi
 	;;
 *)
 	case $cf_cv_system_name in #(vi
-	cygwin*) #(vi
+	cygwin*|msys*) #(vi
 		;;
 	*)
 		mkdir conftest.src conftest.bin conftest.lib

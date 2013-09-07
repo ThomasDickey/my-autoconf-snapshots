@@ -1,3 +1,17 @@
+2013-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2013-09-05
+
+	* config.guess: 2013-06-10
+
+	* AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_GNAT_PROJECTS:
+	coding-style
+
+2013-09-07  Alexey.Pavlov
+
+	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_XOPEN_SOURCE:
+	add msys / msysdll to known host/platform types
+
 2013-09-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL:
