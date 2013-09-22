@@ -1,3 +1,7 @@
+2013-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: build-fix for DragonFly and FreeBSD
+
 2013-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2013-09-05
