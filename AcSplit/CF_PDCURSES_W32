@@ -1,0 +1,15 @@
+dnl CF_PDCURSES_W32 version: 1 updated: 2013/10/07 06:13:11
+dnl ---------------
+dnl Configure for PDCurses' Win32 library, checking for definitions as well
+dnl which are needed to use its header file correctly.
+AC_DEFUN([CF_PDCURSES_W32],[
+
+AC_CHECK_LIB(pdcurses,initscr,[
+	CF_ADD_LIBS(-lpdcurses)
+	cf_cv_term_header=no
+	cf_cv_unctrl_header=no
+	AC_CHECK_FUNC(winwstr,[AC_DEFINE(PDC_WIDE)])
+	AC_CHECK_FUNC(pdcurses_dll_iname,[AC_DEFINE(PDC_DLL_BUILD)])
+])
+
+])dnl
