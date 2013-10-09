@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 9 updated: 2012/11/08 20:57:52
+dnl CF_NETLIBS version: 10 updated: 2013/10/08 17:47:05
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -22,7 +22,7 @@ cf_cv_netlibs=""
 cf_test_netlibs=yes
 
 case $host_os in #(vi
-mingw32) # (vi
+mingw*) # (vi
 	AC_CHECK_HEADERS( windows.h winsock.h winsock2.h )
 
 	if test "$ac_cv_header_winsock2_h" = "yes" ; then

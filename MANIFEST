@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20131007
+MANIFEST for my-autoconf, version t20131008
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -532,6 +532,7 @@ AcSplit/CF__GRANTPT_BODY        body for workability check of grantpt()
 AcSplit/CF__GRANTPT_HEAD        headers for workability check of grantpt()
 AcSplit/CF__ICONV_BODY          body of test-case for iconv macros
 AcSplit/CF__ICONV_HEAD          head of test-case for iconv macros
+AcSplit/CF__INET_HEAD           header-files needed for inet.h checks
 AcSplit/CF__INIT_SHLIB_RULES    utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__INIT_TRANSFORM      initial value for $program_transform_name
 AcSplit/CF__INTL_BODY           test-code for libintl lookup

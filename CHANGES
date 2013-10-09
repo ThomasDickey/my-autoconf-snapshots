@@ -1,3 +1,16 @@
+2013-10-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__INET_HEAD: ci-aclocal generated header
+
+	* AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NETLIBS:
+	generalize to mingw64
+
+	* AcSplit/CF_INET_ADDR:
+	modify (for lynx) to split-out CF__INET_HEAD, and allow checking for winsock
+
+	* AcSplit/CF_ADD_SUBDIR_PATH:
+	tweak for empty $prefix, e.g., for my cross-compiling to mingw
+
 2013-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PDCURSES_W32: ci-aclocal generated header
