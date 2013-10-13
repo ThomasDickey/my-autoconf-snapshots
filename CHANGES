@@ -1,3 +1,8 @@
+2013-10-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_INCLUDE_DIRS:
+	allow for empty $prefix
+
 2013-10-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__INET_HEAD: ci-aclocal generated header
