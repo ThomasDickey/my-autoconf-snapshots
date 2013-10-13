@@ -1,4 +1,4 @@
-dnl CF_INCLUDE_DIRS version: 7 updated: 2012/11/10 19:15:05
+dnl CF_INCLUDE_DIRS version: 8 updated: 2013/10/12 16:45:09
 dnl ---------------
 dnl Construct the list of include-options according to whether we're building
 dnl in the source directory or using '--srcdir=DIR' option.  If we're building
@@ -10,7 +10,7 @@ if test "$GCC" != yes; then
 	CPPFLAGS="-I\${includedir} $CPPFLAGS"
 elif test "$includedir" != "/usr/include"; then
 	if test "$includedir" = '${prefix}/include' ; then
-		if test $prefix != /usr ; then
+		if test x$prefix != x/usr ; then
 			CPPFLAGS="-I\${includedir} $CPPFLAGS"
 		fi
 	else
