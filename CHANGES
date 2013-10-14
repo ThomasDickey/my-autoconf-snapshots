@@ -1,3 +1,7 @@
+2013-10-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADA_INCLUDE_DIRS: fix typo (report by Roumen Petrov)
+
 2013-10-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_INCLUDE_DIRS:
