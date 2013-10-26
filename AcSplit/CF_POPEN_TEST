@@ -1,4 +1,4 @@
-dnl CF_POPEN_TEST version: 3 updated: 2005/08/21 13:46:00
+dnl CF_POPEN_TEST version: 4 updated: 2013/10/25 18:24:56
 dnl -------------
 dnl	Check to ensure that our prototype for 'popen()' doesn't conflict
 dnl	with the system's (this is a problem on AIX and CLIX).
@@ -9,8 +9,13 @@ AC_CACHE_VAL(ac_cv_td_popen,
 AC_TRY_LINK([
 #include <stdio.h>
 #include "system.h"
+#if defined(popen) || defined(pclose)
+make an error
+#else
 extern int pclose (FILE *p);
-extern FILE *popen (const char *c, const char *m);],,
+extern FILE *popen (const char *c, const char *m);
+#endif
+],,
 ac_cv_td_popen=no,
 ac_cv_td_popen=yes))
 AC_MSG_RESULT($ac_cv_td_popen)
