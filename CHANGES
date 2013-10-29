@@ -1,3 +1,8 @@
+2013-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GETOPT, AcSplit/CF_FUNC_POPEN:
+	ci-aclocal generated header
+
 2013-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POPEN_TEST:

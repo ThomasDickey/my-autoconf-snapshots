@@ -1,0 +1,16 @@
+dnl CF_FUNC_POPEN version: 1 updated: 2013/10/28 19:42:35
+dnl -------------
+dnl Check for popen, and optionally provide our own.
+AC_DEFUN([CF_FUNC_POPEN],[
+AC_HAVE_FUNCS(popen)
+if test "x$ac_cv_func_popen" = xno
+then
+	ifelse([$1],,:,[
+	ifelse([$2],,,[CPPFLAGS="$CPPFLAGS -I$2"])
+	EXTRA_OBJS="$EXTRA_OBJS $1.o"
+	])
+else
+	CF_POPEN_TEST
+fi
+AC_SUBST(EXTRA_OBJS)
+])
