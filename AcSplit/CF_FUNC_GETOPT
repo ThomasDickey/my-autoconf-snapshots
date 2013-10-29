@@ -1,0 +1,16 @@
+dnl CF_FUNC_GETOPT version: 1 updated: 2013/10/28 19:42:35
+dnl --------------
+dnl Check for getopt, and optionally provide our own.
+AC_DEFUN([CF_FUNC_GETOPT],[
+CF_GETOPT_HEADER
+AC_HAVE_FUNCS(getopt)
+
+if test "x$ac_cv_func_getopt" = xno
+then
+	ifelse([$1],,:,[
+	ifelse([$2],,,[CPPFLAGS="$CPPFLAGS -I$2"])
+	EXTRA_OBJS="$EXTRA_OBJS $1.o"
+	])
+fi
+AC_SUBST(EXTRA_OBJS)
+])
