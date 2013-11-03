@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 83 updated: 2013/09/21 17:34:53
+dnl CF_SHARED_OPTS version: 84 updated: 2013/11/03 06:26:10
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -32,6 +32,12 @@ AC_DEFUN([CF_SHARED_OPTS],
 	LD_SHARED_OPTS=
 	INSTALL_LIB="-m 644"
 	: ${rel_builddir:=.}
+
+	shlibdir=$libdir
+	AC_SUBST(shlibdir)
+
+	MAKE_DLLS="#"
+	AC_SUBST(MAKE_DLLS)
 
 	cf_cv_do_symlinks=no
 	cf_ld_rpath_opt=
@@ -95,6 +101,8 @@ AC_DEFUN([CF_SHARED_OPTS],
 		RM_SHARED_OPTS="$RM_SHARED_OPTS $rel_builddir/mk_shared_lib.sh *.dll.a"
 		cf_cv_shlib_version=cygdll
 		cf_cv_shlib_version_infix=cygdll
+		shlibdir=$bindir
+		MAKE_DLLS=
 		cat >mk_shared_lib.sh <<-CF_EOF
 		#!/bin/sh
 		SHARED_LIB=\[$]1
@@ -115,6 +123,8 @@ CF_EOF
 		RM_SHARED_OPTS="$RM_SHARED_OPTS $rel_builddir/mk_shared_lib.sh *.dll.a"
 		cf_cv_shlib_version=msysdll
 		cf_cv_shlib_version_infix=msysdll
+		shlibdir=$bindir
+		MAKE_DLLS=
 		cat >mk_shared_lib.sh <<-CF_EOF
 		#!/bin/sh
 		SHARED_LIB=\[$]1
@@ -202,6 +212,8 @@ CF_EOF
 	mingw*) #(vi
 		cf_cv_shlib_version=mingw
 		cf_cv_shlib_version_infix=mingw
+		shlibdir=$bindir
+		MAKE_DLLS=
 		if test "$DFT_LWR_MODEL" = "shared" ; then
 			LOCAL_LDFLAGS="-Wl,--enable-auto-import"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"

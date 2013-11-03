@@ -1,3 +1,13 @@
+2013-11-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL:
+	fix for Cdk, which needs substitutions for shlibdir and MAKE_DLLS symbols
+
+	* AcSplit/CF_SHARED_OPTS:
+	add variables to support cross-compiling to MinGW, etc.
+
+	* AcSplit/CF_CURSES_UNCTRL_H: separate warning/cache messages
+
 2013-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GETOPT, AcSplit/CF_FUNC_POPEN:
