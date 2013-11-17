@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 7 updated: 2012/06/16 14:55:39
+dnl CF_GXX_WARNINGS version: 8 updated: 2013/11/16 14:27:53
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -87,16 +87,17 @@ then
 	for cf_opt in \
 		Wabi \
 		fabi-version=0 \
+		Wextra \
+		Wignored-qualifiers \
+		Wlogical-op \
 		Woverloaded-virtual \
 		Wsign-promo \
 		Wsynth \
 		Wold-style-cast \
 		Wcast-align \
 		Wcast-qual \
-		Wmissing-prototypes \
 		Wpointer-arith \
 		Wshadow \
-		Wstrict-prototypes \
 		Wundef $cf_gxx_extra_warnings $1
 	do
 		CXXFLAGS="$cf_save_CXXFLAGS $EXTRA_CXXFLAGS -Werror -$cf_opt"
