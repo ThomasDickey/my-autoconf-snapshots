@@ -1,3 +1,10 @@
+2013-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS:
+	the new gcc options are not recognized by clang - suppress when using clang
+
+	* AcSplit/CF_CLANG_COMPILER: typo in comment
+
 2013-11-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_WARNINGS:
