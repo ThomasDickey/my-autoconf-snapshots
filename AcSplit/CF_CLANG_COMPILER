@@ -1,4 +1,4 @@
-dnl CF_CLANG_COMPILER version: 1 updated: 2012/06/16 14:55:39
+dnl CF_CLANG_COMPILER version: 2 updated: 2013/11/19 19:23:35
 dnl -----------------
 dnl Check if the given compiler is really clang.  clang's C driver defines
 dnl __GNUC__ (fooling the configure script into setting $GCC to yes) but does
@@ -9,7 +9,7 @@ dnl ensure that it is not mistaken for gcc/g++.  It is normally invoked from
 dnl the wrappers for gcc and g++ warnings.
 dnl
 dnl $1 = GCC (default) or GXX
-dnl $2 = INTEL_COMPILER (default) or INTEL_CPLUSPLUS
+dnl $2 = CLANG_COMPILER (default)
 dnl $3 = CFLAGS (default) or CXXFLAGS
 AC_DEFUN([CF_CLANG_COMPILER],[
 ifelse([$2],,CLANG_COMPILER,[$2])=no
