@@ -1,4 +1,4 @@
-dnl CF_VARARGS version: 3 updated: 1998/12/10 20:06:29
+dnl CF_VARARGS version: 4 updated: 2013/12/05 19:11:11
 dnl ----------
 dnl Check for ANSI stdarg.h vs varargs.h.  Note that some systems include
 dnl <varargs.h> within <stdarg.h>.
@@ -21,5 +21,5 @@ AC_CACHE_VAL(cf_cv_ansi_varargs,[
 		[cf_cv_ansi_varargs=no])
 	])
 AC_MSG_RESULT($cf_cv_ansi_varargs)
-test $cf_cv_ansi_varargs = yes && AC_DEFINE(ANSI_VARARGS)
+test $cf_cv_ansi_varargs = yes && AC_DEFINE(ANSI_VARARGS,1,[Define to 1 if C uses ANSI varargs])
 ])dnl

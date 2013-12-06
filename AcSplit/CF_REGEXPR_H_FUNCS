@@ -1,4 +1,4 @@
-dnl CF_REGEXPR_H_FUNCS version: 5 updated: 2010/10/23 15:52:32
+dnl CF_REGEXPR_H_FUNCS version: 6 updated: 2013/12/05 19:11:11
 dnl ------------------
 dnl Tests for the <regexpr.h> include-file, and the functions associated with it.
 AC_DEFUN([CF_REGEXPR_H_FUNCS],
@@ -24,7 +24,7 @@ AC_CACHE_CHECK(compile/step functions, cf_cv_REGEXPR_H,[
 	[cf_cv_REGEXPR_H=unknown])
 ])
 if test $cf_cv_REGEXPR_H = yes; then
-	AC_DEFINE(HAVE_REGEXPR_H_FUNCS)
+	AC_DEFINE(HAVE_REGEXPR_H_FUNCS,1,[Define to 1 if we have regexpr functions])
 else
 	LIBS="$cf_save_libs"
 fi
