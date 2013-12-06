@@ -1,4 +1,4 @@
-dnl CF_RE_COMP_FUNCS version: 4 updated: 2010/10/23 15:52:32
+dnl CF_RE_COMP_FUNCS version: 5 updated: 2013/12/05 19:11:11
 dnl ----------------
 dnl Tests for the presence of re_comp/re_exec functions (no include-file?)
 AC_DEFUN([CF_RE_COMP_FUNCS],
@@ -22,5 +22,5 @@ AC_CACHE_VAL(cf_cv_RE_COMP_func,[
 	[cf_cv_RE_COMP_func=unknown])
 	])
 AC_MSG_RESULT($cf_cv_RE_COMP_func)
-test $cf_cv_RE_COMP_func = yes && AC_DEFINE(HAVE_RE_COMP_FUNCS)
+test $cf_cv_RE_COMP_func = yes && AC_DEFINE(HAVE_RE_COMP_FUNCS,1,[Define to 1 if we have re_comp/re_exec functions])
 ])dnl

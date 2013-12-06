@@ -1,4 +1,4 @@
-dnl CF_ANSI_CPP version: 4 updated: 2010/10/23 15:52:32
+dnl CF_ANSI_CPP version: 5 updated: 2013/12/05 19:11:11
 dnl -----------
 dnl Test if "##" is substituted properly, or failing that, if /**/ can do
 dnl the trick.  We can test concatenation with a compile, but quoting has to
@@ -21,9 +21,9 @@ AC_CACHE_VAL(cf_cv_ansi_splice,[
 
 AC_MSG_RESULT(${cf_cv_ansi_splice}-style)
 if test $cf_cv_ansi_splice = new; then
-	AC_DEFINE(HAVE_NEW_TOKEN_SPLICE)
+	AC_DEFINE(HAVE_NEW_TOKEN_SPLICE,1,[Define to 1 if C preprocessor does ANSI splicing])
 elif test $cf_cv_ansi_splice = old; then
-	AC_DEFINE(HAVE_OLD_TOKEN_SPLICE)
+	AC_DEFINE(HAVE_OLD_TOKEN_SPLICE,1,[Define to 1 if C preprocessor does not do ANSI splicing])
 fi
 
 AC_MSG_CHECKING(for ANSI CPP token-quoting)
@@ -44,9 +44,9 @@ AC_CACHE_VAL(cf_cv_ansi_quote,[
 
 AC_MSG_RESULT(${cf_cv_ansi_quote}-style)
 if test $cf_cv_ansi_quote = new; then
-	AC_DEFINE(HAVE_NEW_TOKEN_QUOTE)
+	AC_DEFINE(HAVE_NEW_TOKEN_QUOTE,1,[Define to 1 if C preprocessor does ANSI quoting])
 elif test $cf_cv_ansi_quote = old; then
-	AC_DEFINE(HAVE_OLD_TOKEN_QUOTE)
+	AC_DEFINE(HAVE_OLD_TOKEN_QUOTE,1,[Define to 1 if C preprocessor does not do ANSI quoting])
 fi
 
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_STRUCT_SCREEN version: 4 updated: 2010/10/23 15:54:49
+dnl CF_STRUCT_SCREEN version: 5 updated: 2013/12/05 19:11:11
 dnl ----------------
 dnl Test if curses defines 'struct screen'.
 dnl
@@ -31,5 +31,5 @@ AC_CACHE_VAL(cf_cv_need_struct_screen,[
 	fi
 	])
 AC_MSG_RESULT($cf_cv_need_struct_screen)
-test $cf_cv_need_struct_screen = yes && AC_DEFINE(NEED_STRUCT_SCREEN)
+test $cf_cv_need_struct_screen = yes && AC_DEFINE(NEED_STRUCT_SCREEN,1,[Define to 1 if struct SCREEN is declared])
 ])dnl

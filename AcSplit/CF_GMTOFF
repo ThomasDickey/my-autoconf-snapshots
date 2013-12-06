@@ -1,4 +1,4 @@
-dnl CF_GMTOFF version: 4 updated: 2002/04/16 13:02:23
+dnl CF_GMTOFF version: 5 updated: 2013/12/05 19:11:11
 dnl ---------
 AC_DEFUN([CF_GMTOFF],
 [
@@ -22,7 +22,7 @@ AC_CACHE_VAL(cf_cv_decl_localzone,[
 		[cf_cv_decl_localzone=yes],
 		[cf_cv_decl_localzone=no])])
 AC_MSG_RESULT($cf_cv_decl_localzone)
-test $cf_cv_decl_localzone = yes && AC_DEFINE(LOCALZONE_DECLARED)
+test $cf_cv_decl_localzone = yes && AC_DEFINE(LOCALZONE_DECLARED,1,[Define to 1 if localzone is declared])
 
 AC_MSG_CHECKING(for timezone declared)
 AC_CACHE_VAL(cf_cv_decl_timezone,[
@@ -33,7 +33,7 @@ AC_CACHE_VAL(cf_cv_decl_timezone,[
 		[cf_cv_decl_timezone=no])])
 AC_MSG_RESULT($cf_cv_decl_timezone)
 if test $cf_cv_decl_timezone = yes; then
-	AC_DEFINE(TIMEZONE_DECLARED)
+	AC_DEFINE(TIMEZONE_DECLARED,1,[Define to 1 if timezone is declared])
 
 	AC_MSG_CHECKING(for daylight declared)
 	AC_CACHE_VAL(cf_cv_decl_daylight,[
@@ -42,7 +42,7 @@ if test $cf_cv_decl_timezone = yes; then
 			[cf_cv_decl_daylight=yes],
 			[cf_cv_decl_daylight=no])])
 	AC_MSG_RESULT($cf_cv_decl_daylight)
-	test $cf_cv_decl_daylight = yes && AC_DEFINE(DAYLIGHT_DECLARED)
+	test $cf_cv_decl_daylight = yes && AC_DEFINE(DAYLIGHT_DECLARED,1,[Define to 1 if daylight is declared])
 fi
 
 AC_MSG_CHECKING(for .tm_gmtoff in struct tm)
@@ -52,7 +52,7 @@ AC_CACHE_VAL(cf_cv_tm_gmtoff_decl,[
 		[cf_cv_tm_gmtoff_decl=yes],
 		[cf_cv_tm_gmtoff_decl=no])])
 AC_MSG_RESULT($cf_cv_tm_gmtoff_decl)
-test $cf_cv_tm_gmtoff_decl = yes && AC_DEFINE(HAVE_TM_GMTOFF)
+test $cf_cv_tm_gmtoff_decl = yes && AC_DEFINE(HAVE_TM_GMTOFF,1,[Define to 1 if tm.tm_gmtoff is declared])
 
 AC_MSG_CHECKING(for .tm_isdst in struct tm)
 AC_CACHE_VAL(cf_cv_tm_isdst_decl,[
@@ -61,7 +61,7 @@ AC_CACHE_VAL(cf_cv_tm_isdst_decl,[
 		[cf_cv_tm_isdst_decl=yes],
 		[cf_cv_tm_isdst_decl=no])])
 AC_MSG_RESULT($cf_cv_tm_isdst_decl)
-test $cf_cv_tm_isdst_decl = yes && AC_DEFINE(HAVE_TM_ISDST)
+test $cf_cv_tm_isdst_decl = yes && AC_DEFINE(HAVE_TM_ISDST,1,[Define to 1 if tm.tm_isdst is declared])
 
 AC_MSG_CHECKING(for .tm_zone in struct tm)
 AC_CACHE_VAL(cf_cv_tm_zone_decl,[
@@ -70,5 +70,5 @@ AC_CACHE_VAL(cf_cv_tm_zone_decl,[
 		[cf_cv_tm_zone_decl=yes],
 		[cf_cv_tm_zone_decl=no])])
 AC_MSG_RESULT($cf_cv_tm_zone_decl)
-test $cf_cv_tm_zone_decl = yes && AC_DEFINE(HAVE_TM_ZONE)
+test $cf_cv_tm_zone_decl = yes && AC_DEFINE(HAVE_TM_ZONE,1,[Define to 1 if tm.tm_zone is declared])
 ])dnl

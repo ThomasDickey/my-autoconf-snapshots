@@ -1,4 +1,4 @@
-dnl CF_TD_SIG_ARGS version: 5 updated: 2010/10/23 15:52:32
+dnl CF_TD_SIG_ARGS version: 6 updated: 2013/12/05 19:11:11
 dnl --------------
 dnl Test for non-Posix prototype for 'signal()'
 dnl
@@ -60,6 +60,6 @@ then
 		fi
 		])
 		AC_MSG_RESULT($cf_cv_sigs_redef)
-		test $cf_cv_sigs_redef = yes && AC_DEFINE(SIG_IGN_REDEFINEABLE)
+		test $cf_cv_sigs_redef = yes && AC_DEFINE(SIG_IGN_REDEFINEABLE,1,[Define to 1 if SIG_IGN is redefinable])
 fi
 ])dnl

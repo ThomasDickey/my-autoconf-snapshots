@@ -1,4 +1,4 @@
-dnl CF_REGCMP_FUNCS version: 2 updated: 1997/09/07 15:13:55
+dnl CF_REGCMP_FUNCS version: 3 updated: 2013/12/05 19:11:11
 dnl ---------------
 dnl Test for the presence of regcmp/regex functions.
 AC_DEFUN([CF_REGCMP_FUNCS],
@@ -17,7 +17,7 @@ AC_CACHE_VAL(cf_cv_REGCMP_func,[
 ])
 AC_MSG_RESULT($cf_cv_REGCMP_func)
 if test $cf_cv_REGCMP_func != no; then
-	AC_DEFINE(HAVE_REGCMP_FUNCS)
+	AC_DEFINE(HAVE_REGCMP_FUNCS,1,[Define to 1 if we have regcmp/regex functions])
 	test $cf_cv_REGCMP_func != yes && AC_CHECK_LIB(PW, regcmp)
 fi
 ])dnl

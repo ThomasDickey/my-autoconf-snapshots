@@ -1,3 +1,12 @@
+2013-12-06  Urs.Jansen
+
+	* AcSplit/AM_MULTIBYTE_ABLE: compiler-warning fix
+
+2013-12-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	appease autoheader(-252) for td_lib
+
 2013-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS:

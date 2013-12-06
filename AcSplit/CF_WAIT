@@ -1,4 +1,4 @@
-dnl CF_WAIT version: 2 updated: 1997/09/07 15:13:55
+dnl CF_WAIT version: 3 updated: 2013/12/05 19:11:11
 dnl -------
 dnl Test for the presence of <sys/wait.h>, 'union wait', arg-type of 'wait()'.
 dnl
@@ -48,6 +48,6 @@ if test $cf_cv_decl_union_wait = yes; then
 			[cf_cv_arg_union_wait=no])
 		])
 	AC_MSG_RESULT($cf_cv_arg_union_wait)
-	test $cf_cv_arg_union_wait = yes && AC_DEFINE(WAIT_USES_UNION)
+	test $cf_cv_arg_union_wait = yes && AC_DEFINE(WAIT_USES_UNION,1,[Define to 1 if wait() uses union])
 fi
 ])dnl
