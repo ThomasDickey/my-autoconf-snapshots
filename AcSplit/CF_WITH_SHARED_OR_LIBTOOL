@@ -1,4 +1,4 @@
-dnl CF_WITH_SHARED_OR_LIBTOOL version: 6 updated: 2013/11/03 06:36:40
+dnl CF_WITH_SHARED_OR_LIBTOOL version: 5 updated: 2013/09/02 09:17:44
 dnl -------------------------
 dnl Provide shared libraries using either autoconf macros (--with-shared) or
 dnl using the external libtool script (--with-libtool).
@@ -25,10 +25,6 @@ LIBTOOL_MAKE="#"
 MAKE_NORMAL=
 MAKE_STATIC=
 MAKE_SHARED="#"
-MAKE_DLLS="#"
-
-shlibdir=$libdir
-AC_SUBST(shlibdir)
 
 CF_WITH_LIBTOOL
 
@@ -74,7 +70,6 @@ AC_SUBST(LIB_MODEL)
 
 AC_SUBST(LIBTOOL_MAKE)
 
-AC_SUBST(MAKE_DLLS)
 AC_SUBST(MAKE_NORMAL)
 AC_SUBST(MAKE_SHARED)
 AC_SUBST(MAKE_STATIC)
