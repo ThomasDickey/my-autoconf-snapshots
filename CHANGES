@@ -1,3 +1,9 @@
+2013-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SET_MATH_LIB_VERSION: ci-aclocal generated header
+
+	* config.guess: 2013-11-29
+
 2013-12-06  Urs.Jansen
 
 	* AcSplit/AM_MULTIBYTE_ABLE: compiler-warning fix
