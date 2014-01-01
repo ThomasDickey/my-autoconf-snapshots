@@ -1,0 +1,32 @@
+dnl CF_SET_MATH_LIB_VERSION version: 1 updated: 2013/12/26 20:21:00
+dnl -----------------------
+dnl Check if math.h declares _LIB_VERSION, and if so, whether we can modify it
+dnl at runtime.  Cygwin is known to be broken in this regard (late 2013).
+AC_DEFUN([CF_SET_MATH_LIB_VERSION],[
+AC_CACHE_CHECK(if math.h declares _LIB_VERSION,cf_cv_get_math_lib_version,[
+
+AC_TRY_LINK([
+#include <math.h>],
+	[int foo = _LIB_VERSION],
+	[cf_cv_get_math_lib_version=yes],
+	[cf_cv_get_math_lib_version=no])
+])
+
+if test "x$cf_cv_get_math_lib_version" = xyes
+then
+	AC_CACHE_CHECK(if we can update _LIB_VERSION,cf_cv_set_math_lib_version,[
+
+	AC_TRY_LINK([
+#include <math.h>],
+		[_LIB_VERSION = _IEEE_],
+		[cf_cv_set_math_lib_version=yes],
+		[cf_cv_set_math_lib_version=no])
+	])
+	if test "x$cf_cv_set_math_lib_version" = xyes
+	then
+		AC_DEFINE(HAVE_MATH__LIB_VERSION,1,[Define to 1 if we can set math.h variable _LIB_VERSION])
+	else
+		AC_MSG_WARN(this is probably due to a defect in your system headers)
+	fi
+fi
+])dnl

@@ -1,4 +1,4 @@
-dnl AM_MULTIBYTE_ABLE version: 8 updated: 2009/12/24 04:20:51
+dnl AM_MULTIBYTE_ABLE version: 9 updated: 2013/12/06 19:12:41
 dnl -----------------
 dnl
 dnl check for required multibyte/widechar functions
@@ -39,7 +39,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
       /* (void) iswupper((wint_t) wcb[0]); */
       /* (void) towlower((wint_t) wcb[0]); */
       /* (void) iswlower((wint_t) wcb[0]); */
-      /* (void) iswalpha((wint_t) wcb[0]); */
+      (void) iswalpha((wint_t) wcb[0]);
       /* (void) iswblank((wint_t) wcb[0]); */
       /* (void) iswpunct((wint_t) wcb[0]); */
       /* (void) iswxdigit((wint_t) wcb[0]); */
@@ -81,7 +81,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
         /* (void) iswupper((wint_t) wcb[0]); */
         /* (void) towlower((wint_t) wcb[0]); */
         /* (void) iswlower((wint_t) wcb[0]); */
-        /* (void) iswalpha((wint_t) wcb[0]); */
+        (void) iswalpha((wint_t) wcb[0]);
         /* (void) iswblank((wint_t) wcb[0]); */
         /* (void) iswpunct((wint_t) wcb[0]); */
         /* (void) iswxdigit((wint_t) wcb[0]); */

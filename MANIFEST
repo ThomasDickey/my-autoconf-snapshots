@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20131226
+MANIFEST for my-autoconf, version t20140101
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -354,6 +354,7 @@ AcSplit/CF_RPATH_HACK_2         utility for CF_RPATH_HACK
 AcSplit/CF_SED_CONFIG_H         macro to generate config.h in canonical form
 AcSplit/CF_SET_ERRNO            check if we can set errno
 AcSplit/CF_SET_GID_UID          check for setuid/setgid functions
+AcSplit/CF_SET_MATH_LIB_VERSION check if math.h declares a writable _LIB_VERSION
 AcSplit/CF_SHARED_OPTS          derive CC/LD options for shared libraries
 AcSplit/CF_SHARED_SONAME        utility macro for CF_SHARED_OPTS
 AcSplit/CF_SIGWINCH             workaround for SIGWINCH on Mac OS X
