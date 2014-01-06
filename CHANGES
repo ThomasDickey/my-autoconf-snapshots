@@ -1,3 +1,10 @@
+2014-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ENCODINGS_DIR: Fedora can have the pathname backwards
+
+	* AcSplit/CF_MAKE_DOCS:
+	protect $2 from substitution, for luit's "$(manext)"
+
 2014-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2014-01-01 (fake)

@@ -1,4 +1,4 @@
-dnl CF_MAKE_DOCS version: 2 updated: 2013/01/02 20:04:08
+dnl CF_MAKE_DOCS version: 3 updated: 2014/01/05 13:21:25
 dnl ------------
 dnl $1 = name(s) to generate rules for
 dnl $2 = suffix of corresponding manpages used as input.
@@ -44,10 +44,10 @@ clean \\
 docs-clean ::
 	rm -f $cf_name.html $cf_name.pdf $cf_name.ps $cf_name.txt
 
-$cf_name.html : $cf_name.$2
+$cf_name.html : $cf_name.\$2
 $cf_name.pdf : $cf_name.ps
-$cf_name.ps : $cf_name.$2
-$cf_name.txt : $cf_name.$2
+$cf_name.ps : $cf_name.\$2
+$cf_name.txt : $cf_name.\$2
 CF_EOF
 done
 ])dnl
