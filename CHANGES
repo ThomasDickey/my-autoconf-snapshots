@@ -1,3 +1,9 @@
+2014-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL:
+	fix check for ssl cflags (seems that pkg-config was returning a " ", which
+	confused my later check for /usr/include/openssl).
+
 2014-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ENCODINGS_DIR: Fedora can have the pathname backwards
