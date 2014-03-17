@@ -1,3 +1,20 @@
+2014-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INTEL_COMPILER:
+	cleanup the -no-gcc option which was leftover from testing - prcs does not
+	build with this option.
+
+	* AcSplit/CF_PROG_MAKEINFO: ci-aclocal generated header
+
+2014-02-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	for Solaris (tested with gcc/g++ 3.4.3 on Solaris 10 and gcc/g++ 4.5.2 on
+	Solaris 11), suppress the followup check for defining _XOPEN_SOURCE because
+	it is not needed, as well as because g++ 4.7.3 (no package, used in Sage
+	for Solaris 10) has some unspecified header breakage which is triggered by
+	the duplicate definition.
+
 2014-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SSL:
