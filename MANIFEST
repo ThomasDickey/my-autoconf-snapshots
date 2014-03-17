@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20140111
+MANIFEST for my-autoconf, version t20140317
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -332,6 +332,7 @@ AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program
 AcSplit/CF_PROG_LINT            find the "lint" program
 AcSplit/CF_PROG_LN_S            AC_PROG_LN_S, with additional check for "-f" option.
+AcSplit/CF_PROG_MAKEINFO        check for makeinfo, when it is required
 AcSplit/CF_PROG_PERL            check for perl program
 AcSplit/CF_PROG_RANLIB          check for ranlib
 AcSplit/CF_PROG_SUM_R           check if 'sum' accepts a -r option

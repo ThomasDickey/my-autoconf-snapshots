@@ -1,0 +1,8 @@
+dnl CF_PROG_MAKEINFO version: 1 updated: 2014/03/17 09:46:38
+dnl ----------------
+dnl Check for makeinfo, ensure that the check found something.
+AC_DEFUN([CF_PROG_MAKEINFO],
+[
+AC_PATH_PROG(MAKEINFO, makeinfo)
+test -z "$MAKEINFO" && AC_MSG_ERROR(No makeinfo program found)
+])dnl
