@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB version: 4 updated: 2010/05/29 16:31:02
+dnl CF_HASHED_DB version: 5 updated: 2014/04/12 16:47:01
 dnl ------------
 dnl Look for an instance of the Berkeley hashed database.
 dnl
@@ -13,6 +13,16 @@ yes|*able*) #(vi
     if test -d "$1" ; then
         CF_ADD_INCDIR($1/include)
         CF_ADD_LIBDIR($1/lib)
+	else
+		case "$1" in #(vi
+		./*|../*|/*)
+			AC_MSG_WARN(no such directory $1)
+			;; #(vi
+		*)
+			CF_FIND_SUB_INCDIR($1)
+			CF_FIND_SUB_LIBDIR($1)
+			;;
+		esac
     fi
 esac
 ])

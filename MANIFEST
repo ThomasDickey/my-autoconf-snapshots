@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20140317
+MANIFEST for my-autoconf, version t20140412
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -146,6 +146,8 @@ AcSplit/CF_FIND_IPV6_LIBS       based on the IPV6 type, find libraries
 AcSplit/CF_FIND_IPV6_TYPE       determine the IPV6 type
 AcSplit/CF_FIND_LIBRARY         search for a library, adding -L options
 AcSplit/CF_FIND_LINKAGE         find an entrypoint in a library
+AcSplit/CF_FIND_SUB_INCDIR      find include-directory for specified leaf
+AcSplit/CF_FIND_SUB_LIBDIR      find library-directory for specified leaf
 AcSplit/CF_FIND_TDLIB           find TD_LIB
 AcSplit/CF_FIONBIO              Lynx-test for fcntl/ioctl(FIONBIO)
 AcSplit/CF_FIXUP_ADAFLAGS       make ADAFLAGS consistent with CFLAGS by ensuring -g and -On options are

@@ -1,0 +1,16 @@
+dnl CF_FIND_SUB_LIBDIR version: 1 updated: 2014/04/12 16:47:01
+dnl ------------------
+dnl Find a library-directory with the given leaf-name.  This is useful for
+dnl example with FreeBSD ports, which use this convention to distinguish
+dnl different versions of the same port.
+AC_DEFUN([CF_FIND_SUB_LIBDIR],[
+	CF_SUBDIR_PATH(cf_search,$1,lib)
+	for cf_item in $cf_search
+	do
+		case $cf_item in #(vi
+		*/$1)
+			CF_ADD_LIBDIR($cf_item)
+			;;
+		esac
+	done
+])dnl
