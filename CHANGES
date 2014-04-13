@@ -1,3 +1,13 @@
+2014-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HASHED_DB_VERSION: allow db6.x
+
+	* AcSplit/CF_FIND_SUB_INCDIR, AcSplit/CF_FIND_SUB_LIBDIR:
+	ci-aclocal generated header
+
+	* AcSplit/CF_HASHED_DB:
+	extend parameter to easily select FreeBSD port-version
+
 2014-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INTEL_COMPILER:

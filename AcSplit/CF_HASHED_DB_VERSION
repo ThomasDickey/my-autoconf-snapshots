@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB_VERSION version: 3 updated: 2007/12/01 15:01:37
+dnl CF_HASHED_DB_VERSION version: 4 updated: 2014/04/12 16:47:01
 dnl --------------------
 dnl Given that we have the header file for hashed database, find the version
 dnl information.
@@ -7,7 +7,7 @@ AC_DEFUN([CF_HASHED_DB_VERSION],
 AC_CACHE_CHECK(for version of db, cf_cv_hashed_db_version,[
 cf_cv_hashed_db_version=unknown
 
-for cf_db_version in 1 2 3 4 5
+for cf_db_version in 1 2 3 4 5 6
 do
 	CF_MSG_LOG(checking for db version $cf_db_version)
 	AC_TRY_COMPILE([
