@@ -1,3 +1,9 @@
+2014-04-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2014-04-03
+
+	* config.guess: 2014-03-23
+
 2014-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HASHED_DB_VERSION: allow db6.x
