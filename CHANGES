@@ -1,3 +1,8 @@
+2014-05-24  Nicolas.Boulenguez
+
+	* AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB:
+	Only consider using a project for shared libraries
+
 2014-05-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKEFLAGS:
