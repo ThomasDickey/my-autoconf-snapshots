@@ -1,3 +1,18 @@
+2014-06-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_GNAT_PROJECTS: RCS_BASE
+
+	* AcSplit/CF_GNAT_PROJECTS:
+	optionally suppress use of the GNAT project-files
+
+2014-05-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA_SHAREDLIB: revert
+
+	* AcSplit/CF_GNAT_PROJECTS:
+	revert, except for the chunk about compiler options which appears to be
+	unnecessary.
+
 2014-05-24  Nicolas.Boulenguez
 
 	* AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB:

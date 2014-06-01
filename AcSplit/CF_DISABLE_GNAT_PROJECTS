@@ -1,0 +1,10 @@
+dnl CF_DISABLE_GNAT_PROJECTS version: 1 updated: 2014/06/01 11:34:00
+dnl ------------------------
+AC_DEFUN([CF_DISABLE_GNAT_PROJECTS],[
+AC_MSG_CHECKING(if we want to use GNAT projects)
+CF_ARG_DISABLE(gnat-projects,
+	[  --disable-gnat-projects test: disable GNAT projects even if usable],
+	[enable_gnat_projects=no],
+	[enable_gnat_projects=yes])
+AC_MSG_RESULT($enable_gnat_projects)
+])dnl
