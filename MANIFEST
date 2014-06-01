@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20140524
+MANIFEST for my-autoconf, version t20140601
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -127,6 +127,7 @@ AcSplit/CF_DIRNAME              fake "dirname" script
 AcSplit/CF_DIRS_TO_MAKE         construct list of subdirectories to make into
 AcSplit/CF_DISABLE_DESKTOP      configure option --disable-desktop
 AcSplit/CF_DISABLE_ECHO         disable echo in generated makefile
+AcSplit/CF_DISABLE_GNAT_PROJECTS  test: optionally suppress GNAT project-files
 AcSplit/CF_DISABLE_LEAKS        the "--disable-leaks" option (ncurses)
 AcSplit/CF_DISABLE_LIBTOOL_VERSION  the "--disable-libtool-version" option
 AcSplit/CF_DISABLE_RPATH_HACK   option to disable rpath-hack
