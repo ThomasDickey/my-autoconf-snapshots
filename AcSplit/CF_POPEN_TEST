@@ -1,4 +1,4 @@
-dnl CF_POPEN_TEST version: 4 updated: 2013/10/25 18:24:56
+dnl CF_POPEN_TEST version: 5 updated: 2014/06/04 18:37:28
 dnl -------------
 dnl	Check to ensure that our prototype for 'popen()' doesn't conflict
 dnl	with the system's (this is a problem on AIX and CLIX).
@@ -20,6 +20,6 @@ ac_cv_td_popen=no,
 ac_cv_td_popen=yes))
 AC_MSG_RESULT($ac_cv_td_popen)
 if test $ac_cv_td_popen = yes; then
-	AC_DEFINE(HAVE_POPEN_PROTOTYPE)
+	AC_DEFINE(HAVE_POPEN_PROTOTYPE,[1],[Conflicting popen prototype])
 fi
 ])dnl

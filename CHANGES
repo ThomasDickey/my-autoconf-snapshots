@@ -1,3 +1,13 @@
+2014-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ACVERSION_CHECK:
+	work around another gratuitous incompatibility introduced in 2.69 (reported
+	by Ross Burton, openembedded.org)
+
+2014-06-04  openembedded.org
+
+	* AcSplit/CF_POPEN_TEST: fix for autoheader
+
 2014-06-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_GNAT_PROJECTS: RCS_BASE
