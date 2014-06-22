@@ -1,3 +1,10 @@
+2014-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_SUFFIX:
+	it is not necessary or even a good idea to make AIX's shared-library
+	suffixes ".a" -- make it ".so" like everyone else (including the system's
+	shared libraries).
+
 2014-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ACVERSION_CHECK:
