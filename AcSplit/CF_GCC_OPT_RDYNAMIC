@@ -1,4 +1,4 @@
-dnl CF_GCC_OPT_RDYNAMIC version: 2 updated: 2010/09/06 19:26:50
+dnl CF_GCC_OPT_RDYNAMIC version: 3 updated: 2014/07/02 04:22:42
 dnl -------------------
 dnl "Newer" versions of gcc support the -rdynamic option:
 dnl		Pass the flag -export-dynamic to the ELF linker, on targets that
@@ -8,6 +8,13 @@ dnl		some uses of "dlopen" or to allow obtaining backtraces from within
 dnl		a program.
 dnl Check for the option, and add it to $CFLAGS if available.
 AC_DEFUN([CF_GCC_OPT_RDYNAMIC],[
+
+if test "x$CLANG_COMPILER" = "xyes"
+then
+	AC_MSG_WARN(clang only pretends to honor gcc -rdynamic option)
+	cf_cv_gcc_opt_rdynamic=no
+else
+
 AC_CACHE_CHECK([if $CC has -rdynamic option],cf_cv_gcc_opt_rdynamic,[
 
 cf_save_CFLAGS="$CFLAGS"
@@ -31,6 +38,8 @@ AC_TRY_LINK([#include <stdio.h>],
 
 CFLAGS="$cf_save_CFLAGS"
 ])
+fi
+
 if test "$cf_cv_gcc_opt_rdynamic" = yes ; then
 	CF_ADD_CFLAGS([-rdynamic])
 fi
