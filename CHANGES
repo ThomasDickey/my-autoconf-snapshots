@@ -1,3 +1,12 @@
+2014-07-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_TOOLKIT: add workaround for breakage in XQuartz upgrades
+
+	* AcSplit/CF_ADD_LIBS:
+	workaround in CF_X_TOOLKIT uses pkgconfig, whose files generally are
+	using incomplete dependencies - in turn introducing lots of duplication.
+	filter out the duplicates.
+
 2014-07-12  Steve.Wall
 
 	* AcSplit/CF_X_ATHENA: add --with-Xaw3dxft option

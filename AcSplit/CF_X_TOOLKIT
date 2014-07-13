@@ -1,11 +1,24 @@
-dnl CF_X_TOOLKIT version: 21 updated: 2012/10/04 06:57:36
+dnl CF_X_TOOLKIT version: 22 updated: 2014/07/13 14:33:27
 dnl ------------
 dnl Check for X Toolkit libraries
-dnl
 AC_DEFUN([CF_X_TOOLKIT],
 [
 AC_REQUIRE([AC_PATH_XTRA])
 AC_REQUIRE([CF_CHECK_CACHE])
+
+# OSX is schizoid about who owns /usr/X11 (old) versus /opt/X11 (new), and (and
+# in some cases has installed dummy files in the former, other cases replaced
+# it with a link to the new location).  This complicates the configure script. 
+# Check for that pitfall, and recover using pkg-config
+#
+# If none of these are set, the configuration is almost certainly broken.
+if test -z "${X_CFLAGS}${X_PRE_LIBS}${X_LIBS}${X_EXTRA_LIBS}"
+then
+	CF_TRY_PKG_CONFIG(x11,,[AC_MSG_WARN(unable to find X11 library)])
+	CF_TRY_PKG_CONFIG(ice,,[AC_MSG_WARN(unable to find ICE library)])
+	CF_TRY_PKG_CONFIG(sm,,[AC_MSG_WARN(unable to find SM library)])
+	CF_TRY_PKG_CONFIG(xt,,[AC_MSG_WARN(unable to find Xt library)])
+fi
 
 cf_have_X_LIBS=no
 
