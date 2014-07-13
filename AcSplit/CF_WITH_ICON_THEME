@@ -1,8 +1,8 @@
-dnl CF_WITH_ICON_THEME version: 9 updated: 2013/04/17 05:31:24
+dnl CF_WITH_ICON_THEME version: 10 updated: 2014/07/12 18:57:58
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
-dnl hierarchy. 
+dnl hierarchy.
 dnl
 dnl If the prerequisites are missing, give a warning and revert to the long-
 dnl standing pixmaps directory.

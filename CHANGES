@@ -1,3 +1,11 @@
+2014-07-12  Steve.Wall
+
+	* AcSplit/CF_X_ATHENA: add --with-Xaw3dxft option
+
+2014-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_CC, AcSplit/CF_WITH_ICON_THEME: trim-blanks
+
 2014-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_OPT_RDYNAMIC:
