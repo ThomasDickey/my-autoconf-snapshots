@@ -1,4 +1,4 @@
-dnl CF_CURSES_CHECK_DATA version: 4 updated: 2011/01/15 16:39:24
+dnl CF_CURSES_CHECK_DATA version: 5 updated: 2014/07/19 18:41:17
 dnl --------------------
 dnl Check if curses.h defines the given data/variable.
 dnl Use this after CF_NCURSES_CONFIG or CF_CURSES_CONFIG.
@@ -23,6 +23,7 @@ extern char $1;
 int main(void)
 {
 	void *foo = &($1);
+	fprintf(stderr, "testing linkage of $1:%p\n", foo);
 	${cf_cv_main_return:-return}(foo == 0);
 }],[cf_result=yes],[cf_result=no],[
 	# cross-compiling
@@ -30,6 +31,7 @@ int main(void)
 [extern char $1;],[
 	do {
 		void *foo = &($1);
+		fprintf(stderr, "testing linkage of $1:%p\n", foo);
 		${cf_cv_main_return:-return}(foo == 0);
 	} while (0)
 ],[cf_result=yes],[cf_result=no])

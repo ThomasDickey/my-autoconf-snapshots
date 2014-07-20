@@ -1,3 +1,8 @@
+2014-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_CHECK_DATA:
+	improve workaround for weak-linkage, seems to fix tests with NetBSD 6.1
+
 2014-07-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_TOOLKIT: add workaround for breakage in XQuartz upgrades
