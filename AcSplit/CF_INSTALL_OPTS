@@ -1,0 +1,8 @@
+dnl CF_INSTALL_OPTS version: 1 updated: 2014/07/21 18:19:51
+dnl ---------------
+dnl prompt for/fill-in useful install-program options
+AC_DEFUN([CF_INSTALL_OPTS],
+[
+CF_INSTALL_OPT_S
+CF_INSTALL_OPT_O
+])dnl
