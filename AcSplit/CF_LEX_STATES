@@ -1,4 +1,4 @@
-dnl CF_LEX_STATES version: 5 updated: 2009/08/24 06:40:08
+dnl CF_LEX_STATES version: 6 updated: 2014/07/21 16:02:22
 dnl -------------
 dnl Check if the lex/flex program accepts states, i.e., %s and %x.  Older
 dnl implementations do not support these.
@@ -13,7 +13,7 @@ cf_lex_states_s=
 cf_lex_states_x=
 
 cf_lex_states=no
-while test 0 != `expr $cf_lex_statenum \< $cf_lex_statemax`
+while test $cf_lex_statenum -lt $cf_lex_statemax
 do
 cf_lex_statenum=`expr $cf_lex_statenum + 1`
 cf_lex_states_s="$cf_lex_states_s S$cf_lex_statenum"

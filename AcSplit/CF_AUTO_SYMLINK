@@ -1,4 +1,4 @@
-dnl CF_AUTO_SYMLINK version: 2 updated: 2010/01/27 20:39:52
+dnl CF_AUTO_SYMLINK version: 3 updated: 2014/07/21 17:30:38
 dnl ---------------
 dnl If CF_WITH_SYMLINK is set, but the program transformation is inactive,
 dnl override it to provide a version-suffix to the result.  This assumes that
@@ -8,7 +8,7 @@ dnl $1 = variable to substitute
 AC_DEFUN([CF_AUTO_SYMLINK],[
 AC_REQUIRE([CF_WITH_SYMLINK])dnl
 
-if test "$with_symlink" != no ; then
+if test "x$with_symlink" != xno ; then
 	if test "[$]$1" = NONE ; then
 		cf_version=`$SHELL $srcdir/version.sh 2>/dev/null`
 		if test -n "$cf_version" ; then

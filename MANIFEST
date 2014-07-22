@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20140720
+MANIFEST for my-autoconf, version t20140721
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -209,6 +209,9 @@ AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
 AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
 AcSplit/CF_INHERIT_SCRIPT       inherit config-scripts from parent directory (ncurses)
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
+AcSplit/CF_INSTALL_OPTS         check for useful options of install-program
+AcSplit/CF_INSTALL_OPT_O        check for -o option of install-program
+AcSplit/CF_INSTALL_OPT_S        check for -s option of install-program
 AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
