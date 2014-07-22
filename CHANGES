@@ -1,3 +1,11 @@
+2014-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GETOPT_HEADER:
+	add NEED_GETOPT_H definition, since that's the only interesting special case
+
+	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CHECK_CFLAGS, AcSplit/CF_WITH_PERL:
+	workaround for ash-shell
+
 2014-07-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INSTALL_OPTS, AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_INSTALL_OPT_S:

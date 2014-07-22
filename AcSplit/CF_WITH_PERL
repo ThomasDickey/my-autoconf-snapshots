@@ -1,4 +1,4 @@
-dnl CF_WITH_PERL version: 7 updated: 2013/05/14 05:13:27
+dnl CF_WITH_PERL version: 8 updated: 2014/07/22 05:32:57
 dnl ------------
 dnl Check if perl-extension (using embedded perl interpreter) is wanted, and
 dnl update symbols if we are able to use the extension.
@@ -14,7 +14,7 @@ PERL_XSUBPP=
 
 if test "$with_perl" = yes ; then
 	CF_PROG_PERL(5.004)
-	if test "$PERL" = no; then
+	if test "x$PERL" = xno; then
 		AC_WARN([perl not found])
 	else
 		cf_perl_CFLAGS="$CFLAGS"
