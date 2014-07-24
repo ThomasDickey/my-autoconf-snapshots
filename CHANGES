@@ -1,3 +1,11 @@
+2014-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	Minix3.2 ifdef's the POSIX.1-2001 functions inside _NETBSD_SOURCE, even
+	though it was released 2012-02-29 - appease it.  At the same time, turn
+	on the verbose flag to show that most platforms need platform-specific
+	define's to get POSIX (sic).
+
 2014-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GETOPT_HEADER:
