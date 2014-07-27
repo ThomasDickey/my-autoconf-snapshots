@@ -1,3 +1,9 @@
+2014-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INCLUDE_DIRS:
+	when srcdir isn't ".", add srcdir to the include-options after ".",
+	just like the include vs srcdir/include
+
 2014-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
