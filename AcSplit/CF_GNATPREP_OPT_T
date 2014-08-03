@@ -1,0 +1,10 @@
+dnl CF_GNATPREP_OPT_T version: 1 updated: 2014/08/02 18:37:25
+dnl -----------------
+AC_DEFUN([CF_GNATPREP_OPT_T],[
+AC_CACHE_CHECK(if GNATPREP supports -T option,cf_cv_gnatprep_opt_t,[
+cf_cv_gnatprep_opt_t=no
+gnatprep -T 2>/dev/null >/dev/null && cf_cv_gnatprep_opt_t=yes
+])
+test "$cf_cv_gnatprep_opt_t" = yes && GNATPREP_OPTS="-T $GNATPREP_OPTS"
+AC_SUBST(GNATPREP_OPTS)
+])dnl
