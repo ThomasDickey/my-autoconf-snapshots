@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20140726
+MANIFEST for my-autoconf, version t20140802
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -181,6 +181,7 @@ AcSplit/CF_GCC_VERSION          check for version of gcc
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GETOPT_HEADER        check for getopt variables in header file
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
+AcSplit/CF_GNATPREP_OPT_T       check for gnatprep's "-T" option
 AcSplit/CF_GNAT_GENERICS        check if GNAT can compile generics
 AcSplit/CF_GNAT_PRAGMA_UNREF    check if the gnat pragma "Unreferenced" works.
 AcSplit/CF_GNAT_PROJECTS        check if GNAT supports project files (used to simplify library building)

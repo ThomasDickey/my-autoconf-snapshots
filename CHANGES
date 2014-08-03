@@ -1,3 +1,7 @@
+2014-08-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNATPREP_OPT_T: ci-aclocal generated header
+
 2014-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_INCLUDE_DIRS:
