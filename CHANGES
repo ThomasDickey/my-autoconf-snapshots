@@ -1,3 +1,17 @@
+2014-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	honor install.libs in misc-directory even if install.data is not used
+
+	* AcSplit/CF_SRC_MODULES: misc-directory always has a makefile
+
+2014-09-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INCLUDE_DIRS:
+	remove the (1997-era) chunk which sets -I/usr/include, etc., since it seems
+	that none of my programs rely upon it.  However, the report which pointed
+	this out (Gentoo #522586) is itself relying upon a defective ebuild.
+
 2014-09-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
