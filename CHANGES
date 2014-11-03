@@ -1,3 +1,13 @@
+2014-11-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_LIBTOOL_OPTS: append to LIBTOOL_OPTS
+
+	* AcSplit/CF_WITH_EXPORT_SYMS, AcSplit/CF_WITH_VERSIONED_SYMS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL:
+	incorporate --with-export-syms and --with-versioned-syms options
+
 2014-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
