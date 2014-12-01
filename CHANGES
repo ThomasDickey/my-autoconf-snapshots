@@ -1,3 +1,28 @@
+2014-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS:
+	add configure check for gnutls_rnd, not present in 2.8.6
+	drop -lcrypt if gnutls_rnd is found, to reduce libraries used.
+	drop -lgnutls-extra, not needed with 2.8.6 or later, e.g. Debian 6
+
+	* AcSplit/CF_CHECK_SSL_X509:
+	partial fix: check for the correct header if this is gnutls
+
+2014-11-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_EXPORT_SYMS:
+	split-out EXPORT_SYMS variable to avoid conflicting use of $LIBTOOL_OPTS
+
+	* AcSplit/CF_WITH_LIBTOOL: use top_srcdir
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	use top_srcdir to find package directory
+	attempt to support Solaris (won't happen right away, but this is a start)
+
+	* AcSplit/CF_DISABLE_LIBTOOL_VERSION:
+	when using -version-info (the native libtool mode), get the ABI_VERSION
+	value from $VERSION (which comes from CF_VERSION_INFO)
+
 2014-11-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LIBTOOL_OPTS: append to LIBTOOL_OPTS

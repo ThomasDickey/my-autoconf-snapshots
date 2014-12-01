@@ -1,4 +1,4 @@
-dnl CF_DISABLE_LIBTOOL_VERSION version: 1 updated: 2010/05/15 15:45:59
+dnl CF_DISABLE_LIBTOOL_VERSION version: 2 updated: 2014/11/15 19:05:29
 dnl --------------------------
 dnl Check if we should use the libtool 1.5 feature "-version-number" instead of
 dnl the older "-version-info" feature.  The newer feature allows us to use
@@ -17,7 +17,24 @@ if test "$cf_libtool_version" = yes ; then
 	LIBTOOL_VERSION="-version-number"
 else
 	LIBTOOL_VERSION="-version-info"
+	case "x$VERSION" in #(vi
+	x) #(vi
+		AC_MSG_WARN(VERSION was not set)
+		;;
+	x*.*.*)
+		ABI_VERSION="$VERSION"
+		CF_VERBOSE(ABI_VERSION: $ABI_VERSION)
+		;;
+	x*:*:*)
+		ABI_VERSION=`echo "$VERSION" | sed -e 's/:/./g'`
+		CF_VERBOSE(ABI_VERSION: $ABI_VERSION)
+		;;
+	*)
+		AC_MSG_WARN(unexpected VERSION value: $VERSION)
+		;;
+	esac
 fi
 
+AC_SUBST(ABI_VERSION)
 AC_SUBST(LIBTOOL_VERSION)
 ])dnl

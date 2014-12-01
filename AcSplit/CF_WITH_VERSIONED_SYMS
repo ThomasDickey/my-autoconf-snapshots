@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 1 updated: 2014/11/02 16:11:49
+dnl CF_WITH_VERSIONED_SYMS version: 2 updated: 2014/11/15 19:05:29
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -14,17 +14,27 @@ AC_ARG_WITH(versioned-syms,
 	[with_versioned_syms=no])
 if test "x$with_versioned_syms" = xyes
 then
-	with_versioned_syms='${srcdir}/package/ifelse($1,,${PACKAGE},[$1]).map'
+	with_versioned_syms='${top_srcdir}/package/ifelse($1,,${PACKAGE},[$1]).map'
 	AC_SUBST(PACKAGE)
 fi
 AC_MSG_RESULT($with_versioned_syms)
+
 if test "x$with_versioned_syms" != xno
 then
-	case "x$MK_SHARED_LIB" in #(vi
+	AC_SUBST(VERSIONED_SYMS)
+	case "x$MK_SHARED_LIB" in
 	*-Wl,*) #(vi
-		MK_SHARED_LIB=`echo "$MK_SHARED_LIB" | sed -e "s%-Wl,%-Wl,--version-script,$with_versioned_syms -Wl,%"`
+		VERSIONED_SYMS="-Wl,--version-script,$with_versioned_syms"
+		MK_SHARED_LIB=`echo "$MK_SHARED_LIB" | sed -e "s%-Wl,%\\[$]{VERSIONED_SYMS} -Wl,%"`
+		CF_VERBOSE(MK_SHARED_LIB:  $MK_SHARED_LIB)
+		;;
+	*-dy*) #(vi
+		VERSIONED_SYMS="-Wl,-M,$with_versioned_syms"
+		MK_SHARED_LIB=`echo "$MK_SHARED_LIB" | sed -e "s%-dy%\\[$]{VERSIONED_SYMS} -dy%"`
+		CF_VERBOSE(MK_SHARED_LIB:  $MK_SHARED_LIB)
 		;;
 	*)
+		AC_MSG_WARN(this system does not support versioned-symbols)
 		;;
 	esac
 fi

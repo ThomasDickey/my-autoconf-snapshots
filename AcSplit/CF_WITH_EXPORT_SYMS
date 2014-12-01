@@ -1,4 +1,4 @@
-dnl CF_WITH_EXPORT_SYMS version: 1 updated: 2014/11/02 16:11:49
+dnl CF_WITH_EXPORT_SYMS version: 2 updated: 2014/11/15 19:05:29
 dnl -------------------
 dnl Use this with libtool to specify the list of symbols that may be exported.
 dnl The input file contains one symbol per line; comments work with "#".
@@ -13,13 +13,13 @@ AC_ARG_WITH(export-syms,
 	[with_export_syms=no])
 if test "x$with_export_syms" = xyes
 then
-	with_export_syms='${srcdir}/package/ifelse($1,,${PACKAGE},[$1]).sym'
+	with_export_syms='${top_srcdir}/package/ifelse($1,,${PACKAGE},[$1]).sym'
 	AC_SUBST(PACKAGE)
 fi
 AC_MSG_RESULT($with_export_syms)
 if test "x$with_export_syms" != xno
 then
-	LIBTOOL_OPTS="$LIBTOOL_OPTS -export-symbols $with_export_syms"
-	AC_SUBST(LIBTOOL_OPTS)
+	EXPORT_SYMS="$EXPORT_SYMS -export-symbols $with_export_syms"
+	AC_SUBST(EXPORT_SYMS)
 fi
 ])dnl
