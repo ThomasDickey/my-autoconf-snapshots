@@ -1,3 +1,8 @@
+2014-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SUBDIR_PATH:
+	change this to a loop, adding /usr/pkg (NetBSD) and /opt/local (Mac OSX)
+
 2014-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS:
