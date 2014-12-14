@@ -1,3 +1,13 @@
+2014-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	allow pc-files to be configured when pkg-config is missing
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	if pkg-config is missing, try to fill in some of the directory location.
+
+	* AcSplit/CF_PKG_CONFIG: warn if pkg-config is missing
+
 2014-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SUBDIR_PATH:
