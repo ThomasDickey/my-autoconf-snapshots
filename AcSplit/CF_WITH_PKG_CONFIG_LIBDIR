@@ -1,42 +1,67 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 2 updated: 2011/12/10 18:58:47
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 3 updated: 2014/12/13 18:48:46
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
-if test "$PKG_CONFIG" != none ; then
-	AC_MSG_CHECKING(for $PKG_CONFIG library directory)
-	AC_ARG_WITH(pkg-config-libdir,
-		[  --with-pkg-config-libdir=XXX use given directory for installing pc-files],
-		[PKG_CONFIG_LIBDIR=$withval],
-		[PKG_CONFIG_LIBDIR=yes])
+AC_MSG_CHECKING(for $PKG_CONFIG library directory)
+AC_ARG_WITH(pkg-config-libdir,
+	[  --with-pkg-config-libdir=XXX use given directory for installing pc-files],
+	[PKG_CONFIG_LIBDIR=$withval],
+	[PKG_CONFIG_LIBDIR=yes])
 
-	case x$PKG_CONFIG_LIBDIR in #(vi
-	x/*) #(vi
-		;;
-	xyes) #(vi
-		# look for the library directory using the same prefix as the executable
+case x$PKG_CONFIG_LIBDIR in #(vi
+x/*) #(vi
+	;;
+xyes) #(vi
+	# Look for the library directory using the same prefix as the executable
+	if test "x$PKG_CONFIG" = xnone
+	then
+		cf_path=$prefix
+	else
 		cf_path=`echo "$PKG_CONFIG" | sed -e 's,/[[^/]]*/[[^/]]*$,,'`
-		case x`(arch) 2>/dev/null` in #(vi
-		*64) #(vi
-			for cf_config in $cf_path/share $cf_path/lib64 $cf_path/lib32 $cf_path/lib
-			do
-				if test -d $cf_config/pkgconfig
-				then
-					PKG_CONFIG_LIBDIR=$cf_config/pkgconfig
-					break
-				fi
-			done
-			;;
-		*)
-			PKG_CONFIG_LIBDIR=$cf_path/lib/pkgconfig
-			;;
-		esac
+	fi
+
+	# If you don't like using the default architecture, you have to specify the
+	# intended library directory and corresponding compiler/linker options.
+	#
+	# This case allows for Debian's 2014-flavor of multiarch, along with the
+	# most common variations before that point.  Some other variants spell the
+	# directory differently, e.g., "pkg-config", and put it in unusual places. 
+	# pkg-config has always been poorly standardized, which is ironic...
+	case x`(arch) 2>/dev/null` in #(vi
+	*64) #(vi
+		cf_search_path="\
+			$cf_path/lib/*64-linux-gnu \
+			$cf_path/share \
+			$cf_path/lib64 \
+			$cf_path/lib32 \
+			$cf_path/lib"
 		;;
 	*)
+		cf_search_path="\
+			$cf_path/lib/*-linux-gnu \
+			$cf_path/share \
+			$cf_path/lib32 \
+			$cf_path/lib"
 		;;
 	esac
 
-	AC_MSG_RESULT($PKG_CONFIG_LIBDIR)
-fi
+	CF_VERBOSE(list...)
+	for cf_config in $cf_search_path
+	do
+		CF_VERBOSE(checking $cf_config/pkgconfig)
+		if test -d $cf_config/pkgconfig
+		then
+			PKG_CONFIG_LIBDIR=$cf_config/pkgconfig
+			AC_MSG_CHECKING(done)
+			break
+		fi
+	done
+	;;
+*)
+	;;
+esac
+
+AC_MSG_RESULT($PKG_CONFIG_LIBDIR)
 
 AC_SUBST(PKG_CONFIG_LIBDIR)
 ])dnl
