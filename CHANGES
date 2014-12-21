@@ -1,3 +1,15 @@
+2014-12-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_EXPORT_SYMS:
+	don't inherit an EXPORT_SYMS value (no need to, yet)
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	introduce an intermediate ".map" file to allow ncurses to modify the
+	file with a sed-script
+
+	* AcSplit/CF_LIB_RULES:
+	provide a way to specify abi-version in ".map" files
+
 2014-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:

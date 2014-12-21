@@ -1,4 +1,4 @@
-dnl CF_WITH_EXPORT_SYMS version: 2 updated: 2014/11/15 19:05:29
+dnl CF_WITH_EXPORT_SYMS version: 3 updated: 2014/12/20 19:16:08
 dnl -------------------
 dnl Use this with libtool to specify the list of symbols that may be exported.
 dnl The input file contains one symbol per line; comments work with "#".
@@ -19,7 +19,7 @@ fi
 AC_MSG_RESULT($with_export_syms)
 if test "x$with_export_syms" != xno
 then
-	EXPORT_SYMS="$EXPORT_SYMS -export-symbols $with_export_syms"
+	EXPORT_SYMS="-export-symbols $with_export_syms"
 	AC_SUBST(EXPORT_SYMS)
 fi
 ])dnl
