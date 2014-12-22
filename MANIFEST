@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20141221
+MANIFEST for my-autoconf, version t20141222
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -9,6 +9,8 @@ config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 headers-sh                      utility for installing/transforming header files
 install-sh                      generic install-script
+install.sh                      alternate install-script
+mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
 AcSplit/AC_ISC_POSIX            from gettext 0.10.40 (tin)
 AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
@@ -490,6 +492,7 @@ AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_LIBTOOL_OPTS    pass "-static" into libtool options (dialog)
 AcSplit/CF_WITH_LIB_PREFIX      configure option --with-lib-prefix
 AcSplit/CF_WITH_LOCALE_ALIAS    option to provide locale-alias file
+AcSplit/CF_WITH_MAN2HTML        configure option "--with-man2html" provides "man2html" as alternative to
 AcSplit/CF_WITH_NCURSES_ETC     provide the --with-ncurses, --with-ncursew, etc., options needed for the
 AcSplit/CF_WITH_NC_ALLOC_H      check for nc_alloc.h if --disable-leaks is set
 AcSplit/CF_WITH_NO_LEAKS        wrapper for leak-related configure options
