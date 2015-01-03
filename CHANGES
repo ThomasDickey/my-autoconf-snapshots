@@ -1,3 +1,9 @@
+2015-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__DEFINE_SHLIB_VARS: typo
+
+	* AcSplit/CF_WITH_APP_DEFAULTS: add paths for OSX
+
 2014-12-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_MAN2HTML: ci-aclocal generated header

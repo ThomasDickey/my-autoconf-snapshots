@@ -1,4 +1,4 @@
-dnl CF_WITH_APP_DEFAULTS version: 5 updated: 2012/10/04 04:29:52
+dnl CF_WITH_APP_DEFAULTS version: 6 updated: 2015/01/02 09:05:50
 dnl --------------------
 dnl Handle configure option "--with-app-defaults", setting these shell
 dnl variables:
@@ -25,6 +25,9 @@ dnl 	32-bit:
 dnl 	/usr/X11/etc/X11/app-defaults
 dnl 	/usr/X11/share/X11/app-defaults
 dnl 	/usr/X11/lib/X11/app-defaults
+dnl OSX uses
+dnl		/opt/local/share/X11/app-defaults (MacPorts)
+dnl		/opt/X11/share/X11/app-defaults (non-ports)
 dnl	64-bit:
 dnl 	/usr/X11/etc/X11/app-defaults
 dnl 	/usr/X11/share/X11/app-defaults (I mkdir'd this)
@@ -43,6 +46,8 @@ if test "x[$]APPSDIR" = xauto
 then
 	APPSDIR='${exec_prefix}/lib/X11/app-defaults'
 	for cf_path in \
+		/opt/local/share/X11/app-defaults \
+		/opt/X11/share/X11/app-defaults \
 		/usr/share/X11/app-defaults \
 		/usr/X11/share/X11/app-defaults \
 		/usr/X11/lib/X11/app-defaults \
