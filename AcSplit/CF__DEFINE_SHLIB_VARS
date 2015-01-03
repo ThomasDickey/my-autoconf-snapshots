@@ -1,9 +1,9 @@
-dnl CF__DEFINE_SHLIB_VARS version: 2 updated: 2013/07/27 17:38:32
+dnl CF__DEFINE_SHLIB_VARS version: 3 updated: 2015/01/02 17:09:39
 dnl ---------------------
 dnl Substitute makefile variables useful for CF__ADD_SHLIB_RULES.
 dnl
 dnl The substitution requires these variables:
-dnl		LIB_PREFI - "lib"
+dnl		LIB_PREFIX - "lib"
 dnl		LIB_ROOTNAME - "foo"
 dnl		LIB_SUFFIX - ".so"
 dnl		REL_VERSION - "5.0"
