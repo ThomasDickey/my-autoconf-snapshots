@@ -1,3 +1,8 @@
+2015-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	improve sed-script; there's more than "NCURSES_" prefixes to account for.
+
 2015-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__DEFINE_SHLIB_VARS: typo
