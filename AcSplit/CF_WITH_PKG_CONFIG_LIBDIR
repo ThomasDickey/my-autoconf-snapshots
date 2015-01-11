@@ -1,4 +1,4 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 3 updated: 2014/12/13 18:48:46
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 4 updated: 2015/01/10 17:03:43
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
@@ -41,7 +41,8 @@ xyes) #(vi
 			$cf_path/lib/*-linux-gnu \
 			$cf_path/share \
 			$cf_path/lib32 \
-			$cf_path/lib"
+			$cf_path/lib \
+			$cf_path/libdata"
 		;;
 	esac
 
