@@ -1,4 +1,4 @@
-dnl CF_ENABLE_PC_FILES version: 10 updated: 2014/12/13 18:48:46
+dnl CF_ENABLE_PC_FILES version: 11 updated: 2015/01/10 17:03:43
 dnl ------------------
 dnl This is the "--enable-pc-files" option, which is available if there is a
 dnl pkg-config configuration on the local machine.
@@ -18,10 +18,19 @@ AC_ARG_ENABLE(pc-files,
 	[enable_pc_files=$enableval],
 	[enable_pc_files=no])
 AC_MSG_RESULT($enable_pc_files)
+
 if test "x$enable_pc_files" != xno
 then
-	CF_PATH_SYNTAX(PKG_CONFIG_LIBDIR)
-	MAKE_PC_FILES=
+	case "x$PKG_CONFIG_LIBDIR" in #(vi
+	xno|xyes) #(vi
+		AC_MSG_WARN(no PKG_CONFIG_LIBDIR was found)
+		MAKE_PC_FILES="#"
+		;;
+	*)
+		CF_PATH_SYNTAX(PKG_CONFIG_LIBDIR)
+		MAKE_PC_FILES=
+		;;
+	esac
 else
 	MAKE_PC_FILES="#"
 fi
