@@ -1,3 +1,24 @@
+2015-02-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
+	* AcSplit/CF_AWK_BIGSTRING: prefer test to expr for Minix 3.2
+
+	* AcSplit/CF_WIDEC_SHIFT: prefer test to expr, for Minix 3.2
+
+2015-01-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	check if the loader can use wildcards selectively to declare "_" symbols
+	local after declaring some global.  Set WILDCARD_SYMS to reflect test.
+
+	* AcSplit/CF_LIB_RULES: incorporate new symbol WILDCARD_SYMS
+
+	* AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	tidy comments
+
 2015-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:

@@ -1,4 +1,4 @@
-dnl CF_AWK_BIGSTRING version: 3 updated: 2010/10/23 15:52:32
+dnl CF_AWK_BIGSTRING version: 4 updated: 2015/02/10 04:30:14
 dnl ----------------
 dnl Check if awk can handle big strings.
 dnl
@@ -16,9 +16,9 @@ AC_DEFUN([CF_AWK_BIGSTRING],
         ;;
     x*mawk*) #(vi
         cf_awk_bigstring=`$AWK -W version 2>&1 |fgrep sprintf |sed -e 's/[[ ]]*$//' -e 's/^.*[[ ]]//'`
-        if test -z $cf_awk_bigstring ; then
+        if test -z "$cf_awk_bigstring" ; then
             eval $2=no
-        elif ( expr $1 \<= $cf_awk_bigstring 2>/dev/null >/dev/null ) ; then
+        elif ( test "$1" -le "$cf_awk_bigstring" 2>/dev/null >/dev/null ) ; then
             eval $2=yes
         else
             eval $2=no
