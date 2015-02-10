@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 85 updated: 2015/01/10 13:38:03
+dnl CF_SHARED_OPTS version: 86 updated: 2015/01/21 20:10:54
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -155,7 +155,7 @@ CF_EOF
 		fi
 		;;
 	hpux[[7-8]]*) #(vi
-		# HP-UX 8.07 ld lacks "+b" option used for libdir search-list 
+		# HP-UX 8.07 ld lacks "+b" option used for libdir search-list
 		if test "$GCC" != yes; then
 			CC_SHARED_OPTS='+Z'
 		fi

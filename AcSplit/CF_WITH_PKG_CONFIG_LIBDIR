@@ -1,4 +1,4 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 4 updated: 2015/01/10 17:03:43
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 5 updated: 2015/01/21 20:10:54
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
@@ -25,7 +25,7 @@ xyes) #(vi
 	#
 	# This case allows for Debian's 2014-flavor of multiarch, along with the
 	# most common variations before that point.  Some other variants spell the
-	# directory differently, e.g., "pkg-config", and put it in unusual places. 
+	# directory differently, e.g., "pkg-config", and put it in unusual places.
 	# pkg-config has always been poorly standardized, which is ironic...
 	case x`(arch) 2>/dev/null` in #(vi
 	*64) #(vi
