@@ -1,3 +1,15 @@
+2015-02-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XINERAMA:
+	make testable result the same with/without pkg-config
+
+	* AcSplit/CF_XINERAMA: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_MAN2HTML:
+	revised/extended the checks for man2html options to permit deprecating
+	groff's broken html conversion.  This uses man2html 3.1, which also adds
+	a "-index" option.
+
 2015-02-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc: sign
