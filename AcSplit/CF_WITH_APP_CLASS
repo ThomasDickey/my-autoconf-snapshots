@@ -1,4 +1,4 @@
-dnl CF_WITH_APP_CLASS version: 2 updated: 2012/10/04 04:29:52
+dnl CF_WITH_APP_CLASS version: 3 updated: 2015/04/12 15:39:00
 dnl -----------------
 dnl Handle configure option "--with-app-class", setting the $APP_CLASS
 dnl variable, used for X resources.
@@ -11,14 +11,14 @@ AC_ARG_WITH(app-class,
 	[APP_CLASS=$withval],
 	[APP_CLASS=$1])
 
-case x$APP_CLASS in #(vi
-*[[/@,%]]*) #(vi
+case x$APP_CLASS in
+(*[[/@,%]]*)
 	AC_MSG_WARN(X applications class cannot contain punctuation)
 	APP_CLASS=$1
 	;;
-x[[A-Z]]*) #(vi
+(x[[A-Z]]*)
 	;;
-*)
+(*)
 	AC_MSG_WARN([X applications class must start with capital, ignoring $APP_CLASS])
 	APP_CLASS=$1
 	;;

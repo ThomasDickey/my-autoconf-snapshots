@@ -1,4 +1,4 @@
-dnl CF_UTMP_UT_NAME version: 5 updated: 2012/10/04 20:12:20
+dnl CF_UTMP_UT_NAME version: 6 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Check if UTMP/UTMPX struct defines ut_name member
 AC_DEFUN([CF_UTMP_UT_NAME],
@@ -24,11 +24,11 @@ for cf_header in ut_name ut_user ; do
 done
 ])
 
-case $cf_cv_have_utmp_ut_name in #(vi
-no) #(vi
+case $cf_cv_have_utmp_ut_name in
+(no)
 	AC_MSG_ERROR(Cannot find declaration for ut.ut_name)
 	;;
-ut_user)
+(ut_user)
 	AC_DEFINE(ut_name,ut_user,[Define to rename UTMP/UTMPX struct ut_name member])
 	;;
 esac

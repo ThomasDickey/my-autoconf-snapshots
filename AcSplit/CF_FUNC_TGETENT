@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 19 updated: 2012/10/04 20:12:20
+dnl CF_FUNC_TGETENT version: 20 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -18,10 +18,10 @@ cf_TERMVAR=vt100
 if test -n "$TERMCAP"
 then
 	cf_TERMCAP=`echo "$TERMCAP" | tr '\n' ' ' | sed -e 's/^..|//' -e 's/|.*//'`
-	case "$cf_TERMCAP" in #(vi
-	screen*.*) #(vi
+	case "$cf_TERMCAP" in
+	(screen*.*)
 		;;
-	*)
+	(*)
 		cf_TERMVAR="$cf_TERMCAP"
 		;;
 	esac

@@ -1,3 +1,12 @@
+2015-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CC_ENV_FLAGS, AcSplit/CF_ENABLE_NARROWPROTO, AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_INTEL_COMPILER, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PKG_CONFIG, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_REGEX, AcSplit/CF_RPATH_HACK_2, AcSplit/CF_TRIM_X_LIBS, AcSplit/CF_TTY_GROUP, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_WITH_APP_CLASS, AcSplit/CF_WITH_DESKTOP_CATEGORY, AcSplit/CF_WITH_ICON_NAME, AcSplit/CF_WITH_ICON_SYMLINK, AcSplit/CF_WITH_ICON_THEME, AcSplit/CF_WITH_IMAKE_CFLAGS, AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_WITH_PCRE, AcSplit/CF_XBOOL_RESULT, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_FREETYPE, AcSplit/CF_X_TOOLKIT:
+	eliminate unnecessary "#(vi" markers in autoconf macros by using "(" to begin
+	case-statement cases (suggested by Jens Schweikhardt)
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SRC_MODULES:
+	modified for ncurses --with-extra-suffix option
+
 2015-03-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_NARROWPROTO:

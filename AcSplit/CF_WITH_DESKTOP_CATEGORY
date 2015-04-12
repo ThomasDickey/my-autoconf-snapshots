@@ -1,4 +1,4 @@
-dnl CF_WITH_DESKTOP_CATEGORY version: 4 updated: 2013/01/01 10:50:14
+dnl CF_WITH_DESKTOP_CATEGORY version: 5 updated: 2015/04/12 15:39:00
 dnl ------------------------
 dnl Taking into account the absence of standardization of desktop categories
 dnl take a look to see whether other applications on the current system are
@@ -42,8 +42,8 @@ then
 					read cf_desktop_path
 					test -z "$cf_desktop_path" && break
 					cf_desktop_name=`basename $cf_desktop_path .desktop`
-					case $cf_desktop_name in #(vi
-					$1|*-$1|$2)
+					case $cf_desktop_name in
+					($1|*-$1|$2)
 						CF_VERBOSE(inspect $cf_desktop_path)
 						egrep '^Categories=' $cf_desktop_path | \
 							tr ';' '\n' | \
@@ -61,10 +61,10 @@ then
 			do
 				read cf_desktop_this
 				test -z "$cf_desktop_this" && break
-				case $cf_desktop_this in #(vi
-				Qt*|GTK*|KDE*|GNOME*|*XFCE*|*Xfce*) #(vi
+				case $cf_desktop_this in
+				(Qt*|GTK*|KDE*|GNOME*|*XFCE*|*Xfce*)
 					;;
-				$3)
+				($3)
 					test "x$cf_desktop_last" != "x$cf_desktop_this" && echo $cf_desktop_this >>conftest.2
 					;;
 				esac

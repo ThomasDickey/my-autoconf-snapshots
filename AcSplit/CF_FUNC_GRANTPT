@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 10 updated: 2013/04/17 05:31:24
+dnl CF_FUNC_GRANTPT version: 11 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -9,10 +9,10 @@ stropts.h \
 )
 
 cf_func_grantpt="grantpt ptsname"
-case $host_os in #(vi
-darwin[[0-9]].*) #(vi
+case $host_os in
+(darwin[[0-9]].*)
 	;;
-*)
+(*)
 	cf_func_grantpt="$cf_func_grantpt posix_openpt"
 	;;
 esac
@@ -62,29 +62,29 @@ CF__GRANTPT_BODY
 }
 ,
 [
-				case $cf_pty_next in #(vi
-				1) #(vi - streams
+				case $cf_pty_next in
+				(1) # - streams
 					cf_pty_feature=ptem
 					;;
-				2) #(vi - streams
+				(2) # - streams
 					cf_pty_feature=ldterm
 					;;
-				3) #(vi - streams
+				(3) # - streams
 					cf_pty_feature=ttcompat
 					;;
-				4) #(vi
+				(4)
 					cf_pty_feature=pty_isatty
 					;;
-				5) #(vi
+				(5)
 					cf_pty_feature=pty_tcsetattr
 					;;
-				6) #(vi
+				(6)
 					cf_pty_feature=tty_tcsetattr
 					;;
 				esac
 ],[
-				case $cf_pty_next in #(vi
-				1|2|3)
+				case $cf_pty_next in
+				(1|2|3)
 					CF_MSG_LOG(skipping remaining streams features $cf_pty_this..2)
 					cf_pty_next=3
 					;;

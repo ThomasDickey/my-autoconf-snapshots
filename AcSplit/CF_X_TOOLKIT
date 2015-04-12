@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 22 updated: 2014/07/13 14:33:27
+dnl CF_X_TOOLKIT version: 23 updated: 2015/04/12 15:39:00
 dnl ------------
 dnl Check for X Toolkit libraries
 AC_DEFUN([CF_X_TOOLKIT],
@@ -8,7 +8,7 @@ AC_REQUIRE([CF_CHECK_CACHE])
 
 # OSX is schizoid about who owns /usr/X11 (old) versus /opt/X11 (new), and (and
 # in some cases has installed dummy files in the former, other cases replaced
-# it with a link to the new location).  This complicates the configure script. 
+# it with a link to the new location).  This complicates the configure script.
 # Check for that pitfall, and recover using pkg-config
 #
 # If none of these are set, the configuration is almost certainly broken.
@@ -24,10 +24,10 @@ cf_have_X_LIBS=no
 
 CF_TRY_PKG_CONFIG(xt,[
 
-	case "x$LIBS" in #(vi
-	*-lX11*) #(vi
+	case "x$LIBS" in
+	(*-lX11*)
 		;;
-	*)
+	(*)
 # we have an "xt" package, but it may omit Xt's dependency on X11
 AC_CACHE_CHECK(for usable X dependency,cf_cv_xt_x11_compat,[
 AC_TRY_LINK([
@@ -56,12 +56,12 @@ AC_TRY_LINK([
 	if test "$cf_cv_xt_ice_compat" = no
 	then
 		# workaround for broken ".pc" files used for X Toolkit.
-		case "x$X_PRE_LIBS" in #(vi
-		*-lICE*)
-			case "x$LIBS" in #(vi
-			*-lICE*) #(vi
+		case "x$X_PRE_LIBS" in
+		(*-lICE*)
+			case "x$LIBS" in
+			(*-lICE*)
 				;;
-			*)
+			(*)
 				CF_VERBOSE(work around broken ICE dependency)
 				CF_TRY_PKG_CONFIG(ice,
 					[CF_TRY_PKG_CONFIG(sm)],

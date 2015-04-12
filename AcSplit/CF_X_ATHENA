@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA version: 22 updated: 2014/07/12 18:57:58
+dnl CF_X_ATHENA version: 23 updated: 2015/04/12 15:39:00
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
@@ -80,10 +80,10 @@ int check = XmuCompareISOLatin1("big", "small")
 			if test "$cf_cv_xaw_compat" = no
 			then
 				# workaround for broken ".pc" files...
-				case "$cf_x_athena_lib" in #(vi
-				*-lXmu*) #(vi
+				case "$cf_x_athena_lib" in
+				(*-lXmu*)
 					;;
-				*)
+				(*)
 					CF_VERBOSE(work around broken package)
 					cf_save_xmu="$LIBS"
 					cf_first_lib=`echo "$cf_save_xmu" | sed -e 's/^[ ][ ]*//' -e 's/ .*//'`

@@ -1,4 +1,4 @@
-dnl CF_REGEX version: 10 updated: 2012/10/04 20:12:20
+dnl CF_REGEX version: 11 updated: 2015/04/12 15:39:00
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
@@ -8,8 +8,8 @@ AC_DEFUN([CF_REGEX],
 cf_regex_func=no
 
 cf_regex_libs="regex re"
-case $host_os in #(vi
-mingw*)
+case $host_os in
+(mingw*)
 	cf_regex_libs="gnurx $cf_regex_libs"
 	;;
 esac
@@ -38,8 +38,8 @@ fi
 AC_CACHE_CHECK(for regular-expression headers,cf_cv_regex_hdrs,[
 
 cf_cv_regex_hdrs=no
-case $cf_regex_func in #(vi
-compile) #(vi
+case $cf_regex_func in
+(compile)
 	for cf_regex_hdr in regexp.h regexpr.h
 	do
 		AC_TRY_LINK([#include <$cf_regex_hdr>],[
@@ -51,7 +51,7 @@ compile) #(vi
 		])
 	done
 	;;
-*)
+(*)
 	for cf_regex_hdr in regex.h
 	do
 		AC_TRY_LINK([#include <sys/types.h>
@@ -70,10 +70,10 @@ esac
 
 ])
 
-case $cf_cv_regex_hdrs in #(vi
-    no)	       AC_MSG_WARN(no regular expression header found) ;; #(vi
-    regex.h)   AC_DEFINE(HAVE_REGEX_H_FUNCS,1,[Define to 1 to include regex.h for regular expressions]) ;; #(vi
-    regexp.h)  AC_DEFINE(HAVE_REGEXP_H_FUNCS,1,[Define to 1 to include regexp.h for regular expressions]) ;; #(vi
-    regexpr.h) AC_DEFINE(HAVE_REGEXPR_H_FUNCS,1,[Define to 1 to include regexpr.h for regular expressions]) ;;
+case $cf_cv_regex_hdrs in
+    (no)	    AC_MSG_WARN(no regular expression header found) ;;
+    (regex.h)   AC_DEFINE(HAVE_REGEX_H_FUNCS,1,[Define to 1 to include regex.h for regular expressions]) ;;
+    (regexp.h)  AC_DEFINE(HAVE_REGEXP_H_FUNCS,1,[Define to 1 to include regexp.h for regular expressions]) ;;
+    (regexpr.h) AC_DEFINE(HAVE_REGEXPR_H_FUNCS,1,[Define to 1 to include regexpr.h for regular expressions]) ;;
 esac
 ])dnl

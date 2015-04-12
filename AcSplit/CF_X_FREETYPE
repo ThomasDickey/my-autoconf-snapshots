@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 26 updated: 2012/10/04 20:12:20
+dnl CF_X_FREETYPE version: 27 updated: 2015/04/12 15:39:00
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -31,7 +31,7 @@ test $cf_cv_x_freetype_cfgs = no && cf_cv_x_freetype_cfgs=none
 AC_MSG_RESULT($cf_cv_x_freetype_cfgs)
 
 case $cf_cv_x_freetype_cfgs in
-none) #(vi
+(none)
 	AC_MSG_CHECKING(if you specified -D/-I options for FreeType)
 	AC_ARG_WITH(freetype-cflags,
 		[  --with-freetype-cflags  -D/-I options for compiling with FreeType],
@@ -46,7 +46,7 @@ none) #(vi
 		[cf_cv_x_freetype_libs=no])
 	AC_MSG_RESULT($cf_cv_x_freetype_libs)
 	;;
-auto) #(vi
+(auto)
 	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists xft; then
 		FREETYPE_CONFIG=$PKG_CONFIG
 		FREETYPE_PARAMS=xft
@@ -63,7 +63,7 @@ auto) #(vi
 		fi
 	fi
 	;;
-pkg*) #(vi
+(pkg*)
 	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists xft; then
 		FREETYPE_CONFIG=$cf_cv_x_freetype_cfgs
 		FREETYPE_PARAMS=xft
@@ -71,7 +71,7 @@ pkg*) #(vi
 		AC_MSG_WARN(cannot find pkg-config for Xft)
 	fi
 	;;
-*) #(vi
+(*)
 	AC_PATH_PROG(FREETYPE_XFT_CONFIG, $cf_cv_x_freetype_cfgs, none)
 	if test "$FREETYPE_XFT_CONFIG" != none; then
 		FREETYPE_CONFIG=$FREETYPE_XFT_CONFIG

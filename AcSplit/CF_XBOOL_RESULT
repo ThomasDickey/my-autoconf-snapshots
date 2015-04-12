@@ -1,4 +1,4 @@
-dnl CF_XBOOL_RESULT version: 2 updated: 2012/10/04 06:57:36
+dnl CF_XBOOL_RESULT version: 3 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Translate an autoconf boolean yes/no into X11's booleans, e.g., True/False.
 dnl Allow for more than two values, e.g., "maybe", still using the same leading
@@ -9,11 +9,11 @@ dnl $2 = symbol holding value
 dnl $3 = description
 define([CF_XBOOL_RESULT],[
 AC_MSG_RESULT([$]$2)
-case [$]$2 in #(vi
-yes) #(vi
+case [$]$2 in
+(yes)
 	$2=true
 	;;
-no) #(vi
+(no)
 	$2=false
 	;;
 esac

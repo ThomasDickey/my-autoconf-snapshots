@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_NAME version: 2 updated: 2013/05/27 18:34:42
+dnl CF_WITH_ICON_NAME version: 3 updated: 2015/04/12 15:39:00
 dnl -----------------
 dnl Allow a default icon-name to be overridden.
 dnl $1 = default icon name
@@ -9,7 +9,7 @@ AC_ARG_WITH(icon-name,
 	[ICON_NAME="$withval"],
 	[ICON_NAME=$1])
 case "x$ICON_NAME" in
-xyes|xno|x)
+(xyes|xno|x)
 	ICON_NAME=$1
 	;;
 esac

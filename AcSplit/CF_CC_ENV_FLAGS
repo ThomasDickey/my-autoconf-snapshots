@@ -1,4 +1,4 @@
-dnl CF_CC_ENV_FLAGS version: 1 updated: 2012/10/03 05:25:49
+dnl CF_CC_ENV_FLAGS version: 2 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Check for user's environment-breakage by stuffing CFLAGS/CPPFLAGS content
 dnl into CC.  This will not help with broken scripts that wrap the compiler with
@@ -9,8 +9,8 @@ AC_DEFUN([CF_CC_ENV_FLAGS],
 : ${CC:=cc}
 
 AC_MSG_CHECKING(\$CC variable)
-case "$CC" in #(vi
-*[[\ \	]]-[[IUD]]*)
+case "$CC" in
+(*[[\ \	]]-[[IUD]]*)
 	AC_MSG_RESULT(broken)
 	AC_MSG_WARN(your environment misuses the CC variable to hold CFLAGS/CPPFLAGS options)
 	# humor him...
@@ -18,7 +18,7 @@ case "$CC" in #(vi
 	CC=`echo "$CC" | sed -e 's/[[ 	]].*//'`
 	CF_ADD_CFLAGS($cf_flags)
 	;;
-*)
+(*)
 	AC_MSG_RESULT(ok)
 	;;
 esac
