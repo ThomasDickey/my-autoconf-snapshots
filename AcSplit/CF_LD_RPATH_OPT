@@ -1,4 +1,4 @@
-dnl CF_LD_RPATH_OPT version: 5 updated: 2011/07/17 14:48:41
+dnl CF_LD_RPATH_OPT version: 6 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl For the given system and compiler, find the compiler flags to pass to the
 dnl loader to use the "rpath" feature.
@@ -8,39 +8,39 @@ AC_REQUIRE([CF_CHECK_CACHE])
 
 LD_RPATH_OPT=
 AC_MSG_CHECKING(for an rpath option)
-case $cf_cv_system_name in #(vi
-irix*) #(vi
+case $cf_cv_system_name in
+(irix*)
 	if test "$GCC" = yes; then
 		LD_RPATH_OPT="-Wl,-rpath,"
 	else
 		LD_RPATH_OPT="-rpath "
 	fi
 	;;
-linux*|gnu*|k*bsd*-gnu) #(vi
+(linux*|gnu*|k*bsd*-gnu)
 	LD_RPATH_OPT="-Wl,-rpath,"
 	;;
-openbsd[[2-9]].*|mirbsd*) #(vi
+(openbsd[[2-9]].*|mirbsd*)
 	LD_RPATH_OPT="-Wl,-rpath,"
 	;;
-dragonfly*|freebsd*) #(vi
+(dragonfly*|freebsd*)
 	LD_RPATH_OPT="-rpath "
 	;;
-netbsd*) #(vi
+(netbsd*)
 	LD_RPATH_OPT="-Wl,-rpath,"
 	;;
-osf*|mls+*) #(vi
+(osf*|mls+*)
 	LD_RPATH_OPT="-rpath "
 	;;
-solaris2*) #(vi
+(solaris2*)
 	LD_RPATH_OPT="-R"
 	;;
-*)
+(*)
 	;;
 esac
 AC_MSG_RESULT($LD_RPATH_OPT)
 
-case "x$LD_RPATH_OPT" in #(vi
-x-R*)
+case "x$LD_RPATH_OPT" in
+(x-R*)
 	AC_MSG_CHECKING(if we need a space after rpath option)
 	cf_save_LIBS="$LIBS"
 	CF_ADD_LIBS(${LD_RPATH_OPT}$libdir)

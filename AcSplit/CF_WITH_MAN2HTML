@@ -1,4 +1,4 @@
-dnl CF_WITH_MAN2HTML version: 2 updated: 2015/02/15 12:45:44
+dnl CF_WITH_MAN2HTML version: 3 updated: 2015/04/12 15:39:00
 dnl ----------------
 dnl Check for man2html and groff.  Optionally prefer man2html over groff.
 dnl Generate a shell script which hides the differences between the two.
@@ -17,17 +17,17 @@ AC_ARG_WITH(man2html,
 
 cf_with_groff=no
 
-case $cf_man2html in #(vi
-yes) #(vi
+case $cf_man2html in
+(yes)
 	AC_MSG_RESULT(man2html)
 	AC_PATH_PROG(cf_man2html,man2html,no)
 	;;
-no|groff|*/groff*) #(vi
+(no|groff|*/groff*)
 	cf_with_groff=yes
 	cf_man2html=$GROFF_PATH
 	AC_MSG_RESULT($cf_man2html)
 	;;
-*)
+(*)
 	AC_MSG_RESULT($cf_man2html)
 	;;
 esac
@@ -115,11 +115,11 @@ CF_EOF
 	cat >>$MAN2HTML_TEMP <<CF_EOF
 : \${MAN2HTML_PATH=$MAN2HTML_PATH}
 MAN2HTML_OPTS="\$MAN2HTML_OPTS -index -title="\$ROOT\(\$TYPE\)" -compress -pgsize $cf_man2html_page"
-case \${TYPE} in #(vi
-ms) #(vi
+case \${TYPE} in
+(ms)
 	tbl \${ROOT}.\${TYPE} | nroff -\${MACS} | \$MAN2HTML_PATH -topm=0 -botm=0 \$MAN2HTML_OPTS
 	;;
-*)
+(*)
 	tbl \${ROOT}.\${TYPE} | nroff -\${MACS} | \$MAN2HTML_PATH $cf_man2html_top_bot \$MAN2HTML_OPTS
 	;;
 esac

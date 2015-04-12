@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 8 updated: 2012/10/04 20:12:20
+dnl CF_TTY_GROUP version: 9 updated: 2015/04/12 15:39:00
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -49,11 +49,11 @@ fi
 
 if test -z "$cf_cv_tty_group_name"
 then
-case $host_os in #(vi
-osf*) #(vi
+case $host_os in
+(osf*)
 	cf_cv_tty_group_name="terminal"
 	;;
-*)
+(*)
 	cf_cv_tty_group_name="unknown"
 	if ( egrep '^tty:' /etc/group 2>/dev/null 1>/dev/null ) then
 		cf_cv_tty_group_name="tty"

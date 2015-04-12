@@ -1,4 +1,4 @@
-dnl CF_PATH_SYNTAX version: 14 updated: 2012/06/19 20:58:54
+dnl CF_PATH_SYNTAX version: 15 updated: 2015/04/12 15:39:00
 dnl --------------
 dnl Check the argument to see that it looks like a pathname.  Rewrite it if it
 dnl begins with one of the prefix/exec_prefix variables, and then again if the
@@ -11,25 +11,25 @@ else
   cf_path_syntax="$ac_default_prefix"
 fi
 
-case ".[$]$1" in #(vi
-.\[$]\(*\)*|.\'*\'*) #(vi
+case ".[$]$1" in
+(.\[$]\(*\)*|.\'*\'*)
   ;;
-..|./*|.\\*) #(vi
+(..|./*|.\\*)
   ;;
-.[[a-zA-Z]]:[[\\/]]*) #(vi OS/2 EMX
+(.[[a-zA-Z]]:[[\\/]]*) # OS/2 EMX
   ;;
-.\[$]{*prefix}*|.\[$]{*dir}*) #(vi
+(.\[$]{*prefix}*|.\[$]{*dir}*)
   eval $1="[$]$1"
-  case ".[$]$1" in #(vi
-  .NONE/*)
+  case ".[$]$1" in
+  (.NONE/*)
     $1=`echo [$]$1 | sed -e s%NONE%$cf_path_syntax%`
     ;;
   esac
-  ;; #(vi
-.no|.NONE/*)
+  ;;
+(.no|.NONE/*)
   $1=`echo [$]$1 | sed -e s%NONE%$cf_path_syntax%`
   ;;
-*)
+(*)
   ifelse([$2],,[AC_MSG_ERROR([expected a pathname, not \"[$]$1\"])],$2)
   ;;
 esac

@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 28 updated: 2014/09/20 20:16:32
+dnl CF_SRC_MODULES version: 29 updated: 2015/04/12 11:42:01
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -17,11 +17,11 @@ if test "$DFT_LWR_MODEL" = "libtool"; then
 	TEST_ARGS="${TEST_DEPS}"
 	TEST_ARG2="${TEST_DEP2}"
 else
-	TEST_ARGS="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARGS"
-	TEST_ARG2="-l${LIB_NAME}${DFT_ARG_SUFFIX} $TEST_ARG2"
+	TEST_ARGS="-l${LIB_NAME}${USE_ARG_SUFFIX} $TEST_ARGS"
+	TEST_ARG2="-l${LIB_NAME}${USE_ARG_SUFFIX} $TEST_ARG2"
 fi
 
-PC_MODULES_TO_MAKE="ncurses${DFT_ARG_SUFFIX}"
+PC_MODULES_TO_MAKE="ncurses${USE_ARG_SUFFIX}"
 cf_cv_src_modules=
 for cf_dir in $1
 do
@@ -57,10 +57,10 @@ do
 				TEST_ARGS="${TEST_DEPS}"
 				TEST_ARG2="${TEST_DEP2}"
 			else
-				TEST_ARGS="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARGS"
-				TEST_ARG2="-l${cf_dir}${DFT_ARG_SUFFIX} $TEST_ARG2"
+				TEST_ARGS="-l${cf_dir}${USE_ARG_SUFFIX} $TEST_ARGS"
+				TEST_ARG2="-l${cf_dir}${USE_ARG_SUFFIX} $TEST_ARG2"
 			fi
-			PC_MODULES_TO_MAKE="${PC_MODULES_TO_MAKE} ${cf_dir}${DFT_ARG_SUFFIX}"
+			PC_MODULES_TO_MAKE="${PC_MODULES_TO_MAKE} ${cf_dir}${USE_ARG_SUFFIX}"
 		fi
 	fi
 done
@@ -90,7 +90,7 @@ fi
 # always make this, to install the ncurses-config script
 SRC_SUBDIRS="$SRC_SUBDIRS misc"
 if test "$cf_with_cxx_binding" != no; then
-	PC_MODULES_TO_MAKE="${PC_MODULES_TO_MAKE} ncurses++${DFT_ARG_SUFFIX}"
+	PC_MODULES_TO_MAKE="${PC_MODULES_TO_MAKE} ncurses++${USE_ARG_SUFFIX}"
 	SRC_SUBDIRS="$SRC_SUBDIRS c++"
 fi
 

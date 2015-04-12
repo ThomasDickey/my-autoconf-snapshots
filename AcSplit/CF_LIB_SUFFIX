@@ -1,4 +1,4 @@
-dnl CF_LIB_SUFFIX version: 23 updated: 2014/06/21 17:47:12
+dnl CF_LIB_SUFFIX version: 24 updated: 2015/04/12 11:42:01
 dnl -------------
 dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
@@ -57,6 +57,9 @@ AC_DEFUN([CF_LIB_SUFFIX],
 		$3=[$]$2
 		;;
 	esac
-	test -n "$LIB_SUFFIX" && $2="${LIB_SUFFIX}[$]{$2}"
-	test -n "$LIB_SUFFIX" && $3="${LIB_SUFFIX}[$]{$3}"
+	if test -n "${LIB_SUFFIX}${EXTRA_SUFFIX}"
+	then
+		$2="${LIB_SUFFIX}${EXTRA_SUFFIX}[$]{$2}"
+		$3="${LIB_SUFFIX}${EXTRA_SUFFIX}[$]{$3}"
+	fi
 ])dnl

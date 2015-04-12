@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 31 updated: 2010/05/26 05:38:42
+dnl CF_IMAKE_CFLAGS version: 32 updated: 2015/04/12 15:39:00
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -13,15 +13,15 @@ AC_PATH_PROGS(IMAKE,xmkmf imake)
 
 if test -n "$IMAKE" ; then
 
-case $IMAKE in # (vi
-*/imake)
-	cf_imake_opts="-DUseInstalled=YES" # (vi
+case $IMAKE in
+(*/imake)
+	cf_imake_opts="-DUseInstalled=YES"
 	;;
-*/util/xmkmf)
+(*/util/xmkmf)
 	# A single parameter tells xmkmf where the config-files are:
-	cf_imake_opts="`echo $IMAKE|sed -e s,/config/util/xmkmf,,`" # (vi
+	cf_imake_opts="`echo $IMAKE|sed -e s,/config/util/xmkmf,,`"
 	;;
-*)
+(*)
 	cf_imake_opts=
 	;;
 esac
@@ -67,8 +67,8 @@ CF_EOF
 		# sometimes imake doesn't have the config path compiled in.  Find it.
 		cf_config=
 		for cf_libpath in $X_LIBS $LIBS ; do
-			case $cf_libpath in # (vi
-			-L*)
+			case $cf_libpath in
+			(-L*)
 				cf_libpath=`echo .$cf_libpath | sed -e 's/^...//'`
 				cf_libpath=$cf_libpath/X11/config
 				if test -d $cf_libpath ; then
@@ -111,13 +111,13 @@ CF_EOF
 		for cf_opt in $IMAKE_CFLAGS
 		do
 		    case "$cf_opt" in
-		    -nostdinc) #(vi
+		    (-nostdinc)
 			cf_nostdinc="$cf_opt"
 			;;
-		    -I/usr/include) #(vi
+		    (-I/usr/include)
 			cf_std_incl="$cf_opt"
 			;;
-		    *) #(vi
+		    (*)
 			cf_cpp_opts="$cf_cpp_opts $cf_opt"
 			;;
 		    esac
@@ -137,9 +137,9 @@ fi
 # Some imake configurations define PROJECTROOT with an empty value.  Remove
 # the empty definition.
 case $IMAKE_CFLAGS in
-*-DPROJECTROOT=/*)
+(*-DPROJECTROOT=/*)
 	;;
-*)
+(*)
 	IMAKE_CFLAGS=`echo "$IMAKE_CFLAGS" |sed -e "s,-DPROJECTROOT=[[ 	]], ,"`
 	;;
 esac

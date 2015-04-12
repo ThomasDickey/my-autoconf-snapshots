@@ -1,4 +1,4 @@
-dnl CF_WITH_IMAKE_CFLAGS version: 9 updated: 2010/05/26 05:38:42
+dnl CF_WITH_IMAKE_CFLAGS version: 10 updated: 2015/04/12 15:39:00
 dnl --------------------
 dnl xterm and similar programs build more readily when propped up with imake's
 dnl hand-tuned definitions.  If we do not use imake, provide fallbacks for the
@@ -28,16 +28,16 @@ else
 	# inconsistent results with uname (AIX for instance).  However,
 	# config.guess is not always consistent either.
 	case $host_os in
-	*[[0-9]].[[0-9]]*)
+	(*[[0-9]].[[0-9]]*)
 		UNAME_RELEASE="$host_os"
 		;;
-	*)
+	(*)
 		UNAME_RELEASE=`(uname -r) 2>/dev/null` || UNAME_RELEASE=unknown
 		;;
 	esac
 
 	case .$UNAME_RELEASE in
-	*[[0-9]].[[0-9]]*)
+	(*[[0-9]].[[0-9]]*)
 		OSMAJORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^0-9]]*//' -e 's/\..*//'`
 		OSMINORVERSION=`echo "$UNAME_RELEASE" |sed -e 's/^[[^0-9]]*//' -e 's/^[[^.]]*\.//' -e 's/\..*//' -e 's/[[^0-9]].*//' `
 		test -z "$OSMAJORVERSION" && OSMAJORVERSION=1
@@ -57,11 +57,11 @@ else
 
 	# Other special definitions:
 	case $host_os in
-	aix*)
+	(aix*)
 		# imake on AIX 5.1 defines AIXV3.  really.
 		IMAKE_CFLAGS="-DAIXV3 -DAIXV4 $IMAKE_CFLAGS"
 		;;
-	irix[[56]].*) #(vi
+	(irix[[56]].*)
 		# these are needed to make SIGWINCH work in xterm
 		IMAKE_CFLAGS="-DSYSV -DSVR4 $IMAKE_CFLAGS"
 		;;
