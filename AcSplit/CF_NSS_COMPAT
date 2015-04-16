@@ -1,4 +1,4 @@
-dnl CF_NSS_COMPAT version: 4 updated: 2012/11/08 20:57:52
+dnl CF_NSS_COMPAT version: 5 updated: 2015/04/15 19:08:48
 dnl -------------
 dnl Check for NSS compatible SSL libraries
 dnl $1 = the [optional] directory in which the library may be found
@@ -14,11 +14,11 @@ else
 fi
 cf_ssl_library="-lnss_compat_ossl $cf_ssl_library"
 
-case "$1" in #(vi
-no) #(vi
+case "$1" in
+(no)
 	cf_ssl_root=
 	;;
-yes) #(vi
+(yes)
 	AC_CHECK_LIB(nss_compat_ossl, SSL_get_version,[],[
 		cf_ssl_root=/usr/local/nss_compat_ossl
 		if test -d $cf_ssl_root ; then
@@ -30,7 +30,7 @@ yes) #(vi
 	],
 	[-lnss_compat_ossl])
 	;;
-*)
+(*)
 	if test -d $1 ; then
 		if test -d $1/include ; then
 			cf_ssl_root=$1

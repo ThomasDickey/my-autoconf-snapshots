@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERM_H version: 10 updated: 2012/10/06 08:57:51
+dnl CF_CURSES_TERM_H version: 11 updated: 2015/04/15 19:08:48
 dnl ----------------
 dnl SVr4 curses should have term.h as well (where it puts the definitions of
 dnl the low-level interface).  This may not be true in old/broken implementations,
@@ -15,8 +15,8 @@ AC_CACHE_CHECK(for term.h, cf_cv_term_header,[
 
 cf_header_list="term.h ncurses/term.h ncursesw/term.h"
 
-case ${cf_cv_ncurses_header:-curses.h} in #(vi
-*/*)
+case ${cf_cv_ncurses_header:-curses.h} in
+(*/*)
 	cf_header_item=`echo ${cf_cv_ncurses_header:-curses.h} | sed -e 's%\..*%%' -e 's%/.*%/%'`term.h
 	cf_header_list="$cf_header_item $cf_header_list"
 	;;
@@ -33,8 +33,8 @@ do
 	[cf_cv_term_header=no])
 done
 
-case $cf_cv_term_header in #(vi
-no)
+case $cf_cv_term_header in
+(no)
 	# If curses is ncurses, some packagers still mess it up by trying to make
 	# us use GNU termcap.  This handles the most common case.
 	for cf_header in ncurses/term.h ncursesw/term.h
@@ -55,14 +55,14 @@ make an error
 esac
 ])
 
-case $cf_cv_term_header in #(vi
-term.h) #(vi
+case $cf_cv_term_header in
+(term.h)
 	AC_DEFINE(HAVE_TERM_H,1,[Define to 1 if we have term.h])
 	;;
-ncurses/term.h) #(vi
+(ncurses/term.h)
 	AC_DEFINE(HAVE_NCURSES_TERM_H,1,[Define to 1 if we have ncurses/term.h])
 	;;
-ncursesw/term.h)
+(ncursesw/term.h)
 	AC_DEFINE(HAVE_NCURSESW_TERM_H,1,[Define to 1 if we have ncursesw/term.h])
 	;;
 esac

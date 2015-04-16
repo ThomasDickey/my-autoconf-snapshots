@@ -1,4 +1,4 @@
-dnl CF_SSL version: 24 updated: 2014/01/11 12:06:14
+dnl CF_SSL version: 25 updated: 2015/04/15 19:08:48
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -11,10 +11,10 @@ AC_DEFUN([CF_SSL],[
 	CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
 	if test "x$PKG_CONFIG" != xnone; then
-		case $1 in #(vi
-		no) #(vi
+		case $1 in
+		(no)
 			;;
-		yes) # if no explicit directory given, try pkg-config
+		(yes) # if no explicit directory given, try pkg-config
 			cf_cv_pkg_ssl=
 			for cf_try_package in openssl libssl
 			do
@@ -35,19 +35,19 @@ AC_DEFUN([CF_SSL],[
 				cf_libs_ssl=`$PKG_CONFIG --libs $cf_cv_pkg_ssl`
 
 				if test -n "$cf_cflags_ssl" ; then
-					case "$cf_cflags_ssl" in #(vi
-					*-I*) #(vi
+					case "$cf_cflags_ssl" in
+					(*-I*)
 						cf_cv_header_path_ssl=`echo "$cf_cflags_ssl" | sed -e 's/^.*-I//' -e 's/ .*//'`
 						;;
-					*)
+					(*)
 						cf_cv_header_path_ssl=/usr/include
 						;;
 					esac
 					CF_ADD_CFLAGS($cf_cflags_ssl)
 
 					# workaround for broken openssl package using kerberos
-					case "$cf_cflags_ssl" in #(vi
-					*kerberos*)
+					case "$cf_cflags_ssl" in
+					(*kerberos*)
 						cf_cv_have_ssl=maybe
 						;;
 					esac
@@ -60,11 +60,11 @@ AC_DEFUN([CF_SSL],[
 				fi
 
 				if test -n "$cf_libs_ssl" ; then
-					case "x$cf_libs_ssl" in #(vi
-					*-L*) #(vi
+					case "x$cf_libs_ssl" in
+					(*-L*)
 						cf_cv_library_path_ssl=`echo "$cf_libs_ssl" | sed -e 's/^.*-L//' -e 's/ .*//'`
 						;;
-					*)
+					(*)
 						cf_cv_library_path_ssl=/usr/lib
 						;;
 					esac
@@ -77,17 +77,17 @@ AC_DEFUN([CF_SSL],[
 	fi
 
 	if test "$cf_cv_have_ssl" != yes; then
-		case $host_os in #(vi
-		mingw*) #(vi
+		case $host_os in
+		(mingw*)
 			cf_extra_ssl_libs="-lcrypto -lgdi32"
 			;;
-		*)
+		(*)
 			# openssl 0.9.6 and up use dynamic loading for engines.
 			cf_extra_ssl_libs="-lcrypto"
-			case "x$LIBS" in #(vi
-			*-ldl) #(vi
+			case "x$LIBS" in
+			(*-ldl)
 				;;
-			*)
+			(*)
 				AC_CHECK_LIB(dl,dlsym,
 					[cf_extra_ssl_libs="$cf_extra_ssl_libs -ldl"])
 				;;
@@ -110,10 +110,10 @@ AC_DEFUN([CF_SSL],[
 				fi
 				CF_ADD_LIBS(-lssl $cf_extra_ssl_libs)
 				if test -n "$cf_cv_header_path_ssl" ; then
-					case $cf_cv_header_path_ssl in #(vi
-					/usr/include/openssl) #(vi
+					case $cf_cv_header_path_ssl in
+					(/usr/include/openssl)
 						;;
-					*)
+					(*)
 						CF_ADD_INCDIR($cf_cv_header_path_ssl)
 						;;
 					esac
@@ -126,8 +126,8 @@ AC_DEFUN([CF_SSL],[
 		AC_DEFINE(USE_SSL,1,[Define to 1 if we are using SSL])
 		if test -n "$cf_cv_header_path_ssl" ; then
 			CF_VERBOSE(checking ssl header-path $cf_cv_header_path_ssl)
-			case $cf_cv_header_path_ssl in #(vi
-			*/openssl)
+			case $cf_cv_header_path_ssl in
+			(*/openssl)
 				AC_DEFINE(USE_OPENSSL_INCL,1,[Define to 1 if we are using OpenSSL headers])
 				;;
 			esac

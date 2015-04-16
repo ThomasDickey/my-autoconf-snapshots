@@ -1,4 +1,4 @@
-dnl CF_CURSES_LIBS version: 37 updated: 2013/02/09 17:33:50
+dnl CF_CURSES_LIBS version: 38 updated: 2015/04/15 19:08:48
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
@@ -13,11 +13,11 @@ AC_TRY_LINK([#include <${cf_cv_ncurses_header:-curses.h}>],
 AC_MSG_RESULT($cf_result)
 
 if test "$cf_result" = no ; then
-case $host_os in #(vi
-freebsd*) #(vi
+case $host_os in
+(freebsd*)
     AC_CHECK_LIB(mytinfo,tgoto,[CF_ADD_LIBS(-lmytinfo)])
     ;;
-hpux10.*) #(vi
+(hpux10.*)
 	# Looking at HPUX 10.20, the Hcurses library is the oldest (1997), cur_colr
 	# next (1998), and xcurses "newer" (2000).  There is no header file for
 	# Hcurses; the subdirectory curses_colr has the headers (curses.h and
@@ -36,9 +36,9 @@ hpux10.*) #(vi
 			])])
 	fi
 	;;
-linux*)
+(linux*)
 	case `arch 2>/dev/null` in
-	x86_64)
+	(x86_64)
 		if test -d /lib64
 		then
 			CF_ADD_LIBDIR(/lib64)
@@ -46,12 +46,12 @@ linux*)
 			CF_ADD_LIBDIR(/lib)
 		fi
 		;;
-	*)
+	(*)
 		CF_ADD_LIBDIR(/lib)
 		;;
 	esac
 	;;
-sunos3*|sunos4*)
+(sunos3*|sunos4*)
 	if test "x$cf_cv_screen" = "xcurses_5lib"
 	then
 		if test -d /usr/5lib ; then

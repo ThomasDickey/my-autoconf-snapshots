@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 10 updated: 2013/10/08 17:47:05
+dnl CF_NETLIBS version: 11 updated: 2015/04/15 19:08:48
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -21,8 +21,8 @@ AC_MSG_RESULT(working...)
 cf_cv_netlibs=""
 cf_test_netlibs=yes
 
-case $host_os in #(vi
-mingw*) # (vi
+case $host_os in
+(mingw*)
 	AC_CHECK_HEADERS( windows.h winsock.h winsock2.h )
 
 	if test "$ac_cv_header_winsock2_h" = "yes" ; then
@@ -55,7 +55,7 @@ mingw*) # (vi
 
 	LIBS="$cf_save_LIBS"
 	;;
-*)
+(*)
 	AC_CHECK_FUNCS(gethostname,,[
 		CF_RECHECK_FUNC(gethostname,nsl,cf_cv_netlibs,[
 			CF_RECHECK_FUNC(gethostname,socket,cf_cv_netlibs)])])
@@ -83,8 +83,8 @@ mingw*) # (vi
 esac
 ])
 
-case $cf_cv_netlibs in #(vi
-*ws2_32*)
+case $cf_cv_netlibs in
+(*ws2_32*)
 	AC_DEFINE(USE_WINSOCK2_H,1,[Define to 1 if we should include winsock2.h])
 	;;
 esac

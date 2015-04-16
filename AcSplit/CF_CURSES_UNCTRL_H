@@ -1,4 +1,4 @@
-dnl CF_CURSES_UNCTRL_H version: 3 updated: 2013/11/03 06:26:10
+dnl CF_CURSES_UNCTRL_H version: 4 updated: 2015/04/15 19:08:48
 dnl ------------------
 dnl Any X/Open curses implementation must have unctrl.h, but ncurses packages
 dnl may put it in a subdirectory (along with ncurses' other headers, of
@@ -15,8 +15,8 @@ AC_CACHE_CHECK(for unctrl.h, cf_cv_unctrl_header,[
 
 cf_header_list="unctrl.h ncurses/unctrl.h ncursesw/unctrl.h"
 
-case ${cf_cv_ncurses_header:-curses.h} in #(vi
-*/*)
+case ${cf_cv_ncurses_header:-curses.h} in
+(*/*)
 	cf_header_item=`echo ${cf_cv_ncurses_header:-curses.h} | sed -e 's%\..*%%' -e 's%/.*%/%'`unctrl.h
 	cf_header_list="$cf_header_item $cf_header_list"
 	;;
@@ -34,20 +34,20 @@ do
 done
 ])
 
-case $cf_cv_unctrl_header in #(vi
-no)
+case $cf_cv_unctrl_header in
+(no)
 	AC_MSG_WARN(unctrl.h header not found)
 	;;
 esac
 
-case $cf_cv_unctrl_header in #(vi
-unctrl.h) #(vi
+case $cf_cv_unctrl_header in
+(unctrl.h)
 	AC_DEFINE(HAVE_UNCTRL_H,1,[Define to 1 if we have unctrl.h])
 	;;
-ncurses/unctrl.h) #(vi
+(ncurses/unctrl.h)
 	AC_DEFINE(HAVE_NCURSES_UNCTRL_H,1,[Define to 1 if we have ncurses/unctrl.h])
 	;;
-ncursesw/unctrl.h)
+(ncursesw/unctrl.h)
 	AC_DEFINE(HAVE_NCURSESW_UNCTRL_H,1,[Define to 1 if we have ncursesw/unctrl.h])
 	;;
 esac

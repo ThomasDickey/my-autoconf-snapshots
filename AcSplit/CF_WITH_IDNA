@@ -1,4 +1,4 @@
-dnl CF_WITH_IDNA version: 9 updated: 2012/11/08 20:57:52
+dnl CF_WITH_IDNA version: 10 updated: 2015/04/15 19:08:48
 dnl ------------
 dnl Check for libidn, use it if found.
 dnl
@@ -16,5 +16,5 @@ AC_DEFUN([CF_WITH_IDNA],[
 
 if test "x$cf_cv_find_linkage_idn" = xyes ; then
 	AC_DEFINE(USE_IDNA,1,[Define to 1 if we should use IDNA library])
-fi 
+fi
 ])dnl

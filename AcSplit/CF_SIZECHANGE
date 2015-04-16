@@ -1,4 +1,4 @@
-dnl CF_SIZECHANGE version: 9 updated: 2012/10/06 11:17:15
+dnl CF_SIZECHANGE version: 10 updated: 2015/04/15 19:08:48
 dnl -------------
 dnl Check for definitions & structures needed for window size-changing
 dnl FIXME: check that this works with "snake" (HP-UX 10.x)
@@ -60,8 +60,8 @@ done
 ])
 if test "$cf_cv_sizechange" != no ; then
 	AC_DEFINE(HAVE_SIZECHANGE,1,[Define to 1 if sizechar declarations are provided])
-	case $cf_cv_sizechange in #(vi
-	NEED*)
+	case $cf_cv_sizechange in
+	(NEED*)
 		AC_DEFINE_UNQUOTED($cf_cv_sizechange )
 		;;
 	esac

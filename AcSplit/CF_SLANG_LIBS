@@ -1,4 +1,4 @@
-dnl CF_SLANG_LIBS version: 8 updated: 2010/04/03 15:30:05
+dnl CF_SLANG_LIBS version: 9 updated: 2015/04/15 19:08:48
 dnl -------------
 dnl Look for the slang library.
 dnl
@@ -9,8 +9,8 @@ cf_slang_LIBS1="$LIBS"
 CF_TERMCAP_LIBS
 cf_slang_LIBS2="$LIBS"
 AC_CHECK_FUNC(acos,,[CF_RECHECK_FUNC(acos,m,LIBS)])
-case $host_os in #(vi
-os2*)
+case $host_os in
+(os2*)
 	CF_FIND_LIBRARY(video,video,
 		[#include <sys/video.h>],
 		[v_init()],

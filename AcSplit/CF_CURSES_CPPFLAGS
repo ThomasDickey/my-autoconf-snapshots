@@ -1,19 +1,19 @@
-dnl CF_CURSES_CPPFLAGS version: 11 updated: 2011/04/09 14:51:08
+dnl CF_CURSES_CPPFLAGS version: 12 updated: 2015/04/15 19:08:48
 dnl ------------------
 dnl Look for the curses headers.
 AC_DEFUN([CF_CURSES_CPPFLAGS],[
 
 AC_CACHE_CHECK(for extra include directories,cf_cv_curses_incdir,[
 cf_cv_curses_incdir=no
-case $host_os in #(vi
-hpux10.*) #(vi
+case $host_os in
+(hpux10.*)
 	if test "x$cf_cv_screen" = "xcurses_colr"
 	then
 		test -d /usr/include/curses_colr && \
 		cf_cv_curses_incdir="-I/usr/include/curses_colr"
 	fi
 	;;
-sunos3*|sunos4*)
+(sunos3*|sunos4*)
 	if test "x$cf_cv_screen" = "xcurses_5lib"
 	then
 		test -d /usr/5lib && \
