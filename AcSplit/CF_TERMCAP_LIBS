@@ -1,4 +1,4 @@
-dnl CF_TERMCAP_LIBS version: 14 updated: 2012/07/07 21:02:48
+dnl CF_TERMCAP_LIBS version: 15 updated: 2015/04/15 19:08:48
 dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 dnl
@@ -14,8 +14,8 @@ AC_TRY_LINK([],[char *x=(char*)tgoto("",0,0)],
 	CF_VERBOSE(using functions in predefined $cf_cv_termlib LIBS)
 ],[
 ifelse([$1],,,[
-case "$1" in # (vi
-ncurses*)
+case "$1" in
+(ncurses*)
 	CF_NCURSES_CONFIG($1)
 	cf_cv_termlib=terminfo
 	;;

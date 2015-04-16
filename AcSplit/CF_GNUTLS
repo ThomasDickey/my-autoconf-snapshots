@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 23 updated: 2014/11/30 18:19:56
+dnl CF_GNUTLS version: 24 updated: 2015/04/15 19:08:48
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -13,10 +13,10 @@ AC_DEFUN([CF_GNUTLS],[
 	cf_pkg_gnutls=none
 	if test "x$PKG_CONFIG" != xnone; then
 		cf_pkg_gnutls=ifelse([$2],,gnutls-openssl,gnutls)
-		case $1 in #(vi
-		no) #(vi
+		case $1 in
+		(no)
 			;;
-		yes) # if no explicit directory given, try pkg-config
+		(yes) # if no explicit directory given, try pkg-config
 			CF_VERBOSE(checking pkg-config for $cf_pkg_gnutls)
 			if "$PKG_CONFIG" --exists $cf_pkg_gnutls ; then
 				CF_VERBOSE(... found $cf_pkg_gnutls in pkg-config)
@@ -27,11 +27,11 @@ AC_DEFUN([CF_GNUTLS],[
 				cf_libs_ssl=`$PKG_CONFIG --libs $cf_pkg_gnutls`
 
 				if test -n "$cf_cflags_ssl" ; then
-					case "$cf_cflags_ssl" in #(vi
-					*-I*) #(vi
+					case "$cf_cflags_ssl" in
+					(*-I*)
 						cf_cv_header_path_gnutls=`echo "$cf_cflags_ssl" | sed -e 's/^.*-I//' -e 's/ .*//'`
 						;;
-					*)
+					(*)
 						cf_cv_header_path_gnutls=/usr/include
 						;;
 					esac
@@ -42,11 +42,11 @@ AC_DEFUN([CF_GNUTLS],[
 				fi
 
 				if test -n "$cf_libs_ssl" ; then
-					case "x$cf_libs_ssl" in #(vi
-					*-L*) #(vi
+					case "x$cf_libs_ssl" in
+					(*-L*)
 						cf_cv_library_path_gnutls=`echo "$cf_libs_ssl" | sed -e 's/^.*-L//' -e 's/ .*//'`
 						;;
-					*)
+					(*)
 						cf_cv_library_path_gnutls=/usr/lib
 						;;
 					esac
@@ -83,9 +83,9 @@ AC_DEFUN([CF_GNUTLS],[
 		if test -n "$cf_cv_header_path_gnutls" ; then
 			AC_DEFINE(USE_SSL)
 			case $cf_cv_header_path_gnutls in
-				/usr/include/gnutls)
+			(/usr/include/gnutls)
 				;;
-			*)
+			(*)
 				CF_ADD_INCDIR($cf_cv_header_path_gnutls)
 				;;
 			esac

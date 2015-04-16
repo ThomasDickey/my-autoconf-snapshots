@@ -1,4 +1,4 @@
-dnl CF_SLANG_CPPFLAGS version: 10 updated: 2012/11/08 20:57:52
+dnl CF_SLANG_CPPFLAGS version: 11 updated: 2015/04/15 19:08:48
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
@@ -33,10 +33,10 @@ then
 
 	CF_DIRNAME(cf_incdir,$cf_cv_$1_header)
 
-	case $cf_cv_$1_header in # (vi
-	predefined) # (vi
+	case $cf_cv_$1_header in
+	(predefined)
 		;;
-	*)
+	(*)
 		CF_ADD_INCDIR($cf_incdir)
 		;;
 	esac

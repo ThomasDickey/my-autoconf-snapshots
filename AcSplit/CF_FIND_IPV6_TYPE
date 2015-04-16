@@ -1,12 +1,12 @@
-dnl CF_FIND_IPV6_TYPE version: 5 updated: 2001/10/11 20:46:17
+dnl CF_FIND_IPV6_TYPE version: 6 updated: 2015/04/15 19:08:48
 dnl -----------------
 AC_DEFUN([CF_FIND_IPV6_TYPE],[
 AC_CACHE_CHECK(ipv6 stack type, cf_cv_ipv6type, [
 cf_cv_ipv6type=unknown
 for i in solaris inria kame linux-glibc linux-libinet6 toshiba v6d zeta
 do
-	case $i in #(vi
-	solaris) #(vi
+	case $i in
+	(solaris)
 		if test "SunOS" = "`uname -s`"
 		then
 		  if test -f /usr/include/netinet/ip6.h
@@ -15,7 +15,7 @@ do
 		  fi
 		fi
 		;;
-	inria) #(vi
+	(inria)
 		dnl http://www.kame.net/
 		AC_EGREP_CPP(yes, [
 #include <netinet/in.h>
@@ -23,7 +23,7 @@ do
 yes
 #endif],	[cf_cv_ipv6type=$i])
 		;;
-	kame) #(vi
+	(kame)
 		dnl http://www.kame.net/
 		AC_EGREP_CPP(yes, [
 #include <netinet/in.h>
@@ -31,7 +31,7 @@ yes
 yes
 #endif],	[cf_cv_ipv6type=$i])
 		;;
-	linux-glibc) #(vi
+	(linux-glibc)
 		dnl http://www.v6.linux.or.jp/
 		AC_EGREP_CPP(yes, [
 #include <features.h>
@@ -39,7 +39,7 @@ yes
 yes
 #endif],	[cf_cv_ipv6type=$i])
 		;;
-	linux-libinet6) #(vi
+	(linux-libinet6)
 		dnl http://www.v6.linux.or.jp/
 		if test -d /usr/inet6
 		then
@@ -49,21 +49,21 @@ yes
 			cf_cv_ipv6type=$i
 		fi
 		;;
-	toshiba) #(vi
+	(toshiba)
 		AC_EGREP_CPP(yes, [
 #include <sys/param.h>
 #ifdef _TOSHIBA_INET6
 yes
 #endif],	[cf_cv_ipv6type=$i])
 		;;
-	v6d) #(vi
+	(v6d)
 		AC_EGREP_CPP(yes, [
 #include </usr/local/v6/include/sys/v6config.h>
 #ifdef __V6D__
 yes
 #endif],	[cf_cv_ipv6type=$i])
 		;;
-	zeta)
+	(zeta)
 		AC_EGREP_CPP(yes, [
 #include <sys/param.h>
 #ifdef _ZETA_MINAMI_INET6

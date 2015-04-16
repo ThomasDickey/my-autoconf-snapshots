@@ -1,4 +1,4 @@
-dnl AM_GNU_GETTEXT version: 13 updated: 2012/11/09 05:47:26
+dnl AM_GNU_GETTEXT version: 14 updated: 2015/04/15 19:08:48
 dnl --------------
 dnl Usage: Just like AM_WITH_NLS, which see.
 AC_DEFUN([AM_GNU_GETTEXT],
@@ -40,7 +40,7 @@ strdup strtoul tsearch __argz_count __argz_stringify __argz_next])
            #      presentlang can be used as a fallback for messages
            #      which are not translated in the desiredlang catalog).
            case "$desiredlang" in
-             "$presentlang"*) useit=yes;;
+             ("$presentlang"*) useit=yes;;
            esac
          done
          if test $useit = yes; then

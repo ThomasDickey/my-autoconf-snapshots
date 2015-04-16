@@ -1,4 +1,4 @@
-dnl CF_FIND_IPV6_LIBS version: 7 updated: 2007/07/29 13:35:20
+dnl CF_FIND_IPV6_LIBS version: 8 updated: 2015/04/15 19:08:48
 dnl -----------------
 dnl Based on the IPV6 stack type, look for the corresponding library.
 AC_DEFUN([CF_FIND_IPV6_LIBS],[
@@ -8,32 +8,32 @@ cf_ipv6lib=none
 cf_ipv6dir=none
 
 AC_MSG_CHECKING(for IPv6 library if required)
-case $cf_cv_ipv6type in #(vi
-solaris) #(vi
+case $cf_cv_ipv6type in
+(solaris)
 	;;
-inria) #(vi
+(inria)
 	;;
-kame) #(vi
+(kame)
 	dnl http://www.kame.net/
 	cf_ipv6lib=inet6
 	cf_ipv6dir=v6
 	;;
-linux-glibc) #(vi
+(linux-glibc)
 	;;
-linux-libinet6) #(vi
+(linux-libinet6)
 	dnl http://www.v6.linux.or.jp/
 	cf_ipv6lib=inet6
 	cf_ipv6dir=inet6
 	;;
-toshiba) #(vi
+(toshiba)
 	cf_ipv6lib=inet6
 	cf_ipv6dir=v6
 	;;
-v6d) #(vi
+(v6d)
 	cf_ipv6lib=v6
 	cf_ipv6dir=v6
 	;;
-zeta)
+(zeta)
 	cf_ipv6lib=inet6
 	cf_ipv6dir=v6
 	;;
