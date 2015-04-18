@@ -1,18 +1,18 @@
-dnl CF_OBJ_SUBDIR version: 6 updated: 2013/09/07 14:06:10
+dnl CF_OBJ_SUBDIR version: 7 updated: 2015/04/17 21:13:04
 dnl -------------
 dnl Compute the object-directory name from the given model name
 AC_DEFUN([CF_OBJ_SUBDIR],
 [
 	case $1 in
-	libtool) $2='obj_lo'  ;;
-	normal)  $2='objects' ;;
-	debug)   $2='obj_g' ;;
-	profile) $2='obj_p' ;;
-	shared)
-		case $cf_cv_system_name in #(vi
-		cygwin|msys) #(vi
+	(libtool) $2='obj_lo'  ;;
+	(normal)  $2='objects' ;;
+	(debug)   $2='obj_g' ;;
+	(profile) $2='obj_p' ;;
+	(shared)
+		case $cf_cv_system_name in
+		(cygwin|msys)
 			$2='objects' ;;
-		*)
+		(*)
 			$2='obj_s' ;;
 		esac
 	esac

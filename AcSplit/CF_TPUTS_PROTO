@@ -1,4 +1,4 @@
-dnl CF_TPUTS_PROTO version: 2 updated: 2011/04/23 19:25:50
+dnl CF_TPUTS_PROTO version: 3 updated: 2015/04/17 21:26:14
 dnl --------------
 dnl Check for type of function-pointer passed to tputs.  Some old
 dnl implementations used functions that had different prototypes, making it
@@ -24,7 +24,7 @@ then
 
 static $cf_ret outc($cf_arg value) { $cf_return; }
 ],[
-	tputs("hello", 0, outc); 
+	tputs("hello", 0, outc);
 	${cf_cv_main_return:-return}(0);
 ],[
 		CF_VERBOSE([prototype $cf_ret func($cf_arg value)])

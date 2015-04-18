@@ -1,4 +1,4 @@
-dnl CF_FUNC_OPENPTY version: 3 updated: 2010/05/29 16:31:02
+dnl CF_FUNC_OPENPTY version: 4 updated: 2015/04/18 08:56:57
 dnl ---------------
 dnl Check for openpty() function, along with <pty.h> header.  It may need the
 dnl "util" library as well.
@@ -6,22 +6,22 @@ AC_DEFUN([CF_FUNC_OPENPTY],
 [
 AC_CHECK_LIB(util,openpty,cf_cv_lib_util=yes,cf_cv_lib_util=no)
 AC_CACHE_CHECK(for openpty header,cf_cv_func_openpty,[
-    cf_save_LIBS="$LIBS"
-    test $cf_cv_lib_util = yes && CF_ADD_LIB(util)
-    for cf_header in pty.h libutil.h util.h
-    do
-    AC_TRY_LINK([
+	cf_save_LIBS="$LIBS"
+	test $cf_cv_lib_util = yes && CF_ADD_LIB(util)
+	for cf_header in pty.h libutil.h util.h
+	do
+	AC_TRY_LINK([
 #include <$cf_header>
 ],[
-    int x = openpty((int *)0, (int *)0, (char *)0,
-                   (struct termios *)0, (struct winsize *)0);
+	int x = openpty((int *)0, (int *)0, (char *)0,
+				   (struct termios *)0, (struct winsize *)0);
 ],[
-        cf_cv_func_openpty=$cf_header
-        break
+		cf_cv_func_openpty=$cf_header
+		break
 ],[
-        cf_cv_func_openpty=no
+		cf_cv_func_openpty=no
 ])
-    done
-    LIBS="$cf_save_LIBS"
+	done
+	LIBS="$cf_save_LIBS"
 ])
 ])dnl

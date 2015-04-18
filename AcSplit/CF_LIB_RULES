@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 79 updated: 2015/04/12 11:42:01
+dnl CF_LIB_RULES version: 80 updated: 2015/04/17 21:13:04
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -18,8 +18,8 @@ AC_DEFUN([CF_LIB_RULES],
 cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 
-case $cf_cv_shlib_version in #(vi
-cygdll|msysdll|mingw)
+case $cf_cv_shlib_version in
+(cygdll|msysdll|mingw)
 	TINFO_NAME=$TINFO_ARG_SUFFIX
 	TINFO_SUFFIX=.dll
 	;;
@@ -27,15 +27,15 @@ esac
 
 if test -n "$TINFO_SUFFIX" ; then
 	case $TINFO_SUFFIX in
-	tw*)
+	(tw*)
 		TINFO_NAME="${TINFO_NAME}tw${EXTRA_SUFFIX}"
 		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^tw'$EXTRA_SUFFIX'//'`
 		;;
-	t*)
+	(t*)
 		TINFO_NAME="${TINFO_NAME}t${EXTRA_SUFFIX}"
 		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^t'$EXTRA_SUFFIX'//'`
 		;;
-	w*)
+	(w*)
 		TINFO_NAME="${TINFO_NAME}w${EXTRA_SUFFIX}"
 		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^w'$EXTRA_SUFFIX'//'`
 		;;
@@ -90,23 +90,23 @@ CF_EOF
 				if test "$cf_cv_do_symlinks" = yes ; then
 					cf_version_name=
 
-					case "$cf_cv_shlib_version" in #(vi
-					rel) #(vi
+					case "$cf_cv_shlib_version" in
+					(rel)
 						cf_version_name=REL_VERSION
 						;;
-					abi)
+					(abi)
 						cf_version_name=ABI_VERSION
 						;;
 					esac
 
 					if test -n "$cf_version_name"
 					then
-						case "$cf_cv_system_name" in #(vi
-						darwin*)
+						case "$cf_cv_system_name" in
+						(darwin*)
 							# "w", etc?
 							cf_suffix="${LIB_SUFFIX}"'.${'$cf_version_name'}'"$cf_shared_suffix"
-							;; #(vi
-						*)
+							;;
+						(*)
 							cf_suffix="$cf_suffix"'.${'$cf_version_name'}'
 							;;
 						esac
@@ -121,16 +121,16 @@ CF_EOF
 				# cygwin needs import library, and has unique naming convention
 				# use autodetected ${cf_prefix} for import lib and static lib, but
 				# use 'cyg' prefix for shared lib.
-				case $cf_cv_shlib_version in #(vi
-				cygdll) #(vi
+				case $cf_cv_shlib_version in
+				(cygdll)
 					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 					cf_add_lib="../lib/cyg${cf_libname}${cf_cygsuf}"
 					;;
-				msysdll) #(vi
+				(msysdll)
 					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 					cf_add_lib="../lib/msys-${cf_libname}${cf_cygsuf}"
 					;;
-				mingw)
+				(mingw)
 					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 					cf_add_lib="../lib/lib${cf_libname}${cf_cygsuf}"
 					;;
@@ -159,14 +159,14 @@ CF_EOF
 				cf_r_parts=`echo "$cf_r_parts" |sed -e 's/^[[^ ]]* //'`
 				if test "$cf_l_parts" != "$cf_r_parts" ; then
 					cf_add_lib=
-					case $cf_l_parts in #(vi
-					*termlib*) #(vi
+					case $cf_l_parts in
+					(*termlib*)
 						cf_add_lib=`echo $cf_liblist |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TINFO_LIB_SUFFIX}%g`
 						;;
-					*ticlib*)
+					(*ticlib*)
 						cf_add_lib=`echo $cf_liblist |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TICS_LIB_SUFFIX}%g`
 						;;
-					*)
+					(*)
 						break
 						;;
 					esac
@@ -187,9 +187,9 @@ CF_EOF
 				for cf_item in $Libs_To_Make
 				do
 					case $cf_item in
-					*.a)
+					(*.a)
 						;;
-					*)
+					(*)
 						cf_item=`echo "$cf_item" | sed -e "s,"$cf_shared_suffix",.a,"`
 						;;
 					esac
@@ -228,12 +228,12 @@ CF_EOF
 
 			CXX_MODEL=$cf_ITEM
 			if test "$CXX_MODEL" = SHARED; then
-				case $cf_cv_shlib_version in #(vi
-				cygdll|msysdll|mingw) #(vi
+				case $cf_cv_shlib_version in
+				(cygdll|msysdll|mingw)
 					test "x$with_shared_cxx" = xno && CF_VERBOSE(overriding CXX_MODEL to SHARED)
 					with_shared_cxx=yes
 					;;
-				*)
+				(*)
 					test "x$with_shared_cxx" = xno && CXX_MODEL=NORMAL
 					;;
 				esac
@@ -246,13 +246,13 @@ CF_EOF
 			cf_libname=$cf_dir
 			if test $cf_dir = ncurses ; then
 				case $cf_subset in
-				*base*)
+				(*base*)
 					cf_libname=${cf_libname}$USE_LIB_SUFFIX
 					;;
-				*termlib*)
+				(*termlib*)
 					cf_libname=$TINFO_LIB_SUFFIX
 					;;
-				ticlib*)
+				(ticlib*)
 					cf_libname=$TICS_LIB_SUFFIX
 					;;
 				esac
@@ -286,17 +286,17 @@ CF_EOF
  			if test "$cf_cv_shlib_version_infix" = yes ; then
 			if test -n "$USE_LIB_SUFFIX" ; then
 				case $USE_LIB_SUFFIX in
-				tw*)
+				(tw*)
 					cf_libname=`echo $cf_libname | sed 's/tw$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^tw'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=tw
 					;;
-				t*)
+				(t*)
 					cf_libname=`echo $cf_libname | sed 's/t$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^t'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=t
 					;;
-				w*)
+				(w*)
 					cf_libname=`echo $cf_libname | sed 's/w$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^w'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=w
@@ -369,7 +369,7 @@ do
 
 	if test -f $cf_dir/Makefile ; then
 		case "$cf_dir" in
-		Ada95) #(vi
+		(Ada95)
 			echo 'libs \' >> Makefile
 			echo 'install.libs \' >> Makefile
 			echo 'uninstall.libs ::' >> Makefile
@@ -490,7 +490,7 @@ CF_EOF
 if test $WITH_CURSES_H = yes; then
 	cat >>headers.sh <<CF_EOF
 case \$DST in
-/*/include/*)
+(/*/include/*)
 	END=\`basename \$DST\`
 	for i in \`cat \$REF/../*/headers |fgrep -v "#"\`
 	do
@@ -498,7 +498,7 @@ case \$DST in
 		echo "s/<\$NAME>/<\$END\/\$NAME>/" >> \$TMPSED
 	done
 	;;
-*)
+(*)
 	echo "" >> \$TMPSED
 	;;
 esac
@@ -507,7 +507,7 @@ CF_EOF
 else
 	cat >>headers.sh <<CF_EOF
 case \$DST in
-/*/include/*)
+(/*/include/*)
 	END=\`basename \$DST\`
 	for i in \`cat \$REF/../*/headers |fgrep -v "#"\`
 	do
@@ -520,7 +520,7 @@ case \$DST in
 		echo "s/<\$NAME>/<\$END\/\$NAME>/" >> \$TMPSED
 	done
 	;;
-*)
+(*)
 	echo "s/<curses.h>/<ncurses.h>/" >> \$TMPSED
 	;;
 esac

@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 6 updated: 2013/06/16 10:25:53
+dnl CF_VERSION_INFO version: 7 updated: 2015/04/17 21:13:04
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -48,12 +48,12 @@ if test -f $srcdir/VERSION ; then
 	AC_MSG_CHECKING(for package patch date)
 	VERSION_PATCH=`echo "$cf_field3" | sed -e 's/^[[^-]]*-//'`
 	case .$VERSION_PATCH in
-	.)
+	(.)
 		AC_MSG_ERROR(missing patch-date $VERSION_PATCH)
 		;;
-	.[[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]])
+	(.[[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]][[0-9]])
 		;;
-	*)
+	(*)
 		AC_MSG_ERROR(illegal patch-date $VERSION_PATCH)
 		;;
 	esac

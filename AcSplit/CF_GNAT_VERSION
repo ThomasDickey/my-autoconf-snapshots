@@ -1,4 +1,4 @@
-dnl CF_GNAT_VERSION version: 18 updated: 2012/01/21 19:28:10
+dnl CF_GNAT_VERSION version: 20 updated: 2015/04/18 08:56:57
 dnl ---------------
 dnl Verify version of GNAT.
 AC_DEFUN([CF_GNAT_VERSION],
@@ -6,14 +6,14 @@ AC_DEFUN([CF_GNAT_VERSION],
 AC_MSG_CHECKING(for gnat version)
 cf_gnat_version=`${cf_ada_make:-gnatmake} -v 2>&1 | \
 	grep '[[0-9]].[[0-9]][[0-9]]*' |\
-    sed -e '2,$d' -e 's/[[^0-9 \.]]//g' -e 's/^[[ ]]*//' -e 's/ .*//'`
+	sed -e '2,$d' -e 's/[[^0-9 \.]]//g' -e 's/^[[ ]]*//' -e 's/ .*//'`
 AC_MSG_RESULT($cf_gnat_version)
 
-case $cf_gnat_version in #(vi
-3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*|20[[0-9]][[0-9]]) #(vi
+case $cf_gnat_version in
+(3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*|20[[0-9]][[0-9]])
 	cf_cv_prog_gnat_correct=yes
 	;;
-*)
+(*)
 	AC_MSG_WARN(Unsupported GNAT version $cf_gnat_version. We require 3.11 or better. Disabling Ada95 binding.)
 	cf_cv_prog_gnat_correct=no
 	;;

@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL_OPTS version: 3 updated: 2014/11/02 16:11:49
+dnl CF_WITH_LIBTOOL_OPTS version: 4 updated: 2015/04/17 21:13:04
 dnl --------------------
 dnl Allow user to pass additional libtool options into the library creation
 dnl and link steps.  The main use for this is to do something like
@@ -14,9 +14,9 @@ AC_ARG_WITH(libtool-opts,
 AC_MSG_RESULT($with_libtool_opts)
 
 case .$with_libtool_opts in
-.yes|.no|.)
+(.yes|.no|.)
 	;;
-*)
+(*)
 	LIBTOOL_OPTS="$LIBTOOL_OPTS $with_libtool_opts"
 	;;
 esac

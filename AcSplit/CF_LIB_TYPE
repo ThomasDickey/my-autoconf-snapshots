@@ -1,4 +1,4 @@
-dnl CF_LIB_TYPE version: 4 updated: 2000/10/20 22:57:49
+dnl CF_LIB_TYPE version: 5 updated: 2015/04/17 21:13:04
 dnl -----------
 dnl Compute the string to append to -library from the given model name
 dnl $1 = model name
@@ -7,11 +7,11 @@ dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_TYPE],
 [
 	case $1 in
-	libtool) $2=''   ;;
-	normal)  $2=''   ;;
-	debug)   $2='_g' ;;
-	profile) $2='_p' ;;
-	shared)  $2=''   ;;
+	(libtool) $2=''   ;;
+	(normal)  $2=''   ;;
+	(debug)   $2='_g' ;;
+	(profile) $2='_p' ;;
+	(shared)  $2=''   ;;
 	esac
 	test -n "$LIB_SUFFIX" && $2="${LIB_SUFFIX}[$]{$2}"
 ])dnl
