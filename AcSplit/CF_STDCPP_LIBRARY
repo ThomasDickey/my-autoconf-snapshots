@@ -1,14 +1,14 @@
-dnl CF_STDCPP_LIBRARY version: 7 updated: 2010/05/29 16:31:02
+dnl CF_STDCPP_LIBRARY version: 8 updated: 2015/04/17 21:13:04
 dnl -----------------
 dnl Check for -lstdc++, which is GNU's standard C++ library.
 AC_DEFUN([CF_STDCPP_LIBRARY],
 [
 if test -n "$GXX" ; then
-case $cf_cv_system_name in #(vi
-os2*) #(vi
+case $cf_cv_system_name in
+(os2*)
 	cf_stdcpp_libname=stdcpp
 	;;
-*)
+(*)
 	cf_stdcpp_libname=stdc++
 	;;
 esac

@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL version: 31 updated: 2014/11/15 19:05:29
+dnl CF_WITH_LIBTOOL version: 32 updated: 2015/04/17 21:13:04
 dnl ---------------
 dnl Provide a configure option to incorporate libtool.  Define several useful
 dnl symbols for the makefile rules.
@@ -95,20 +95,20 @@ ifdef([AC_PROG_LIBTOOL],[
 
 	# special hack to add -no-undefined (which libtool should do for itself)
 	LT_UNDEF=
-	case "$cf_cv_system_name" in #(vi
-	cygwin*|msys*|mingw32*|uwin*|aix[[4-7]]) #(vi
+	case "$cf_cv_system_name" in
+	(cygwin*|msys*|mingw32*|uwin*|aix[[4-7]])
 		LT_UNDEF=-no-undefined
 		;;
 	esac
 	AC_SUBST([LT_UNDEF])
 
 	# special hack to add --tag option for C++ compiler
-	case $cf_cv_libtool_version in #(vi
-	1.[[5-9]]*|[[2-9]].[[0-9.a-z]]*) #(vi
+	case $cf_cv_libtool_version in
+	(1.[[5-9]]*|[[2-9]].[[0-9.a-z]]*)
 		LIBTOOL_CXX="$LIBTOOL --tag=CXX"
 		LIBTOOL="$LIBTOOL --tag=CC"
 		;;
-	*)
+	(*)
 		LIBTOOL_CXX="$LIBTOOL"
 		;;
 	esac

@@ -1,4 +1,4 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 5 updated: 2015/01/21 20:10:54
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 6 updated: 2015/04/17 21:13:04
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
@@ -8,10 +8,10 @@ AC_ARG_WITH(pkg-config-libdir,
 	[PKG_CONFIG_LIBDIR=$withval],
 	[PKG_CONFIG_LIBDIR=yes])
 
-case x$PKG_CONFIG_LIBDIR in #(vi
-x/*) #(vi
+case x$PKG_CONFIG_LIBDIR in
+(x/*)
 	;;
-xyes) #(vi
+(xyes)
 	# Look for the library directory using the same prefix as the executable
 	if test "x$PKG_CONFIG" = xnone
 	then
@@ -27,8 +27,8 @@ xyes) #(vi
 	# most common variations before that point.  Some other variants spell the
 	# directory differently, e.g., "pkg-config", and put it in unusual places.
 	# pkg-config has always been poorly standardized, which is ironic...
-	case x`(arch) 2>/dev/null` in #(vi
-	*64) #(vi
+	case x`(arch) 2>/dev/null` in
+	(*64)
 		cf_search_path="\
 			$cf_path/lib/*64-linux-gnu \
 			$cf_path/share \
@@ -36,7 +36,7 @@ xyes) #(vi
 			$cf_path/lib32 \
 			$cf_path/lib"
 		;;
-	*)
+	(*)
 		cf_search_path="\
 			$cf_path/lib/*-linux-gnu \
 			$cf_path/share \
@@ -58,7 +58,7 @@ xyes) #(vi
 		fi
 	done
 	;;
-*)
+(*)
 	;;
 esac
 

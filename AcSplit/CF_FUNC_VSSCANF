@@ -1,4 +1,4 @@
-dnl CF_FUNC_VSSCANF version: 4 updated: 2012/10/06 17:56:13
+dnl CF_FUNC_VSSCANF version: 6 updated: 2015/04/18 08:56:57
 dnl ---------------
 dnl Check for vsscanf() function, which is in c9x but generally not in earlier
 dnl versions of C.  It is in the GNU C library, and can often be simulated by
@@ -14,31 +14,31 @@ AC_TRY_LINK([
 AC_TRY_LINK([
 #include <stdarg.h>
 #include <stdio.h>],[
-    FILE strbuf;
-    char *str = "from";
+	FILE strbuf;
+	char *str = "from";
 
-    strbuf._flag = _IOREAD;
-    strbuf._ptr = strbuf._base = (unsigned char *) str;
-    strbuf._cnt = strlen(str);
-    strbuf._file = _NFILE;
-    return (vfscanf(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=vfscanf],[
+	strbuf._flag = _IOREAD;
+	strbuf._ptr = strbuf._base = (unsigned char *) str;
+	strbuf._cnt = strlen(str);
+	strbuf._file = _NFILE;
+	return (vfscanf(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=vfscanf],[
 AC_TRY_LINK([
 #include <stdarg.h>
 #include <stdio.h>],[
-    FILE strbuf;
-    char *str = "from";
+	FILE strbuf;
+	char *str = "from";
 
-    strbuf._flag = _IOREAD;
-    strbuf._ptr = strbuf._base = (unsigned char *) str;
-    strbuf._cnt = strlen(str);
-    strbuf._file = _NFILE;
-    return (_doscan(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=_doscan],[
+	strbuf._flag = _IOREAD;
+	strbuf._ptr = strbuf._base = (unsigned char *) str;
+	strbuf._cnt = strlen(str);
+	strbuf._file = _NFILE;
+	return (_doscan(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=_doscan],[
 cf_cv_func_vsscanf=no])])])])
 
-case $cf_cv_func_vsscanf in #(vi
-vsscanf) AC_DEFINE(HAVE_VSSCANF,1,[Define to 1 if we have vsscanf]);; #(vi
-vfscanf) AC_DEFINE(HAVE_VFSCANF,1,[Define to 1 if we have vfscanf]);; #(vi
-_doscan) AC_DEFINE(HAVE__DOSCAN,1,[Define to 1 if we have _doscan]);;
+case $cf_cv_func_vsscanf in
+(vsscanf) AC_DEFINE(HAVE_VSSCANF,1,[Define to 1 if we have vsscanf]);;
+(vfscanf) AC_DEFINE(HAVE_VFSCANF,1,[Define to 1 if we have vfscanf]);;
+(_doscan) AC_DEFINE(HAVE__DOSCAN,1,[Define to 1 if we have _doscan]);;
 esac
 
 ])dnl

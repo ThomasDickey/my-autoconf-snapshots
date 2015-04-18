@@ -1,10 +1,10 @@
-dnl CF_LARGEFILE version: 8 updated: 2012/10/06 08:57:51
+dnl CF_LARGEFILE version: 9 updated: 2015/04/18 08:56:57
 dnl ------------
 dnl Add checks for large file support.
 AC_DEFUN([CF_LARGEFILE],[
 ifdef([AC_FUNC_FSEEKO],[
-    AC_SYS_LARGEFILE
-    if test "$enable_largefile" != no ; then
+	AC_SYS_LARGEFILE
+	if test "$enable_largefile" != no ; then
 	AC_FUNC_FSEEKO
 
 	# Normally we would collect these definitions in the config.h,
@@ -33,6 +33,6 @@ ifdef([AC_FUNC_FSEEKO],[
 		[cf_cv_struct_dirent64=no])
 	])
 	test "$cf_cv_struct_dirent64" = yes && AC_DEFINE(HAVE_STRUCT_DIRENT64,1,[Define to 1 if we have struct dirent64])
-    fi
+	fi
 ])
 ])

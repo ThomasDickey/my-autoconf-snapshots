@@ -1,14 +1,14 @@
-dnl CF_NUMBER_SYNTAX version: 1 updated: 2003/09/20 18:12:49
+dnl CF_NUMBER_SYNTAX version: 2 updated: 2015/04/17 21:13:04
 dnl ----------------
 dnl Check if the given variable is a number.  If not, report an error.
 dnl $1 is the variable
 dnl $2 is the message
 AC_DEFUN([CF_NUMBER_SYNTAX],[
 if test -n "$1" ; then
-  case $1 in #(vi
-  [[0-9]]*) #(vi
+  case $1 in
+  ([[0-9]]*)
  	;;
-  *)
+  (*)
 	AC_MSG_ERROR($2 is not a number: $1)
  	;;
   esac

@@ -1,4 +1,4 @@
-dnl CF_CHECK_ERRNO version: 11 updated: 2010/05/26 05:38:42
+dnl CF_CHECK_ERRNO version: 12 updated: 2015/04/18 08:56:57
 dnl --------------
 dnl Check for data that is usually declared in <stdio.h> or <errno.h>, e.g.,
 dnl the 'errno' variable.  Define a DECL_xxx symbol if we must declare it
@@ -9,21 +9,21 @@ dnl $2 = the assumed type
 AC_DEFUN([CF_CHECK_ERRNO],
 [
 AC_CACHE_CHECK(if external $1 is declared, cf_cv_dcl_$1,[
-    AC_TRY_COMPILE([
+	AC_TRY_COMPILE([
 #ifdef HAVE_STDLIB_H
 #include <stdlib.h>
 #endif
 #include <stdio.h>
 #include <sys/types.h>
 #include <errno.h> ],
-    ifelse([$2],,int,[$2]) x = (ifelse([$2],,int,[$2])) $1,
-    [cf_cv_dcl_$1=yes],
-    [cf_cv_dcl_$1=no])
+	ifelse([$2],,int,[$2]) x = (ifelse([$2],,int,[$2])) $1,
+	[cf_cv_dcl_$1=yes],
+	[cf_cv_dcl_$1=no])
 ])
 
 if test "$cf_cv_dcl_$1" = no ; then
-    CF_UPPER(cf_result,decl_$1)
-    AC_DEFINE_UNQUOTED($cf_result)
+	CF_UPPER(cf_result,decl_$1)
+	AC_DEFINE_UNQUOTED($cf_result)
 fi
 
 # It's possible (for near-UNIX clones) that the data doesn't exist

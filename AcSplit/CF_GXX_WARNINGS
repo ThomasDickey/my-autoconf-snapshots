@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 8 updated: 2013/11/16 14:27:53
+dnl CF_GXX_WARNINGS version: 9 updated: 2015/04/17 21:13:04
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -78,9 +78,9 @@ then
 	cf_gxx_extra_warnings=""
 	test "$with_ext_const" = yes && cf_gxx_extra_warnings="Wwrite-strings"
 	case "$GCC_VERSION" in
-	[[1-2]].*)
+	([[1-2]].*)
 		;;
-	*)
+	(*)
 		cf_gxx_extra_warnings="$cf_gxx_extra_warnings Weffc++"
 		;;
 	esac

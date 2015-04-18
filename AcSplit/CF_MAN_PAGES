@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 43 updated: 2013/02/09 12:53:45
+dnl CF_MAN_PAGES version: 45 updated: 2015/04/18 08:56:57
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -11,40 +11,40 @@ CF_MANPAGE_RENAMES
 CF_MANPAGE_SYMLINKS
 CF_MANPAGE_TBL
 
-  if test "$prefix" = "NONE" ; then
-     cf_prefix="$ac_default_prefix"
-  else
-     cf_prefix="$prefix"
-  fi
+if test "$prefix" = "NONE" ; then
+	cf_prefix="$ac_default_prefix"
+else
+	cf_prefix="$prefix"
+fi
 
-  case "$MANPAGE_FORMAT" in # (vi
-  *catonly*) # (vi
-    cf_format=yes
-    cf_inboth=no
-    ;;
-  *formatted*) # (vi
-    cf_format=yes
-    cf_inboth=yes
-    ;;
-  *)
-    cf_format=no
-    cf_inboth=no
-    ;;
-  esac
+case "$MANPAGE_FORMAT" in
+(*catonly*)
+	cf_format=yes
+	cf_inboth=no
+	;;
+(*formatted*)
+	cf_format=yes
+	cf_inboth=yes
+	;;
+(*)
+	cf_format=no
+	cf_inboth=no
+	;;
+esac
 
 test ! -d man && mkdir man
 
 cf_so_strip=
 cf_compress=
-case "$MANPAGE_FORMAT" in #(vi
-*compress*) #(vi
+case "$MANPAGE_FORMAT" in
+(*compress*)
 	cf_so_strip="Z"
 	cf_compress=compress
-  ;;
-*gzip*)
+	;;
+(*gzip*)
 	cf_so_strip="gz"
 	cf_compress=gzip
-  ;;
+	;;
 esac
 
 cf_edit_man=./edit_man.sh
@@ -102,9 +102,9 @@ fi
 
 # process the list of source-files
 for i in \[$]* ; do
-case \$i in #(vi
-*.orig|*.rej) ;; #(vi
-*.[[0-9]]*)
+case \$i in
+(*.orig|*.rej) ;;
+(*.[[0-9]]*)
 	section=\`expr "\$i" : '.*\\.\\([[0-9]]\\)[[xm]]*'\`;
 	if test \$verb = installing ; then
 	if test ! -d \$cf_subdir\${section} ; then
@@ -231,8 +231,8 @@ cat >>$cf_edit_man <<CF_EOF
 CF_EOF
 fi
 
-case "$MANPAGE_FORMAT" in #(vi
-*BSDI*)
+case "$MANPAGE_FORMAT" in
+(*BSDI*)
 cat >>$cf_edit_man <<CF_EOF
 	if test \$form = format ; then
 		# BSDI installs only .0 suffixes in the cat directories
@@ -268,13 +268,13 @@ cat >>$cf_edit_man <<CF_EOF
 						fi
 						echo .. \$verb alias \$cf_alias\${suffix}
 CF_EOF
-case "x$LN_S" in #(vi
-*-f) #(vi
+case "x$LN_S" in
+(*-f)
 cat >>$cf_edit_man <<CF_EOF
 						$LN_S \$cf_target \$cf_alias\${suffix}
 CF_EOF
 	;;
-*)
+(*)
 cat >>$cf_edit_man <<CF_EOF
 						rm -f \$cf_alias\${suffix}
 						$LN_S \$cf_target \$cf_alias\${suffix}

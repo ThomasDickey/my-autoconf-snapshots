@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_SYMLINKS version: 5 updated: 2010/07/24 17:12:40
+dnl CF_MANPAGE_SYMLINKS version: 6 updated: 2015/04/17 21:13:04
 dnl -------------------
 dnl Some people expect each tool to make all aliases for manpages in the
 dnl man-directory.  This accommodates the older, less-capable implementations
@@ -14,11 +14,11 @@ AC_ARG_WITH(manpage-aliases,
 
 AC_MSG_RESULT($MANPAGE_ALIASES)
 
-case "x$LN_S" in #(vi
-xln*) #(vi
+case "x$LN_S" in
+(xln*)
 	cf_use_symlinks=yes
 	;;
-*)
+(*)
 	cf_use_symlinks=no
 	;;
 esac

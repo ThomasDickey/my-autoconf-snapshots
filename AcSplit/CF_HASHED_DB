@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB version: 5 updated: 2014/04/12 16:47:01
+dnl CF_HASHED_DB version: 7 updated: 2015/04/18 08:56:57
 dnl ------------
 dnl Look for an instance of the Berkeley hashed database.
 dnl
@@ -6,24 +6,24 @@ dnl $1 = optional parameter, to specify install-prefix for the database.
 AC_DEFUN([CF_HASHED_DB],
 [
 ifelse([$1],,,[
-case $1 in #(vi
-yes|*able*) #(vi
-    ;;
-*)
-    if test -d "$1" ; then
-        CF_ADD_INCDIR($1/include)
-        CF_ADD_LIBDIR($1/lib)
+case $1 in
+(yes|*able*)
+	;;
+(*)
+	if test -d "$1" ; then
+		CF_ADD_INCDIR($1/include)
+		CF_ADD_LIBDIR($1/lib)
 	else
-		case "$1" in #(vi
-		./*|../*|/*)
+		case "$1" in
+		(./*|../*|/*)
 			AC_MSG_WARN(no such directory $1)
-			;; #(vi
-		*)
+			;;
+		(*)
 			CF_FIND_SUB_INCDIR($1)
 			CF_FIND_SUB_LIBDIR($1)
 			;;
 		esac
-    fi
+	fi
 esac
 ])
 AC_CHECK_HEADER(db.h,[

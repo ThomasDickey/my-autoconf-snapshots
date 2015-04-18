@@ -1,22 +1,22 @@
-dnl CF_PROG_GNAT version: 2 updated: 2011/10/22 14:01:47
+dnl CF_PROG_GNAT version: 3 updated: 2015/04/18 08:56:57
 dnl ------------
 dnl Check for gnatmake, ensure that it is complete.
 AC_DEFUN([CF_PROG_GNAT],[
 cf_ada_make=gnatmake
 AC_CHECK_PROG(gnat_exists, $cf_ada_make, yes, no)
 if test "$ac_cv_prog_gnat_exists" = no; then
-   cf_ada_make=
-   cf_cv_prog_gnat_correct=no
+	cf_ada_make=
+	cf_cv_prog_gnat_correct=no
 else
-   CF_GNAT_VERSION
-   AC_CHECK_PROG(M4_exists, m4, yes, no)
-   if test "$ac_cv_prog_M4_exists" = no; then
-      cf_cv_prog_gnat_correct=no
-      echo Ada95 binding required program m4 not found. Ada95 binding disabled.
-   fi
-   if test "$cf_cv_prog_gnat_correct" = yes; then
-      AC_MSG_CHECKING(if GNAT works)
-      CF_GNAT_TRY_RUN([procedure conftest;],
+	CF_GNAT_VERSION
+	AC_CHECK_PROG(M4_exists, m4, yes, no)
+	if test "$ac_cv_prog_M4_exists" = no; then
+		cf_cv_prog_gnat_correct=no
+		echo Ada95 binding required program m4 not found. Ada95 binding disabled.
+	fi
+	if test "$cf_cv_prog_gnat_correct" = yes; then
+		AC_MSG_CHECKING(if GNAT works)
+		CF_GNAT_TRY_RUN([procedure conftest;],
 [with Text_IO;
 with GNAT.OS_Lib;
 procedure conftest is
@@ -25,8 +25,8 @@ begin
    Text_IO.New_Line;
    GNAT.OS_Lib.OS_Exit (0);
 end conftest;],[cf_cv_prog_gnat_correct=yes],[cf_cv_prog_gnat_correct=no])
-      AC_MSG_RESULT($cf_cv_prog_gnat_correct)
-   fi
+		AC_MSG_RESULT($cf_cv_prog_gnat_correct)
+	fi
 fi
 
 AC_SUBST(cf_ada_make)

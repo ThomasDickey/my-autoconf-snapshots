@@ -1,4 +1,4 @@
-dnl CF_CURSES_HEADER version: 3 updated: 2011/05/01 19:47:45
+dnl CF_CURSES_HEADER version: 4 updated: 2015/04/18 09:03:58
 dnl ----------------
 dnl Find a "curses" header file, e.g,. "curses.h", or one of the more common
 dnl variations of ncurses' installs.
@@ -8,7 +8,7 @@ AC_DEFUN([CF_CURSES_HEADER],[
 AC_CACHE_CHECK(if we have identified curses headers,cf_cv_ncurses_header,[
 cf_cv_ncurses_header=none
 for cf_header in ifelse($1,,,[ \
-    $1/ncurses.h \
+	$1/ncurses.h \
 	$1/curses.h]) \
 	ncurses.h \
 	curses.h ifelse($1,,[ncurses/ncurses.h ncurses/curses.h])

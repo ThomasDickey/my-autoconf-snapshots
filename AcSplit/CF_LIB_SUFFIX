@@ -1,4 +1,4 @@
-dnl CF_LIB_SUFFIX version: 24 updated: 2015/04/12 11:42:01
+dnl CF_LIB_SUFFIX version: 25 updated: 2015/04/17 21:13:04
 dnl -------------
 dnl Compute the library file-suffix from the given model name
 dnl $1 = model name
@@ -7,52 +7,52 @@ dnl $3 = dependency variable to set (actual filename)
 dnl The variable $LIB_SUFFIX, if set, prepends the variable to set.
 AC_DEFUN([CF_LIB_SUFFIX],
 [
-	case X$1 in #(vi
-	Xlibtool) #(vi
+	case X$1 in
+	(Xlibtool)
 		$2='.la'
 		$3=[$]$2
 		;;
-	Xdebug) #(vi
+	(Xdebug)
 		$2='_g.a'
 		$3=[$]$2
 		;;
-	Xprofile) #(vi
+	(Xprofile)
 		$2='_p.a'
 		$3=[$]$2
 		;;
-	Xshared) #(vi
+	(Xshared)
 		case $cf_cv_system_name in
-		aix[[5-7]]*) #(vi
+		(aix[[5-7]]*)
 			$2='.so'
 			$3=[$]$2
 			;;
-		cygwin*|msys*|mingw*) #(vi
+		(cygwin*|msys*|mingw*)
 			$2='.dll'
 			$3='.dll.a'
 			;;
-		darwin*) #(vi
+		(darwin*)
 			$2='.dylib'
 			$3=[$]$2
 			;;
-		hpux*) #(vi
+		(hpux*)
 			case $target in
-			ia64*) #(vi
+			(ia64*)
 				$2='.so'
 				$3=[$]$2
 				;;
-			*) #(vi
+			(*)
 				$2='.sl'
 				$3=[$]$2
 				;;
 			esac
 			;;
-		*) #(vi
+		(*)
 			$2='.so'
 			$3=[$]$2
 			;;
 		esac
 		;;
-	*)
+	(*)
 		$2='.a'
 		$3=[$]$2
 		;;

@@ -1,15 +1,15 @@
-dnl CF_GNAT_GENERICS version: 2 updated: 2011/03/23 20:24:41
+dnl CF_GNAT_GENERICS version: 3 updated: 2015/04/17 21:13:04
 dnl ----------------
 AC_DEFUN([CF_GNAT_GENERICS],
 [
 AC_REQUIRE([CF_GNAT_VERSION])
 
 AC_MSG_CHECKING(if GNAT supports generics)
-case $cf_gnat_version in #(vi
-3.[[1-9]]*|[[4-9]].*) #(vi
+case $cf_gnat_version in
+(3.[[1-9]]*|[[4-9]].*)
 	cf_gnat_generics=yes
 	;;
-*)
+(*)
 	cf_gnat_generics=no
 	;;
 esac
