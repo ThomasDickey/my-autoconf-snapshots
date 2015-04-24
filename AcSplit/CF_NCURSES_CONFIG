@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 10 updated: 2012/10/06 08:57:51
+dnl CF_NCURSES_CONFIG version: 11 updated: 2015/04/23 20:35:30
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses.
 dnl Prefer the "-config" script from ncurses 6.x, to simplify analysis.
@@ -12,8 +12,8 @@ cf_ncuconfig_root=ifelse($1,,ncurses,$1)
 echo "Looking for ${cf_ncuconfig_root}-config"
 
 CF_ACVERSION_CHECK(2.52,
-	[AC_CHECK_TOOLS(NCURSES_CONFIG, ${cf_ncuconfig_root}6-config ${cf_ncuconfig_root}5-config, none)],
-	[AC_PATH_PROGS(NCURSES_CONFIG, ${cf_ncuconfig_root}6-config ${cf_ncuconfig_root}5-config, none)])
+	[AC_CHECK_TOOLS(NCURSES_CONFIG, ${cf_ncuconfig_root}-config ${cf_ncuconfig_root}6-config ${cf_ncuconfig_root}5-config, none)],
+	[AC_PATH_PROGS(NCURSES_CONFIG, ${cf_ncuconfig_root}-config ${cf_ncuconfig_root}6-config ${cf_ncuconfig_root}5-config, none)])
 
 if test "$NCURSES_CONFIG" != none ; then
 
