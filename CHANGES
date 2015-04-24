@@ -1,3 +1,23 @@
+2015-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	modify to check for ".pc" files first to allow those with a working pkg-config
+	to use them.
+
+2015-04-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	accommodate changes for lynx's "--with-screen" option by assuming no
+	version, letting that come from ${cf_ncuconfig_root}.  To do this, add
+	a versionless case at the beginning of the list to check for *-config's
+
+	* AcSplit/CF_CURSES_HEADER:
+	change the order of the header-checks, so that subdir-includes are done
+	last.  This might break some platforms where subdirs are needed for ncurses,
+	but without it, my changes to lynx to allow "--with-screen=ncursesw6" will
+	not work because this would otherwise find _other_ subdirs not in the
+	include-directories listed by ncursesw6-config
+
 2015-04-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_HEADER, AcSplit/CF_PROG_EXT: whitespace
