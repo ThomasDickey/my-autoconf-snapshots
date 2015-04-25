@@ -1,3 +1,9 @@
+2015-04-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NCURSES_ETC: add --with-screen option
+
+	* AcSplit/CF_CHECK_CURSES_LIB: ci-aclocal generated header
+
 2015-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CONFIG:
