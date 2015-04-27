@@ -1,4 +1,4 @@
-dnl CF_WITH_NCURSES_ETC version: 3 updated: 2015/04/17 21:26:14
+dnl CF_WITH_NCURSES_ETC version: 4 updated: 2015/04/25 20:53:11
 dnl -------------------
 dnl Use this macro for programs which use any variant of "curses", e.g.,
 dnl "ncurses", and "PDCurses".  Programs that can use curses and some unrelated
@@ -12,6 +12,10 @@ CF_WITH_CURSES_DIR
 cf_cv_screen=curses
 
 AC_MSG_CHECKING(for specified curses library type)
+AC_ARG_WITH(screen,
+	[  --with-screen=XXX       use specified curses-libraries],
+	[cf_cv_screen=$withval],[
+
 AC_ARG_WITH(ncursesw,
 	[  --with-ncursesw         use wide ncurses-libraries],
 	[cf_cv_screen=ncursesw],[
@@ -30,7 +34,7 @@ AC_ARG_WITH(curses-colr,
 
 AC_ARG_WITH(curses-5lib,
 	[  --with-curses-5lib      compile/link with SunOS 5lib curses],
-	[cf_cv_screen=curses_5lib])])])])])
+	[cf_cv_screen=curses_5lib])])])])])])
 
 AC_MSG_RESULT($cf_cv_screen)
 
@@ -38,15 +42,18 @@ case $cf_cv_screen in
 (curses|curses_*)
 	CF_CURSES_CONFIG
 	;;
-(ncurses)
-	CF_NCURSES_CONFIG
-	;;
-(ncursesw)
+(ncursesw*)
 	CF_UTF8_LIB
-	CF_NCURSES_CONFIG(ncursesw)
+	CF_NCURSES_CONFIG($cf_cv_screen)
+	;;
+(ncurses*)
+	CF_NCURSES_CONFIG($cf_cv_screen)
 	;;
 (pdcurses)
 	CF_PDCURSES_X11
+	;;
+(*)
+	AC_MSG_ERROR(unexpected screen-value: $cf_cv_screen)
 	;;
 esac
 
