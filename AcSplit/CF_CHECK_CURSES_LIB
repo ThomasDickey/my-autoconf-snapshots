@@ -1,0 +1,12 @@
+dnl CF_CHECK_CURSES_LIB version: 1 updated: 2015/04/25 20:53:11
+dnl -------------------
+dnl $1 = nominal library name, used also for header lookup
+dnl $2 = suffix to append to library name
+dnl $3 = function to check for using AC_CHECK_LIB
+AC_DEFUN([CF_CHECK_CURSES_LIB],
+[
+AC_CHECK_LIB($1$2,$3,[
+CF_UPPER(cf_upper,have_lib$1)
+CF_ADD_LIBS(-l$1$2)
+AC_DEFINE_UNQUOTED($cf_upper,1)])
+])dnl

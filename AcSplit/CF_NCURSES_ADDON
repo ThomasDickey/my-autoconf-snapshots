@@ -1,7 +1,8 @@
-dnl CF_NCURSES_ADDON version: 4 updated: 2011/03/27 17:10:13
+dnl CF_NCURSES_ADDON version: 5 updated: 2015/04/26 18:06:58
 dnl ----------------
 dnl Configure an ncurses add-on, built outside the ncurses tree.
 AC_DEFUN([CF_NCURSES_ADDON],[
+AC_REQUIRE([CF_NCURSES_CONFIG])
 
 AC_PROVIDE([CF_SUBST_NCURSES_VERSION])
 
@@ -12,42 +13,55 @@ AC_ARG_ENABLE(widec,
 	[with_widec=no])
 AC_MSG_RESULT($with_widec)
 if test "$with_widec" = yes ; then
-	CF_UTF8_LIB 
+	CF_UTF8_LIB
 	CF_NCURSES_CONFIG(ncursesw)
 else
 	CF_NCURSES_CONFIG(ncurses)
 fi
 
-if test "$NCURSES_CONFIG" != none ; then
+if test "$NCURSES_CONFIG_PKG" != none ; then
+	cf_version=`$PKG_CONFIG --modversion $NCURSES_CONFIG_PKG 2>/dev/null`
 
-cf_version=`$NCURSES_CONFIG --version`
+	NCURSES_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
+	NCURSES_MINOR=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.//' -e 's/\..*//'`
+	NCURSES_PATCH=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*\.//'`
 
-NCURSES_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
-NCURSES_MINOR=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.//' -e 's/\..*//'`
-NCURSES_PATCH=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*\.//'`
+	cf_cv_abi_version=`$PKG_CONFIG --variable=abi_version $NCURSES_CONFIG_PKG 2>/dev/null`
+	if test -z "$cf_cv_abi_version"
+	then
+		cf_cv_abi_version=`$PKG_CONFIG --variable=major_version $NCURSES_CONFIG_PKG 2>/dev/null`
+	fi
 
-# ABI version is not available from headers
-cf_cv_abi_version=`$NCURSES_CONFIG --abi-version`
+elif test "$NCURSES_CONFIG" != none ; then
+
+	cf_version=`$NCURSES_CONFIG --version 2>/dev/null`
+
+	NCURSES_MAJOR=`echo "$cf_version" | sed -e 's/\..*//'`
+	NCURSES_MINOR=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.//' -e 's/\..*//'`
+	NCURSES_PATCH=`echo "$cf_version" | sed -e 's/^[[0-9]][[0-9]]*\.[[0-9]][[0-9]]*\.//'`
+
+	# ABI version is not available from headers
+	cf_cv_abi_version=`$NCURSES_CONFIG --abi-version 2>/dev/null`
 
 else
 
-for cf_name in MAJOR MINOR PATCH
-do
-cat >conftest.$ac_ext <<CF_EOF
-#include <${cf_cv_ncurses_header:-curses.h}>
-AUTOCONF_$cf_name NCURSES_VERSION_$cf_name
+	for cf_name in MAJOR MINOR PATCH
+	do
+	cat >conftest.$ac_ext <<CF_EOF
+	#include <${cf_cv_ncurses_header:-curses.h}>
+	AUTOCONF_$cf_name NCURSES_VERSION_$cf_name
 CF_EOF
-	cf_try="$ac_cpp conftest.$ac_ext 2>&5 | fgrep AUTOCONF_$cf_name >conftest.out"
-	AC_TRY_EVAL(cf_try)
-	if test -f conftest.out ; then
-		cf_result=`cat conftest.out | sed -e "s/^.*AUTOCONF_$cf_name[[ 	]][[ 	]]*//"`
-		eval NCURSES_$cf_name=\"$cf_result\"
-		# cat conftest.$ac_ext
-		# cat conftest.out
-	fi
-done
+		cf_try="$ac_cpp conftest.$ac_ext 2>&5 | fgrep AUTOCONF_$cf_name >conftest.out"
+		AC_TRY_EVAL(cf_try)
+		if test -f conftest.out ; then
+			cf_result=`cat conftest.out | sed -e "s/^.*AUTOCONF_$cf_name[[ 	]][[ 	]]*//"`
+			eval NCURSES_$cf_name=\"$cf_result\"
+			# cat conftest.$ac_ext
+			# cat conftest.out
+		fi
+	done
 
-cf_cv_abi_version=${NCURSES_MAJOR}
+	cf_cv_abi_version=${NCURSES_MAJOR}
 
 fi
 

@@ -1,3 +1,16 @@
+2015-04-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG: integrate with checks in CF_NCURSES_ADDON
+
+	* AcSplit/CF_NCURSES_ADDON:
+	integrate with pkg-config check in CF_NCURSES_CONFIG
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	suppress checking-for message if --without-pkg-config is used
+
+	* AcSplit/CF_PKG_CONFIG:
+	suppress warning message if --without-pkg-config is used
+
 2015-04-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NCURSES_ETC: add --with-screen option
