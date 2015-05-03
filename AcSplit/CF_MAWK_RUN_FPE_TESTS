@@ -1,4 +1,4 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 13 updated: 2012/10/27 08:21:53
+dnl CF_MAWK_RUN_FPE_TESTS version: 14 updated: 2015/05/02 07:59:43
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
@@ -65,12 +65,12 @@ fi
 
 echo "FPE_CHECK status=$cf_status" >&AC_FD_CC
 case $cf_status in
-   0)  ;;  # good news do nothing
-   3)      # reasonably good news
+   (0)  ;;  # good news do nothing
+   (3)      # reasonably good news
     AC_DEFINE(FPE_TRAPS_ON,1,[Define to 1 if floating-point exception traps are enabled])
     CF_MAWK_FPE_SIGINFO ;;
 
-   1|2|4)   # bad news have to turn off traps
+   (1|2|4)   # bad news have to turn off traps
 	    # only know how to do this on systemV and solaris
     AC_CHECK_HEADER(ieeefp.h, cf_have_ieeefp_h=1)
     AC_CHECK_FUNC(fpsetmask, cf_have_fpsetmask=1)
@@ -116,21 +116,21 @@ CF_EOF
 	fi
 
 	[case $cf_status in
-	1)
+	(1)
 	    cat 1>&2 <<-'EOF'
 	    Warning: Your system defaults generate floating point exception
 	    on divide by zero but not on overflow.  You need to
 	    #define TURN_ON_FPE_TRAPS to handle overflow.
 EOF
 	    ;;
-	2)
+	(2)
 	    cat 1>&2 <<-'EOF'
 	    Warning: Your system defaults generate floating point exception
 	    on overflow  but not on divide by zero.  You need to
 	    #define TURN_ON_FPE_TRAPS to handle divide by zero.
 EOF
 	    ;;
-	4)
+	(4)
 	    cat 1>&2 <<-'EOF'
 	    Warning: Your system defaults do not generate floating point
 	    exceptions, but your math library does not support this behavior.
@@ -148,7 +148,7 @@ EOF
 fi
     ;;
 
-  *)  # some sort of disaster
+  (*)  # some sort of disaster
     if test "x$cross_compiling" = xno
 	then
     cat 1>&2 <<-EOF

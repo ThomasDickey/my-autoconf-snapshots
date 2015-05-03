@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 80 updated: 2015/04/17 21:13:04
+dnl CF_LIB_RULES version: 81 updated: 2015/04/30 20:30:18
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -104,7 +104,7 @@ CF_EOF
 						case "$cf_cv_system_name" in
 						(darwin*)
 							# "w", etc?
-							cf_suffix="${LIB_SUFFIX}"'.${'$cf_version_name'}'"$cf_shared_suffix"
+							cf_suffix="${USE_LIB_SUFFIX}"'.${'$cf_version_name'}'"$cf_shared_suffix"
 							;;
 						(*)
 							cf_suffix="$cf_suffix"'.${'$cf_version_name'}'
@@ -287,24 +287,24 @@ CF_EOF
 			if test -n "$USE_LIB_SUFFIX" ; then
 				case $USE_LIB_SUFFIX in
 				(tw*)
-					cf_libname=`echo $cf_libname | sed 's/tw$//'`
+					cf_libname=`echo $cf_libname | sed 's/tw'$EXTRA_SUFFIX'$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^tw'$EXTRA_SUFFIX'//'`
-					cf_dir_suffix=tw
+					cf_dir_suffix=tw$EXTRA_SUFFIX
 					;;
 				(t*)
-					cf_libname=`echo $cf_libname | sed 's/t$//'`
+					cf_libname=`echo $cf_libname | sed 's/t'$EXTRA_SUFFIX'$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^t'$EXTRA_SUFFIX'//'`
-					cf_dir_suffix=t
+					cf_dir_suffix=t$EXTRA_SUFFIX
 					;;
 				(w*)
-					cf_libname=`echo $cf_libname | sed 's/w$//'`
+					cf_libname=`echo $cf_libname | sed 's/w'$EXTRA_SUFFIX'$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^w'$EXTRA_SUFFIX'//'`
-					cf_dir_suffix=w
+					cf_dir_suffix=w$EXTRA_SUFFIX
 					;;
 				(*)
-					cf_libname=`echo $cf_libname | sed 's/$//'`
+					cf_libname=`echo $cf_libname | sed 's/'$EXTRA_SUFFIX'$//'`
 					cf_suffix=`echo $cf_suffix | sed 's/^'$EXTRA_SUFFIX'//'`
-					cf_dir_suffix=
+					cf_dir_suffix=$EXTRA_SUFFIX
 					;;
 				esac
 			fi

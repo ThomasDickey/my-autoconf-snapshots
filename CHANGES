@@ -1,3 +1,18 @@
+2015-05-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ABI_DEFAULTS: RCS_BASE
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS: cosmetic fix
+
+	* config.guess: 2015-03-04
+
+	* config.sub: 2015-03-08
+
+2015-04-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	fixup for OSX shared libraries, which have a double-suffix
+
 2015-04-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CONFIG: integrate with checks in CF_NCURSES_ADDON
