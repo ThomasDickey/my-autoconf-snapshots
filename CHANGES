@@ -1,3 +1,9 @@
+2015-05-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_SIZEOF:
+	fix parameter substitution, in case $ac_cv_type_XX or $ac_cv_sizeof_XX are
+	set to null (report by Andrew Arensburger, on lynx-dev)
+
 2015-05-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_MAN2HTML: fix quoting in comment
