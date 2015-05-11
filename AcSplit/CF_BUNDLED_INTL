@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 17 updated: 2012/10/06 08:57:51
+dnl CF_BUNDLED_INTL version: 18 updated: 2015/05/10 19:52:14
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -67,7 +67,7 @@ dnl this updates SUB_MAKEFILE and MSG_DIR_MAKE:
 CF_OUR_MESSAGES($1)
 
 if test "$USE_INCLUDED_LIBINTL" = yes ; then
-        if test "$nls_cv_force_use_gnu_gettext" = yes ; then
+	if test "$nls_cv_force_use_gnu_gettext" = yes ; then
 		:
 	elif test "$nls_cv_use_gnu_gettext" = yes ; then
 		:

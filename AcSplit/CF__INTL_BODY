@@ -1,10 +1,10 @@
-dnl CF__INTL_BODY version: 1 updated: 2007/07/26 17:35:47
+dnl CF__INTL_BODY version: 2 updated: 2015/05/10 19:52:14
 dnl -------------
 dnl Test-code needed for libintl compile-checks
 dnl $1 = parameter 2 from AM_WITH_NLS
 define([CF__INTL_BODY],[
-    bindtextdomain ("", "");
-    return (int) gettext ("")
-            ifelse([$1], need-ngettext, [ + (int) ngettext ("", "", 0)], [])
-            [ + _nl_msg_cat_cntr]
+	bindtextdomain ("", "");
+	return (int) gettext ("")
+			ifelse([$1], need-ngettext, [ + (int) ngettext ("", "", 0)], [])
+			[ + _nl_msg_cat_cntr]
 ])
