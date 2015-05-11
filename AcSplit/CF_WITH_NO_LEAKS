@@ -1,4 +1,4 @@
-dnl CF_WITH_NO_LEAKS version: 2 updated: 2012/10/06 08:57:51
+dnl CF_WITH_NO_LEAKS version: 3 updated: 2015/05/10 19:52:14
 dnl ----------------
 AC_DEFUN([CF_WITH_NO_LEAKS],[
 
@@ -12,9 +12,9 @@ AC_ARG_WITH(no-leaks,
 	[  --with-no-leaks         test: free permanent memory, analyze leaks],
 	[AC_DEFINE(NO_LEAKS,1,[Define to 1 to enable leak-checking])
 	 cf_doalloc=".${with_dmalloc}${with_dbmalloc}${with_purify}${with_valgrind}"
-	 case ${cf_doalloc} in #(vi
-	 *yes*) ;;
-	 *) AC_DEFINE(DOALLOC,10000,[Define to size of malloc-array]) ;;
+	 case ${cf_doalloc} in
+	 (*yes*) ;;
+	 (*) AC_DEFINE(DOALLOC,10000,[Define to size of malloc-array]) ;;
 	 esac
 	 with_no_leaks=yes],
 	[with_no_leaks=])

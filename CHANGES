@@ -1,3 +1,8 @@
+2015-05-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_LC_MESSAGES, AcSplit/CF_ADD_OPTIONAL_PATH, AcSplit/CF_ARG_OPTION, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_LIBS, AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF__ADD_SHLIB_RULES, AcSplit/CF__DEFINE_LIB_TARGET, AcSplit/CF__INTL_BODY, AcSplit/jm_GLIBC21:
+	coding-style
+
 2015-05-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_SIZEOF:
