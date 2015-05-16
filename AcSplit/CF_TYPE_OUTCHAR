@@ -1,4 +1,4 @@
-dnl CF_TYPE_OUTCHAR version: 14 updated: 2012/10/06 11:17:15
+dnl CF_TYPE_OUTCHAR version: 15 updated: 2015/05/15 19:42:24
 dnl ---------------
 dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
 dnl
@@ -62,12 +62,12 @@ done
 ])
 
 case $cf_cv_type_outchar in
-int*)
+(int*)
 	AC_DEFINE(OUTC_RETURN,1,[Define to 1 if tputs outc function returns a value])
 	;;
 esac
 case $cf_cv_type_outchar in
-*char*)
+(*char*)
 	AC_DEFINE(OUTC_ARGS,char c,[Define to actual type to override tputs outc parameter type])
 	;;
 esac

@@ -1,15 +1,15 @@
-dnl CF_INSTALL_OPT_O version: 1 updated: 2014/07/21 18:19:51
+dnl CF_INSTALL_OPT_O version: 2 updated: 2015/05/15 19:45:35
 dnl ----------------
 dnl Almost all "install" programs default to the current user's ownership.
 dnl Almost - MINIX is an exception.
 AC_DEFUN([CF_INSTALL_OPT_O],
 [
 AC_MSG_CHECKING(if install needs to be told about ownership)
-case `$ac_config_guess` in #(vi
-*minix)
+case `$ac_config_guess` in
+(*minix)
 	with_install_o=yes
 	;;
-*)
+(*)
 	with_install_o=no
 	;;
 esac

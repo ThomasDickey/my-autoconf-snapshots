@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERMCAP version: 11 updated: 2012/10/06 11:17:15
+dnl CF_CURSES_TERMCAP version: 12 updated: 2015/05/15 19:42:24
 dnl -----------------
 dnl Check if we should include <curses.h> to pick up prototypes for termcap
 dnl functions.  On terminfo systems, these are normally declared in <curses.h>,
@@ -65,17 +65,17 @@ fi
 ])
 
 case $cf_cv_need_curses_h in
-both) #(vi
+(both)
 	AC_DEFINE_UNQUOTED(NEED_CURSES_H,1,[Define to 1 if we must include curses.h])
 	AC_DEFINE_UNQUOTED(NEED_TERMCAP_H,1,[Define to 1 if we must include termcap.h])
 	;;
-curses.h) #(vi
+(curses.h)
 	AC_DEFINE_UNQUOTED(NEED_CURSES_H,1,[Define to 1 if we must include curses.h])
 	;;
-term.h) #(vi
+(term.h)
 	AC_DEFINE_UNQUOTED(NEED_TERM_H,1,[Define to 1 if we must include term.h])
 	;;
-termcap.h) #(vi
+(termcap.h)
 	AC_DEFINE_UNQUOTED(NEED_TERMCAP_H,1,[Define to 1 if we must include termcap.h])
 	;;
 esac
