@@ -1,3 +1,13 @@
+2015-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_INCDIR:
+	fix an infinite loop when the include-directory to be added does not exist
+	(Debian #786436)
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	fix for cross-compiling, could just assume ncurses but be consistent and
+	assume it is not - otherwise why am I running a test-program?  (Debian #786436)
+
 2015-05-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_GCC_OPT_RDYNAMIC, AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_STDIO_UNLOCKED, AcSplit/CF_TYPE_OUTCHAR:
