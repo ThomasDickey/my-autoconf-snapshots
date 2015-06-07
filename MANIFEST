@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20150528
+MANIFEST for my-autoconf, version t20150606
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -296,6 +296,7 @@ AcSplit/CF_NCURSES_EXT_FUNCS    test for ncurses extended functions
 AcSplit/CF_NCURSES_HEADER       check for ncurses.h
 AcSplit/CF_NCURSES_LIBS         set up LIBS (ncurses)
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
+AcSplit/CF_NCURSES_WITH_ABI_VERSION  hold ncurses ABI-conversion between ABI5/6
 AcSplit/CF_NCURSES_WRAP_PREFIX  macro to specify ncurses wrap-prefix
 AcSplit/CF_NETBSD_FORM_H        check for quirks in NetBSD's form.h
 AcSplit/CF_NETBSD_MENU_H        check for quirks in NetBSD's menu.h

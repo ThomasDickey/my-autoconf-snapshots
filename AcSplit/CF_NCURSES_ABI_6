@@ -1,4 +1,4 @@
-dnl CF_NCURSES_ABI_6 version: 2 updated: 2015/04/17 21:13:04
+dnl CF_NCURSES_ABI_6 version: 3 updated: 2015/06/06 16:10:11
 dnl ----------------
 dnl Set ncurses' ABI to 6 unless overridden by explicit configure option, and
 dnl warn about this.
@@ -8,7 +8,7 @@ if test "${with_abi_version+set}" != set; then
 	(5.*)
 		cf_cv_rel_version=6.0
 		cf_cv_abi_version=6
-		AC_MSG_WARN(Overriding ABI version to $cf_cv_abi_version)
+		AC_MSG_WARN(overriding ABI version to $cf_cv_abi_version)
 		;;
 	esac
 fi
