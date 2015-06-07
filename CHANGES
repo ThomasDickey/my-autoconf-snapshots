@@ -1,3 +1,28 @@
+2015-06-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR: tidy a checking-message
+
+	* AcSplit/CF_WITH_ABI_VERSION: add case to downgrade from 6.0 to 5.9
+
+	* AcSplit/CF_NCURSES_ABI_6:
+	make this message consistent with a similar one
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	amend change for cross-compiling to make it succeed, but show "maybe" in log
+
+	* AcSplit/CF_ABI_DEFAULTS:
+	add filter-syms and with-lp64 option defaults
+
+	* AcSplit/CF_NCURSES_WITH_ABI_VERSION: ci-aclocal generated header
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR: fix typo
+
+	* AcSplit/CF_WITH_ABI_VERSION: handle conversion from 5.x to 6.0
+
+2015-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG: fix typo
+
 2015-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_INCDIR:

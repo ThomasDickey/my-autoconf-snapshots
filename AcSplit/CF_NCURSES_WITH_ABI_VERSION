@@ -1,0 +1,21 @@
+dnl CF_NCURSES_WITH_ABI_VERSION version: 1 updated: 2015/06/06 13:49:58
+dnl ---------------------------
+dnl CF_WITH_ABI_VERSION version: 1 updated: 2003/09/20 18:12:49
+dnl -------------------
+dnl Allow ncurses's ABI to be overridden.  Generally this happens when a
+dnl packager has incremented the ABI past that used in the original package,
+dnl and wishes to keep doing this.
+dnl
+dnl $1 is the package name, if any, to derive a corresponding {package}_ABI
+dnl symbol.
+AC_DEFUN([CF_NCURSES_WITH_ABI_VERSION],[
+CF_WITH_ABI_VERSION($1)
+if test "x$cf_cv_abi_version" != "x$with_abi_version"
+then
+	case $cf_cv_rel_version in
+	(5.*)
+		cf_cv_rel_version=$with_abi_version.0
+		;;
+	esac
+fi
+])dnl
