@@ -1,3 +1,8 @@
+2015-06-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	tweak for removing deprecated ABI5 symbols when building ABI6
+
 2015-06-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR: tidy a checking-message
