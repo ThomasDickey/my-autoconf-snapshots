@@ -1,9 +1,10 @@
-dnl CF_PROG_GROFF version: 1 updated: 2013/01/02 20:37:18
+dnl CF_PROG_GROFF version: 2 updated: 2015/07/04 11:16:27
 dnl -------------
 dnl Check if groff is available, for cases (such as html output) where nroff
 dnl is not enough.
 AC_DEFUN([CF_PROG_GROFF],[
 AC_PATH_PROG(GROFF_PATH,groff,no)
+AC_PATH_PROG(NROFF_PATH,nroff,no)
 if test "x$GROFF_PATH" = xno
 then
 	NROFF_NOTE=
@@ -12,7 +13,6 @@ else
 	NROFF_NOTE="#"
 	GROFF_NOTE=
 fi
-AC_SUBST(GROFF_PATH)
 AC_SUBST(GROFF_NOTE)
 AC_SUBST(NROFF_NOTE)
 ])dnl
