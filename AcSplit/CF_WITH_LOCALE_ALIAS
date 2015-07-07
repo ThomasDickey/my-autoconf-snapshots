@@ -1,4 +1,4 @@
-dnl CF_WITH_LOCALE_ALIAS version: 6 updated: 2011/10/26 04:23:30
+dnl CF_WITH_LOCALE_ALIAS version: 7 updated: 2015/07/06 17:59:27
 dnl --------------------
 dnl Configure option to specify the location of locale.alias, for programs that
 dnl must read it directly.
@@ -11,8 +11,8 @@ AC_ARG_WITH(locale-alias,
 [LOCALE_ALIAS_FILE=auto])
 
 CF_VERBOSE()
-case "x$LOCALE_ALIAS_FILE" in #(vi
-xauto|xyes|xno)
+case "x$LOCALE_ALIAS_FILE" in
+(xauto|xyes|xno)
 	LOCALE_ALIAS_FILE=unknown
 	for cf_path in \
 		/usr/openwin/lib/locale \
@@ -31,8 +31,8 @@ xauto|xyes|xno)
 				break
 			fi
 		done
-	;; #(vi
-*)
+	;;
+(*)
 	if test ! -f "$LOCALE_ALIAS_FILE" ; then
 		AC_MSG_WARN(Alias file not found: $LOCALE_ALIAS_FILE)
 	fi
