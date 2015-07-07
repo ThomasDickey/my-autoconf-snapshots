@@ -1,4 +1,4 @@
-dnl CF_WITH_ENCODINGS_DIR version: 3 updated: 2014/01/05 15:16:00
+dnl CF_WITH_ENCODINGS_DIR version: 4 updated: 2015/07/06 17:59:04
 dnl ---------------------
 dnl Configure option to specify the location of encodings.dir, for programs
 dnl that must read it directly.
@@ -11,8 +11,8 @@ AC_ARG_WITH(encodings-dir,
 [ENCODINGS_DIR_FILE=auto])
 
 CF_VERBOSE()
-case "x$ENCODINGS_DIR_FILE" in #(vi
-xauto|xyes|xno)
+case "x$ENCODINGS_DIR_FILE" in
+(xauto|xyes|xno)
 	ENCODINGS_DIR_FILE=unknown
 	for cf_path in \
 		/usr/X11*/lib/X11/fonts \
@@ -27,8 +27,8 @@ xauto|xyes|xno)
 				break
 			fi
 		done
-	;; #(vi
-*)
+	;;
+(*)
 	if test ! -f "$ENCODINGS_DIR_FILE" ; then
 		AC_MSG_WARN(Encodings file not found: $ENCODINGS_DIR_FILE)
 		ENCODINGS_DIR_FILE=/usr/share/fonts/X11
