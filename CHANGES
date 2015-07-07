@@ -1,3 +1,7 @@
+2015-07-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG: PKG_CONFIG may simply be unset - fix
+
 2015-07-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_LOCALE_ALIAS, AcSplit/CF_WITH_ENCODINGS_DIR:
