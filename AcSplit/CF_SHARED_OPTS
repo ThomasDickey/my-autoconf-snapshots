@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 87 updated: 2015/04/17 21:13:04
+dnl CF_SHARED_OPTS version: 88 updated: 2015/08/05 20:44:28
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -97,14 +97,14 @@ AC_DEFUN([CF_SHARED_OPTS],
 		;;
 	(cygwin*)
 		CC_SHARED_OPTS=
-		MK_SHARED_LIB='sh '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
+		MK_SHARED_LIB=$SHELL' '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
 		RM_SHARED_OPTS="$RM_SHARED_OPTS $rel_builddir/mk_shared_lib.sh *.dll.a"
 		cf_cv_shlib_version=cygdll
 		cf_cv_shlib_version_infix=cygdll
 		shlibdir=$bindir
 		MAKE_DLLS=
 		cat >mk_shared_lib.sh <<-CF_EOF
-		#!/bin/sh
+		#!$SHELL
 		SHARED_LIB=\[$]1
 		IMPORT_LIB=\`echo "\[$]1" | sed -e 's/cyg/lib/' -e 's/[[0-9]]*\.dll[$]/.dll.a/'\`
 		shift
@@ -119,14 +119,14 @@ CF_EOF
 		;;
 	(msys*)
 		CC_SHARED_OPTS=
-		MK_SHARED_LIB='sh '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
+		MK_SHARED_LIB=$SHELL' '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
 		RM_SHARED_OPTS="$RM_SHARED_OPTS $rel_builddir/mk_shared_lib.sh *.dll.a"
 		cf_cv_shlib_version=msysdll
 		cf_cv_shlib_version_infix=msysdll
 		shlibdir=$bindir
 		MAKE_DLLS=
 		cat >mk_shared_lib.sh <<-CF_EOF
-		#!/bin/sh
+		#!$SHELL
 		SHARED_LIB=\[$]1
 		IMPORT_LIB=\`echo "\[$]1" | sed -e 's/msys-/lib/' -e 's/[[0-9]]*\.dll[$]/.dll.a/'\`
 		shift
@@ -220,10 +220,10 @@ CF_EOF
 			EXTRA_LDFLAGS="-Wl,--enable-auto-import $EXTRA_LDFLAGS"
 		fi
 		CC_SHARED_OPTS=
-		MK_SHARED_LIB='sh '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
+		MK_SHARED_LIB=$SHELL' '$rel_builddir'/mk_shared_lib.sh [$]@ [$]{CC} [$]{CFLAGS}'
 		RM_SHARED_OPTS="$RM_SHARED_OPTS $rel_builddir/mk_shared_lib.sh *.dll.a"
 		cat >mk_shared_lib.sh <<-CF_EOF
-		#!/bin/sh
+		#!$SHELL
 		SHARED_LIB=\[$]1
 		IMPORT_LIB=\`echo "\[$]1" | sed -e 's/[[0-9]]*\.dll[$]/.dll.a/'\`
 		shift
