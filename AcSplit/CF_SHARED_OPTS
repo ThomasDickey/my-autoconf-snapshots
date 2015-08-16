@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 88 updated: 2015/08/05 20:44:28
+dnl CF_SHARED_OPTS version: 89 updated: 2015/08/15 18:38:59
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -51,11 +51,12 @@ AC_DEFUN([CF_SHARED_OPTS],
 	(yes)
 		cf_cv_shlib_version=auto
 		;;
-	(rel|abi|auto|no)
+	(rel|abi|auto)
 		cf_cv_shlib_version=$withval
 		;;
 	(*)
-		AC_MSG_ERROR([option value must be one of: rel, abi, auto or no])
+		AC_MSG_RESULT($withval)
+		AC_MSG_ERROR([option value must be one of: rel, abi, or auto])
 		;;
 	esac
 	],[cf_cv_shlib_version=auto])
