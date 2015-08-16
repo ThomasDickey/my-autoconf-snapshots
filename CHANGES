@@ -1,3 +1,9 @@
+2015-08-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS:
+	cleanup change for --with-shlib-version in 20000706 overlooked disallowing
+	a simple --without-shlib-version (report by Tommy Alex)
+
 2015-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES, AcSplit/CF_SHARED_OPTS:
