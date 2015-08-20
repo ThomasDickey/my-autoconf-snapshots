@@ -1,3 +1,7 @@
+2015-08-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_MAN2HTML: use configured shell
+
 2015-08-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS:
