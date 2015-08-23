@@ -1,3 +1,9 @@
+2015-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	adapted patch by Joshua Root to allow configuring the pkg-config library
+	directory even if pkg-config is not found.
+
 2015-08-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_MAN2HTML: use configured shell
