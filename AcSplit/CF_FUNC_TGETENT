@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 20 updated: 2015/04/12 15:39:00
+dnl CF_FUNC_TGETENT version: 21 updated: 2015/09/12 14:59:46
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -53,7 +53,7 @@ else
 fi
 for cf_termlib in '' $cf_TERMLIB ; do
 	LIBS="$cf_save_LIBS"
-	test -n "$cf_termlib" && CF_ADD_LIB($cf_termlib)
+	test -n "$cf_termlib" && { CF_ADD_LIB($cf_termlib) }
 	AC_TRY_RUN([
 /* terminfo implementations ignore the buffer argument, making it useless for
  * the xterm application, which uses this information to make a new TERMCAP
@@ -83,7 +83,7 @@ LIBS="$cf_save_LIBS"
 # not have side effects other than setting the cache variable, because
 # they are not executed when a cached value exists.)
 if test "x$cf_cv_lib_tgetent" != xno ; then
-	test "x$cf_cv_lib_tgetent" != xyes && CF_ADD_LIBS($cf_cv_lib_tgetent)
+	test "x$cf_cv_lib_tgetent" != xyes && { CF_ADD_LIBS($cf_cv_lib_tgetent) }
 	AC_DEFINE(USE_TERMCAP,1,[Define 1 to indicate that working tgetent is found])
 	if test "$cf_full_tgetent" = no ; then
 		AC_TRY_COMPILE([

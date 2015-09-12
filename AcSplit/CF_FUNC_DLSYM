@@ -1,4 +1,4 @@
-dnl CF_FUNC_DLSYM version: 3 updated: 2012/10/06 11:17:15
+dnl CF_FUNC_DLSYM version: 4 updated: 2015/09/12 14:46:44
 dnl -------------
 dnl Test for dlsym() and related functions, as well as libdl.
 dnl
@@ -15,7 +15,7 @@ AC_CHECK_LIB(dl,dlsym,[
 	cf_have_libdl=yes])])
 
 if test "$cf_have_dlsym" = yes ; then
-	test "$cf_have_libdl" = yes && CF_ADD_LIB(dl)
+	test "$cf_have_libdl" = yes && { CF_ADD_LIB(dl) }
 
 	AC_MSG_CHECKING(whether able to link to dl*() functions)
 	AC_TRY_LINK([#include <dlfcn.h>],[

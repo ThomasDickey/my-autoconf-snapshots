@@ -1,3 +1,15 @@
+2015-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_STDCPP_LIBRARY:
+	updated the test-program, omitting ".h" in the include to match "recent"
+	versions of stdc++, and also add a check to see if the library already
+	exists in the compiler's standard configuration.  The $CXXLIBS variable
+	can be preset to take advantage of this additional check.
+
+	* AcSplit/CF_FUNC_TGETENT, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_FUNC_DLSYM:
+	add braces around calls to CF_ADD_LIB which follow a test "&&" operator since
+	the macro uses multiple statements
+
 2015-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
