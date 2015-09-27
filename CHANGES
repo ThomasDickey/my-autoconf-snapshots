@@ -1,3 +1,9 @@
+2015-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	remove resulting.map on "distclean" (since it is produced by configure
+	script) rather than by "clean".
+
 2015-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_STDCPP_LIBRARY:
