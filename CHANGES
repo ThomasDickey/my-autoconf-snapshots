@@ -1,3 +1,8 @@
+2015-09-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__DEFINE_SHLIB_VARS:
+	add escape to fix assignment to LIB_BASENAME
+
 2015-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:
