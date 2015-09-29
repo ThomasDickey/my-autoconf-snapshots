@@ -1,4 +1,4 @@
-dnl CF__DEFINE_SHLIB_VARS version: 3 updated: 2015/01/02 17:09:39
+dnl CF__DEFINE_SHLIB_VARS version: 4 updated: 2015/09/28 17:49:10
 dnl ---------------------
 dnl Substitute makefile variables useful for CF__ADD_SHLIB_RULES.
 dnl
@@ -11,7 +11,7 @@ dnl		ABI_VERSION - "4.2.4"
 define([CF__DEFINE_SHLIB_VARS],[
 CF__DEFINE_LIB_TARGET
 SET_SHLIB_VARS="# begin CF__DEFINE_SHLIB_VARS\\
-LIB_BASENAME	= ${LIB_PREFIX}\${LIB_ROOTNAME}\${LIB_SUFFIX}\\
+LIB_BASENAME	= \${LIB_PREFIX}\${LIB_ROOTNAME}\${LIB_SUFFIX}\\
 LIB_REL_NAME	= \${LIB_BASENAME}.\${REL_VERSION}\\
 LIB_ABI_NAME	= \${LIB_BASENAME}.\${ABI_VERSION}\\
 LIB_TARGET	= $LIB_TARGET\\
