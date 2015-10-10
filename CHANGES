@@ -1,3 +1,14 @@
+2015-10-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_AR_FLAGS:
+	binutils ar supports a so-called "deterministic" option.  Bleeding-edge
+	Fedora and a few others build "ar" to use this.  It breaks makefiles using
+	archive-rule (such as ded).
+
+	* AcSplit/CF_FUNC_POLL:
+	add a fallback to checking with posix_openpt(), in case someone's running
+	the configure script in batch mode.
+
 2015-09-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__DEFINE_SHLIB_VARS:

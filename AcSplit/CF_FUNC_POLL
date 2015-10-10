@@ -1,8 +1,9 @@
-dnl CF_FUNC_POLL version: 8 updated: 2012/10/04 05:24:07
+dnl CF_FUNC_POLL version: 9 updated: 2015/10/10 13:27:32
 dnl ------------
 dnl See if the poll function really works.  Some platforms have poll(), but
 dnl it does not work for terminals or files.
 AC_DEFUN([CF_FUNC_POLL],[
+tty 2>&1 >/dev/null || { AC_CHECK_FUNCS(posix_openpt) }
 AC_CACHE_CHECK(if poll really works,cf_cv_working_poll,[
 AC_TRY_RUN([
 #include <stdlib.h>
@@ -14,7 +15,7 @@ AC_TRY_RUN([
 #else
 #include <sys/poll.h>
 #endif
-int main() {
+int main(void) {
 	struct pollfd myfds;
 	int ret;
 
@@ -34,6 +35,11 @@ int main() {
 		if (!isatty(fd)) {
 			fd = open("/dev/tty", 2);	/* O_RDWR */
 		}
+#ifdef HAVE_POSIX_OPENPT
+		if (fd < 0) {
+			fd = posix_openpt(O_RDWR);
+		}
+#endif
 
 		if (fd >= 0) {
 			/* also check with standard input */
