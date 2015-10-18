@@ -1,4 +1,4 @@
-dnl CF_STDCPP_LIBRARY version: 10 updated: 2015/09/12 15:53:39
+dnl CF_STDCPP_LIBRARY version: 11 updated: 2015/10/17 19:03:33
 dnl -----------------
 dnl Check for -lstdc++, which is GNU's standard C++ library.
 dnl If $CXXLIBS is set, add that to the libraries used for test-linking.
@@ -23,7 +23,11 @@ if test -n "$GXX" ; then
 	then
 		case $cf_cv_system_name in
 		(os2*)
-			cf_stdcpp_libname=stdcpp
+			if test -z "`g++ -dM -E - < /dev/null | grep __KLIBC__`"; then
+				cf_stdcpp_libname=stdcpp
+			else
+				cf_stdcpp_libname=stdc++
+			fi
 			;;
 		(*)
 			cf_stdcpp_libname=stdc++
