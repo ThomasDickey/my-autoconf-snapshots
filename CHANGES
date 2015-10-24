@@ -1,3 +1,17 @@
+2015-10-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS: fix quoting for m4
+
+	* config.guess: 2015-10-21
+
+	* config.sub: 2015-08-20
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	avoid ncurses build error on ppc64 architecture
+	the nm  tool is reporting _is_missing in Data section for ppc64.
+	(by comparison ppc64le is reporting it in Text section)
+	(patch by Michel Normand)
+
 2015-10-17  KO.Myung-Hun
 
 	* AcSplit/CF_LIB_PREFIX, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_XOPEN_SOURCE:
