@@ -1,3 +1,16 @@
+2015-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	allow build of pc-files without a validly-configured library directory,
+	leaving it up to the makefile to compensate
+
+2015-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	modify the editing-script which generates resulting.map file, to kill a
+	label just before a (now) empty section left by deleting a "_*" pattern.
+	This happens with FreeBSD using clang.  To do this, the script now uses awk.
+
 2015-10-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_VERSIONED_SYMS: fix quoting for m4
