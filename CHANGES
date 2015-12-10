@@ -1,3 +1,16 @@
+2015-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	improve check, making it define NCURSES_WIDECHAR if we happen to be building
+	on a platform (such as OSX) where we do not define _XOPEN_SOURCE or
+	_XOPEN_SOURCE_EXTENDED
+
+2015-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	fix logic for $cf_awk_program to avoid adding rule for resulting.map if
+	no changes were needed.
+
 2015-11-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:
