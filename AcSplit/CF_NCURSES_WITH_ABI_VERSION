@@ -1,7 +1,5 @@
-dnl CF_NCURSES_WITH_ABI_VERSION version: 1 updated: 2015/06/06 13:49:58
+dnl CF_NCURSES_WITH_ABI_VERSION version: 2 updated: 2015/12/19 17:51:52
 dnl ---------------------------
-dnl CF_WITH_ABI_VERSION version: 1 updated: 2003/09/20 18:12:49
-dnl -------------------
 dnl Allow ncurses's ABI to be overridden.  Generally this happens when a
 dnl packager has incremented the ABI past that used in the original package,
 dnl and wishes to keep doing this.
