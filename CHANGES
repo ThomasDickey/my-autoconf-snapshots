@@ -1,3 +1,13 @@
+2015-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_WITH_ABI_VERSION: correct comment
+
+	* AcSplit/CF_CHECK_WCWIDTH_GRAPHICS: ci-aclocal generated header
+
+2015-12-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_CURSES: fix typo
+
 2015-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_CURSES:
