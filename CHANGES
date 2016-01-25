@@ -1,3 +1,7 @@
+2016-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2016-01-01
+
 2015-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_WITH_ABI_VERSION: correct comment
