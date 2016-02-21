@@ -1,3 +1,18 @@
+2016-02-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NCURSES_ETC: add check for ncurses pthreads
+
+	* AcSplit/CF_NCURSES_PTHREADS: ci-aclocal generated header
+
+	* AcSplit/CF_LD_RPATH_OPT:
+	change FreeBSD to use -Wl,-rpath rather than -rpath option.  According to
+	FreeBSD #178732, either works since FreeBSD 4.x; however scons does not
+	accept anything except the -Wl,-rpath form.
+
+2016-02-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NL_LANGINFO_1STDAY: RCS_BASE
+
 2016-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2016-01-01

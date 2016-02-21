@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20160125
+MANIFEST for my-autoconf, version t20160220
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -303,6 +303,7 @@ AcSplit/CF_NETBSD_FORM_H        check for quirks in NetBSD's form.h
 AcSplit/CF_NETBSD_MENU_H        check for quirks in NetBSD's menu.h
 AcSplit/CF_NETLIBS              check for network-libraries
 AcSplit/CF_NGROUPS              check for NGROUPS
+AcSplit/CF_NL_LANGINFO_1STDAY   check for glib locale-extension for beginning of week preference
 AcSplit/CF_NO_LEAKS_OPTION      support for CF_WITH_NO_LEAKS
 AcSplit/CF_NSS_COMPAT           Date: Thu, 07 Feb 2008 09:45:36 +0100
 AcSplit/CF_NUMBER_SYNTAX        check if a variable is a number
