@@ -1,14 +1,12 @@
-dnl CF_NCURSES_PTHREADS version: 1 updated: 2016/02/20 19:23:20
+dnl CF_NCURSES_PTHREADS version: 2 updated: 2016/04/22 05:07:41
 dnl -------------------
 dnl Use this followup check to ensure that we link with pthreads if ncurses
 dnl uses it.
 AC_DEFUN([CF_NCURSES_PTHREADS],[
 : ${cf_nculib_root:=ifelse($1,,ncurses,$1)}
-AC_CACHE_CHECK(if $cf_nculib_root uses pthreads, cf_cv_ncurses_pthreads,[
-	AC_CHECK_LIB($cf_nculib_root,_nc_init_pthreads,
-		cf_cv_ncurses_pthreads=yes,
-		cf_cv_ncurses_pthreads=no)
-])
+AC_CHECK_LIB($cf_nculib_root,_nc_init_pthreads,
+	cf_cv_ncurses_pthreads=yes,
+	cf_cv_ncurses_pthreads=no)
 if test "$cf_cv_ncurses_pthreads" = yes
 then
 	CF_ADD_LIBS(-lpthread)

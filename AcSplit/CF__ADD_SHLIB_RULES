@@ -1,4 +1,4 @@
-dnl CF__ADD_SHLIB_RULES version: 5 updated: 2015/05/10 19:52:14
+dnl CF__ADD_SHLIB_RULES version: 6 updated: 2016/04/21 21:07:50
 dnl -------------------
 dnl Append rules for creating, installing, uninstalling and cleaning library.
 dnl In particular, this is needed for shared libraries since there are symbolic
@@ -76,7 +76,7 @@ fi
 if test x$2 = xshared
 then
 cat >>$1 <<CF_EOF
-	- test -z "\$(DESTDIR)" && /sbin/ldconfig
+	- \$(SHELL) -c "if test -z "\$(DESTDIR)" ; then /sbin/ldconfig; fi"
 CF_EOF
 fi
 
