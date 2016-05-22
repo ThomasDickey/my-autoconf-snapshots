@@ -1,3 +1,8 @@
+2016-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_LINT:
+	add cpplint to programs to use; drop ad hoc tdlint and alint.
+
 2016-05-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CC_ENV_FLAGS:
