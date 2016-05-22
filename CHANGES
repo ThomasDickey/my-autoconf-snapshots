@@ -1,3 +1,13 @@
+2016-05-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	don't limit the check to -I, -U and -D options, since the added options can
+	include various compiler options before and after preprocessor options.
+
+	* AcSplit/CF_PROG_CC_C_O:
+	provide for passing compiler options to this check because some users have
+	broken configurations requiring compiler options to do anything
+
 2016-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_PTHREADS: eliminate double message
