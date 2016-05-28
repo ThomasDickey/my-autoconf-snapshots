@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20160522
+MANIFEST for my-autoconf, version t20160528
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -520,6 +520,7 @@ AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
 AcSplit/CF_WITH_VERSIONED_SYMS  option --with-versioned-syms
 AcSplit/CF_WITH_WARNINGS        make option for gcc warnings
+AcSplit/CF_WITH_XINERAMA        configure option for Xinerama
 AcSplit/CF_WITH_XPM             configure --with-xpm option, used in vile
 AcSplit/CF_WITH_X_APP_DEFAULTS  option for getting X's app-defaults directory
 AcSplit/CF_WITH_X_DESKTOP_UTILS option for getting X's desktop-utils

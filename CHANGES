@@ -1,3 +1,11 @@
+2016-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_GPM:
+	if --with-gpm=maybe (default), allow for linkage problems, e.g., Red Hat's
+	problems with PIE/PIC
+
+	* AcSplit/CF_WITH_XINERAMA: ci-aclocal generated header
+
 2016-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_LINT:

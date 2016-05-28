@@ -1,0 +1,14 @@
+dnl CF_WITH_XINERAMA version: 1 updated: 2016/05/28 14:41:12
+dnl ----------------
+AC_DEFUN([CF_WITH_XINERAMA],
+[
+AC_MSG_CHECKING(if you want to use the Xinerama extension)
+AC_ARG_WITH(xinerama,
+[  --without-xinerama      do not use Xinerama extension for multiscreen support],
+	[cf_with_xinerama="$withval"],
+	[cf_with_xinerama=yes])
+AC_MSG_RESULT($cf_with_xinerama)
+if test "$cf_with_xinerama" = yes; then
+	CF_XINERAMA
+fi
+])dnl
