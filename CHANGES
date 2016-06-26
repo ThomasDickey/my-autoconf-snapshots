@@ -1,3 +1,9 @@
+2016-06-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	amend that last change to leave non-preprocessor options in "$CC" (but still
+	copy them to "$CFLAGS" since that's where they should be)
+
 2016-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_GPM:
