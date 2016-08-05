@@ -1,3 +1,10 @@
+2016-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNU_SOURCE:
+	recent glibc (Debian 2.23-4 for example) has misordered ifdef/checks for
+	new symbol _DEFAULT_SOURCE, producing warning messages when only _GNU_SOURCE
+	is defined.  Add a followup check to define _DEFAULT_SOURCE.
+
 2016-06-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CC_ENV_FLAGS:
