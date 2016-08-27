@@ -1,3 +1,16 @@
+2016-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add "uclinux" to list of Linux's (patch by Yann E. Morin)
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	improve split between compiler and options, prompted by report where user
+	had "ccache" before the compiler
+
+	* config.guess: 2016-05-25
+
+	* config.sub: 2016-08-25
+
 2016-08-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:

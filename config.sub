@@ -2,7 +2,7 @@
 # Configuration validation subroutine script.
 #   Copyright 1992-2016 Free Software Foundation, Inc.
 
-timestamp='2016-06-20'
+timestamp='2016-08-25'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -145,7 +145,7 @@ case $os in
 	-dec* | -mips* | -sequent* | -encore* | -pc532* | -sgi* | -sony* | \
 	-att* | -7300* | -3300* | -delta* | -motorola* | -sun[234]* | \
 	-unicom* | -ibm* | -next | -hp | -isi* | -apollo | -altos* | \
-	-convergent* | -ncr* | -news | -32* | -3600* | -3100* | -hitachi* | \
+	-convergent* | -ncr* | -news | -32* | -3600* | -3100* | -hitachi* |\
 	-c[123]* | -convex* | -sun | -crds | -omron* | -dg | -ultra | -tti* | \
 	-harris | -dolphin | -highlevel | -gould | -cbm | -ns | -masscomp | \
 	-apple | -axis | -knuth | -cray | -microblaze*)
@@ -340,6 +340,7 @@ case $basic_machine in
 	ms1)
 		basic_machine=mt-unknown
 		;;
+
 	strongarm | thumb | xscale)
 		basic_machine=arm-unknown
 		;;
@@ -350,15 +351,17 @@ case $basic_machine in
 	xscaleeb)
 		basic_machine=armeb-unknown
 		;;
+
 	xscaleel)
 		basic_machine=armel-unknown
 		;;
+
 	# We use `pc' rather than `unknown'
 	# because (1) that's what they normally are, and
 	# (2) the word "unknown" tends to confuse beginning users.
 	i*86 | x86_64)
-		basic_machine=$basic_machine-pc
-		;;
+	  basic_machine=$basic_machine-pc
+	  ;;
 	# Object if more than one company name word.
 	*-*-*)
 		echo Invalid configuration \`$1\': machine \`$basic_machine\' not recognized 1>&2
@@ -898,10 +901,10 @@ case $basic_machine in
 		basic_machine=v70-nec
 		os=-sysv
 		;;
-	next | m*-next)
+	next | m*-next )
 		basic_machine=m68k-next
 		case $os in
-		    -nextstep*)
+		    -nextstep* )
 			;;
 		    -ns2*)
 		      os=-nextstep2
@@ -1020,28 +1023,24 @@ case $basic_machine in
 	pn)
 		basic_machine=pn-gould
 		;;
-	power)
-		basic_machine=power-ibm
+	power)	basic_machine=power-ibm
 		;;
-	ppc | ppcbe)
-		basic_machine=powerpc-unknown
+	ppc | ppcbe)	basic_machine=powerpc-unknown
 		;;
 	ppc-* | ppcbe-*)
 		basic_machine=powerpc-`echo $basic_machine | sed 's/^[^-]*-//'`
 		;;
-	ppcle | powerpclittle | ppc-le | powerpc-little)
+	ppcle | powerpclittle)
 		basic_machine=powerpcle-unknown
 		;;
 	ppcle-* | powerpclittle-*)
 		basic_machine=powerpcle-`echo $basic_machine | sed 's/^[^-]*-//'`
 		;;
-	ppc64)
-		basic_machine=powerpc64-unknown
+	ppc64)	basic_machine=powerpc64-unknown
 		;;
-	ppc64-*)
-		basic_machine=powerpc64-`echo $basic_machine | sed 's/^[^-]*-//'`
+	ppc64-*) basic_machine=powerpc64-`echo $basic_machine | sed 's/^[^-]*-//'`
 		;;
-	ppc64le | powerpc64little | ppc64-le | powerpc64-little)
+	ppc64le | powerpc64little)
 		basic_machine=powerpc64le-unknown
 		;;
 	ppc64le-* | powerpc64little-*)
@@ -1383,7 +1382,7 @@ case $os in
 	# Each alternative MUST END IN A *, to match a version number.
 	# -sysv* is not here because it comes later, after sysvr4.
 	-gnu* | -bsd* | -mach* | -minix* | -genix* | -ultrix* | -irix* \
-	      | -*vms* | -sco* | -esix* | -isc* | -aix* | -cnk* | -sunos | -sunos[34]* \
+	      | -*vms* | -sco* | -esix* | -isc* | -aix* | -cnk* | -sunos | -sunos[34]*\
 	      | -hpux* | -unos* | -osf* | -luna* | -dgux* | -auroraux* | -solaris* \
 	      | -sym* | -kopensolaris* | -plan9* \
 	      | -amigaos* | -amigados* | -msdos* | -newsos* | -unicos* | -aof* \
@@ -1483,7 +1482,7 @@ case $os in
 	-nova*)
 		os=-rtmk-nova
 		;;
-	-ns2)
+	-ns2 )
 		os=-nextstep2
 		;;
 	-nsk*)
@@ -1682,7 +1681,7 @@ case $basic_machine in
 	m88k-omron*)
 		os=-luna
 		;;
-	*-next)
+	*-next )
 		os=-nextstep
 		;;
 	*-sequent)
