@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 51 updated: 2016/08/10 03:17:34
+dnl CF_XOPEN_SOURCE version: 52 updated: 2016/08/27 12:21:42
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality,
@@ -46,7 +46,7 @@ case $host_os in
 	cf_xopen_source="-D_SGI_SOURCE"
 	cf_XOPEN_SOURCE=
 	;;
-(linux*|gnu*|mint*|k*bsd*-gnu|cygwin)
+(linux*|uclinux*|gnu*|mint*|k*bsd*-gnu|cygwin)
 	CF_GNU_SOURCE
 	;;
 (minix*)
