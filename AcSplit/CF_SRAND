@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 12 updated: 2015/04/15 19:08:48
+dnl CF_SRAND version: 13 updated: 2016/09/05 12:39:46
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -53,7 +53,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 #include <limits.h>
 #endif
 		],[long x = $cf_cv_rand_max],,
-		[cf_cv_rand_max="(1L<<$cf_rand_max)-1"])
+		[cf_cv_rand_max="(1UL<<$cf_rand_max)-1"])
 	])
 
 	case $cf_cv_srand_func in
