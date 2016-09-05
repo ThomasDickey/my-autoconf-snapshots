@@ -1,3 +1,15 @@
+2016-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND: eliminate a compiler warning with Solaris C
+
+2016-08-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	amend the last change to move only the preprocessor, optimization and warning
+	flags to CPPFLAGS and CFLAGS, leaving the residue in CC.  That happens to
+	work for gcc's various "model" options, but may require tuning for other
+	compilers (report by Sven Joachim).
+
 2016-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
