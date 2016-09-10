@@ -1,3 +1,8 @@
+2016-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_STRING_HACKS:
+	extended to find BSD library, e.g., with Debian
+
 2016-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND: eliminate a compiler warning with Solaris C
