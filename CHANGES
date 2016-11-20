@@ -1,3 +1,9 @@
+2016-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2016-11-19
+
+	* config.guess: 2016-10-02
+
 2016-10-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_STRING_HACKS:
