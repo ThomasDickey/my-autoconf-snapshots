@@ -1,3 +1,12 @@
+2016-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub:
+	2017-01-01, see again misuse of copyright dates...
+
+	* AcSplit/CF_WITH_LIBTOOL:
+	fix a few places in configure/build scripts where DESTDIR and rpath were
+	combined (report by Thomas Klausner).
+
 2016-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2016-11-19
