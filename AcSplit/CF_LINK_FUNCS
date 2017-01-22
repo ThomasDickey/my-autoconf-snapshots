@@ -1,10 +1,13 @@
-dnl CF_LINK_FUNCS version: 8 updated: 2012/10/06 17:56:13
+dnl CF_LINK_FUNCS version: 9 updated: 2017/01/21 11:11:02
 dnl -------------
 dnl Most Unix systems have both link and symlink, a few don't have symlink.
 dnl A few non-Unix systems implement symlink, but not link.
 dnl A few non-systems implement neither (or have nonfunctional versions).
 AC_DEFUN([CF_LINK_FUNCS],
 [
+AC_CHECK_HEADERS( \
+unistd.h \
+)
 AC_CHECK_FUNCS( \
 	remove \
 	unlink )
@@ -23,7 +26,7 @@ else
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-int main()
+int main(void)
 {
 	int fail = 0;
 	char *src = "config.log";

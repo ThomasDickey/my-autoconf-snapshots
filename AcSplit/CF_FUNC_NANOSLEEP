@@ -1,4 +1,4 @@
-dnl CF_FUNC_NANOSLEEP version: 4 updated: 2012/10/06 17:56:13
+dnl CF_FUNC_NANOSLEEP version: 5 updated: 2017/01/21 11:06:25
 dnl -----------------
 dnl Check for existence of workable nanosleep() function.  Some systems, e.g.,
 dnl AIX 4.x, provide a non-working version.
@@ -13,7 +13,7 @@ AC_TRY_RUN([
 #include <sys/time.h>
 #endif
 
-int main() {
+int main(void) {
 	struct timespec ts1, ts2;
 	int code;
 	ts1.tv_sec  = 0;
