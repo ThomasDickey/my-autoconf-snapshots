@@ -1,4 +1,4 @@
-dnl CF_LIB_SONAME version: 5 updated: 2010/08/14 18:25:37
+dnl CF_LIB_SONAME version: 6 updated: 2017/01/21 11:06:25
 dnl -------------
 dnl Find the and soname for the given shared library.  Set the cache variable
 dnl cf_cv_$3_soname to this, unless it is not found.  Then set the cache
@@ -15,7 +15,7 @@ cf_cv_$3_soname=unknown
 if test "$cross_compiling" != yes ; then
 cat >conftest.$ac_ext <<CF_EOF
 $1
-int main()
+int main(void)
 {
 $2
 	${cf_cv_main_return:-return}(0);

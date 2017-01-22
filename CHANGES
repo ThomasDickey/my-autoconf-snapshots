@@ -1,3 +1,20 @@
+2017-01-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
+	* AcSplit/CF_MKSTEMP, AcSplit/CF_LINK_FUNCS: quiet strict gcc warning
+
+	* AcSplit/CF_CHECK_WCHAR_H:
+	FreeBSD wchar.h doesn't include wctype.h; do that to quiet warning in config.log
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_CPP_PARAM_INIT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_LIB_SONAME, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MATH_LIB, AcSplit/CF_PROG_CC_C_O, AcSplit/CF_TYPEOF_CHTYPE:
+	quiet strict gcc warning
+
+	* AcSplit/CF_CGETENT, AcSplit/CF_LARGEFILE:
+	workaround for clang exit-code vs warnings
+
 2016-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub:

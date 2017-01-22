@@ -1,4 +1,4 @@
-dnl CF_CGETENT version: 5 updated: 2012/10/06 17:56:13
+dnl CF_CGETENT version: 6 updated: 2017/01/21 11:06:25
 dnl ----------
 dnl Check if the terminal-capability database functions are available.  If not,
 dnl ncurses has a much-reduced version.
@@ -22,6 +22,7 @@ then
 	AC_DEFINE(HAVE_BSD_CGETENT,1,[Define to 1 if we have BSD cgetent])
 AC_CACHE_CHECK(if cgetent uses const parameter,cf_cv_cgetent_const,[
 AC_TRY_LINK([
+#pragma GCC diagnostic error "-Wincompatible-pointer-types-discards-qualifiers"
 #include <stdlib.h>],[
 	char temp[128];
 	char *buf = temp;

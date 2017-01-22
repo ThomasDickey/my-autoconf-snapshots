@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 9 updated: 2012/10/06 17:56:13
+dnl CF_TYPEOF_CHTYPE version: 10 updated: 2017/01/21 11:06:25
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -11,7 +11,7 @@ AC_CACHE_VAL(cf_cv_typeof_chtype,[
 		AC_TRY_RUN([
 #define WANT_BITS 31
 #include <stdio.h>
-int main()
+int main(void)
 {
 	FILE *fp = fopen("cf_test.out", "w");
 	if (fp != 0) {

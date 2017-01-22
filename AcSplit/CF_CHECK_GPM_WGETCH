@@ -1,4 +1,4 @@
-dnl CF_CHECK_GPM_WGETCH version: 2 updated: 2010/08/14 18:25:37
+dnl CF_CHECK_GPM_WGETCH version: 3 updated: 2017/01/21 11:06:25
 dnl -------------------
 dnl Check if GPM is already linked with curses.  If so - and if the linkage
 dnl is not "weak" - warn about this because it can create problems linking
@@ -12,7 +12,7 @@ if test "$cross_compiling" != yes ; then
 
 cat >conftest.$ac_ext <<CF_EOF
 #include <gpm.h>
-int main()
+int main(void)
 {
 	Gpm_Wgetch();
 	${cf_cv_main_return:-return}(0);

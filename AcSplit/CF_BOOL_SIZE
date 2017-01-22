@@ -1,4 +1,4 @@
-dnl CF_BOOL_SIZE version: 14 updated: 2015/04/17 21:13:04
+dnl CF_BOOL_SIZE version: 15 updated: 2017/01/21 11:06:25
 dnl ------------
 dnl Test for the size of 'bool' in the configured C++ compiler (e.g., a type).
 dnl Don't bother looking for bool.h, since it's been deprecated.
@@ -32,7 +32,7 @@ AC_CACHE_VAL(cf_cv_type_of_bool,[
 
 #endif
 
-int main()
+int main(void)
 {
 	FILE *fp = fopen("cf_test.out", "w");
 	if (fp != 0) {

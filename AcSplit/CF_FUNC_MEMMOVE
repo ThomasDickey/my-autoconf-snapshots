@@ -1,4 +1,4 @@
-dnl CF_FUNC_MEMMOVE version: 8 updated: 2012/10/04 20:12:20
+dnl CF_FUNC_MEMMOVE version: 9 updated: 2017/01/21 11:06:25
 dnl ---------------
 dnl Check for memmove, or a bcopy that can handle overlapping copy.  If neither
 dnl is found, add our own version of memmove to the list of objects.
@@ -8,7 +8,7 @@ AC_CHECK_FUNC(memmove,,[
 AC_CHECK_FUNC(bcopy,[
 	AC_CACHE_CHECK(if bcopy does overlapping moves,cf_cv_good_bcopy,[
 		AC_TRY_RUN([
-int main() {
+int main(void) {
 	static char data[] = "abcdefghijklmnopqrstuwwxyz";
 	char temp[40];
 	bcopy(data, temp, sizeof(data));
