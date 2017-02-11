@@ -1,4 +1,4 @@
-dnl CF_GXX_VERSION version: 7 updated: 2012/06/16 14:55:39
+dnl CF_GXX_VERSION version: 8 updated: 2017/02/11 14:48:57
 dnl --------------
 dnl Check for version of g++
 AC_DEFUN([CF_GXX_VERSION],[
@@ -7,7 +7,11 @@ GXX_VERSION=none
 if test "$GXX" = yes; then
 	AC_MSG_CHECKING(version of ${CXX:-g++})
 	GXX_VERSION="`${CXX:-g++} --version| sed -e '2,$d' -e 's/^.*(GCC) //' -e 's/^[[^0-9.]]*//' -e 's/[[^0-9.]].*//'`"
-	test -z "$GXX_VERSION" && GXX_VERSION=unknown
+	if test -z "$GXX_VERSION"
+	then
+		GXX_VERSION=unknown
+		GXX=no
+	fi
 	AC_MSG_RESULT($GXX_VERSION)
 fi
 ])dnl
