@@ -1,3 +1,17 @@
+2017-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_APPEND_TEXT: ci-aclocal generated header
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	correct two problems, the first reported by Ross Burton:
+	a) revise the expression generating $cf_flags to actually work when there is
+	   more than one option.
+	b) correct the parameter passed to CF_ADD_CFLAGS, which was the whole list
+	   rather than the current parameter.
+
+	* AcSplit/CF_ADD_CFLAGS:
+	improve formatting of generated lists using CF_APPEND_TEXT
+
 2017-02-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: workaround for PGI compiler
