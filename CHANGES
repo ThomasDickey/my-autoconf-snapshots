@@ -1,3 +1,9 @@
+2017-03-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2017-02-07
+
+	* config.guess: 2017-03-05
+
 2017-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_APPEND_TEXT: ci-aclocal generated header
@@ -144,6 +150,11 @@
 
 	* AcSplit/CF__ADD_SHLIB_RULES:
 	improve scripting for ldconfig to avoid warning messages if no permissions
+
+2016-04-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS:
+	for lynx, add check for gnutls_protocol_set_priority
 
 2016-02-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
