@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 24 updated: 2015/04/15 19:08:48
+dnl CF_GNUTLS version: 25 updated: 2016/04/15 20:48:40
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -94,6 +94,7 @@ AC_DEFUN([CF_GNUTLS],[
 			CF_ADD_LIBDIR($cf_cv_library_path_gnutls)
 		fi
 		CF_ADD_LIBS(-lgnutls)
+		AC_CHECK_FUNCS(gnutls_protocol_set_priority)
 		AC_CHECK_FUNC(gnutls_rnd,
 				[AC_DEFINE(HAVE_GNUTLS_RND)],
 				[CF_ADD_LIBS(-lgcrypt)])
