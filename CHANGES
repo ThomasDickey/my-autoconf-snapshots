@@ -1,3 +1,11 @@
+2017-04-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2017-04-02
+
+	* AcSplit/CF_WITH_GPM:
+	in the previous fixes, overlooked a case where $with_gpm would be leftover
+	as "maybe", which breaks callers that only know about "yes" and "no"
+
 2017-03-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2017-02-07
