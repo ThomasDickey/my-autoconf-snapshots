@@ -1,3 +1,8 @@
+2017-05-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_SET_ERRNO:
+	main-prototype
+
 2017-05-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_VERSION: use prototype for main

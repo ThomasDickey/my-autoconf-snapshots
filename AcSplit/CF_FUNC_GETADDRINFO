@@ -1,4 +1,4 @@
-dnl CF_FUNC_GETADDRINFO version: 8 updated: 2012/11/08 20:57:52
+dnl CF_FUNC_GETADDRINFO version: 9 updated: 2017/05/10 18:31:29
 dnl -------------------
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
 AC_DEFUN([CF_FUNC_GETADDRINFO],[
@@ -12,7 +12,7 @@ AC_TRY_RUN([
 
 #define expect(a,b) if (strcmp(a,b) != 0) goto bad
 
-int main()
+int main(void)
 {
    int passive, gaierr, inet4 = 0, inet6 = 0;
    struct addrinfo hints, *ai, *aitop;
