@@ -1,4 +1,4 @@
-dnl CF_SET_ERRNO version: 5 updated: 2012/11/08 20:57:52
+dnl CF_SET_ERRNO version: 6 updated: 2017/05/10 18:31:29
 dnl ------------
 dnl Check if 'errno' is declared in a fashion that lets us set it.
 AC_DEFUN([CF_SET_ERRNO],
@@ -6,7 +6,7 @@ AC_DEFUN([CF_SET_ERRNO],
 AC_CACHE_CHECK(if we can set errno,cf_cv_set_errno,[
 AC_TRY_RUN([
 #include <errno.h>
-int main()
+int main(void)
 {
 	errno = 255;
 	${cf_cv_main_return:-return}(errno != 255);
