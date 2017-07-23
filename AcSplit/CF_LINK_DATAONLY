@@ -1,4 +1,4 @@
-dnl CF_LINK_DATAONLY version: 11 updated: 2017/01/21 11:06:25
+dnl CF_LINK_DATAONLY version: 12 updated: 2017/07/23 17:46:07
 dnl ----------------
 dnl Some systems have a non-ANSI linker that doesn't pull in modules that have
 dnl only data (i.e., no functions), for example NeXT.  On those systems we'll
@@ -20,7 +20,7 @@ EOF
 	rm -f conftest.$ac_ext data.o
 	cat >conftest.$ac_ext <<EOF
 #line __oline__ "configure"
-int	testfunc()
+int	testfunc(void)
 {
 #if defined(NeXT)
 	${cf_cv_main_return:-return}(1);	/* I'm told this linker is broken */

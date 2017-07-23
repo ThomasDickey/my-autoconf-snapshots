@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 17 updated: 2015/07/07 04:22:07
+dnl CF_NCURSES_CONFIG version: 18 updated: 2017/07/23 18:30:00
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses, preferring these in
 dnl order:
@@ -46,6 +46,7 @@ if test "x${PKG_CONFIG:=none}" != xnone; then
 			AC_DEFINE(NCURSES,1,[Define to 1 if we are using ncurses headers/libraries])
 			NCURSES_CONFIG_PKG=$cf_ncuconfig_root
 		fi
+		CF_TERM_HEADER
 
 	else
 		AC_MSG_RESULT(no)

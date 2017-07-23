@@ -1,3 +1,18 @@
+2017-07-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG: add check for term.h when using pkg-config
+
+	* AcSplit/CF_LINK_DATAONLY: gcc warning
+
+2017-07-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__INTL_BODY:
+	ifdef'd the GNU-specific symbol to allow configuring with Solaris gettext
+
+	* AcSplit/AM_WITH_NLS:
+	revised to allow configuring with Solaris gettext, and if neither GNU gettext
+	nor Solaris gettext is available, warn and disable the NLS feature.
+
 2017-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_CPP_COMMENTS: ci-aclocal generated header
