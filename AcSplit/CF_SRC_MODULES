@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 29 updated: 2015/04/12 11:42:01
+dnl CF_SRC_MODULES version: 30 updated: 2017/07/26 17:08:35
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -30,7 +30,7 @@ do
 		# We may/may not have tack in the distribution, though the
 		# makefile is.
 		if test $cf_dir = tack ; then
-			if test ! -f $srcdir/${cf_dir}/${cf_dir}.h; then
+			if test "x$cf_with_tack" != "xyes"; then
 				continue
 			fi
 		fi
