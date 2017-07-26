@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 86 updated: 2015/11/07 20:01:34
+dnl CF_LIB_RULES version: 87 updated: 2017/07/26 17:08:35
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -454,15 +454,13 @@ CF_EOF
 
 # Special case: tack's manpage lives in its own directory.
 if test "x$cf_with_manpages" = xyes; then
-if test -d tack ; then
-if test -f $srcdir/$tack.h; then
+if test "x$cf_with_tack" = "xyes"; then
 cat >> Makefile <<CF_EOF
 
 install.man \\
 uninstall.man ::
 	cd tack && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
-fi
 fi
 fi
 
