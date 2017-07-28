@@ -1,3 +1,10 @@
+2017-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CHECK_DATA:
+	change the first parameter to be a list (one or more items) rather than a
+	single item, and add a second parameter to allow quitting the loop if a
+	match is found.
+
 2017-07-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
