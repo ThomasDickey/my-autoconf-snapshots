@@ -1,3 +1,7 @@
+2017-08-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2017-08-08
+
 2017-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CHECK_DATA:
