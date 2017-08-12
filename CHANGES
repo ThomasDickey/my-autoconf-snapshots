@@ -1,3 +1,8 @@
+2017-08-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES, AcSplit/CF_WITH_LIBTOOL:
+	use SIGQUIT(3) rather than SIGTRAP(5) in trap commands
+
 2017-08-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2017-08-08
