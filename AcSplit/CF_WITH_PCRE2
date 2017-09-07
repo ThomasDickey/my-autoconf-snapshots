@@ -1,0 +1,36 @@
+dnl CF_WITH_PCRE2 version: 1 updated: 2017/07/29 22:57:34
+dnl -------------
+dnl Add PCRE2 (Perl-compatible regular expressions v2) to the build if it is
+dnl available and the user requests it.  Assume the application will otherwise
+dnl use the POSIX interface.
+dnl
+dnl TODO allow $withval to specify package location
+AC_DEFUN([CF_WITH_PCRE2],
+[
+AC_REQUIRE([CF_PKG_CONFIG])
+
+AC_MSG_CHECKING(if you want to use PCRE2 for regular-expressions)
+AC_ARG_WITH(pcre2,
+	[  --with-pcre2            use PCRE2 for regular-expressions])
+test -z "$with_pcre2" && with_pcre2=no
+AC_MSG_RESULT($with_pcre2)
+
+if test "$with_pcre2" != no ; then
+	CF_TRY_PKG_CONFIG(libpcre2,,[
+		AC_CHECK_LIB(pcre2-8,pcre2_compile_8,,
+			AC_MSG_ERROR(Cannot find PCRE2 library))])
+
+	AC_DEFINE(HAVE_LIB_PCRE2,1,[Define to 1 if we can/should compile with the PCRE2 library])
+
+	case $LIBS in
+	(*pcre2-posix*)
+		;;
+	(*)
+		AC_CHECK_LIB(pcre2-posix,regcomp,[
+			AC_DEFINE(HAVE_PCRE2POSIX_H,1,[Define to 1 if we should include pcre2posix.h])
+			CF_ADD_LIB(pcre2-posix)],
+			AC_MSG_ERROR(Cannot find PCRE2 POSIX library))
+		;;
+	esac
+fi
+])dnl

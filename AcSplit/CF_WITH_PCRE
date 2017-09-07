@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE version: 11 updated: 2015/04/12 15:39:00
+dnl CF_WITH_PCRE version: 12 updated: 2017/07/29 22:57:34
 dnl ------------
 dnl Add PCRE (Perl-compatible regular expressions) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -20,20 +20,20 @@ if test "$with_pcre" != no ; then
 		AC_CHECK_LIB(pcre,pcre_compile,,
 			AC_MSG_ERROR(Cannot find PCRE library))])
 
-		AC_DEFINE(HAVE_LIB_PCRE,1,[Define to 1 if we can/should compile with the PCRE library])
+	AC_DEFINE(HAVE_LIB_PCRE,1,[Define to 1 if we can/should compile with the PCRE library])
 
-		case $LIBS in
-		(*pcreposix*)
-			;;
-		(*)
-			AC_CHECK_LIB(pcreposix,pcreposix_regcomp,
-				[AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
-				 CF_ADD_LIB(pcreposix)],
-				[AC_CHECK_LIB(pcreposix,regcomp,[
-					AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
-					CF_ADD_LIB(pcreposix)],
-					AC_MSG_ERROR(Cannot find PCRE POSIX library)]))
-			;;
-		esac
+	case $LIBS in
+	(*pcreposix*)
+		;;
+	(*)
+		AC_CHECK_LIB(pcreposix,pcreposix_regcomp,
+			[AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
+				CF_ADD_LIB(pcreposix)],
+			[AC_CHECK_LIB(pcreposix,regcomp,[
+				AC_DEFINE(HAVE_PCREPOSIX_H,1,[Define to 1 if we should include pcreposix.h])
+				CF_ADD_LIB(pcreposix)],
+				AC_MSG_ERROR(Cannot find PCRE POSIX library)]))
+		;;
+	esac
 fi
 ])dnl
