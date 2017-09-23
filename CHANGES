@@ -1,3 +1,9 @@
+2017-09-23  dickey@invisible-island.net
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	for tin, which still uses 2.13, quote "subst" to avoid conflict between
+	m4's builtin and awk's built-in
+
 2017-09-07  dickey@invisible-island.net
 
 	* AcSplit/CF_CURSES_LIBS:
