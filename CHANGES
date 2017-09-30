@@ -1,3 +1,7 @@
+2017-09-29  dickey@invisible-island.net
+
+	* AcSplit/CF_ENABLE_WARNINGS: pass parameter to CF_GCC_WARNINGS
+
 2017-09-23  dickey@invisible-island.net
 
 	* AcSplit/CF_CC_ENV_FLAGS:
