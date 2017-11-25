@@ -1,3 +1,16 @@
+2017-11-25  dickey@invisible-island.net
+
+	* AcSplit/CF_WITH_X11_RGB: RCS_BASE
+
+	* config.guess: 2017-11-07
+
+	* config.sub: 2017-11-23
+
+2017-10-16  dickey@invisible-island.net
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT, AcSplit/CF_MAWK_MAX__INT_PROGRAM:
+	quiet strict gcc warning
+
 2017-09-29  dickey@invisible-island.net
 
 	* AcSplit/CF_ENABLE_WARNINGS: pass parameter to CF_GCC_WARNINGS
