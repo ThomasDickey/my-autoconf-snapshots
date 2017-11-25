@@ -1,9 +1,9 @@
-dnl CF_MAWK_MAX__INT_PROGRAM version: 3 updated: 2009/07/26 17:23:40
+dnl CF_MAWK_MAX__INT_PROGRAM version: 4 updated: 2017/10/16 20:54:11
 dnl ------------------------
 dnl C program to compute MAX__INT and MAX__LONG if looking at headers fails
 AC_DEFUN([CF_MAWK_MAX__INT_PROGRAM],
 [[#include <stdio.h>
-int main()
+int main(void)
 { int y ; unsigned yu; long yy ;
   FILE *out ;
 
