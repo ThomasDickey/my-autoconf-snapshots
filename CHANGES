@@ -1,3 +1,11 @@
+2017-12-02  dickey@invisible-island.net
+
+	* AcSplit/CF_SHARED_OPTS:
+	move ${LDFLAGS} from makefile into the definition of MK_SHARED_LIB to help
+	work around problems in GNU linker if $LDFLAGS happens to use the "-pie"
+	option (prompted by patch by Yogesh Prasad).  Also fix a couple of unquoted
+	"$@" tokens.
+
 2017-11-25  dickey@invisible-island.net
 
 	* AcSplit/CF_WITH_X11_RGB: RCS_BASE
