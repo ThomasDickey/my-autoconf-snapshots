@@ -1,3 +1,8 @@
+2017-12-24  dickey@invisible-island.net
+
+	* AcSplit/CF_WITH_MAN2HTML:
+	updated to use my improved man2html script by default
+
 2017-12-02  dickey@invisible-island.net
 
 	* AcSplit/CF_SHARED_OPTS:
