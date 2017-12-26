@@ -1,3 +1,11 @@
+2017-12-26  dickey@invisible-island.net
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	modify search-list for ncurses*-config to prefer my "dev" version by adding
+	a variable $NCURSES_CONFIG_SUFFIX to transform ncurses6-config into
+	ncurses6dev-config since Fedora27 has an ncurses5-config and ncurses6-config
+	concurrently.
+
 2017-12-24  dickey@invisible-island.net
 
 	* AcSplit/CF_WITH_MAN2HTML:
