@@ -1,3 +1,10 @@
+2017-12-30  dickey@invisible-island.net
+
+	* AcSplit/CF_SHARED_OPTS:
+	consistently add $CFLAGS to $MK_SHARED_LIB symbol in configure script when the
+	latter happens to use the C compiler rather than directly using the loader
+	(report by Jeffrey Walton).
+
 2017-12-26  dickey@invisible-island.net
 
 	* AcSplit/CF_NCURSES_CONFIG:
