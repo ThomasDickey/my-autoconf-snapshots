@@ -1,12 +1,56 @@
-dnl CF_CHECK_CURSES_LIB version: 1 updated: 2015/04/25 20:53:11
+dnl CF_CHECK_CURSES_LIB version: 2 updated: 2018/01/03 04:47:33
 dnl -------------------
 dnl $1 = nominal library name, used also for header lookup
 dnl $2 = suffix to append to library name
 dnl $3 = function to check for using AC_CHECK_LIB
+dnl $4 = optional parameter list for $3
 AC_DEFUN([CF_CHECK_CURSES_LIB],
 [
-AC_CHECK_LIB($1$2,$3,[
-CF_UPPER(cf_upper,have_lib$1)
-CF_ADD_LIBS(-l$1$2)
-AC_DEFINE_UNQUOTED($cf_upper,1)])
+AC_REQUIRE([CF_PKG_CONFIG])
+
+cf_have_curses_lib=no
+
+: ${NCURSES_CONFIG_PKG:=none}
+if test "x${NCURSES_CONFIG_PKG}" = xnone; then
+	:
+elif test "x${PKG_CONFIG:=none}" != xnone; then
+	AC_MSG_CHECKING(pkg-config for $1$2)
+	if "$PKG_CONFIG" --exists $1$2 ; then
+		AC_MSG_RESULT(yes)
+
+		AC_MSG_CHECKING(if the $1$2 package files work)
+
+		cf_save_CPPFLAGS="$CPPFLAGS"
+		cf_save_LIBS="$LIBS"
+
+		CF_ADD_CFLAGS(`$PKG_CONFIG --cflags $1$2`)
+		CF_ADD_LIBS(`$PKG_CONFIG --libs $1$2`)
+
+		AC_TRY_LINK([#include <$1.h>],
+			[(void) $3 ( ]ifelse([$4],,,[[$4]])[ );],
+			[AC_TRY_RUN([#include <$1.h>
+				int main(void)
+				{ (void) $3 ( ]ifelse([$4],,,[[$4]])[ ); return 0; }],
+				[cf_have_curses_lib=yes],
+				[cf_have_curses_lib=no],
+				[cf_have_curses_lib=maybe])],
+			[cf_have_curses_lib=no])
+		AC_MSG_RESULT($cf_have_curses_lib)
+		test "$cf_have_curses_lib" = maybe && cf_have_curses_lib=yes
+		if test "$cf_have_curses_lib" != "yes"
+		then
+			CPPFLAGS="$cf_save_CPPFLAGS"
+			LIBS="$cf_save_LIBS"
+		else
+			CF_UPPER(cf_upper,have_lib$1)
+			AC_DEFINE_UNQUOTED($cf_upper,1)
+		fi
+	fi
+fi
+if test "$cf_have_curses_lib" = no; then
+	AC_CHECK_LIB($1$2,$3,[
+		CF_UPPER(cf_upper,have_lib$1)
+		CF_ADD_LIBS(-l$1$2)
+		AC_DEFINE_UNQUOTED($cf_upper,1)])
+fi
 ])dnl
