@@ -1,3 +1,8 @@
+2018-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	add clang, c99 and c89 as programs to check for build-cc
+
 2018-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_CURSES_LIB: integrate with pkg-config
