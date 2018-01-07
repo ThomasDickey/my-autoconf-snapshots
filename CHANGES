@@ -1,3 +1,12 @@
+2018-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_GROFF:
+	test for mandoc, which is provided in lieu of nroff on occasion
+
+	* AcSplit/CF_WITH_MAN2HTML:
+	use the $TBL_PATH and $NROFF_PATH values from CF_PROG_GROFF, in case we have
+	only mandoc.
+
 2018-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUILD_CC:
