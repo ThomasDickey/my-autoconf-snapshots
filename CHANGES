@@ -1,3 +1,10 @@
+2018-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRC_MAKEFILE:
+	add $(ARFLAGS) to generated library rule, overlooked with OpenBSD and Debian
+	because their make-program supports POSIX "library" rules.  The make-program
+	provided by NetBSD 7.1 does not support the feature.
+
 2018-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_GROFF:
