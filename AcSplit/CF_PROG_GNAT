@@ -1,13 +1,16 @@
-dnl CF_PROG_GNAT version: 3 updated: 2015/04/18 08:56:57
+dnl CF_PROG_GNAT version: 4 updated: 2018/01/14 15:00:27
 dnl ------------
 dnl Check for gnatmake, ensure that it is complete.
 AC_DEFUN([CF_PROG_GNAT],[
 cf_ada_make=gnatmake
-AC_CHECK_PROG(gnat_exists, $cf_ada_make, yes, no)
-if test "$ac_cv_prog_gnat_exists" = no; then
+cf_ada_config="#"
+AC_CHECK_PROG(gnatmake_exists, $cf_ada_make, yes, no)
+if test "$ac_cv_prog_gnatmake_exists" = no; then
 	cf_ada_make=
 	cf_cv_prog_gnat_correct=no
 else
+	AC_CHECK_PROG(gprconfig_exists, gprconfig, yes, no)
+	test "$ac_cv_prog_gprconfig_exists" = yes && cf_ada_config=""
 	CF_GNAT_VERSION
 	AC_CHECK_PROG(M4_exists, m4, yes, no)
 	if test "$ac_cv_prog_M4_exists" = no; then
@@ -30,4 +33,5 @@ end conftest;],[cf_cv_prog_gnat_correct=yes],[cf_cv_prog_gnat_correct=no])
 fi
 
 AC_SUBST(cf_ada_make)
+AC_SUBST(cf_ada_config)
 ])dnl

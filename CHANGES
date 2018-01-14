@@ -1,3 +1,11 @@
+2018-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_PROJECTS:
+	ensure that directory for checks is created before using it
+
+	* AcSplit/CF_PROG_GNAT:
+	add check for gprconfig to work around tool breakage in Debian 9+
+
 2018-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRC_MAKEFILE:
