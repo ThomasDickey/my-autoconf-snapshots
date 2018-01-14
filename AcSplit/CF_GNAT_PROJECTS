@@ -1,4 +1,4 @@
-dnl CF_GNAT_PROJECTS version: 8 updated: 2015/04/17 21:13:04
+dnl CF_GNAT_PROJECTS version: 9 updated: 2018/01/14 15:46:09
 dnl ----------------
 dnl GNAT projects are configured with ".gpr" project files.
 dnl GNAT libraries are a further development, using the project feature.
@@ -20,10 +20,12 @@ case $cf_gnat_version in
 	(cygwin*|msys*)
 		;;
 	(*)
-		mkdir conftest.src conftest.bin conftest.lib
-		cd conftest.src
 		rm -rf conftest* *~conftest*
-		cat >>library.gpr <<CF_EOF
+		if mkdir conftest.src conftest.bin conftest.lib
+		then
+			cd conftest.src
+			rm -rf conftest* *~conftest*
+			cat >>library.gpr <<CF_EOF
 project Library is
   Kind := External ("LIB_KIND");
   for Library_Name use "ConfTest";
@@ -36,12 +38,12 @@ project Library is
   for Source_Dirs use (Source_Dir);
 end Library;
 CF_EOF
-		cat >>confpackage.ads <<CF_EOF
+			cat >>confpackage.ads <<CF_EOF
 package ConfPackage is
    procedure conftest;
 end ConfPackage;
 CF_EOF
-		cat >>confpackage.adb <<CF_EOF
+			cat >>confpackage.adb <<CF_EOF
 with Text_IO;
 package body ConfPackage is
    procedure conftest is
@@ -51,16 +53,17 @@ package body ConfPackage is
    end conftest;
 end ConfPackage;
 CF_EOF
-		if ( $cf_ada_make $ADAFLAGS \
-				-Plibrary.gpr \
-				-XBUILD_DIR=`cd ../conftest.bin;pwd` \
-				-XLIBRARY_DIR=`cd ../conftest.lib;pwd` \
-				-XSOURCE_DIR=`pwd` \
-				-XSONAME=libConfTest.so.1 \
-				-XLIB_KIND=static 1>&AC_FD_CC 2>&1 ) ; then
-			cf_gnat_projects=yes
+			if ( $cf_ada_make $ADAFLAGS \
+					-Plibrary.gpr \
+					-XBUILD_DIR=`cd ../conftest.bin;pwd` \
+					-XLIBRARY_DIR=`cd ../conftest.lib;pwd` \
+					-XSOURCE_DIR=`pwd` \
+					-XSONAME=libConfTest.so.1 \
+					-XLIB_KIND=static 1>&AC_FD_CC 2>&1 ) ; then
+				cf_gnat_projects=yes
+			fi
+			cd ..
 		fi
-		cd ..
 		if test -f conftest.lib/confpackage.ali
 		then
 			cf_gnat_libraries=yes
