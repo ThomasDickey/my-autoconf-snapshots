@@ -1,3 +1,8 @@
+2018-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_GNAT:
+	check for gprconfig's name for the Ada and C compilers
+
 2018-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_PROJECTS:

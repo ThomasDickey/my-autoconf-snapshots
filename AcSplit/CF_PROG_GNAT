@@ -1,4 +1,4 @@
-dnl CF_PROG_GNAT version: 4 updated: 2018/01/14 15:00:27
+dnl CF_PROG_GNAT version: 5 updated: 2018/01/15 15:28:49
 dnl ------------
 dnl Check for gnatmake, ensure that it is complete.
 AC_DEFUN([CF_PROG_GNAT],[
@@ -10,16 +10,42 @@ if test "$ac_cv_prog_gnatmake_exists" = no; then
 	cf_cv_prog_gnat_correct=no
 else
 	AC_CHECK_PROG(gprconfig_exists, gprconfig, yes, no)
-	test "$ac_cv_prog_gprconfig_exists" = yes && cf_ada_config=""
-	CF_GNAT_VERSION
-	AC_CHECK_PROG(M4_exists, m4, yes, no)
-	if test "$ac_cv_prog_M4_exists" = no; then
-		cf_cv_prog_gnat_correct=no
-		echo Ada95 binding required program m4 not found. Ada95 binding disabled.
+	if test "$ac_cv_prog_gprconfig_exists" = yes
+	then
+		rm -rf conftest* *~conftest*
+		if mkdir conftest.src
+		then
+			cf_ada_config=""
+			cd conftest.src
+			for cf_gprconfig in Ada C
+			do
+				AC_MSG_CHECKING(for gprconfig name for $cf_gprconfig)
+				cf_gprconfig_value=`echo s| gprconfig --config=$cf_gprconfig 2>&AC_FD_CC | ${AWK:-awk} '/^\*/{print [$]3;}' | head -n 1`
+				if test -n "$cf_gprconfig_value"
+				then
+					eval cf_ada_config_[$]cf_gprconfig=[$]cf_gprconfig_value
+					AC_MSG_RESULT($cf_gprconfig_value)
+				else
+					AC_MSG_RESULT(missing)
+					cf_ada_config="#"
+					break
+				fi
+			done
+			cd ..
+			rm -rf conftest* *~conftest*
+		fi
 	fi
-	if test "$cf_cv_prog_gnat_correct" = yes; then
-		AC_MSG_CHECKING(if GNAT works)
-		CF_GNAT_TRY_RUN([procedure conftest;],
+	if test -z "$cf_ada_config"
+	then
+		CF_GNAT_VERSION
+		AC_CHECK_PROG(M4_exists, m4, yes, no)
+		if test "$ac_cv_prog_M4_exists" = no; then
+			cf_cv_prog_gnat_correct=no
+			echo Ada95 binding required program m4 not found. Ada95 binding disabled.
+		fi
+		if test "$cf_cv_prog_gnat_correct" = yes; then
+			AC_MSG_CHECKING(if GNAT works)
+			CF_GNAT_TRY_RUN([procedure conftest;],
 [with Text_IO;
 with GNAT.OS_Lib;
 procedure conftest is
@@ -28,10 +54,15 @@ begin
    Text_IO.New_Line;
    GNAT.OS_Lib.OS_Exit (0);
 end conftest;],[cf_cv_prog_gnat_correct=yes],[cf_cv_prog_gnat_correct=no])
-		AC_MSG_RESULT($cf_cv_prog_gnat_correct)
+			AC_MSG_RESULT($cf_cv_prog_gnat_correct)
+		fi
+	else
+		cf_cv_prog_gnat_correct=no
 	fi
 fi
 
 AC_SUBST(cf_ada_make)
 AC_SUBST(cf_ada_config)
+AC_SUBST(cf_ada_config_Ada)
+AC_SUBST(cf_ada_config_C)
 ])dnl
