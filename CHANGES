@@ -1,3 +1,9 @@
+2018-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2018-01-15
+
+	* config.guess: 2018-01-26
+
 2018-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_GNAT:
