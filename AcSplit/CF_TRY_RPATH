@@ -1,0 +1,63 @@
+dnl CF_TRY_RPATH version: 1 updated: 2018/02/21 21:26:03
+dnl ------------
+dnl Work around broken-by-design packaging systems which solve at most the
+dnl problem of building packages, without providing for library reuse...
+AC_DEFUN([CF_TRY_RPATH],[
+AC_REQUIRE([CF_LD_RPATH_OPT])
+if test -z "$LD_RPATH_OPT"
+then
+	CF_VERBOSE(will not attempt to use rpath)
+elif test "x${enable_rpath_hack:-yes}" = "xno"
+then
+	CF_VERBOSE("rpath is disabled)
+elif test -z "${LD_RUN_PATH}${LD_LIBRARY_PATH}"
+then
+	case "$LIBS" in
+	(*-L/*)
+		CF__CHECK_RUN(cf_check_run)
+		if test "x$cf_check_run" = xno
+		then
+			CF_VERBOSE(linkage is broken)
+			cf_result=
+			for cf_item in $LIBS
+			do
+				case " $cf_item" in
+				(\ -L/*)
+					cf_rpath_arg=`echo " $cf_item" | sed -e "s% -L%$LD_RPATH_OPT%"`
+					cf_rpath_tmp=`echo "$cf_result " | sed -e "s% $cf_rpath_arg % %"`
+					if test "x$cf_result " = "x$cf_rpath_tmp"
+					then
+						cf_result="$cf_result $cf_rpath_arg"
+					fi
+					cf_rpath_tmp=`echo "$cf_result " | sed -e "s% $cf_item % %g"`
+					if test "x$cf_result " != "x$cf_rpath_tmp"
+					then
+						continue
+					fi
+					;;
+				esac
+				cf_result="$cf_result $cf_item"
+			done
+			cf_result=`echo "$cf_result" | sed -e 's/^ //'`
+			if test "x$cf_result" != "x$LIBS"
+			then
+				cf_save_LIBS="$LIBS"
+				LIBS="$cf_result"
+				CF__CHECK_RUN(cf_check_run)
+				if test "x$cf_check_run" = "xyes"
+				then
+					CF_VERBOSE(use rpath for $cf_save_LIBS)
+					LIBS="$cf_result"
+					CF_VERBOSE(result is now $LIBS)
+				else
+					LIBS="$cf_save_LIBS"
+				fi
+			fi
+		fi
+		;;
+	(*)
+		CF_VERBOSE(will not attempt to use rpath)
+		;;
+	esac
+fi
+])dnl

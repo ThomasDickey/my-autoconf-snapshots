@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20180205
+MANIFEST for my-autoconf, version t20180221
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -437,6 +437,7 @@ AcSplit/CF_TPUTS_PROTO          check for type of function pointer passed to tpu
 AcSplit/CF_TRANSFORM_PROGRAM    extract reusable portion of AC_ARG_PROGRAM
 AcSplit/CF_TRIM_X_LIBS          trim extra X base libraries after merging dependency lists
 AcSplit/CF_TRY_PKG_CONFIG       check for library that may/may not be available via pkg-config
+AcSplit/CF_TRY_RPATH            check if the current $LIBS can run simple checks such as AC_TRY_RUN, and
 AcSplit/CF_TRY_XOPEN_SOURCE     check if _XOPEN_SOURCE is defined, otherwise check if it can be defined.
 AcSplit/CF_TTYTYPE              check if ttytype[] is declared in curses.h
 AcSplit/CF_TTY_GROUP            check for existence of tty group
@@ -551,6 +552,7 @@ AcSplit/CF_X_TOOLKIT            check for Xt library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__ADD_SHLIB_DEFS      add shlib-definitions to makefile
 AcSplit/CF__ADD_SHLIB_RULES     add shlib-rules to makefile
+AcSplit/CF__CHECK_RUN           check if a simple configure try-run would fail, e.g., if the libraries
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__DEFINE_LIB_TARGET   utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__DEFINE_SHLIB_VARS   utility for CF__ADD_SHLIB_RULES

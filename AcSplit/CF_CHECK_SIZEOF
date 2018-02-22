@@ -1,4 +1,4 @@
-dnl CF_CHECK_SIZEOF version: 2 updated: 2015/05/09 11:00:10
+dnl CF_CHECK_SIZEOF version: 3 updated: 2018/02/21 21:26:03
 dnl ---------------
 dnl Improve on AC_CHECK_SIZEOF for cases when the build-environment is
 dnl deficient, e.g., if someone tries to build in busybox.  Use the second
@@ -10,12 +10,19 @@ dnl includes several header files.
 AC_DEFUN([CF_CHECK_SIZEOF],[
 AC_CHECK_SIZEOF([$1],[$2])
 if test "${ac_cv_type_$1+set}" = set; then
+	cf_cv_sizeof="$ac_cv_sizeof_$1"
 	if test "${ac_cv_sizeof_$1+set}" != set; then
 		AC_MSG_WARN(using $2 for sizeof $1)
 		ac_cv_sizeof_$1=$2
 	elif test "x${ac_cv_sizeof_$1}" = x0; then
 		AC_MSG_WARN([sizeof $1 not found, using $2])
 		ac_cv_sizeof_$1=$2
+	fi
+	if test "x$ac_cv_sizeof_$1" != "x$cf_cv_sizeof"
+	then
+		CF_UPPER(cf_cv_type,sizeof_$1)
+		sed -e "s/\([[ 	]]$cf_cv_type[[ 	]]\).*/\1$ac_cv_sizeof_$1/" confdefs.h >conftest.val
+		mv conftest.val confdefs.h
 	fi
 fi
 ])dnl

@@ -1,0 +1,13 @@
+dnl CF__CHECK_RUN version: 1 updated: 2018/02/21 21:26:03
+dnl -------------
+dnl Check if a simple program can be made to run with the existing libraries.
+define([CF__CHECK_RUN],[
+AC_TRY_RUN([#include <stdio.h>
+int main(void) {
+	fflush(stderr);
+	${cf_cv_main_return:-return}(0);
+}],
+	$1=yes,
+	$1=no,
+	$1=unknown)
+])

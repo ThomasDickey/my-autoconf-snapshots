@@ -1,3 +1,18 @@
+2018-02-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TRY_RPATH, AcSplit/CF__CHECK_RUN:
+	ci-aclocal generated header
+
+	* AcSplit/CF_MAKEFLAGS:
+	make a failure message less obvious by redirecting it to config.log
+	This is useful for NetBSD, whose implementation of "make" puts spurious
+	text into $MAKEFLAGS
+
+	* AcSplit/AM_WITH_NLS: whitespace
+
+	* AcSplit/CF_CHECK_SIZEOF:
+	workaround for broken configurations where AC_TRY_RUN fails
+
 2018-02-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2018-01-15
