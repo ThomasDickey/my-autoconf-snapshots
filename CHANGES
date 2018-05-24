@@ -1,3 +1,9 @@
+2018-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_YACC_ERROR:
+	fixes to work with clang, which noticed (unlike gcc) that yaccError()
+	was returning a value, as well as to eliminate a missing cast to quiet warning.
+
 2018-02-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TRY_RPATH, AcSplit/CF__CHECK_RUN:
