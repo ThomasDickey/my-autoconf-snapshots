@@ -1,7 +1,8 @@
-dnl CF_SIZECHANGE version: 11 updated: 2015/04/18 08:56:57
+dnl CF_SIZECHANGE version: 13 updated: 2018/06/08 21:57:23
 dnl -------------
 dnl Check for definitions & structures needed for window size-changing
-dnl FIXME: check that this works with "snake" (HP-UX 10.x)
+dnl
+dnl https://stackoverflow.com/questions/18878141/difference-between-structures-ttysize-and-winsize/50769952#50769952
 AC_DEFUN([CF_SIZECHANGE],
 [
 AC_REQUIRE([CF_STRUCT_TERMIOS])
@@ -22,24 +23,26 @@ do
 #include <termio.h>
 #endif
 #endif
+
 #ifdef NEED_PTEM_H
 /* This is a workaround for SCO:  they neglected to define struct winsize in
  * termios.h -- it's only in termio.h and ptem.h
  */
-#include        <sys/stream.h>
-#include        <sys/ptem.h>
+#include <sys/stream.h>
+#include <sys/ptem.h>
 #endif
-#if !defined(sun) || !defined(HAVE_TERMIOS_H)
+
+#ifdef HAVE_SYS_IOCTL_H
 #include <sys/ioctl.h>
 #endif
 ],[
 #ifdef TIOCGSIZE
-	struct ttysize win;	/* FIXME: what system is this? */
+	struct ttysize win;	/* SunOS 3.0... */
 	int y = win.ts_lines;
 	int x = win.ts_cols;
 #else
 #ifdef TIOCGWINSZ
-	struct winsize win;
+	struct winsize win;	/* everything else */
 	int y = win.ws_row;
 	int x = win.ws_col;
 #else
@@ -59,7 +62,7 @@ do
 done
 ])
 if test "$cf_cv_sizechange" != no ; then
-	AC_DEFINE(HAVE_SIZECHANGE,1,[Define to 1 if sizechar declarations are provided])
+	AC_DEFINE(HAVE_SIZECHANGE,1,[Define to 1 if sizechange declarations are provided])
 	case $cf_cv_sizechange in
 	(NEED*)
 		AC_DEFINE_UNQUOTED($cf_cv_sizechange )
