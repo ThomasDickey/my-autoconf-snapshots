@@ -1,3 +1,14 @@
+2018-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIZECHANGE: address an old fixme-comment
+
+	* AcSplit/CF_STRUCT_TERMIOS:
+	consistently check for sys/ioctl.h and sys/termio.h
+
+	* AcSplit/CF_SIZECHANGE:
+	drop a 1997 to-do for HPUX 10.x (which was tested long ago), and add a URL
+	pointing to my comments on the history of ttysize vs winsize.
+
 2018-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_YACC_ERROR:
