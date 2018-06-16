@@ -1,4 +1,4 @@
-dnl CF_PROG_GNAT version: 5 updated: 2018/01/15 15:28:49
+dnl CF_PROG_GNAT version: 6 updated: 2018/01/16 16:45:49
 dnl ------------
 dnl Check for gnatmake, ensure that it is complete.
 AC_DEFUN([CF_PROG_GNAT],[
@@ -34,8 +34,11 @@ else
 			cd ..
 			rm -rf conftest* *~conftest*
 		fi
+	else
+		# gprconfig is newer than gnatmake; we can continue...
+		cf_ada_config="##"
 	fi
-	if test -z "$cf_ada_config"
+	if test "x$cf_ada_config" != "x#"
 	then
 		CF_GNAT_VERSION
 		AC_CHECK_PROG(M4_exists, m4, yes, no)

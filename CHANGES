@@ -1,3 +1,17 @@
+2018-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNU_SOURCE:
+	using "recent" changes for _DEFAULT_SOURCE, follow original goal of getting
+	a usable value for _XOPEN_SOURCE, to reduce need for _GNU_SOURCE (Debian
+	#900987)
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	pass current _XOPEN_SOURCE parameter directly to CF_GNU_SOURCE
+
+	* config.guess: 2018-05-19
+
+	* config.sub: 2018-05-24
+
 2018-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SIZECHANGE: address an old fixme-comment
@@ -35,6 +49,11 @@
 	* config.sub: 2018-01-15
 
 	* config.guess: 2018-01-26
+
+2018-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_GNAT:
+	fix a choice between gnatmake and gprconfig when gprconfig is missing
 
 2018-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
