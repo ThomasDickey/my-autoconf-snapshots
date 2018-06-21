@@ -1,4 +1,4 @@
-dnl CF_BUNDLED_INTL version: 18 updated: 2015/05/10 19:52:14
+dnl CF_BUNDLED_INTL version: 19 updated: 2018/06/20 20:23:13
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
 dnl the intl and po directories for gettext.
@@ -94,7 +94,7 @@ else
 fi
 
 if test -z "$INTLDIR_MAKE" ; then
-	CPPFLAGS="$CPPFLAGS -I../intl"
+	CF_APPEND_TEXT(CPPFLAGS,-I../intl)
 fi
 
 dnl FIXME:  we use this in lynx (the alternative is a spurious dependency upon

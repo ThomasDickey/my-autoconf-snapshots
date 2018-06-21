@@ -1,4 +1,4 @@
-dnl CF_SIZECHANGE version: 13 updated: 2018/06/08 21:57:23
+dnl CF_SIZECHANGE version: 14 updated: 2018/06/20 20:23:13
 dnl -------------
 dnl Check for definitions & structures needed for window size-changing
 dnl
@@ -14,7 +14,10 @@ for cf_opts in "" "NEED_PTEM_H"
 do
 
 	CPPFLAGS="$cf_save_CPPFLAGS"
-	test -n "$cf_opts" && CPPFLAGS="$CPPFLAGS -D$cf_opts"
+	if test -n "$cf_opts"
+	then
+		CF_APPEND_TEXT(CPPFLAGS,-D$cf_opts)
+	fi
 	AC_TRY_COMPILE([#include <sys/types.h>
 #ifdef HAVE_TERMIOS_H
 #include <termios.h>

@@ -1,3 +1,11 @@
+2018-06-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PDCURSES_X11:
+	use CF_ADD_CFLAGS rather than direct assignment to CPPFLAGS
+
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNU_SOURCE, AcSplit/CF_LARGEFILE, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_PROG_EXT, AcSplit/CF_SIZECHANGE, AcSplit/CF_TRY_XOPEN_SOURCE, AcSplit/CF_XOPEN_CURSES, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	use CF_APPEND_TEXT rather than direct assignment to CPPFLAGS
+
 2018-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNU_SOURCE:
