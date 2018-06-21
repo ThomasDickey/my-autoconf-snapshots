@@ -1,4 +1,4 @@
-dnl CF_PROG_EXT version: 13 updated: 2015/04/18 09:03:58
+dnl CF_PROG_EXT version: 14 updated: 2018/06/20 20:23:13
 dnl -----------
 dnl Compute $PROG_EXT, used for non-Unix ports, such as OS/2 EMX.
 AC_DEFUN([CF_PROG_EXT],
@@ -7,7 +7,7 @@ AC_REQUIRE([CF_CHECK_CACHE])
 case $cf_cv_system_name in
 (os2*)
 	CFLAGS="$CFLAGS -Zmt"
-	CPPFLAGS="$CPPFLAGS -D__ST_MT_ERRNO__"
+	CF_APPEND_TEXT(CPPFLAGS,-D__ST_MT_ERRNO__)
 	CXXFLAGS="$CXXFLAGS -Zmt"
 	# autoconf's macro sets -Zexe and suffix both, which conflict:w
 	LDFLAGS="$LDFLAGS -Zmt -Zcrtdll"
