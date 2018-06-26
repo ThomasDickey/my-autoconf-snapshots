@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 11 updated: 2015/04/12 15:39:00
+dnl CF_WITH_ICON_THEME version: 12 updated: 2018/04/30 19:37:35
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -15,7 +15,7 @@ dnl $3 = formats (defaults to list [.svg .png .xpm])
 dnl $4 = alternate icon if no theme is used (defaults to $1).
 dnl
 dnl Result:
-dnl ICON_NAME = basename of first item in $1
+dnl ICON_NAME = basename of first item in $1, unless already set
 dnl ICON_LIST = reprocessed $1
 dnl ICON_THEME = reprocessed $2
 dnl ICON_FORMAT = reprocessed $3
@@ -59,7 +59,6 @@ fi
 
 : ${ICON_FORMAT:=ifelse([$3],,[".svg .png .xpm"],[$3])}
 
-# ICON_NAME=
 ICON_LIST=
 
 ifelse([$4],,[cf_icon_list=$1],[

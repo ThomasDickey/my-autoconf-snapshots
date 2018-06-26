@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 11 updated: 2015/04/12 15:39:00
+dnl CF_FUNC_GRANTPT version: 12 updated: 2018/06/26 16:06:28
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -113,7 +113,9 @@ dnl
 dnl There is no configure run-test for openpty, since older implementations do
 dnl not always run properly as a non-root user.  For that reason, we also allow
 dnl the configure script to suppress this check entirely with $disable_openpty.
-if test "x$disable_openpty" != "xyes" || test -z "$cf_grantpt_opts" ; then
+if test "x$ac_cv_func_posix_openpt" = "xyes" ; then
+	CF_VERBOSE(prefer posix_openpt over openpty)
+elif test "x$disable_openpty" != "xyes" || test -z "$cf_grantpt_opts" ; then
 	AC_CHECK_LIB(util, openpty, [cf_have_openpty=yes],[cf_have_openpty=no])
 	if test "$cf_have_openpty" = yes ; then
 		ac_cv_func_grantpt=no
