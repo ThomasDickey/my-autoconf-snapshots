@@ -1,3 +1,8 @@
+2018-06-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_MAN2HTML:
+	use sed to work around non-POSIX tail utility
+
 2018-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GRANTPT:
