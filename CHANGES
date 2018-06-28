@@ -1,3 +1,8 @@
+2018-06-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	add special-case to avoid using OpenBSD's nonfunctional POSIX-interface.
+
 2018-06-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_MAN2HTML:
