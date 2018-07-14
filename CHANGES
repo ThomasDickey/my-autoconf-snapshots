@@ -1,3 +1,8 @@
+2018-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PCRE2:
+	modified to work with Debian's (mis-numbered) pcre3 package.
+
 2018-06-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GRANTPT:

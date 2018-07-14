@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE2 version: 1 updated: 2017/07/29 22:57:34
+dnl CF_WITH_PCRE2 version: 2 updated: 2018/07/14 16:47:56
 dnl -------------
 dnl Add PCRE2 (Perl-compatible regular expressions v2) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -15,22 +15,27 @@ AC_ARG_WITH(pcre2,
 test -z "$with_pcre2" && with_pcre2=no
 AC_MSG_RESULT($with_pcre2)
 
-if test "$with_pcre2" != no ; then
+if test "x$with_pcre2" != xno ; then
 	CF_TRY_PKG_CONFIG(libpcre2,,[
-		AC_CHECK_LIB(pcre2-8,pcre2_compile_8,,
-			AC_MSG_ERROR(Cannot find PCRE2 library))])
+	CF_TRY_PKG_CONFIG(libpcre,,[
+			AC_MSG_ERROR(Cannot find PCRE2 library)])])
 
 	AC_DEFINE(HAVE_LIB_PCRE2,1,[Define to 1 if we can/should compile with the PCRE2 library])
 
+	# if pkgconfig gave no results, look for the libraries directly
 	case $LIBS in
-	(*pcre2-posix*)
+	(*pcre2-posix*|*pcreposix*)
 		;;
 	(*)
 		AC_CHECK_LIB(pcre2-posix,regcomp,[
-			AC_DEFINE(HAVE_PCRE2POSIX_H,1,[Define to 1 if we should include pcre2posix.h])
 			CF_ADD_LIB(pcre2-posix)],
-			AC_MSG_ERROR(Cannot find PCRE2 POSIX library))
+			[AC_CHECK_LIB(pcreposix,regcomp,[
+			 CF_ADD_LIB(pcreposix)
+			],[AC_MSG_ERROR(Cannot find PCRE2 POSIX library)])])
 		;;
 	esac
+
+	# either way, check for the library header files
+	AC_CHECK_HEADERS(pcre2-posix.h pcreposix.h)
 fi
 ])dnl
