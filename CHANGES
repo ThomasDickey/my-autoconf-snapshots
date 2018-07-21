@@ -1,3 +1,9 @@
+2018-07-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA_SHAREDLIB:
+	disable the shared-library feature if GNAT projects are unsupported, e.g.,
+	if gprbuild is not available.
+
 2018-07-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PCRE2:
