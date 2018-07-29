@@ -1,3 +1,9 @@
+2018-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	putting preprocessor flags in CFLAGS also is a nuisance, which can be
+	addressed in the same way.
+
 2018-07-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA_SHAREDLIB:
