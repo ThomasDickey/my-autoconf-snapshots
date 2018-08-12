@@ -1,3 +1,8 @@
+2018-08-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GRANTPT:
+	amend the posix_openpt vs grantpt change to work with BSDs
+
 2018-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CC_ENV_FLAGS:
