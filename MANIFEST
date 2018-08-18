@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20180813
+MANIFEST for my-autoconf, version t20180818
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -216,6 +216,7 @@ AcSplit/CF_INHERIT_SCRIPT       inherit config-scripts from parent directory (nc
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
 AcSplit/CF_INSTALL_OPTS         check for useful options of install-program
 AcSplit/CF_INSTALL_OPT_O        check for -o option of install-program
+AcSplit/CF_INSTALL_OPT_P        check for install "-p" option
 AcSplit/CF_INSTALL_OPT_S        check for -s option of install-program
 AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared

@@ -1,3 +1,17 @@
+2018-08-18  dickey@invisible-island.net
+
+	* AcSplit/CF_SHARED_OPTS: suppress $LD_RPATH_OPT if --disable-rpath
+
+	* AcSplit/CF_LD_RPATH_OPT: suppress check if --disable-rpath
+
+	* AcSplit/CF_INSTALL_OPTS: add CF_INSTALL_OPT_P
+
+	* AcSplit/CF_INSTALL_OPT_P: ci-aclocal generated header
+
+	* AcSplit/CF_INSTALL_OPT_S: improve help-text
+
+	* AcSplit/CF_LIB_RULES: pass ReRanlib value to mk-1st.awk
+
 2018-08-13  dickey@invisible-island.net
 
 	* COPYING.asc: sign
