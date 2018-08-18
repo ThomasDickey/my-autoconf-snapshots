@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 92 updated: 2017/12/30 17:26:05
+dnl CF_SHARED_OPTS version: 93 updated: 2018/08/18 16:36:35
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -26,6 +26,7 @@ dnl Some loaders leave 'so_locations' lying around.  It's nice to clean up.
 AC_DEFUN([CF_SHARED_OPTS],
 [
 	AC_REQUIRE([CF_LD_RPATH_OPT])
+
 	RM_SHARED_OPTS=
 	LOCAL_LDFLAGS=
 	LOCAL_LDFLAGS2=
@@ -213,7 +214,7 @@ CF_EOF
 		cf_cv_rm_so_locs=yes
 		;;
 	(linux*|gnu*|k*bsd*-gnu)
-		if test "$DFT_LWR_MODEL" = "shared" ; then
+		if test "$DFT_LWR_MODEL" = "shared" && test -n "$LD_RPATH_OPT" ; then
 			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
@@ -251,7 +252,7 @@ CF_EOF
 		chmod +x mk_shared_lib.sh
 		;;
 	(openbsd[[2-9]].*|mirbsd*)
-		if test "$DFT_LWR_MODEL" = "shared" ; then
+		if test "$DFT_LWR_MODEL" = "shared" && test -n "$LD_RPATH_OPT" ; then
 			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
@@ -307,7 +308,7 @@ CF_EOF
 			;;
 		esac
 		MK_SHARED_LIB="${MK_SHARED_LIB}"' -o $[@]'
-		if test "$DFT_LWR_MODEL" = "shared" ; then
+		if test "$DFT_LWR_MODEL" = "shared" && test -n "$LD_RPATH_OPT" ; then
 			LOCAL_LDFLAGS="${LD_RPATH_OPT}\$(LOCAL_LIBDIR)"
 			LOCAL_LDFLAGS2="$LOCAL_LDFLAGS"
 		fi
