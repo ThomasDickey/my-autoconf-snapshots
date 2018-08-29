@@ -1,3 +1,7 @@
+2018-08-29  dickey@invisible-island.net
+
+	* config.guess, config.sub: 2018-08-29
+
 2018-08-18  dickey@invisible-island.net
 
 	* AcSplit/CF_SHARED_OPTS: suppress $LD_RPATH_OPT if --disable-rpath
