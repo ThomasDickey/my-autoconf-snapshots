@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 7 updated: 2015/10/24 20:50:26
+dnl CF_WITH_VERSIONED_SYMS version: 8 updated: 2018/10/20 20:24:34
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -12,11 +12,21 @@ AC_ARG_WITH(versioned-syms,
 	[  --with-versioned-syms=X markup versioned symbols using ld],
 	[with_versioned_syms=$withval],
 	[with_versioned_syms=no])
-if test "x$with_versioned_syms" = xyes
-then
+case "x$with_versioned_syms" in
+(xyes)
 	with_versioned_syms='${top_srcdir}/package/ifelse($1,,${PACKAGE},[$1]).map'
 	AC_SUBST(PACKAGE)
-fi
+	;;
+(xno)
+	;;
+(x/*)
+	test -f "$with_versioned_syms" || AC_MSG_ERROR(expected a filename: $with_versioned_syms)
+	;;
+(*)
+	test -f "$with_versioned_syms" || AC_MSG_ERROR(expected a filename: $with_versioned_syms)
+	with_versioned_syms=`pwd`/"$with_versioned_syms"
+	;;
+esac
 AC_MSG_RESULT($with_versioned_syms)
 
 RESULTING_SYMS=
