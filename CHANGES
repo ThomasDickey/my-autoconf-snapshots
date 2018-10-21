@@ -1,3 +1,8 @@
+2018-10-20  dickey@invisible-island.net
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	allow option's value to be a relative pathname
+
 2018-08-29  dickey@invisible-island.net
 
 	* config.guess, config.sub: 2018-08-29
