@@ -1,3 +1,14 @@
+2018-11-10  dickey@invisible-island.net
+
+	* AcSplit/CF_PROG_GNAT:
+	workaround for Fedora, whose gprconfig lacks "GNATGCC"
+
+	* AcSplit/CF_PROG_GNAT:
+	Debian9's gprconfig for "C" gives misleading results since it has a stub
+	for "LLVM" (clang) and a more complete set including "GNATGCC".  The former
+	does not work with the C files in ncurses's Ada95 tree.  Work around this
+	by special-casing a selection for GNATGCC.
+
 2018-11-07  Urs.Jansen
 
 	* AcSplit/CF_XOPEN_SOURCE:
