@@ -1,3 +1,7 @@
+2018-12-04  dickey@invisible-island.net
+
+	* AcSplit/CF_VA_COPY: fix typos (report by Urs Jansen)
+
 2018-12-03  dickey@invisible-island.net
 
 	* AcSplit/CF_VA_COPY:
