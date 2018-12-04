@@ -1,3 +1,14 @@
+2018-12-03  dickey@invisible-island.net
+
+	* AcSplit/CF_VA_COPY:
+	add another fallback check, for __builtin_va_copy(), which could be used
+	with AIX xlc in c89 mode (report by Urs Jansen).
+
+	* AcSplit/CF_VA_COPY:
+	add fallback check if neither va_copy/__va_copy is supported, to try
+	copying the pointers for va_list, or as an array (prompted by discussion
+	with Urs Jansen).
+
 2018-12-01  dickey@invisible-island.net
 
 	* config.guess, config.sub: 2018-11-28
