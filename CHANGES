@@ -1,3 +1,11 @@
+2018-12-10  dickey@invisible-island.net
+
+	* AcSplit/CF_GNU_SOURCE:
+	The check for _DEFAULT_SOURCE should apply to "recent" Cygwin (since early 2016),
+	and except for "NEWLIB" vs "GLIBC" in the test, acts the same if I pretend
+	that "newlib" is the GNU C library.  Without this, the check falls through
+	to the _XOPEN_SOURCE test, which breaks the pseudoterminal checks for xterm.
+
 2018-12-04  dickey@invisible-island.net
 
 	* AcSplit/CF_VA_COPY: fix typos (report by Urs Jansen)
