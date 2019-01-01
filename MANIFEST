@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20181210
+MANIFEST for my-autoconf, version t20181231
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -327,6 +327,7 @@ AcSplit/CF_POSIX_C_SOURCE       split-out from CF_XOPEN_SOURCE, and improved (ta
 AcSplit/CF_POSIX_JC             check for POSIX-style sigaction
 AcSplit/CF_POSIX_SAVED_IDS      check for _POSIX_SAVED_IDS
 AcSplit/CF_POSIX_VDISABLE       check for _POSIX_VDISABLE (vttest)
+AcSplit/CF_POSIX_VISIBLE        check for symbols defined by some BSD platforms to enable all parts of the
 AcSplit/CF_POSIX_WAIT           check for POSIX wait functions
 AcSplit/CF_PREDEFINE            check for symbols we must predefine (ncurses)
 AcSplit/CF_PREREQ_COMPARE       utility macro for conditional generation of configure
