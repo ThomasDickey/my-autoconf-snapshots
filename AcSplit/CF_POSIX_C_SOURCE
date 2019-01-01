@@ -1,4 +1,4 @@
-dnl CF_POSIX_C_SOURCE version: 10 updated: 2018/06/20 20:23:13
+dnl CF_POSIX_C_SOURCE version: 11 updated: 2018/12/31 20:46:17
 dnl -----------------
 dnl Define _POSIX_C_SOURCE to the given level, and _POSIX_SOURCE if needed.
 dnl
@@ -13,7 +13,10 @@ dnl
 dnl Parameters:
 dnl	$1 is the nominal value for _POSIX_C_SOURCE
 AC_DEFUN([CF_POSIX_C_SOURCE],
-[
+[AC_REQUIRE([CF_POSIX_VISIBLE])dnl
+
+if test "$cf_cv_posix_visible" = no; then
+
 cf_POSIX_C_SOURCE=ifelse([$1],,199506L,[$1])
 
 cf_save_CFLAGS="$CFLAGS"
@@ -69,5 +72,7 @@ if test "$cf_cv_posix_c_source" != no ; then
 	CPPFLAGS="$cf_trim_CPPFLAGS"
 	CF_ADD_CFLAGS($cf_cv_posix_c_source)
 fi
+
+fi # cf_cv_posix_visible
 
 ])dnl

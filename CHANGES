@@ -1,3 +1,10 @@
+2018-12-31  dickey@invisible-island.net
+
+	* AcSplit/CF_POSIX_VISIBLE: RCS_BASE
+
+	* AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_XOPEN_SOURCE:
+	add/use CF_POSIX_VISIBLE
+
 2018-12-10  dickey@invisible-island.net
 
 	* AcSplit/CF_GNU_SOURCE:
