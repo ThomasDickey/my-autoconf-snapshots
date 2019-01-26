@@ -1,3 +1,9 @@
+2019-01-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_DFTENV:
+	eliminate a "dnl" which caused a "case" statement to be joined to the preceding
+	line when using autoconf-2.52+patches.
+
 2019-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2019-01-15

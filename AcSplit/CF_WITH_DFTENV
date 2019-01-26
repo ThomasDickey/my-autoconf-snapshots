@@ -1,4 +1,4 @@
-dnl CF_WITH_DFTENV version: 4 updated: 2008/03/23 14:48:54
+dnl CF_WITH_DFTENV version: 5 updated: 2019/01/26 18:33:16
 dnl --------------
 dnl Wrapper for AC_ARG_WITH to inherit/override an environment variable's
 dnl "#define" in the compile.
@@ -8,7 +8,7 @@ dnl $3 = name of variable to inherit/override
 dnl $4 = default value of variable, if any
 AC_DEFUN([CF_WITH_DFTENV],
 [AC_ARG_WITH($1,[$2 ](default: ifelse($4,,empty,$4)),,
-ifelse($4,,[withval="${$3}"],[withval="${$3-$4}"]))dnl
+ifelse($4,,[withval="${$3}"],[withval="${$3-$4}"]))
 case "$withval" in #(vi
 yes|no)
   AC_MSG_ERROR(expected a value for --with-$1)
