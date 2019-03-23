@@ -1,3 +1,8 @@
+2019-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIGWINCH, AcSplit/CF_X_TOOLKIT:
+	fix typo in comment (Larry Hynes)
+
 2019-03-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2019-03-07
