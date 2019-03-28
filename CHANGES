@@ -1,3 +1,7 @@
+2019-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2019-03-28
+
 2019-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SIGWINCH, AcSplit/CF_X_TOOLKIT:
