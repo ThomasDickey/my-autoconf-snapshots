@@ -1,3 +1,7 @@
+2019-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FOPEN_BIN_R: ci-aclocal generated header
+
 2019-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2019-03-28
