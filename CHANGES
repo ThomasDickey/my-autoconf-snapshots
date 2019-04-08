@@ -1,3 +1,10 @@
+2019-04-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CONST_X_STRING: ci-aclocal generated header
+
+	* AcSplit/CF_GCC_WARNINGS:
+	factor out workaround for XTSTRINGDEFINES as CF_CONST_X_STRING
+
 2019-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FOPEN_BIN_R: ci-aclocal generated header
