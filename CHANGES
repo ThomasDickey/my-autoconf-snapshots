@@ -1,3 +1,7 @@
+2019-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2019-05-22
+
 2019-04-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CONST_X_STRING: ci-aclocal generated header
