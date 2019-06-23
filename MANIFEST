@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20190616
+MANIFEST for my-autoconf, version t20190623
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -75,6 +75,7 @@ AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
 AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
+AcSplit/CF_CHECK_GETENV         check for fully-functional getenv
 AcSplit/CF_CHECK_GPM_WGETCH     check for gpm/ncurses linkage problem
 AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> dependency
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
