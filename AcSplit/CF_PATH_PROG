@@ -1,9 +1,10 @@
-dnl CF_PATH_PROG version: 9 updated: 2012/10/04 20:12:20
+dnl CF_PATH_PROG version: 10 updated: 2019/06/30 19:44:43
 dnl ------------
 dnl Check for a given program, defining corresponding symbol.
 dnl	$1 = environment variable, which is suffixed by "_PATH" in the #define.
 dnl	$2 = program name to find.
 dnl	$3 = optional list of additional program names to test.
+dnl $4 = $PATH
 dnl
 dnl If there is more than one token in the result, #define the remaining tokens
 dnl to $1_ARGS.  We need this for 'install' in particular.
@@ -13,7 +14,7 @@ dnl
 AC_DEFUN([CF_PATH_PROG],[
 AC_REQUIRE([CF_PATHSEP])
 test -z "[$]$1" && $1=$2
-AC_PATH_PROGS($1,[$]$1 $2 $3,[$]$1)
+AC_PATH_PROGS($1,[$]$1 $2 ifelse($3,,,$3),[$]$1, ifelse($4,,,$4))
 
 cf_path_prog=""
 cf_path_args=""

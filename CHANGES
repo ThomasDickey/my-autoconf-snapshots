@@ -1,3 +1,11 @@
+2019-06-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PATH_PROG: ci-aclocal generated header
+
+	* AcSplit/CF_PATH_PROG: provide for $PATH parameter
+
+	* config.sub: 2019-06-30
+
 2019-06-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_GETENV: ci-aclocal generated header
