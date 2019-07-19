@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20190630
+MANIFEST for my-autoconf, version t20190718
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -549,6 +549,7 @@ AcSplit/CF_X_ATHENA             check for Xaw library
 AcSplit/CF_X_ATHENA_CPPFLAGS    check for c-preprocessor flags for Athena-widgets
 AcSplit/CF_X_ATHENA_LIBS        check for X Athena-widget libraries
 AcSplit/CF_X_EXT                check for X extension library
+AcSplit/CF_X_EXT_DOUBLE_BUFFER  check if Xdbe (double-buffer extension) is supported
 AcSplit/CF_X_FONTCONFIG         check for fontconfig library, used as part of Xft
 AcSplit/CF_X_FONTENC            check for X font-encoding library
 AcSplit/CF_X_FREETYPE           test for x freetype libs
