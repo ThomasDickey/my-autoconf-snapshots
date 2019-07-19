@@ -1,0 +1,10 @@
+dnl CF_X_EXT_DOUBLE_BUFFER version: 1 updated: 2019/07/18 21:09:40
+dnl ----------------------
+AC_DEFUN([CF_X_EXT_DOUBLE_BUFFER],[
+AC_REQUIRE([CF_X_EXT])
+AC_CHECK_HEADER(X11/extensions/Xdbe.h,
+	AC_DEFINE(HAVE_X11_EXTENSIONS_XDBE_H,1,[Define to 1 if we have X11/extensions/Xdbe.h])
+	AC_CHECK_FUNC(XdbeSwapBuffers,
+				  [AC_DEFINE(HAVE_XDBESWAPBUFFERS,1,[Define to 1 if we have XdbeSwapBuffers])
+				   cf_x_ext_double_buffer=yes]))
+])dnl
