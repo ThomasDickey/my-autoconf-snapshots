@@ -1,0 +1,31 @@
+dnl CF_TERMIOS_TYPES version: 1 updated: 2019/07/21 08:54:39
+dnl ----------------
+dnl https://pubs.opengroup.org/onlinepubs/009695399/basedefs/termios.h.html
+dnl says that tcflag_t, speed_t and cc_t are typedef'd.  If they are not,
+dnl fallback to historical values.
+AC_DEFUN([CF_TERMIOS_TYPES],[
+
+AC_CACHE_CHECK(for termios type tcflag_t, cf_cv_havetype_tcflag_t,[
+	AC_TRY_COMPILE([#include <termios.h>],[
+		tcflag_t x = 0],
+		[cf_cv_havetype_tcflag_t=yes],
+		[cf_cv_havetype_tcflag_t=no])
+])
+test "$cf_cv_havetype_tcflag_t" = no && AC_DEFINE(tcflag_t,unsigned long,[Define usable value of tcflag_t if not declared])
+
+AC_CACHE_CHECK(for termios type speed_t, cf_cv_havetype_speed_t,[
+	AC_TRY_COMPILE([#include <termios.h>],[
+		speed_t x = 0],
+		[cf_cv_havetype_speed_t=yes],
+		[cf_cv_havetype_speed_t=no])
+])
+test "$cf_cv_havetype_speed_t" = no && AC_DEFINE(speed_t,unsigned short,[Define usable value of speed_t if not declared])
+
+AC_CACHE_CHECK(for termios type cc_t, cf_cv_havetype_cc_t,[
+	AC_TRY_COMPILE([#include <termios.h>],[
+		cc_t x = 0],
+		[cf_cv_havetype_cc_t=yes],
+		[cf_cv_havetype_cc_t=no])
+])
+test "$cf_cv_havetype_cc_t" = no && AC_DEFINE(cc_t,unsigned char,[Define usable value of cc_t if not declared])
+])dnl

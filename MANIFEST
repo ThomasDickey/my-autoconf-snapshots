@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20190718
+MANIFEST for my-autoconf, version t20190721
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -430,6 +430,7 @@ AcSplit/CF_TD_TEST_MAKEFILES    generate test/*/makefile
 AcSplit/CF_TD_TEST_MODULES      make a list of modules under test/*
 AcSplit/CF_TERMCAP_LIBS         check for termcap libraries
 AcSplit/CF_TERMIOS              check for tcsetattr/tcgetattr
+AcSplit/CF_TERMIOS_TYPES        check for typedef's assumed to be in termios.h
 AcSplit/CF_TERMIO_AND_CURSES    check if we can include both curses.h and termio.h
 AcSplit/CF_TERMIO_AND_TERMIOS   check if we can include both termio.h and termios.h
 AcSplit/CF_TERMIO_C_ISPEED      check for missing .c_ispeed member
