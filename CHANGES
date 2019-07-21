@@ -1,3 +1,7 @@
+2019-07-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TERMIOS_TYPES: ci-aclocal generated header
+
 2019-07-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_EXT_DOUBLE_BUFFER: ci-aclocal generated header
