@@ -1,3 +1,19 @@
+2019-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA_LIBNAME: ci-aclocal generated header
+
+	* AcSplit/CF_GCC_WARNINGS:
+	move checks for icc/clang into CF_GCC_VERSION
+
+	* AcSplit/CF_GCC_VERSION:
+	move checks to distinguish icc/clang from gcc from the macro which handles
+	the --enable-warnings option, to make this work without-warnings for the
+	inline-checks.
+
+	* AcSplit/CF_C_INLINE:
+	require CF_GCC_VERSION to make checks for icc/clang work when no
+	--enable-warnings option was used
+
 2019-07-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_VASPRINTF: ci-aclocal generated header
