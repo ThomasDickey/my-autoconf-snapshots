@@ -1,9 +1,10 @@
-dnl CF_C_INLINE version: 5 updated: 2015/04/18 08:56:57
+dnl CF_C_INLINE version: 6 updated: 2019/09/07 13:38:36
 dnl -----------
 dnl Check if the C compiler supports "inline".
 dnl $1 is the name of a shell variable to set if inline is supported
 dnl $2 is the threshold for gcc 4.x's option controlling maximum inline size
 AC_DEFUN([CF_C_INLINE],[
+AC_REQUIRE([CF_GCC_VERSION])
 AC_C_INLINE
 $1=
 if test "$ac_cv_c_inline" != no ; then
