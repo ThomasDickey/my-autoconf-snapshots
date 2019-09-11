@@ -1,3 +1,7 @@
+2019-09-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2019-09-10
+
 2019-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA_LIBNAME: ci-aclocal generated header
