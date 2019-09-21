@@ -1,3 +1,14 @@
+2019-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRC_MODULES: add a missing dependency on gnat
+
+	* AcSplit/CF_CHECK_GNAT_VERSION: ci-aclocal generated header
+
+	* AcSplit/CF_PROG_GNAT:
+	modify to show where the gnat tools are, and their versions
+
+	* AcSplit/CF_GNAT_VERSION: split-out CF_CHECK_GNAT_VERSION
+
 2019-09-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2019-09-10

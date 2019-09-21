@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 30 updated: 2017/07/26 17:08:35
+dnl CF_SRC_MODULES version: 31 updated: 2019/09/21 18:08:42
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -8,6 +8,7 @@ dnl This uses the configured value to make the lists SRC_SUBDIRS and
 dnl SUB_MAKEFILES which are used in the makefile-generation scheme.
 AC_DEFUN([CF_SRC_MODULES],
 [
+AC_REQUIRE([CF_CHECK_GNAT_VERSION])
 AC_MSG_CHECKING(for src modules)
 
 # dependencies and linker-arguments for test-programs
