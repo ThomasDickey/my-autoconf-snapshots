@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20190911
+MANIFEST for my-autoconf, version t20190921
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -76,6 +76,7 @@ AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
 AcSplit/CF_CHECK_GETENV         check for fully-functional getenv
+AcSplit/CF_CHECK_GNAT_VERSION   check for known (old) versions of gnat which cannot build ncurses' Ada95
 AcSplit/CF_CHECK_GPM_WGETCH     check for gpm/ncurses linkage problem
 AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> dependency
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration

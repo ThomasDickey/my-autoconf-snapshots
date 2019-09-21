@@ -1,0 +1,15 @@
+dnl CF_CHECK_GNAT_VERSION version: 1 updated: 2019/09/21 18:08:42
+dnl ---------------------
+AC_DEFUN([CF_CHECK_GNAT_VERSION],
+[
+AC_REQUIRE([CF_GNAT_VERSION])
+case $cf_gnat_version in
+(3.1[[1-9]]*|3.[[2-9]]*|[[4-9]].*|20[[0-9]][[0-9]])
+	cf_cv_prog_gnat_correct=yes
+	;;
+(*)
+	AC_MSG_WARN(Unsupported GNAT version $cf_gnat_version. We require 3.11 or better. Disabling Ada95 binding.)
+	cf_cv_prog_gnat_correct=no
+	;;
+esac
+])
