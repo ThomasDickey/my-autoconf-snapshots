@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20190921
+MANIFEST for my-autoconf, version t20190926
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -230,6 +230,7 @@ AcSplit/CF_LARGEFILE            macro for large-file stuff
 AcSplit/CF_LASTLOG              lastlog.h and related definitions for xterm
 AcSplit/CF_LDFLAGS_STATIC       tell the options that switch linkage to/from static/shared
 AcSplit/CF_LD_RPATH_OPT         compute $LD_RPATH_OPT, the symbol that holds compiler's rpath option.
+AcSplit/CF_LD_SEARCHPATH        find the linker's default directory search-path, used to simplify -L options
 AcSplit/CF_LEX_CHAR_CLASSES     check for character-classes in (f)lex
 AcSplit/CF_LEX_OPTIONS          test for lex "%o" options
 AcSplit/CF_LEX_POINTER          test for lex "%pointer"

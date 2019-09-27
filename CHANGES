@@ -1,3 +1,10 @@
+2019-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LD_SEARCHPATH: ci-aclocal generated header
+
+	* AcSplit/CF_LD_SEARCHPATH:
+	ensure that the result is nonempty, to avoid problems in scripts
+
 2019-09-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRC_MODULES: add a missing dependency on gnat
