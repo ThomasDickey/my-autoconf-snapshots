@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20191120
+MANIFEST for my-autoconf, version t20191128
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -172,6 +172,7 @@ AcSplit/CF_FUNC_GETOPT          portability-checks for getopt()
 AcSplit/CF_FUNC_GRANTPT         check for pty functions (grantpt, openpty)
 AcSplit/CF_FUNC_ICONV           macro to check for iconv() function and related definitions.
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
+AcSplit/CF_FUNC_MBSTOWCWIDTH    check for mbsrtowcs/wcwidth functions
 AcSplit/CF_FUNC_MEMMOVE         check for working memmove() vs overlapping bcopy()
 AcSplit/CF_FUNC_NANOSLEEP       configure check for (working) nanosleep()
 AcSplit/CF_FUNC_OPENPTY         ncurses - check for openpty function, used for test/ditto.c

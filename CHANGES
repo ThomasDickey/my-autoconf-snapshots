@@ -1,3 +1,7 @@
+2019-11-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_MBSTOWCWIDTH: RCS_BASE
+
 2019-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_LINT:

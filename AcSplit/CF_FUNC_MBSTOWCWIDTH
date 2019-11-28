@@ -1,0 +1,33 @@
+dnl CF_FUNC_MBSTOWCWIDTH version: 1 updated: 2019/11/28 14:10:37
+dnl --------------------
+dnl Check if mbsrtowcs() is available, along with the datatype needed to
+dnl use it, and wcwidth().  Using those, we can compute the number of columns
+dnl to use for a multibyte character string.
+AC_DEFUN(CF_FUNC_MBSTOWCWIDTH,[
+AC_REQUIRE([CF_LOCALE])
+AC_CACHE_CHECK(for mbsrtowcs and wcwidth,cf_cv_func_mbstowcwidth,[
+if test "$cf_cv_locale" = yes
+then
+	AC_TRY_LINK([
+#include <stdlib.h>
+#include <string.h>
+#include <wchar.h>
+#include <sys/types.h>
+],[
+	mbstate_t state;
+	const char *source = "Hello\nWorld!\n";
+	size_t n;
+	size_t needed = strlen(source);
+	wchar_t *target = calloc(1 + needed, sizeof(wchar_t));
+
+	memset(&state, 0, sizeof(state));
+	(void) mbsrtowcs(target, &source, needed, &state);
+	for (n = 0; n < needed; ++n) {
+		if (wcwidth(target[n]) < 0)
+			return 1;
+	}
+],[cf_cv_func_mbstowcwidth=yes],[cf_cv_func_mbstowcwidth=no])
+fi
+])
+test "$cf_cv_func_mbstowcwidth" = yes && AC_DEFINE(HAVE_MBSTOWCWIDTH,1,[Define to 1 if mbsrtowsc and wcwidth exist])
+])
