@@ -1,4 +1,4 @@
-dnl CF_RCS_SCCS version: 5 updated: 2009/10/16 05:25:56
+dnl CF_RCS_SCCS version: 6 updated: 2019/12/06 06:57:36
 dnl -----------
 dnl Tests for the ensemble of programs that are used in RCS, SCCS, VCS, CVS.
 dnl We'll have to assume that the related utilities all reside in the same
@@ -11,7 +11,8 @@ PATH="/usr/local/libexec/cssc:$PATH"
 PATH="/usr/libexec/cssc:$PATH"
 PATH="/usr/lib/cssc:$PATH"
 CF_PROGRAM_PREFIX(RCS_PATH, rcs)
-CF_PROGRAM_PREFIX(SCCS_PATH, admin)dnl the SCCS tool
+CF_PROGRAM_PREFIX(ADMIN_PATH, admin)dnl the SCCS tool
+CF_PROGRAM_PREFIX(SCCS_PATH, sccs)dnl a later wrapper for the SCCS tools
 CF_PROGRAM_PREFIX(VCS_PATH, vcs)dnl VCS is my RCS application
 CF_PROGRAM_PREFIX(CVS_PATH, cvs)dnl CVS is a layer above RCS
 CF_PROGRAM_PREFIX(SVN_PATH, svn)dnl SVN is like CVS, using local file status

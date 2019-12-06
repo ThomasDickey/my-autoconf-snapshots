@@ -1,6 +1,6 @@
-dnl CF_CURSES_CCHAR_T version: 5 updated: 2013/12/05 19:11:11
+dnl CF_CURSES_CCHAR_T version: 6 updated: 2019/12/06 06:21:53
 dnl -----------------
-dnl Test if curses defines 'cchar_t' (usually a 'long' type for SysV curses).
+dnl Test if curses defines 'cchar_t' (a 'struct' type for X/Open curses).
 AC_DEFUN([CF_CURSES_CCHAR_T],
 [
 AC_REQUIRE([CF_CURSES_CPPFLAGS])dnl
