@@ -1,3 +1,11 @@
+2019-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RCS_SCCS:
+	change SCCS_PATH to ADMIN_PATH, adding a new check for "sccs" wrapper
+	since its location in Debian package is obscure.
+
+	* AcSplit/CF_CURSES_CCHAR_T: fix typo in comment
+
 2019-11-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_MBSTOWCWIDTH: RCS_BASE
