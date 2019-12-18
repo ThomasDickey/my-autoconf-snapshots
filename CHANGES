@@ -1,3 +1,10 @@
+2019-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKE_AR_RULES:
+	make the verbose-message a little clearer, and also improve the file to
+	be compiled to make it unlikely it will generate warnings which might
+	cause the test to fail.  Tested with NetBSD's non-POSIX make-program...
+
 2019-12-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc: sign
