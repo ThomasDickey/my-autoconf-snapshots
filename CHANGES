@@ -1,3 +1,12 @@
+2019-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRC_MAKEFILE:
+	for platforms where "make" doesn't know about archive rules, sleep a second
+	after updating the archive to help "make" know that it may be older than
+	the next object to be compiled.
+
+	* AcSplit/CF_MAKE_AR_RULES: update description
+
 2019-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKE_AR_RULES:
