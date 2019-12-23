@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20191220
+MANIFEST for my-autoconf, version t20191222
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -328,6 +328,7 @@ AcSplit/CF_PATH_PROG            check for program-path, defining related xxx_PAT
 AcSplit/CF_PATH_SYNTAX          check pathname syntax for CF_WITH_PATH and CF_WITH_PATHLIST
 AcSplit/CF_PDCURSES_W32         configure-check for cross-compiling with pdcurses
 AcSplit/CF_PDCURSES_X11         check for PDCurses' XCurses library
+AcSplit/CF_PIC_HACK             check if the compiler produces objects which will not link without some
 AcSplit/CF_PKG_CONFIG           check for the package-config script
 AcSplit/CF_POPEN_TEST           check for declaration of popen()
 AcSplit/CF_POSIX_C_SOURCE       split-out from CF_XOPEN_SOURCE, and improved (takes into account value of
