@@ -1,0 +1,28 @@
+dnl CF_TRIM_LDFLAGS version: 1 updated: 2019/12/26 19:50:12
+dnl ---------------
+dnl When building a package containing a development library, some of the
+dnl packager's LDFLAGS are useful; others cause problems.  (Try to) filter
+dnl out the common nuisances.
+AC_DEFUN([CF_TRIM_LDFLAGS],
+[
+TRIMMED_LDFLAGS=
+cf_save=
+for cf_opt in $LDFLAGS
+do
+	case "x$cf_opt" in
+	x-R)
+		TRIMMED_LDFLAGS="$TRIMMED_LDFLAGS $cf_opt"
+		cf_save=$cf_opt
+		;;
+	x-l*|x-L*|x-R*)
+		TRIMMED_LDFLAGS="$TRIMMED_LDFLAGS $cf_opt"
+		cf_save=
+		;;
+	*)
+		test -n "$cf_save" && TRIMMED_LDFLAGS="$TRIMMED_LDFLAGS $cf_opt"
+		cf_save=
+		;;
+	esac
+done
+AC_SUBST(TRIMMED_LDFLAGS)
+])dnl

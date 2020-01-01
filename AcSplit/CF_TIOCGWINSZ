@@ -1,4 +1,4 @@
-dnl CF_TIOCGWINSZ version: 5 updated: 2010/10/23 15:52:32
+dnl CF_TIOCGWINSZ version: 6 updated: 2019/12/31 20:39:42
 dnl -------------
 dnl On some systems ioctl(fd, TIOCGWINSZ, &size) will always return {0,0} until
 dnl ioctl(fd, TIOCSWINSZ, &size) is called to explicitly set the size of the
@@ -43,5 +43,5 @@ int main()
 		rm -f autoconf.h
 		CFLAGS="$cf_save_CFLAGS"])
 AC_MSG_RESULT($cf_cv_use_tiocgwinsz)
-test $cf_cv_use_tiocgwinsz != yes && AC_DEFINE(DONT_HAVE_SIGWINCH)
+test $cf_cv_use_tiocgwinsz != yes && AC_DEFINE(DONT_HAVE_SIGWINCH,1,[Define this to 1 for working TIOCGWINSZ])
 ])dnl

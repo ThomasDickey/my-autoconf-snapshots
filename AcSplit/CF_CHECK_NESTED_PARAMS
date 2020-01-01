@@ -1,4 +1,4 @@
-dnl CF_CHECK_NESTED_PARAMS version: 2 updated: 1997/08/28 23:57:55
+dnl CF_CHECK_NESTED_PARAMS version: 3 updated: 2019/12/31 20:39:42
 dnl ----------------------
 dnl Check if the compiler allows nested parameter lists (some don't)
 AC_DEFUN([CF_CHECK_NESTED_PARAMS],
@@ -11,5 +11,5 @@ AC_CACHE_VAL(cf_cv_nested_params,[
 	[cf_cv_nested_params=no])
 ])
 AC_MSG_RESULT($cf_cv_nested_params)
-test $cf_cv_nested_params = yes && AC_DEFINE(HAVE_NESTED_PARAMS)
+test $cf_cv_nested_params = yes && AC_DEFINE(HAVE_NESTED_PARAMS,1,[Define this to 1 if the compiler allows nested parameter lists])
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_PATH_MAILBOX version: 4 updated: 1998/04/01 11:39:13
+dnl CF_PATH_MAILBOX version: 5 updated: 2019/12/31 20:39:42
 dnl ---------------
 dnl Look for the directory that contains incoming mail.  I would check for an
 dnl actual mail-file, to verify this, but that is not always easy to arrange.
@@ -23,7 +23,7 @@ for cf_dir in \
     done
 fi
 if test -n "$DEFAULT_MAILBOX" ; then
-	AC_DEFINE_UNQUOTED(DEFAULT_MAILBOX,"$DEFAULT_MAILBOX")
+	AC_DEFINE_UNQUOTED(DEFAULT_MAILBOX,"$DEFAULT_MAILBOX",[Define this to the directory for incoming mailboxes])
 else
 	DEFAULT_MAILBOX=none
 fi

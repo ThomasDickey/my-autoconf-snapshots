@@ -1,4 +1,4 @@
-dnl CF_CPP_CONCATS version: 2 updated: 1997/08/28 23:57:55
+dnl CF_CPP_CONCATS version: 3 updated: 2019/12/31 20:39:42
 dnl --------------
 dnl Test for ANSI token expansion (used in 'assert').
 AC_DEFUN([CF_CPP_CONCATS],
@@ -12,5 +12,5 @@ AC_CACHE_VAL(cf_cv_cpp_concats,[
 	[cf_cv_cpp_concats=no])
 ])
 AC_MSG_RESULT($cf_cv_cpp_concats)
-test $cf_cv_cpp_concats = yes && AC_DEFINE(CPP_DOES_CONCAT)
+test $cf_cv_cpp_concats = yes && AC_DEFINE(CPP_DOES_CONCAT,1,[Define this to 1 for ansi token concatenation])
 ])dnl

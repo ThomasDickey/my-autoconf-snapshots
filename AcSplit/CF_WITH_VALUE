@@ -1,4 +1,4 @@
-dnl CF_WITH_VALUE version: 3 updated: 1998/04/01 11:39:13
+dnl CF_WITH_VALUE version: 4 updated: 2019/12/31 20:39:42
 dnl -------------
 dnl Wrapper for AC_ARG_WITH to ensure that if the user supplies a value, it is
 dnl not simply defaulting to yes/no.  Empty strings are ok if the macro is
@@ -9,5 +9,5 @@ dnl $3 = variable to inherit/override
 dnl $4 = default value, if any.
 AC_DEFUN([CF_WITH_VALUE],
 [CF_ARG_WITH($1,[$2],[$3],[$4])
- AC_DEFINE_UNQUOTED($3,"$withval")dnl
+ AC_DEFINE_UNQUOTED($3,"$withval",[Define a value for $1])dnl
 ])dnl

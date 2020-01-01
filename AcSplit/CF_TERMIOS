@@ -1,4 +1,4 @@
-dnl CF_TERMIOS version: 2 updated: 1997/08/28 23:57:55
+dnl CF_TERMIOS version: 3 updated: 2019/12/31 20:39:42
 dnl ----------
 dnl See if we can link with the termios functions tcsetattr/tcgetattr
 AC_DEFUN([CF_TERMIOS],
@@ -26,8 +26,8 @@ AC_CACHE_VAL(cf_cv_use_termios_h,[
 ])
 AC_MSG_RESULT($cf_cv_use_termios_h)
 if test $cf_cv_use_termios_h = yes; then
-	AC_DEFINE(HAVE_TERMIOS_H)
-	AC_DEFINE(HAVE_TCGETATTR)
-	AC_DEFINE(HAVE_TCSETATTR)
+	AC_DEFINE(HAVE_TERMIOS_H,1,[Define this to 1 if we have header termios.h])
+	AC_DEFINE(HAVE_TCGETATTR,1,[Define this to 1 if we have function tcgetattr])
+	AC_DEFINE(HAVE_TCSETATTR,1,[Define this to 1 if we have function tcsetattr])
 fi
 ])dnl

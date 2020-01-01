@@ -1,4 +1,4 @@
-dnl CF_SIG_ARGS version: 2 updated: 1997/08/28 23:57:55
+dnl CF_SIG_ARGS version: 3 updated: 2019/12/31 20:39:42
 dnl -----------
 dnl Check for systems that have signal-handlers prototyped with one argument
 dnl versus those with more than one argument, define the symbol SIG_ARGS to
@@ -17,5 +17,5 @@ do
 done
 ])
 AC_MSG_RESULT($cf_cv_sig_args)
-AC_DEFINE_UNQUOTED(SIG_ARGS,$cf_cv_sig_args)
+AC_DEFINE_UNQUOTED(SIG_ARGS,$cf_cv_sig_args,[Define this to 1 if signal handlers are prototyped with more than one argument])
 ])dnl

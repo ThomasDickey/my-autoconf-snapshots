@@ -1,4 +1,4 @@
-dnl CF_PROG_GNAT version: 9 updated: 2019/09/21 18:08:42
+dnl CF_PROG_GNAT version: 10 updated: 2019/12/31 08:53:54
 dnl ------------
 dnl Check for gnat/gnatmake/etc, ensure that the toolset is complete.
 AC_DEFUN([CF_PROG_GNAT],[
@@ -12,14 +12,14 @@ do
 	eval cf_cv_PATH_$cf_upper_prog_gnat=[$]ac_cv_path_cf_TEMP_gnat
 
 	if test "x$cf_TEMP_gnat" != xno; then
-		unset cf_gnat_version
+		unset cf_cv_gnat_version
 		unset cf_TEMP_gnat
 		CF_GNAT_VERSION(cf_TEMP_gnat,$cf_prog_gnat)
 	fi
 	eval cf_cv_VERSION_$cf_upper_prog_gnat=[$]cf_TEMP_gnat
 
 	unset cf_TEMP_gnat
-	unset cf_gnat_version
+	unset cf_cv_gnat_version
 	unset ac_cv_path_cf_TEMP_gnat
 done
 
