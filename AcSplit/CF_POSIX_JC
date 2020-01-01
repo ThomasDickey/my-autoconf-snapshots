@@ -1,4 +1,4 @@
-dnl CF_POSIX_JC version: 3 updated: 2001/05/27 21:36:02
+dnl CF_POSIX_JC version: 4 updated: 2019/12/31 20:39:42
 dnl -----------
 dnl Check if we have POSIX-style job control (i.e., sigaction), or if we must
 dnl use the signal functions.  Use AC_CHECK_FUNCS(sigaction) first.
@@ -16,7 +16,7 @@ AC_TRY_COMPILE([
   [cf_cv_sigact_bad=no],[cf_cv_sigact_bad=yes])
 ])
 
-test "$cf_cv_sigact_bad" = yes && AC_DEFINE(SVR4_ACTION)
+test "$cf_cv_sigact_bad" = yes && AC_DEFINE(SVR4_ACTION,1,[Define this to 1 if sigaction needs _POSIX_SOURCE])
 
 AC_CACHE_CHECK(if we have sigaction/related functions,cf_cv_sigaction_funcs,[
 AC_TRY_LINK([
@@ -34,7 +34,7 @@ AC_TRY_LINK([
     [cf_cv_sigaction_funcs=yes],
     [cf_cv_sigaction_funcs=no])])
 
-test "$cf_cv_sigaction_funcs" = yes && AC_DEFINE(HAVE_POSIX_JC)
+test "$cf_cv_sigaction_funcs" = yes && AC_DEFINE(HAVE_POSIX_JC,1,[Define this to 1 if we have POSIX-style job-control functions])
 
 fi
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_POSIX_VDISABLE version: 6 updated: 2010/10/23 15:52:32
+dnl CF_POSIX_VDISABLE version: 7 updated: 2019/12/31 17:31:55
 dnl -----------------
 dnl Special test to workaround gcc 2.6.2, which cannot parse C-preprocessor
 dnl conditionals.
@@ -39,5 +39,5 @@ this did not work
 	)])
 ])
 AC_MSG_RESULT($cf_cv_posix_vdisable)
-test $cf_cv_posix_vdisable = yes && AC_DEFINE(HAVE_POSIX_VDISABLE)
+test $cf_cv_posix_vdisable = yes && AC_DEFINE(HAVE_POSIX_VDISABLE,1,[Define to 1 if POSIX VDISABLE symbol should be used])
 ])dnl

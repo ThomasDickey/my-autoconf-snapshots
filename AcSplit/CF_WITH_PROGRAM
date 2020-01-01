@@ -1,4 +1,4 @@
-dnl CF_WITH_PROGRAM version: 6 updated: 2008/03/23 14:48:54
+dnl CF_WITH_PROGRAM version: 7 updated: 2019/12/31 20:39:42
 dnl ---------------
 dnl Wrapper for AC_PATH_PROG, with command-line option.
 dnl Params:
@@ -21,8 +21,8 @@ AC_ARG_WITH($1,[$2],ifelse($3,,
    # user supplied option-value for "--with-$1=path"
    AC_MSG_CHECKING(for $1)
    ac_cv_path_]cf_path_name[="$withval"
-   AC_DEFINE_UNQUOTED(cf_path_name,"$withval")dnl
-   AC_DEFINE(cf_have_name)dnl
+   AC_DEFINE_UNQUOTED(cf_path_name,"$withval",[Define this to the pathname for $1])dnl
+   AC_DEFINE(cf_have_name,1,[Define this to 1 if the $1 program exists])dnl
    AC_MSG_RESULT($withval)
    ;;
  esac],[$3]),[

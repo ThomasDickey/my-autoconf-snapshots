@@ -1,4 +1,4 @@
-dnl CF_COMPTYPE version: 2 updated: 1997/08/28 23:57:55
+dnl CF_COMPTYPE version: 3 updated: 2019/12/31 20:39:42
 dnl -----------
 dnl Check if the compiler uses 'void *' for qsort's compare function parameters
 dnl (i.e., it's an ANSI prototype).
@@ -18,8 +18,8 @@ AC_CACHE_VAL(cf_cv_comptype,[
 ])
 AC_MSG_RESULT($cf_cv_comptype)
 if test $cf_cv_comptype = yes; then
-	AC_DEFINE(HAVE_COMPTYPE_VOID)
+	AC_DEFINE(HAVE_COMPTYPE_VOID,1,[Define this to 1 if qsort uses void*])
 else
-	AC_DEFINE(HAVE_COMPTYPE_CHAR)
+	AC_DEFINE(HAVE_COMPTYPE_CHAR,1,[Define this to 1 if qsort uses char*])
 fi
 ])dnl

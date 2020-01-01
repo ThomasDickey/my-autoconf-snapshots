@@ -1,4 +1,4 @@
-dnl CF_DEFAULT_SHELL version: 6 updated: 2005/09/29 07:32:03
+dnl CF_DEFAULT_SHELL version: 7 updated: 2019/12/31 20:39:42
 dnl ----------------
 dnl Look for a Bourne-shell compatible program from a list that we know about:
 dnl	ash	Almquist Shell (sh based)
@@ -79,5 +79,5 @@ Cannot find the default shell you specified: $cf_shell_progs)
 		AC_MSG_ERROR(Cannot use /bin/false because it does not exist)
 	fi
 fi
-AC_DEFINE_UNQUOTED(DEFAULT_SHELL,"$DEFAULT_SHELL")
+AC_DEFINE_UNQUOTED(DEFAULT_SHELL,"$DEFAULT_SHELL",[Define this to the default shell-program])
 ])dnl

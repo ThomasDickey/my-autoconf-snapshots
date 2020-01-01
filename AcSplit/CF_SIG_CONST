@@ -1,4 +1,4 @@
-dnl CF_SIG_CONST version: 4 updated: 2010/10/23 15:52:32
+dnl CF_SIG_CONST version: 5 updated: 2019/12/31 20:39:42
 dnl ------------
 dnl Check for systems where the special signal constants aren't prototyped
 dnl (there's a lot of them, and the compiler can generate a lot of warning
@@ -41,5 +41,5 @@ int main()
 fi
 ])
 AC_MSG_RESULT($cf_cv_sig_const)
-test "$cf_cv_sig_const" = yes && AC_DEFINE(DECL_SIG_CONST)
+test "$cf_cv_sig_const" = yes && AC_DEFINE(DECL_SIG_CONST,1,[Define this to 1 for redefinable signal constants])
 ])dnl

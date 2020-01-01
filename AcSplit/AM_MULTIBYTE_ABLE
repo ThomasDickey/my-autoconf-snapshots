@@ -1,4 +1,4 @@
-dnl AM_MULTIBYTE_ABLE version: 9 updated: 2013/12/06 19:12:41
+dnl AM_MULTIBYTE_ABLE version: 10 updated: 2019/12/31 20:39:42
 dnl -----------------
 dnl
 dnl check for required multibyte/widechar functions
@@ -105,7 +105,7 @@ AC_DEFUN([AM_MULTIBYTE_ABLE],
   ])
   if test "$am_cv_multibyte_able" != no; then
     if test "$am_cv_multibyte_able" = libutf8; then
-      AC_DEFINE(HAVE_LIBUTF8_H)
+      AC_DEFINE(HAVE_LIBUTF8_H,1,[Define this to 1 if we have header libutf8.h])
       LIBS="-lutf8 $LIBS"
     fi
     AC_DEFINE(MULTIBYTE_ABLE, 1,

@@ -1,4 +1,4 @@
-dnl CF_WITH_X11_RGB version: 1 updated: 2017/11/25 17:32:16
+dnl CF_WITH_X11_RGB version: 2 updated: 2019/12/31 08:53:54
 dnl ---------------
 dnl Handle configure option "--with-x11-rgb", setting these shell
 dnl variables:
@@ -74,7 +74,7 @@ fi
 
 AC_MSG_RESULT($RGB_PATH)
 AC_SUBST(RGB_PATH)
-AC_DEFINE_UNQUOTED(RGB_PATH,"$cf_path")
+AC_DEFINE_UNQUOTED(RGB_PATH,"$cf_path",[Define to the full pathname of rgb.txt])
 
 no_x11_rgb=
 if test "$RGB_PATH" = no
