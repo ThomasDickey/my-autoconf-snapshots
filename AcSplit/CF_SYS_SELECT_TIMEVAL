@@ -1,4 +1,4 @@
-dnl CF_SYS_SELECT_TIMEVAL version: 4 updated: 1997/12/16 11:22:31
+dnl CF_SYS_SELECT_TIMEVAL version: 5 updated: 2019/12/31 20:39:42
 dnl ---------------------
 dnl Check if there is a conflict between <sys/select.h> and <sys/time.h>.
 dnl This is known to be a problem with SCO.
@@ -36,5 +36,5 @@ AC_TRY_COMPILE([
 done
 ])
 AC_MSG_RESULT($cf_cv_sys_select_timeval)
-test $cf_cv_sys_select_timeval = yes && AC_DEFINE(NEED_TIMEVAL_FIX)
+test $cf_cv_sys_select_timeval = yes && AC_DEFINE(NEED_TIMEVAL_FIX,1,[Define this to 1 if sys/time.h conflicts with sys/select.h])
 ])

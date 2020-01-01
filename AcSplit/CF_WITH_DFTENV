@@ -1,4 +1,4 @@
-dnl CF_WITH_DFTENV version: 5 updated: 2019/01/26 18:33:16
+dnl CF_WITH_DFTENV version: 6 updated: 2019/12/31 20:39:42
 dnl --------------
 dnl Wrapper for AC_ARG_WITH to inherit/override an environment variable's
 dnl "#define" in the compile.
@@ -15,5 +15,5 @@ yes|no)
   ;;
 esac
 $3="$withval"
-AC_DEFINE_UNQUOTED($3,"[$]$3")dnl
+AC_DEFINE_UNQUOTED($3,"[$]$3",[Define $2])dnl
 ])dnl
