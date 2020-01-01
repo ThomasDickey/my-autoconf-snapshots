@@ -4,12 +4,14 @@ dnl Top-level macro for configuring an application with a bundled copy of
 dnl the pcre library.
 dnl
 dnl $1 specifies the top of the directory containing PCRE's include, lib dirs.
+dnl    That is assigned to $cf_pcre_home, which may be updated.
 AC_DEFUN([CF_BUNDLED_PCRE],
 [
 cf_pcre_home=$1
 PCREDIR_MAKE=
 PCREDIR_LIBS=
 PCREDIR_CPPFLAGS=
+
 case .$cf_pcre_home in #(vi
 .no) #(vi
 	# setup to compile the bundled PCRE:
@@ -20,8 +22,21 @@ case .$cf_pcre_home in #(vi
 	AC_SUBST(PCRE_DEFINES)
 	;;
 .yes) #(vi
-	PCREDIR_MAKE='#'
-	PCREDIR_LIBS="-lpcre"
+	CF_FIND_PCRE(
+		cf_pcre_cppflags,
+		cf_pcre_libs,
+		[
+			PCREDIR_MAKE='#'
+			PCREDIR_LIBS="$cf_pcre_libs"
+			PCREDIR_CPPFLAGS="$cf_pcre_cppflags"
+		],[
+			CF_VERBOSE(using bundled pcre because no installed pcre was found)
+			AC_SUBST(PCRE_MAJOR)
+			AC_SUBST(PCRE_MINOR)
+			AC_SUBST(PCRE_DATE)
+			AC_SUBST(PCRE_DEFINES)
+			cf_pcre_home=no
+		])
 	;;
 .*)
 	CF_PATH_SYNTAX(cf_pcre_home)
@@ -30,6 +45,7 @@ case .$cf_pcre_home in #(vi
 	PCREDIR_CPPFLAGS="-I${cf_pcre_home}/include"
 	;;
 esac
+
 AC_SUBST(PCREDIR_MAKE)
 AC_SUBST(PCREDIR_LIBS)
 AC_SUBST(PCREDIR_CPPFLAGS)

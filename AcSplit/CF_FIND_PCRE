@@ -1,0 +1,45 @@
+dnl CF_FIND_PCRE version: 1 updated: 2020/01/01 16:29:19
+dnl ------------
+dnl Look for PCRE, to use instead of a bundled copy of PCRE.
+dnl
+dnl $1 = variable to set with PCRE's CPPFLAGS
+dnl $2 = variable to set with PCRE's LIBS
+dnl $3 = action to take on success
+dnl $4 = action to take on failure
+AC_DEFUN([CF_FIND_PCRE],[
+AC_REQUIRE([CF_PKG_CONFIG])
+
+cf_save_CFLAGS="$CFLAGS"
+cf_save_LIBS="$LIBS"
+cf_find_PCRE=yes
+
+CF_TRY_PKG_CONFIG(libpcre2,,[
+	CF_TRY_PKG_CONFIG(libpcre,,[
+		AC_CHECK_LIB(pcre,pcre_compile,[
+			CF_ADD_LIB(pcre)
+			AC_CHECK_LIB(pcre2-posix,regcomp,[
+				CF_ADD_LIB(pcre2-posix)],[
+					AC_CHECK_LIB(pcreposix,regcomp,[
+						CF_ADD_LIB(pcreposix)
+					],[
+						cf_find_PCRE=no
+					])
+				])
+			],[
+				cf_find_PCRE=no
+			])
+		])
+	])
+
+CFLAGS="$cf_save_CFLAGS"
+LIBS="$cf_save_LIBS"
+
+$1="$cf_pkgconfig_incs"
+$2="$cf_pkgconfig_libs"
+
+if test "$cf_find_PCRE" = yes; then
+	$3
+else
+	$4
+fi
+])dnl

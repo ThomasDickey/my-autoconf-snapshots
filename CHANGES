@@ -1,3 +1,11 @@
+2020-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_PCRE: ci-aclocal generated header
+
+	* AcSplit/CF_BUNDLED_PCRE:
+	use CF_FIND_PCRE for the normal --with-pcre case (no option value) in tin,
+	and use that to decide whether to fallback to the bundled pcre library.
+
 2019-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_MULTIBYTE_ABLE, AcSplit/CF_CHECK_NESTED_PARAMS, AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS, AcSplit/CF_DEFAULT_SHELL, AcSplit/CF_DEFINE_STRING, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER, AcSplit/CF_POSIX_JC, AcSplit/CF_PROG_SUM_R, AcSplit/CF_PW_GECOS, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST, AcSplit/CF_SYS_SELECT_TIMEVAL, AcSplit/CF_TERMIOS, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PROGRAM, AcSplit/CF_WITH_VALUE, AcSplit/CF_FCNTL_VS_IOCTL, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_WITH_ENCODINGS_DIR, AcSplit/CF_NL_LANGINFO_1STDAY, AcSplit/CF_FUNC_VASPRINTF, AcSplit/CF_GNUTLS, AcSplit/CF_PDCURSES_W32, AcSplit/CF_FOPEN_BIN_R, AcSplit/CF_WITH_X11_RGB:
