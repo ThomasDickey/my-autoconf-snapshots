@@ -1,4 +1,4 @@
-dnl CF_LEX_POINTER version: 1 updated: 2009/04/04 13:08:05
+dnl CF_LEX_POINTER version: 2 updated: 2020/01/05 20:03:16
 dnl --------------
 dnl Check if the lex/flex program accepts %pointer, for standard (POSIX) lex.
 AC_DEFUN([CF_LEX_POINTER],[
@@ -16,7 +16,7 @@ else
 cf_lex_pointer=no
 fi
 AC_MSG_RESULT($cf_lex_pointer)
-rm -f conftest.* $LEX_OUTPUT_ROOT.c
+rm -rf conftest.* $LEX_OUTPUT_ROOT.c
 if test "$cf_lex_pointer" != yes ; then
 	AC_MSG_WARN(Your $LEX program does not support POSIX %pointer.  Get flex.)
 fi
