@@ -1,0 +1,46 @@
+dnl CF_FIND_CANLOCK version: 1 updated: 2020/01/09 20:03:25
+dnl ---------------
+dnl Look for CANLOCK, to use instead of a bundled copy of CANLOCK.
+dnl
+dnl $1 = variable to set with CANLOCK's CPPFLAGS
+dnl $2 = variable to set with CANLOCK's LIBS
+dnl $3 = action to take on success
+dnl $4 = action to take on failure
+AC_DEFUN([CF_FIND_CANLOCK],[
+AC_REQUIRE([CF_PKG_CONFIG])
+
+cf_save_CFLAGS="$CFLAGS"
+cf_save_LIBS="$LIBS"
+cf_find_CANLOCK=yes
+
+CF_TRY_PKG_CONFIG(libcanlock3,,[
+	CF_TRY_PKG_CONFIG(libcanlock,,[
+		cf_pkgconfig_incs=
+		cf_pkgconfig_libs=
+		for cf_canlock_lib in canlock3 canlock
+		do
+			AC_CHECK_LIB($cf_canlock_lib,cl_clear_secret,[
+				cf_pkgconfig_libs="-l$cf_canlock_lib"
+				break
+			])
+		done
+		if test -z "$cf_pkgconfig_libs" ; then
+			cf_find_CANLOCK=no
+		else
+			AC_CHECK_HEADERS(libcanlock-3/canlock.h canlock.h)
+		fi
+		])
+	])
+
+CFLAGS="$cf_save_CFLAGS"
+LIBS="$cf_save_LIBS"
+
+$1="$cf_pkgconfig_incs"
+$2="$cf_pkgconfig_libs"
+
+if test "$cf_find_CANLOCK" = yes; then
+	$3
+else
+	$4
+fi
+])dnl

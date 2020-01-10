@@ -1,0 +1,54 @@
+dnl CF_BUNDLED_CANLOCK version: 1 updated: 2020/01/09 20:03:25
+dnl ------------------
+dnl Top-level macro for configuring an application with a bundled copy of
+dnl the canlock library.
+dnl
+dnl $1 specifies the top of the directory containing CANLOCK's include/lib dirs.
+dnl    That is assigned to $cf_canlock_home, which may be updated.
+AC_DEFUN([CF_BUNDLED_CANLOCK],
+[
+cf_canlock_home=$1
+CANDIR_MAKE=
+CANLIBS=
+CAN_CPPFLAGS=
+CAN_MAKEFILE=
+
+case .$cf_canlock_home in #(vi
+.no) #(vi
+	CF_VERBOSE(using bundled canlock)
+	CANLIBS='-L../libcanlock -lcanlock'
+	CAN_CPPFLAGS='-I$(top_builddir)/libcanlock/include -I$(top_srcdir)/libcanlock/include'
+	CAN_MAKEFILE='libcanlock/Makefile'
+	;;
+.yes) #(vi
+	CF_FIND_CANLOCK(
+		cf_canlock_cppflags,
+		cf_canlock_libs,
+		[
+			CANDIR_MAKE='#'
+			CANLIBS="$cf_canlock_libs"
+			CAN_CPPFLAGS="$cf_canlock_cppflags"
+			CF_VERBOSE(using installed canlock)
+		],[
+			CF_VERBOSE(using bundled canlock because no installed canlock was found)
+			CANLIBS='-L../libcanlock -lcanlock'
+			CAN_CPPFLAGS='-I$(top_builddir)/libcanlock/include -I$(top_srcdir)/libcanlock/include'
+			CAN_MAKEFILE='libcanlock/Makefile'
+		])
+	;;
+.*)
+	CF_PATH_SYNTAX(cf_canlock_home)
+	CANDIR_MAKE='#'
+	CANLIBS="-L${cf_canlock_home}/lib -lcanlock"
+	CAN_CPPFLAGS="-I${cf_canlock_home}/include"
+	CF_VERBOSE(using installed canlock $cf_canlock_home)
+	;;
+esac
+
+AC_DEFINE(USE_CANLOCK,1,[Define this to 1 to use Cancel-Locks])
+
+AC_SUBST(CANDIR_MAKE)
+AC_SUBST(CANLIBS)
+AC_SUBST(CAN_CPPFLAGS)
+AC_SUBST(CAN_MAKEFILE)
+])dnl

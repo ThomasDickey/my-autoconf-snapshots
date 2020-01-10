@@ -1,3 +1,8 @@
+2020-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_CANLOCK, AcSplit/CF_FIND_CANLOCK:
+	ci-aclocal generated header
+
 2020-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS: suppress -Winline (too noisy in gcc9)
