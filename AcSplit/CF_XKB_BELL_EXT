@@ -1,7 +1,11 @@
-dnl CF_XKB_BELL_EXT version: 4 updated: 2012/10/04 20:12:20
+dnl CF_XKB_BELL_EXT version: 5 updated: 2020/01/11 16:46:44
 dnl ---------------
 dnl Check for XKB bell extension
 AC_DEFUN([CF_XKB_BELL_EXT],[
+AC_REQUIRE([AC_PATH_XTRA])
+
+CF_SAVE_XTRA_FLAGS([CF_XKB_BELL_EXT])
+
 AC_CACHE_CHECK(for XKB Bell extension, cf_cv_xkb_bell_ext,[
 AC_TRY_LINK([
 #include <X11/Intrinsic.h>
@@ -14,4 +18,6 @@ AC_TRY_LINK([
 ],[cf_cv_xkb_bell_ext=yes],[cf_cv_xkb_bell_ext=no])
 ])
 test "$cf_cv_xkb_bell_ext" = yes && AC_DEFINE(HAVE_XKB_BELL_EXT,1,[Define 1 if we have XKB Bell extension])
+
+CF_RESTORE_XTRA_FLAGS([CF_XKB_BELL_EXT])
 ])

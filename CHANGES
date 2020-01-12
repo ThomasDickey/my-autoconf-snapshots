@@ -1,3 +1,20 @@
+2020-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
+	* AcSplit/CF_CONST_X_STRING: improve bracketing of save/restore
+
+	* AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	when test-compiling, ensure we're taking $X_CFLAGS into account
+
+	* AcSplit/CF_RESTORE_XTRA_FLAGS, AcSplit/CF_SAVE_XTRA_FLAGS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_SYSV, AcSplit/CF_XKB_BELL_EXT:
+	when test-compiling, ensure we're taking $X_CFLAGS into account
+
 2020-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_CANLOCK, AcSplit/CF_FIND_CANLOCK:
