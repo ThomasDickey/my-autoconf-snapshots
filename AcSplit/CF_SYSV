@@ -1,4 +1,4 @@
-dnl CF_SYSV version: 15 updated: 2012/10/04 05:24:07
+dnl CF_SYSV version: 16 updated: 2020/01/11 16:46:44
 dnl -------
 dnl Check if this is a SYSV platform, e.g., as used in <X11/Xos.h>, and whether
 dnl defining it will be helpful.  The following features are used to check:
@@ -13,6 +13,10 @@ dnl
 dnl c) compile with type definitions that differ on SYSV hosts from standard C.
 AC_DEFUN([CF_SYSV],
 [
+AC_REQUIRE([AC_PATH_XTRA])
+
+CF_SAVE_XTRA_FLAGS([CF_SYSV])
+
 AC_CHECK_HEADERS( \
 termios.h \
 stdlib.h \
@@ -59,4 +63,6 @@ sys_errlist[0] = "";		/* Cygwin mis-declares this */
 [cf_cv_sysv=no])
 ])
 test "$cf_cv_sysv" = yes && AC_DEFINE(SYSV,1,[Define to 1 if this is an SYSV system])
+
+CF_RESTORE_XTRA_FLAGS([CF_SYSV])
 ])dnl

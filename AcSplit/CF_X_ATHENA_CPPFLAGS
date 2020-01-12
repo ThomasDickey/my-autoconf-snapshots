@@ -1,9 +1,10 @@
-dnl CF_X_ATHENA_CPPFLAGS version: 6 updated: 2018/06/20 20:23:13
+dnl CF_X_ATHENA_CPPFLAGS version: 7 updated: 2020/01/11 17:15:41
 dnl --------------------
 dnl Normally invoked by CF_X_ATHENA, with $1 set to the appropriate flavor of
 dnl the Athena widgets, e.g., Xaw, Xaw3d, neXtaw.
 AC_DEFUN([CF_X_ATHENA_CPPFLAGS],
 [
+AC_REQUIRE([AC_PATH_XTRA])
 cf_x_athena_root=ifelse([$1],,Xaw,[$1])
 cf_x_athena_inc=""
 
@@ -14,10 +15,9 @@ for cf_path in default \
 	/usr/local
 do
 	if test -z "$cf_x_athena_inc" ; then
-		cf_save="$CPPFLAGS"
+		CF_SAVE_XTRA_FLAGS([CF_X_ATHENA_CPPFLAGS])
 		cf_test=X11/$cf_x_athena_root/SimpleMenu.h
 		if test $cf_path != default ; then
-			CPPFLAGS="$cf_save"
 			CF_APPEND_TEXT(CPPFLAGS,-I$cf_path/include)
 			AC_MSG_CHECKING(for $cf_test in $cf_path)
 		else
@@ -29,11 +29,10 @@ do
 			[cf_result=yes],
 			[cf_result=no])
 		AC_MSG_RESULT($cf_result)
+		CF_RESTORE_XTRA_FLAGS([CF_X_ATHENA_CPPFLAGS])
 		if test "$cf_result" = yes ; then
 			cf_x_athena_inc=$cf_path
 			break
-		else
-			CPPFLAGS="$cf_save"
 		fi
 	fi
 done
