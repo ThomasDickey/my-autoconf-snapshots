@@ -1,3 +1,8 @@
+2020-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA_CPPFLAGS:
+	fix the last change - CPPFLAGS was not updated properly
+
 2020-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc: sign
