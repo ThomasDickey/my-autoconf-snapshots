@@ -1,3 +1,12 @@
+2020-01-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_RESTARTABLE_PIPEREAD:
+	spelling-fixes
+
+2020-01-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_RESTARTABLE_PIPEREAD: fix typo in comment
+
 2020-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA_CPPFLAGS:

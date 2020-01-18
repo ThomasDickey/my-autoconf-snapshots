@@ -1,4 +1,4 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 14 updated: 2015/05/02 07:59:43
+dnl CF_MAWK_RUN_FPE_TESTS version: 15 updated: 2020/01/18 12:30:33
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
@@ -143,7 +143,7 @@ EOF
 	Please report this so I can fix this script to do it automatically.
 	CF_MAWK_MAINTAINER
 	You can continue with the build and the resulting mawk will be
-	useable, but getting FPE_TRAPS_ON correct eventually is best.
+	usable, but getting FPE_TRAPS_ON correct eventually is best.
 EOF
 fi
     ;;
@@ -160,7 +160,7 @@ EOF
     cat 1>&2 <<-EOF
     The program \`fpe_check' will not work for cross-compiling.
     You can continue with the build and the resulting mawk will be
-    useable, but getting FPE_TRAPS_ON correct eventually is best.
+    usable, but getting FPE_TRAPS_ON correct eventually is best.
 EOF
 	fi
     ;;
