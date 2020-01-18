@@ -1,4 +1,4 @@
-dnl CF_NSS_COMPAT version: 5 updated: 2015/04/15 19:08:48
+dnl CF_NSS_COMPAT version: 6 updated: 2020/01/18 12:30:18
 dnl -------------
 dnl Check for NSS compatible SSL libraries
 dnl $1 = the [optional] directory in which the library may be found
@@ -25,7 +25,7 @@ case "$1" in
 			CF_VERBOSE(assume it is in $cf_ssl_root)
 			cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
 		else
-			AC_MSG_ERROR(cannot find NSS compilant libraries)
+			AC_MSG_ERROR(cannot find NSS compliant libraries)
 		fi
 	],
 	[-lnss_compat_ossl])
@@ -37,7 +37,7 @@ case "$1" in
 		elif test -d $1/../include ; then
 			cf_ssl_root=$1/..
 		else
-			AC_MSG_ERROR(cannot find NSS compilant library under $1)
+			AC_MSG_ERROR(cannot find NSS compliant library under $1)
 		fi
 		cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
 	else
@@ -57,7 +57,7 @@ fi
 CF_ADD_CFLAGS($cf_ssl_cflags)
 
 if test "$cf_ssl_subincs" = yes ; then
-AC_MSG_CHECKING(for NSS compilant include directory)
+AC_MSG_CHECKING(for NSS compliant include directory)
 AC_TRY_COMPILE([
 #include <stdio.h>
 #include <nss_compat_ossl/nss_compat_ossl.h>],
@@ -68,7 +68,7 @@ AC_MSG_RESULT($cf_ssl_incl)
 test "$cf_ssl_incl" = yes && AC_DEFINE(USE_NSS_COMPAT_INCL,1,[Define to 1 if we should use nss compatibility header])
 fi
 
-AC_MSG_CHECKING(if we can link to NSS compilant library)
+AC_MSG_CHECKING(if we can link to NSS compliant library)
 AC_TRY_LINK([
 #include <stdio.h>
 #ifdef USE_NSS_COMPAT_INCL
@@ -85,6 +85,6 @@ if test "$cf_ssl_library" = yes ; then
 	AC_DEFINE(USE_SSL,1,[Define to 1 if we should use SSL])
 	AC_DEFINE(USE_X509_SUPPORT,1,[Define to 1 if the SSL library provides X509 support])
 else
-	AC_MSG_ERROR(Cannot link with NSS compilant libraries)
+	AC_MSG_ERROR(Cannot link with NSS compliant libraries)
 fi
 ])dnl

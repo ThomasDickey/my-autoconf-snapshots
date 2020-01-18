@@ -1,10 +1,10 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 6 updated: 2012/10/06 11:17:15
+dnl CF_RESTARTABLE_PIPEREAD version: 8 updated: 2020/01/18 12:30:01
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
 dnl wait() as the test code.  apparently there is a POSIX change, which OSF/1
 dnl at least has adapted to, which says reads (or writes) on pipes for which no
-dnl data has been transferred are interruptable _regardless_ of the SA_RESTART
+dnl data has been transferred are interruptible _regardless_ of the SA_RESTART
 dnl bit.  yuck.
 AC_DEFUN([CF_RESTARTABLE_PIPEREAD],
 [
