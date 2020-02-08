@@ -1,3 +1,13 @@
+2020-02-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CHECK_DATA:
+	workaround to make tack run with cygwin: the broken-linker feature confused
+	this test because it tried taking the address of a function return-value.
+	The workaround tests if the symbol is #define'd, and in that case settles
+	for just being able to cast the result as a void*.  Thus, a check for
+	boolnames casts an address to an address.  Some additional work is needed
+	to deal with curses-data which is not already an address with nonzero value.
+
 2020-01-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_RESTARTABLE_PIPEREAD:
