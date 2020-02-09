@@ -1,0 +1,17 @@
+dnl CF__CURSES_DATA version: 2 updated: 2020/02/08 21:00:26
+dnl ---------------
+dnl Attempt to make a copy of a curses data item.  This is needed in the
+dnl check-data configure tests when using ncurses, because the symbol may be
+dnl actually a function return-value.  That could happen if the linker is
+dnl broken (does not resolve data-only references), or if ncurses is configured
+dnl to support re-entrant code.
+dnl $1 = target
+dnl $2 = source
+define([CF__CURSES_DATA],[
+#if defined($2) && ((defined(NCURSES_WRAPPED_VAR) && (NCURSES_VERSION_PATCH < 20200208)) || defined(NCURSES_BROKEN_LINKER) || defined(NCURSES_REENTRANT))
+	const void *$1 = (const void *)($2);
+#else
+	const void *$1 = &($2);
+#endif
+	fprintf(stderr, "testing linkage of $2:%p\n", (const void *)$1);
+])dnl

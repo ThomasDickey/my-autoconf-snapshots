@@ -1,3 +1,15 @@
+2020-02-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_CHECK_DATA: split-out CF__CURSES_DATA
+
+	* AcSplit/CF__CURSES_DATA: use const to quiet warnings in config.log
+
+	* AcSplit/CF_ENABLE_BROKEN_LINKER: ci-aclocal generated header
+
+	* AcSplit/CF_LINK_DATAONLY: for consistency, ac-subst "BROKEN_LINKER"
+
+	* AcSplit/CF__CURSES_DATA: ci-aclocal generated header
+
 2020-02-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CHECK_DATA:
