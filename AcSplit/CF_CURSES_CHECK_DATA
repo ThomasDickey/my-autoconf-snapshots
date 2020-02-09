@@ -1,4 +1,4 @@
-dnl CF_CURSES_CHECK_DATA version: 8 updated: 2020/02/07 21:09:36
+dnl CF_CURSES_CHECK_DATA version: 9 updated: 2020/02/08 21:00:26
 dnl --------------------
 dnl Check if curses.h defines the given data/variable.
 dnl Use this after CF_NCURSES_CONFIG or CF_CURSES_CONFIG.
@@ -11,13 +11,9 @@ for cf_data in $1
 do
 AC_MSG_CHECKING(for data $cf_data declaration in ${cf_cv_ncurses_header:-curses.h})
 
-AC_TRY_COMPILE(CF__CURSES_HEAD,[
-#ifdef $cf_data
-	void *foo = (void *)($cf_data)
-#else
-	void *foo = &($cf_data)
-#endif
-],[cf_result=yes
+AC_TRY_COMPILE(CF__CURSES_HEAD,
+CF__CURSES_DATA(foo,$cf_data)
+,[cf_result=yes
 ],[cf_result=no])
 AC_MSG_RESULT($cf_result)
 
@@ -33,12 +29,7 @@ else
 extern char $cf_data;
 int main(void)
 {
-#ifdef $cf_data
-	void *foo = (void *)($cf_data);
-#else
-	void *foo = &($cf_data);
-#endif
-	fprintf(stderr, "testing linkage of $cf_data:%p\n", (void *)foo);
+	]CF__CURSES_DATA(foo,$cf_data)[
 	${cf_cv_main_return:-return}(foo == 0);
 }],[cf_result=yes
 ],[cf_result=no],[
@@ -46,12 +37,7 @@ int main(void)
 	AC_TRY_LINK(CF__CURSES_HEAD
 [extern char $cf_data;],[
 	do {
-#ifdef $cf_data
-		void *foo = (void *)($cf_data);
-#else
-		void *foo = &($cf_data);
-#endif
-		fprintf(stderr, "testing linkage of $cf_data:%p\n", (void *)foo);
+		]CF__CURSES_DATA(foo,$cf_data)[
 		${cf_cv_main_return:-return}(foo == 0);
 	} while (0)
 ],[cf_result=yes],[cf_result=no])

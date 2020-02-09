@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20200207
+MANIFEST for my-autoconf, version t20200208
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -140,6 +140,7 @@ AcSplit/CF_DISABLE_LEAKS        the "--disable-leaks" option (ncurses)
 AcSplit/CF_DISABLE_LIBTOOL_VERSION  the "--disable-libtool-version" option
 AcSplit/CF_DISABLE_RPATH_HACK   option to disable rpath-hack
 AcSplit/CF_EBCDIC               test for ASCII vs EBCDIC
+AcSplit/CF_ENABLE_BROKEN_LINKER provide --enable-broken-linker option
 AcSplit/CF_ENABLE_NARROWPROTO   make -DNARROWPROTO configurable to work about botched Xorg "modular" build.
 AcSplit/CF_ENABLE_PC_FILES      the "--enable-pc-files" option.
 AcSplit/CF_ENABLE_RPATH         process "--enable-rpath" option
@@ -573,6 +574,7 @@ AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__ADD_SHLIB_DEFS      add shlib-definitions to makefile
 AcSplit/CF__ADD_SHLIB_RULES     add shlib-rules to makefile
 AcSplit/CF__CHECK_RUN           check if a simple configure try-run would fail, e.g., if the libraries
+AcSplit/CF__CURSES_DATA         this is the content for CF_CURSES_CHECK_DATA
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__DEFINE_LIB_TARGET   utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__DEFINE_SHLIB_VARS   utility for CF__ADD_SHLIB_RULES
