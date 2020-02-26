@@ -1,3 +1,11 @@
+2020-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	ncurses 6.2 config/pkg scripts may give -W linker options which are mishandled
+	by Apple's c89/c99 wrappers for clang.  Just filter out that special case to
+	allow applications to build (possibly not link, since Apple's wrapper precludes
+	that possibility).
+
 2020-02-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CHECK_DATA: split-out CF__CURSES_DATA
