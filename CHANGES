@@ -1,3 +1,7 @@
+2020-02-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG: improve workaround for "-W" option
+
 2020-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CONFIG:
