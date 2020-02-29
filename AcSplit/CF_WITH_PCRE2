@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE2 version: 2 updated: 2018/07/14 16:47:56
+dnl CF_WITH_PCRE2 version: 3 updated: 2020/02/29 16:09:19
 dnl -------------
 dnl Add PCRE2 (Perl-compatible regular expressions v2) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -36,6 +36,6 @@ if test "x$with_pcre2" != xno ; then
 	esac
 
 	# either way, check for the library header files
-	AC_CHECK_HEADERS(pcre2-posix.h pcreposix.h)
+	AC_CHECK_HEADERS(pcre2posix.h pcreposix.h)
 fi
 ])dnl
