@@ -1,3 +1,7 @@
+2020-03-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITHOUT_X: ci-aclocal generated header
+
 2020-02-29  anonymous.maarten
 
 	* AcSplit/CF_SHARED_OPTS: add a case for msys2+msvc
