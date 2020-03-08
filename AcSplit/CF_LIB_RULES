@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 88 updated: 2018/08/18 12:19:21
+dnl CF_LIB_RULES version: 89 updated: 2020/03/07 20:05:14
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -86,8 +86,13 @@ CF_EOF
 		for cf_item in $cf_LIST_MODELS
 		do
 			CF_LIB_SUFFIX($cf_item,cf_suffix,cf_depsuf)
-			cf_libname=$cf_dir
-			test "$cf_dir" = c++ && cf_libname=ncurses++
+			if test "$cf_dir" = "c++"
+			then
+				CF_MAP_LIB_BASENAME(cf_libname,cxx)
+			else
+				CF_MAP_LIB_BASENAME(cf_libname,$cf_dir)
+			fi
+			test -z "$cf_libname" && cf_libname="$cf_dir"
 			if test $cf_item = shared ; then
 				if test -n "${LIB_SUFFIX}"
 				then
@@ -265,8 +270,10 @@ CF_EOF
 					;;
 				esac
 			elif test $cf_dir = c++ ; then
-				cf_libname=ncurses++$USE_LIB_SUFFIX
+				CF_MAP_LIB_BASENAME(cf_libname,cxx)
+				cf_libname=${cf_libname}$USE_LIB_SUFFIX
 			else
+				CF_MAP_LIB_BASENAME(cf_libname,$cf_dir)
 				cf_libname=${cf_libname}$USE_LIB_SUFFIX
 			fi
 			if test -n "${USE_ARG_SUFFIX}" ; then

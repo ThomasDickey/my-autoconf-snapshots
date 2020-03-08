@@ -1,0 +1,10 @@
+dnl CF_MAP_LIB_BASENAME version: 1 updated: 2020/03/07 20:05:14
+dnl -------------------
+dnl Convert a default-libname to the actual one used via CF_WITH_LIB_BASENAME.
+dnl
+dnl $1 = variable to set
+dnl $2 = default-libname
+AC_DEFUN([CF_MAP_LIB_BASENAME],[
+CF_UPPER(cf_map_lib_basename,$2)
+eval $1=\$${cf_map_lib_basename}_NAME
+])dnl

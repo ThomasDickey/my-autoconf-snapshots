@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20200303
+MANIFEST for my-autoconf, version t20200307
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -265,6 +265,7 @@ AcSplit/CF_MANPAGE_RENAMES      determine (optionally) if we must rename manpage
 AcSplit/CF_MANPAGE_SYMLINKS     accept configure option for manpage symbolic links
 AcSplit/CF_MANPAGE_TBL          handle --with-manpage-tbl option (ncurses)
 AcSplit/CF_MAN_PAGES            derive a suitable install-process for man-pages
+AcSplit/CF_MAP_LIB_BASENAME     Convert a default-libname to the actual one used via CF_WITH_LIB_BASENAME
 AcSplit/CF_MATH_LIB             check if math libs are needed for math functions
 AcSplit/CF_MAWK_ADD_NO          mawk autoconf macro
 AcSplit/CF_MAWK_CC_FEATURES     mawk autoconf macro
@@ -519,6 +520,7 @@ AcSplit/CF_WITH_IMAKE_CFLAGS    combine AC_ARG_DISABLE and CF_IMAKE_CFLAGS (xter
 AcSplit/CF_WITH_INSTALL_PREFIX  option for --with-install-prefix (diffstat)
 AcSplit/CF_WITH_LIBTOOL         make option for libtool
 AcSplit/CF_WITH_LIBTOOL_OPTS    pass "-static" into libtool options (dialog)
+AcSplit/CF_WITH_LIB_BASENAME    Allow for overriding the basename of a library
 AcSplit/CF_WITH_LIB_PREFIX      configure option --with-lib-prefix
 AcSplit/CF_WITH_LOCALE_ALIAS    option to provide locale-alias file
 AcSplit/CF_WITH_MAN2HTML        configure option "--with-man2html" provides "man2html" as alternative to

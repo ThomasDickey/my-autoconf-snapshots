@@ -1,3 +1,11 @@
+2020-03-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
+	Allow for overriding the basename of a library
+
+	* AcSplit/CF_MAP_LIB_BASENAME, AcSplit/CF_WITH_LIB_BASENAME:
+	ci-aclocal generated header
+
 2020-03-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITHOUT_X: ci-aclocal generated header
