@@ -1,4 +1,4 @@
-dnl CF_UTMP_UT_NAME version: 6 updated: 2015/04/12 15:39:00
+dnl CF_UTMP_UT_NAME version: 7 updated: 2020/03/10 18:53:47
 dnl ---------------
 dnl Check if UTMP/UTMPX struct defines ut_name member
 AC_DEFUN([CF_UTMP_UT_NAME],
@@ -18,6 +18,8 @@ for cf_header in ut_name ut_user ; do
 	AC_TRY_COMPILE([$cf_utmp_includes],
 	[struct $cf_cv_have_utmp x;
 	 char *name = x.$cf_header;
+	 (void)x;
+	 (void)name;
 	],
 	[cf_cv_have_utmp_ut_name=$cf_header
 	 break])

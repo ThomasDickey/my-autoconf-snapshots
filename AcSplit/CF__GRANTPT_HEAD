@@ -1,8 +1,9 @@
-dnl CF__GRANTPT_HEAD version: 3 updated: 2012/01/29 17:13:14
+dnl CF__GRANTPT_HEAD version: 4 updated: 2020/03/10 18:53:47
 dnl ----------------
 dnl Headers for workability check of grantpt.
 define([CF__GRANTPT_HEAD],[
 #include <stdlib.h>
+#include <stdio.h>
 #include <termios.h>
 #include <unistd.h>
 #include <signal.h>
@@ -26,6 +27,7 @@ static void failed(int code)
 
 static void my_timeout(int sig)
 {
+	(void)sig;
 	exit(99);
 }
 ])

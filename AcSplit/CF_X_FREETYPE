@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 27 updated: 2015/04/12 15:39:00
+dnl CF_X_FREETYPE version: 28 updated: 2020/03/10 18:53:47
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -118,7 +118,7 @@ AC_TRY_LINK([
 #include <X11/Xlib.h>
 #include <X11/extensions/Xrender.h>
 #include <X11/Xft/Xft.h>],[
-	XftPattern  *pat = XftNameParse ("name");],
+	XftPattern  *pat = XftNameParse ("name"); (void)pat],
 	[cf_cv_found_freetype=yes],
 	[cf_cv_found_freetype=no])
 AC_MSG_RESULT($cf_cv_found_freetype)

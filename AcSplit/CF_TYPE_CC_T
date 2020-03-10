@@ -1,4 +1,4 @@
-dnl CF_TYPE_CC_T version: 2 updated: 2012/10/04 20:12:20
+dnl CF_TYPE_CC_T version: 3 updated: 2020/03/10 18:53:47
 dnl ------------
 dnl	Check for cc_t type, used in termio.
 AC_DEFUN([CF_TYPE_CC_T],
@@ -14,7 +14,7 @@ AC_CACHE_VAL(cf_cv_type_cc_t,[
 #include <sys/ioctl.h>
 #endif
 ],
-		[cc_t x],
+		[cc_t x; (void)x],
 		[cf_cv_type_cc_t=yes],
 		[cf_cv_type_cc_t=no])
 	])

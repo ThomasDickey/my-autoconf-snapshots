@@ -1,4 +1,4 @@
-dnl CF__GRANTPT_BODY version: 4 updated: 2012/05/07 19:39:45
+dnl CF__GRANTPT_BODY version: 5 updated: 2020/03/10 18:53:47
 dnl ----------------
 dnl Body for workability check of grantpt.
 define([CF__GRANTPT_BODY],[
@@ -9,6 +9,7 @@ define([CF__GRANTPT_BODY],[
 	char *slave;
 	struct termios tio;
 
+	(void)tio;
 	signal(SIGALRM, my_timeout);
 
 	if (alarm(2) == 9)

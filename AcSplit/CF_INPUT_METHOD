@@ -1,4 +1,4 @@
-dnl CF_INPUT_METHOD version: 3 updated: 2000/04/11 23:46:57
+dnl CF_INPUT_METHOD version: 4 updated: 2020/03/10 18:53:47
 dnl ---------------
 dnl Check if the X libraries support input-method
 AC_DEFUN([CF_INPUT_METHOD],
@@ -23,6 +23,8 @@ AC_TRY_LINK([
 	XGetIMValues(xim, XNQueryInputStyle, &xim_styles, NULL);
 	XCloseIM(xim);
 	input_style = (XIMPreeditNothing | XIMStatusNothing);
+	(void)xim_styles;
+	(void)input_style;
 }
 ],
 [cf_cv_input_method=yes],
