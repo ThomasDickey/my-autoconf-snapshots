@@ -1,4 +1,4 @@
-dnl CF_TYPE_FD_SET version: 5 updated: 2012/10/04 20:12:20
+dnl CF_TYPE_FD_SET version: 6 updated: 2020/03/10 18:53:47
 dnl --------------
 dnl Check for the declaration of fd_set.  Some platforms declare it in
 dnl <sys/types.h>, and some in <sys/select.h>, which requires <sys/types.h>.
@@ -12,20 +12,20 @@ AC_CACHE_CHECK(for declaration of fd_set,cf_cv_type_fd_set,
 	[CF_MSG_LOG(sys/types alone)
 AC_TRY_COMPILE([
 #include <sys/types.h>],
-	[fd_set x],
+	[fd_set x; (void)x],
 	[cf_cv_type_fd_set=sys/types.h],
 	[CF_MSG_LOG(X11/Xpoll.h)
 AC_TRY_COMPILE([
 #ifdef HAVE_X11_XPOLL_H
 #include <X11/Xpoll.h>
 #endif],
-	[fd_set x],
+	[fd_set x; (void)x],
 	[cf_cv_type_fd_set=X11/Xpoll.h],
 	[CF_MSG_LOG(sys/select.h)
 AC_TRY_COMPILE([
 #include <sys/types.h>
 #include <sys/select.h>],
-	[fd_set x],
+	[fd_set x; (void)x],
 	[cf_cv_type_fd_set=sys/select.h],
 	[cf_cv_type_fd_set=unknown])])])])
 if test $cf_cv_type_fd_set = sys/select.h ; then

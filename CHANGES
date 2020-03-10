@@ -1,3 +1,12 @@
+2020-03-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CONST_X_STRING, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_INPUT_METHOD, AcSplit/CF_LASTLOG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIGWINCH, AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_TERMIOS_TYPES, AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP, AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_XKB_KEYCODE_TO_KEYSYM, AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_FREETYPE, AcSplit/CF__GRANTPT_BODY, AcSplit/CF__GRANTPT_HEAD:
+	cleanup unnecessary unused-variable warnings
+
+	* AcSplit/CF_X_TOOLKIT:
+	AC_PATH_XTRA is supposed to set X_PRE_LIBS and X_EXTRA_LIBS;
+	use that to simplify this check
+
 2020-03-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:

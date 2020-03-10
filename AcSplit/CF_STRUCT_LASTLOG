@@ -1,4 +1,4 @@
-dnl CF_STRUCT_LASTLOG version: 2 updated: 2012/10/04 20:12:20
+dnl CF_STRUCT_LASTLOG version: 3 updated: 2020/03/10 18:53:47
 dnl -----------------
 dnl Check for header defining struct lastlog, ensure that its .ll_time member
 dnl is compatible with time().
@@ -11,7 +11,7 @@ AC_TRY_RUN([
 #include <time.h>
 #include <lastlog.h>
 
-int main()
+int main(void)
 {
 	struct lastlog data;
 	return (sizeof(data.ll_time) != sizeof(time_t));

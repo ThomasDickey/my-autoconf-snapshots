@@ -1,4 +1,4 @@
-dnl CF_X_ATHENA version: 23 updated: 2015/04/12 15:39:00
+dnl CF_X_ATHENA version: 24 updated: 2020/03/10 18:53:47
 dnl -----------
 dnl Check for Xaw (Athena) libraries
 dnl
@@ -74,7 +74,8 @@ AC_CACHE_CHECK(for usable $cf_x_athena/Xmu package,cf_cv_xaw_compat,[
 AC_TRY_LINK([
 #include <X11/Xmu/CharSet.h>
 ],[
-int check = XmuCompareISOLatin1("big", "small")
+int check = XmuCompareISOLatin1("big", "small");
+(void)check;
 ],[cf_cv_xaw_compat=yes],[cf_cv_xaw_compat=no])])
 
 			if test "$cf_cv_xaw_compat" = no

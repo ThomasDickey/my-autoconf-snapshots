@@ -1,4 +1,4 @@
-dnl CF_TERMIOS_TYPES version: 1 updated: 2019/07/21 08:54:39
+dnl CF_TERMIOS_TYPES version: 2 updated: 2020/03/10 18:53:47
 dnl ----------------
 dnl https://pubs.opengroup.org/onlinepubs/009695399/basedefs/termios.h.html
 dnl says that tcflag_t, speed_t and cc_t are typedef'd.  If they are not,
@@ -7,7 +7,7 @@ AC_DEFUN([CF_TERMIOS_TYPES],[
 
 AC_CACHE_CHECK(for termios type tcflag_t, cf_cv_havetype_tcflag_t,[
 	AC_TRY_COMPILE([#include <termios.h>],[
-		tcflag_t x = 0],
+		tcflag_t x = 0; (void)x],
 		[cf_cv_havetype_tcflag_t=yes],
 		[cf_cv_havetype_tcflag_t=no])
 ])
@@ -15,7 +15,7 @@ test "$cf_cv_havetype_tcflag_t" = no && AC_DEFINE(tcflag_t,unsigned long,[Define
 
 AC_CACHE_CHECK(for termios type speed_t, cf_cv_havetype_speed_t,[
 	AC_TRY_COMPILE([#include <termios.h>],[
-		speed_t x = 0],
+		speed_t x = 0; (void)x],
 		[cf_cv_havetype_speed_t=yes],
 		[cf_cv_havetype_speed_t=no])
 ])
@@ -23,7 +23,7 @@ test "$cf_cv_havetype_speed_t" = no && AC_DEFINE(speed_t,unsigned short,[Define 
 
 AC_CACHE_CHECK(for termios type cc_t, cf_cv_havetype_cc_t,[
 	AC_TRY_COMPILE([#include <termios.h>],[
-		cc_t x = 0],
+		cc_t x = 0; (void)x],
 		[cf_cv_havetype_cc_t=yes],
 		[cf_cv_havetype_cc_t=no])
 ])

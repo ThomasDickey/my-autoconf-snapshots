@@ -1,4 +1,4 @@
-dnl CF_REGEX version: 12 updated: 2015/04/18 08:56:57
+dnl CF_REGEX version: 13 updated: 2020/03/10 18:53:47
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
@@ -45,6 +45,8 @@ case $cf_regex_func in
 		AC_TRY_LINK([#include <$cf_regex_hdr>],[
 			char *p = compile("", "", "", 0);
 			int x = step("", "");
+			(void)p;
+			(void)x;
 		],[
 			cf_cv_regex_hdrs=$cf_regex_hdr
 			break
@@ -56,9 +58,11 @@ case $cf_regex_func in
 	do
 		AC_TRY_LINK([#include <sys/types.h>
 #include <$cf_regex_hdr>],[
-			regex_t *p;
+			regex_t *p = 0;
 			int x = regcomp(p, "", 0);
 			int y = regexec(p, "", 0, 0, 0);
+			(void)x;
+			(void)y;
 			regfree(p);
 		],[
 			cf_cv_regex_hdrs=$cf_regex_hdr

@@ -1,4 +1,4 @@
-dnl CF_TERMIO_C_ISPEED version: 3 updated: 2012/10/04 20:12:20
+dnl CF_TERMIO_C_ISPEED version: 4 updated: 2020/03/10 18:53:47
 dnl ------------------
 dnl Check for SGI's broken redefinition of baud rates introduced in IRIX 6.5
 dnl (there doesn't appear to be a useful predefined symbol).
@@ -11,6 +11,7 @@ AC_TRY_COMPILE([
 struct termio foo;
 foo.c_ispeed = B38400;
 foo.c_ospeed = B9600;
+(void)foo;
 ],[cf_cv_termio_c_ispeed=yes
 ],[cf_cv_termio_c_ispeed=no])
 ])

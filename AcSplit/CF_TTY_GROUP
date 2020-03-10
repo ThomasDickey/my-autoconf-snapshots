@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 9 updated: 2015/04/12 15:39:00
+dnl CF_TTY_GROUP version: 10 updated: 2020/03/10 18:53:47
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -83,7 +83,7 @@ AC_TRY_RUN([
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <grp.h>
-int main()
+int main(void)
 {
 	struct stat sb;
 	struct group *ttygrp = getgrnam(TTY_GROUP_NAME);

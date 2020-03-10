@@ -1,4 +1,4 @@
-dnl CF_UTMP version: 10 updated: 2012/10/04 20:12:20
+dnl CF_UTMP version: 11 updated: 2020/03/10 18:53:47
 dnl -------
 dnl Check for UTMP/UTMPX headers
 AC_DEFUN([CF_UTMP],
@@ -19,6 +19,8 @@ cf_utmp_includes="
 	AC_TRY_COMPILE([$cf_utmp_includes],
 	[struct $cf_header x;
 	 char *name = x.ut_name; /* utmp.h and compatible definitions */
+	 (void)x;
+	 (void)name;
 	],
 	[cf_cv_have_utmp=$cf_header
 	 break],
@@ -26,6 +28,8 @@ cf_utmp_includes="
 	AC_TRY_COMPILE([$cf_utmp_includes],
 	[struct $cf_header x;
 	 char *name = x.ut_user; /* utmpx.h must declare this */
+	 (void)x;
+	 (void)name;
 	],
 	[cf_cv_have_utmp=$cf_header
 	 break

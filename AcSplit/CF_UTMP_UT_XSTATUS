@@ -1,4 +1,4 @@
-dnl CF_UTMP_UT_XSTATUS version: 4 updated: 2012/10/04 20:12:20
+dnl CF_UTMP_UT_XSTATUS version: 5 updated: 2020/03/10 18:53:47
 dnl ------------------
 dnl Check for known variants on the UTMP/UTMPX struct's exit-status as reported
 dnl by various people:
@@ -23,7 +23,10 @@ do
 AC_TRY_COMPILE([
 #include <sys/types.h>
 #include <${cf_cv_have_utmp}.h>],
-	[struct $cf_cv_have_utmp x; long y = x.$cf_result = 0],
+	[struct $cf_cv_have_utmp x;
+	 long y = x.$cf_result = 0;
+	 (void)x;
+	 (void)y],
 	[cf_cv_have_utmp_ut_xstatus=$cf_result
 	 break],
 	[cf_cv_have_utmp_ut_xstatus=no])

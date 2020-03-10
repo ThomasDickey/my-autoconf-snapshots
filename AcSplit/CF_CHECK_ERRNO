@@ -1,4 +1,4 @@
-dnl CF_CHECK_ERRNO version: 12 updated: 2015/04/18 08:56:57
+dnl CF_CHECK_ERRNO version: 13 updated: 2020/03/10 18:53:47
 dnl --------------
 dnl Check for data that is usually declared in <stdio.h> or <errno.h>, e.g.,
 dnl the 'errno' variable.  Define a DECL_xxx symbol if we must declare it
@@ -16,7 +16,7 @@ AC_CACHE_CHECK(if external $1 is declared, cf_cv_dcl_$1,[
 #include <stdio.h>
 #include <sys/types.h>
 #include <errno.h> ],
-	ifelse([$2],,int,[$2]) x = (ifelse([$2],,int,[$2])) $1,
+	ifelse([$2],,int,[$2]) x = (ifelse([$2],,int,[$2])) $1; (void)x,
 	[cf_cv_dcl_$1=yes],
 	[cf_cv_dcl_$1=no])
 ])

@@ -1,4 +1,4 @@
-dnl AM_LANGINFO_CODESET version: 4 updated: 2015/04/18 08:56:57
+dnl AM_LANGINFO_CODESET version: 5 updated: 2020/03/10 18:53:47
 dnl -------------------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -11,7 +11,7 @@ AC_DEFUN([AM_LANGINFO_CODESET],
 [
 AC_CACHE_CHECK([for nl_langinfo and CODESET], am_cv_langinfo_codeset,
 	[AC_TRY_LINK([#include <langinfo.h>],
-	[char* cs = nl_langinfo(CODESET);],
+	[char* cs = nl_langinfo(CODESET); (void)cs],
 	am_cv_langinfo_codeset=yes,
 	am_cv_langinfo_codeset=no)
 	])

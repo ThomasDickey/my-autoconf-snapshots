@@ -1,4 +1,4 @@
-dnl CF_XKB_KEYCODE_TO_KEYSYM version: 2 updated: 2012/09/28 20:23:33
+dnl CF_XKB_KEYCODE_TO_KEYSYM version: 3 updated: 2020/03/10 18:53:47
 dnl ------------------------
 dnl Some older vendor-unix systems made a practice of delivering fragments of
 dnl Xkb, requiring test-compiles.
@@ -9,6 +9,7 @@ AC_TRY_COMPILE([
 #include <X11/XKBlib.h>
 ],[
     KeySym keysym = XkbKeycodeToKeysym((Display *)0, 0, 0, 0);
+	(void)keysym;
 ],[
 cf_cv_xkb_keycode_to_keysym=yes
 ],[

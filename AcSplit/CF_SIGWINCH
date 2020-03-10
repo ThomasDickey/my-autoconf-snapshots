@@ -1,4 +1,4 @@
-dnl CF_SIGWINCH version: 2 updated: 2019/03/23 19:54:44
+dnl CF_SIGWINCH version: 3 updated: 2020/03/10 18:53:47
 dnl -----------
 dnl Use this macro after CF_XOPEN_SOURCE, but do not require it (not all
 dnl programs need this test).
@@ -13,7 +13,7 @@ AC_CACHE_CHECK(if SIGWINCH is defined,cf_cv_define_sigwinch,[
 	AC_TRY_COMPILE([
 #include <sys/types.h>
 #include <sys/signal.h>
-],[int x = SIGWINCH],
+],[int x = SIGWINCH; (void)x],
 	[cf_cv_define_sigwinch=yes],
 	[AC_TRY_COMPILE([
 #undef _XOPEN_SOURCE
@@ -21,7 +21,7 @@ AC_CACHE_CHECK(if SIGWINCH is defined,cf_cv_define_sigwinch,[
 #undef _POSIX_C_SOURCE
 #include <sys/types.h>
 #include <sys/signal.h>
-],[int x = SIGWINCH],
+],[int x = SIGWINCH; (void)x],
 	[cf_cv_define_sigwinch=maybe],
 	[cf_cv_define_sigwinch=no])
 ])
@@ -43,7 +43,7 @@ do
 #if SIGWINCH != $cf_sigwinch
 make an error
 #endif
-int x = SIGWINCH],
+int x = SIGWINCH; (void)x],
 	[cf_cv_fixup_sigwinch=$cf_sigwinch
 	 break])
 
