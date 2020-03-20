@@ -1,4 +1,4 @@
-dnl CF_STRUCT_TERMIOS version: 9 updated: 2018/06/08 21:57:23
+dnl CF_STRUCT_TERMIOS version: 11 updated: 2020/03/19 20:46:13
 dnl -----------------
 dnl Some machines require _POSIX_SOURCE to completely define struct termios.
 AC_DEFUN([CF_STRUCT_TERMIOS],[
@@ -21,12 +21,12 @@ if test "$ac_cv_header_termios_h" = yes ; then
 	if test "$termios_bad" = maybe ; then
 	AC_MSG_CHECKING(whether termios.h needs _POSIX_SOURCE)
 	AC_TRY_COMPILE([#include <termios.h>],
-		[struct termios foo; int x = foo.c_iflag],
+		[struct termios foo; int x = foo.c_iflag = 1; (void)x],
 		termios_bad=no, [
 		AC_TRY_COMPILE([
 #define _POSIX_SOURCE
 #include <termios.h>],
-			[struct termios foo; int x = foo.c_iflag],
+			[struct termios foo; int x = foo.c_iflag = 2; (void)x],
 			termios_bad=unknown,
 			termios_bad=yes AC_DEFINE(_POSIX_SOURCE,1,[Define to 1 if we must define _POSIX_SOURCE]))
 			])

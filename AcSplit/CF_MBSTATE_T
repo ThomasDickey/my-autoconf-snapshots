@@ -1,4 +1,4 @@
-dnl CF_MBSTATE_T version: 4 updated: 2012/10/06 08:57:51
+dnl CF_MBSTATE_T version: 5 updated: 2020/03/19 20:23:48
 dnl ------------
 dnl Check if mbstate_t is declared, and if so, which header file.
 dnl This (including wchar.h) is needed on Tru64 5.0 to declare mbstate_t,
@@ -12,7 +12,7 @@ AC_TRY_COMPILE([
 #ifdef HAVE_LIBUTF8_H
 #include <libutf8.h>
 #endif],
-	[mbstate_t state],
+	[mbstate_t state; (void)state],
 	[cf_cv_mbstate_t=no],
 	[AC_TRY_COMPILE([
 #include <stdlib.h>
@@ -21,7 +21,7 @@ AC_TRY_COMPILE([
 #ifdef HAVE_LIBUTF8_H
 #include <libutf8.h>
 #endif],
-	[mbstate_t value],
+	[mbstate_t value; (void)value],
 	[cf_cv_mbstate_t=yes],
 	[cf_cv_mbstate_t=unknown])])])
 

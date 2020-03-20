@@ -1,4 +1,4 @@
-dnl CF_LARGEFILE version: 11 updated: 2018/06/20 20:23:13
+dnl CF_LARGEFILE version: 12 updated: 2020/03/19 20:23:48
 dnl ------------
 dnl Add checks for large file support.
 AC_DEFUN([CF_LARGEFILE],[
@@ -38,6 +38,7 @@ ifdef([AC_FUNC_FSEEKO],[
 		struct dirent64 *x = readdir((DIR *)0);
 		struct dirent *y = readdir((DIR *)0);
 		int z = x - y;
+		(void)z;
 		],
 		[cf_cv_struct_dirent64=yes],
 		[cf_cv_struct_dirent64=no])

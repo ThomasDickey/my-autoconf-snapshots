@@ -1,4 +1,4 @@
-dnl CF_UNION_WAIT version: 6 updated: 2012/10/06 08:57:51
+dnl CF_UNION_WAIT version: 7 updated: 2020/03/19 20:23:48
 dnl -------------
 dnl Check to see if the BSD-style union wait is declared.  Some platforms may
 dnl use this, though it is deprecated in favor of the 'int' type in Posix.
@@ -22,6 +22,9 @@ AC_CACHE_VAL(cf_cv_type_unionwait,[
 	 int y = WEXITSTATUS(x);
 	 int z = WTERMSIG(x);
 	 wait(&x);
+	 (void)x;
+	 (void)y;
+	 (void)z;
 	],
 	[cf_cv_type_unionwait=no
 	 echo compiles ok w/o union wait 1>&AC_FD_CC
@@ -35,6 +38,13 @@ AC_CACHE_VAL(cf_cv_type_unionwait,[
 	 int z = WTERMSIG(x);
 #endif
 	 wait(&x);
+	 (void)x;
+#ifdef WEXITSTATUS
+	 (void)y;
+#endif
+#ifdef WTERMSIG
+	 (void)z;
+#endif
 	],
 	[cf_cv_type_unionwait=yes
 	 echo compiles ok with union wait and possibly macros too 1>&AC_FD_CC

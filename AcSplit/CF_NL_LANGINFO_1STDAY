@@ -1,4 +1,4 @@
-dnl CF_NL_LANGINFO_1STDAY version: 2 updated: 2019/12/31 15:39:51
+dnl CF_NL_LANGINFO_1STDAY version: 3 updated: 2020/03/19 20:23:48
 dnl ---------------------
 dnl glibc locale support has runtime extensions which might be implemented in
 dnl other systems.
@@ -11,6 +11,8 @@ AC_CACHE_CHECK(if runtime has nl_langinfo support for first weekday,
 ],[
 	int first_weekday = nl_langinfo (_NL_TIME_FIRST_WEEKDAY)[0];
 	long week_1stday_l = (long) nl_langinfo (_NL_TIME_WEEK_1STDAY);
+	(void) first_weekday;
+	(void) week_1stday_l;
 ],[cf_nl_langinfo_1stday=yes
 ],[cf_nl_langinfo_1stday=no
 ])
