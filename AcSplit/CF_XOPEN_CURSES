@@ -1,4 +1,4 @@
-dnl CF_XOPEN_CURSES version: 14 updated: 2018/06/20 20:23:13
+dnl CF_XOPEN_CURSES version: 15 updated: 2020/03/19 20:23:48
 dnl ---------------
 dnl Test if we should define X/Open source for curses, needed on Digital Unix
 dnl 4.x, to see the extended functions, but breaks on IRIX 6.x.
@@ -24,7 +24,14 @@ AC_TRY_LINK([
 #endif
 	long x = winnstr(stdscr, "", 0);
 	int x1, y1;
-	getbegyx(stdscr, y1, x1)],
+#ifdef NCURSES_VERSION
+	(void)check2;
+#endif
+	getbegyx(stdscr, y1, x1);
+	(void)x;
+	(void)y1;
+	(void)x1;
+	],
 	[cf_cv_need_xopen_extension=none],
 	[
 	for cf_try_xopen_extension in _XOPEN_SOURCE_EXTENDED NCURSES_WIDECHAR
@@ -39,7 +46,14 @@ AC_TRY_LINK([
 #endif
 		long x = winnstr(stdscr, "", 0);
 		int x1, y1;
-		getbegyx(stdscr, y1, x1)],
+		getbegyx(stdscr, y1, x1);
+#ifdef NCURSES_VERSION
+		(void)check2;
+#endif
+		(void)x;
+		(void)y1;
+		(void)x1;
+		],
 		[cf_cv_need_xopen_extension=$cf_try_xopen_extension; break])
 	done
 	])

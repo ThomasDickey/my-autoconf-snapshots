@@ -1,4 +1,4 @@
-dnl CF_TERM_HEADER version: 4 updated: 2015/04/15 19:08:48
+dnl CF_TERM_HEADER version: 5 updated: 2020/03/19 20:23:48
 dnl --------------
 dnl Look for term.h, which is part of X/Open curses.  It defines the interface
 dnl to terminfo database.  Usually it is in the same include-path as curses.h,
@@ -19,7 +19,7 @@ do
 AC_TRY_COMPILE([#include <stdio.h>
 #include <${cf_cv_ncurses_header:-curses.h}>
 #include <$cf_test>
-],[int x = auto_left_margin],[
+],[int x = auto_left_margin; (void)x],[
 	cf_cv_term_header="$cf_test"],[
 	cf_cv_term_header=unknown
 	])

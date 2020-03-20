@@ -1,4 +1,4 @@
-dnl CF_SIZECHANGE version: 14 updated: 2018/06/20 20:23:13
+dnl CF_SIZECHANGE version: 16 updated: 2020/03/19 20:46:13
 dnl -------------
 dnl Check for definitions & structures needed for window size-changing
 dnl
@@ -41,13 +41,17 @@ do
 ],[
 #ifdef TIOCGSIZE
 	struct ttysize win;	/* SunOS 3.0... */
-	int y = win.ts_lines;
-	int x = win.ts_cols;
+	int y = win.ts_lines = 2;
+	int x = win.ts_cols = 1;
+	(void)y;
+	(void)x;
 #else
 #ifdef TIOCGWINSZ
 	struct winsize win;	/* everything else */
-	int y = win.ws_row;
-	int x = win.ws_col;
+	int y = win.ws_row = 2;
+	int x = win.ws_col = 1;
+	(void)y;
+	(void)x;
 #else
 	no TIOCGSIZE or TIOCGWINSZ
 #endif /* TIOCGWINSZ */
