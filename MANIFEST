@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20200319
+MANIFEST for my-autoconf, version t20200326
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -108,6 +108,7 @@ AcSplit/CF_CURSES_CHTYPE        Test if curses defines 'chtype' (td_lib)
 AcSplit/CF_CURSES_CONFIG        common macros for curses
 AcSplit/CF_CURSES_CPPFLAGS      check for curses/ncurses header file
 AcSplit/CF_CURSES_DATA          Test for curses data/types (td_lib)
+AcSplit/CF_CURSES_EXIT          combine checks for _nc_free_and_exit and curses_exit
 AcSplit/CF_CURSES_FUNCS         check for curses functions/macros (td_lib)
 AcSplit/CF_CURSES_HEADER        check for curses.h
 AcSplit/CF_CURSES_LIBS          check for standard (not ncurses!) curses libraries
