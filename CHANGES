@@ -1,3 +1,7 @@
+2020-03-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_EXIT: ci-aclocal generated header
+
 2020-03-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_SIZECHANGE, AcSplit/CF_STRUCT_TERMIOS:

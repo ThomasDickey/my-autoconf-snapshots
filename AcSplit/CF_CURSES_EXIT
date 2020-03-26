@@ -1,0 +1,12 @@
+dnl CF_CURSES_EXIT version: 1 updated: 2020/03/26 19:15:16
+dnl --------------
+dnl Check for ncurses memory-leak/debug feature.  Starting with ncurses 6.2,
+dnl the curses_exit() function is always present, simplifying linkage changes
+dnl when switching to/from a debug-library.
+AC_DEFUN([CF_CURSES_EXIT],
+[
+CF_CURSES_FUNCS(\
+curses_exit \
+_nc_free_and_exit \
+)
+])dnl
