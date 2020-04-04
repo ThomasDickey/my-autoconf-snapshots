@@ -1,3 +1,25 @@
+2020-04-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_CXXFLAGS: ci-aclocal generated header
+
+	* AcSplit/CF_ADD_CFLAGS: document parameters
+
+	* AcSplit/CF_CHECK_FVISIBILITY:
+	redo this as a configure-check, making it useful for C++ also
+
+2020-04-04  anonymous.maarten
+
+	* AcSplit/CF_AR_FLAGS: add case for msvc
+
+	* AcSplit/CF_CHECK_FVISIBILITY: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_PREFIX: add case for msvc
+
+	* AcSplit/CF_LIB_SUFFIX: add case for msvc (Microsoft Visual C++)
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SHARED_OPTS:
+	add case for msvcdll (Microsoft Visual C++ DLL)
+
 2020-03-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_EXIT: ci-aclocal generated header
