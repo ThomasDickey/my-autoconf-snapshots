@@ -1,4 +1,4 @@
-dnl CF_AR_FLAGS version: 6 updated: 2015/10/10 15:25:05
+dnl CF_AR_FLAGS version: 7 updated: 2020/04/04 11:37:29
 dnl -----------
 dnl Check for suitable "ar" (archiver) options for updating an archive.
 dnl
@@ -9,39 +9,55 @@ AC_DEFUN([CF_AR_FLAGS],[
 AC_REQUIRE([CF_PROG_AR])
 
 AC_CACHE_CHECK(for options to update archives, cf_cv_ar_flags,[
-	cf_cv_ar_flags=unknown
-	for cf_ar_flags in -curvU -curv curv -crv crv -cqv cqv -rv rv
-	do
+	case $cf_cv_system_name in
+	(*-msvc*)
+		cf_cv_ar_flags=''
+		cat >mk_static_lib.sh <<-EOF
+		#!$SHELL
+		MSVC_BIN="[$]AR"
+		out="\[$]1"
+		shift
+		exec \[$]MSVC_BIN -out:"\[$]out" \[$]@
+		EOF
+		chmod +x mk_static_lib.sh
+		AR=`pwd`/mk_static_lib.sh
+		;;
+	(*)
+		cf_cv_ar_flags=unknown
+		for cf_ar_flags in -curvU -curv curv -crv crv -cqv cqv -rv rv
+		do
 
-		# check if $ARFLAGS already contains this choice
-		if test "x$ARFLAGS" != "x" ; then
-			cf_check_ar_flags=`echo "x$ARFLAGS" | sed -e "s/$cf_ar_flags\$//" -e "s/$cf_ar_flags / /"`
-			if test "x$ARFLAGS" != "$cf_check_ar_flags" ; then
-				cf_cv_ar_flags=
-				break
+			# check if $ARFLAGS already contains this choice
+			if test "x$ARFLAGS" != "x" ; then
+				cf_check_ar_flags=`echo "x$ARFLAGS" | sed -e "s/$cf_ar_flags\$//" -e "s/$cf_ar_flags / /"`
+				if test "x$ARFLAGS" != "$cf_check_ar_flags" ; then
+					cf_cv_ar_flags=
+					break
+				fi
 			fi
-		fi
 
-		rm -f conftest.$ac_cv_objext
-		rm -f conftest.a
+			rm -f conftest.$ac_cv_objext
+			rm -f conftest.a
 
-		cat >conftest.$ac_ext <<EOF
+			cat >conftest.$ac_ext <<EOF
 #line __oline__ "configure"
 int	testdata[[3]] = { 123, 456, 789 };
 EOF
-		if AC_TRY_EVAL(ac_compile) ; then
-			echo "$AR $ARFLAGS $cf_ar_flags conftest.a conftest.$ac_cv_objext" >&AC_FD_CC
-			$AR $ARFLAGS $cf_ar_flags conftest.a conftest.$ac_cv_objext 2>&AC_FD_CC 1>/dev/null
-			if test -f conftest.a ; then
-				cf_cv_ar_flags=$cf_ar_flags
+			if AC_TRY_EVAL(ac_compile) ; then
+				echo "$AR $ARFLAGS $cf_ar_flags conftest.a conftest.$ac_cv_objext" >&AC_FD_CC
+				$AR $ARFLAGS $cf_ar_flags conftest.a conftest.$ac_cv_objext 2>&AC_FD_CC 1>/dev/null
+				if test -f conftest.a ; then
+					cf_cv_ar_flags=$cf_ar_flags
+					break
+				fi
+			else
+				CF_VERBOSE(cannot compile test-program)
 				break
 			fi
-		else
-			CF_VERBOSE(cannot compile test-program)
-			break
-		fi
-	done
-	rm -f conftest.a conftest.$ac_ext conftest.$ac_cv_objext
+		done
+		rm -f conftest.a conftest.$ac_ext conftest.$ac_cv_objext
+		;;
+	esac
 ])
 
 if test -n "$ARFLAGS" ; then

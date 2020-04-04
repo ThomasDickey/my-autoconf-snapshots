@@ -1,4 +1,4 @@
-dnl CF_LIB_PREFIX version: 12 updated: 2015/10/17 19:03:33
+dnl CF_LIB_PREFIX version: 13 updated: 2020/04/04 10:11:47
 dnl -------------
 dnl Compute the library-prefix for the given host system
 dnl $1 = variable to set
@@ -11,6 +11,9 @@ define([CF_LIB_PREFIX],
 		else
 			LIB_PREFIX=''
 		fi
+		;;
+	(*-msvc*)
+		LIB_PREFIX=''
 		;;
 	(*)	LIB_PREFIX='lib'
 		;;

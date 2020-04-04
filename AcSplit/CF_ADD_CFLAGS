@@ -1,7 +1,8 @@
-dnl CF_ADD_CFLAGS version: 13 updated: 2017/02/25 18:57:40
+dnl CF_ADD_CFLAGS version: 14 updated: 2020/04/04 16:16:13
 dnl -------------
 dnl Copy non-preprocessor flags to $CFLAGS, preprocessor flags to $CPPFLAGS
-dnl The second parameter if given makes this macro verbose.
+dnl $1 = flags to add
+dnl $2 = if given makes this macro verbose.
 dnl
 dnl Put any preprocessor definitions that use quoted strings in $EXTRA_CPPFLAGS,
 dnl to simplify use of $CPPFLAGS in compiler checks, etc., that are easily

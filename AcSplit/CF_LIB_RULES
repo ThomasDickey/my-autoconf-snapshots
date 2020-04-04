@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 89 updated: 2020/03/07 20:05:14
+dnl CF_LIB_RULES version: 90 updated: 2020/04/04 10:11:47
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -19,7 +19,7 @@ cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 
 case $cf_cv_shlib_version in
-(cygdll|msysdll|mingw)
+(cygdll|msysdll|mingw|msvcdll)
 	TINFO_NAME=$TINFO_ARG_SUFFIX
 	TINFO_SUFFIX=.dll
 	;;
@@ -147,6 +147,10 @@ CF_EOF
 					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 					cf_add_lib="../lib/lib${cf_libname}${cf_cygsuf}"
 					;;
+				(msvcdll)
+					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
+					cf_add_lib="../lib/${cf_libname}${cf_cygsuf}"
+					;;
 				(*)
 					cf_add_lib=
 					;;
@@ -242,7 +246,7 @@ CF_EOF
 			CXX_MODEL=$cf_ITEM
 			if test "$CXX_MODEL" = SHARED; then
 				case $cf_cv_shlib_version in
-				(cygdll|msysdll|mingw)
+				(cygdll|msysdll|mingw|msvcdll)
 					test "x$with_shared_cxx" = xno && CF_VERBOSE(overriding CXX_MODEL to SHARED)
 					with_shared_cxx=yes
 					;;

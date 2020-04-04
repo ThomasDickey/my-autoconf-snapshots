@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20200326
+MANIFEST for my-autoconf, version t20200404
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -27,6 +27,7 @@ AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally base
 AcSplit/CF_ADA_INCLUDE_DIRS     construct cpp options for ADA include-directories
 AcSplit/CF_ADD_ADAFLAGS         add to $ADAFLAGS, which is substituted into makefiles and scripts.
 AcSplit/CF_ADD_CFLAGS           copy new data into $CFLAGS and $CPPFLAGS
+AcSplit/CF_ADD_CXXFLAGS         wrapper for CF_ADD_CFLAGS which sets CXXFLAGS instead of CFLAGS
 AcSplit/CF_ADD_INCDIR           add include-directory
 AcSplit/CF_ADD_LIB              consistent assignments to $LIBS
 AcSplit/CF_ADD_LIBDIR           adds to the library-path (td_lib)
@@ -76,6 +77,7 @@ AcSplit/CF_CHECK_EXTERN_DATA    check for existence of an extern data item
 AcSplit/CF_CHECK_FD_SET         check existence of fd_set type
 AcSplit/CF_CHECK_FUNCDECL       macro to check a function given headers
 AcSplit/CF_CHECK_FUNCDECLS      macro to check one/more functions given headers
+AcSplit/CF_CHECK_FVISIBILITY    Check whether the compiler understands -fvisibility=hidden
 AcSplit/CF_CHECK_GETENV         check for fully-functional getenv
 AcSplit/CF_CHECK_GNAT_VERSION   check for known (old) versions of gnat which cannot build ncurses' Ada95
 AcSplit/CF_CHECK_GPM_WGETCH     check for gpm/ncurses linkage problem
