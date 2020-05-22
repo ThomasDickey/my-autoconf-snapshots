@@ -1,3 +1,11 @@
+2020-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_OPT_RDYNAMIC:
+	allow clang to support -rdynamic since current versions (checking MacOS
+	where this was a problem in 2014) appear to work.  This probably happened
+	as a side-effect of the other BSDs deprecating gcc in favor of clang,
+	which hadn't had much effect until 2018-2019.
+
 2020-04-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_CXXFLAGS: ci-aclocal generated header
