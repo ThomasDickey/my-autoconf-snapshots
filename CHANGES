@@ -1,3 +1,16 @@
+2020-05-23  anonymous.maarten
+
+	* AcSplit/CF_SHARED_OPTS:
+	for ncurses compiled with Visual Studio, generate a script "mk_prog.sh"
+	which translates the linker options in the $LINK_PROGS variable to
+	Visual Studio options.
+	See https://github.com/mirror/ncurses/pull/1
+	"Minimum required patches for building ncurses libraries on Visual Studio #1"
+
+2020-05-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_GNAT_VERSION: allow for gnat 10.x to 99.x
+
 2020-05-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_OPT_RDYNAMIC:
