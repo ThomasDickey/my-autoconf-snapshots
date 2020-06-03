@@ -1,3 +1,9 @@
+2020-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT:
+	allow the test-compile to use termcap.h, noting that only a couple of
+	special cases (which might conflict with each other) use this header.
+
 2020-05-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_GENERICS:

@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 22 updated: 2020/03/10 18:53:47
+dnl CF_FUNC_TGETENT version: 23 updated: 2020/06/02 20:17:00
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -28,6 +28,17 @@ then
 fi
 test -z "$cf_TERMVAR" && cf_TERMVAR=vt100
 
+# BSD termcap used no header file
+# SVr4 provided termcap prototypes as a legacy feature in term.h
+# GNU termcap provided termcap prototypes in termcap.h
+# ncurses provides termcap prototypes in both term.h and termcap.h
+#
+# The terminfo-based termcap interfaces do not provide a full tgetent (i.e., do
+# not return the text of the termcap entry in the buffer), but as a special
+# case, FreeBSD provides ncurses' termcap.h with a modified termcap reader that
+# returns the termcap text.
+AC_CHECK_HEADERS(termcap.h)
+
 AC_MSG_CHECKING(if we want full tgetent function)
 CF_ARG_DISABLE(full-tgetent,
 	[  --disable-full-tgetent  disable check for full tgetent function],
@@ -55,6 +66,9 @@ for cf_termlib in '' $cf_TERMLIB ; do
 	LIBS="$cf_save_LIBS"
 	test -n "$cf_termlib" && { CF_ADD_LIB($cf_termlib) }
 	AC_TRY_RUN([
+#ifdef HAVE_TERMCAP_H
+#include <termcap.h>
+#endif
 /* terminfo implementations ignore the buffer argument, making it useless for
  * the xterm application, which uses this information to make a new TERMCAP
  * environment variable.
