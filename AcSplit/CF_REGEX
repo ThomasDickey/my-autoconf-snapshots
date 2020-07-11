@@ -1,4 +1,4 @@
-dnl CF_REGEX version: 13 updated: 2020/03/10 18:53:47
+dnl CF_REGEX version: 14 updated: 2020/07/11 19:09:29
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
@@ -10,7 +10,7 @@ cf_regex_func=no
 cf_regex_libs="regex re"
 case $host_os in
 (mingw*)
-	cf_regex_libs="gnurx $cf_regex_libs"
+	cf_regex_libs="systre gnurx $cf_regex_libs"
 	;;
 esac
 
