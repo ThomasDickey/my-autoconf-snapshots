@@ -1,3 +1,11 @@
+2020-07-11  anonymous.maarten
+
+	* AcSplit/CF_SHARED_OPTS: specify subsystem for Visual Studio linking
+
+2020-07-11  juergen
+
+	* AcSplit/CF_REGEX: add systre for MinGW libs
+
 2020-07-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2020-07-10
