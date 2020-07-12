@@ -1,3 +1,7 @@
+2020-07-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2020-07-12
+
 2020-07-11  anonymous.maarten
 
 	* AcSplit/CF_SHARED_OPTS: specify subsystem for Visual Studio linking
