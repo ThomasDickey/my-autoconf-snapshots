@@ -1,26 +1,41 @@
-dnl CF_MAWK_MAX__INT_PROGRAM version: 4 updated: 2017/10/16 20:54:11
+dnl CF_MAWK_MAX__INT_PROGRAM version: 5 updated: 2020/07/30 17:24:25
 dnl ------------------------
-dnl C program to compute MAX__INT and MAX__LONG if looking at headers fails
+dnl C program to compute MAX__INT, MAX__LONG, MAX__UINT and MAX_ULONG if
+dnl looking at headers fails.
 AC_DEFUN([CF_MAWK_MAX__INT_PROGRAM],
 [[#include <stdio.h>
+#include <stdlib.h>
 int main(void)
-{ int y ; unsigned yu; long yy ;
-  FILE *out ;
+{
+	static int y ;
+	static unsigned yu;
+	static long yy ;
+	static unsigned long yyu ;
+	FILE *out ;
 
-    if ( !(out = fopen("conftest.out","w")) ) exit(1) ;
-    /* find max int and max long */
-    y = 0x1000 ;
-    while ( y > 0 ) { yu = y; y *= 2 ; }
-    fprintf(out,"MAX__INT  0x%x\n", y-1) ;
+	if ( !(out = fopen("conftest.out","w")) ) exit(1) ;
+	/* find max int and max long */
+	y = 0x1000 ;
+	while ( y > 0 ) { yu = y; y *= 2 ; }
+	fprintf(out,"MAX__INT  0x%x\n", y-1) ;
 
 	yu = yu - 1;
 	yu <<= 1;
 	yu |= 1;
-    fprintf(out,"MAX__UINT 0x%x\n", y-1) ;
+	yu <<= 1;
+	yu |= 1;
+	fprintf(out,"MAX__UINT 0x%xU\n", yu) ;
 
-    yy = 0x1000 ;
-    while ( yy > 0 ) yy *= 2 ;
-    fprintf(out,"MAX__LONG 0x%lx\n", yy-1) ;
-    exit(0) ;
-    return 0 ;
- }]])dnl
+	yy = 0x1000 ;
+	while ( yy > 0 ) { yyu = yy; yy *= 2 ; }
+	fprintf(out,"MAX__LONG 0x%lxL\n", yy-1) ;
+
+	yyu = yyu - 1;
+	yyu <<= 1;
+	yyu |= 1;
+	yyu <<= 1;
+	yyu |= 1;
+	fprintf(out,"MAX__ULONG 0x%lxUL\n", yyu) ;
+
+	${cf_cv_main_return:-return}(0);
+}]])dnl

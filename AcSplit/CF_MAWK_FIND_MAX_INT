@@ -1,21 +1,24 @@
-dnl CF_MAWK_FIND_MAX_INT version: 6 updated: 2017/10/16 20:54:11
+dnl CF_MAWK_FIND_MAX_INT version: 7 updated: 2020/07/30 17:25:18
 dnl --------------------
 dnl Try to find a definition of MAX__INT from limits.h else compute.
 AC_DEFUN([CF_MAWK_FIND_MAX_INT],
 [AC_CHECK_HEADER(limits.h,cf_limits_h=yes)
-if test "$cf_limits_h" = yes ; then :
+if test "x$cf_limits_h" = xyes ; then :
 else
 AC_CHECK_HEADER(values.h,cf_values_h=yes)
-   if test "$cf_values_h" = yes ; then
-   AC_TRY_RUN(
+	if test "x$cf_values_h" = xyes ; then
+	AC_TRY_RUN(
 [#include <values.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 int main(void)
 {   FILE *out = fopen("conftest.out", "w") ;
 	unsigned max_uint = 0;
-    if ( ! out ) exit(1) ;
-    fprintf(out, "MAX__INT  0x%x\n", MAXINT) ;
-    fprintf(out, "MAX__LONG 0x%lx\n", MAXLONG) ;
+	unsigned long max_ulong = 0;
+	if ( ! out ) exit(1) ;
+	fprintf(out, "MAX__INT  0x%x\n", MAXINT) ;
+	fprintf(out, "MAX__LONG 0x%lx\n", MAXLONG) ;
 #ifdef MAXUINT
 	max_uint = MAXUINT;	/* not likely (SunOS/Solaris lacks it) */
 #else
@@ -23,11 +26,19 @@ int main(void)
 	max_uint <<= 1;
 	max_uint |= 1;
 #endif
-    fprintf(out, "MAX__UINT 0x%lx\n", max_uint) ;
-    exit(0) ; return(0) ;
+	fprintf(out, "MAX__UINT 0x%lx\n", max_uint) ;
+#ifdef MAXULONG
+	max_ulong = MAXULONG;
+#else
+	max_ulong = MAXLONG;
+	max_ulong <<= 1;
+	max_ulong |= 1;
+#endif
+	fprintf(out, "MAX__ULONG 0x%lx\n", max_ulong) ;
+	${cf_cv_main_return:-return}(0);
 }
 ], cf_maxint_set=yes,[CF_MAWK_CHECK_LIMITS_MSG])
-   fi
+	fi
 if test "x$cf_maxint_set" != xyes ; then
 # compute it  --  assumes two's complement
 AC_TRY_RUN(CF_MAWK_MAX__INT_PROGRAM,:,[CF_MAWK_CHECK_LIMITS_MSG])

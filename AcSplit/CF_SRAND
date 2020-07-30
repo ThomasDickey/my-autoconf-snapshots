@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 13 updated: 2016/09/05 12:39:46
+dnl CF_SRAND version: 14 updated: 2020/07/30 16:32:36
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -52,7 +52,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
-		],[long x = $cf_cv_rand_max],,
+		],[long x = $cf_cv_rand_max; (void)x],,
 		[cf_cv_rand_max="(1UL<<$cf_rand_max)-1"])
 	])
 
@@ -61,10 +61,10 @@ if test "$cf_cv_srand_func" != unknown ; then
 		AC_MSG_CHECKING(if <bsd/stdlib.h> should be included)
 		AC_TRY_COMPILE([#include <bsd/stdlib.h>],
 					   [void *arc4random(int);
-						void *x = arc4random(1)],
+						void *x = arc4random(1); (void)x],
 					   [cf_bsd_stdlib_h=no],
 					   [AC_TRY_COMPILE([#include <bsd/stdlib.h>],
-									   [unsigned x = arc4random()],
+									   [unsigned x = arc4random(); (void)x],
 									   [cf_bsd_stdlib_h=yes],
 									   [cf_bsd_stdlib_h=no])])
 	    AC_MSG_RESULT($cf_bsd_stdlib_h)
@@ -75,10 +75,10 @@ if test "$cf_cv_srand_func" != unknown ; then
 			AC_MSG_CHECKING(if <bsd/random.h> should be included)
 			AC_TRY_COMPILE([#include <bsd/random.h>],
 						   [void *arc4random(int);
-							void *x = arc4random(1)],
+							void *x = arc4random(1); (void)x],
 						   [cf_bsd_random_h=no],
 						   [AC_TRY_COMPILE([#include <bsd/random.h>],
-										   [unsigned x = arc4random()],
+										   [unsigned x = arc4random(); (void)x],
 										   [cf_bsd_random_h=yes],
 										   [cf_bsd_random_h=no])])
 			AC_MSG_RESULT($cf_bsd_random_h)

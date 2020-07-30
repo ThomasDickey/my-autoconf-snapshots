@@ -1,3 +1,14 @@
+2020-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_FIND_MAX_INT: provide a definition for MAXULONG
+	also, minor test-cleanup
+
+	* AcSplit/CF_MAWK_MAX__INT_PROGRAM: provide a definition for MAX__ULONG
+	also, make the variables static, to work around buggy/unspecified behavior
+	in gcc-6 (if not static, the loop doesn't exit because "0 > 0"!).
+
+	* AcSplit/CF_SRAND: quiet some unused-variable warnings
+
 2020-07-25  anonymous.maarten
 
 	* AcSplit/CF_SHARED_OPTS:
