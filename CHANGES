@@ -1,3 +1,10 @@
+2020-08-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2020/08/17
+
+	* AcSplit/CF_SHARED_OPTS:
+	adapt Maarten's change to strip runtime-library options for msvc linker
+
 2020-07-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAWK_FIND_MAX_INT: provide a definition for MAXULONG
