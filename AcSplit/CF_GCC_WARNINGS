@@ -1,4 +1,4 @@
-dnl CF_GCC_WARNINGS version: 37 updated: 2020/01/05 20:04:12
+dnl CF_GCC_WARNINGS version: 38 updated: 2020/08/28 15:08:28
 dnl ---------------
 dnl Check if the compiler supports useful warning options.  There's a few that
 dnl we don't use, simply because they're too noisy:
@@ -41,7 +41,7 @@ then
 
 	AC_CHECKING([for $CC warning options])
 	cf_save_CFLAGS="$CFLAGS"
-	EXTRA_CFLAGS="-Wall"
+	EXTRA_CFLAGS="$EXTRA_CFLAGS -Wall"
 	for cf_opt in \
 		wd1419 \
 		wd1683 \
@@ -64,7 +64,6 @@ elif test "$GCC" = yes && test "$GCC_VERSION" != "unknown"
 then
 	AC_CHECKING([for $CC warning options])
 	cf_save_CFLAGS="$CFLAGS"
-	EXTRA_CFLAGS=
 	cf_warn_CONST=""
 	test "$with_ext_const" = yes && cf_warn_CONST="Wwrite-strings"
 	cf_gcc_warnings="Wignored-qualifiers Wlogical-op Wvarargs"
