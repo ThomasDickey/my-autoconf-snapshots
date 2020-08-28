@@ -1,0 +1,16 @@
+dnl CF_WITH_SCREEN_PDCURSES version: 1 updated: 2020/08/28 16:56:27
+dnl -----------------------
+dnl Call this macro before CF_ENABLE_WARNINGS for configure scripts which use
+dnl the "--with-screen=pdcurses" selection.  Doing that allows the configure
+dnl script to search for the X11/Xt header files to declare (or not) the
+dnl symbol needed to enable "const" in those header files.  If that configure
+dnl option is not used, then those checks are unnecessary.
+AC_DEFUN([CF_WITH_SCREEN_PDCURSES],[
+AC_PROVIDE([AC_PATH_XTRA])
+AC_PROVIDE([AC_PATH_X])
+if test -n "$with_screen" && test "x$with_screen" = "xpdcurses"
+then
+	AC_PATH_X
+	AC_PATH_XTRA
+fi
+])dnl

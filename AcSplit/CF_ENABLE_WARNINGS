@@ -1,9 +1,12 @@
-dnl CF_ENABLE_WARNINGS version: 5 updated: 2017/09/29 20:01:16
+dnl CF_ENABLE_WARNINGS version: 6 updated: 2020/08/28 04:10:22
 dnl ------------------
 dnl Configure-option to enable gcc warnings
 AC_DEFUN([CF_ENABLE_WARNINGS],[
 if ( test "$GCC" = yes || test "$GXX" = yes )
 then
+CF_FIX_WARNINGS(CFLAGS)
+CF_FIX_WARNINGS(CPPFLAGS)
+CF_FIX_WARNINGS(LDFLAGS)
 AC_MSG_CHECKING(if you want to turn on gcc warnings)
 CF_ARG_ENABLE(warnings,
 	[  --enable-warnings       test: turn on gcc compiler warnings],

@@ -1,3 +1,18 @@
+2020-08-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SCREEN_PDCURSES: ci-aclocal generated header
+
+	* AcSplit/CF_GCC_WARNINGS:
+	don't reset $EXTRA_CFLAGS, to work with updated CF_ENABLE_WARNINGS, etc.
+
+	* AcSplit/CF_FIX_WARNINGS:
+	ensure EXTRA_CFLAGS is substituted, and fix quoting of progress-messages
+
+	* AcSplit/CF_FIX_WARNINGS: ci-aclocal generated header
+
+	* AcSplit/CF_CLANG_COMPILER, AcSplit/CF_ENABLE_WARNINGS:
+	trim spurious gcc -Werror options which interfere with configure checks
+
 2020-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: add quoting
