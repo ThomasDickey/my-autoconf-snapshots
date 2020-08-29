@@ -1,3 +1,11 @@
+2020-08-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_ATTRIBUTES: g++ (i.e., $GXX) should be checked
+
+	* AcSplit/CF_ENABLE_WARNINGS:
+	ncurses (any library) should check for attributes whether or not warnings
+	are checked.
+
 2020-08-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SCREEN_PDCURSES: ci-aclocal generated header
