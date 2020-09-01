@@ -1,3 +1,7 @@
+2020-09-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MERGE_EXTRA_CFLAGS: RCS_BASE
+
 2020-08-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_ATTRIBUTES: g++ (i.e., $GXX) should be checked
