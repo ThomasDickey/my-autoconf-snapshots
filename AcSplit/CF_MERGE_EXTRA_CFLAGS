@@ -1,0 +1,12 @@
+dnl CF_MERGE_EXTRA_CFLAGS version: 1 updated: 2020/09/01 04:19:14
+dnl ---------------------
+dnl CF_FIX_WARNINGS moves problematic flags into EXTRA_CFLAGS, but some scripts
+dnl may depend on being able to override that variable at build-time.  Move it
+dnl all back.
+define([CF_MERGE_EXTRA_CFLAGS],[
+if ( test "$GCC" = yes || test "$GXX" = yes )
+then
+	CF_APPEND_TEXT(CFLAGS,$EXTRA_CFLAGS)
+	EXTRA_CFLAGS=
+fi
+])
