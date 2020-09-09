@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20200901
+MANIFEST for my-autoconf, version t20200908
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -263,6 +263,7 @@ AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS
 AcSplit/CF_MAKE_AR_RULES        check if 'make' understands archive-rules
 AcSplit/CF_MAKE_DOCS            generate makefile rules for generating documentation.
 AcSplit/CF_MAKE_INCLUDE         check for makefile include directive
+AcSplit/CF_MAKE_PHONY           check for make-program ".PHONY" feature
 AcSplit/CF_MAKE_TAGS            generate tags/TAGS targets for makefile depending if the filesystem supports
 AcSplit/CF_MANPAGE_FORMAT       determine (optionally) the manpage format
 AcSplit/CF_MANPAGE_RENAMES      determine (optionally) if we must rename manpage sections

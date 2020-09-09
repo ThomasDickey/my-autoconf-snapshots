@@ -1,4 +1,4 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 8 updated: 2020/01/18 12:30:01
+dnl CF_RESTARTABLE_PIPEREAD version: 9 updated: 2020/09/08 19:32:19
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
@@ -8,17 +8,22 @@ dnl data has been transferred are interruptible _regardless_ of the SA_RESTART
 dnl bit.  yuck.
 AC_DEFUN([CF_RESTARTABLE_PIPEREAD],
 [
+AC_REQUIRE([AC_TYPE_SIGNAL])
 AC_CACHE_CHECK(for restartable reads on pipes, cf_cv_can_restart_read,[
 AC_TRY_RUN(
 [/* Exit 0 (true) if wait returns something other than -1,
    i.e. the pid of the child, which means that wait was restarted
    after getting the signal.  */
+#ifdef HAVE_STDLIB_H
+#include <stdlib.h>
+#endif
+#ifdef HAVE_UNISTD_H
+#include <unistd.h>
+#endif
 #include <sys/types.h>
 #include <signal.h>
 #ifdef SA_RESTART
-sigwrapper(sig, disp)
-int sig;
-void (*disp)();
+static void sigwrapper(int sig, RETSIGTYPE (*disp)(int))
 {
     struct sigaction act, oact;
 
@@ -32,8 +37,8 @@ void (*disp)();
 #else
 # define sigwrapper signal
 #endif
-ucatch (isig) { }
-main () {
+RETSIGTYPE ucatch (int isig) { }
+int main (void) {
   int i, status;
   int fd[2];
   char buff[2];
