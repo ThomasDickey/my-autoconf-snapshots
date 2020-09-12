@@ -1,4 +1,4 @@
-dnl CF_REGEX version: 14 updated: 2020/07/11 19:09:29
+dnl CF_REGEX version: 15 updated: 2020/09/12 18:30:01
 dnl --------
 dnl Attempt to determine if we've got one of the flavors of regular-expression
 dnl code that we can support.
@@ -6,23 +6,33 @@ AC_DEFUN([CF_REGEX],
 [
 
 cf_regex_func=no
-
-cf_regex_libs="regex re"
+cf_regex_libs=
 case $host_os in
 (mingw*)
-	cf_regex_libs="systre gnurx $cf_regex_libs"
+	# -lsystre -ltre -lintl -liconv
+	AC_CHECK_LIB(systre,regcomp,[
+		AC_CHECK_LIB(iconv,libiconv_open,[CF_ADD_LIB(iconv)])
+		AC_CHECK_LIB(intl,libintl_gettext,[CF_ADD_LIB(intl)])
+		AC_CHECK_LIB(tre,tre_regcomp,[CF_ADD_LIB(tre)])
+		CF_ADD_LIB(systre)
+		cf_regex_func=regcomp
+	],[
+		AC_CHECK_LIB(gnurx,regcomp,cf_regex_func=regcomp)
+	])
+	;;
+(*)
+	cf_regex_libs="regex re"
+	AC_CHECK_FUNC(regcomp,[cf_regex_func=regcomp],[
+		for cf_regex_lib in $cf_regex_libs
+		do
+			AC_CHECK_LIB($cf_regex_lib,regcomp,[
+					CF_ADD_LIB($cf_regex_lib)
+					cf_regex_func=regcomp
+					break])
+		done
+	])
 	;;
 esac
-
-AC_CHECK_FUNC(regcomp,[cf_regex_func=regcomp],[
-	for cf_regex_lib in $cf_regex_libs
-	do
-		AC_CHECK_LIB($cf_regex_lib,regcomp,[
-				CF_ADD_LIB($cf_regex_lib)
-				cf_regex_func=regcomp
-				break])
-	done
-])
 
 if test "$cf_regex_func" = no ; then
 	AC_CHECK_FUNC(compile,[cf_regex_func=compile],[
