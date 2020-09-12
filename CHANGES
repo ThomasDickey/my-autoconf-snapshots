@@ -1,3 +1,8 @@
+2020-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REGEX:
+	change special case for mingw's systre/tre library to check for dependencies
+
 2020-09-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKE_PHONY: ci-aclocal generated header
