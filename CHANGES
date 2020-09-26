@@ -1,3 +1,7 @@
+2020-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REGEX: add gnurx to $LIBS on success
+
 2020-09-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REGEX:
