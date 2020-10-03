@@ -1,4 +1,4 @@
-dnl CF_WITH_ENCODINGS_DIR version: 5 updated: 2019/12/31 17:08:21
+dnl CF_WITH_ENCODINGS_DIR version: 6 updated: 2020/10/03 12:19:31
 dnl ---------------------
 dnl Configure option to specify the location of encodings.dir, for programs
 dnl that must read it directly.
@@ -14,10 +14,16 @@ CF_VERBOSE()
 case "x$ENCODINGS_DIR_FILE" in
 (xauto|xyes|xno)
 	ENCODINGS_DIR_FILE=unknown
-	for cf_path in \
-		/usr/X11*/lib/X11/fonts \
-		/usr/share/fonts/X11 \
-		/usr/share/X11/fonts
+	for cf_leaf in lib share
+	do
+		for cf_path in \
+			/usr/X11R7/$cf_leaf/X11/fonts \
+			/usr/X11R6/$cf_leaf/X11/fonts \
+			/usr/local/$cf_leaf/X11/fonts \
+			/opt/local/$cf_leaf/fonts/X11 \
+			/opt/X11/$cf_leaf/X11/fonts \
+			/usr/$cf_leaf/fonts/X11 \
+			/usr/$cf_leaf/X11/fonts
 		do
 			test -d "$cf_path" || continue
 			cf_encodings_dir=$cf_path/encodings/encodings.dir
@@ -27,6 +33,7 @@ case "x$ENCODINGS_DIR_FILE" in
 				break
 			fi
 		done
+	done
 	;;
 (*)
 	if test ! -f "$ENCODINGS_DIR_FILE" ; then

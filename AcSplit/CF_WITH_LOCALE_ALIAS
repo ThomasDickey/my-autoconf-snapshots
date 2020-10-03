@@ -1,4 +1,4 @@
-dnl CF_WITH_LOCALE_ALIAS version: 7 updated: 2015/07/06 17:59:27
+dnl CF_WITH_LOCALE_ALIAS version: 9 updated: 2020/10/03 12:19:31
 dnl --------------------
 dnl Configure option to specify the location of locale.alias, for programs that
 dnl must read it directly.
@@ -14,16 +14,18 @@ CF_VERBOSE()
 case "x$LOCALE_ALIAS_FILE" in
 (xauto|xyes|xno)
 	LOCALE_ALIAS_FILE=unknown
-	for cf_path in \
-		/usr/openwin/lib/locale \
-		/usr/lib/X11/locale \
-		/usr/share/X11/locale \
-		/usr/X11R7/lib/X11/locale \
-		/usr/X11R6/lib/X11/locale \
-		/usr/X11R5/lib/X11/locale \
-		/usr/X11/lib/X11/locale \
-		/usr/X11/share/X11/locale
+	for cf_leaf in lib share
+	do
+		for cf_path in \
+			/usr/openwin/$cf_leaf/locale \
+			/usr/$cf_leaf/X11/locale \
+			/usr/X11R7/$cf_leaf/X11/locale \
+			/usr/X11R6/$cf_leaf/X11/locale \
+			/opt/local/$cf_leaf/X11/locale \
+			/opt/X11/$cf_leaf/X11/locale \
+			/usr/X11/$cf_leaf/X11/locale
 		do
+			test -d $cf_path || continue
 			cf_alias_file=$cf_path/locale.alias
 			CF_VERBOSE(testing $cf_alias_file)
 			if test -f $cf_alias_file ; then
@@ -31,6 +33,8 @@ case "x$LOCALE_ALIAS_FILE" in
 				break
 			fi
 		done
+		test "$LOCALE_ALIAS_FILE" = unknown || break
+	done
 	;;
 (*)
 	if test ! -f "$LOCALE_ALIAS_FILE" ; then

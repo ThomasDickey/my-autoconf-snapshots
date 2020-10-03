@@ -1,3 +1,14 @@
+2020-10-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ENCODINGS_DIR: build-fixes for macOS
+
+	* AcSplit/CF_WITH_LOCALE_ALIAS:
+	make this less verbose, like the check for encodings directory
+
+	* AcSplit/CF_WITH_LOCALE_ALIAS:
+	OpenBSD puts locale.alias in a "share" directory rather than the conventional
+	"lib".  Search both.
+
 2020-09-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REGEX: add gnurx to $LIBS on success
