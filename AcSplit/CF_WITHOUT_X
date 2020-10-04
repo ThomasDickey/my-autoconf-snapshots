@@ -1,7 +1,10 @@
-dnl CF_WITHOUT_X version: 1 updated: 2020/03/03 18:27:24
+dnl CF_WITHOUT_X version: 2 updated: 2020/10/04 10:05:20
 dnl ------------
 dnl Use this to cancel the check for X headers/libraries which would be pulled
 dnl in via CF_GCC_WARNINGS.
 define([CF_WITHOUT_X],
+AC_DEFUN([AC_PATH_XTRA],[])
+AC_DEFUN([CF_SAVE_XTRA_FLAGS],[])
+AC_DEFUN([CF_RESTORE_XTRA_FLAGS],[])
 AC_DEFUN([CF_CONST_X_STRING],[echo "skipping X-const check";])dnl
 [])dnl

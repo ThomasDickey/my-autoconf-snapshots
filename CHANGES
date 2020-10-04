@@ -1,3 +1,8 @@
+2020-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITHOUT_X:
+	cancel some related macros, to simplify script for cindent
+
 2020-10-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ENCODINGS_DIR: build-fixes for macOS
