@@ -1,0 +1,22 @@
+dnl CF_CPP_DOES_COMMENTS version: 2 updated: 2020/10/11 15:32:45
+dnl --------------------
+dnl Check if the C preprocessor accepts a "-C" option for passing-through
+dnl comments.
+AC_DEFUN([CF_CPP_DOES_COMMENTS],
+[
+AC_CACHE_CHECK(if preprocessor ($CPP) has -C comment-option,cf_cv_cpp_does_comments,[
+cf_cv_cpp_does_comments=no
+cat >conftest.c <<CF_EOF
+void foobar(void)
+{
+	/* HELLO WORLD */
+}
+CF_EOF
+$CPP -C conftest.c >conftest.i 2>/dev/null
+if grep "HELLO WORLD" conftest.i >/dev/null
+then
+	cf_cv_cpp_does_comments=yes
+fi
+])
+test "$cf_cv_cpp_does_comments" = yes && AC_DEFINE(CPP_DOES_COMMENTS)
+])dnl

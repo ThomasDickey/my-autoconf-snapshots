@@ -1,3 +1,9 @@
+2020-10-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CPP_DOES_COMMENTS: filter out error-messages
+
+	* AcSplit/CF_CPP_DOES_COMMENTS: ci-aclocal generated header
+
 2020-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITHOUT_X:
