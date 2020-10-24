@@ -1,3 +1,10 @@
+2020-10-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BOOL_SIZE: in fallback, assume bool is unsigned
+
+	* AcSplit/CF_BOOL_SIZE:
+	use AC_CHECK_SIZEOF to get the actual size, which works when cross-compiling
+
 2020-10-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CPP_DOES_COMMENTS: filter out error-messages
