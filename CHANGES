@@ -1,3 +1,9 @@
+2020-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CLANG_COMPILER:
+	split-out check for -Qunused-arguments to ensure that clang supports it.
+	IBM xlclang does not (report by Steven Pitman)
+
 2020-10-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BOOL_SIZE: in fallback, assume bool is unsigned
