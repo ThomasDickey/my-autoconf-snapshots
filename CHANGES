@@ -1,3 +1,9 @@
+2020-11-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MIXEDCASE_FILENAMES:
+	when cross-compiling to darwin (macOS), assume the filesystem doesn't
+	support mixed-case (report by Eli Rykoff).
+
 2020-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CLANG_COMPILER:
