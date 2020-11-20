@@ -1,3 +1,8 @@
+2020-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CLANG_COMPILER:
+	add the compiler flags needed for testing (report by Steve Pitman)
+
 2020-11-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MIXEDCASE_FILENAMES:
