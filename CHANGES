@@ -1,3 +1,9 @@
+2020-12-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNAT_PROJECTS:
+	add symbols to allow commenting-out makefile rules using gnatmake or gprbuild
+	when one of those tools is absent
+
 2020-11-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CLANG_COMPILER:
