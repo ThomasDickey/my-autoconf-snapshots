@@ -1,3 +1,16 @@
+2020-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TD_TEST_MAKEFILES:
+	add dependencies which VPATH should have provided
+
+	* AcSplit/CF_SRC_MAKEFILE: use srcdir, for out-of-tree builds
+
+	* AcSplit/CF_BUILD_DIR: ci-aclocal generated header
+
+	* AcSplit/CF_TD_SRC_MAKEFILES: use $(top_srcdir) rather than ..
+
+	* AcSplit/CF_TD_TEST_MAKEFILES: use $(top_srcdir), rather than ..
+
 2020-12-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNAT_PROJECTS:

@@ -1,0 +1,9 @@
+dnl CF_BUILD_DIR version: 1 updated: 2020/12/06 15:33:41
+dnl ------------
+dnl Make an absolute symbol for the top of the build-tree.
+AC_DEFUN([CF_BUILD_DIR],
+[
+CDPATH=; export CDPATH
+BUILD_DIR=`pwd`
+AC_SUBST(BUILD_DIR)
+])dnl
