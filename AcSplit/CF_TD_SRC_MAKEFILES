@@ -1,4 +1,4 @@
-dnl CF_TD_SRC_MAKEFILES version: 4 updated: 1997/09/13 12:04:36
+dnl CF_TD_SRC_MAKEFILES version: 5 updated: 2020/12/06 15:33:41
 dnl -------------------
 dnl Append predefined lists to src/*/makefile.
 dnl
@@ -9,7 +9,7 @@ AC_DEFUN([CF_TD_SRC_MAKEFILES],
 [
 for cf_src in $cf_cv_src_modules
 do
-	CF_SRC_MAKEFILE($srcdir,src/$cf_src,../td_rules.mk)
+	CF_SRC_MAKEFILE($srcdir,src/$cf_src,\$(top_srcdir)/src/td_rules.mk)
 	echo "	cd $cf_src &&	\$(MAKE) \$(MAKE_OPTS) \[$]@" >>src/makefile
 done
 test -f $srcdir/src/makefile.end && \

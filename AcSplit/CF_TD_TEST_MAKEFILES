@@ -1,4 +1,4 @@
-dnl CF_TD_TEST_MAKEFILES version: 3 updated: 2010/10/23 15:52:32
+dnl CF_TD_TEST_MAKEFILES version: 5 updated: 2020/12/06 16:26:55
 dnl --------------------
 dnl Append predefined lists to test/*/makefile.
 dnl
@@ -58,10 +58,13 @@ BEGIN	{
 	cat >>$cf_out <<CF_EOF
 
 
-${make_include_left}../td_rules.mk${make_include_right}
+${make_include_left}\$(top_srcdir)/test/td_rules.mk${make_include_right}
+
+# Remind some make-programs that they found these using VPATH:
+\$(REF_FILES) :
+\$(SCRIPTS) :
 
 # Fix for SunOS VPATH
-
 CF_EOF
 ${AWK:-awk} <$q >>$cf_out '
 	{

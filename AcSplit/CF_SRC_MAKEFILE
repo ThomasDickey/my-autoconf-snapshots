@@ -1,4 +1,4 @@
-dnl CF_SRC_MAKEFILE version: 5 updated: 2019/12/18 19:06:19
+dnl CF_SRC_MAKEFILE version: 6 updated: 2020/12/06 16:26:55
 dnl ---------------
 dnl Append predefined lists to $2/makefile, given a path to a directory that
 dnl has a 'modules' file in $1.
@@ -19,7 +19,7 @@ BEGIN	{
 			printf "\nCSRC="
 			found = 1;
 		}
-		printf " \\\n\t%s.c", [$]1
+		printf " \\\n\t$(srcdir)/%s.c", [$]1
 	}
 END	{
 		print ""
