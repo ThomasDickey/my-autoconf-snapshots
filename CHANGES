@@ -1,3 +1,9 @@
+2020-12-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_MAN2HTML:
+	recent upgrade of groff caused it to overuse hyphenation at the expense
+	of readability.  suppress the feature.
+
 2020-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TD_TEST_MAKEFILES:
