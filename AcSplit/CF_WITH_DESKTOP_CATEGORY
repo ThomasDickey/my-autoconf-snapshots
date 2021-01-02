@@ -1,4 +1,4 @@
-dnl CF_WITH_DESKTOP_CATEGORY version: 6 updated: 2020/12/27 07:44:45
+dnl CF_WITH_DESKTOP_CATEGORY version: 8 updated: 2020/12/31 18:40:20
 dnl ------------------------
 dnl Taking into account the absence of standardization of desktop categories
 dnl take a look to see whether other applications on the current system are
@@ -41,11 +41,11 @@ then
 				do
 					read cf_desktop_path
 					test -z "$cf_desktop_path" && break
-					cf_desktop_name=`basename $cf_desktop_path .desktop`
+					cf_desktop_name=`basename "$cf_desktop_path" .desktop`
 					case $cf_desktop_name in
 					($1|*-$1|$2)
 						CF_VERBOSE(inspect $cf_desktop_path)
-						egrep '^Categories=' $cf_desktop_path | \
+						egrep '^Categories=' "$cf_desktop_path" | \
 							tr ';' '\n' | \
 							sed -e 's%^.*=%%' -e '/^$/d' >>conftest.1
 						;;
@@ -63,10 +63,10 @@ then
 				test -z "$cf_desktop_this" && break
 				if test -s conftest.2
 				then
-					grep -w "$cf_desktop_this" conftest.2 >/dev/null && continue 
+					grep -w "$cf_desktop_this" conftest.2 >/dev/null && continue
 				elif test -s conftest.3
 				then
-					grep -w "$cf_desktop_this" conftest.3 >/dev/null && continue 
+					grep -w "$cf_desktop_this" conftest.3 >/dev/null && continue
 				fi
 				case "$cf_desktop_this" in
 				(-*)
@@ -82,7 +82,7 @@ then
 				esac
 				cf_desktop_last=$cf_desktop_this
 			done
-			cf_desktop_want=`tr '\n' ';' < conftest.2`
+			cf_desktop_want="`tr '\n' ';' < conftest.2`"
 		fi
 		if test -n "$cf_desktop_want"
 		then

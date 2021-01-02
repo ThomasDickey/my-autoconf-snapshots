@@ -1,4 +1,4 @@
-dnl CF_WITH_SYMLINK version: 5 updated: 2014/07/21 17:30:38
+dnl CF_WITH_SYMLINK version: 6 updated: 2020/12/31 20:19:42
 dnl ---------------
 dnl If any of --program-prefix, --program-suffix or --program-transform-name is
 dnl given, accept an option tell the makefile to create a symbolic link, e.g.,
@@ -12,7 +12,7 @@ $1=NONE
 AC_SUBST($1)
 if test "$program_transform_name" != "CF__INIT_TRANSFORM" ; then
 cf_name=`echo "$program_transform_name" | sed -e '[s,\\$\\$,$,g]'`
-cf_name=`echo $2 |sed -e "$cf_name"`
+cf_name=`echo "$2" |sed -e "$cf_name"`
 AC_MSG_CHECKING(for symbolic link to create to $cf_name)
 AC_ARG_WITH(symlink,
 	[  --with-symlink=XXX      make symbolic link to installed application],
@@ -22,7 +22,7 @@ AC_MSG_RESULT($with_symlink)
 test "$with_symlink" = yes && with_symlink=$2
 test -n "$with_symlink" && \
 	test "$with_symlink" != no && \
-	test "$with_symlink" != $cf_name && \
+	test "$with_symlink" != "$cf_name" && \
 	$1="$with_symlink"
 else
 	with_symlink=$3

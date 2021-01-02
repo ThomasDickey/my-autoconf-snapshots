@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 7 updated: 2015/04/17 21:13:04
+dnl CF_VERSION_INFO version: 8 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -26,13 +26,13 @@ dnl $1 = internal name for package
 dnl $2 = external name for package
 AC_DEFUN([CF_VERSION_INFO],
 [
-if test -f $srcdir/VERSION ; then
+if test -f "$srcdir/VERSION" ; then
 	AC_MSG_CHECKING(for package version)
 
 	# if there are not enough fields, cut returns the last one...
-	cf_field1=`sed -e '2,$d' $srcdir/VERSION|cut -f1`
-	cf_field2=`sed -e '2,$d' $srcdir/VERSION|cut -f2`
-	cf_field3=`sed -e '2,$d' $srcdir/VERSION|cut -f3`
+	cf_field1=`sed -e '2,$d' "$srcdir/VERSION" |cut -f1`
+	cf_field2=`sed -e '2,$d' "$srcdir/VERSION" |cut -f2`
+	cf_field3=`sed -e '2,$d' "$srcdir/VERSION" |cut -f3`
 
 	# this is how CF_BUNDLED_INTL uses $VERSION:
 	VERSION="$cf_field1"

@@ -1,4 +1,4 @@
-dnl CF_STDIO_UNLOCKED version: 5 updated: 2015/05/15 19:42:24
+dnl CF_STDIO_UNLOCKED version: 6 updated: 2020/12/31 20:19:42
 dnl -----------------
 dnl The four functions getc_unlocked(), getchar_unlocked(), putc_unlocked(),
 dnl putchar_unlocked() are in POSIX.1-2001.
@@ -11,7 +11,7 @@ AC_DEFUN([CF_STDIO_UNLOCKED],
 [
 cf_stdio_unlocked=no
 AC_CHECK_FUNCS(ifelse([$1],,[getc_unlocked putc_unlocked],[$1]),
-	[cf_stdio_unlocked=$ac_func])
+	[cf_stdio_unlocked="$ac_func"])
 if test "$cf_stdio_unlocked" != no ; then
 	case "$CPPFLAGS" in
 	(*-D_REENTRANT*)

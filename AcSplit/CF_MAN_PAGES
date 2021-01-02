@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 47 updated: 2017/08/12 07:58:51
+dnl CF_MAN_PAGES version: 49 updated: 2021/01/01 16:53:59
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -113,7 +113,7 @@ case \$i in
 	fi
 
 	# replace variables in man page
-	if test ! -f $cf_man_alias ; then
+	if test ! -f "$cf_man_alias" ; then
 cat >>$cf_man_alias <<-CF_EOF2
 		s,@DATADIR@,\$datadir,g
 		s,@TERMINFO@,\${TERMINFO:="no default value"},g
@@ -127,7 +127,7 @@ CF_EOF
 	for cf_name in $1
 	do
 		cf_NAME=`echo "$cf_name" | sed y%abcdefghijklmnopqrstuvwxyz./-%ABCDEFGHIJKLMNOPQRSTUVWXYZ___%`
-		cf_name=`echo $cf_name|sed "$program_transform_name"`
+		cf_name=`echo "$cf_name" | sed "$program_transform_name"`
 cat >>$cf_edit_man <<-CF_EOF
 		s,@$cf_NAME@,$cf_name,g
 CF_EOF
@@ -151,8 +151,8 @@ CF_EOF
 if test "$MANPAGE_ALIASES" != no ; then
 cat >>$cf_edit_man <<CF_EOF
 	nCurses=ignore.3x
-	test $with_curses_h = yes && nCurses=ncurses.3x
-	aliases=\`sed -f \$top_srcdir/man/manlinks.sed \$inalias |sed -f $cf_man_alias | sort -u; test \$inalias = \$nCurses && echo curses\`
+	test "$with_curses_h" = yes && nCurses=ncurses.3x
+	aliases=\`sed -f \$top_srcdir/man/manlinks.sed \$inalias |sed -f "$cf_man_alias" | sort -u; test \$inalias = \$nCurses && echo curses\`
 CF_EOF
 fi
 
@@ -178,10 +178,10 @@ CF_EOF
 fi
 
 cat >>$cf_edit_man <<CF_EOF
-	sed	-f $cf_man_alias \\
+	sed	-f "$cf_man_alias" \\
 CF_EOF
 
-if test -f $MANPAGE_RENAMES ; then
+if test -f "$MANPAGE_RENAMES" ; then
 cat >>$cf_edit_man <<CF_EOF
 		< \$i | sed -f `pwd`/edit_man.sed >\$TMP
 CF_EOF
@@ -198,14 +198,14 @@ if test \$cf_tables = yes ; then
 fi
 CF_EOF
 
-if test $with_overwrite != yes ; then
+if test "$with_overwrite" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
 	sed -e "/\#[    ]*include/s,<curses.h,<ncurses$LIB_SUFFIX/curses.h," < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
 
-if test $with_curses_h != yes ; then
+if test "$with_curses_h" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
 	sed -e "/\#[    ]*include/s,curses.h,ncurses.h," < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
@@ -222,7 +222,7 @@ CF_EOF
 if test -n "$cf_compress" ; then
 cat >>$cf_edit_man <<CF_EOF
 	if test \$verb = installing ; then
-	if ( $cf_compress -f \$TMP )
+	if ( "$cf_compress" -f \$TMP )
 	then
 		mv \$TMP.$cf_so_strip \$TMP
 	fi
@@ -288,7 +288,7 @@ CF_EOF
 if test -n "$cf_compress" ; then
 cat >>$cf_edit_man <<CF_EOF
 						if test -n "$cf_so_strip" ; then
-							$cf_compress -f \$TMP
+							"$cf_compress" -f \$TMP
 							mv \$TMP.$cf_so_strip \$TMP
 						fi
 CF_EOF
@@ -328,7 +328,7 @@ cat >>$cf_edit_man <<CF_EOF
 esac
 done
 
-if test $cf_inboth = yes ; then
+if test "$cf_inboth" = yes ; then
 if test \$form != format ; then
 	$SHELL \[$]0 format \$verb \$mandir \$srcdir \[$]*
 fi
@@ -336,6 +336,6 @@ fi
 
 exit 0
 CF_EOF
-chmod 755 $cf_edit_man
+chmod 755 "$cf_edit_man"
 
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 11 updated: 2015/04/18 08:56:57
+dnl CF_MANPAGE_FORMAT version: 13 updated: 2021/01/01 16:53:59
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -28,7 +28,7 @@ MANPAGE_FORMAT=`echo "$MANPAGE_FORMAT" | sed -e 's/,/ /g'`
 
 cf_unknown=
 
-case $MANPAGE_FORMAT in
+case "$MANPAGE_FORMAT" in
 (unknown)
 	if test -z "$MANPATH" ; then
 		MANPATH="/usr/man:/usr/share/man"
@@ -45,7 +45,7 @@ case $MANPAGE_FORMAT in
 		test -z "$cf_dir" && cf_dir=/usr/man
 		for cf_name in $cf_dir/man*/$cf_example.[[01]]* $cf_dir/cat*/$cf_example.[[01]]* $cf_dir/man*/$cf_example $cf_dir/cat*/$cf_example
 		do
-			cf_test=`echo $cf_name | sed -e 's/*//'`
+			cf_test=`echo "$cf_name" | sed -e 's/*//'`
 			if test "x$cf_test" = "x$cf_name" ; then
 
 				case "$cf_name" in
@@ -76,7 +76,7 @@ case $MANPAGE_FORMAT in
 					cf_found=yes
 					;;
 				esac
-				test $cf_found=yes && break
+				test "$cf_found" = yes && break
 			fi
 		done
 		# only check the first directory in $MANPATH where we find manpages
@@ -90,7 +90,7 @@ case $MANPAGE_FORMAT in
 	;;
 (*)
 	for cf_option in $MANPAGE_FORMAT; do
-	case $cf_option in
+	case "$cf_option" in
 	(gzip|compress|BSDI|normal|formatted|catonly)
 		;;
 	(*)

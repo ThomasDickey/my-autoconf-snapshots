@@ -1,4 +1,4 @@
-dnl CF_FIND_SUB_INCDIR version: 2 updated: 2015/04/17 21:13:04
+dnl CF_FIND_SUB_INCDIR version: 3 updated: 2021/01/01 13:31:04
 dnl ------------------
 dnl Find an include-directory with the given leaf-name.  This is useful for
 dnl example with FreeBSD ports, which use this convention to distinguish
@@ -7,7 +7,7 @@ AC_DEFUN([CF_FIND_SUB_INCDIR],[
 	CF_SUBDIR_PATH(cf_search,$1,include)
 	for cf_item in $cf_search
 	do
-		case $cf_item in
+		case "$cf_item" in
 		(*/$1)
 			CF_ADD_INCDIR($cf_item)
 			;;

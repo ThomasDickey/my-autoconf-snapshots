@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 9 updated: 2015/04/17 21:13:04
+dnl CF_GXX_WARNINGS version: 10 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -111,7 +111,7 @@ then
 	CXXFLAGS="$cf_save_CXXFLAGS"
 fi
 
-rm -rf conftest*
+rm -rf ./conftest*
 AC_LANG_RESTORE
 AC_SUBST(EXTRA_CXXFLAGS)
 ])dnl

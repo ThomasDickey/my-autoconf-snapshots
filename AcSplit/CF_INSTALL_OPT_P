@@ -1,13 +1,13 @@
-dnl CF_INSTALL_OPT_P version: 1 updated: 2018/08/18 12:19:21
+dnl CF_INSTALL_OPT_P version: 3 updated: 2021/01/01 13:31:04
 dnl ----------------
 dnl Some install-programs accept a "-p" option to preserve file modification
 dnl timestamps.  That can be useful as an install option, as well as a way to
 dnl avoid the need for ranlib after copying a static archive.
 AC_DEFUN([CF_INSTALL_OPT_P],
 [
-: ${INSTALL:=install}
+: "${INSTALL:=install}"
 AC_CACHE_CHECK(if install accepts -p option, cf_cv_install_p,[
-	rm -rf conftest*
+	rm -rf ./conftest*
 	date >conftest.in
 	mkdir conftest.out
 	sleep 3
@@ -29,6 +29,6 @@ AC_CACHE_CHECK(if install accepts -p option, cf_cv_install_p,[
 	else
 		cf_cv_install_p=no
 	fi
-	rm -rf conftest*
+	rm -rf ./conftest*
 ])
 ])dnl

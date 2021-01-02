@@ -1,4 +1,4 @@
-dnl CF_GNAT_TRY_RUN version: 5 updated: 2011/03/19 14:47:45
+dnl CF_GNAT_TRY_RUN version: 6 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl Verify that a test program compiles and runs with GNAT
 dnl $cf_ada_make is set to the program that compiles/links
@@ -10,14 +10,14 @@ dnl $3 is the shell command to execute if successful
 dnl $4 is the shell command to execute if not successful
 AC_DEFUN([CF_GNAT_TRY_RUN],
 [
-rm -rf conftest* *~conftest*
+rm -rf ./conftest* ./*~conftest*
 cat >>conftest.ads <<CF_EOF
 $1
 CF_EOF
 cat >>conftest.adb <<CF_EOF
 $2
 CF_EOF
-if ( $cf_ada_make $ADAFLAGS conftest 1>&AC_FD_CC 2>&1 ) ; then
+if ( "$cf_ada_make" $ADAFLAGS conftest 1>&AC_FD_CC 2>&1 ) ; then
    if ( ./conftest 1>&AC_FD_CC 2>&1 ) ; then
 ifelse($3,,      :,[      $3])
 ifelse($4,,,[   else
@@ -26,5 +26,5 @@ ifelse($4,,,[   else
 ifelse($4,,,[else
    $4])
 fi
-rm -rf conftest* *~conftest*
+rm -rf ./conftest* ./*~conftest*
 ])dnl

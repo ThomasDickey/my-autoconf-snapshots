@@ -1,4 +1,4 @@
-dnl CF_WITH_PCRE2 version: 3 updated: 2020/02/29 16:09:19
+dnl CF_WITH_PCRE2 version: 4 updated: 2021/01/01 16:53:59
 dnl -------------
 dnl Add PCRE2 (Perl-compatible regular expressions v2) to the build if it is
 dnl available and the user requests it.  Assume the application will otherwise
@@ -23,7 +23,7 @@ if test "x$with_pcre2" != xno ; then
 	AC_DEFINE(HAVE_LIB_PCRE2,1,[Define to 1 if we can/should compile with the PCRE2 library])
 
 	# if pkgconfig gave no results, look for the libraries directly
-	case $LIBS in
+	case "$LIBS" in
 	(*pcre2-posix*|*pcreposix*)
 		;;
 	(*)

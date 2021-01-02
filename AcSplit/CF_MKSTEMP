@@ -1,4 +1,4 @@
-dnl CF_MKSTEMP version: 10 updated: 2017/01/21 11:12:16
+dnl CF_MKSTEMP version: 11 updated: 2021/01/01 13:31:04
 dnl ----------
 dnl Check for a working mkstemp.  This creates two files, checks that they are
 dnl successfully created and distinct (AmigaOS apparently fails on the last).
@@ -7,7 +7,7 @@ AC_CHECK_HEADERS( \
 unistd.h \
 )
 AC_CACHE_CHECK(for working mkstemp, cf_cv_func_mkstemp,[
-rm -rf conftest*
+rm -rf ./conftest*
 AC_TRY_RUN([
 #include <sys/types.h>
 #ifdef HAVE_UNISTD_H

@@ -1,4 +1,4 @@
-dnl CF_MAKE_PHONY version: 1 updated: 2020/09/08 21:08:52
+dnl CF_MAKE_PHONY version: 2 updated: 2020/12/31 20:19:42
 dnl -------------
 dnl Check if the make-program handles a ".PHONY" target, e.g,. a target which
 dnl acts as a placeholder.
@@ -58,7 +58,7 @@ CF_EOF
 				echo "no (case 4)" > ../conftest.tmp
 				diff always.out once.out
 			else
-				cf_check=`cat always.out`
+				cf_check="`cat always.out`"
 				if test "x$cf_check" != "x$cf_data" ; then
 					echo "no (case 5)" > ../conftest.tmp
 				else
@@ -70,7 +70,7 @@ CF_EOF
 			break
 		done
 	) >&AC_FD_CC 2>&1
-	cf_cv_make_PHONY=`cat conftest.tmp`
+	cf_cv_make_PHONY="`cat conftest.tmp`"
 	rm -rf conftest*
 ])
 MAKE_NO_PHONY="#"

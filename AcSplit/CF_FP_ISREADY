@@ -1,4 +1,4 @@
-dnl CF_FP_ISREADY version: 3 updated: 2012/10/06 11:17:15
+dnl CF_FP_ISREADY version: 4 updated: 2020/12/31 20:19:42
 dnl -------------
 dnl Test for the common variations of stdio structures that we can use to
 dnl test if a character is available for reading.
@@ -31,7 +31,7 @@ done <<'CF_EOF'
 ( (p)->endr < (p)->endb)
 CF_EOF
 
-test -f conftest.env && cf_cv_fp_isready=`cat conftest.env`
+test -f conftest.env && cf_cv_fp_isready="`cat conftest.env`"
 
 ])
 

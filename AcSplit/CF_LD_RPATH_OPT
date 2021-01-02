@@ -1,4 +1,4 @@
-dnl CF_LD_RPATH_OPT version: 8 updated: 2018/08/18 16:36:35
+dnl CF_LD_RPATH_OPT version: 9 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl For the given system and compiler, find the compiler flags to pass to the
 dnl loader to use the "rpath" feature.
@@ -10,7 +10,7 @@ LD_RPATH_OPT=
 if test "x$cf_cv_enable_rpath" != xno
 then
 	AC_MSG_CHECKING(for an rpath option)
-	case $cf_cv_system_name in
+	case "$cf_cv_system_name" in
 	(irix*)
 		if test "$GCC" = yes; then
 			LD_RPATH_OPT="-Wl,-rpath,"

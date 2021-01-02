@@ -1,4 +1,4 @@
-dnl CF_IMAKE_CFLAGS version: 32 updated: 2015/04/12 15:39:00
+dnl CF_IMAKE_CFLAGS version: 34 updated: 2020/12/31 18:40:20
 dnl ---------------
 dnl Use imake to obtain compiler flags.  We could, in principle, write tests to
 dnl get these, but if imake is properly configured there is no point in doing
@@ -19,7 +19,7 @@ case $IMAKE in
 	;;
 (*/util/xmkmf)
 	# A single parameter tells xmkmf where the config-files are:
-	cf_imake_opts="`echo $IMAKE|sed -e s,/config/util/xmkmf,,`"
+	cf_imake_opts="`echo "$IMAKE"|sed -e s,/config/util/xmkmf,,`"
 	;;
 (*)
 	cf_imake_opts=
@@ -30,7 +30,7 @@ esac
 # config directory.
 if mkdir conftestdir; then
 	CDPATH=; export CDPATH
-	cf_makefile=`cd $srcdir;pwd`/Imakefile
+	cf_makefile=`cd "$srcdir" || exit;pwd`/Imakefile
 	cd conftestdir
 
 	cat >fix_cflags.sed <<'CF_EOF'
@@ -52,7 +52,7 @@ s/$/"/
 CF_EOF
 
 	echo >./Imakefile
-	test -f $cf_makefile && cat $cf_makefile >>./Imakefile
+	test -f "$cf_makefile" && cat "$cf_makefile" >>./Imakefile
 
 	cat >> ./Imakefile <<'CF_EOF'
 findstddefs:
@@ -60,19 +60,19 @@ findstddefs:
 	@echo IMAKE ${EXTRA_LOAD_FLAGS}ifelse([$2],,,[ $2]) | sed -f fix_lflags.sed
 CF_EOF
 
-	if ( $IMAKE $cf_imake_opts 1>/dev/null 2>&AC_FD_CC && test -f Makefile)
+	if ( $IMAKE "$cf_imake_opts" 1>/dev/null 2>&AC_FD_CC && test -f Makefile)
 	then
 		CF_VERBOSE(Using $IMAKE $cf_imake_opts)
 	else
 		# sometimes imake doesn't have the config path compiled in.  Find it.
 		cf_config=
 		for cf_libpath in $X_LIBS $LIBS ; do
-			case $cf_libpath in
+			case "$cf_libpath" in
 			(-L*)
-				cf_libpath=`echo .$cf_libpath | sed -e 's/^...//'`
-				cf_libpath=$cf_libpath/X11/config
-				if test -d $cf_libpath ; then
-					cf_config=$cf_libpath
+				cf_libpath=`echo ".$cf_libpath" | sed -e 's/^...//'`
+				cf_libpath="$cf_libpath/X11/config"
+				if test -d "$cf_libpath" ; then
+					cf_config="$cf_libpath"
 					break
 				fi
 				;;
@@ -82,7 +82,7 @@ CF_EOF
 			AC_MSG_WARN(Could not find imake config-directory)
 		else
 			cf_imake_opts="$cf_imake_opts -I$cf_config"
-			if ( $IMAKE -v $cf_imake_opts 2>&AC_FD_CC)
+			if ( "$IMAKE" -v "$cf_imake_opts" 2>&AC_FD_CC)
 			then
 				CF_VERBOSE(Using $IMAKE $cf_config)
 			else
@@ -93,7 +93,7 @@ CF_EOF
 
 	# GNU make sometimes prints "make[1]: Entering...", which
 	# would confuse us.
-	eval `make findstddefs 2>/dev/null | grep -v make`
+	eval "`make findstddefs 2>/dev/null | grep -v make`"
 
 	cd ..
 	rm -rf conftestdir

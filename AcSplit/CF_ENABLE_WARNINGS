@@ -1,4 +1,4 @@
-dnl CF_ENABLE_WARNINGS version: 7 updated: 2020/08/29 09:05:21
+dnl CF_ENABLE_WARNINGS version: 8 updated: 2020/12/31 18:40:20
 dnl ------------------
 dnl Configure-option to enable gcc warnings
 dnl
@@ -8,7 +8,7 @@ dnl      warnings are enabled.  For other values:
 dnl      yes: always do this, e.g., to use in generated library-headers
 dnl      no: never do this
 AC_DEFUN([CF_ENABLE_WARNINGS],[
-if ( test "$GCC" = yes || test "$GXX" = yes )
+if test "$GCC" = yes || test "$GXX" = yes
 then
 CF_FIX_WARNINGS(CFLAGS)
 CF_FIX_WARNINGS(CPPFLAGS)

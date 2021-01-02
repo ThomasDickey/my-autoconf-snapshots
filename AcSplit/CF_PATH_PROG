@@ -1,4 +1,4 @@
-dnl CF_PATH_PROG version: 10 updated: 2019/06/30 19:44:43
+dnl CF_PATH_PROG version: 11 updated: 2020/12/31 10:54:15
 dnl ------------
 dnl Check for a given program, defining corresponding symbol.
 dnl	$1 = environment variable, which is suffixed by "_PATH" in the #define.
@@ -26,7 +26,7 @@ do
 			CF_PATH_SYNTAX(cf_temp,break)
 			cf_path_prog="$cf_temp"
 		else
-			cf_path_prog="`basename $cf_temp`"
+			cf_path_prog="`basename "$cf_temp"`"
 		fi
 	elif test -z "$cf_path_args" ; then
 		cf_path_args="$cf_temp"

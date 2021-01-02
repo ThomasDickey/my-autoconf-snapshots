@@ -1,4 +1,4 @@
-dnl CF_RPATH_HACK_2 version: 7 updated: 2015/04/12 15:39:00
+dnl CF_RPATH_HACK_2 version: 8 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl Do one set of substitutions for CF_RPATH_HACK, adding an rpath option to
 dnl EXTRA_LDFLAGS for each -L option found.
@@ -14,7 +14,7 @@ CF_VERBOSE(...checking $1 [$]$1)
 cf_rpath_dst=
 for cf_rpath_src in [$]$1
 do
-	case $cf_rpath_src in
+	case "$cf_rpath_src" in
 	(-L*)
 
 		# check if this refers to a directory which we will ignore

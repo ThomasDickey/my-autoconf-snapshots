@@ -1,4 +1,4 @@
-dnl CF_CLANG_COMPILER version: 6 updated: 2020/11/26 17:37:55
+dnl CF_CLANG_COMPILER version: 8 updated: 2021/01/01 13:31:04
 dnl -----------------
 dnl Check if the given compiler is really clang.  clang's C driver defines
 dnl __GNUC__ (fooling the configure script into setting $GCC to yes) but does
@@ -53,12 +53,12 @@ if test "x$ifelse([$2],,CLANG_COMPILER,[$2])" = "xyes" ; then
 		CFLAGS="$CFLAGS $cf_clang_opt"
 		AC_TRY_LINK([
 			#include <stdio.h>],[
-			printf("hello!\n");],[
+			printf("hello!\\n");],[
 			cf_clang_optok=yes],[
 			cf_clang_optok=no])
 		AC_MSG_RESULT($cf_clang_optok)
 		CFLAGS="$cf_save_CFLAGS"
-		if test $cf_clang_optok = yes; then
+		if test "$cf_clang_optok" = yes; then
 			CF_VERBOSE(adding option $cf_clang_opt)
 			CF_APPEND_TEXT(CFLAGS,$cf_clang_opt)
 		fi

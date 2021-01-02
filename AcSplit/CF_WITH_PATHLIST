@@ -1,4 +1,4 @@
-dnl CF_WITH_PATHLIST version: 10 updated: 2015/04/17 21:13:04
+dnl CF_WITH_PATHLIST version: 12 updated: 2021/01/01 13:31:04
 dnl ----------------
 dnl Process an option specifying a list of colon-separated paths.
 dnl
@@ -27,9 +27,9 @@ IFS="$ac_save_ifs"
 ifelse($6,define,[
 # Strip single quotes from the value, e.g., when it was supplied as a literal
 # for $4 or $5.
-case $cf_dst_path in
+case "$cf_dst_path" in
 (\'*)
-  cf_dst_path=`echo $cf_dst_path |sed -e s/\'// -e s/\'\$//`
+  cf_dst_path="`echo "$cf_dst_path" |sed -e s/\'// -e s/\'\$//`"
   ;;
 esac
 cf_dst_path=`echo "$cf_dst_path" | sed -e 's/\\\\/\\\\\\\\/g'`
