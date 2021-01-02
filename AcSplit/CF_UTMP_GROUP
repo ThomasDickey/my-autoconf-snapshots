@@ -1,4 +1,4 @@
-dnl CF_UTMP_GROUP version: 1 updated: 2005/10/06 20:29:29
+dnl CF_UTMP_GROUP version: 2 updated: 2020/12/31 10:54:15
 dnl -------------
 dnl Find the utmp/utmpx file and determine its group to allow setgid programs
 dnl to manipulate it, e.g., when there is no intermediary.
@@ -14,15 +14,15 @@ do
 		then
 			cf_cv_utmp_group=root
 
-			cf_option="-l -L"
+			cf_option="-lL"
 
 			# Expect listing to have fields like this:
 			#-r--r--r--   1 user      group       34293 Jul 18 16:29 pathname
-			ls $cf_option $cf_utmp_path/$cf_utmp_file >conftest
+			ls "$cf_option" "$cf_utmp_path/$cf_utmp_file" >conftest
 			read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest
 			if test -z "$cf_rest" ; then
-				cf_option="$cf_option -g"
-				ls $cf_option $cf_utmp_path/$cf_utmp_file >conftest
+				cf_option="${cf_option}g"
+				ls "$cf_option" "$cf_utmp_path/$cf_utmp_file" >conftest
 				read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest
 			fi
 			rm -f conftest

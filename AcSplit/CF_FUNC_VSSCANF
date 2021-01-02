@@ -1,4 +1,4 @@
-dnl CF_FUNC_VSSCANF version: 6 updated: 2015/04/18 08:56:57
+dnl CF_FUNC_VSSCANF version: 7 updated: 2021/01/01 13:31:04
 dnl ---------------
 dnl Check for vsscanf() function, which is in c9x but generally not in earlier
 dnl versions of C.  It is in the GNU C library, and can often be simulated by
@@ -35,7 +35,7 @@ AC_TRY_LINK([
 	return (_doscan(&strbuf, "%d", ap))],[cf_cv_func_vsscanf=_doscan],[
 cf_cv_func_vsscanf=no])])])])
 
-case $cf_cv_func_vsscanf in
+case "$cf_cv_func_vsscanf" in
 (vsscanf) AC_DEFINE(HAVE_VSSCANF,1,[Define to 1 if we have vsscanf]);;
 (vfscanf) AC_DEFINE(HAVE_VFSCANF,1,[Define to 1 if we have vfscanf]);;
 (_doscan) AC_DEFINE(HAVE__DOSCAN,1,[Define to 1 if we have _doscan]);;

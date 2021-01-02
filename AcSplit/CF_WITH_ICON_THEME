@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 12 updated: 2018/04/30 19:37:35
+dnl CF_WITH_ICON_THEME version: 13 updated: 2020/12/31 10:54:15
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -94,7 +94,7 @@ do
 		fi
 		if test "x$ICON_THEME" != xno
 		then
-			cf_base=`basename $cf_left`
+			cf_base=`basename "$cf_left"`
 			cf_trim=`echo "$cf_base" | sed -e 's/_[[0-9]][[0-9]]x[[0-9]][[0-9]]\././'`
 			case "x${cf_base}" in
 			(*:*)
@@ -130,7 +130,7 @@ do
 		ICON_LIST="$ICON_LIST${cf_icon}"
 		if test -z "$ICON_NAME"
 		then
-			ICON_NAME=`basename $cf_icon | sed -e 's/[[.:]].*//'`
+			ICON_NAME=`basename "$cf_icon" | sed -e 's/[[.:]].*//'`
 		fi
 	done
 done

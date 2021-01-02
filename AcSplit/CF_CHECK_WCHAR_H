@@ -1,4 +1,4 @@
-dnl CF_CHECK_WCHAR_H version: 2 updated: 2017/01/21 11:06:25
+dnl CF_CHECK_WCHAR_H version: 3 updated: 2021/01/01 13:31:04
 dnl ----------------
 dnl Check if wchar.h can be used, i.e., without defining _XOPEN_SOURCE_EXTENDED
 AC_DEFUN([CF_CHECK_WCHAR_H],[
@@ -22,7 +22,7 @@ AC_TRY_COMPILE(
 	[cf_cv_wchar_h_okay=yes],
 	[cf_cv_wchar_h_okay=no])])
 
-if test $cf_cv_wchar_h_okay = no
+if test "$cf_cv_wchar_h_okay" = no
 then
 	CF_PREDEFINE(_XOPEN_SOURCE_EXTENDED)
 fi

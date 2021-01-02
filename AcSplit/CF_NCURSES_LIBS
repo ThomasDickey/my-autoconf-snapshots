@@ -1,4 +1,4 @@
-dnl CF_NCURSES_LIBS version: 17 updated: 2015/04/15 19:08:48
+dnl CF_NCURSES_LIBS version: 18 updated: 2020/12/31 20:19:42
 dnl ---------------
 dnl Look for the ncurses library.  This is a little complicated on Linux,
 dnl because it may be linked with the gpm (general purpose mouse) library.
@@ -50,7 +50,7 @@ if test -n "$cf_ncurses_LIBS" ; then
 	AC_MSG_CHECKING(if we can link $cf_nculib_root without $cf_ncurses_LIBS)
 	cf_ncurses_SAVE="$LIBS"
 	for p in $cf_ncurses_LIBS ; do
-		q=`echo $LIBS | sed -e "s%$p %%" -e "s%$p$%%"`
+		q=`echo "$LIBS" | sed -e "s%$p %%" -e "s%$p$%%"`
 		if test "$q" != "$LIBS" ; then
 			LIBS="$q"
 		fi

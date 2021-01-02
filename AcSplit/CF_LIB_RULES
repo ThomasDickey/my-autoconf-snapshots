@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 90 updated: 2020/04/04 10:11:47
+dnl CF_LIB_RULES version: 92 updated: 2021/01/01 16:53:59
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -18,7 +18,7 @@ AC_DEFUN([CF_LIB_RULES],
 cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
 
-case $cf_cv_shlib_version in
+case "$cf_cv_shlib_version" in
 (cygdll|msysdll|mingw|msvcdll)
 	TINFO_NAME=$TINFO_ARG_SUFFIX
 	TINFO_SUFFIX=.dll
@@ -26,27 +26,27 @@ case $cf_cv_shlib_version in
 esac
 
 if test -n "$TINFO_SUFFIX" ; then
-	case $TINFO_SUFFIX in
+	case "$TINFO_SUFFIX" in
 	(tw*)
 		TINFO_NAME="${TINFO_NAME}tw${EXTRA_SUFFIX}"
-		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^tw'$EXTRA_SUFFIX'//'`
+		TINFO_SUFFIX=`echo "$TINFO_SUFFIX" | sed 's/^tw'$EXTRA_SUFFIX'//'`
 		;;
 	(t*)
 		TINFO_NAME="${TINFO_NAME}t${EXTRA_SUFFIX}"
-		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^t'$EXTRA_SUFFIX'//'`
+		TINFO_SUFFIX=`echo "$TINFO_SUFFIX" | sed 's/^t'$EXTRA_SUFFIX'//'`
 		;;
 	(w*)
 		TINFO_NAME="${TINFO_NAME}w${EXTRA_SUFFIX}"
-		TINFO_SUFFIX=`echo $TINFO_SUFFIX | sed 's/^w'$EXTRA_SUFFIX'//'`
+		TINFO_SUFFIX=`echo "$TINFO_SUFFIX" | sed 's/^w'$EXTRA_SUFFIX'//'`
 		;;
 	esac
 fi
 
 for cf_dir in $SRC_SUBDIRS
 do
-	if test ! -d $srcdir/$cf_dir ; then
+	if test ! -d "$srcdir/$cf_dir" ; then
 		continue
-	elif test -f $srcdir/$cf_dir/modules; then
+	elif test -f "$srcdir/$cf_dir/modules" ; then
 
 		SHARED_LIB=
 		Libs_To_Make=
@@ -76,7 +76,7 @@ resulting.map: $UNALTERED_SYMS
 $cf_awk_program \
 { if ( last != "" && ( skip == 0 || \[$]\[$]0 !~ /}/ ) ) { print last; }\
  skip = 0; last = \[$]\[$]0; } \
-END { print last; }' < $UNALTERED_SYMS >\[$]@
+END { print last; }' < "$UNALTERED_SYMS" >\[$]@
 
 distclean::
 	rm -f resulting.map
@@ -93,7 +93,7 @@ CF_EOF
 				CF_MAP_LIB_BASENAME(cf_libname,$cf_dir)
 			fi
 			test -z "$cf_libname" && cf_libname="$cf_dir"
-			if test $cf_item = shared ; then
+			if test "$cf_item" = shared ; then
 				if test -n "${LIB_SUFFIX}"
 				then
 					cf_shared_suffix=`echo "$cf_suffix" | sed 's/^'"${USE_LIB_SUFFIX}"'//'`
@@ -134,7 +134,7 @@ CF_EOF
 				# cygwin needs import library, and has unique naming convention
 				# use autodetected ${cf_prefix} for import lib and static lib, but
 				# use 'cyg' prefix for shared lib.
-				case $cf_cv_shlib_version in
+				case "$cf_cv_shlib_version" in
 				(cygdll)
 					cf_cygsuf=`echo "$cf_suffix" | sed -e 's/\.dll/\${ABI_VERSION}.dll/'`
 					cf_add_lib="../lib/cyg${cf_libname}${cf_cygsuf}"
@@ -165,7 +165,7 @@ CF_EOF
 			Libs_To_Make="$Libs_To_Make $cf_add_lib"
 		done
 
-		if test $cf_dir = ncurses ; then
+		if test "$cf_dir" = ncurses ; then
 			cf_subsets="$LIB_SUBSETS"
 			cf_r_parts="$cf_subsets"
 			cf_liblist="$Libs_To_Make"
@@ -176,12 +176,12 @@ CF_EOF
 				cf_r_parts=`echo "$cf_r_parts" |sed -e 's/^[[^ ]]* //'`
 				if test "$cf_l_parts" != "$cf_r_parts" ; then
 					cf_add_lib=
-					case $cf_l_parts in
+					case "$cf_l_parts" in
 					(*termlib*)
-						cf_add_lib=`echo $cf_liblist |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TINFO_LIB_SUFFIX}%g`
+						cf_add_lib=`echo "$cf_liblist" |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TINFO_LIB_SUFFIX}%g`
 						;;
 					(*ticlib*)
-						cf_add_lib=`echo $cf_liblist |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TICS_LIB_SUFFIX}%g`
+						cf_add_lib=`echo "$cf_liblist" |sed -e s%${LIB_NAME}${USE_LIB_SUFFIX}%${TICS_LIB_SUFFIX}%g`
 						;;
 					(*)
 						break
@@ -198,12 +198,12 @@ CF_EOF
 			cf_subsets=`echo "$LIB_SUBSETS" | sed -e 's/^termlib.* //'`
 		fi
 
-		if test $cf_dir = c++; then
+		if test "$cf_dir" = c++; then
 			if test "x$with_shared_cxx" != xyes && test -n "$cf_shared_suffix"; then
 				cf_list=
 				for cf_item in $Libs_To_Make
 				do
-					case $cf_item in
+					case "$cf_item" in
 					(*.a)
 						;;
 					(*)
@@ -227,12 +227,12 @@ CF_EOF
 
 		sed -e "s%@Libs_To_Make@%$Libs_To_Make%" \
 		    -e "s%@SHARED_LIB@%$SHARED_LIB%" \
-			$cf_dir/Makefile >$cf_dir/Makefile.out
-		mv $cf_dir/Makefile.out $cf_dir/Makefile
+			"$cf_dir/Makefile" >$cf_dir/Makefile.out
+		mv "$cf_dir/Makefile.out" "$cf_dir/Makefile"
 
-		$AWK -f $srcdir/mk-0th.awk \
+		$AWK -f "$srcdir/mk-0th.awk" \
 			libname="${cf_dir}${LIB_SUFFIX}" subsets="$LIB_SUBSETS" ticlib="$TICS_LIB_SUFFIX" termlib="$TINFO_LIB_SUFFIX" \
-			$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+			"$srcdir/$cf_dir/modules" >>$cf_dir/Makefile
 
 		for cf_subset in $cf_subsets
 		do
@@ -245,7 +245,7 @@ CF_EOF
 
 			CXX_MODEL=$cf_ITEM
 			if test "$CXX_MODEL" = SHARED; then
-				case $cf_cv_shlib_version in
+				case "$cf_cv_shlib_version" in
 				(cygdll|msysdll|mingw|msvcdll)
 					test "x$with_shared_cxx" = xno && CF_VERBOSE(overriding CXX_MODEL to SHARED)
 					with_shared_cxx=yes
@@ -261,8 +261,8 @@ CF_EOF
 
 			# Test for case where we build libtinfo with a different name.
 			cf_libname=$cf_dir
-			if test $cf_dir = ncurses ; then
-				case $cf_subset in
+			if test "$cf_dir" = ncurses ; then
+				case "$cf_subset" in
 				(*base*)
 					cf_libname=${cf_libname}$USE_LIB_SUFFIX
 					;;
@@ -273,7 +273,7 @@ CF_EOF
 					cf_libname=$TICS_LIB_SUFFIX
 					;;
 				esac
-			elif test $cf_dir = c++ ; then
+			elif test "$cf_dir" = c++ ; then
 				CF_MAP_LIB_BASENAME(cf_libname,cxx)
 				cf_libname=${cf_libname}$USE_LIB_SUFFIX
 			else
@@ -282,7 +282,7 @@ CF_EOF
 			fi
 			if test -n "${USE_ARG_SUFFIX}" ; then
 				# undo $USE_LIB_SUFFIX add-on in CF_LIB_SUFFIX
-				cf_suffix=`echo $cf_suffix |sed -e "s%^${USE_LIB_SUFFIX}%%"`
+				cf_suffix=`echo "$cf_suffix" |sed -e "s%^${USE_LIB_SUFFIX}%%"`
 			fi
 
 			# These dependencies really are for development, not
@@ -294,9 +294,9 @@ CF_EOF
 				cf_reldir="\${srcdir}"
 			fi
 
-			if test -f $srcdir/$cf_dir/$cf_dir.priv.h; then
+			if test -f "$srcdir/$cf_dir/$cf_dir.priv.h" ; then
 				cf_depend="$cf_depend $cf_reldir/$cf_dir.priv.h"
-			elif test -f $srcdir/$cf_dir/curses.priv.h; then
+			elif test -f "$srcdir/$cf_dir/curses.priv.h" ; then
 				cf_depend="$cf_depend $cf_reldir/curses.priv.h"
 			fi
 
@@ -304,32 +304,32 @@ CF_EOF
  			old_cf_suffix="$cf_suffix"
  			if test "$cf_cv_shlib_version_infix" = yes ; then
 			if test -n "$USE_LIB_SUFFIX" ; then
-				case $USE_LIB_SUFFIX in
+				case "$USE_LIB_SUFFIX" in
 				(tw*)
-					cf_libname=`echo $cf_libname | sed 's/tw'$EXTRA_SUFFIX'$//'`
-					cf_suffix=`echo $cf_suffix | sed 's/^tw'$EXTRA_SUFFIX'//'`
+					cf_libname=`echo "$cf_libname" | sed 's/tw'$EXTRA_SUFFIX'$//'`
+					cf_suffix=`echo "$cf_suffix" | sed 's/^tw'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=tw$EXTRA_SUFFIX
 					;;
 				(t*)
-					cf_libname=`echo $cf_libname | sed 's/t'$EXTRA_SUFFIX'$//'`
-					cf_suffix=`echo $cf_suffix | sed 's/^t'$EXTRA_SUFFIX'//'`
+					cf_libname=`echo "$cf_libname" | sed 's/t'$EXTRA_SUFFIX'$//'`
+					cf_suffix=`echo "$cf_suffix" | sed 's/^t'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=t$EXTRA_SUFFIX
 					;;
 				(w*)
-					cf_libname=`echo $cf_libname | sed 's/w'$EXTRA_SUFFIX'$//'`
-					cf_suffix=`echo $cf_suffix | sed 's/^w'$EXTRA_SUFFIX'//'`
+					cf_libname=`echo "$cf_libname" | sed 's/w'$EXTRA_SUFFIX'$//'`
+					cf_suffix=`echo "$cf_suffix" | sed 's/^w'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=w$EXTRA_SUFFIX
 					;;
 				(*)
-					cf_libname=`echo $cf_libname | sed 's/'$EXTRA_SUFFIX'$//'`
-					cf_suffix=`echo $cf_suffix | sed 's/^'$EXTRA_SUFFIX'//'`
+					cf_libname=`echo "$cf_libname" | sed 's/'$EXTRA_SUFFIX'$//'`
+					cf_suffix=`echo "$cf_suffix" | sed 's/^'$EXTRA_SUFFIX'//'`
 					cf_dir_suffix=$EXTRA_SUFFIX
 					;;
 				esac
 			fi
  			fi
 
-			$AWK -f $srcdir/mk-1st.awk \
+			$AWK -f "$srcdir/mk-1st.awk" \
 				name=${cf_libname}${cf_dir_suffix} \
 				traces=$LIB_TRACING \
 				MODEL=$cf_ITEM \
@@ -353,16 +353,16 @@ CF_EOF
 				depend="$cf_depend" \
 				host="$host" \
 				libtool_version="$LIBTOOL_VERSION" \
-				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+				"$srcdir/$cf_dir/modules" >>$cf_dir/Makefile
 
 			cf_suffix="$old_cf_suffix"
 
 			for cf_subdir2 in $cf_subdirs lib
 			do
-				test $cf_subdir = $cf_subdir2 && break
+				test "$cf_subdir" = "$cf_subdir2" && break
 			done
 			test "${cf_subset}.${cf_subdir2}" != "${cf_subset}.${cf_subdir}" && \
-			$AWK -f $srcdir/mk-2nd.awk \
+			$AWK -f "$srcdir/mk-2nd.awk" \
 				name=$cf_dir \
 				traces=$LIB_TRACING \
 				MODEL=$cf_ITEM \
@@ -372,7 +372,7 @@ CF_EOF
 				echo=$WITH_ECHO \
 				crenames=$cf_cv_prog_CC_c_o \
 				cxxrenames=$cf_cv_prog_CXX_c_o \
-				$srcdir/$cf_dir/modules >>$cf_dir/Makefile
+				"$srcdir/$cf_dir/modules" >>$cf_dir/Makefile
 			cf_subdirs="$cf_subdirs $cf_subdir"
 			done
 		done
@@ -383,11 +383,11 @@ done
 
 for cf_dir in $SRC_SUBDIRS
 do
-	if test ! -d $srcdir/$cf_dir ; then
+	if test ! -d "$srcdir/$cf_dir" ; then
 		continue
 	fi
 
-	if test -f $cf_dir/Makefile ; then
+	if test -f "$cf_dir/Makefile" ; then
 		case "$cf_dir" in
 		(Ada95)
 			echo 'libs \' >> Makefile
@@ -398,9 +398,9 @@ do
 		esac
 	fi
 
-	if test -f $srcdir/$cf_dir/modules; then
+	if test -f "$srcdir/$cf_dir/modules" ; then
 		echo >> Makefile
-		if test -f $srcdir/$cf_dir/headers; then
+		if test -f "$srcdir/$cf_dir/headers" ; then
 cat >> Makefile <<CF_EOF
 install.includes \\
 uninstall.includes \\
@@ -416,9 +416,9 @@ install.libs \\
 uninstall.libs \\
 install.$cf_dir \\
 uninstall.$cf_dir ::
-	cd $cf_dir && \${MAKE} \${TOP_MFLAGS} \[$]@
+	cd "$cf_dir" && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
-	elif test -f $srcdir/$cf_dir/headers; then
+	elif test -f "$srcdir/$cf_dir/headers" ; then
 cat >> Makefile <<CF_EOF
 
 libs \\
@@ -426,7 +426,7 @@ install.libs \\
 uninstall.libs \\
 install.includes \\
 uninstall.includes ::
-	cd $cf_dir && \${MAKE} \${TOP_MFLAGS} \[$]@
+	cd "$cf_dir" && \${MAKE} \${TOP_MFLAGS} \[$]@
 CF_EOF
 fi
 done
@@ -505,7 +505,7 @@ TMPSED=\${TMPDIR:-/tmp}/headers.sed\$\$
 echo installing \$SRC in \$DST
 CF_EOF
 
-if test $WITH_CURSES_H = yes; then
+if test "$WITH_CURSES_H" = yes; then
 	cat >>headers.sh <<CF_EOF
 case \$DST in
 (/*/include/*)
@@ -549,7 +549,7 @@ rm -f \$TMPSRC
 sed -f \$TMPSED \$SRC > \$TMPSRC
 NAME=\`basename \$SRC\`
 CF_EOF
-if test $WITH_CURSES_H != yes; then
+if test "$WITH_CURSES_H" != yes; then
 	cat >>headers.sh <<CF_EOF
 test "\$NAME" = "curses.h" && NAME=ncurses.h
 CF_EOF
@@ -566,18 +566,18 @@ chmod 0755 headers.sh
 
 for cf_dir in $SRC_SUBDIRS
 do
-	if test ! -d $srcdir/$cf_dir ; then
+	if test ! -d "$srcdir/$cf_dir" ; then
 		continue
 	fi
 
-	if test -f $srcdir/$cf_dir/headers; then
-		$AWK -f $srcdir/mk-hdr.awk \
+	if test -f "$srcdir/$cf_dir/headers" ; then
+		$AWK -f "$srcdir/mk-hdr.awk" \
 			subset="$LIB_SUBSETS" \
 			compat="$WITH_CURSES_H" \
-			$srcdir/$cf_dir/headers >>$cf_dir/Makefile
+			"$srcdir/$cf_dir/headers" >>$cf_dir/Makefile
 	fi
 
-	if test -f $srcdir/$cf_dir/modules; then
+	if test -f "$srcdir/$cf_dir/modules" ; then
 		if test "$cf_dir" != "c++" ; then
 			cat >>$cf_dir/Makefile <<"CF_EOF"
 depend : ${AUTO_SRC}

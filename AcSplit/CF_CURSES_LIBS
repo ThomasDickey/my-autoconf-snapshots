@@ -1,4 +1,4 @@
-dnl CF_CURSES_LIBS version: 42 updated: 2018/06/20 20:23:13
+dnl CF_CURSES_LIBS version: 43 updated: 2020/12/31 20:19:42
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
@@ -81,7 +81,7 @@ if test ".$ac_cv_func_initscr" != .yes ; then
 			for cf_term_lib in $cf_check_list otermcap termcap tinfo termlib unknown
 			do
 				AC_CHECK_LIB($cf_term_lib,tgoto,[
-					: ${cf_nculib_root:=$cf_term_lib}
+					: "${cf_nculib_root:=$cf_term_lib}"
 					break
 				])
 			done
@@ -102,7 +102,7 @@ if test ".$ac_cv_func_initscr" != .yes ; then
 					[cf_result=yes],
 					[cf_result=no])
 				AC_MSG_RESULT($cf_result)
-				test $cf_result = yes && break
+				test "$cf_result" = yes && break
 			elif test "$cf_curs_lib" = "$cf_term_lib" ; then
 				cf_result=no
 			elif test "$cf_term_lib" != predefined ; then
@@ -118,11 +118,11 @@ if test ".$ac_cv_func_initscr" != .yes ; then
 						[cf_result=error])
 					])
 				AC_MSG_RESULT($cf_result)
-				test $cf_result != error && break
+				test "$cf_result" != error && break
 			fi
 		done
 	fi
-	test $cf_curs_lib = unknown && AC_MSG_ERROR(no curses library found)
+	test "$cf_curs_lib" = unknown && AC_MSG_ERROR(no curses library found)
 fi
 fi
 

@@ -1,4 +1,4 @@
-dnl CF_PROG_CC_C_O version: 5 updated: 2017/01/21 11:06:25
+dnl CF_PROG_CC_C_O version: 6 updated: 2021/01/01 13:31:04
 dnl --------------
 dnl Analogous to AC_PROG_CC_C_O, but more useful: tests only $CC, ensures that
 dnl the output file can be renamed, and allows for a shell variable that can
@@ -30,9 +30,9 @@ then
 else
   eval cf_cv_prog_$1_c_o=no
 fi
-rm -rf conftest*
+rm -rf ./conftest*
 ])dnl
-if test $cf_cv_prog_$1_c_o = yes; then
+if test "$cf_cv_prog_$1_c_o" = yes; then
   AC_MSG_RESULT([yes])
 else
   AC_MSG_RESULT([no])

@@ -1,4 +1,4 @@
-dnl CF_SRC_MODULES version: 32 updated: 2020/03/07 20:05:14
+dnl CF_SRC_MODULES version: 33 updated: 2021/01/01 13:31:04
 dnl --------------
 dnl For each parameter, test if the source-directory exists, and if it contains
 dnl a 'modules' file.  If so, add to the list $cf_cv_src_modules which we'll
@@ -26,11 +26,11 @@ PC_MODULES_TO_MAKE="ncurses${USE_ARG_SUFFIX}"
 cf_cv_src_modules=
 for cf_dir in $1
 do
-	if test -f $srcdir/$cf_dir/modules; then
+	if test -f "$srcdir/$cf_dir/modules" ; then
 
 		# We may/may not have tack in the distribution, though the
 		# makefile is.
-		if test $cf_dir = tack ; then
+		if test "$cf_dir" = tack ; then
 			if test "x$cf_with_tack" != "xyes"; then
 				continue
 			fi
@@ -46,9 +46,9 @@ do
 		# well.  These are header files that are the same name as their
 		# directory.  Ncurses is the only library that does not follow
 		# that pattern.
-		if test $cf_dir = tack ; then
+		if test "$cf_dir" = tack ; then
 			continue
-		elif test -f $srcdir/${cf_dir}/${cf_dir}.h; then
+		elif test -f "$srcdir/${cf_dir}/${cf_dir}.h" ; then
 			CF_UPPER(cf_have_include,$cf_dir)
 			AC_DEFINE_UNQUOTED(HAVE_${cf_have_include}_H)
 			AC_DEFINE_UNQUOTED(HAVE_LIB${cf_have_include})
@@ -102,7 +102,7 @@ test "x$with_ticlib" != xno && PC_MODULES_TO_MAKE="$PC_MODULES_TO_MAKE $TICS_ARG
 AC_SUBST(PC_MODULES_TO_MAKE)
 
 ADA_SUBDIRS=
-if test "x$cf_with_ada" = "xyes" && test "x$cf_cv_prog_gnat_correct" = xyes && test -f $srcdir/Ada95/Makefile.in; then
+if test "x$cf_with_ada" = "xyes" && test "x$cf_cv_prog_gnat_correct" = xyes && test -f "$srcdir/Ada95/Makefile.in" ; then
 	SRC_SUBDIRS="$SRC_SUBDIRS Ada95"
 	ADA_SUBDIRS="gen src"
 	if test "x$cf_with_tests" != "xno" ; then

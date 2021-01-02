@@ -1,4 +1,4 @@
-dnl CF_FIX_WARNINGS version: 2 updated: 2020/08/28 15:08:28
+dnl CF_FIX_WARNINGS version: 3 updated: 2020/12/31 18:40:20
 dnl ---------------
 dnl Warning flags do not belong in CFLAGS, CPPFLAGS, etc.  Any of gcc's
 dnl "-Werror" flags can interfere with configure-checks.  Those go into
@@ -6,7 +6,7 @@ dnl EXTRA_CFLAGS.
 dnl
 dnl $1 = variable name to repair
 define([CF_FIX_WARNINGS],[
-if ( test "$GCC" = yes || test "$GXX" = yes )
+if test "$GCC" = yes || test "$GXX" = yes
 then
 	case [$]$1 in
 	(*-Werror=*)
@@ -16,10 +16,10 @@ then
 		do
 			case "x$cf_temp_scan" in
 			(x-Werror=*)
-				CF_APPEND_TEXT(EXTRA_CFLAGS,"$cf_temp_scan")
+				CF_APPEND_TEXT(EXTRA_CFLAGS,$cf_temp_scan)
 				;;
 			(*)
-				CF_APPEND_TEXT(cf_temp_flags,"$cf_temp_scan")
+				CF_APPEND_TEXT(cf_temp_flags,$cf_temp_scan)
 				;;
 			esac
 		done

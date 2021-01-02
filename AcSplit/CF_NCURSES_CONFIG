@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 23 updated: 2020/02/27 05:21:59
+dnl CF_NCURSES_CONFIG version: 25 updated: 2021/01/01 18:21:19
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses, preferring these in
 dnl order:
@@ -24,10 +24,10 @@ if test "x${PKG_CONFIG:=none}" != xnone; then
 		cf_save_CPPFLAGS="$CPPFLAGS"
 		cf_save_LIBS="$LIBS"
 
-		cf_pkg_cflags=`$PKG_CONFIG --cflags $cf_ncuconfig_root`
-		cf_pkg_libs=`$PKG_CONFIG --libs $cf_ncuconfig_root`
+		cf_pkg_cflags="`$PKG_CONFIG --cflags $cf_ncuconfig_root`"
+		cf_pkg_libs="`$PKG_CONFIG --libs $cf_ncuconfig_root`"
 
-		# while -W for passing linker flags is prevalent, it is not "standard". 
+		# while -W for passing linker flags is prevalent, it is not "standard".
 		# At least one wrapper for c89/c99 (in Apple's xcode) has its own
 		# incompatible _and_ non-standard -W option which gives an error.  Work
 		# around that pitfall.
@@ -115,7 +115,7 @@ if test "x$cf_have_ncuconfig" = "xno"; then
 		AC_DEFINE_UNQUOTED($cf_nculib_ROOT)
 
 		dnl like CF_NCURSES_VERSION
-		cf_cv_ncurses_version=`$NCURSES_CONFIG --version`
+		cf_cv_ncurses_version="`$NCURSES_CONFIG --version`"
 
 	else
 

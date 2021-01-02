@@ -1,4 +1,4 @@
-dnl CF_SIZECHANGE version: 16 updated: 2020/03/19 20:46:13
+dnl CF_SIZECHANGE version: 17 updated: 2021/01/01 13:31:04
 dnl -------------
 dnl Check for definitions & structures needed for window size-changing
 dnl
@@ -70,7 +70,7 @@ done
 ])
 if test "$cf_cv_sizechange" != no ; then
 	AC_DEFINE(HAVE_SIZECHANGE,1,[Define to 1 if sizechange declarations are provided])
-	case $cf_cv_sizechange in
+	case "$cf_cv_sizechange" in
 	(NEED*)
 		AC_DEFINE_UNQUOTED($cf_cv_sizechange )
 		;;

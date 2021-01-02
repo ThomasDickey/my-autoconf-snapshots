@@ -1,4 +1,4 @@
-dnl CF_PROG_GNAT version: 10 updated: 2019/12/31 08:53:54
+dnl CF_PROG_GNAT version: 11 updated: 2021/01/01 13:31:04
 dnl ------------
 dnl Check for gnat/gnatmake/etc, ensure that the toolset is complete.
 AC_DEFUN([CF_PROG_GNAT],[
@@ -32,7 +32,7 @@ else
 		# gprconfig is newer than gnatmake; we can continue...
 		cf_ada_config="##"
 	else
-		rm -rf conftest* *~conftest*
+		rm -rf ./conftest* ./*~conftest*
 		if mkdir conftest.src
 		then
 			cf_ada_config=""
@@ -40,12 +40,12 @@ else
 			for cf_gprconfig in Ada C
 			do
 				AC_MSG_CHECKING(for gprconfig name for $cf_gprconfig)
-				if test $cf_gprconfig = C
+				if test "$cf_gprconfig" = C
 				then
 					for cf_gprconfig_param in \
-						$cf_gprconfig,,,,GNATGCC \
-						$cf_gprconfig,,,,GCC \
-						$cf_gprconfig
+						"$cf_gprconfig,,,,GNATGCC" \
+						"$cf_gprconfig,,,,GCC" \
+						"$cf_gprconfig"
 					do
 						cf_gprconfig_value=`echo s| gprconfig --config=$cf_gprconfig_param 2>&AC_FD_CC | ${AWK:-awk} '/^\*/{print [$]3;}' | head -n 1`
 						test -n "$cf_gprconfig_value" && break
@@ -65,7 +65,7 @@ else
 				fi
 			done
 			cd ..
-			rm -rf conftest* *~conftest*
+			rm -rf ./conftest* ./*~conftest*
 		fi
 	fi
 	if test "x$cf_ada_config" != "x#"

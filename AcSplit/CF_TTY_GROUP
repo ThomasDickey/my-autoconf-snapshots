@@ -1,7 +1,12 @@
-dnl CF_TTY_GROUP version: 10 updated: 2020/03/10 18:53:47
+dnl CF_TTY_GROUP version: 13 updated: 2020/12/31 18:40:20
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
+dnl
+dnl The check relies upon running a test-program, which calls ttyname.  If this
+dnl is run in batch mode, or if autoconf uses shell functions, the extra layer
+dnl of eval/call may close stdin, making calls to ttyname fail.  To work around
+dnl that, fall back to "/dev/tty".
 AC_DEFUN([CF_TTY_GROUP],
 [
 AC_MSG_CHECKING(for explicit tty group name)
@@ -20,24 +25,24 @@ AC_CACHE_CHECK(for tty group name,cf_cv_tty_group_name,[
 # But we'll guess based on how our connection is set up - assuming it is done
 # properly.
 
-cf_uid=`id | sed -e 's/^[^=]*=//' -e 's/(.*$//'`
+cf_uid="`id | sed -e 's/^[^=]*=//' -e 's/(.*$//'`"
 # )vi
 if test "$cf_uid" != 0 ; then
 cf_cv_tty_group_name=
-cf_tty_name=`tty`
+cf_tty_name="`tty`"
 test "$cf_tty_name" = "not a tty" && cf_tty_name=/dev/tty
 test -z "$cf_tty_name" && cf_tty_name=/dev/tty
 if test -c "$cf_tty_name"
 then
-	cf_option="-l -L"
+	cf_option="-lL"
 
 	# Expect listing to have fields like this:
 	#-rwxrwxrwx   1 user      group       34293 Jul 18 16:29 pathname
-	ls $cf_option $cf_tty_name >conftest.out
+	ls $cf_option "$cf_tty_name" >conftest.out
 	read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest.out
 	if test -z "$cf_rest" ; then
-		cf_option="$cf_option -g"
-		ls $cf_option $cf_tty_name >conftest.out
+		cf_option="${cf_option}g"
+		ls "$cf_option" "$cf_tty_name" >conftest.out
 		read cf_mode cf_links cf_usr cf_grp cf_size cf_date1 cf_date2 cf_date3 cf_rest <conftest.out
 	fi
 	rm -f conftest.out
@@ -75,7 +80,7 @@ AC_DEFINE_UNQUOTED(TTY_GROUP_NAME,"$cf_tty_group",[Define to the name use for tt
 # mode, or if we are cross-compiling.
 
 AC_CACHE_CHECK(if we may use the $cf_tty_group group,cf_cv_tty_group,[
-cf_tty_name=`tty`
+cf_tty_name="`tty`"
 if test "$cf_tty_name" != "not a tty"
 then
 AC_TRY_RUN([
@@ -86,10 +91,20 @@ AC_TRY_RUN([
 int main(void)
 {
 	struct stat sb;
-	struct group *ttygrp = getgrnam(TTY_GROUP_NAME);
-	char *name = ttyname(0);
+	struct group *ttygrp;
+	int fd;
+	char *name;
 
+	for (fd = 0; fd < 3; ++fd) {
+		if ((name = ttyname(fd)) != 0)
+			break;
+	}
+	if (name == 0)
+		name = "/dev/tty";
+
+	ttygrp = getgrnam(TTY_GROUP_NAME);
 	endgrent();
+
 	if (ttygrp != 0
 	 && name != 0
 	 && stat(name, &sb) == 0

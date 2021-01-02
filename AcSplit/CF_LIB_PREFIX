@@ -1,10 +1,10 @@
-dnl CF_LIB_PREFIX version: 13 updated: 2020/04/04 10:11:47
+dnl CF_LIB_PREFIX version: 14 updated: 2021/01/01 13:31:04
 dnl -------------
 dnl Compute the library-prefix for the given host system
 dnl $1 = variable to set
 define([CF_LIB_PREFIX],
 [
-	case $cf_cv_system_name in
+	case "$cf_cv_system_name" in
 	(OS/2*|os2*)
 		if test "$DFT_LWR_MODEL" = libtool; then
 			LIB_PREFIX='lib'

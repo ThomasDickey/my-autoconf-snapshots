@@ -1,4 +1,4 @@
-dnl CF_PRG_RULES version: 1 updated: 2006/06/03 11:45:08
+dnl CF_PRG_RULES version: 2 updated: 2021/01/01 13:31:04
 dnl ------------
 dnl Append definitions and rules for the given programs to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.
@@ -13,10 +13,10 @@ AC_DEFUN([CF_PRG_RULES],
 [
 for cf_dir in $2
 do
-	if test ! -d $srcdir/$cf_dir; then
+	if test ! -d "$srcdir/$cf_dir" ; then
 		continue
-	elif test -f $srcdir/$cf_dir/programs; then
-		$AWK -f $1 $srcdir/$cf_dir/programs >>$cf_dir/Makefile
+	elif test -f "$srcdir/$cf_dir/programs" ; then
+		$AWK -f $1 "$srcdir/$cf_dir/programs" >>$cf_dir/Makefile
 	fi
 done
 

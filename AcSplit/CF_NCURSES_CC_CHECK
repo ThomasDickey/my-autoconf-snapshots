@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CC_CHECK version: 4 updated: 2007/07/29 10:39:05
+dnl CF_NCURSES_CC_CHECK version: 5 updated: 2020/12/31 20:19:42
 dnl -------------------
 dnl Check if we can compile with ncurses' header file
 dnl $1 is the cache variable to set
@@ -18,10 +18,10 @@ AC_DEFUN([CF_NCURSES_CC_CHECK],[
 	make an error
 #endif
 ])[
-printf("%s\n", NCURSES_VERSION);
+printf("%s\\n", NCURSES_VERSION);
 #else
 #ifdef __NCURSES_H
-printf("old\n");
+printf("old\\n");
 #else
 	make an error
 #endif

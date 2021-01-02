@@ -1,4 +1,4 @@
-dnl CF_DIRNAME version: 4 updated: 2002/12/21 19:25:52
+dnl CF_DIRNAME version: 5 updated: 2020/12/31 20:19:42
 dnl ----------
 dnl "dirname" is not portable, so we fake it with a shell script.
-AC_DEFUN([CF_DIRNAME],[$1=`echo $2 | sed -e 's%/[[^/]]*$%%'`])dnl
+AC_DEFUN([CF_DIRNAME],[$1=`echo "$2" | sed -e 's%/[[^/]]*$%%'`])dnl

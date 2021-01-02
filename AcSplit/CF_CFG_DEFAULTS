@@ -1,4 +1,4 @@
-dnl CF_CFG_DEFAULTS version: 11 updated: 2015/04/17 21:13:04
+dnl CF_CFG_DEFAULTS version: 13 updated: 2021/01/01 16:53:59
 dnl ---------------
 dnl Determine the default configuration into which we'll install ncurses.  This
 dnl can be overridden by the user's command-line options.  There's two items to
@@ -29,18 +29,18 @@ if test "x$prefix" = "xNONE" ; then
 AC_MSG_CHECKING(for default include-directory)
 test -n "$verbose" && echo 1>&AC_FD_MSG
 for cf_symbol in \
-	$includedir \
-	$includedir/ncurses \
-	$prefix/include \
-	$prefix/include/ncurses \
+	"$includedir" \
+	"$includedir/ncurses" \
+	"$prefix/include" \
+	"$prefix/include/ncurses" \
 	/usr/local/include \
 	/usr/local/include/ncurses \
 	/usr/include \
 	/usr/include/ncurses
 do
-	cf_dir=`eval echo $cf_symbol`
-	if test -f $cf_dir/curses.h ; then
-	if ( fgrep NCURSES_VERSION $cf_dir/curses.h 2>&1 >/dev/null ) ; then
+	cf_dir=`eval echo "$cf_symbol"`
+	if test -f "$cf_dir/curses.h" ; then
+	if ( fgrep NCURSES_VERSION "$cf_dir/curses.h" 2>&1 >/dev/null ) ; then
 		includedir="$cf_symbol"
 		test -n "$verbose"  && echo $ac_n "	found " 1>&AC_FD_MSG
 		break

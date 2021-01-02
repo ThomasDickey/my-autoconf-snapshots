@@ -1,4 +1,4 @@
-dnl CF_GNAT_SIGINT version: 1 updated: 2011/03/27 20:07:59
+dnl CF_GNAT_SIGINT version: 2 updated: 2021/01/01 13:31:04
 dnl --------------
 dnl Check if gnat supports SIGINT, and presumably tasking.  For the latter, it
 dnl is noted that gnat may compile a tasking unit even for configurations which
@@ -37,7 +37,7 @@ end ConfTest;],
 	[cf_cv_gnat_sigint=yes],
 	[cf_cv_gnat_sigint=no])])
 
-if test $cf_cv_gnat_sigint = yes ; then
+if test "$cf_cv_gnat_sigint" = yes ; then
 	USE_GNAT_SIGINT=""
 else
 	USE_GNAT_SIGINT="#"

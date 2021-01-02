@@ -1,4 +1,4 @@
-dnl CF_PROG_PERL version: 5 updated: 2001/12/10 01:28:30
+dnl CF_PROG_PERL version: 6 updated: 2020/12/31 20:19:42
 dnl ------------
 dnl Check for Perl, given the minimum version, to ensure that required features
 dnl are present.
@@ -15,11 +15,11 @@ AC_CACHE_VAL(cf_cv_prog_PERL,
     cf_try="perl perl5"
   fi
 
-  cf_version=`echo '[[]]'|sed -e 's/^./$/'`
+  cf_version="`echo '[[]]'|sed -e 's/^./$/'`"
   for cf_prog in $cf_try; do
     echo "configure:__oline__: trying $cf_prog" >&AC_FD_CC
-    if ($cf_prog -e 'printf "found version %g\n",'$cf_version'][dnl
-ifelse([$1],,,[;exit('$cf_version'<$1)])') 1>&AC_FD_CC 2>&1; then
+    if ($cf_prog -e 'printf "found version %g\n",'"$cf_version"'][dnl
+ifelse([$1],,,[;exit('"$cf_version"'<$1)])') 1>&AC_FD_CC 2>&1; then
       cf_cv_prog_PERL=$cf_prog
       break
     fi

@@ -1,4 +1,4 @@
-dnl CF_CURSES_FUNCS version: 19 updated: 2018/01/03 04:47:33
+dnl CF_CURSES_FUNCS version: 20 updated: 2020/12/31 20:19:42
 dnl ---------------
 dnl Curses-functions are a little complicated, since a lot of them are macros.
 AC_DEFUN([CF_CURSES_FUNCS],
@@ -19,7 +19,7 @@ do
 			[
 #ifndef ${cf_func}
 long foo = (long)(&${cf_func});
-fprintf(stderr, "testing linkage of $cf_func:%p\n", (void *)foo);
+fprintf(stderr, "testing linkage of $cf_func:%p\\n", (void *)foo);
 if (foo + 1234L > 5678L)
 	${cf_cv_main_return:-return}(foo != 0);
 #endif
@@ -27,12 +27,12 @@ if (foo + 1234L > 5678L)
 			[cf_result=yes],
 			[cf_result=no])
 		fi
-		eval 'cf_cv_func_'$cf_func'=$cf_result'
+		eval 'cf_cv_func_'$cf_func'="$cf_result"'
 	])
 	# use the computed/retrieved cache-value:
 	eval 'cf_result=$cf_cv_func_'$cf_func
 	AC_MSG_RESULT($cf_result)
-	if test $cf_result != no; then
+	if test "$cf_result" != no; then
 		AC_DEFINE_UNQUOTED(HAVE_${cf_tr_func})
 	fi
 done

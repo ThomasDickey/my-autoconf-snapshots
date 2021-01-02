@@ -1,4 +1,4 @@
-dnl CF_FUNC_GRANTPT version: 14 updated: 2018/08/12 04:58:46
+dnl CF_FUNC_GRANTPT version: 15 updated: 2020/12/31 18:40:20
 dnl ---------------
 dnl Check for grantpt versus openpty, as well as functions that "should" be
 dnl available if grantpt is available.
@@ -59,7 +59,7 @@ dnl if we have no stropts.h, skip the checks for streams modules
 			do
 
 				cf_pty_feature=
-				cf_pty_next=`expr $cf_pty_this + 1`
+				cf_pty_next="`expr $cf_pty_this + 1`"
 				CF_MSG_LOG(pty feature test $cf_pty_next:5)
 				AC_TRY_RUN(#define CONFTEST $cf_pty_this
 $cf_pty_defines

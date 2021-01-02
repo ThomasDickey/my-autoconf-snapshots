@@ -1,4 +1,4 @@
-dnl CF_DIRS_TO_MAKE version: 3 updated: 2002/02/23 20:38:31
+dnl CF_DIRS_TO_MAKE version: 4 updated: 2021/01/01 13:31:04
 dnl ---------------
 AC_DEFUN([CF_DIRS_TO_MAKE],
 [
@@ -8,13 +8,13 @@ do
 	CF_OBJ_SUBDIR($cf_item,cf_subdir)
 	for cf_item2 in $DIRS_TO_MAKE
 	do
-		test $cf_item2 = $cf_subdir && break
+		test "$cf_item2" = "$cf_subdir" && break
 	done
 	test ".$cf_item2" != ".$cf_subdir" && DIRS_TO_MAKE="$DIRS_TO_MAKE $cf_subdir"
 done
 for cf_dir in $DIRS_TO_MAKE
 do
-	test ! -d $cf_dir && mkdir $cf_dir
+	test ! -d "$cf_dir" && mkdir "$cf_dir"
 done
 AC_SUBST(DIRS_TO_MAKE)
 ])dnl

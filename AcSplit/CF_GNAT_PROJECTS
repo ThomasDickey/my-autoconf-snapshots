@@ -1,4 +1,4 @@
-dnl CF_GNAT_PROJECTS version: 11 updated: 2020/12/05 16:42:18
+dnl CF_GNAT_PROJECTS version: 12 updated: 2021/01/01 13:31:04
 dnl ----------------
 dnl GNAT projects are configured with ".gpr" project files.
 dnl GNAT libraries are a further development, using the project feature.
@@ -12,19 +12,19 @@ cf_gnat_projects=no
 
 if test "$enable_gnat_projects" != no ; then
 AC_MSG_CHECKING(if GNAT supports project files)
-case $cf_cv_gnat_version in
+case "$cf_cv_gnat_version" in
 (3.[[0-9]]*)
 	;;
 (*)
-	case $cf_cv_system_name in
+	case "$cf_cv_system_name" in
 	(cygwin*|msys*)
 		;;
 	(*)
-		rm -rf conftest* *~conftest*
+		rm -rf ./conftest* ./*~conftest*
 		if mkdir conftest.src conftest.bin conftest.lib
 		then
 			cd conftest.src
-			rm -rf conftest* *~conftest*
+			rm -rf ./conftest* ./*~conftest*
 			cat >>library.gpr <<CF_EOF
 project Library is
   Kind := External ("LIB_KIND");
@@ -53,7 +53,7 @@ package body ConfPackage is
    end conftest;
 end ConfPackage;
 CF_EOF
-			if ( $cf_ada_make $ADAFLAGS \
+			if ( "$cf_ada_make" $ADAFLAGS \
 					-Plibrary.gpr \
 					-XBUILD_DIR=`cd ../conftest.bin;pwd` \
 					-XLIBRARY_DIR=`cd ../conftest.lib;pwd` \
@@ -68,7 +68,7 @@ CF_EOF
 		then
 			cf_gnat_libraries=yes
 		fi
-		rm -rf conftest* *~conftest*
+		rm -rf ./conftest* ./*~conftest*
 		;;
 	esac
 	;;
@@ -76,7 +76,7 @@ esac
 AC_MSG_RESULT($cf_gnat_projects)
 fi # enable_gnat_projects
 
-if test $cf_gnat_projects = yes
+if test "$cf_gnat_projects" = yes
 then
 	AC_MSG_CHECKING(if GNAT supports libraries)
 	AC_MSG_RESULT($cf_gnat_libraries)

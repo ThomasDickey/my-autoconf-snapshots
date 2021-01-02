@@ -1,4 +1,4 @@
-dnl CF_WITH_PERL version: 8 updated: 2014/07/22 05:32:57
+dnl CF_WITH_PERL version: 9 updated: 2020/12/31 20:19:42
 dnl ------------
 dnl Check if perl-extension (using embedded perl interpreter) is wanted, and
 dnl update symbols if we are able to use the extension.
@@ -22,9 +22,9 @@ if test "$with_perl" = yes ; then
 		cf_perl_link="$ac_link"
 		cf_perl_LIBS="$LIBS"
 
-		cf_perl_prefix=`$PERL -MConfig -e 'print $Config{shrpenv}'`
-		cf_perl_ccopts=`$PERL -MExtUtils::Embed -e ccopts`
-		cf_perl_ldopts=`$PERL -MExtUtils::Embed -e ldopts`
+		cf_perl_prefix="`$PERL -MConfig -e 'print $Config{shrpenv}'`"
+		cf_perl_ccopts="`$PERL -MExtUtils::Embed -e ccopts`"
+		cf_perl_ldopts="`$PERL -MExtUtils::Embed -e ldopts`"
 
 		ac_link="$cf_perl_prefix $ac_link"
 		CF_CHECK_CFLAGS($cf_perl_ccopts)
@@ -38,7 +38,7 @@ if test "$with_perl" = yes ; then
 		PerlInterpreter* interp = perl_alloc();
 		perl_construct(interp);
 		perl_parse(interp, 0, 0, (char **)0, (char **)0);
-		Perl_croak("Why:%s\n", "Bye!");
+		Perl_croak("Why:%s\\n", "Bye!");
 ],[
 		eval `$PERL -le 'for $f (qw/xsubpp typemap/) {
 				   @p = grep -f, map "$_/ExtUtils/$f", @INC;

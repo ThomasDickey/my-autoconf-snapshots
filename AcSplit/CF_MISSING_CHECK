@@ -1,4 +1,4 @@
-dnl CF_MISSING_CHECK version: 6 updated: 2002/10/09 20:00:37
+dnl CF_MISSING_CHECK version: 7 updated: 2020/12/31 20:19:42
 dnl ----------------
 dnl
 AC_DEFUN([CF_MISSING_CHECK],
@@ -19,11 +19,11 @@ extern struct zowie *$1();
 XtToolkitInitialize();
 #endif
 ],
-[eval 'cf_cv_func_'$1'=yes'],
-[eval 'cf_cv_func_'$1'=no'])
+[eval 'cf_cv_func_'"$1"'=yes'],
+[eval 'cf_cv_func_'"$1"'=no'])
 CPPFLAGS="$cf_save_CPPFLAGS"
 ])
-eval 'cf_result=$cf_cv_func_'$1
+eval 'cf_result="$cf_cv_func_'"$1"\"
 AC_MSG_RESULT($cf_result)
-test $cf_result = yes && AC_DEFINE_UNQUOTED(MISSING_EXTERN_$2)
+test "$cf_result" = yes && AC_DEFINE_UNQUOTED(MISSING_EXTERN_$2)
 ])dnl

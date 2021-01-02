@@ -1,9 +1,9 @@
-dnl CF_WITH_PKG_CONFIG_LIBDIR version: 10 updated: 2015/08/22 17:10:56
+dnl CF_WITH_PKG_CONFIG_LIBDIR version: 11 updated: 2021/01/01 16:16:30
 dnl -------------------------
 dnl Allow the choice of the pkg-config library directory to be overridden.
 AC_DEFUN([CF_WITH_PKG_CONFIG_LIBDIR],[
 
-case $PKG_CONFIG in
+case "$PKG_CONFIG" in
 (no|none|yes)
 	AC_MSG_CHECKING(for pkg-config library directory)
 	;;
@@ -60,7 +60,7 @@ case x$PKG_CONFIG_LIBDIR in
 	for cf_config in $cf_search_path
 	do
 		CF_VERBOSE(checking $cf_config/pkgconfig)
-		if test -d $cf_config/pkgconfig
+		if test -d "$cf_config/pkgconfig"
 		then
 			PKG_CONFIG_LIBDIR=$cf_config/pkgconfig
 			AC_MSG_CHECKING(done)

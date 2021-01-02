@@ -1,4 +1,4 @@
-dnl CF_CHAR_DEVICE version: 3 updated: 2002/10/07 22:10:29
+dnl CF_CHAR_DEVICE version: 4 updated: 2020/12/31 20:19:42
 dnl --------------
 dnl Check for existence of the given character-device
 AC_DEFUN([CF_CHAR_DEVICE],
@@ -11,7 +11,7 @@ else
 fi
 AC_MSG_RESULT($cf_result)
 if test "$cf_result" = yes ; then
-	cf_result=`echo $1 | sed -e s%/%_%g`
+	cf_result="`echo "$1" | sed -e s%/%_%g`"
 	CF_UPPER(cf_result,$cf_result)
 	AC_DEFINE_UNQUOTED(HAVE$cf_result)
 fi
