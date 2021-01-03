@@ -1,3 +1,12 @@
+2021-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_LIBS:
+	change compile-check from tgoto to tigetstr, because tgoto is not prototyped
+	in ncurses' curses.h while tigetstr is prototyped.  Lacking the prototype
+	can cause the configure check to fail with a recent clang configuration on
+	macOS, which turn on -Werror=implicit-function-declaration by default
+	(report by Dennis Preiser).
+
 2021-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc: regen
