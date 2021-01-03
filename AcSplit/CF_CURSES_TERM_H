@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERM_H version: 14 updated: 2021/01/01 19:34:28
+dnl CF_CURSES_TERM_H version: 15 updated: 2021/01/02 09:31:20
 dnl ----------------
 dnl SVr4 curses should have term.h as well (where it puts the definitions of
 dnl the low-level interface).  This may not be true in old/broken implementations,
@@ -33,7 +33,7 @@ do
 	[cf_cv_term_header=no])
 done
 
-case $cf_cv_term_header in
+case "$cf_cv_term_header" in
 (no)
 	# If curses is ncurses, some packagers still mess it up by trying to make
 	# us use GNU termcap.  This handles the most common case.
@@ -55,7 +55,7 @@ make an error
 esac
 ])
 
-case $cf_cv_term_header in
+case "$cf_cv_term_header" in
 (term.h)
 	AC_DEFINE(HAVE_TERM_H,1,[Define to 1 if we have term.h])
 	;;

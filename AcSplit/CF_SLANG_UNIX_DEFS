@@ -1,4 +1,4 @@
-dnl CF_SLANG_UNIX_DEFS version: 6 updated: 2012/11/08 20:57:52
+dnl CF_SLANG_UNIX_DEFS version: 7 updated: 2021/01/02 09:31:20
 dnl ------------------
 dnl Slang's header files rely on some predefined symbols to declare variables
 dnl that we might find useful.  This check is needed, because those symbols
@@ -52,7 +52,7 @@ SLang_TT_Baud_Rate = 1
 	[cf_cv_slang_unix=yes],
 	[cf_cv_slang_unix=no])
 ])
-test $cf_cv_slang_unix = yes && AC_DEFINE(REAL_UNIX_SYSTEM,1,[Define to 1 if we must define REAL_UNIX_SYSTEM to compile with s-lang headers])
+test "$cf_cv_slang_unix" = yes && AC_DEFINE(REAL_UNIX_SYSTEM,1,[Define to 1 if we must define REAL_UNIX_SYSTEM to compile with s-lang headers])
 
 CF_CHECK_TYPE(SLsmg_Color_Type,int,[#include <slang.h>])
 CF_CHECK_TYPE(SLtt_Char_Type,unsigned long,[#include <slang.h>])

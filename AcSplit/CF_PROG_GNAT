@@ -1,4 +1,4 @@
-dnl CF_PROG_GNAT version: 11 updated: 2021/01/01 13:31:04
+dnl CF_PROG_GNAT version: 12 updated: 2021/01/02 17:09:14
 dnl ------------
 dnl Check for gnat/gnatmake/etc, ensure that the toolset is complete.
 AC_DEFUN([CF_PROG_GNAT],[
@@ -9,14 +9,14 @@ do
 	unset ac_cv_path_cf_TEMP_gnat
 	unset cf_TEMP_gnat
 	AC_PATH_PROG(cf_TEMP_gnat,$cf_prog_gnat,no)
-	eval cf_cv_PATH_$cf_upper_prog_gnat=[$]ac_cv_path_cf_TEMP_gnat
+	eval "cf_cv_PATH_$cf_upper_prog_gnat=[$]ac_cv_path_cf_TEMP_gnat"
 
 	if test "x$cf_TEMP_gnat" != xno; then
 		unset cf_cv_gnat_version
 		unset cf_TEMP_gnat
 		CF_GNAT_VERSION(cf_TEMP_gnat,$cf_prog_gnat)
 	fi
-	eval cf_cv_VERSION_$cf_upper_prog_gnat=[$]cf_TEMP_gnat
+	eval "cf_cv_VERSION_$cf_upper_prog_gnat=[$]cf_TEMP_gnat"
 
 	unset cf_TEMP_gnat
 	unset cf_cv_gnat_version
@@ -56,7 +56,7 @@ else
 				fi
 				if test -n "$cf_gprconfig_value"
 				then
-					eval cf_ada_config_[$]cf_gprconfig=[$]cf_gprconfig_value
+					eval "cf_ada_config_[$]cf_gprconfig=[$]cf_gprconfig_value"
 					AC_MSG_RESULT($cf_gprconfig_value)
 				else
 					AC_MSG_RESULT(missing)

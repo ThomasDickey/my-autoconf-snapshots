@@ -1,4 +1,4 @@
-dnl CF_ENABLE_BROKEN_LINKER version: 1 updated: 2020/02/08 15:59:30
+dnl CF_ENABLE_BROKEN_LINKER version: 2 updated: 2021/01/02 17:09:14
 dnl -----------------------
 dnl Some linkers cannot reference a data-only object.  Cygwin used to be one.
 dnl This usually follows CF_LINK_DATAONLY, but is not required in case we need
@@ -12,7 +12,7 @@ AC_ARG_ENABLE(broken_linker,
 	[with_broken_linker=no])
 AC_MSG_RESULT($with_broken_linker)
 
-: ${BROKEN_LINKER:=0}
+: "${BROKEN_LINKER:=0}"
 if test "x$with_broken_linker" = xyes ; then
 	AC_DEFINE(BROKEN_LINKER,1,[Define to 1 to work around linkers which cannot link data-only modules])
 	BROKEN_LINKER=1

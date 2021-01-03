@@ -1,4 +1,4 @@
-dnl CF_TYPE_LONG_LONG version: 3 updated: 2012/11/08 20:57:52
+dnl CF_TYPE_LONG_LONG version: 4 updated: 2021/01/02 09:31:20
 dnl -----------------
 dnl Check for long long type.
 AC_DEFUN([CF_TYPE_LONG_LONG],[
@@ -14,11 +14,11 @@ main (void)
 _CFEOF
 	(eval [$]ac_compile) 2>conftest.err
 	ac_status=$?
-	if test $ac_status = 0 && test -s conftest.err
+	if test "$ac_status" = 0 && test -s conftest.err
 	then
 		fgrep warning conftest.err >/dev/null 2>&1 && ac_status=1
 	fi
-	if test $ac_status != 0
+	if test "$ac_status" != 0
 	then
 		cf_cv_type_long_long=no
 	else

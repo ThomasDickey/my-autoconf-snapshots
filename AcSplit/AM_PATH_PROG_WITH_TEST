@@ -1,4 +1,4 @@
-dnl AM_PATH_PROG_WITH_TEST version: 9 updated: 2015/04/15 19:08:48
+dnl AM_PATH_PROG_WITH_TEST version: 10 updated: 2021/01/02 09:31:20
 dnl ----------------------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -34,7 +34,7 @@ AC_CACHE_VAL(ac_cv_path_$1,
   IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
   for ac_dir in ifelse([$5], , $PATH, [$5]); do
     test -z "$ac_dir" && ac_dir=.
-    if test -f $ac_dir/$ac_word$ac_exeext; then
+    if test -f "$ac_dir/$ac_word$ac_exeext" ; then
       if [$3]; then
 	ac_cv_path_$1="$ac_dir/$ac_word$ac_exeext"
 	break

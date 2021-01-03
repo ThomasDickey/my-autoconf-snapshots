@@ -1,4 +1,4 @@
-dnl CF_UTMP_UT_XSTATUS version: 5 updated: 2020/03/10 18:53:47
+dnl CF_UTMP_UT_XSTATUS version: 6 updated: 2021/01/02 09:31:20
 dnl ------------------
 dnl Check for known variants on the UTMP/UTMPX struct's exit-status as reported
 dnl by various people:
@@ -12,7 +12,7 @@ dnl Note: utmp_xstatus is not a conventional compatibility definition in the
 dnl system header files.
 AC_DEFUN([CF_UTMP_UT_XSTATUS],
 [
-if test $cf_cv_have_utmp != no ; then
+if test "$cf_cv_have_utmp" != no ; then
 AC_CACHE_CHECK(for exit-status in $cf_cv_have_utmp,cf_cv_have_utmp_ut_xstatus,[
 for cf_result in \
 	ut_exit.__e_exit \
@@ -32,7 +32,7 @@ AC_TRY_COMPILE([
 	[cf_cv_have_utmp_ut_xstatus=no])
 done
 ])
-if test $cf_cv_have_utmp_ut_xstatus != no ; then
+if test "$cf_cv_have_utmp_ut_xstatus" != no ; then
 	AC_DEFINE(HAVE_UTMP_UT_XSTATUS,1,[Define to 1 if UTMP/UTMPX has exit-status member])
 	AC_DEFINE_UNQUOTED(ut_xstatus,$cf_cv_have_utmp_ut_xstatus,[Define if needed to rename member ut_xstatus of UTMP/UTMPX])
 fi

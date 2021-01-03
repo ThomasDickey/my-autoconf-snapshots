@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 8 updated: 2018/10/20 20:24:34
+dnl CF_WITH_VERSIONED_SYMS version: 9 updated: 2021/01/02 17:09:14
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -123,7 +123,7 @@ EOF
 		if make -f conftest.mk 2>&AC_FD_CC >/dev/null
 		then
 			# test for missing symbol in either Data or Text section
-			cf_missing=`nm -P conftest.so 2>&AC_FD_CC |fgrep _ismissing | egrep '[[ 	]][[DT]][[ 	]]'`
+			cf_missing="`nm -P conftest.so 2>&AC_FD_CC |fgrep _ismissing | egrep '[[ 	]][[DT]][[ 	]]'`"
 			test -n "$cf_missing" && WILDCARD_SYMS=yes
 		fi
 		AC_MSG_RESULT($WILDCARD_SYMS)

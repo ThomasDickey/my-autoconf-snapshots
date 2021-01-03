@@ -1,4 +1,4 @@
-dnl CF_LDFLAGS_STATIC version: 13 updated: 2021/01/01 13:31:04
+dnl CF_LDFLAGS_STATIC version: 14 updated: 2021/01/02 17:09:14
 dnl -----------------
 dnl Check for compiler/linker flags used to temporarily force usage of static
 dnl libraries.  This depends on the compiler and platform.  Use this to help
@@ -71,7 +71,7 @@ int cf_ldflags_static(FILE *fp);
 	return cf_ldflags_static(stdin);
 ],[
 	# some linkers simply ignore the -dynamic
-	case x`file conftest$ac_exeext 2>/dev/null` in
+	case x`file "conftest$ac_exeext" 2>/dev/null` in
 	(*static*)
 		cf_ldflags_static=no
 		;;

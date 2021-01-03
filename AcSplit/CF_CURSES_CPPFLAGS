@@ -1,11 +1,11 @@
-dnl CF_CURSES_CPPFLAGS version: 13 updated: 2018/06/20 20:23:13
+dnl CF_CURSES_CPPFLAGS version: 14 updated: 2021/01/02 09:31:20
 dnl ------------------
 dnl Look for the curses headers.
 AC_DEFUN([CF_CURSES_CPPFLAGS],[
 
 AC_CACHE_CHECK(for extra include directories,cf_cv_curses_incdir,[
 cf_cv_curses_incdir=no
-case $host_os in
+case "$host_os" in
 (hpux10.*)
 	if test "x$cf_cv_screen" = "xcurses_colr"
 	then

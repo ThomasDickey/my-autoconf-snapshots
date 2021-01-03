@@ -1,5 +1,5 @@
-dnl CF_STRIP_G_OPT version: 3 updated: 2002/12/21 19:25:52
+dnl CF_STRIP_G_OPT version: 4 updated: 2021/01/02 09:31:20
 dnl --------------
 dnl	Remove "-g" option from the compiler options
 AC_DEFUN([CF_STRIP_G_OPT],
-[$1=`echo ${$1} | sed -e 's%-g %%' -e 's%-g$%%'`])dnl
+[$1=`echo "${$1}" | CF__SED_TRIMBLANKS(-e 's%-g %%' -e 's%-g$%%')`])dnl

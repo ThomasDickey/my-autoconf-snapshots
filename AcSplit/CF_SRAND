@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 14 updated: 2020/07/30 16:32:36
+dnl CF_SRAND version: 15 updated: 2021/01/02 09:31:20
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -31,7 +31,7 @@ done
 ])
 if test "$cf_cv_srand_func" != unknown ; then
 	AC_CACHE_CHECK(for range of random-integers, cf_cv_rand_max,[
-		case $cf_cv_srand_func in
+		case "$cf_cv_srand_func" in
 		(srand/rand)
 			cf_cv_rand_max=RAND_MAX
 			cf_rand_max=16
@@ -56,7 +56,7 @@ if test "$cf_cv_srand_func" != unknown ; then
 		[cf_cv_rand_max="(1UL<<$cf_rand_max)-1"])
 	])
 
-	case $cf_cv_srand_func in
+	case "$cf_cv_srand_func" in
 	(*/arc4random)
 		AC_MSG_CHECKING(if <bsd/stdlib.h> should be included)
 		AC_TRY_COMPILE([#include <bsd/stdlib.h>],

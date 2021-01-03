@@ -1,4 +1,4 @@
-dnl CF_GNAT_PROJECTS version: 12 updated: 2021/01/01 13:31:04
+dnl CF_GNAT_PROJECTS version: 13 updated: 2021/01/02 17:09:14
 dnl ----------------
 dnl GNAT projects are configured with ".gpr" project files.
 dnl GNAT libraries are a further development, using the project feature.
@@ -55,9 +55,9 @@ end ConfPackage;
 CF_EOF
 			if ( "$cf_ada_make" $ADAFLAGS \
 					-Plibrary.gpr \
-					-XBUILD_DIR=`cd ../conftest.bin;pwd` \
-					-XLIBRARY_DIR=`cd ../conftest.lib;pwd` \
-					-XSOURCE_DIR=`pwd` \
+					-XBUILD_DIR="`cd ../conftest.bin;pwd`" \
+					-XLIBRARY_DIR="`cd ../conftest.lib;pwd`" \
+					-XSOURCE_DIR="`pwd`" \
 					-XSONAME=libConfTest.so.1 \
 					-XLIB_KIND=static 1>&AC_FD_CC 2>&1 ) ; then
 				cf_gnat_projects=yes

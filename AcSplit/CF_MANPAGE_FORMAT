@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 13 updated: 2021/01/01 16:53:59
+dnl CF_MANPAGE_FORMAT version: 14 updated: 2021/01/02 17:09:14
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -36,9 +36,9 @@ case "$MANPAGE_FORMAT" in
 
 	# look for the 'date' man-page (it's most likely to be installed!)
 	MANPAGE_FORMAT=
-	cf_preform=no
-	cf_catonly=yes
-	cf_example=date
+	cf_preform="no"
+	cf_catonly="yes"
+	cf_example="date"
 
 	IFS="${IFS:- 	}"; ac_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
 	for cf_dir in $MANPATH; do

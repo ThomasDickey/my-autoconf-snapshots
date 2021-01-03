@@ -1,4 +1,4 @@
-dnl CF_FUNC_LSTAT version: 3 updated: 2012/11/08 20:57:52
+dnl CF_FUNC_LSTAT version: 4 updated: 2021/01/02 09:31:20
 dnl -------------
 dnl A conventional existence-check for 'lstat' won't work with the Linux
 dnl version of gcc 2.7.0, since the symbol is defined only within <sys/stat.h>
@@ -17,7 +17,7 @@ AC_TRY_LINK([
 	[ac_cv_func_lstat=no])
 	])
 AC_MSG_RESULT($ac_cv_func_lstat )
-if test $ac_cv_func_lstat = yes; then
+if test "$ac_cv_func_lstat" = yes; then
 	AC_DEFINE(HAVE_LSTAT,1,[Define to 1 if we have lstat])
 fi
 ])dnl

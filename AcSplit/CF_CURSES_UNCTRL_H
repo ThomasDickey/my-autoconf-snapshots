@@ -1,4 +1,4 @@
-dnl CF_CURSES_UNCTRL_H version: 7 updated: 2021/01/01 19:34:28
+dnl CF_CURSES_UNCTRL_H version: 8 updated: 2021/01/02 09:31:20
 dnl ------------------
 dnl Any X/Open curses implementation must have unctrl.h, but ncurses packages
 dnl may put it in a subdirectory (along with ncurses' other headers, of
@@ -34,13 +34,13 @@ do
 done
 ])
 
-case $cf_cv_unctrl_header in
+case "$cf_cv_unctrl_header" in
 (no)
 	AC_MSG_WARN(unctrl.h header not found)
 	;;
 esac
 
-case $cf_cv_unctrl_header in
+case "$cf_cv_unctrl_header" in
 (unctrl.h)
 	AC_DEFINE(HAVE_UNCTRL_H,1,[Define to 1 if we have unctrl.h])
 	;;

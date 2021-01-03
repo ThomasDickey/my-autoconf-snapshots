@@ -1,4 +1,4 @@
-dnl CF_TM_GMTOFF version: 3 updated: 2012/11/08 20:57:52
+dnl CF_TM_GMTOFF version: 4 updated: 2021/01/02 09:31:20
 dnl ------------
 dnl Check if the tm-struct defines the '.tm_gmtoff' member (useful in decoding
 dnl dates).
@@ -23,5 +23,5 @@ AC_CACHE_VAL(cf_cv_tm_gmtoff,[
 	[cf_cv_tm_gmtoff=yes],
 	[cf_cv_tm_gmtoff=no])])
 AC_MSG_RESULT($cf_cv_tm_gmtoff)
-test $cf_cv_tm_gmtoff = no && AC_DEFINE(DONT_HAVE_TM_GMTOFF,1,[Define to 1 if the tm-struct defines .tm_gmtoff member])
+test "$cf_cv_tm_gmtoff" = no && AC_DEFINE(DONT_HAVE_TM_GMTOFF,1,[Define to 1 if the tm-struct defines .tm_gmtoff member])
 ])dnl

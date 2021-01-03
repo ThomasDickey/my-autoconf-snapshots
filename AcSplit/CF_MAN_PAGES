@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 49 updated: 2021/01/01 16:53:59
+dnl CF_MAN_PAGES version: 50 updated: 2021/01/02 17:09:14
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -200,14 +200,14 @@ CF_EOF
 
 if test "$with_overwrite" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
-	sed -e "/\#[    ]*include/s,<curses.h,<ncurses$LIB_SUFFIX/curses.h," < \$TMP >\$TMP.out
+	sed -e "/\\#[    ]*include/s,<curses.h,<ncurses$LIB_SUFFIX/curses.h," < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
 
 if test "$with_curses_h" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
-	sed -e "/\#[    ]*include/s,curses.h,ncurses.h," < \$TMP >\$TMP.out
+	sed -e "/\\#[    ]*include/s,curses.h,ncurses.h," < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
@@ -236,7 +236,7 @@ case "$MANPAGE_FORMAT" in
 cat >>$cf_edit_man <<CF_EOF
 	if test \$form = format ; then
 		# BSDI installs only .0 suffixes in the cat directories
-		cf_target="\`echo \$cf_target|sed -e 's/\.[[1-9]]\+[[a-z]]*/.0/'\`"
+		cf_target="\`echo \$cf_target|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
 	fi
 CF_EOF
   ;;
@@ -250,8 +250,8 @@ cat >>$cf_edit_man <<CF_EOF
 		test -d \$cf_subdir\${section} &&
 		test -n "\$aliases" && (
 			cd \$cf_subdir\${section} && (
-				cf_source=\`echo \$cf_target |sed -e 's%^.*/\([[^/]][[^/]]*/[[^/]][[^/]]*$\)%\1%'\`
-				test -n "$cf_so_strip" && cf_source=\`echo \$cf_source |sed -e 's%\.$cf_so_strip\$%%'\`
+				cf_source=\`echo \$cf_target |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
+				test -n "$cf_so_strip" && cf_source=\`echo \$cf_source |sed -e 's%\\.$cf_so_strip\$%%'\`
 				cf_target=\`basename \$cf_target\`
 				for cf_alias in \$aliases
 				do

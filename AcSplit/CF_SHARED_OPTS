@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 104 updated: 2021/01/01 16:53:59
+dnl CF_SHARED_OPTS version: 105 updated: 2021/01/02 17:09:14
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -466,7 +466,7 @@ CF_EOF
 			for cf_shared_opts in -xcode=pic32 -xcode=pic13 -KPIC -Kpic -O
 			do
 				CFLAGS="$cf_shared_opts $cf_save_CFLAGS"
-				AC_TRY_COMPILE([#include <stdio.h>],[printf("Hello\n");],[break])
+				AC_TRY_COMPILE([#include <stdio.h>],[printf("Hello\\n");],[break])
 			done
 			CFLAGS="$cf_save_CFLAGS"
 			CC_SHARED_OPTS=$cf_shared_opts
@@ -509,7 +509,7 @@ cat > conftest.$ac_ext <<EOF
 #include <stdio.h>
 int main(int argc, char *argv[[]])
 {
-	printf("hello\n");
+	printf("hello\\n");
 	return (argv[[argc-1]] == 0) ;
 }
 EOF

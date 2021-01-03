@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 26 updated: 2019/12/31 10:27:03
+dnl CF_GNUTLS version: 27 updated: 2021/01/02 09:31:20
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -13,7 +13,7 @@ AC_DEFUN([CF_GNUTLS],[
 	cf_pkg_gnutls=none
 	if test "x$PKG_CONFIG" != xnone; then
 		cf_pkg_gnutls=ifelse([$2],,gnutls-openssl,gnutls)
-		case $1 in
+		case "$1" in
 		(no)
 			;;
 		(yes) # if no explicit directory given, try pkg-config
@@ -35,7 +35,7 @@ AC_DEFUN([CF_GNUTLS],[
 						cf_cv_header_path_gnutls=/usr/include
 						;;
 					esac
-					if test -d $cf_cv_header_path_gnutls/gnutls ; then
+					if test -d "$cf_cv_header_path_gnutls/gnutls" ; then
 						cf_cv_header_path_gnutls=$cf_cv_header_path_gnutls/gnutls
 					fi
 					CF_ADD_CFLAGS($cf_cflags_ssl)
@@ -82,7 +82,7 @@ AC_DEFUN([CF_GNUTLS],[
 	if test "$cf_cv_have_gnutls" = yes ; then
 		if test -n "$cf_cv_header_path_gnutls" ; then
 			AC_DEFINE(USE_SSL)
-			case $cf_cv_header_path_gnutls in
+			case "$cf_cv_header_path_gnutls" in
 			(/usr/include/gnutls)
 				;;
 			(*)
