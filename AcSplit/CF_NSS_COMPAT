@@ -1,4 +1,4 @@
-dnl CF_NSS_COMPAT version: 6 updated: 2020/01/18 12:30:18
+dnl CF_NSS_COMPAT version: 7 updated: 2021/01/02 09:31:20
 dnl -------------
 dnl Check for NSS compatible SSL libraries
 dnl $1 = the [optional] directory in which the library may be found
@@ -21,7 +21,7 @@ case "$1" in
 (yes)
 	AC_CHECK_LIB(nss_compat_ossl, SSL_get_version,[],[
 		cf_ssl_root=/usr/local/nss_compat_ossl
-		if test -d $cf_ssl_root ; then
+		if test -d "$cf_ssl_root" ; then
 			CF_VERBOSE(assume it is in $cf_ssl_root)
 			cf_ssl_library="-L$cf_ssl_root/lib $cf_ssl_library"
 		else
@@ -31,10 +31,10 @@ case "$1" in
 	[-lnss_compat_ossl])
 	;;
 (*)
-	if test -d $1 ; then
-		if test -d $1/include ; then
+	if test -d "$1" ; then
+		if test -d "$1/include" ; then
 			cf_ssl_root=$1
-		elif test -d $1/../include ; then
+		elif test -d "$1/../include" ; then
 			cf_ssl_root=$1/..
 		else
 			AC_MSG_ERROR(cannot find NSS compliant library under $1)
@@ -49,9 +49,9 @@ CF_ADD_LIBS($cf_ssl_library)
 
 cf_ssl_subincs=yes
 if test -n "$cf_ssl_root" ; then
-	if test -d $cf_ssl_root/include ; then
+	if test -d "$cf_ssl_root/include" ; then
 		cf_ssl_cflags="-I$cf_ssl_root/include  $cf_ssl_cflags"
-		test -d $cf_ssl_root/include/nss_compat_ossl || cf_ssl_subincs=no
+		test -d "$cf_ssl_root/include/nss_compat_ossl" || cf_ssl_subincs=no
 	fi
 fi
 CF_ADD_CFLAGS($cf_ssl_cflags)

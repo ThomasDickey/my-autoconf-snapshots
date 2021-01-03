@@ -1,0 +1,5 @@
+dnl CF__SED_TRIMBLANKS version: 1 updated: 2021/01/02 09:31:20
+dnl ------------------
+dnl Trim something using sed, then trim extra whitespace
+dnl $1 = extra parameters, e.g., in CF_STRIP_G_OPT
+define([CF__SED_TRIMBLANKS],[sed ifelse($1,,,[$1] )-e 's%[[	]]% %g' -e 's% [[ ]]*% %g' -e 's%^ %%' -e 's% [$]%%'])dnl

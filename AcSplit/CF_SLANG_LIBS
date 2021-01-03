@@ -1,4 +1,4 @@
-dnl CF_SLANG_LIBS version: 9 updated: 2015/04/15 19:08:48
+dnl CF_SLANG_LIBS version: 10 updated: 2021/01/02 09:31:20
 dnl -------------
 dnl Look for the slang library.
 dnl
@@ -9,7 +9,7 @@ cf_slang_LIBS1="$LIBS"
 CF_TERMCAP_LIBS
 cf_slang_LIBS2="$LIBS"
 AC_CHECK_FUNC(acos,,[CF_RECHECK_FUNC(acos,m,LIBS)])
-case $host_os in
+case "$host_os" in
 (os2*)
 	CF_FIND_LIBRARY(video,video,
 		[#include <sys/video.h>],
@@ -23,7 +23,7 @@ CF_FIND_LIBRARY($1,$1,
 	SLtt_get_screen_size)
 cf_slang_LIBS3="$LIBS"
 AC_MSG_CHECKING(if we can link $1 without termcap)
-if test -n "`echo $cf_slang_LIBS1 | sed -e 's/ //g'`" ; then
+if test -n "`echo "$cf_slang_LIBS1" | sed -e 's/ //g'`" ; then
 	cf_exclude=`echo ".$cf_slang_LIBS2" | sed -e "s%$cf_slang_LIBS1%%" -e 's%^.%%'`
 else
 	cf_exclude="$cf_slang_LIBS2"
@@ -34,5 +34,5 @@ AC_TRY_LINK([#include <slang.h>],
 	[cf_result=yes],
 	[cf_result=no])
 AC_MSG_RESULT($cf_result)
-test $cf_result = no && LIBS="$cf_slang_LIBS3"
+test "$cf_result" = no && LIBS="$cf_slang_LIBS3"
 ])dnl

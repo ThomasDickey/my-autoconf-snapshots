@@ -1,4 +1,4 @@
-dnl CF_SLANG_CPPFLAGS version: 11 updated: 2015/04/15 19:08:48
+dnl CF_SLANG_CPPFLAGS version: 12 updated: 2021/01/02 09:31:20
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
@@ -9,7 +9,7 @@ AC_DEFUN([CF_SLANG_CPPFLAGS],
 AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 	cf_cv_$1_header=no
 	AC_TRY_COMPILE([#include <slang.h>],
-	[printf("%s\n", SLANG_VERSION)],
+	[printf("%s\\n", SLANG_VERSION)],
 	[cf_cv_$1_header=predefined],[
 	CF_HEADER_PATH(cf_search,$1)
 	for cf_incdir in $cf_search
@@ -17,8 +17,8 @@ AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 		for cf_header in \
 			slang.h
 		do
-			echo trying $cf_incdir/$cf_header 1>&AC_FD_CC
-			if egrep "SLANG_VERSION" $cf_incdir/$cf_header 1>&AC_FD_CC 2>&1; then
+			echo trying "$cf_incdir/$cf_header" 1>&AC_FD_CC
+			if egrep "SLANG_VERSION" "$cf_incdir/$cf_header" 1>&AC_FD_CC 2>&1; then
 				cf_cv_$1_header=$cf_incdir/$cf_header
 				break
 			fi
@@ -33,7 +33,7 @@ then
 
 	CF_DIRNAME(cf_incdir,$cf_cv_$1_header)
 
-	case $cf_cv_$1_header in
+	case "$cf_cv_$1_header" in
 	(predefined)
 		;;
 	(*)

@@ -1,4 +1,4 @@
-dnl CF_SSL version: 25 updated: 2015/04/15 19:08:48
+dnl CF_SSL version: 26 updated: 2021/01/02 09:31:20
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -11,7 +11,7 @@ AC_DEFUN([CF_SSL],[
 	CF_ADD_OPTIONAL_PATH($1, [ssl library])
 
 	if test "x$PKG_CONFIG" != xnone; then
-		case $1 in
+		case "$1" in
 		(no)
 			;;
 		(yes) # if no explicit directory given, try pkg-config
@@ -55,7 +55,7 @@ AC_DEFUN([CF_SSL],[
 					cf_cv_header_path_ssl=/usr/include
 				fi
 
-				if test -d $cf_cv_header_path_ssl/openssl ; then
+				if test -d "$cf_cv_header_path_ssl/openssl" ; then
 					cf_cv_header_path_ssl=$cf_cv_header_path_ssl/openssl
 				fi
 
@@ -77,7 +77,7 @@ AC_DEFUN([CF_SSL],[
 	fi
 
 	if test "$cf_cv_have_ssl" != yes; then
-		case $host_os in
+		case "$host_os" in
 		(mingw*)
 			cf_extra_ssl_libs="-lcrypto -lgdi32"
 			;;
@@ -110,7 +110,7 @@ AC_DEFUN([CF_SSL],[
 				fi
 				CF_ADD_LIBS(-lssl $cf_extra_ssl_libs)
 				if test -n "$cf_cv_header_path_ssl" ; then
-					case $cf_cv_header_path_ssl in
+					case "$cf_cv_header_path_ssl" in
 					(/usr/include/openssl)
 						;;
 					(*)
@@ -126,7 +126,7 @@ AC_DEFUN([CF_SSL],[
 		AC_DEFINE(USE_SSL,1,[Define to 1 if we are using SSL])
 		if test -n "$cf_cv_header_path_ssl" ; then
 			CF_VERBOSE(checking ssl header-path $cf_cv_header_path_ssl)
-			case $cf_cv_header_path_ssl in
+			case "$cf_cv_header_path_ssl" in
 			(*/openssl)
 				AC_DEFINE(USE_OPENSSL_INCL,1,[Define to 1 if we are using OpenSSL headers])
 				;;

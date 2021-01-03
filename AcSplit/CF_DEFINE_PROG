@@ -1,4 +1,4 @@
-dnl CF_DEFINE_PROG version: 4 updated: 2012/11/08 20:57:52
+dnl CF_DEFINE_PROG version: 5 updated: 2021/01/02 09:31:20
 dnl --------------
 dnl Check for a program in the given list $3, defining the corresponding
 dnl program variable $2.
@@ -9,8 +9,8 @@ AC_CACHE_VAL(cf_cv_$2,[
 	cf_cv_$2=unknown
 	for cv_path in $3
 	do
-		if test -f $cv_path ; then
-			cf_cv_$2=$cv_path
+		if test -f "$cv_path" ; then
+			cf_cv_$2="$cv_path"
 			break
 		fi
 	done

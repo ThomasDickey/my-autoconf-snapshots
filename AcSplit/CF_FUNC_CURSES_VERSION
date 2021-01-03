@@ -1,4 +1,4 @@
-dnl CF_FUNC_CURSES_VERSION version: 7 updated: 2017/05/10 18:31:29
+dnl CF_FUNC_CURSES_VERSION version: 8 updated: 2021/01/02 09:31:20
 dnl ----------------------
 dnl Solaris has a data item 'curses_version', which confuses AC_CHECK_FUNCS.
 dnl It's a character string "SVR4", not documented.
@@ -10,7 +10,7 @@ AC_TRY_RUN([
 int main(void)
 {
 	char temp[1024];
-	sprintf(temp, "%s\n", curses_version());
+	sprintf(temp, "%s\\n", curses_version());
 	${cf_cv_main_return:-return}(0);
 }]
 ,[cf_cv_func_curses_version=yes]

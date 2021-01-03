@@ -1,4 +1,4 @@
-dnl CF_CURSES_LIBS version: 43 updated: 2020/12/31 20:19:42
+dnl CF_CURSES_LIBS version: 44 updated: 2021/01/02 09:31:20
 dnl --------------
 dnl Look for the curses libraries.  Older curses implementations may require
 dnl termcap/termlib to be linked as well.  Call CF_CURSES_CPPFLAGS first.
@@ -13,7 +13,7 @@ AC_TRY_LINK([#include <${cf_cv_ncurses_header:-curses.h}>],
 AC_MSG_RESULT($cf_result)
 
 if test "$cf_result" = no ; then
-case $host_os in
+case "$host_os" in
 (freebsd*)
 	AC_CHECK_LIB(mytinfo,tgoto,[CF_ADD_LIBS(-lmytinfo)])
 	;;

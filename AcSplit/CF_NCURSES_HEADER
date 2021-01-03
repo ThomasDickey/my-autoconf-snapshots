@@ -1,4 +1,4 @@
-dnl CF_NCURSES_HEADER version: 5 updated: 2020/12/31 20:19:42
+dnl CF_NCURSES_HEADER version: 6 updated: 2021/01/02 09:31:20
 dnl -----------------
 dnl Find a "curses" header file, e.g,. "curses.h", or one of the more common
 dnl variations of ncurses' installs.
@@ -38,7 +38,7 @@ AC_CACHE_CHECK(for $cf_ncuhdr_root include-path, cf_cv_ncurses_h2,[
 
 	CF_DIRNAME(cf_1st_incdir,$cf_cv_ncurses_h2)
 	cf_cv_ncurses_header="`basename "$cf_cv_ncurses_h2"`"
-	if test `basename "$cf_1st_incdir"` = "$cf_ncuhdr_root" ; then
+	if test "`basename "$cf_1st_incdir"`" = "$cf_ncuhdr_root" ; then
 		cf_cv_ncurses_header="$cf_ncuhdr_root/$cf_cv_ncurses_header"
 	fi
 	CF_ADD_INCDIR($cf_1st_incdir)
@@ -47,13 +47,13 @@ fi
 
 # Set definitions to allow ifdef'ing for ncurses.h
 
-case $cf_cv_ncurses_header in
+case "$cf_cv_ncurses_header" in
 (*ncurses.h)
 	AC_DEFINE(HAVE_NCURSES_H,1,[Define to 1 if we have ncurses.h])
 	;;
 esac
 
-case $cf_cv_ncurses_header in
+case "$cf_cv_ncurses_header" in
 (ncurses/curses.h|ncurses/ncurses.h)
 	AC_DEFINE(HAVE_NCURSES_NCURSES_H,1,[Define to 1 if we have ncurses/ncurses.h])
 	;;

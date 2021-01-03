@@ -1,4 +1,4 @@
-dnl CF_FIND_IPV6_LIBS version: 8 updated: 2015/04/15 19:08:48
+dnl CF_FIND_IPV6_LIBS version: 9 updated: 2021/01/02 09:31:20
 dnl -----------------
 dnl Based on the IPV6 stack type, look for the corresponding library.
 AC_DEFUN([CF_FIND_IPV6_LIBS],[
@@ -8,7 +8,7 @@ cf_ipv6lib=none
 cf_ipv6dir=none
 
 AC_MSG_CHECKING(for IPv6 library if required)
-case $cf_cv_ipv6type in
+case "$cf_cv_ipv6type" in
 (solaris)
 	;;
 (inria)
@@ -52,7 +52,7 @@ if test "$cf_ipv6lib" != "none"; then
 	for cf_incdir in $cf_search
 	do
 		cf_header=$cf_incdir/netinet/ip6.h
-		if test -f $cf_header
+		if test -f "$cf_header"
 		then
 			CF_ADD_INCDIR($cf_incdir)
 			test -n "$verbose" && echo "	... found $cf_header" 1>&AC_FD_MSG
@@ -70,7 +70,7 @@ if test "$cf_ipv6lib" != "none"; then
 	[getaddrinfo(0, 0, 0, 0)],
 	[getaddrinfo],
 	noexit)
-	if test $cf_found_library = no ; then
+	if test "$cf_found_library" = no ; then
 		AC_MSG_ERROR(
 [No $cf_ipv6lib library found, cannot continue.  You must fetch lib$cf_ipv6lib.a
 from an appropriate IPv6 kit and compile beforehand.])

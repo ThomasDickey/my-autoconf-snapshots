@@ -1,9 +1,9 @@
-dnl CF_UTMP_UT_NAME version: 7 updated: 2020/03/10 18:53:47
+dnl CF_UTMP_UT_NAME version: 8 updated: 2021/01/02 09:31:20
 dnl ---------------
 dnl Check if UTMP/UTMPX struct defines ut_name member
 AC_DEFUN([CF_UTMP_UT_NAME],
 [
-if test $cf_cv_have_utmp != no ; then
+if test "$cf_cv_have_utmp" != no ; then
 AC_CACHE_CHECK(if ${cf_cv_have_utmp}.ut_name is declared,cf_cv_have_utmp_ut_name,[
 	cf_cv_have_utmp_ut_name=no
 cf_utmp_includes="
@@ -26,7 +26,7 @@ for cf_header in ut_name ut_user ; do
 done
 ])
 
-case $cf_cv_have_utmp_ut_name in
+case "$cf_cv_have_utmp_ut_name" in
 (no)
 	AC_MSG_ERROR(Cannot find declaration for ut.ut_name)
 	;;

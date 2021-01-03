@@ -1,4 +1,4 @@
-dnl CF_PDCURSES_X11 version: 14 updated: 2018/06/20 20:23:13
+dnl CF_PDCURSES_X11 version: 15 updated: 2021/01/02 09:31:20
 dnl ---------------
 dnl Configure for PDCurses' X11 library
 AC_DEFUN([CF_PDCURSES_X11],[
@@ -34,7 +34,7 @@ char *XCursesProgramName = "test";
 
 fi
 
-if test $cf_cv_lib_XCurses = yes ; then
+if test "$cf_cv_lib_XCurses" = yes ; then
 	AC_DEFINE(UNIX,1,[Define to 1 if using PDCurses on Unix])
 	AC_DEFINE(XCURSES,1,[Define to 1 if using PDCurses on Unix])
 	AC_CHECK_HEADER(xcurses.h, AC_DEFINE(HAVE_XCURSES,1,[Define to 1 if using PDCurses on Unix]))

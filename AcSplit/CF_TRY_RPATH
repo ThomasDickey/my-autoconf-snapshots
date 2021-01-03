@@ -1,4 +1,4 @@
-dnl CF_TRY_RPATH version: 1 updated: 2018/02/21 21:26:03
+dnl CF_TRY_RPATH version: 2 updated: 2021/01/02 09:31:20
 dnl ------------
 dnl Work around broken-by-design packaging systems which solve at most the
 dnl problem of building packages, without providing for library reuse...
@@ -9,7 +9,7 @@ then
 	CF_VERBOSE(will not attempt to use rpath)
 elif test "x${enable_rpath_hack:-yes}" = "xno"
 then
-	CF_VERBOSE("rpath is disabled)
+	CF_VERBOSE(rpath is disabled)
 elif test -z "${LD_RUN_PATH}${LD_LIBRARY_PATH}"
 then
 	case "$LIBS" in

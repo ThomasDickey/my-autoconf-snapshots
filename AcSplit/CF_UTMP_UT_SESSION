@@ -1,9 +1,9 @@
-dnl CF_UTMP_UT_SESSION version: 7 updated: 2020/03/10 18:53:47
+dnl CF_UTMP_UT_SESSION version: 8 updated: 2021/01/02 09:31:20
 dnl ------------------
 dnl Check if UTMP/UTMPX struct defines ut_session member
 AC_DEFUN([CF_UTMP_UT_SESSION],
 [
-if test $cf_cv_have_utmp != no ; then
+if test "$cf_cv_have_utmp" != no ; then
 AC_CACHE_CHECK(if ${cf_cv_have_utmp}.ut_session is declared, cf_cv_have_utmp_ut_session,[
 	AC_TRY_COMPILE([
 #include <sys/types.h>
@@ -15,7 +15,7 @@ AC_CACHE_CHECK(if ${cf_cv_have_utmp}.ut_session is declared, cf_cv_have_utmp_ut_
 	[cf_cv_have_utmp_ut_session=yes],
 	[cf_cv_have_utmp_ut_session=no])
 ])
-if test $cf_cv_have_utmp_ut_session != no ; then
+if test "$cf_cv_have_utmp_ut_session" != no ; then
 	AC_DEFINE(HAVE_UTMP_UT_SESSION,1,[Define to 1 if UTMP/UTMPX struct defines ut_session member])
 fi
 fi

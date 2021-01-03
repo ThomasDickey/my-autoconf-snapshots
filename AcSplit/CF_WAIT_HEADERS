@@ -1,4 +1,4 @@
-dnl CF_WAIT_HEADERS version: 2 updated: 1997/10/21 19:45:33
+dnl CF_WAIT_HEADERS version: 3 updated: 2021/01/02 09:31:20
 dnl ---------------
 dnl Build up an expression $cf_wait_headers with the header files needed to
 dnl compile against the prototypes for 'wait()', 'waitpid()', etc.  Assume it's
@@ -9,19 +9,19 @@ AC_DEFUN([CF_WAIT_HEADERS],
 AC_HAVE_HEADERS(sys/wait.h)
 cf_wait_headers="#include <sys/types.h>
 "
-if test $ac_cv_header_sys_wait_h = yes; then
+if test "$ac_cv_header_sys_wait_h" = yes; then
 cf_wait_headers="$cf_wait_headers
 #include <sys/wait.h>
 "
 else
 AC_HAVE_HEADERS(wait.h)
 AC_HAVE_HEADERS(waitstatus.h)
-if test $ac_cv_header_wait_h = yes; then
+if test "$ac_cv_header_wait_h" = yes; then
 cf_wait_headers="$cf_wait_headers
 #include <wait.h>
 "
 fi
-if test $ac_cv_header_waitstatus_h = yes; then
+if test "$ac_cv_header_waitstatus_h" = yes; then
 cf_wait_headers="$cf_wait_headers
 #include <waitstatus.h>
 "

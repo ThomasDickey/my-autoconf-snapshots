@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20210101
+MANIFEST for my-autoconf, version t20210102
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -599,6 +599,7 @@ AcSplit/CF__INIT_SHLIB_RULES    utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__INIT_TRANSFORM      initial value for $program_transform_name
 AcSplit/CF__INTL_BODY           test-code for libintl lookup
 AcSplit/CF__INTL_HEAD           test-headers for libintl lookup
+AcSplit/CF__SED_TRIMBLANKS      Trim something using sed, then trim extra whitespace
 AcSplit/CF__SSL_BODY            test-code for SSL compiles
 AcSplit/CF__SSL_HEAD            headers for SSL test-compiles
 AcSplit/jm_GLIBC21              from gettext 0.10.40 (tin)
