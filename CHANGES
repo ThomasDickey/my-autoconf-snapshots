@@ -1,4 +1,35 @@
+2021-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_CURSES_LIB, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_TPUTS_PROTO, AcSplit/CF__CURSES_DATA, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_NCURSES_ADDON, AcSplit/CF_PROG_INSTALL:
+	quoting fixes for shellcheck
+
+	* AcSplit/CF_NCURSES_HEADER: use $ECHO_N and $ECHO_C from autoconf-252
+
+	* AcSplit/CF_FUNC_POLL: correct order of redirecting output of tty
+
+	* AcSplit/CF_CFG_DEFAULTS: use $ECHO_N, from autoconf-252
+
+	* AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_SUBST_NCURSES_VERSION:
+	use AC_PROG_EGREP
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS: use AC_PROG_EGREP and AC_PROG_FGREP
+
+	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SONAME:
+	use AC_PROG_FGREP
+
+	* AcSplit/AM_WITH_NLS, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_TYPE_LONG_LONG:
+	quoting fixes for shellcheck
+
 2021-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LEX_VERSION, AcSplit/CF_MAKEFLAGS:
+	use AC_PROG_FGREP, per shellcheck warning
+
+	* AcSplit/CF_TTY_GROUP, AcSplit/CF_WITH_DESKTOP_CATEGORY:
+	use AC_PROG_EGREP, per shellcheck warning
+
+	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_RPATH_HACK, AcSplit/CF_WITH_MAN2HTML:
+	use AC_PROG_FGREP, per shellcheck warning
 
 	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_LIBS:
 	change compile-check from tgoto to tigetstr, because tgoto is not prototyped

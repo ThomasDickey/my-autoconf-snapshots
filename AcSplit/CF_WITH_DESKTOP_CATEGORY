@@ -1,4 +1,4 @@
-dnl CF_WITH_DESKTOP_CATEGORY version: 8 updated: 2020/12/31 18:40:20
+dnl CF_WITH_DESKTOP_CATEGORY version: 9 updated: 2021/01/03 18:30:50
 dnl ------------------------
 dnl Taking into account the absence of standardization of desktop categories
 dnl take a look to see whether other applications on the current system are
@@ -15,8 +15,8 @@ dnl
 dnl The macro tells the configure script to substitute the $DESKTOP_CATEGORY
 dnl value.
 AC_DEFUN([CF_WITH_DESKTOP_CATEGORY],[
-AC_REQUIRE([CF_DISABLE_DESKTOP])
-
+AC_REQUIRE([AC_PROG_EGREP])dnl
+AC_REQUIRE([CF_DISABLE_DESKTOP])dnl
 if test -z "$desktop_utils"
 then
 	AC_MSG_CHECKING(for requested desktop-category)
@@ -45,7 +45,7 @@ then
 					case $cf_desktop_name in
 					($1|*-$1|$2)
 						CF_VERBOSE(inspect $cf_desktop_path)
-						egrep '^Categories=' "$cf_desktop_path" | \
+						${EGREP-egrep} '^Categories=' "$cf_desktop_path" | \
 							tr ';' '\n' | \
 							sed -e 's%^.*=%%' -e '/^$/d' >>conftest.1
 						;;

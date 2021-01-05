@@ -1,14 +1,15 @@
-dnl CF_LEX_VERSION version: 6 updated: 2020/12/31 20:19:42
+dnl CF_LEX_VERSION version: 7 updated: 2021/01/03 19:29:49
 dnl --------------
 dnl Check if "lex" is really "flex", and if so, set $LEX_VERSION to show its
 dnl version.
 AC_DEFUN([CF_LEX_VERSION],[
-AC_REQUIRE([AC_PROG_LEX])
+AC_REQUIRE([AC_PROG_FGREP])dnl
+AC_REQUIRE([AC_PROG_LEX])dnl
 
 test -z "$LEX" && LEX="lex"
 test "x$LEX" = "x:" && LEX="lex"  # : is not a usable default
 AC_MSG_CHECKING(if $LEX is really flex)
-if ( $LEX '-?' </dev/null 2>&1 |fgrep flex >/dev/null )
+if ( $LEX '-?' </dev/null 2>&1 |${FGREP-fgrep} flex >/dev/null )
 then
 	AC_MSG_RESULT(yes)
 	AC_MSG_CHECKING(version of $LEX)

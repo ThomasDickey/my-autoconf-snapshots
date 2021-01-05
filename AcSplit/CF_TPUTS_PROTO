@@ -1,18 +1,18 @@
-dnl CF_TPUTS_PROTO version: 3 updated: 2015/04/17 21:26:14
+dnl CF_TPUTS_PROTO version: 4 updated: 2021/01/04 19:45:09
 dnl --------------
 dnl Check for type of function-pointer passed to tputs.  Some old
 dnl implementations used functions that had different prototypes, making it
 dnl hard to compile portable programs using tputs.
 AC_DEFUN([CF_TPUTS_PROTO],[
 CF_CURSES_FUNCS(tputs)
-if test x$cf_cv_func_tputs = xyes
+if test "x$cf_cv_func_tputs" = xyes
 then
 	cf_done=no
 	for cf_arg in int char
 	do
 		for cf_ret in int void
 		do
-			if test $cf_ret = void
+			if test "$cf_ret" = void
 			then
 				cf_return="/* nothing */"
 			else
@@ -37,7 +37,7 @@ EOF
 		break
 ])
 		done
-		test $cf_done = yes && break
+		test "$cf_done" = yes && break
 	done
 fi
 ])dnl

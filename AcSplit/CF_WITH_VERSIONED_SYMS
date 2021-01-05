@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 9 updated: 2021/01/02 17:09:14
+dnl CF_WITH_VERSIONED_SYMS version: 10 updated: 2021/01/04 18:48:01
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -6,7 +6,9 @@ dnl the same as the SONAME at which the symbol was first introduced.
 dnl
 dnl $1 = basename of the ".map" file (default $PACKAGE)
 AC_DEFUN([CF_WITH_VERSIONED_SYMS],
-[
+[AC_REQUIRE([AC_PROG_FGREP])dnl
+AC_REQUIRE([AC_PROG_EGREP])dnl
+
 AC_MSG_CHECKING(if versioned-symbols file should be used)
 AC_ARG_WITH(versioned-syms,
 	[  --with-versioned-syms=X markup versioned symbols using ld],
@@ -123,7 +125,7 @@ EOF
 		if make -f conftest.mk 2>&AC_FD_CC >/dev/null
 		then
 			# test for missing symbol in either Data or Text section
-			cf_missing="`nm -P conftest.so 2>&AC_FD_CC |fgrep _ismissing | egrep '[[ 	]][[DT]][[ 	]]'`"
+			cf_missing="`nm -P conftest.so 2>&AC_FD_CC |${FGREP-fgrep} _ismissing | ${EGREP-egrep} '[[ 	]][[DT]][[ 	]]'`"
 			test -n "$cf_missing" && WILDCARD_SYMS=yes
 		fi
 		AC_MSG_RESULT($WILDCARD_SYMS)

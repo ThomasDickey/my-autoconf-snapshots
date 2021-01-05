@@ -1,4 +1,4 @@
-dnl CF_CURSES_CHECK_DATA version: 9 updated: 2020/02/08 21:00:26
+dnl CF_CURSES_CHECK_DATA version: 10 updated: 2021/01/04 19:45:09
 dnl --------------------
 dnl Check if curses.h defines the given data/variable.
 dnl Use this after CF_NCURSES_CONFIG or CF_CURSES_CONFIG.
@@ -17,7 +17,7 @@ CF__CURSES_DATA(foo,$cf_data)
 ],[cf_result=no])
 AC_MSG_RESULT($cf_result)
 
-if test $cf_result = yes ; then
+if test "$cf_result" = yes ; then
 	CF_UPPER(cf_result,have_curses_data_$cf_data)
 	AC_DEFINE_UNQUOTED($cf_result)
 	ifelse($2,,,[$2])
@@ -43,7 +43,7 @@ int main(void)
 ],[cf_result=yes],[cf_result=no])
 ])
 	AC_MSG_RESULT($cf_result)
-	if test $cf_result = yes ; then
+	if test "$cf_result" = yes ; then
 		CF_UPPER(cf_result,decl_curses_data_$cf_data)
 		AC_DEFINE_UNQUOTED($cf_result)
 		# do not exit loop here, since we prefer system's declarations

@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 13 updated: 2020/12/31 18:40:20
+dnl CF_TTY_GROUP version: 14 updated: 2021/01/03 18:30:50
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -8,7 +8,7 @@ dnl is run in batch mode, or if autoconf uses shell functions, the extra layer
 dnl of eval/call may close stdin, making calls to ttyname fail.  To work around
 dnl that, fall back to "/dev/tty".
 AC_DEFUN([CF_TTY_GROUP],
-[
+[AC_REQUIRE([AC_PROG_EGREP])dnl
 AC_MSG_CHECKING(for explicit tty group name)
 AC_ARG_WITH(tty-group,
 	[  --with-tty-group=XXX    use XXX for the tty-group],
@@ -60,7 +60,7 @@ case $host_os in
 	;;
 (*)
 	cf_cv_tty_group_name="unknown"
-	if ( egrep '^tty:' /etc/group 2>/dev/null 1>/dev/null ) then
+	if ( ${EGREP-egrep} '^tty:' /etc/group 2>/dev/null 1>/dev/null ) then
 		cf_cv_tty_group_name="tty"
 	fi
 	;;
