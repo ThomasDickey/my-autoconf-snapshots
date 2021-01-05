@@ -1,4 +1,4 @@
-dnl CF_CURSES_WACS_MAP version: 7 updated: 2020/03/19 20:23:48
+dnl CF_CURSES_WACS_MAP version: 8 updated: 2021/01/04 19:45:09
 dnl ------------------
 dnl Check for likely values of wacs_map[].
 AC_DEFUN([CF_CURSES_WACS_MAP],
@@ -12,7 +12,7 @@ AC_CACHE_CHECK(for wide alternate character set array, cf_cv_curses_wacs_map,[
 #define _XOPEN_SOURCE_EXTENDED
 #endif
 #include <${cf_cv_ncurses_header:-curses.h}>],
-	[void *foo = &($name['k']); (void)foo],
+	[void *foo = &(${name}['k']); (void)foo],
 	[cf_cv_curses_wacs_map=$name
 	 break])
 	done])

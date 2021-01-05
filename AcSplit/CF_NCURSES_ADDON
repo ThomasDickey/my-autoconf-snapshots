@@ -1,4 +1,4 @@
-dnl CF_NCURSES_ADDON version: 5 updated: 2015/04/26 18:06:58
+dnl CF_NCURSES_ADDON version: 6 updated: 2021/01/04 19:33:05
 dnl ----------------
 dnl Configure an ncurses add-on, built outside the ncurses tree.
 AC_DEFUN([CF_NCURSES_ADDON],[
@@ -54,7 +54,7 @@ CF_EOF
 		cf_try="$ac_cpp conftest.$ac_ext 2>&5 | fgrep AUTOCONF_$cf_name >conftest.out"
 		AC_TRY_EVAL(cf_try)
 		if test -f conftest.out ; then
-			cf_result=`cat conftest.out | sed -e "s/^.*AUTOCONF_$cf_name[[ 	]][[ 	]]*//"`
+			cf_result=`sed -e "s/^.*AUTOCONF_${cf_name}[[ 	]][[ 	]]*//" conftest.out`
 			eval NCURSES_$cf_name=\"$cf_result\"
 			# cat conftest.$ac_ext
 			# cat conftest.out

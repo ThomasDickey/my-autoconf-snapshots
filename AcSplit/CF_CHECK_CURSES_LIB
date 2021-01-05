@@ -1,4 +1,4 @@
-dnl CF_CHECK_CURSES_LIB version: 2 updated: 2018/01/03 04:47:33
+dnl CF_CHECK_CURSES_LIB version: 3 updated: 2021/01/04 19:45:09
 dnl -------------------
 dnl $1 = nominal library name, used also for header lookup
 dnl $2 = suffix to append to library name
@@ -15,7 +15,7 @@ if test "x${NCURSES_CONFIG_PKG}" = xnone; then
 	:
 elif test "x${PKG_CONFIG:=none}" != xnone; then
 	AC_MSG_CHECKING(pkg-config for $1$2)
-	if "$PKG_CONFIG" --exists $1$2 ; then
+	if "$PKG_CONFIG" --exists "$1$2" ; then
 		AC_MSG_RESULT(yes)
 
 		AC_MSG_CHECKING(if the $1$2 package files work)
@@ -23,8 +23,8 @@ elif test "x${PKG_CONFIG:=none}" != xnone; then
 		cf_save_CPPFLAGS="$CPPFLAGS"
 		cf_save_LIBS="$LIBS"
 
-		CF_ADD_CFLAGS(`$PKG_CONFIG --cflags $1$2`)
-		CF_ADD_LIBS(`$PKG_CONFIG --libs $1$2`)
+		CF_ADD_CFLAGS(`$PKG_CONFIG --cflags "$1$2"`)
+		CF_ADD_LIBS(`$PKG_CONFIG --libs "$1$2"`)
 
 		AC_TRY_LINK([#include <$1.h>],
 			[(void) $3 ( ]ifelse([$4],,,[[$4]])[ );],

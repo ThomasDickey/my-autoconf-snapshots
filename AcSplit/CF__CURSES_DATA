@@ -1,4 +1,4 @@
-dnl CF__CURSES_DATA version: 2 updated: 2020/02/08 21:00:26
+dnl CF__CURSES_DATA version: 3 updated: 2021/01/04 19:45:09
 dnl ---------------
 dnl Attempt to make a copy of a curses data item.  This is needed in the
 dnl check-data configure tests when using ncurses, because the symbol may be
@@ -13,5 +13,5 @@ define([CF__CURSES_DATA],[
 #else
 	const void *$1 = &($2);
 #endif
-	fprintf(stderr, "testing linkage of $2:%p\n", (const void *)$1);
+	fprintf(stderr, "testing linkage of $2:%p\\n", (const void *)$1);
 ])dnl

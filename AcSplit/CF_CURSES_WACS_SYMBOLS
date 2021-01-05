@@ -1,4 +1,4 @@
-dnl CF_CURSES_WACS_SYMBOLS version: 3 updated: 2020/03/19 20:23:48
+dnl CF_CURSES_WACS_SYMBOLS version: 4 updated: 2021/01/04 19:45:09
 dnl ----------------------
 dnl Do a check to see if the WACS_xxx constants are defined compatibly with
 dnl X/Open Curses.  In particular, NetBSD's implementation of the WACS_xxx
@@ -17,7 +17,7 @@ then
 #endif
 #include <${cf_cv_ncurses_header:-curses.h}>],
 	[cchar_t *foo = WACS_PLUS;
-	 $cf_cv_curses_wacs_map['k'] = *WACS_PLUS; (void)foo],
+	 ${cf_cv_curses_wacs_map}['k'] = *WACS_PLUS; (void)foo],
 	[cf_cv_curses_wacs_symbols=yes])
 else
 	AC_TRY_LINK([

@@ -1,11 +1,12 @@
-dnl CF_SLANG_CPPFLAGS version: 12 updated: 2021/01/02 09:31:20
+dnl CF_SLANG_CPPFLAGS version: 13 updated: 2021/01/04 17:48:08
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
 dnl
 dnl $1 = parameter to search for "slang2" class, e.g., for pkgsrc.
 AC_DEFUN([CF_SLANG_CPPFLAGS],
-[
+[AC_REQUIRE([AC_PROG_EGREP])dnl
+
 AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 	cf_cv_$1_header=no
 	AC_TRY_COMPILE([#include <slang.h>],
@@ -18,7 +19,7 @@ AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 			slang.h
 		do
 			echo trying "$cf_incdir/$cf_header" 1>&AC_FD_CC
-			if egrep "SLANG_VERSION" "$cf_incdir/$cf_header" 1>&AC_FD_CC 2>&1; then
+			if ${EGREP-egrep} "SLANG_VERSION" "$cf_incdir/$cf_header" 1>&AC_FD_CC 2>&1; then
 				cf_cv_$1_header=$cf_incdir/$cf_header
 				break
 			fi

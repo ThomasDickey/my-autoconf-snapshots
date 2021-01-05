@@ -1,10 +1,11 @@
-dnl CF_GCC_ATTRIBUTES version: 22 updated: 2021/01/01 13:31:04
+dnl CF_GCC_ATTRIBUTES version: 23 updated: 2021/01/03 18:30:50
 dnl -----------------
 dnl Test for availability of useful gcc __attribute__ directives to quiet
 dnl compiler warnings.  Though useful, not all are supported -- and contrary
 dnl to documentation, unrecognized directives cause older compilers to barf.
 AC_DEFUN([CF_GCC_ATTRIBUTES],
-[
+[AC_REQUIRE([AC_PROG_FGREP])dnl
+
 if test "$GCC" = yes || test "$GXX" = yes
 then
 cat > conftest.i <<EOF
@@ -102,7 +103,7 @@ EOF
 		fi
 	done
 else
-	fgrep define conftest.i >>confdefs.h
+	${FGREP-fgrep} define conftest.i >>confdefs.h
 fi
 rm -rf ./conftest*
 fi

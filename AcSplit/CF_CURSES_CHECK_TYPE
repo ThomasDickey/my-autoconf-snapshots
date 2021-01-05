@@ -1,4 +1,4 @@
-dnl CF_CURSES_CHECK_TYPE version: 4 updated: 2012/10/06 16:39:58
+dnl CF_CURSES_CHECK_TYPE version: 5 updated: 2021/01/04 19:45:09
 dnl --------------------
 dnl Check if curses.h defines the given type
 AC_DEFUN([CF_CURSES_CHECK_TYPE],
@@ -12,7 +12,7 @@ AC_TRY_COMPILE([
 $1 foo
 ],cf_result=yes,cf_result=no)
 AC_MSG_RESULT($cf_result)
-if test $cf_result = yes ; then
+if test "$cf_result" = yes ; then
 	CF_UPPER(cf_result,have_type_$1)
 	AC_DEFINE_UNQUOTED($cf_result,1,[Define to 1 if we have type $1])
 else
