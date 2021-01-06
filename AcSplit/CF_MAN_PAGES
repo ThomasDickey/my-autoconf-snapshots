@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 50 updated: 2021/01/02 17:09:14
+dnl CF_MAN_PAGES version: 51 updated: 2021/01/05 16:29:19
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -89,7 +89,7 @@ shift || exit 1
 if test "\$form" = normal ; then
 	if test "$cf_format" = yes ; then
 	if test "$cf_inboth" = no ; then
-		$SHELL \[$]0 format \$verb \$mandir \$srcdir \[$]*
+		$SHELL "\[$]0" format "\$verb" "\$mandir" "\$srcdir" "\[$]@"
 		exit $?
 	fi
 	fi
@@ -101,14 +101,14 @@ else
 fi
 
 # process the list of source-files
-for i in \[$]* ; do
+for i in "\[$]@" ; do
 case \$i in
 (*.orig|*.rej) ;;
 (*.[[0-9]]*)
 	section=\`expr "\$i" : '.*\\.\\([[0-9]]\\)[[xm]]*'\`;
-	if test \$verb = installing ; then
-	if test ! -d \$cf_subdir\${section} ; then
-		mkdir -p \$cf_subdir\$section
+	if test "\$verb" = installing ; then
+	if test ! -d "\$cf_subdir\${section}" ; then
+		mkdir -p "\$cf_subdir\$section"
 	fi
 	fi
 
@@ -139,11 +139,11 @@ CF_EOF2
 	fi
 
 	aliases=
-	cf_source=\`basename \$i\`
+	cf_source=\`basename "\$i"\`
 	inalias=\$cf_source
-	test ! -f \$inalias && inalias="\$srcdir/\$inalias"
-	if test ! -f \$inalias ; then
-		echo .. skipped \$cf_source
+	test ! -f "\$inalias" && inalias="\$srcdir/\$inalias"
+	if test ! -f "\$inalias" ; then
+		echo ".. skipped \$cf_source"
 		continue
 	fi
 CF_EOF
@@ -152,7 +152,7 @@ if test "$MANPAGE_ALIASES" != no ; then
 cat >>$cf_edit_man <<CF_EOF
 	nCurses=ignore.3x
 	test "$with_curses_h" = yes && nCurses=ncurses.3x
-	aliases=\`sed -f \$top_srcdir/man/manlinks.sed \$inalias |sed -f "$cf_man_alias" | sort -u; test \$inalias = \$nCurses && echo curses\`
+	aliases=\`sed -f "\$top_srcdir/man/manlinks.sed" "\$inalias" |sed -f "$cf_man_alias" | sort -u; test "\$inalias" = "\$nCurses" && echo curses\`
 CF_EOF
 fi
 
@@ -169,7 +169,7 @@ else
 cat >>$cf_edit_man <<CF_EOF
 	cf_target=\`grep "^\$cf_source" $MANPAGE_RENAMES | $AWK '{print \[$]2}'\`
 	if test -z "\$cf_target" ; then
-		echo '? missing rename for '\$cf_source
+		echo "? missing rename for \$cf_source"
 		cf_target="\$cf_source"
 	fi
 	cf_target="\$cf_subdir\${section}/\${cf_target}"
@@ -183,11 +183,11 @@ CF_EOF
 
 if test -f "$MANPAGE_RENAMES" ; then
 cat >>$cf_edit_man <<CF_EOF
-		< \$i | sed -f `pwd`/edit_man.sed >\$TMP
+		< "\$i" | sed -f `pwd`/edit_man.sed >\$TMP
 CF_EOF
 else
 cat >>$cf_edit_man <<CF_EOF
-		< \$i >\$TMP
+		< "\$i" >\$TMP
 CF_EOF
 fi
 
@@ -213,7 +213,7 @@ CF_EOF
 fi
 
 cat >>$cf_edit_man <<CF_EOF
-	if test \$form = format ; then
+	if test "\$form" = format ; then
 		nroff -man \$TMP >\$TMP.out
 		mv \$TMP.out \$TMP
 	fi
@@ -221,7 +221,7 @@ CF_EOF
 
 if test -n "$cf_compress" ; then
 cat >>$cf_edit_man <<CF_EOF
-	if test \$verb = installing ; then
+	if test "\$verb" = installing ; then
 	if ( "$cf_compress" -f \$TMP )
 	then
 		mv \$TMP.$cf_so_strip \$TMP
@@ -234,7 +234,7 @@ fi
 case "$MANPAGE_FORMAT" in
 (*BSDI*)
 cat >>$cf_edit_man <<CF_EOF
-	if test \$form = format ; then
+	if test "\$form" = format ; then
 		# BSDI installs only .0 suffixes in the cat directories
 		cf_target="\`echo \$cf_target|sed -e 's/\\.[[1-9]]\\+[[a-z]]*/.0/'\`"
 	fi
@@ -243,41 +243,41 @@ CF_EOF
 esac
 
 cat >>$cf_edit_man <<CF_EOF
-	suffix=\`basename \$cf_target | sed -e 's%^[[^.]]*%%'\`
-	if test \$verb = installing ; then
-		echo \$verb \$cf_target
-		\$INSTALL_DATA \$TMP \$cf_target
-		test -d \$cf_subdir\${section} &&
+	suffix=\`basename "\$cf_target" | sed -e 's%^[[^.]]*%%'\`
+	if test "\$verb" = installing ; then
+		echo "\$verb \$cf_target"
+		\$INSTALL_DATA \$TMP "\$cf_target"
+		test -d "\$cf_subdir\${section}" &&
 		test -n "\$aliases" && (
-			cd \$cf_subdir\${section} && (
-				cf_source=\`echo \$cf_target |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
-				test -n "$cf_so_strip" && cf_source=\`echo \$cf_source |sed -e 's%\\.$cf_so_strip\$%%'\`
-				cf_target=\`basename \$cf_target\`
+			cd "\$cf_subdir\${section}" && (
+				cf_source=\`echo "\$cf_target" |sed -e 's%^.*/\\([[^/]][[^/]]*/[[^/]][[^/]]*$\\)%\\1%'\`
+				test -n "$cf_so_strip" && cf_source=\`echo "\$cf_source" |sed -e 's%\\.$cf_so_strip\$%%'\`
+				cf_target=\`basename "\$cf_target"\`
 				for cf_alias in \$aliases
 				do
-					if test \$section = 1 ; then
-						cf_alias=\`echo \$cf_alias|sed "\${transform}"\`
+					if test "\$section" = 1 ; then
+						cf_alias=\`echo "\$cf_alias" |sed "\${transform}"\`
 					fi
 
 					if test "$MANPAGE_SYMLINKS" = yes ; then
-						if test -f \$cf_alias\${suffix} ; then
-							if ( cmp -s \$cf_target \$cf_alias\${suffix} )
+						if test -f "\$cf_alias\${suffix}" ; then
+							if ( cmp -s "\$cf_target" "\$cf_alias\${suffix}" )
 							then
 								continue
 							fi
 						fi
-						echo .. \$verb alias \$cf_alias\${suffix}
+						echo ".. \$verb alias \$cf_alias\${suffix}"
 CF_EOF
 case "x$LN_S" in
 (*-f)
 cat >>$cf_edit_man <<CF_EOF
-						$LN_S \$cf_target \$cf_alias\${suffix}
+						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
 CF_EOF
 	;;
 (*)
 cat >>$cf_edit_man <<CF_EOF
-						rm -f \$cf_alias\${suffix}
-						$LN_S \$cf_target \$cf_alias\${suffix}
+						rm -f "\$cf_alias\${suffix}"
+						$LN_S "\$cf_target" "\$cf_alias\${suffix}"
 CF_EOF
 	;;
 esac
@@ -294,29 +294,29 @@ cat >>$cf_edit_man <<CF_EOF
 CF_EOF
 fi
 cat >>$cf_edit_man <<CF_EOF
-						echo .. \$verb alias \$cf_alias\${suffix}
-						rm -f \$cf_alias\${suffix}
-						\$INSTALL_DATA \$TMP \$cf_alias\${suffix}
+						echo ".. \$verb alias \$cf_alias\${suffix}"
+						rm -f "\$cf_alias\${suffix}"
+						\$INSTALL_DATA \$TMP "\$cf_alias\${suffix}"
 					fi
 				done
 			)
 		)
-	elif test \$verb = removing ; then
-		test -f \$cf_target && (
-			echo \$verb \$cf_target
-			rm -f \$cf_target
+	elif test "\$verb" = removing ; then
+		test -f "\$cf_target" && (
+			echo "\$verb \$cf_target"
+			rm -f "\$cf_target"
 		)
-		test -d \$cf_subdir\${section} &&
+		test -d "\$cf_subdir\${section}" &&
 		test -n "\$aliases" && (
-			cd \$cf_subdir\${section} && (
+			cd "\$cf_subdir\${section}" && (
 				for cf_alias in \$aliases
 				do
-					if test \$section = 1 ; then
-						cf_alias=\`echo \$cf_alias|sed "\${transform}"\`
+					if test "\$section" = 1 ; then
+						cf_alias=\`echo "\$cf_alias" |sed "\${transform}"\`
 					fi
 
-					echo .. \$verb alias \$cf_alias\${suffix}
-					rm -f \$cf_alias\${suffix}
+					echo ".. \$verb alias \$cf_alias\${suffix}"
+					rm -f "\$cf_alias\${suffix}"
 				done
 			)
 		)
@@ -329,8 +329,8 @@ esac
 done
 
 if test "$cf_inboth" = yes ; then
-if test \$form != format ; then
-	$SHELL \[$]0 format \$verb \$mandir \$srcdir \[$]*
+if test "\$form" != format ; then
+	$SHELL "\[$]0" format "\$verb" "\$mandir" "\$srcdir" "\[$]@"
 fi
 fi
 

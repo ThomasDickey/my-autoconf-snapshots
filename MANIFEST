@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20210104
+MANIFEST for my-autoconf, version t20210105
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -21,6 +21,7 @@ AcSplit/AM_MULTIBYTE_ABLE       composite check for multibyte-able libc (tin)
 AcSplit/AM_PATH_PROG_WITH_TEST  look for program which passes test
 AcSplit/AM_WITH_NLS             macro to test for NLS
 AcSplit/CF_ABI_DEFAULTS         set variables used for ncurses ABI
+AcSplit/CF_AC213_COMPAT         autoconf 2.13 tweaks to work with autoconf-252
 AcSplit/CF_ACVERSION_CHECK      if/then/else for AC_ACVERSION comparisons.
 AcSplit/CF_ACVERSION_COMPARE    compare AC_ACVERSION values.
 AcSplit/CF_AC_PREREQ            generate a piece of configure conditionally based on ac version

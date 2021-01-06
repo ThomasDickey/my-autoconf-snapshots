@@ -1,4 +1,4 @@
-dnl CF_WITH_NO_LEAKS version: 3 updated: 2015/05/10 19:52:14
+dnl CF_WITH_NO_LEAKS version: 4 updated: 2021/01/05 20:08:11
 dnl ----------------
 AC_DEFUN([CF_WITH_NO_LEAKS],[
 
@@ -16,7 +16,9 @@ AC_ARG_WITH(no-leaks,
 	 (*yes*) ;;
 	 (*) AC_DEFINE(DOALLOC,10000,[Define to size of malloc-array]) ;;
 	 esac
-	 with_no_leaks=yes],
-	[with_no_leaks=])
+	 enable_leaks=no],
+	[enable_leaks=yes])
+dnl TODO - drop with_no_leaks
+if test "x$enable_leaks" = xno; then with_no_leaks=yes; else with_no_leaks=no; fi
 AC_MSG_RESULT($with_no_leaks)
 ])dnl

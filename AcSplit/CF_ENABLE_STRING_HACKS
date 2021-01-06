@@ -1,4 +1,4 @@
-dnl CF_ENABLE_STRING_HACKS version: 5 updated: 2016/10/08 17:34:11
+dnl CF_ENABLE_STRING_HACKS version: 6 updated: 2021/01/05 19:23:48
 dnl ----------------------
 dnl On a few platforms, the compiler and/or loader nags with untruthful
 dnl comments stating that "most" uses of strcat/strcpy/sprintf are incorrect,
@@ -18,11 +18,11 @@ AC_DEFUN([CF_ENABLE_STRING_HACKS],
 AC_MSG_CHECKING(if you want to work around bogus compiler/loader warnings)
 AC_ARG_ENABLE(string-hacks,
 	[  --enable-string-hacks   work around bogus compiler/loader warnings],
-	[with_string_hacks=$enableval],
-	[with_string_hacks=no])
-AC_MSG_RESULT($with_string_hacks)
+	[enable_string_hacks=$enableval],
+	[enable_string_hacks=no])
+AC_MSG_RESULT($enable_string_hacks)
 
-if test "x$with_string_hacks" = "xyes"; then
+if test "x$enable_string_hacks" = "xyes"; then
  	AC_DEFINE(USE_STRING_HACKS,1,[Define to 1 to work around bogus compiler/loader warnings])
 	AC_MSG_WARN(enabling string-hacks to work around bogus compiler/loader warnings)
 	AC_CHECK_FUNC(strlcat,[
