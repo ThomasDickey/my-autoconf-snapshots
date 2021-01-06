@@ -1,0 +1,12 @@
+dnl CF_AC213_COMPAT version: 1 updated: 2021/01/05 19:23:48
+dnl ---------------
+dnl Use this macro to check compatibility of autoconf-252 scripts versus
+dnl autoconf-213
+AC_DEFUN([CF_AC213_COMPAT],[
+CF_ACVERSION_CHECK(2.52,,
+	[AC_DEFUN([AC_PROG_FGREP],FGREP=fgrep)
+	 AC_DEFUN([AC_PROG_EGREP],EGREP=egrep)])
+: ${ECHO_C:=$ac_c}
+: ${ECHO_N:=$ac_n}
+: ${ECHO_T:=$ac_t}
+])dnl

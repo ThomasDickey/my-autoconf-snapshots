@@ -1,3 +1,24 @@
+2021-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_RPATH_HACK:
+	prefer enable_rpath_hack to cf_disable_rpath_hack, for consistency
+
+	* AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF_WITH_NC_ALLOC_H, AcSplit/CF_DISABLE_LEAKS, AcSplit/CF_NO_LEAKS_OPTION:
+	prefer $enable_leaks to $with_no_leaks, for consistency
+
+	* AcSplit/CF_ENABLE_WARNINGS:
+	s/with_warnings/enable_warnings/, for consistency
+
+	* AcSplit/CF_AC213_COMPAT: ci-aclocal generated header
+
+	* AcSplit/CF_ENABLE_STRING_HACKS:
+	s/with_string_hacks/enable_string_hacks/, for consistency
+
+	* AcSplit/CF_INSTALL_OPT_S:
+	s/with_stripping/enable_stripping/, for consistency
+
+	* AcSplit/CF_MAN_PAGES: quoting fixes for shellcheck
+
 2021-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_CURSES_LIB, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_TPUTS_PROTO, AcSplit/CF__CURSES_DATA, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_NCURSES_ADDON, AcSplit/CF_PROG_INSTALL:

@@ -1,4 +1,4 @@
-dnl CF_NO_LEAKS_OPTION version: 7 updated: 2020/12/31 18:40:20
+dnl CF_NO_LEAKS_OPTION version: 8 updated: 2021/01/05 20:05:09
 dnl ------------------
 dnl see CF_WITH_NO_LEAKS
 AC_DEFUN([CF_NO_LEAKS_OPTION],[
@@ -9,7 +9,7 @@ AC_ARG_WITH($1,
 	 $4
 ])
 	: "${with_cflags:=-g}"
-	: "${with_no_leaks:=yes}"
+	: "${enable_leaks:=no}"
 	 with_$1=yes],
 	[with_$1=])
 AC_MSG_RESULT(${with_$1:-no})

@@ -1,4 +1,4 @@
-dnl CF_INSTALL_OPT_S version: 2 updated: 2018/08/18 12:19:21
+dnl CF_INSTALL_OPT_S version: 3 updated: 2021/01/05 19:23:48
 dnl ----------------
 dnl By default, we should strip executables which are installed, but leave the
 dnl ability to suppress that for unit-testing.
@@ -7,11 +7,11 @@ AC_DEFUN([CF_INSTALL_OPT_S],
 AC_MSG_CHECKING(if you want to install stripped executables)
 CF_ARG_DISABLE(stripping,
 	[  --disable-stripping     do not strip (debug info) installed executables],
-	[with_stripping=no],
-	[with_stripping=yes])
-AC_MSG_RESULT($with_stripping)
+	[enable_stripping=no],
+	[enable_stripping=yes])
+AC_MSG_RESULT($enable_stripping)
 
-if test "$with_stripping" = yes
+if test "$enable_stripping" = yes
 then
 	INSTALL_OPT_S="-s"
 else
