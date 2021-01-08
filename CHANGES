@@ -1,3 +1,9 @@
+2021-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GXX_WARNINGS: s/GCC_VERSION/GXX_VERSION/
+
+	* AcSplit/CF_MAKE_PHONY: tweak glob expression, per shellcheck
+
 2021-01-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LINK_PREFIX:
