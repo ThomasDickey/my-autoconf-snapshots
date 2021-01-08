@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 10 updated: 2021/01/01 13:31:04
+dnl CF_GXX_WARNINGS version: 11 updated: 2021/01/08 16:50:55
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -77,7 +77,7 @@ then
 	EXTRA_CXXFLAGS="-W -Wall"
 	cf_gxx_extra_warnings=""
 	test "$with_ext_const" = yes && cf_gxx_extra_warnings="Wwrite-strings"
-	case "$GCC_VERSION" in
+	case "$GXX_VERSION" in
 	([[1-2]].*)
 		;;
 	(*)
