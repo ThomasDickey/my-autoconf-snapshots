@@ -1,4 +1,4 @@
-dnl CF_PROGRAM_PREFIX version: 6 updated: 2013/12/05 19:11:11
+dnl CF_PROGRAM_PREFIX version: 7 updated: 2021/01/10 18:23:00
 dnl -----------------
 dnl	Tests for a program given by name along the user's path, and sets a
 dnl	variable to the program's directory-prefix if found.  Don't match if
@@ -16,7 +16,7 @@ AC_CACHE_VAL([cf_cv_$1],[
 		IFS="${IFS:- 	}"; cf_save_ifs="$IFS"; IFS="${IFS}${PATH_SEPARATOR}"
 		for cf_dir in $PATH; do
 			test -z "$cf_dir" && cf_dir=.
-			if test "$cf_dir" != "." && test -f $cf_dir/$cf_word && test -x $cf_dir/$cf_word; then
+			if test "$cf_dir" != "." && test -f "$cf_dir/$cf_word" && test -x "$cf_dir/$cf_word" ; then
 				cf_cv_$1="$cf_dir"
 				break
 			fi

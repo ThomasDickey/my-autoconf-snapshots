@@ -1,4 +1,4 @@
-dnl CF_MAKE_DOCS version: 4 updated: 2015/07/04 21:43:03
+dnl CF_MAKE_DOCS version: 5 updated: 2021/01/10 16:05:11
 dnl ------------
 dnl $1 = name(s) to generate rules for
 dnl $2 = suffix of corresponding manpages used as input.
@@ -27,7 +27,7 @@ ${GROFF_NOTE}.$2.ps :
 ${GROFF_NOTE}	[\$](SHELL) -c "tbl [\$]*.$2 | groff -man" >[\$]@
 ${GROFF_NOTE}
 ${GROFF_NOTE}.$2.txt :
-${GROFF_NOTE}	GROFF_NO_SGR=stupid [\$](SHELL) -c "tbl [\$]*.$2 | nroff -Tascii -man | col -bx" >[\$]@
+${GROFF_NOTE}	GROFF_NO_SGR=stupid [\$](SHELL) -c "tbl [\$]*.$2 | nroff -rHY=0 -Tascii -man | col -bx" >[\$]@
 
 ${MAN2HTML_NOTE}.$2.html :
 ${MAN2HTML_NOTE}	./${MAN2HTML_TEMP} [\$]* $2 man >[\$]@

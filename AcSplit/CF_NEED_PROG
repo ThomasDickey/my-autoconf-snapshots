@@ -1,0 +1,17 @@
+dnl CF_NEED_PROG version: 1 updated: 2021/01/10 07:35:14
+dnl ------------
+dnl Check if a program was found by inspecting the variable used to record its
+dnl name:
+dnl $1 is the name of the variable
+dnl $2 is the action to take if it is found
+dnl $3 is the action to take if it is missing, defaulting to simple error exit
+define([CF_NEED_PROG],[
+	case "x[$]$1" in
+	(x|x:|xno|xnone)
+		ifelse($3,,[AC_MSG_ERROR($1: no suitable program was found)],[$3])
+		;;
+	(*)
+		ifelse($2,,,[$2])
+		;;
+	esac
+])dnl

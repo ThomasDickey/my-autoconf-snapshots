@@ -1,4 +1,4 @@
-dnl CF_TD_SIG_ARGS version: 6 updated: 2013/12/05 19:11:11
+dnl CF_TD_SIG_ARGS version: 7 updated: 2021/01/10 18:23:00
 dnl --------------
 dnl Test for non-Posix prototype for 'signal()'
 dnl
@@ -48,7 +48,7 @@ then
 		# do this when we're developing with gcc, with all warnings, and
 		# shouldn't do it for other compilers, since (for example) the IRIX
 		# compiler complains a lot.
-		if test $cf_cv_sig_args != UNKNOWN; then	# we have prototypes
+		if test "$cf_cv_sig_args" != UNKNOWN; then	# we have prototypes
 			AC_TRY_RUN([
 #include <signal.h>
 #undef  NOT
@@ -60,6 +60,6 @@ then
 		fi
 		])
 		AC_MSG_RESULT($cf_cv_sigs_redef)
-		test $cf_cv_sigs_redef = yes && AC_DEFINE(SIG_IGN_REDEFINEABLE,1,[Define to 1 if SIG_IGN is redefinable])
+		test "$cf_cv_sigs_redef" = yes && AC_DEFINE(SIG_IGN_REDEFINEABLE,1,[Define to 1 if SIG_IGN is redefinable])
 fi
 ])dnl

@@ -1,4 +1,4 @@
-dnl CF_MAKE_AR_RULES version: 7 updated: 2019/12/18 19:06:19
+dnl CF_MAKE_AR_RULES version: 8 updated: 2021/01/10 18:23:00
 dnl ----------------
 dnl Check if the 'make' program knows how to interpret archive rules.  Though
 dnl this has been common practice since the mid-80's, there were some holdouts
@@ -23,8 +23,8 @@ AC_MSG_CHECKING(if ${MAKE:-make} program knows about archives)
 AC_CACHE_VAL(cf_cv_ar_rules,[
 cf_dir=subd$$
 cf_cv_ar_rules=unknown
-mkdir $cf_dir
-cat >$cf_dir/makefile <<CF_EOF
+mkdir "$cf_dir"
+cat >"$cf_dir/makefile" <<CF_EOF
 SHELL = /bin/sh
 AR = ar crv
 CC = $CC
@@ -54,13 +54,13 @@ int conftest(char *name)
 }
 CF_EOF
 CDPATH=; export CDPATH
-if ( cd $cf_dir && ${MAKE:-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+if ( cd "$cf_dir" && "${MAKE:-make}" 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 then
 	cf_cv_ar_rules=yes
 else
 	echo ... library-rule did not create an archive >&AC_FD_CC
-	rm -f $cf_dir/conftest.o
-	cat >$cf_dir/makefile <<CF_EOF
+	rm -f "$cf_dir/conftest.o"
+	cat >"$cf_dir/makefile" <<CF_EOF
 SHELL = /bin/sh
 AR = ar crv
 CC = $CC
@@ -77,14 +77,14 @@ conf.a : conftest.o
 	\$(AR) \$[]@ \$?
 CF_EOF
 	CDPATH=; export CDPATH
-	if ( cd $cf_dir && ${MAKE:-make} 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
+	if ( cd "$cf_dir" && "${MAKE:-make}" 2>&AC_FD_CC >&AC_FD_CC && test -f conf.a )
 	then
 		cf_cv_ar_rules=no
 	else
 		AC_MSG_ERROR(I do not know how to construct a library)
 	fi
 fi
-rm -rf $cf_dir
+rm -rf "$cf_dir"
 ])
 AC_MSG_RESULT($cf_cv_ar_rules)
 ])dnl

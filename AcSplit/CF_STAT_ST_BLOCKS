@@ -1,4 +1,4 @@
-dnl CF_STAT_ST_BLOCKS version: 4 updated: 2013/12/05 19:11:11
+dnl CF_STAT_ST_BLOCKS version: 5 updated: 2021/01/10 18:23:00
 dnl -----------------
 dnl Test if the <sys/stat.h> 'stat' struct defines 'st_blocks' member.
 dnl If not, assume it's some non-BSD system.
@@ -13,5 +13,5 @@ AC_CACHE_VAL(cf_cv_st_blocks,[
 		[cf_cv_st_blocks=yes],
 		[cf_cv_st_blocks=no])])
 AC_MSG_RESULT($cf_cv_st_blocks)
-test $cf_cv_st_blocks = yes && AC_DEFINE(STAT_HAS_ST_BLOCKS,1,[Define to 1 if stat.st_blocks is declared])
+test "$cf_cv_st_blocks" = yes && AC_DEFINE(STAT_HAS_ST_BLOCKS,1,[Define to 1 if stat.st_blocks is declared])
 ])dnl

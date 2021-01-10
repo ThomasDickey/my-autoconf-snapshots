@@ -1,4 +1,4 @@
-dnl CF_ANSI_CPP version: 5 updated: 2013/12/05 19:11:11
+dnl CF_ANSI_CPP version: 6 updated: 2021/01/10 18:23:00
 dnl -----------
 dnl Test if "##" is substituted properly, or failing that, if /**/ can do
 dnl the trick.  We can test concatenation with a compile, but quoting has to
@@ -20,9 +20,9 @@ AC_CACHE_VAL(cf_cv_ansi_splice,[
 	])
 
 AC_MSG_RESULT(${cf_cv_ansi_splice}-style)
-if test $cf_cv_ansi_splice = new; then
+if test "$cf_cv_ansi_splice" = new; then
 	AC_DEFINE(HAVE_NEW_TOKEN_SPLICE,1,[Define to 1 if C preprocessor does ANSI splicing])
-elif test $cf_cv_ansi_splice = old; then
+elif test "$cf_cv_ansi_splice" = old; then
 	AC_DEFINE(HAVE_OLD_TOKEN_SPLICE,1,[Define to 1 if C preprocessor does not do ANSI splicing])
 fi
 
@@ -33,7 +33,7 @@ AC_CACHE_VAL(cf_cv_ansi_quote,[
 		[cf_cv_ansi_quote=new],
 		[cf_cv_ansi_quote=unknown],
 		[cf_cv_ansi_quote=unknown])
-	if test $cf_cv_ansi_quote = unknown; then
+	if test "$cf_cv_ansi_quote" = unknown; then
 		AC_TRY_RUN([#define quote(name) "name"
 			int main() { char *y = quote(a); ${cf_cv_main_return:-return} (*y != 'a');} ],
 			[cf_cv_ansi_quote=old],
@@ -43,9 +43,9 @@ AC_CACHE_VAL(cf_cv_ansi_quote,[
 	])
 
 AC_MSG_RESULT(${cf_cv_ansi_quote}-style)
-if test $cf_cv_ansi_quote = new; then
+if test "$cf_cv_ansi_quote" = new; then
 	AC_DEFINE(HAVE_NEW_TOKEN_QUOTE,1,[Define to 1 if C preprocessor does ANSI quoting])
-elif test $cf_cv_ansi_quote = old; then
+elif test "$cf_cv_ansi_quote" = old; then
 	AC_DEFINE(HAVE_OLD_TOKEN_QUOTE,1,[Define to 1 if C preprocessor does not do ANSI quoting])
 fi
 

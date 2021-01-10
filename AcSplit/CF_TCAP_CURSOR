@@ -1,4 +1,4 @@
-dnl CF_TCAP_CURSOR version: 5 updated: 2013/12/05 19:11:11
+dnl CF_TCAP_CURSOR version: 6 updated: 2021/01/10 18:23:00
 dnl --------------
 dnl Test if curses defines KD, KU, etc., for cursor keys
 dnl
@@ -17,5 +17,5 @@ AC_CACHE_VAL(cf_cv_termcap_cursor,[
 		[cf_cv_termcap_cursor=yes],
 		[cf_cv_termcap_cursor=no])])
 AC_MSG_RESULT($cf_cv_termcap_cursor)
-test $cf_cv_termcap_cursor = yes && AC_DEFINE(HAVE_TCAP_CURSOR,1,[Define to 1 if termcap cursor-variables are declared])
+test "$cf_cv_termcap_cursor" = yes && AC_DEFINE(HAVE_TCAP_CURSOR,1,[Define to 1 if termcap cursor-variables are declared])
 ])dnl
