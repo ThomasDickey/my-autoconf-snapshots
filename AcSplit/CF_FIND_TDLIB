@@ -1,4 +1,4 @@
-dnl CF_FIND_TDLIB version: 10 updated: 2012/09/04 04:17:32
+dnl CF_FIND_TDLIB version: 11 updated: 2021/01/10 18:45:11
 dnl -------------
 dnl Locate TD_LIB, which is available in one of these configurations:
 dnl a) installed, with headers, library and include-file for make
@@ -36,7 +36,7 @@ if test "$cf_cv_tdlib_devel" = no ; then
     # get all matches, since we're including <ptypes.h> and <td/ptypes.h>
     for cf_incdir in $cf_search
     do
-	test -f $cf_incdir/td/td_config.h && CFLAGS="$CFLAGS -I$cf_incdir"
+	test -f "$cf_incdir/td/td_config.h" && CFLAGS="$CFLAGS -I$cf_incdir"
     done
     CF_FIND_LIBRARY(td,td,[
 #define TESTING_CONFIG_H
@@ -49,14 +49,14 @@ if test "$cf_cv_tdlib_devel" = no ; then
 		cf_td_lib_rules=no
 		for cf_libdir in $cf_search
 		do
-			if test -f $cf_libdir/td_lib.mk ; then
+			if test -f "$cf_libdir/td_lib.mk" ; then
 				cf_td_lib_rules=yes
 				break
 			fi
 		done
 	else
 		cf_libdir=`echo "$cf_libdir" | sed -e 's,/lib[[^/]]*$,share,'`
-		if test -f $cf_libdir/td_lib.mk ; then
+		if test -f "$cf_libdir/td_lib.mk" ; then
 			cf_td_lib_rules=yes
 		fi
 	fi

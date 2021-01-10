@@ -1,9 +1,9 @@
-dnl CF_TOP_SRCDIR version: 3 updated: 2001/07/15 16:04:43
+dnl CF_TOP_SRCDIR version: 4 updated: 2021/01/10 18:23:00
 dnl -------------
 dnl Make an absolute symbol for the top of the configuration.
 AC_DEFUN([CF_TOP_SRCDIR],
 [
 CDPATH=; export CDPATH
-TOP_SRCDIR=`cd $srcdir;pwd`
+TOP_SRCDIR=`cd "$srcdir";pwd`
 AC_SUBST(TOP_SRCDIR)
 ])dnl

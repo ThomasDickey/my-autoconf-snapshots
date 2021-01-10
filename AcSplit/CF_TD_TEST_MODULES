@@ -1,4 +1,4 @@
-dnl CF_TD_TEST_MODULES version: 2 updated: 1997/09/11 23:08:06
+dnl CF_TD_TEST_MODULES version: 3 updated: 2021/01/10 18:23:00
 dnl ------------------
 dnl Make a list of test/*/modules so that AC_OUTPUT has the list on-hand.
 AC_DEFUN([CF_TD_TEST_MODULES],
@@ -9,9 +9,9 @@ cf_cv_test_modules=""
 cf_cv_test_makefiles=""
 for p in $srcdir/test/*
 do
-	if test -d $p ; then
-		if test -f $p/modules ; then
-			p=`basename $p`
+	if test -d "$p" ; then
+		if test -f "$p/modules" ; then
+			p=`basename "$p"`
 			cf_cv_test_modules="$cf_cv_test_modules $p"
 			cf_cv_test_makefiles="$cf_cv_test_makefiles test/$p/makefile:$srcdir/test/sub_vars.in"
 		fi

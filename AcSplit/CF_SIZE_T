@@ -1,4 +1,4 @@
-dnl CF_SIZE_T version: 5 updated: 2013/12/05 19:11:11
+dnl CF_SIZE_T version: 6 updated: 2021/01/10 18:23:00
 dnl ---------
 dnl	On both Ultrix and CLIX, I find size_t defined in <stdio.h>
 AC_DEFUN([CF_SIZE_T],
@@ -17,5 +17,5 @@ AC_CACHE_VAL(cf_cv_type_size_t,[
 		[cf_cv_type_size_t=no])
 	])
 AC_MSG_RESULT($cf_cv_type_size_t)
-test $cf_cv_type_size_t = no && AC_DEFINE(size_t, unsigned, [Define to type if size_t not declared])
+test "$cf_cv_type_size_t" = no && AC_DEFINE(size_t, unsigned, [Define to type if size_t not declared])
 ])dnl

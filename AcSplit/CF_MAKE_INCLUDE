@@ -1,4 +1,4 @@
-dnl CF_MAKE_INCLUDE version: 9 updated: 2010/10/23 15:52:32
+dnl CF_MAKE_INCLUDE version: 10 updated: 2021/01/10 18:23:00
 dnl ---------------
 dnl Check for the use of 'include' in 'make' (BSDI is a special case)
 dnl The symbol $ac_make is set in AC_MAKE_SET, as a side-effect.
@@ -27,7 +27,7 @@ all :
 CF_EOF
 	cf_make_include=""
 	CDPATH=; export CDPATH
-	eval `(cd $cf_dir && ${MAKE:-make}) 2>&AC_FD_CC | grep cf_make_include=OK`
+	eval `(cd "$cf_dir" && "${MAKE:-make}") 2>&AC_FD_CC | grep cf_make_include=OK`
 	if test -n "$cf_make_include"; then
 		make_include_left="$cf_include"
 		make_include_quote="$cf_quote"

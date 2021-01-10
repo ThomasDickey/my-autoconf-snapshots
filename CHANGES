@@ -1,3 +1,13 @@
+2021-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ALL_MAKEFILES, AcSplit/CF_FIND_TDLIB, AcSplit/CF_ANSI_CPP, AcSplit/CF_CHECK_REGEX, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_SRC_MAKEFILE, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MODULES, AcSplit/CF_TOP_SRCDIR, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	quoting fixes for shellcheck
+
+	* AcSplit/CF_MAKE_DOCS:
+	suppress groff's hyphenation when making a ".txt" file
+
+	* AcSplit/CF_NEED_PROG: ci-aclocal generated header
+
 2021-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GXX_WARNINGS: s/GCC_VERSION/GXX_VERSION/

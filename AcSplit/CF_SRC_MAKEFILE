@@ -1,4 +1,4 @@
-dnl CF_SRC_MAKEFILE version: 6 updated: 2020/12/06 16:26:55
+dnl CF_SRC_MAKEFILE version: 7 updated: 2021/01/10 18:23:00
 dnl ---------------
 dnl Append predefined lists to $2/makefile, given a path to a directory that
 dnl has a 'modules' file in $1.
@@ -25,7 +25,7 @@ END	{
 		print ""
 	}
 '
-	if test $cf_cv_ar_rules = yes ; then
+	if test "$cf_cv_ar_rules" = yes ; then
 ${AWK:-awk} <$cf_mod >>$cf_out '
 BEGIN	{
 		found = 0;
@@ -70,7 +70,7 @@ CF_EOF
 test -f $1/$2/makefile.2nd && \
     cat $1/$2/makefile.2nd >>$2/makefile
 
-	if test $cf_cv_ar_rules = yes ; then
+	if test "$cf_cv_ar_rules" = yes ; then
 cat >>$cf_out <<CF_EOF
 
 \$Z:	\$(OBJS)

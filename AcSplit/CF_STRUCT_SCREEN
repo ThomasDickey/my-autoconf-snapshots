@@ -1,4 +1,4 @@
-dnl CF_STRUCT_SCREEN version: 5 updated: 2013/12/05 19:11:11
+dnl CF_STRUCT_SCREEN version: 6 updated: 2021/01/10 18:23:00
 dnl ----------------
 dnl Test if curses defines 'struct screen'.
 dnl
@@ -21,7 +21,7 @@ AC_MSG_RESULT($cf_cv_have_struct_screen)
 
 AC_MSG_CHECKING(for definition of struct screen)
 AC_CACHE_VAL(cf_cv_need_struct_screen,[
-	if test $cf_cv_have_struct_screen = yes; then
+	if test "$cf_cv_have_struct_screen" = yes; then
 		AC_TRY_COMPILE([#include <${cf_cv_ncurses_header:-curses.h}>],
 			[struct screen { int dummy;}],
 			[cf_cv_need_struct_screen=yes],
@@ -31,5 +31,5 @@ AC_CACHE_VAL(cf_cv_need_struct_screen,[
 	fi
 	])
 AC_MSG_RESULT($cf_cv_need_struct_screen)
-test $cf_cv_need_struct_screen = yes && AC_DEFINE(NEED_STRUCT_SCREEN,1,[Define to 1 if struct SCREEN is declared])
+test "$cf_cv_need_struct_screen" = yes && AC_DEFINE(NEED_STRUCT_SCREEN,1,[Define to 1 if struct SCREEN is declared])
 ])dnl

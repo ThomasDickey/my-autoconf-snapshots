@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20210108
+MANIFEST for my-autoconf, version t20210110
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -323,6 +323,7 @@ AcSplit/CF_NCURSES_PTHREADS     check for pthread dependency of ncurses
 AcSplit/CF_NCURSES_VERSION      determine the ncurses version
 AcSplit/CF_NCURSES_WITH_ABI_VERSION  hold ncurses ABI-conversion between ABI5/6
 AcSplit/CF_NCURSES_WRAP_PREFIX  macro to specify ncurses wrap-prefix
+AcSplit/CF_NEED_PROG            check if a check for program found something useful
 AcSplit/CF_NETBSD_FORM_H        check for quirks in NetBSD's form.h
 AcSplit/CF_NETBSD_MENU_H        check for quirks in NetBSD's menu.h
 AcSplit/CF_NETLIBS              check for network-libraries

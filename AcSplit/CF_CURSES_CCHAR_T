@@ -1,4 +1,4 @@
-dnl CF_CURSES_CCHAR_T version: 6 updated: 2019/12/06 06:21:53
+dnl CF_CURSES_CCHAR_T version: 7 updated: 2021/01/10 18:23:00
 dnl -----------------
 dnl Test if curses defines 'cchar_t' (a 'struct' type for X/Open curses).
 AC_DEFUN([CF_CURSES_CCHAR_T],
@@ -9,14 +9,14 @@ AC_CACHE_CHECK(for cchar_t typedef,cf_cv_cchar_t_decl,[
 		[cchar_t foo],
 		[cf_cv_cchar_t_decl=yes],
 		[cf_cv_cchar_t_decl=no])])
-if test $cf_cv_cchar_t_decl = yes ; then
+if test "$cf_cv_cchar_t_decl" = yes ; then
 	AC_DEFINE(HAVE_TYPE_CCHAR_T,1,[Define to 1 if cchar_t is declared])
 	AC_CACHE_CHECK(if cchar_t is scalar or struct,cf_cv_cchar_t_type,[
 		AC_TRY_COMPILE([#include <${cf_cv_ncurses_header:-curses.h}>],
 			[cchar_t foo; long x = foo],
 			[cf_cv_cchar_t_type=scalar],
 			[cf_cv_cchar_t_type=struct])])
-	if test $cf_cv_cchar_t_type = scalar ; then
+	if test "$cf_cv_cchar_t_type" = scalar ; then
 		AC_DEFINE(TYPE_CCHAR_T_IS_SCALAR,1,[Define to 1 if cchar_t is a scalar])
 	fi
 fi
