@@ -1,3 +1,9 @@
+2021-01-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	run subdirectory-makes in a subprocess, to work around pmake, which is
+	guaranteed to misbehave when attempting to parallelize the make-process.
+
 2021-01-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITHOUT_X:
