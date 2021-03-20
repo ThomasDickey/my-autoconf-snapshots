@@ -1,3 +1,11 @@
+2021-03-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES: allow for c++ directory to do lint-rule
+
+	* AcSplit/CF_GCC_ATTRIBUTES: check for C11 _Noreturn keyword
+
+	* AcSplit/CF_C11_NORETURN: ci-aclocal generated header
+
 2021-03-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-03-10 (repaired)

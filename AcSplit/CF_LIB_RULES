@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 94 updated: 2021/01/23 15:37:41
+dnl CF_LIB_RULES version: 95 updated: 2021/03/20 12:00:25
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -407,9 +407,9 @@ install.includes \\
 uninstall.includes \\
 CF_EOF
 		fi
-if test "$cf_dir" != "c++" ; then
+
 echo 'lint \' >> Makefile
-fi
+
 cat >> Makefile <<CF_EOF
 libs \\
 lintlib \\
