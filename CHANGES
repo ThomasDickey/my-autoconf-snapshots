@@ -1,3 +1,11 @@
+2021-03-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_C11_NORETURN:
+	add --enable-stdnoreturn option to make this feature optional, since several
+	programs outside ncurses use GCC_NORETURN and must be updated before the
+	feature can be used unconditionally.  Also, those programs may have to
+	be built with older versions of ncurses.
+
 2021-03-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES: allow for c++ directory to do lint-rule
