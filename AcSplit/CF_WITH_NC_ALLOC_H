@@ -1,4 +1,4 @@
-dnl CF_WITH_NC_ALLOC_H version: 5 updated: 2021/01/05 20:07:15
+dnl CF_WITH_NC_ALLOC_H version: 6 updated: 2021/03/24 18:52:45
 dnl ------------------
 dnl Applications that use ncurses can provide better leak-checking if they
 dnl call ncurses' functions to free its memory on exit.  That is normally not
@@ -14,7 +14,7 @@ case $LIBS in #(vi
 
 if test "$enable_leaks" = no ; then
 	AC_CHECK_HEADER(nc_alloc.h)
-	AC_CHECK_FUNCS(_nc_free_and_exit)
+	AC_CHECK_FUNCS(exit_curses exit_terminfo _nc_free_and_exit)
 fi
 ;;
 esac
