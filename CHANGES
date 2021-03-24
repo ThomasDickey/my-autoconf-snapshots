@@ -1,3 +1,8 @@
+2021-03-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NC_ALLOC_H:
+	add checks for exit_curses and exit_terminfo, which are preferred
+
 2021-03-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_C11_NORETURN:
