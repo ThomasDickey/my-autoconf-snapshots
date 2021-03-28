@@ -1,3 +1,9 @@
+2021-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_C11_NORETURN: add comment for autoheader
+	ensure that _Noreturn keyword is tested
+	add STDC_NORETURN to substitutions
+
 2021-03-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NC_ALLOC_H:
