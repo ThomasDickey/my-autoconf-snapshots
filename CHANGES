@@ -1,3 +1,14 @@
+2021-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DISABLE_LEAKS:
+	recent rewrite left "--enable-leaks" meaning the same as "--disable-leaks"
+	because it ignored $enableval
+
+	* AcSplit/CF_LINK_FUNCS:
+	workaround for NFS on FreeBSD-13rc4, which bumps the modification-time on
+	the link target.  Also, make the test-function return distinct exit-codes
+	to make analysis of config.log easier.
+
 2021-03-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_C11_NORETURN: add comment for autoheader
