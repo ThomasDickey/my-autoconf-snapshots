@@ -1,8 +1,11 @@
-dnl CF_LINK_FUNCS version: 9 updated: 2017/01/21 11:11:02
+dnl CF_LINK_FUNCS version: 10 updated: 2021/04/03 15:45:02
 dnl -------------
 dnl Most Unix systems have both link and symlink, a few don't have symlink.
 dnl A few non-Unix systems implement symlink, but not link.
 dnl A few non-systems implement neither (or have nonfunctional versions).
+dnl
+dnl This allows for a 2-second difference in modification times to allow for
+dnl some marginal NFS implementations.
 AC_DEFUN([CF_LINK_FUNCS],
 [
 AC_CHECK_HEADERS( \
@@ -35,9 +38,17 @@ int main(void)
 	struct stat dst_sb;
 
 	stat(src, &src_sb);
-	fail = ($cf_func("config.log", "conftest.chk") < 0)
-	    || (stat(dst, &dst_sb) < 0)
-	    || (dst_sb.st_mtime != src_sb.st_mtime);
+	if ($cf_func("config.log", "conftest.chk") < 0) {
+		fail = 1;
+	} else if (stat(dst, &dst_sb) < 0) {
+		fail = 2;
+	} else {
+		long diff = (dst_sb.st_mtime - src_sb.st_mtime);
+		if (diff < 0)
+			diff = -diff;
+		if (diff > 2)
+			fail = 3;
+	}
 #ifdef HAVE_UNLINK
 	unlink(dst);
 #else
