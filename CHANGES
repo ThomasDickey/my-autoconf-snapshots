@@ -1,3 +1,8 @@
+2021-04-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LINK_FUNCS:
+	improve check by ensuring that the source file is closed before linking to target
+
 2021-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_DISABLE_LEAKS:
