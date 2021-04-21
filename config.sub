@@ -3,7 +3,7 @@
 #   Copyright 2021 Thomas E. Dickey
 #   Copyright 1992-2021 Free Software Foundation, Inc.
 
-timestamp='2021-03-10'
+timestamp='2021-04-21'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1166,7 +1166,7 @@ case $cpu-$vendor in
 			| alphapca5[67] | alpha64pca5[67] \
 			| am33_2.0 \
 			| amdgcn \
-			| arc | arceb \
+			| arc | arceb | arc64 \
 			| arm | arm[lb]e | arme[lb] | armv* \
 			| avr | avr32 \
 			| asmjs \
@@ -1708,7 +1708,7 @@ case $os in
 	     | nindy* | vxsim* | vxworks* | ebmon* | hms* | mvs* \
 	     | clix* | riscos* | uniplus* | iris* | isc* | rtu* | xenix* \
 	     | mirbsd* | netbsd* | dicos* | openedition* | ose* \
-	     | bitrig* | openbsd* | solidbsd* | libertybsd* | os108* \
+	     | bitrig* | openbsd* | secbsd* | solidbsd* | libertybsd* | os108* \
 	     | ekkobsd* | freebsd* | riscix* | lynxos* | os400* \
 	     | bosx* | nextstep* | cxux* | aout* | elf* | oabi* \
 	     | ptx* | coff* | ecoff* | winnt* | domain* | vsta* \
