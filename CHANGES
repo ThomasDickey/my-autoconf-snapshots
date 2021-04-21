@@ -1,7 +1,55 @@
+2021-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2021-04-21 (repaired)
+	    From: Vineet Gupta <Vineet.Gupta1@synopsys.com>
+	    Recognize arc64
+
+	    This paves way for setting up arc64 software ecosystem.
+
+	    $ make check
+	    cd testsuite && bash config-guess.sh && rm uname
+	    PASS: config.guess checks (136 tests)
+	    cd testsuite && bash config-sub.sh
+	    PASS: config.sub checks (853 tests)
+	    PASS: config.sub idempotency checks (790 tests)
+	    PASS: config.sub canonicalise each config.guess testcase (136 tests)
+
+	    * config.guess (arc64:Linux:*:*): Recognize.
+	    * config.sub (arc64): Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data: Add a test case for arc64.
+	    * testsuite/config-sub.data (arc64, arc*-elf): Add test cases.
+
+	    Signed-off-by: Vineet Gupta <vgupta@synopsys.com>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-04-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LINK_FUNCS:
 	improve check by ensuring that the source file is closed before linking to target
+
+2021-04-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-04-16 (repaired)
+	    From: Purple Rain <purplerain@secbsd.org>
+	    config.guess: add SecBSD support
+
+	    * config.guess (*:SecBSD:*:*): Recognize.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data: Add a test case.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2021-04-16 (repaired)
+	    From: Purple Rain <purplerain@secbsd.org>
+	    config.sub: add SecBSD support
+
+	    * config.sub (secbsd*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data: Add x86_64-secbsd.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2021-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
