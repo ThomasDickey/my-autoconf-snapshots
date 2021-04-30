@@ -1,3 +1,20 @@
+2021-04-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-04-30 (repaired)
+	    From: Maciej W. Rozycki <macro@orcam.me.uk>
+	    config.sub: Handle MIPS R3 and R5 ISA levels with CPU names
+
+	    Complement binutils commit ae52f4830604 ("Add MIPS r3 and r5 support.")
+	    and recognize MIPS CPU patterns for the R3 and R5 ISA levels, used by
+	    GAS to set defaults.
+
+	    * config.sub (mipsisa32r3, mipsisa32r3el, mipsisa32r5, mipsisa32r5el,
+	    mipsisa64r3, mipsisa64r3el, mipsisa64r5, mipsisa64r5el): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data: Add test cases.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2021-04-21 (repaired)
