@@ -1,3 +1,15 @@
+2021-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	modify special-case for OpenBSD 6 (and up) to work around one of the places
+	where the compile-time environment is broken.  This was reported before
+	OpenBSD 6.7:
+		https://www.mail-archive.com/bugs@openbsd.org/msg13200.html
+	but the ensuring discussion elicited no action.
+
+	* AcSplit/CF_CHECK_LIBTOOL_VERSION:
+	modify to prevent accidentally using the OpenBSD "libtool"
+
 2021-04-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-04-30 (repaired)
