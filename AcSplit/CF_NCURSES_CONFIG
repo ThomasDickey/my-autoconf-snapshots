@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 26 updated: 2021/01/03 08:05:37
+dnl CF_NCURSES_CONFIG version: 27 updated: 2021/05/19 19:35:25
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses, preferring these in
 dnl order:
@@ -40,7 +40,7 @@ if test "x${PKG_CONFIG:=none}" != xnone; then
 				[initscr(); mousemask(0,0); tigetstr((char *)0);],
 				[AC_TRY_RUN([#include <${cf_cv_ncurses_header:-curses.h}>
 					int main(void)
-					{ char *xx = curses_version(); return (xx == 0); }],
+					{ const char *xx = curses_version(); return (xx == 0); }],
 					[cf_test_ncuconfig=yes],
 					[cf_test_ncuconfig=no],
 					[cf_test_ncuconfig=maybe])],
@@ -66,7 +66,7 @@ if test "x${PKG_CONFIG:=none}" != xnone; then
 			[initscr(); mousemask(0,0); tigetstr((char *)0);],
 			[AC_TRY_RUN([#include <${cf_cv_ncurses_header:-curses.h}>
 				int main(void)
-				{ char *xx = curses_version(); return (xx == 0); }],
+				{ const char *xx = curses_version(); return (xx == 0); }],
 				[cf_have_ncuconfig=yes],
 				[cf_have_ncuconfig=no],
 				[cf_have_ncuconfig=maybe])],

@@ -1,3 +1,14 @@
+2021-05-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_UTF8_LIB:
+	putwc might be prototyped in wchar.h -- check for that
+
+	* AcSplit/CF_NCURSES_CONFIG:
+	quiet a configure-time const-mismatch warning
+
+	* AcSplit/CF__INTL_BODY:
+	quiet a configure-time warning about assigning pointer to integer
+
 2021-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
