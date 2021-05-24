@@ -1,3 +1,46 @@
+2021-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.guess: fix shellcheck warning SC2154
+
+	    While, according to Plan 9 documentation, the environment variable
+	    $cputype is set to the name of the kernel's CPU's architecture,
+	    shellcheck warns that cputype is referenced but not assigned.
+	    Be on the safe side and do not use cputype if it is not defined
+	    or empty.
+
+	    * config.guess (*:Plan9:*:*): Fix shellcheck warning SC2154.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.guess: remove redundant quotes in case commands
+
+	    According to the GNU Autoconf Portable Shell Programming manual,
+	    the Bourne shell does not systematically split variables and back-quoted
+	    expressions, in particular on the right-hand side of assignments and in
+	    the argument of 'case'.
+
+	    The change is made automatically using the following command:
+	    $ sed -E -i 's/(\<case )"(\$[^"]+)"( in\>)/\1\2\3/' config.guess
+
+	    * config.guess: Simplify case commands by removing quotes around the
+	    argument.
+
+	    Suggested-by: Jacob Bachmeyer <jcb@gnu.org>
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.guess: simplify exit status workaround on alphaev67-dec-osf5.1
+
+	    Commit 29865ea8a5622cdd80b7a69a0afa78004b4cd311 introduced an exit trap
+	    reset before exiting to avoid a spurious non-zero exit status on
+	    alphaev67-dec-osf5.1.  Simplify that code a bit by moving the exit trap
+	    reset around.
+
+	    * config.guess (alpha:OSF1:*:*): Reset exit trap earlier.
+	    * doc/config.guess.1: Regenerate.
+
 2021-05-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_UTF8_LIB:
