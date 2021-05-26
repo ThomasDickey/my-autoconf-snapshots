@@ -1,6 +1,5 @@
 #! /bin/sh
 # Attempt to guess a canonical system name.
-#   Copyright 2021 Thomas E. Dickey
 #   Copyright 1992-2021 Free Software Foundation, Inc.
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
@@ -399,11 +398,10 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in
 	;;
     Pyramid*:OSx*:*:* | MIS*:OSx*:*:* | MIS*:SMP_DC-OSx*:*:*)
 	# akee@wpdis03.wpafb.af.mil (Earle F. Ake) contributed MIS and NILE.
-	if test "`(/bin/universe) 2>/dev/null`" = att ; then
-		GUESS=pyramid-pyramid-sysv3
-	else
-		GUESS=pyramid-pyramid-bsd
-	fi
+	case `(/bin/universe) 2>/dev/null` in
+	    att) GUESS=pyramid-pyramid-sysv3 ;;
+	    *)   GUESS=pyramid-pyramid-bsd   ;;
+	esac
 	;;
     NILE*:*:*:dcosx)
 	GUESS=pyramid-pyramid-svr4
@@ -612,7 +610,7 @@ EOF
 	;;
     ????????:AIX?:[12].1:2)   # AIX 2.2.1 or AIX 2.1.1 is RT/PC AIX.
 	GUESS=romp-ibm-aix    # uname -m gives an 8 hex-code CPU id
-	;;                    # Note that: echo "'$(uname -s)'" gives 'AIX '
+	;;                    # Note that: echo "'`uname -s`'" gives 'AIX '
     i*86:AIX:*:*)
 	GUESS=i386-ibm-aix
 	;;
@@ -658,7 +656,7 @@ EOF
 		IBM_ARCH=powerpc
 	fi
 	if test -x /usr/bin/lslpp ; then
-		IBM_REV=`/usr/bin/lslpp -Lqc bos.rte.libc |
+		IBM_REV=`/usr/bin/lslpp -Lqc bos.rte.libc | \
 			   awk -F: '{ print $3 }' | sed s/[0-9]*$/0/`
 	else
 		IBM_REV=$UNAME_VERSION.$UNAME_RELEASE
@@ -1675,7 +1673,7 @@ main ()
 }
 EOF
 
-$CC_FOR_BUILD -o "$dummy" "$dummy.c" 2>/dev/null && SYSTEM_NAME=`$dummy` &&
+$CC_FOR_BUILD -o "$dummy" "$dummy.c" 2>/dev/null && SYSTEM_NAME=`"$dummy"` &&
 	{ echo "$SYSTEM_NAME"; exit; }
 
 # Apollos put the system type in the environment.
