@@ -1,3 +1,74 @@
+2021-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: manual fixup after previous automated patches
+
+	    This patch provides the special handling for the GNU system.  As these
+	    were two small and unique edits, they were not included in the scripts.
+
+	    This patch also cleans up other minor issues that must be addressed
+	    before reverting to classic command substitutions and updates
+	    "shellcheck" directives to account for changes in this script and the
+	    change in "shellcheck" towards reporting individual portability issues.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: automatic fixups after previous automated patch
+
+	    This patch was generated using the following command:
+
+	      sed -i config.guess \
+	          -e '/="[^"]\+"\(-\|$\)/s/="\([^"([:space:])]\+\)"/=\1/' \
+	          -e '/="[^"]\+"[[:alnum:]]/s/="\$\([^([:space:])]\+\)"/=${\1}/' \
+	          -e \
+	    '/\$(echo[^|]\+|/s/\([^[:space:]]\)[[:space:]]*|[[:space:]]*sed/\1 | sed/g'
+
+	    * config.guess: Remove unneeded quotes in other variable assignments,
+	    standardize spacing for "echo ... | sed" substitutions.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: remove unneeded quotes and factor command substitutions
+
+	    This is further cleanup and simplifies some constructs that can confuse
+	    Emacs' syntax highlighting while generally reducing required quoting.
+
+	    This patch was generated using the included GNU Awk program.
+
+	    * config.guess: Remove unneeded variable quotes and factor out command
+	    substitutions when setting GUESS.
+	    * patch-3.gawk: Store the tool that produced the automated patch.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: manual fixups after previous automatic patch
+
+	    * config.guess: Adjust a few "leftover" cases that the tool could not
+	    easily recognize and fixes comment indentation in a few other special
+	    cases.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: introduce intermediate variable with uname results
+
+	    This will allow quoting to be significantly simplified in another
+	    pass through the file.
+
+	    * config.guess: Introduce GUESS variable to hold results of uname analysis.
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: use intermediate variable with uname results
+
+	    This will allow quoting to be significantly simplified in another
+	    pass through the file.
+
+	    This patch was generated using the included GNU Awk program.
+
+	    * config.guess: Use GUESS variable to hold results of uname analysis.
+	    * patch-1.gawk: Store the tool that produced the automated patch.
+
 2021-05-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2021-05-24 (repaired)
