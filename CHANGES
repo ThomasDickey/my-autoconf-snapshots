@@ -1,3 +1,32 @@
+2021-05-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-05-24
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: manual fixups after previous automatic patch
+
+	    The tool could not handle command substitutions that span lines, but
+	    fortunately there were only two such substitutions in the script.
+
+	    The test for which universe is active on Pyramid is rewritten into a
+	    case block because it was the only use of a command substitution as an
+	    argument to the test command, which would require quoting.
+
+	    * config.guess: Rewrite "if" for Pyramid systems to "case".
+
+	* config.guess: 2021-05-24 (repaired)
+	    From: Jacob Bachmeyer <jcb@gnu.org>
+	    config.guess: replace POSIX $( ) with classic ` ` throughout
+
+	    The previous replacement of backticks with POSIX command substitutions
+	    was ill-considered and illogical: this script recognizes many archaic
+	    machine types that probably never had POSIX shells, therefore it needs
+	    to be able to run successfully under pre-POSIX shells.
+
+	    This patch was generated using the included GNU Awk program.
+
+	    * config.guess: Revert POSIX command substitutions to classic form.
+	    * patch-6.gawk: Store the tool that produced the automated patch.
+
 2021-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2021-05-24 (repaired)
