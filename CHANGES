@@ -1,3 +1,55 @@
+2021-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-06-03
+	    From: Vineet Gupta <Vineet.Gupta1@synopsys.com>
+	    Recognize arc32
+
+	    This is the 32-bit variant of ARCv3 ISA (which is not compatible with the
+	    32-bit ARCv2 ISA)
+
+	    | make check
+	    | cd testsuite && bash config-guess.sh && rm uname
+	    | PASS: config.guess checks (136 tests)
+	    | cd testsuite && bash config-sub.sh
+	    | PASS: config.sub checks (864 tests)
+	    | PASS: config.sub idempotency checks (801 tests)
+	    | PASS: config.sub canonicalise each config.guess testcase (136 tests)
+
+	    * config.guess (arc32:Linux:*:*): Recognize.
+	    * config.sub (arc32): Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data: Add a test case for arc32.
+	    * testsuite/config-sub.data (arc32, arc*-elf): Add test cases.
+
+	    Signed-off-by: Vineet Gupta <vgupta@synopsys.com>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2021-06-03 (repaired)
+	    From: Vineet Gupta <Vineet.Gupta1@synopsys.com>
+	    Recognize arc32
+
+	    This is the 32-bit variant of ARCv3 ISA (which is not compatible with the
+	    32-bit ARCv2 ISA)
+
+	    | make check
+	    | cd testsuite && bash config-guess.sh && rm uname
+	    | PASS: config.guess checks (136 tests)
+	    | cd testsuite && bash config-sub.sh
+	    | PASS: config.sub checks (864 tests)
+	    | PASS: config.sub idempotency checks (801 tests)
+	    | PASS: config.sub canonicalise each config.guess testcase (136 tests)
+
+	    * config.guess (arc32:Linux:*:*): Recognize.
+	    * config.sub (arc32): Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data: Add a test case for arc32.
+	    * testsuite/config-sub.data (arc32, arc*-elf): Add test cases.
+
+	    Signed-off-by: Vineet Gupta <vgupta@synopsys.com>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-05-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2021-05-24
