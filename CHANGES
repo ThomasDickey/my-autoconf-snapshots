@@ -1,3 +1,8 @@
+2021-06-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_INPUT_METHOD, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF__GRANTPT_BODY:
+	scan-build warnings
+
 2021-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2021-06-03
