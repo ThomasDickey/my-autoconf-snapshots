@@ -1,4 +1,4 @@
-dnl CF_FUNC_LSTAT version: 4 updated: 2021/01/02 09:31:20
+dnl CF_FUNC_LSTAT version: 5 updated: 2021/06/08 18:08:14
 dnl -------------
 dnl A conventional existence-check for 'lstat' won't work with the Linux
 dnl version of gcc 2.7.0, since the symbol is defined only within <sys/stat.h>
@@ -12,7 +12,7 @@ AC_CACHE_VAL(ac_cv_func_lstat,[
 AC_TRY_LINK([
 #include <sys/types.h>
 #include <sys/stat.h>],
-	[lstat(".", (struct stat *)0)],
+	[struct stat sb; lstat(".", &sb); (void) sb],
 	[ac_cv_func_lstat=yes],
 	[ac_cv_func_lstat=no])
 	])
