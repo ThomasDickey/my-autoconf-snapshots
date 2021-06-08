@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 15 updated: 2021/01/02 09:31:20
+dnl CF_SRAND version: 16 updated: 2021/06/08 18:08:14
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -24,7 +24,7 @@ AC_TRY_LINK([
 #ifdef HAVE_LIMITS_H
 #include <limits.h>
 #endif
-],[long seed = 1; $cf_srand_func(seed); seed = $cf_rand_func()],
+],[long seed = 1; $cf_srand_func(seed); seed = $cf_rand_func(); (void)seed],
 [cf_cv_srand_func=$cf_func
  break])
 done

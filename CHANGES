@@ -1,3 +1,8 @@
+2021-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_SRAND, AcSplit/CF_TM_GMTOFF, AcSplit/CF_UNION_WAIT:
+	quiet a configure-time warning
+
 2021-06-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_INPUT_METHOD, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF__GRANTPT_BODY:

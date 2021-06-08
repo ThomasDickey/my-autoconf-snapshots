@@ -1,4 +1,4 @@
-dnl CF_UNION_WAIT version: 8 updated: 2021/01/02 09:31:20
+dnl CF_UNION_WAIT version: 9 updated: 2021/06/08 18:08:14
 dnl -------------
 dnl Check to see if the BSD-style union wait is declared.  Some platforms may
 dnl use this, though it is deprecated in favor of the 'int' type in Posix.
@@ -18,7 +18,7 @@ AC_REQUIRE([CF_WAIT_HEADERS])
 AC_MSG_CHECKING([for union wait])
 AC_CACHE_VAL(cf_cv_type_unionwait,[
 	AC_TRY_LINK($cf_wait_headers,
-	[int x;
+	[static int x;
 	 int y = WEXITSTATUS(x);
 	 int z = WTERMSIG(x);
 	 wait(&x);
