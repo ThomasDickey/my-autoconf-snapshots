@@ -1,3 +1,11 @@
+2021-06-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_NO_LEAKS:
+	guard against unexpected usage, e.g., "--without-no-leaks"
+
+	* AcSplit/CF_NO_LEAKS_OPTION:
+	guard against unexpected usage, e.g., "--without-valgrind"
+
 2021-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_SRAND, AcSplit/CF_TM_GMTOFF, AcSplit/CF_UNION_WAIT:
