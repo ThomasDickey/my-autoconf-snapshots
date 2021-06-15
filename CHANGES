@@ -1,3 +1,7 @@
+2021-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_EXIT: corrected function-name...
+
 2021-06-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NO_LEAKS:
