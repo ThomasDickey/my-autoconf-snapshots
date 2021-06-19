@@ -1,4 +1,4 @@
-dnl CF_GETOPT_HEADER version: 7 updated: 2021/01/01 13:31:04
+dnl CF_GETOPT_HEADER version: 8 updated: 2021/06/19 19:16:16
 dnl ----------------
 dnl Check for getopt's variables which are commonly defined in stdlib.h,
 dnl unistd.h or (nonstandard) in getopt.h
@@ -11,7 +11,7 @@ for cf_header in stdio.h stdlib.h unistd.h getopt.h
 do
 AC_TRY_COMPILE([
 #include <$cf_header>],
-[int x = optind; char *y = optarg],
+[int x = optind; char *y = optarg; (void)x; (void)y],
 [cf_cv_getopt_header=$cf_header
  break])
 done
