@@ -1,3 +1,20 @@
+2021-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-06-03
+	    From: Ozkan Sezer <sezero@users.sourceforge.net>
+	    config.sub: replace POSIX $( ) with classic ` ` throughout
+
+	    This is in line with the recent config.guess change in commit
+	    d70c4fa934de164178054c3a60aaa0024ed07c91.
+
+	    The patch was generated using patch-6.gawk script introduced in that
+	    commit.
+
+	    * config.sub: Revert POSIX command substitutions to classic form.
+
+	    Signed-off-by: Ozkan Sezer <sezero@users.sourceforge.net>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-06-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GETOPT_HEADER: quiet a warning in config.log
