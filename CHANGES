@@ -1,3 +1,37 @@
+2021-07-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	generate ".PHONY" directives if the make-program supports it
+
+	* config.sub: 2021-07-03
+	    From: Ozkan Sezer <sezero@users.sourceforge.net>
+	    config.sub: disable shellcheck SC2006 / SC2268 warnings
+
+	    This is in line with the recent config.guess change in commit
+	    12fcf67c9108f4c4b581eaa302088782f0ee40ea
+
+	    * config.sub (shellcheck disable): Add SC2006,SC2268.
+
+	    Suggested-by: Jacob Bachmeyer <jcb@gnu.org>
+	    Signed-off-by: Ozkan Sezer <sezero@users.sourceforge.net>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2021-07-03
+	    From: Ozkan Sezer <sezero@users.sourceforge.net>
+	    config.sub: normalize the quoting in the `echo FOO | sed ...`
+
+	    Some cases quote the argument to echo and some do not.  At runtime
+	    it probably does not matter because the substituted values will never
+	    contain whitespace, but quoting them all would make shellcheck more
+	    useful.
+
+	    * config.sub: Consistently quote the argument of echo.
+	    * doc/config.sub.1: Regenerate.
+
+	    Suggested-by: Jacob Bachmeyer <jcb@gnu.org>
+	    Signed-off-by: Ozkan Sezer <sezero@users.sourceforge.net>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-06-03
