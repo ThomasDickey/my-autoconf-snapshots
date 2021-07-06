@@ -1,3 +1,27 @@
+2021-07-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-07-06
+	    From: Stephanos Ioannidis <root@stephanos.io>
+	    config.sub: add Zephyr RTOS support
+
+	    This adds the Zephyr RTOS targets in preparation for implementing the
+	    Zephyr RTOS-specific toolchain support.
+
+	    $ make check
+	    cd testsuite && bash config-guess.sh && rm uname
+	    PASS: config.guess checks (136 tests)
+	    cd testsuite && bash config-sub.sh
+	    PASS: config.sub checks (880 tests)
+	    PASS: config.sub idempotency checks (817 tests)
+	    PASS: config.sub canonicalise each config.guess testcase (136 tests)
+
+	    * config.sub (zephyr*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data: Add testcases for *-zephyr.
+
+	    Signed-off-by: Stephanos Ioannidis <root@stephanos.io>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IDNA:
