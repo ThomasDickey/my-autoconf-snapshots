@@ -1,3 +1,10 @@
+2021-07-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_CURSES:
+	don't make check for cchar_t specific to ncurses (X/Open Curses requires it)
+	also, if NCURSES_WIDECHAR happens to be set, e.g., as a side-effect, reject
+	the first try and fallthrough to prefer defining _XOPEN_SOURCE_EXTENDED
+
 2021-07-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-07-06
