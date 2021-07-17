@@ -1,3 +1,9 @@
+2021-07-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LIB_RULES:
+	add USE_LIB_SUFFIX parameter to mk-1st.awk, to take into account the
+	"--with-extra-suffix" option
+
 2021-07-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_CURSES:

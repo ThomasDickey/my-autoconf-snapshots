@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 96 updated: 2021/07/03 16:16:40
+dnl CF_LIB_RULES version: 97 updated: 2021/07/17 13:10:54
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -337,6 +337,7 @@ CF_EOF
 				MODEL=$cf_ITEM \
 				CXX_MODEL=$CXX_MODEL \
 				LIB_SUFFIX=$LIB_SUFFIX \
+				USE_LIB_SUFFIX=$USE_LIB_SUFFIX \
 				make_phony="${cf_cv_make_PHONY:-no}" \
 				model=$cf_subdir \
 				prefix=$cf_prefix \
