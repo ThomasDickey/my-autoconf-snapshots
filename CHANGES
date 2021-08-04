@@ -1,3 +1,23 @@
+2021-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-08-04
+	    From: Jeremy Soller <jackpot51@gmail.com>
+	    config.sub: add Linux Relibc Target
+
+	    $ make check
+	    cd testsuite && bash config-guess.sh && rm uname
+	    PASS: config.guess checks (136 tests)
+	    cd testsuite && bash config-sub.sh
+	    PASS: config.sub checks (881 tests)
+	    PASS: config.sub idempotency checks (818 tests)
+	    PASS: config.sub canonicalise each config.guess testcase (136 tests)
+
+	    * config.sub (relibc*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (x86_64-linux-relibc): New test.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-07-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LIB_RULES:

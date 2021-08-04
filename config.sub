@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2021-07-06'
+timestamp='2021-08-04'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1701,7 +1701,7 @@ fi
 # Now, validate our (potentially fixed-up) OS.
 case $os in
 	# Sometimes we do "kernel-libc", so those need to count as OSes.
-	musl* | newlib* | uclibc*)
+	musl* | newlib* | relibc* | uclibc*)
 		;;
 	# Likewise for "kernel-abi"
 	eabi* | gnueabi*)
@@ -1759,11 +1759,12 @@ esac
 # As a final step for OS-related things, validate the OS-kernel combination
 # (given a valid OS), if there is a kernel.
 case $kernel-$os in
-	linux-gnu* | linux-dietlibc* | linux-android* | linux-newlib* | linux-musl* | linux-uclibc* )
+	linux-gnu* | linux-dietlibc* | linux-android* | linux-newlib* \
+		   | linux-musl* | linux-relibc* | linux-uclibc* )
 		;;
 	uclinux-uclibc* )
 		;;
-	-dietlibc* | -newlib* | -musl* | -uclibc* )
+	-dietlibc* | -newlib* | -musl* | -relibc* | -uclibc* )
 		# These are just libc implementations, not actual OSes, and thus
 		# require a kernel.
 		echo "Invalid configuration \`$1': libc \`$os' needs explicit kernel." 1>&2
