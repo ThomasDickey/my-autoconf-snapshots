@@ -1,3 +1,8 @@
+2021-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: add case for haiku, from
+	https://github.com/haikuports/haikuports/blob/master/sys-libs/ncurses5/patches/ncurses-6.2.patchset
+
 2021-08-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-08-04
