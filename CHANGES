@@ -1,3 +1,40 @@
+2021-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-08-14
+	    From: Nick Bowler <nbowler@draconx.ca>
+	    config.sub: work around command assignment bug in some shells
+
+	    When combining variable assignments with a shell command, some older
+	    shells (notably heirloom-sh and presumably also Solaris 10 /bin/sh)
+	    have a bug which causes the assignment to alter the current execution
+	    environment whenever the command is a shell built-in.  For example:
+
+	      % dash -c 'x=good; x=bad echo >/dev/null; echo $x'
+	      good
+
+	      % jsh -c 'x=good; x=bad echo >/dev/null; echo $x'
+	      bad
+
+	    The config.sub script contains a few commands of the form:
+
+	      IFS=- read ...
+
+	    which triggers this bug, causing the IFS assignment to persist for the
+	    remainder of the script.  This can cause misbehaviour in certain cases,
+	    for example:
+
+	      % jsh config.sub i386-linux-gnu
+	      config.sub: test: unknown operator gnu
+
+	      % jsh config.sub i386-gnu/linux
+	      sed: can't read s|gnu/linux|gnu|: No such file or directory
+	      Invalid configuration `i386-gnu/linux': OS `' not recognized
+
+	    * config.sub: Save and restore IFS explicitly to avoid shell bugs.
+	    * doc/config.sub.1: Regenerate.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-08-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PCRE2:

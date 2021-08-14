@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2021-08-04'
+timestamp='2021-08-14'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -121,9 +121,11 @@ esac
 
 # Split fields of configuration type
 # shellcheck disable=SC2162
+saved_IFS=$IFS
 IFS="-" read field1 field2 field3 field4 <<EOF
 $1
 EOF
+IFS=$saved_IFS
 
 # Separate into logical components for further validation
 case $1 in
@@ -935,9 +937,11 @@ case $basic_machine in
 
 	*-*)
 		# shellcheck disable=SC2162
+		saved_IFS=$IFS
 		IFS="-" read cpu vendor <<EOF
 $basic_machine
 EOF
+		IFS=$saved_IFS
 		;;
 	# We use `pc' rather than `unknown'
 	# because (1) that's what they normally are, and
@@ -1317,9 +1321,11 @@ case $basic_os in
 		;;
 	*-*)
 		# shellcheck disable=SC2162
+		saved_IFS=$IFS
 		IFS="-" read kernel os <<EOF
 $basic_os
 EOF
+		IFS=$saved_IFS
 		;;
 	# Default OS when just kernel was specified
 	nto*)
