@@ -1,0 +1,14 @@
+dnl CF_APPEND_CFLAGS version: 1 updated: 2021/08/28 15:20:37
+dnl ----------------
+dnl Use CF_ADD_CFLAGS after first checking for potential redefinitions.
+dnl $1 = flags to add
+dnl $2 = if given makes this macro verbose.
+define([CF_APPEND_CFLAGS],
+[
+for cf_add_cflags in $1
+do
+	CF_REMOVE_CFLAGS($cf_add_cflags,CFLAGS,[$2])
+	CF_REMOVE_CFLAGS($cf_add_cflags,CPPFLAGS,[$2])
+done
+CF_ADD_CFLAGS([$1],[$2])
+])dnl

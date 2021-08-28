@@ -1,4 +1,4 @@
-dnl CF_XOPEN_SOURCE version: 58 updated: 2021/05/01 17:49:36
+dnl CF_XOPEN_SOURCE version: 59 updated: 2021/08/28 15:20:37
 dnl ---------------
 dnl Try to get _XOPEN_SOURCE defined properly that we can use POSIX functions,
 dnl or adapt to the vendor's definitions to get equivalent functionality,
@@ -103,7 +103,7 @@ case "$host_os" in
 esac
 
 if test -n "$cf_xopen_source" ; then
-	CF_ADD_CFLAGS($cf_xopen_source,true)
+	CF_APPEND_CFLAGS($cf_xopen_source,true)
 fi
 
 dnl In anything but the default case, we may have system-specific setting

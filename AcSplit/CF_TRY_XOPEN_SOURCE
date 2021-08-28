@@ -1,4 +1,4 @@
-dnl CF_TRY_XOPEN_SOURCE version: 2 updated: 2018/06/20 20:23:13
+dnl CF_TRY_XOPEN_SOURCE version: 3 updated: 2021/08/28 15:20:37
 dnl -------------------
 dnl If _XOPEN_SOURCE is not defined in the compile environment, check if we
 dnl can define it successfully.
@@ -33,6 +33,6 @@ if test "$cf_cv_xopen_source" != no ; then
 	CF_REMOVE_DEFINE(CFLAGS,$CFLAGS,_XOPEN_SOURCE)
 	CF_REMOVE_DEFINE(CPPFLAGS,$CPPFLAGS,_XOPEN_SOURCE)
 	cf_temp_xopen_source="-D_XOPEN_SOURCE=$cf_cv_xopen_source"
-	CF_ADD_CFLAGS($cf_temp_xopen_source)
+	CF_APPEND_CFLAGS($cf_temp_xopen_source)
 fi
 ])
