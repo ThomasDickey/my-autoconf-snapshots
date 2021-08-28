@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20210814
+MANIFEST for my-autoconf, version t20210828
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -43,6 +43,7 @@ AcSplit/CF_ANSI_CC_CHECK        check if we have an ANSI compiler (no preprocess
 AcSplit/CF_ANSI_CC_REQD         verify that we've got an ANSI compiler
 AcSplit/CF_ANSI_CPP             check for ANSI C-preprocessor (td_lib)
 AcSplit/CF_ANSI_QSORT           test for ANSI-style qsort parameters
+AcSplit/CF_APPEND_CFLAGS        wrapper for CF_ADD_CFLAGS which filters out duplicate/redefined options
 AcSplit/CF_APPEND_TEXT          utility macro for appending text
 AcSplit/CF_ARG_DISABLE          utility for command-option disable
 AcSplit/CF_ARG_ENABLE           utility for command-option enable
@@ -387,6 +388,7 @@ AcSplit/CF_REGEX                simple check for regular expressions
 AcSplit/CF_REGEXPR_H_FUNCS      checks for <regexpr.h> and related functions (td_lib)
 AcSplit/CF_REGEX_H_FUNCS        checks for <regex.h> and related functions (td_lib)
 AcSplit/CF_REMOVE_BROKEN        check if the 'remove()' function is broken (a SCO bug)
+AcSplit/CF_REMOVE_CFLAGS        utility for CF_APPEND_CFLAGS
 AcSplit/CF_REMOVE_DEFINE        macro to remove -U/-D options for a given symbol from C compiler options
 AcSplit/CF_REMOVE_LIB           remove a library from the given symbol
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads

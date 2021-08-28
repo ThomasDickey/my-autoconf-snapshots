@@ -1,3 +1,11 @@
+2021-08-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_APPEND_CFLAGS, AcSplit/CF_REMOVE_CFLAGS:
+	ci-aclocal generated header
+
+	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_TRY_XOPEN_SOURCE, AcSplit/CF_XOPEN_SOURCE:
+	filter out redefinition, e.g., changing _XOPEN_SOURCE from 500 to 600
+
 2021-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-08-14
