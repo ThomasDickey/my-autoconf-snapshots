@@ -1,6 +1,6 @@
-dnl CF_ADD_INCDIR version: 16 updated: 2020/12/31 20:19:42
+dnl CF_ADD_INCDIR version: 17 updated: 2021/09/04 06:35:04
 dnl -------------
-dnl Add an include-directory to $CPPFLAGS.  Don't add /usr/include, since it's
+dnl Add an include-directory to $CPPFLAGS.  Don't add /usr/include, since it is
 dnl redundant.  We don't normally need to add -I/usr/local/include for gcc,
 dnl but old versions (and some misinstalled ones) need that.  To make things
 dnl worse, gcc 3.x may give error messages if -I/usr/local/include is added to

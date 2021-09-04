@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 106 updated: 2021/08/07 16:59:57
+dnl CF_SHARED_OPTS version: 107 updated: 2021/09/04 06:47:34
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -22,7 +22,7 @@ dnl The variable 'cf_cv_shlib_version_infix' controls whether shared library
 dnl version numbers are infix (ex: libncurses.<ver>.dylib) or postfix
 dnl (ex: libncurses.so.<ver>).
 dnl
-dnl Some loaders leave 'so_locations' lying around.  It's nice to clean up.
+dnl Some loaders leave 'so_locations' lying around.  It is nice to clean up.
 AC_DEFUN([CF_SHARED_OPTS],
 [
 	AC_REQUIRE([CF_LD_RPATH_OPT])

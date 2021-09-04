@@ -1,3 +1,8 @@
+2021-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_ADD_INCDIR, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_SIZECHANGE, AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PATHLIST:
+	s/it's/it is/g
+
 2021-08-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_APPEND_CFLAGS, AcSplit/CF_REMOVE_CFLAGS:
