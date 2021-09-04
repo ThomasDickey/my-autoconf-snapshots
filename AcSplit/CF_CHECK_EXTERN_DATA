@@ -1,7 +1,7 @@
-dnl CF_CHECK_EXTERN_DATA version: 4 updated: 2015/04/18 08:56:57
+dnl CF_CHECK_EXTERN_DATA version: 5 updated: 2021/09/04 06:35:04
 dnl --------------------
 dnl Check for existence of external data in the current set of libraries.  If
-dnl we can modify it, it's real enough.
+dnl we can modify it, it is real enough.
 dnl $1 = the name to check
 dnl $2 = its type
 AC_DEFUN([CF_CHECK_EXTERN_DATA],

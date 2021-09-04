@@ -1,6 +1,6 @@
-dnl CF_DISABLE_ECHO version: 13 updated: 2015/04/18 08:56:57
+dnl CF_DISABLE_ECHO version: 14 updated: 2021/09/04 06:35:04
 dnl ---------------
-dnl You can always use "make -n" to see the actual options, but it's hard to
+dnl You can always use "make -n" to see the actual options, but it is hard to
 dnl pick out/analyze warning messages when the compile-line is long.
 dnl
 dnl Sets:
