@@ -1,4 +1,4 @@
-dnl CF_CHECK_CURSES_LIB version: 3 updated: 2021/01/04 19:45:09
+dnl CF_CHECK_CURSES_LIB version: 4 updated: 2021/09/05 17:25:40
 dnl -------------------
 dnl $1 = nominal library name, used also for header lookup
 dnl $2 = suffix to append to library name
@@ -20,10 +20,11 @@ elif test "x${PKG_CONFIG:=none}" != xnone; then
 
 		AC_MSG_CHECKING(if the $1$2 package files work)
 
+		cf_save_CFLAGS="$CFLAGS"
 		cf_save_CPPFLAGS="$CPPFLAGS"
 		cf_save_LIBS="$LIBS"
 
-		CF_ADD_CFLAGS(`$PKG_CONFIG --cflags "$1$2"`)
+		CF_APPEND_CFLAGS(`$PKG_CONFIG --cflags "$1$2"`)
 		CF_ADD_LIBS(`$PKG_CONFIG --libs "$1$2"`)
 
 		AC_TRY_LINK([#include <$1.h>],
@@ -37,13 +38,14 @@ elif test "x${PKG_CONFIG:=none}" != xnone; then
 			[cf_have_curses_lib=no])
 		AC_MSG_RESULT($cf_have_curses_lib)
 		test "$cf_have_curses_lib" = maybe && cf_have_curses_lib=yes
-		if test "$cf_have_curses_lib" != "yes"
+		if test "$cf_have_curses_lib" = "yes"
 		then
-			CPPFLAGS="$cf_save_CPPFLAGS"
-			LIBS="$cf_save_LIBS"
-		else
 			CF_UPPER(cf_upper,have_lib$1)
 			AC_DEFINE_UNQUOTED($cf_upper,1)
+		else
+			CFLAGS="$cf_save_CFLAGS"
+			CPPFLAGS="$cf_save_CPPFLAGS"
+			LIBS="$cf_save_LIBS"
 		fi
 	fi
 fi
