@@ -1,3 +1,22 @@
+2021-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REMOVE_CFLAGS:
+	handle multiple existing duplicates using a loop, and improve whitespace-trimming
+
+	* AcSplit/CF_APPEND_CFLAGS:
+	move the CF_ADD_CFLAGS inside the loop so that the purging of duplicates works
+
+	* AcSplit/CF_CHECK_CURSES_LIB:
+	save/restore $CFLAGS (like the existing $CPPFLAGS)
+	use CF_APPEND_CFLAGS for purging duplicate -D/-U options
+
+	* AcSplit/CF_REMOVE_CFLAGS:
+	corrected/simplified: the first version used an unset variable for the
+	actual update, and the case statement was not needed because BREs can handle
+	\(foo\)? expression
+
+	* AcSplit/CF_APPEND_CFLAGS: only -D and -U options should be removed
+
 2021-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_ADD_INCDIR, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_SIZECHANGE, AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PATHLIST:
