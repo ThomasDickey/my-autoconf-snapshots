@@ -1,3 +1,13 @@
+2021-10-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PKG_CONFIG: add comment
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	use the --debug output from pkg-config and pkgconf to determine the actual
+	search path, using that in preference to the ~2014 list derived from Debian.
+	also improved the check to ensure that PKG_CONFIG_LIBDIR is set to a single
+	directory rather than a list.
+
 2021-09-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_REMOVE_CFLAGS:
