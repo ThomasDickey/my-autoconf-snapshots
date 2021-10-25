@@ -1,3 +1,12 @@
+2021-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	allow for an empty string in $PKG_CONFIG_LIBDIR
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	if there are no existing pkgconfig directories, choose one from the list
+	we were given ($libdir/pkgconfig if possible, otherwise the first in list)
+
 2021-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES, AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
