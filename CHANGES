@@ -1,3 +1,11 @@
+2021-10-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR: remove obsolete checks
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	redirect stderr, to handle older programs, and amend a regex to work with
+	Solaris 10.
+
 2021-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ENABLE_PC_FILES:
