@@ -1,0 +1,30 @@
+dnl CF_CHECK_LIBSSP version: 1 updated: 2021/10/30 10:40:19
+dnl ---------------
+dnl Check if libssp is needed, e.g., to work around misconfigured libraries
+dnl used in cross-compiling to MinGW.
+AC_DEFUN([CF_CHECK_LIBSSP],[
+AC_CACHE_CHECK(if ssp library is needed,cf_cv_need_libssp,[
+AC_TRY_LINK([
+#include <sys/types.h>
+#include <dirent.h>
+],[
+       DIR *dp = opendir(".");
+],cf_cv_need_libssp=no,[
+	cf_save_LIBS="$LIBS"
+	LIBS="$LIBS -lssp"
+	AC_TRY_LINK([
+#include <sys/types.h>
+#include <dirent.h>
+	],[
+		   DIR *dp = opendir(".");
+	],cf_cv_need_libssp=yes,
+	  cf_cv_need_libssp=maybe)
+	LIBS="$cf_save_LIBS"
+])dnl
+])
+
+if test "x$cf_cv_need_libssp" = xyes
+then
+	CF_ADD_LIB(ssp)
+fi
+])dnl
