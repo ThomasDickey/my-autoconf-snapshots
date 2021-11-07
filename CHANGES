@@ -1,3 +1,8 @@
+2021-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	add an explict "pkg-config" to package names, e.g., to handle Debian/testing
+
 2021-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_LIBSSP: ci-aclocal generated header
