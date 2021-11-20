@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2021-06-03'
+timestamp='2021-10-27'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1521,6 +1521,9 @@ EOF
 	;;
     i*86:rdos:*:*)
 	GUESS=$UNAME_MACHINE-pc-rdos
+	;;
+    i*86:Fiwix:*:*)
+	GUESS=$UNAME_MACHINE-pc-fiwix
 	;;
     *:AROS:*:*)
 	GUESS=$UNAME_MACHINE-unknown-aros

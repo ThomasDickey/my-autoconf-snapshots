@@ -1,3 +1,15 @@
+2021-11-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	handle case for "--without-pkg-config"
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	if no --with-pkg-config-libdir option is given, default to ${libdir}/pkgconfig
+
+	* AcSplit/CF_ENABLE_PC_FILES:
+	when validating $PKG_CONFIG_LIBDIR, do that on a copy, leaving the original
+	untouched to simplify manipulating ${prefix} in the makefile.
+
 2021-11-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
@@ -6,6 +18,50 @@
 2021-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_LIBSSP: ci-aclocal generated header
+
+2021-10-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-10-27
+	    From: Jordi Sanfeliu <jordi@fibranet.cat>
+	    Recognize Fiwix
+
+	    $ make check
+	    cd testsuite && bash config-guess.sh && rm uname
+	    PASS: config.guess checks (137 tests)
+	    cd testsuite && bash config-sub.sh
+	    PASS: config.sub checks (882 tests)
+	    PASS: config.sub idempotency checks (819 tests)
+	    PASS: config.sub canonicalise each config.guess testcase (137 tests)
+
+	    * config.guess (i*86:Fiwix:*:*): Recognize.
+	    * config.sub (fiwix*): Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data: Add a test case for Fiwix.
+	    * testsuite/config-sub.data (i386-fiwix): New test.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2021-20-27
+	    From: Jordi Sanfeliu <jordi@fibranet.cat>
+	    Recognize Fiwix
+
+	    $ make check
+	    cd testsuite && bash config-guess.sh && rm uname
+	    PASS: config.guess checks (137 tests)
+	    cd testsuite && bash config-sub.sh
+	    PASS: config.sub checks (882 tests)
+	    PASS: config.sub idempotency checks (819 tests)
+	    PASS: config.sub canonicalise each config.guess testcase (137 tests)
+
+	    * config.guess (i*86:Fiwix:*:*): Recognize.
+	    * config.sub (fiwix*): Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data: Add a test case for Fiwix.
+	    * testsuite/config-sub.data (i386-fiwix): New test.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2021-10-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
@@ -23,6 +79,15 @@
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
 	if there are no existing pkgconfig directories, choose one from the list
 	we were given ($libdir/pkgconfig if possible, otherwise the first in list)
+
+2021-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-08-14
+	    From: Kinshuk Dua <kinshukdua@gmail.com>
+	    config.sub: Fix typo in comment
+
+	    Fixes: 5e531d391852a54e7fab2d8ff55625fca514b305
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2021-10-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
@@ -60,7 +125,11 @@
 
 2021-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_ADD_INCDIR, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_SIZECHANGE, AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PATHLIST:
+	* AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_NCURSES_LIBS,
+	  AcSplit/CF_ADD_INCDIR, AcSplit/CF_BOOL_SIZE,
+	  AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_DISABLE_ECHO,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PATHLIST:
 	s/it's/it is/g
 
 2021-08-28  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -68,7 +137,8 @@
 	* AcSplit/CF_APPEND_CFLAGS, AcSplit/CF_REMOVE_CFLAGS:
 	ci-aclocal generated header
 
-	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_TRY_XOPEN_SOURCE, AcSplit/CF_XOPEN_SOURCE:
+	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_TRY_XOPEN_SOURCE,
+	  AcSplit/CF_XOPEN_SOURCE:
 	filter out redefinition, e.g., changing _XOPEN_SOURCE from 500 to 600
 
 2021-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -250,12 +320,14 @@
 
 2021-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_SRAND, AcSplit/CF_TM_GMTOFF, AcSplit/CF_UNION_WAIT:
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_LSTAT,
+	  AcSplit/CF_UNION_WAIT:
 	quiet a configure-time warning
 
 2021-06-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_INPUT_METHOD, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF__GRANTPT_BODY:
+	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_INPUT_METHOD,
+	  AcSplit/CF__GRANTPT_BODY:
 	scan-build warnings
 
 2021-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -643,7 +715,17 @@
 
 2021-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ALL_MAKEFILES, AcSplit/CF_FIND_TDLIB, AcSplit/CF_ANSI_CPP, AcSplit/CF_CHECK_REGEX, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_SRC_MAKEFILE, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MODULES, AcSplit/CF_TOP_SRCDIR, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	* AcSplit/CF_ALL_MAKEFILES, AcSplit/CF_FIND_TDLIB, AcSplit/CF_ANSI_CPP,
+	  AcSplit/CF_CHECK_REGEX, AcSplit/CF_CURSES_CCHAR_T,
+	  AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF, AcSplit/CF_MAKE_AR_RULES,
+	  AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_PROGRAM_FULLPATH,
+	  AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_REGCMP_FUNCS,
+	  AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS,
+	  AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_SRC_MAKEFILE,
+	  AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN,
+	  AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS,
+	  AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MODULES,
+	  AcSplit/CF_WAIT:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF_MAKE_DOCS:
@@ -706,7 +788,8 @@
 	* AcSplit/CF_DISABLE_RPATH_HACK:
 	prefer enable_rpath_hack to cf_disable_rpath_hack, for consistency
 
-	* AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF_WITH_NC_ALLOC_H, AcSplit/CF_DISABLE_LEAKS, AcSplit/CF_NO_LEAKS_OPTION:
+	* AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF_WITH_NC_ALLOC_H,
+	  AcSplit/CF_NO_LEAKS_OPTION:
 	prefer $enable_leaks to $with_no_leaks, for consistency
 
 	* AcSplit/CF_ENABLE_WARNINGS:
@@ -724,7 +807,12 @@
 
 2021-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CHECK_CURSES_LIB, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_TPUTS_PROTO, AcSplit/CF__CURSES_DATA, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_NCURSES_ADDON, AcSplit/CF_PROG_INSTALL:
+	* AcSplit/CF_CHECK_CURSES_LIB, AcSplit/CF_CURSES_ACS_MAP,
+	  AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE,
+	  AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS,
+	  AcSplit/CF_TPUTS_PROTO, AcSplit/CF__CURSES_DATA,
+	  AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_NCURSES_ADDON,
+	  AcSplit/CF_PROG_INSTALL:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF_NCURSES_HEADER: use $ECHO_N and $ECHO_C from autoconf-252
@@ -741,7 +829,8 @@
 	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SONAME:
 	use AC_PROG_FGREP
 
-	* AcSplit/AM_WITH_NLS, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_TYPE_LONG_LONG:
+	* AcSplit/AM_WITH_NLS, AcSplit/CF_SLANG_CPPFLAGS,
+	  AcSplit/CF_TYPE_LONG_LONG:
 	quoting fixes for shellcheck
 
 2021-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -752,7 +841,8 @@
 	* AcSplit/CF_TTY_GROUP, AcSplit/CF_WITH_DESKTOP_CATEGORY:
 	use AC_PROG_EGREP, per shellcheck warning
 
-	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_RPATH_HACK, AcSplit/CF_WITH_MAN2HTML:
+	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_RPATH_HACK,
+	  AcSplit/CF_WITH_MAN2HTML:
 	use AC_PROG_FGREP, per shellcheck warning
 
 	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_LIBS:
@@ -771,12 +861,45 @@
 	* AcSplit/CF_CHECK_CFLAGS:
 	actually undo the change to $CFLAGS on error, rather than clearing it.
 
-	* AcSplit/CF_WITH_CURSES_DIR, AcSplit/CF_CHECK_GETENV, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_CHECK_WCWIDTH_GRAPHICS, AcSplit/CF_ENABLE_BROKEN_LINKER, AcSplit/CF_ETIP_DEFINES, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_SONAME, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MAN_PAGES, AcSplit/CF_MAP_LIB_BASENAME, AcSplit/CF_PROG_GNAT, AcSplit/CF_PROG_INSTALL, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_VERSIONED_SYMS:
+	* AcSplit/CF_WITH_CURSES_DIR, AcSplit/CF_CHECK_GETENV,
+	  AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_CHECK_WCWIDTH_GRAPHICS,
+	  AcSplit/CF_ENABLE_BROKEN_LINKER, AcSplit/CF_ETIP_DEFINES,
+	  AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_HASHED_DB_LIBS,
+	  AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_SONAME,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MAN_PAGES,
+	  AcSplit/CF_MAP_LIB_BASENAME, AcSplit/CF_PROG_GNAT,
+	  AcSplit/CF_PROG_INSTALL, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_WITH_VERSIONED_SYMS:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF__SED_TRIMBLANKS: ci-aclocal generated header
 
-	* AcSplit/AM_GNU_GETTEXT, AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/AM_WITH_NLS, AcSplit/CF_BUILD_CC, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CHECK_SIZEOF, AcSplit/CF_CHECK_TYPE, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_FUNC_WAIT, AcSplit/CF_GNUTLS, AcSplit/CF_LASTLOG, AcSplit/CF_LOCALE, AcSplit/CF_MERGE_EXTRA_CFLAGS, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_OUR_MESSAGES, AcSplit/CF_PATH_PROG, AcSplit/CF_PDCURSES_X11, AcSplit/CF_PROG_EXT, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_LIBS, AcSplit/CF_SLANG_UNIX_DEFS, AcSplit/CF_SRAND, AcSplit/CF_SSL, AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_SYSV_UTMP, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERMIO_AND_TERMIOS, AcSplit/CF_TERM_HEADER, AcSplit/CF_TM_GMTOFF, AcSplit/CF_TRY_RPATH, AcSplit/CF_TTYTYPE, AcSplit/CF_TYPE_LONG_LONG, AcSplit/CF_UNION_WAIT, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_WAIT_HEADERS, AcSplit/CF_XOPEN_CURSES, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/AM_GNU_GETTEXT, AcSplit/AM_LC_MESSAGES,
+	  AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/AM_WITH_NLS,
+	  AcSplit/CF_BUILD_CC, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CHECK_SIZEOF,
+	  AcSplit/CF_CHECK_TYPE, AcSplit/CF_COLOR_CURSES,
+	  AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_CPPFLAGS,
+	  AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_TERM_H,
+	  AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURS_PERFORMANCE,
+	  AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES,
+	  AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE,
+	  AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FUNC_CURSES_VERSION,
+	  AcSplit/CF_FUNC_LSTAT, AcSplit/CF_FUNC_WAIT, AcSplit/CF_GNUTLS,
+	  AcSplit/CF_LASTLOG, AcSplit/CF_LOCALE, AcSplit/CF_MERGE_EXTRA_CFLAGS,
+	  AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_HEADER,
+	  AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT,
+	  AcSplit/CF_OUR_MESSAGES, AcSplit/CF_PATH_PROG,
+	  AcSplit/CF_PDCURSES_X11, AcSplit/CF_PROG_EXT,
+	  AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_LIBS,
+	  AcSplit/CF_SLANG_UNIX_DEFS, AcSplit/CF_SRAND, AcSplit/CF_SSL,
+	  AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_SYSV_UTMP,
+	  AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERMIO_AND_TERMIOS,
+	  AcSplit/CF_TERM_HEADER, AcSplit/CF_TM_GMTOFF, AcSplit/CF_TRY_RPATH,
+	  AcSplit/CF_TTYTYPE, AcSplit/CF_TYPE_LONG_LONG, AcSplit/CF_UNION_WAIT,
+	  AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME,
+	  AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN,
+	  AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME,
+	  AcSplit/CF_X_TOOLKIT:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF_STRIP_G_OPT, AcSplit/CF_STRIP_O_OPT:
@@ -792,12 +915,44 @@
 
 	* AcSplit/CF_NCURSES_CONFIG: trim blanks
 
-	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_INTEL_COMPILER, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_REGEX, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIB_PREFIX, AcSplit/CF_WITH_PCRE2, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_CFG_DEFAULTS,
+	  AcSplit/CF_GCC_WARNINGS, AcSplit/CF_INTEL_COMPILER,
+	  AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES,
+	  AcSplit/CF_MAN_PAGES, AcSplit/CF_MIXEDCASE_FILENAMES,
+	  AcSplit/CF_REGEX, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIB_PREFIX,
+	  AcSplit/CF_WITH_PCRE2, AcSplit/CF_XOPEN_SOURCE,
+	  AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF_GCC_ATTRIBUTES: *** empty log message ***
 
-	* AcSplit/CF_AR_FLAGS, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_CHECK_GNAT_VERSION, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CLANG_COMPILER, AcSplit/CF_CONST_X_STRING, AcSplit/CF_CXX_AR_FLAGS, AcSplit/CF_DIRS_TO_MAKE, AcSplit/CF_FIND_SUB_INCDIR, AcSplit/CF_FIND_SUB_LIBDIR, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GETOPT_HEADER, AcSplit/CF_GNAT_GENERICS, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_GNAT_SIGINT, AcSplit/CF_GNAT_TRY_LINK, AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_GXX_WARNINGS, AcSplit/CF_HEADER_PATH, AcSplit/CF_INSTALL_OPT_P, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_LIB_PREFIX, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SONAME, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES, AcSplit/CF_MKSTEMP, AcSplit/CF_NCURSES_ABI_6, AcSplit/CF_NCURSES_WITH_ABI_VERSION, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_PATHSEP, AcSplit/CF_PKG_CONFIG, AcSplit/CF_PRG_RULES, AcSplit/CF_PROG_CC_C_O, AcSplit/CF_PROG_GNAT, AcSplit/CF_PROG_INSTALL, AcSplit/CF_REGEX, AcSplit/CF_RPATH_HACK_2, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SIGWINCH, AcSplit/CF_SIZECHANGE, AcSplit/CF_SRC_MODULES, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_SUBST_NCURSES_VERSION, AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_ABI_VERSION, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_WITH_PATHLIST, AcSplit/CF_XOPEN_SOURCE:
+	* AcSplit/CF_AR_FLAGS, AcSplit/CF_CFG_DEFAULTS,
+	  AcSplit/CF_CHECK_GNAT_VERSION, AcSplit/CF_CHECK_GPM_WGETCH,
+	  AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CLANG_COMPILER,
+	  AcSplit/CF_CONST_X_STRING, AcSplit/CF_CXX_AR_FLAGS,
+	  AcSplit/CF_DIRS_TO_MAKE, AcSplit/CF_FIND_SUB_INCDIR,
+	  AcSplit/CF_FIND_SUB_LIBDIR, AcSplit/CF_FUNC_OPENPTY,
+	  AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_GETOPT_HEADER, AcSplit/CF_GNAT_GENERICS,
+	  AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_GNAT_SIGINT,
+	  AcSplit/CF_GNAT_TRY_LINK, AcSplit/CF_GNAT_TRY_RUN,
+	  AcSplit/CF_GPP_LIBRARY, AcSplit/CF_GXX_WARNINGS,
+	  AcSplit/CF_HEADER_PATH, AcSplit/CF_INSTALL_OPT_P,
+	  AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LD_RPATH_OPT,
+	  AcSplit/CF_LIBRARY_PATH, AcSplit/CF_LIB_PREFIX, AcSplit/CF_LIB_RULES,
+	  AcSplit/CF_LIB_SONAME, AcSplit/CF_LIB_SUFFIX,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES,
+	  AcSplit/CF_MAN_PAGES, AcSplit/CF_MKSTEMP, AcSplit/CF_NCURSES_ABI_6,
+	  AcSplit/CF_NCURSES_WITH_ABI_VERSION, AcSplit/CF_OBJ_SUBDIR,
+	  AcSplit/CF_PATHSEP, AcSplit/CF_PKG_CONFIG, AcSplit/CF_PRG_RULES,
+	  AcSplit/CF_PROG_CC_C_O, AcSplit/CF_PROG_GNAT, AcSplit/CF_PROG_INSTALL,
+	  AcSplit/CF_REGEX, AcSplit/CF_RPATH_HACK_2, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_SIGWINCH, AcSplit/CF_SIZECHANGE, AcSplit/CF_SRC_MODULES,
+	  AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_SUBST_NCURSES_VERSION,
+	  AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_ABI_VERSION,
+	  AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_WITH_PATHLIST,
+	  AcSplit/CF_XOPEN_SOURCE:
 	quoting fixes for shellcheck
 
 	* config.guess, config.sub: 2021-01-01 (repaired)
@@ -811,7 +966,34 @@
 
 2020-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_ADD_SUBDIR_PATH, AcSplit/CF_AR_FLAGS, AcSplit/CF_AUTO_SYMLINK, AcSplit/CF_CHAR_DEVICE, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_DIRNAME, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FP_ISREADY, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_OPT_RDYNAMIC, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_HEADER_PATH, AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_INSTALL_OPT_P, AcSplit/CF_LEX_STATES, AcSplit/CF_LEX_VERSION, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MAKE_PHONY, AcSplit/CF_MISSING_CHECK, AcSplit/CF_NCURSES_CC_CHECK, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PROG_PERL, AcSplit/CF_SIGWINCH, AcSplit/CF_STDIO_UNLOCKED, AcSplit/CF_TRANSFORM_PROGRAM, AcSplit/CF_WITH_PATHLIST, AcSplit/CF_WITH_PERL, AcSplit/CF_WITH_SYMLINK, AcSplit/CF_CC_ENV_FLAGS, AcSplit/CF_CLANG_COMPILER, AcSplit/CF_CONST_X_STRING, AcSplit/CF_ENABLE_NARROWPROTO, AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_FIX_WARNINGS, AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_MATH_LIB, AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PROCFS_CWD, AcSplit/CF_TTY_GROUP, AcSplit/CF_WITH_DESKTOP_CATEGORY, AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CHECK_CACHE, AcSplit/CF_PATH_PROG, AcSplit/CF_RPATH_HACK, AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_UTMP_GROUP, AcSplit/CF_WITH_ICON_THEME, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR,
+	  AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_ADD_SUBDIR_PATH,
+	  AcSplit/CF_AR_FLAGS, AcSplit/CF_AUTO_SYMLINK, AcSplit/CF_CHAR_DEVICE,
+	  AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H,
+	  AcSplit/CF_DIRNAME, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FIND_LINKAGE,
+	  AcSplit/CF_FP_ISREADY, AcSplit/CF_GCC_ATTRIBUTES,
+	  AcSplit/CF_GCC_OPT_RDYNAMIC, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_HEADER_PATH, AcSplit/CF_INSTALL_OPT_O,
+	  AcSplit/CF_INSTALL_OPT_P, AcSplit/CF_LEX_STATES,
+	  AcSplit/CF_LEX_VERSION, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MAKE_PHONY,
+	  AcSplit/CF_MISSING_CHECK, AcSplit/CF_NCURSES_CC_CHECK,
+	  AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_HEADER,
+	  AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION,
+	  AcSplit/CF_PROG_PERL, AcSplit/CF_SIGWINCH, AcSplit/CF_STDIO_UNLOCKED,
+	  AcSplit/CF_TRANSFORM_PROGRAM, AcSplit/CF_WITH_PATHLIST,
+	  AcSplit/CF_WITH_PERL, AcSplit/CF_WITH_SYMLINK,
+	  AcSplit/CF_CC_ENV_FLAGS, AcSplit/CF_CLANG_COMPILER,
+	  AcSplit/CF_CONST_X_STRING, AcSplit/CF_ENABLE_NARROWPROTO,
+	  AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_FIX_WARNINGS,
+	  AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_MATH_LIB,
+	  AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_PATH_SYNTAX,
+	  AcSplit/CF_PROCFS_CWD, AcSplit/CF_TTY_GROUP,
+	  AcSplit/CF_WITH_DESKTOP_CATEGORY, AcSplit/CF_WITH_MAN2HTML,
+	  AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CHECK_CACHE, AcSplit/CF_PATH_PROG,
+	  AcSplit/CF_RPATH_HACK, AcSplit/CF_TRY_PKG_CONFIG,
+	  AcSplit/CF_UTMP_GROUP, AcSplit/CF_WITH_ICON_THEME,
+	  AcSplit/CF_X_ATHENA_CPPFLAGS:
 	quoting fixes for shellcheck
 
 	* AcSplit/CF_TTY_GROUP:
@@ -1050,7 +1232,8 @@
 
 	* AcSplit/CF_MAKE_PHONY: ci-aclocal generated header
 
-	* AcSplit/CF_CRYPT_FUNC, AcSplit/CF_KILLPG, AcSplit/CF_RESTARTABLE_PIPEREAD:
+	* AcSplit/CF_CRYPT_FUNC, AcSplit/CF_KILLPG,
+	  AcSplit/CF_RESTARTABLE_PIPEREAD:
 	assume standard C
 
 2020-09-07  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -1205,15 +1388,35 @@
 
 2020-03-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_SIZECHANGE, AcSplit/CF_STRUCT_TERMIOS:
+	* AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_STRUCT_TERMIOS:
 	fix an uninitialized-variable warning
 
-	* AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_CURSES_WGETPARENT, AcSplit/CF_LARGEFILE, AcSplit/CF_MBSTATE_T, AcSplit/CF_NL_LANGINFO_1STDAY, AcSplit/CF_SIZECHANGE, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_TERM_HEADER, AcSplit/CF_UNION_WAIT, AcSplit/CF_WIDEC_CURSES, AcSplit/CF_XOPEN_CURSES:
+	* AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_TERM_H,
+	  AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURSES_WACS_MAP,
+	  AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_CURSES_WGETPARENT,
+	  AcSplit/CF_LARGEFILE, AcSplit/CF_MBSTATE_T,
+	  AcSplit/CF_NL_LANGINFO_1STDAY, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_TERM_HEADER,
+	  AcSplit/CF_XOPEN_CURSES:
 	cleanup unnecessary unused-variable warnings
 
 2020-03-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CONST_X_STRING, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_INPUT_METHOD, AcSplit/CF_LASTLOG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIGWINCH, AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_TERMIOS_TYPES, AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP, AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_XKB_KEYCODE_TO_KEYSYM, AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_FREETYPE, AcSplit/CF__GRANTPT_BODY, AcSplit/CF__GRANTPT_HEAD:
+	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_CHECK_ERRNO,
+	  AcSplit/CF_CONST_X_STRING, AcSplit/CF_FUNC_TGETENT,
+	  AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_INPUT_METHOD,
+	  AcSplit/CF_LASTLOG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT,
+	  AcSplit/CF_REGEX, AcSplit/CF_SIGWINCH, AcSplit/CF_SIG_ATOMIC_T,
+	  AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_TERMIOS_TYPES,
+	  AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP,
+	  AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTMP,
+	  AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME,
+	  AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN,
+	  AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME,
+	  AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_XKB_KEYCODE_TO_KEYSYM,
+	  AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_FREETYPE,
+	  AcSplit/CF__GRANTPT_HEAD:
 	cleanup unnecessary unused-variable warnings
 
 	* AcSplit/CF_X_TOOLKIT:
@@ -1275,7 +1478,8 @@
 
 2020-01-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_RESTARTABLE_PIPEREAD:
+	* AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_MAWK_RUN_FPE_TESTS,
+	  AcSplit/CF_RESTARTABLE_PIPEREAD:
 	spelling-fixes
 
 2020-01-17  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -1314,7 +1518,8 @@
 	* AcSplit/CF_GCC_WARNINGS: suppress -Winline (too noisy in gcc9)
 	ignore clang-specific options when c89/c99 wrappers would treat as error
 
-	* AcSplit/CF_LEX_CHAR_CLASSES, AcSplit/CF_LEX_OPTIONS, AcSplit/CF_LEX_POINTER, AcSplit/CF_LEX_STATES:
+	* AcSplit/CF_LEX_CHAR_CLASSES, AcSplit/CF_LEX_OPTIONS,
+	  AcSplit/CF_LEX_STATES:
 	cleanup MacOS conftest.dSYM
 
 2020-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -1327,10 +1532,24 @@
 
 2019-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/AM_MULTIBYTE_ABLE, AcSplit/CF_CHECK_NESTED_PARAMS, AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS, AcSplit/CF_DEFAULT_SHELL, AcSplit/CF_DEFINE_STRING, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER, AcSplit/CF_POSIX_JC, AcSplit/CF_PROG_SUM_R, AcSplit/CF_PW_GECOS, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST, AcSplit/CF_SYS_SELECT_TIMEVAL, AcSplit/CF_TERMIOS, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PROGRAM, AcSplit/CF_WITH_VALUE, AcSplit/CF_FCNTL_VS_IOCTL, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_WITH_ENCODINGS_DIR, AcSplit/CF_NL_LANGINFO_1STDAY, AcSplit/CF_FUNC_VASPRINTF, AcSplit/CF_GNUTLS, AcSplit/CF_PDCURSES_W32, AcSplit/CF_FOPEN_BIN_R, AcSplit/CF_WITH_X11_RGB:
+	* AcSplit/AM_MULTIBYTE_ABLE, AcSplit/CF_CHECK_NESTED_PARAMS,
+	  AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS,
+	  AcSplit/CF_CPP_EXPANDS, AcSplit/CF_DEFAULT_SHELL,
+	  AcSplit/CF_DEFINE_STRING, AcSplit/CF_FUNC_SYSTEM,
+	  AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX,
+	  AcSplit/CF_PATH_MAILER, AcSplit/CF_POSIX_JC, AcSplit/CF_PROG_SUM_R,
+	  AcSplit/CF_PW_GECOS, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST,
+	  AcSplit/CF_SYS_SELECT_TIMEVAL, AcSplit/CF_TERMIOS,
+	  AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WITH_DFTENV,
+	  AcSplit/CF_WITH_PROGRAM, AcSplit/CF_WITH_VALUE,
+	  AcSplit/CF_FCNTL_VS_IOCTL, AcSplit/CF_POSIX_VDISABLE,
+	  AcSplit/CF_WITH_ENCODINGS_DIR, AcSplit/CF_NL_LANGINFO_1STDAY,
+	  AcSplit/CF_FUNC_VASPRINTF, AcSplit/CF_GNUTLS, AcSplit/CF_PDCURSES_W32,
+	  AcSplit/CF_WITH_X11_RGB:
 	appease autoheader-252
 
-	* AcSplit/CF_CHECK_GNAT_VERSION, AcSplit/CF_GNAT_GENERICS, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_GNAT_VERSION, AcSplit/CF_PROG_GNAT:
+	* AcSplit/CF_CHECK_GNAT_VERSION, AcSplit/CF_GNAT_GENERICS,
+	  AcSplit/CF_PROG_GNAT:
 	correct name, per cache-variable naming convention
 
 	* AcSplit/CF_HELP_MESSAGE:
@@ -1635,7 +1854,14 @@
 	* AcSplit/CF_PDCURSES_X11:
 	use CF_ADD_CFLAGS rather than direct assignment to CPPFLAGS
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNU_SOURCE, AcSplit/CF_LARGEFILE, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_PROG_EXT, AcSplit/CF_SIZECHANGE, AcSplit/CF_TRY_XOPEN_SOURCE, AcSplit/CF_XOPEN_CURSES, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_BUNDLED_INTL,
+	  AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_GNU_SOURCE, AcSplit/CF_LARGEFILE,
+	  AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_POSIX_C_SOURCE,
+	  AcSplit/CF_PROG_EXT, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_TRY_XOPEN_SOURCE, AcSplit/CF_XOPEN_CURSES,
+	  AcSplit/CF_X_ATHENA_CPPFLAGS:
 	use CF_APPEND_TEXT rather than direct assignment to CPPFLAGS
 
 2018-06-16  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -1858,7 +2084,8 @@
 
 2017-05-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_SET_ERRNO:
+	* AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_GETADDRINFO,
+	  AcSplit/CF_SET_ERRNO:
 	main-prototype
 
 2017-05-09  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -1911,7 +2138,11 @@
 	* AcSplit/CF_CHECK_WCHAR_H:
 	FreeBSD wchar.h doesn't include wctype.h; do that to quiet warning in config.log
 
-	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_CPP_PARAM_INIT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_LIB_SONAME, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MATH_LIB, AcSplit/CF_PROG_CC_C_O, AcSplit/CF_TYPEOF_CHTYPE:
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_GPM_WGETCH,
+	  AcSplit/CF_CPP_PARAM_INIT, AcSplit/CF_FUNC_MEMMOVE,
+	  AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_LIB_SONAME,
+	  AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MATH_LIB, AcSplit/CF_PROG_CC_C_O,
+	  AcSplit/CF_TYPEOF_CHTYPE:
 	quiet strict gcc warning
 
 	* AcSplit/CF_CGETENT, AcSplit/CF_LARGEFILE:
@@ -2102,7 +2333,8 @@
 
 2015-10-17  KO.Myung-Hun
 
-	* AcSplit/CF_LIB_PREFIX, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_XOPEN_SOURCE:
+	* AcSplit/CF_LIB_PREFIX, AcSplit/CF_STDCPP_LIBRARY,
+	  AcSplit/CF_XOPEN_SOURCE:
 	build-fixes for OS/2
 
 2015-10-10  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2135,7 +2367,8 @@
 	exists in the compiler's standard configuration.  The $CXXLIBS variable
 	can be preset to take advantage of this additional check.
 
-	* AcSplit/CF_FUNC_TGETENT, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_FUNC_DLSYM:
+	* AcSplit/CF_FUNC_TGETENT, AcSplit/CF_STDCPP_LIBRARY,
+	  AcSplit/CF_FUNC_DLSYM:
 	add braces around calls to CF_ADD_LIB which follow a test "&&" operator since
 	the macro uses multiple statements
 
@@ -2157,7 +2390,9 @@
 
 2015-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES, AcSplit/CF_SHARED_OPTS:
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS,
+	  AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES,
+	  AcSplit/CF_SHARED_OPTS:
 	use $SHELL consistently
 
 2015-07-07  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2218,12 +2453,18 @@
 
 2015-05-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_GCC_OPT_RDYNAMIC, AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_STDIO_UNLOCKED, AcSplit/CF_TYPE_OUTCHAR:
+	* AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_GCC_OPT_RDYNAMIC,
+	  AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_STDIO_UNLOCKED,
+	  AcSplit/CF_TYPE_OUTCHAR:
 	cosmetic-fixes
 
 2015-05-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/AM_LC_MESSAGES, AcSplit/CF_ADD_OPTIONAL_PATH, AcSplit/CF_ARG_OPTION, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_LIBS, AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF__ADD_SHLIB_RULES, AcSplit/CF__DEFINE_LIB_TARGET, AcSplit/CF__INTL_BODY, AcSplit/jm_GLIBC21:
+	* AcSplit/AM_LC_MESSAGES, AcSplit/CF_ADD_OPTIONAL_PATH,
+	  AcSplit/CF_ARG_OPTION, AcSplit/CF_BUNDLED_INTL,
+	  AcSplit/CF_CURSES_LIBS, AcSplit/CF_WITH_NO_LEAKS,
+	  AcSplit/CF__ADD_SHLIB_RULES, AcSplit/CF__DEFINE_LIB_TARGET,
+	  AcSplit/jm_GLIBC21:
 	coding-style
 
 2015-05-09  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2294,7 +2535,17 @@
 
 	* AcSplit/CF_CURSES_HEADER, AcSplit/CF_PROG_EXT: whitespace
 
-	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_ADD_LIBDIR, AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_C_INLINE, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GNAT_VERSION, AcSplit/CF_HASHED_DB, AcSplit/CF_LARGEFILE, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_PREFIX, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MAN_PAGES, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PROG_EGREP, AcSplit/CF_PROG_GNAT, AcSplit/CF_PROG_INSTALL, AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_REGEX, AcSplit/CF_SIZECHANGE, AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_WITH_PTHREAD:
+	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_ADD_LIBDIR,
+	  AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CHECK_EXTERN_DATA,
+	  AcSplit/CF_C_INLINE, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_FIND_LINKAGE,
+	  AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_FUNC_VSSCANF,
+	  AcSplit/CF_GNAT_VERSION, AcSplit/CF_HASHED_DB, AcSplit/CF_LARGEFILE,
+	  AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_PREFIX,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES,
+	  AcSplit/CF_MAN_PAGES, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PROG_EGREP,
+	  AcSplit/CF_PROG_GNAT, AcSplit/CF_PROG_INSTALL,
+	  AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_REGEX, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_WITH_PTHREAD:
 	whitespace/indent
 
 2015-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2303,19 +2554,64 @@
 
 	* AcSplit/CF_TPUTS_PROTO: whitespace
 
-	* AcSplit/CF_AWK_BIG_PRINTF, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_CXX_AR_FLAGS, AcSplit/CF_DISABLE_LIBTOOL_VERSION, AcSplit/CF_ENABLE_PC_FILES, AcSplit/CF_FIND_SUB_INCDIR, AcSplit/CF_FIND_SUB_LIBDIR, AcSplit/CF_FIXUP_ADAFLAGS, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GNAT_GENERICS, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_GNAT_VERSION, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_GXX_WARNINGS, AcSplit/CF_HASHED_DB, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_PREFIX, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_LIB_TYPE, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MANPAGE_SYMLINKS, AcSplit/CF_MAN_PAGES, AcSplit/CF_NCURSES_ABI_6, AcSplit/CF_NUMBER_SYNTAX, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_PROG_INSTALL, AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_SHARED_OPTS, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_WITH_LIBTOOL_OPTS, AcSplit/CF_WITH_PATHLIST, AcSplit/CF_WITH_PKG_CONFIG_LIBDIR, AcSplit/CF_WITH_VERSIONED_SYMS:
+	* AcSplit/CF_AWK_BIG_PRINTF, AcSplit/CF_BOOL_SIZE,
+	  AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_CXX_AR_FLAGS,
+	  AcSplit/CF_DISABLE_LIBTOOL_VERSION, AcSplit/CF_ENABLE_PC_FILES,
+	  AcSplit/CF_FIND_SUB_INCDIR, AcSplit/CF_FIND_SUB_LIBDIR,
+	  AcSplit/CF_FIXUP_ADAFLAGS, AcSplit/CF_FUNC_VSSCANF,
+	  AcSplit/CF_GNAT_GENERICS, AcSplit/CF_GNAT_PROJECTS,
+	  AcSplit/CF_GNAT_VERSION, AcSplit/CF_GPP_LIBRARY,
+	  AcSplit/CF_GXX_WARNINGS, AcSplit/CF_HASHED_DB,
+	  AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_PREFIX,
+	  AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_LIB_TYPE,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES,
+	  AcSplit/CF_MANPAGE_SYMLINKS, AcSplit/CF_MAN_PAGES,
+	  AcSplit/CF_NCURSES_ABI_6, AcSplit/CF_NUMBER_SYNTAX,
+	  AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_PROG_INSTALL,
+	  AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_VERSION_INFO,
+	  AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_WITH_LIBTOOL_OPTS,
+	  AcSplit/CF_WITH_PATHLIST, AcSplit/CF_WITH_PKG_CONFIG_LIBDIR,
+	  AcSplit/CF_WITH_VERSIONED_SYMS:
 	eliminate unnecessary "#(vi" markers in autoconf macros by using "(" to begin
 	case-statement cases (suggested by Jens Schweikhardt)
 
 2015-04-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/AM_GNU_GETTEXT, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/AM_WITH_NLS, AcSplit/CF_ADD_OPTIONAL_PATH, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE, AcSplit/CF_GNUTLS, AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_MAKEFLAGS, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PROG_EXT, AcSplit/CF_SIZECHANGE, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_LIBS, AcSplit/CF_SRAND, AcSplit/CF_SRAND_PARSE, AcSplit/CF_SSL, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TAR_OPTIONS, AcSplit/CF_TERMCAP_LIBS, AcSplit/CF_TERM_HEADER, AcSplit/CF_WITH_IDNA:
+	* AcSplit/AM_GNU_GETTEXT, AcSplit/AM_PATH_PROG_WITH_TEST,
+	  AcSplit/AM_WITH_NLS, AcSplit/CF_ADD_OPTIONAL_PATH,
+	  AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H,
+	  AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_FIND_IPV6_LIBS,
+	  AcSplit/CF_FIND_IPV6_TYPE, AcSplit/CF_GNUTLS, AcSplit/CF_HEADER_PATH,
+	  AcSplit/CF_LIBRARY_PATH, AcSplit/CF_MAKEFLAGS,
+	  AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_LIBS,
+	  AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PROG_EXT,
+	  AcSplit/CF_SIZECHANGE, AcSplit/CF_SLANG_CPPFLAGS,
+	  AcSplit/CF_SLANG_LIBS, AcSplit/CF_SRAND, AcSplit/CF_SRAND_PARSE,
+	  AcSplit/CF_SSL, AcSplit/CF_STRUCT_TERMIOS,
+	  AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TAR_OPTIONS,
+	  AcSplit/CF_WITH_IDNA:
 	eliminate unnecessary "#(vi" markers in autoconf macros by using "(" to begin
 	case-statement cases (suggested by Jens Schweikhardt)
 
 2015-04-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CC_ENV_FLAGS, AcSplit/CF_ENABLE_NARROWPROTO, AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_INTEL_COMPILER, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PKG_CONFIG, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_REGEX, AcSplit/CF_RPATH_HACK_2, AcSplit/CF_TRIM_X_LIBS, AcSplit/CF_TTY_GROUP, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_WITH_APP_CLASS, AcSplit/CF_WITH_DESKTOP_CATEGORY, AcSplit/CF_WITH_ICON_NAME, AcSplit/CF_WITH_ICON_SYMLINK, AcSplit/CF_WITH_ICON_THEME, AcSplit/CF_WITH_IMAKE_CFLAGS, AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_WITH_PCRE, AcSplit/CF_XBOOL_RESULT, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_X_ATHENA, AcSplit/CF_X_FONTCONFIG, AcSplit/CF_X_FREETYPE, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_CC_ENV_FLAGS,
+	  AcSplit/CF_ENABLE_NARROWPROTO, AcSplit/CF_FUNC_GRANTPT,
+	  AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES,
+	  AcSplit/CF_GCC_WARNINGS, AcSplit/CF_IMAKE_CFLAGS,
+	  AcSplit/CF_INTEL_COMPILER, AcSplit/CF_LD_RPATH_OPT,
+	  AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NO_LEAKS_OPTION,
+	  AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PKG_CONFIG,
+	  AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_REGEX, AcSplit/CF_RPATH_HACK_2,
+	  AcSplit/CF_TRIM_X_LIBS, AcSplit/CF_TTY_GROUP, AcSplit/CF_UTMP_UT_NAME,
+	  AcSplit/CF_WITH_APP_CLASS, AcSplit/CF_WITH_DESKTOP_CATEGORY,
+	  AcSplit/CF_WITH_ICON_NAME, AcSplit/CF_WITH_ICON_SYMLINK,
+	  AcSplit/CF_WITH_ICON_THEME, AcSplit/CF_WITH_IMAKE_CFLAGS,
+	  AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_WITH_PCRE,
+	  AcSplit/CF_XBOOL_RESULT, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_X_ATHENA,
+	  AcSplit/CF_X_TOOLKIT:
 	eliminate unnecessary "#(vi" markers in autoconf macros by using "(" to begin
 	case-statement cases (suggested by Jens Schweikhardt)
 
@@ -2500,7 +2796,8 @@
 
 2014-07-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_INSTALL_OPTS, AcSplit/CF_INSTALL_OPT_O, AcSplit/CF_INSTALL_OPT_S:
+	* AcSplit/CF_INSTALL_OPTS, AcSplit/CF_INSTALL_OPT_O,
+	  AcSplit/CF_INSTALL_OPT_S:
 	ci-aclocal generated header
 
 	* AcSplit/CF_AUTO_SYMLINK:
@@ -2654,7 +2951,14 @@
 
 2013-12-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CCHAR_T,
+	  AcSplit/CF_CURSES_MOUSE, AcSplit/CF_GMTOFF,
+	  AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX,
+	  AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGEXPR_H_FUNCS,
+	  AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T,
+	  AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN,
+	  AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_VARARGS,
+	  AcSplit/CF_WAIT:
 	appease autoheader(-252) for td_lib
 
 2013-11-19  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2732,12 +3036,17 @@
 
 	* config.guess: 2013-06-10
 
-	* AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_GNAT_PROJECTS:
+	* AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_OBJ_SUBDIR,
+	  AcSplit/CF_GNAT_PROJECTS:
 	coding-style
 
 2013-09-07  Alexey.Pavlov
 
-	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_GNAT_PROJECTS, AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_XOPEN_SOURCE:
+	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_GNAT_PROJECTS,
+	  AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX,
+	  AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_OBJ_SUBDIR,
+	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL,
+	  AcSplit/CF_XOPEN_SOURCE:
 	add msys / msysdll to known host/platform types
 
 2013-09-02  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -2796,7 +3105,8 @@
 	* AcSplit/CF__ADD_SHLIB_RULES:
 	cancel unneeded $cf_dirname stuff - only ncurses would need that
 
-	* AcSplit/CF__DEFINE_LIB_TARGET, AcSplit/CF__DEFINE_SHLIB_VARS, AcSplit/CF__INIT_SHLIB_RULES:
+	* AcSplit/CF__DEFINE_LIB_TARGET, AcSplit/CF__DEFINE_SHLIB_VARS,
+	  AcSplit/CF__INIT_SHLIB_RULES:
 	ci-aclocal generated header
 
 	* AcSplit/CF_RPATH_HACK: show "no" if nothing happens
@@ -2848,7 +3158,8 @@
 
 2013-06-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL, AcSplit/CF__ADD_SHLIB_DEFS, AcSplit/CF__ADD_SHLIB_RULES:
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL, AcSplit/CF__ADD_SHLIB_DEFS,
+	  AcSplit/CF__ADD_SHLIB_RULES:
 	ci-aclocal generated header
 
 	* AcSplit/CF_SHARED_OPTS:
@@ -2890,7 +3201,8 @@
 
 2013-04-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CHECK_LIBTOOL_VERSION, AcSplit/CF_FORGET_TOOL, AcSplit/CF_LIBTOOL_VERSION:
+	* AcSplit/CF_CHECK_LIBTOOL_VERSION, AcSplit/CF_FORGET_TOOL,
+	  AcSplit/CF_LIBTOOL_VERSION:
 	ci-aclocal generated header
 
 	* AcSplit/CF_WITH_LIBTOOL:
@@ -3007,7 +3319,20 @@
 
 2012-11-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_FIONBIO, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_FUNC_SIGACTION, AcSplit/CF_GNUTLS, AcSplit/CF_INET_ADDR, AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NETLIBS, AcSplit/CF_NGROUPS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_REMOVE_BROKEN, AcSplit/CF_SET_ERRNO, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_UNIX_DEFS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SSL, AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERMIO_AND_TERMIOS, AcSplit/CF_TM_GMTOFF, AcSplit/CF_TTYTYPE, AcSplit/CF_TYPE_LONG_LONG, AcSplit/CF_WIDEC_CURSES, AcSplit/CF_WITH_IDNA:
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS,
+	  AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURS_PERFORMANCE,
+	  AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_DEFINE_PROG,
+	  AcSplit/CF_FANCY_CURSES, AcSplit/CF_FIONBIO,
+	  AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_LSTAT,
+	  AcSplit/CF_FUNC_SIGACTION, AcSplit/CF_GNUTLS, AcSplit/CF_INET_ADDR,
+	  AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NETLIBS, AcSplit/CF_NGROUPS,
+	  AcSplit/CF_NSS_COMPAT, AcSplit/CF_REMOVE_BROKEN, AcSplit/CF_SET_ERRNO,
+	  AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_UNIX_DEFS,
+	  AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SSL,
+	  AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TERMIO_AND_CURSES,
+	  AcSplit/CF_TERMIO_AND_TERMIOS, AcSplit/CF_TM_GMTOFF,
+	  AcSplit/CF_TTYTYPE, AcSplit/CF_TYPE_LONG_LONG,
+	  AcSplit/CF_WIDEC_CURSES, AcSplit/CF_WITH_IDNA:
 	add third parameter for autoheader
 
 2012-10-31  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3022,7 +3347,8 @@
 
 2012-10-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_MAWK_CHECK_SIZE_T, AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	* AcSplit/CF_MAWK_CHECK_SIZE_T, AcSplit/CF_MAWK_FPE_SIGINFO,
+	  AcSplit/CF_MAWK_RUN_FPE_TESTS:
 	add 3rd parameter for AC_DEFINE
 
 2012-10-18  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3041,7 +3367,20 @@
 	* AcSplit/CF_GCC_VERSION:
 	amend workarounds to accommodate Debian's modification of version-message
 
-	* AcSplit/CF_CGETENT, AcSplit/CF_CPP_PARAM_INIT, AcSplit/CF_CPP_STATIC_CAST, AcSplit/CF_CXX_IOSTREAM_NAMESPACE, AcSplit/CF_ENABLE_STRING_HACKS, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_TERMIOS, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_ISASCII, AcSplit/CF_LINK_FUNCS, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_TYPEOF_CHTYPE, AcSplit/CF_TYPE_SIGACTION, AcSplit/CF_WITH_GPM, AcSplit/CF_WITH_SYSMOUSE, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_WITH_PTHREAD, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_GETOPT_HEADER, AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NETBSD_FORM_H, AcSplit/CF_NETBSD_MENU_H, AcSplit/CF_PDCURSES_X11, AcSplit/CF_WCHAR_TYPE:
+	* AcSplit/CF_CGETENT, AcSplit/CF_CPP_PARAM_INIT,
+	  AcSplit/CF_CPP_STATIC_CAST, AcSplit/CF_CXX_IOSTREAM_NAMESPACE,
+	  AcSplit/CF_ENABLE_STRING_HACKS, AcSplit/CF_FUNC_NANOSLEEP,
+	  AcSplit/CF_FUNC_TERMIOS, AcSplit/CF_FUNC_VSSCANF,
+	  AcSplit/CF_GPP_LIBRARY, AcSplit/CF_ISASCII, AcSplit/CF_LINK_FUNCS,
+	  AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS,
+	  AcSplit/CF_TYPEOF_CHTYPE, AcSplit/CF_TYPE_SIGACTION,
+	  AcSplit/CF_WITH_GPM, AcSplit/CF_WITH_SYSMOUSE,
+	  AcSplit/CF_LINK_DATAONLY, AcSplit/CF_WITH_PTHREAD,
+	  AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CHECK_TYPE,
+	  AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_GETOPT_HEADER,
+	  AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NETBSD_FORM_H,
+	  AcSplit/CF_NETBSD_MENU_H, AcSplit/CF_PDCURSES_X11,
+	  AcSplit/CF_WCHAR_TYPE:
 	add 3rd parameter to AC_DEFINE's to allow autoheader to run
 
 	* AcSplit/CF_DISABLE_ECHO: correct help message
@@ -3056,7 +3395,22 @@
 	* AcSplit/CF_LIB_RULES:
 	s/CF_MFLAGS/TOP_MFLAGS/ to avoid confusing with my-autoconf macros.
 
-	* AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_FP_ISREADY, AcSplit/CF_FUNC_DLSYM, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_LOCALE, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_SIZECHANGE, AcSplit/CF_STDIO_UNLOCKED, AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_VA_COPY, AcSplit/CF_WCTYPE, AcSplit/CF_WITH_PERL, AcSplit/AM_WITH_NLS, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_CURSES_WGETPARENT, AcSplit/CF_FUNC_WAIT, AcSplit/CF_LARGEFILE, AcSplit/CF_MBSTATE_T, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PROG_EXT, AcSplit/CF_TERM_HEADER, AcSplit/CF_UNION_WAIT, AcSplit/CF_UTF8_LIB, AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_NO_LEAKS:
+	* AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_CC_INIT_UNIONS,
+	  AcSplit/CF_CHECK_FD_SET, AcSplit/CF_CURSES_TERMCAP,
+	  AcSplit/CF_FP_ISREADY, AcSplit/CF_FUNC_DLSYM,
+	  AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT,
+	  AcSplit/CF_LOCALE, AcSplit/CF_RESTARTABLE_PIPEREAD,
+	  AcSplit/CF_SIZECHANGE, AcSplit/CF_STDIO_UNLOCKED,
+	  AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_VA_COPY, AcSplit/CF_WCTYPE,
+	  AcSplit/CF_WITH_PERL, AcSplit/AM_WITH_NLS, AcSplit/CF_BUNDLED_INTL,
+	  AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_TERM_H,
+	  AcSplit/CF_CURSES_UNCTRL_H, AcSplit/CF_CURSES_WACS_MAP,
+	  AcSplit/CF_CURSES_WACS_SYMBOLS, AcSplit/CF_CURSES_WGETPARENT,
+	  AcSplit/CF_FUNC_WAIT, AcSplit/CF_LARGEFILE, AcSplit/CF_MBSTATE_T,
+	  AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_CPPFLAGS,
+	  AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NCURSES_VERSION,
+	  AcSplit/CF_PROG_EXT, AcSplit/CF_TERM_HEADER, AcSplit/CF_UNION_WAIT,
+	  AcSplit/CF_WITH_NO_LEAKS:
 	add 3rd parameter to AC_DEFINE's to allow autoheader to run
 
 	* config.sub: 2012-08-18
@@ -3065,10 +3419,23 @@
 
 2012-10-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LASTLOG, AcSplit/CF_PATH_PROG, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIG_ATOMIC_T, AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_SYSV_UTMP, AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP, AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTEMPTER, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME, AcSplit/CF_WITH_PCRE, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_X_FREETYPE, AcSplit/CF_TYPE_FD_MASK, AcSplit/CF_WITH_XPM, AcSplit/CF_XBOOL_RESULT, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LASTLOG,
+	  AcSplit/CF_PATH_PROG, AcSplit/CF_POSIX_SAVED_IDS,
+	  AcSplit/CF_POSIX_WAIT, AcSplit/CF_REGEX, AcSplit/CF_SIG_ATOMIC_T,
+	  AcSplit/CF_STRUCT_LASTLOG, AcSplit/CF_SYSV_UTMP,
+	  AcSplit/CF_TERMIO_C_ISPEED, AcSplit/CF_TTY_GROUP,
+	  AcSplit/CF_TYPE_CC_T, AcSplit/CF_TYPE_FD_SET, AcSplit/CF_UTEMPTER,
+	  AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME,
+	  AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_SYSLEN,
+	  AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME,
+	  AcSplit/CF_WITH_PCRE, AcSplit/CF_XKB_BELL_EXT, AcSplit/CF_X_FREETYPE,
+	  AcSplit/CF_TYPE_FD_MASK, AcSplit/CF_WITH_XPM, AcSplit/CF_XBOOL_RESULT,
+	  AcSplit/CF_X_TOOLKIT:
 	add 3rd parameter to AC_DEFINE for autoheader
 
-	* AcSplit/CF_CHECK_TYPE, AcSplit/CF_ENABLE_TRACE, AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_FUNC_POLL, AcSplit/CF_SVR4, AcSplit/CF_SYSV, AcSplit/CF_SYS_TIME_SELECT:
+	* AcSplit/CF_CHECK_TYPE, AcSplit/CF_ENABLE_TRACE,
+	  AcSplit/CF_FUNC_GRANTPT, AcSplit/CF_FUNC_POLL, AcSplit/CF_SVR4,
+	  AcSplit/CF_SYS_TIME_SELECT:
 	add 3rd parameter to AC_DEFINE's to allow autoheader to run
 
 	* AcSplit/CF_WITH_APP_CLASS, AcSplit/CF_WITH_APP_DEFAULTS: quote-name
@@ -3096,7 +3463,8 @@
 
 2012-10-02  Adrian.Bunk
 
-	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_DISABLE_LEAKS, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_NO_LEAKS_OPTION:
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_DISABLE_LEAKS,
+	  AcSplit/CF_NO_LEAKS_OPTION:
 	add parameter to AC_DEFINE_UNQUOTED() to allow it to be recognized by autoheader
 
 2012-10-02  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3348,7 +3716,8 @@
 
 2012-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_FUNC_GRANTPT, AcSplit/CF__GRANTPT_BODY, AcSplit/CF__GRANTPT_HEAD:
+	* AcSplit/CF_FUNC_GRANTPT, AcSplit/CF__GRANTPT_BODY,
+	  AcSplit/CF__GRANTPT_HEAD:
 	modify to check for Solaris and HPUX streams features
 
 2012-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3479,7 +3848,8 @@
 
 2011-10-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CXX_AR_FLAGS, AcSplit/CF_CXX_IOSTREAM_NAMESPACE:
+	* AcSplit/CF_CHECK_WCHAR_H, AcSplit/CF_CXX_AR_FLAGS,
+	  AcSplit/CF_CXX_IOSTREAM_NAMESPACE:
 	ci-aclocal generated header
 
 	* AcSplit/CF_XOPEN_SOURCE:
@@ -3618,7 +3988,8 @@
 
 2011-07-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LIB_SUFFIX:
+	* AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_LDFLAGS_STATIC,
+	  AcSplit/CF_LIB_SUFFIX:
 	extend aix case to 7.x
 
 	* AcSplit/CF_XOPEN_SOURCE: extend aix case to aix 7.x
@@ -3665,7 +4036,8 @@
 
 2011-06-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_PROG_LDCONFIG, AcSplit/CF_SHARED_OPTS:
+	* AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_LD_RPATH_OPT,
+	  AcSplit/CF_SHARED_OPTS:
 	add mirbsd
 
 2011-05-28  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3719,7 +4091,8 @@
 
 2011-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_WITH_APP_DEFAULTS, AcSplit/CF_WITH_ICONDIR, AcSplit/CF_DISABLE_DESKTOP:
+	* AcSplit/CF_WITH_APP_DEFAULTS, AcSplit/CF_WITH_ICONDIR,
+	  AcSplit/CF_DISABLE_DESKTOP:
 	ci-aclocal generated header
 
 2011-04-17  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -3854,7 +4227,8 @@
 	work around BSD linker's weak linkage by running a program to test the case
 	where the symbol is present in the library, but not in the header.
 
-	* AcSplit/CF_NETBSD_FORM_H, AcSplit/CF_NETBSD_MENU_H, AcSplit/CF_CURSES_WACS_SYMBOLS:
+	* AcSplit/CF_NETBSD_FORM_H, AcSplit/CF_NETBSD_MENU_H,
+	  AcSplit/CF_CURSES_WACS_SYMBOLS:
 	ci-aclocal generated header
 
 	* AcSplit/CF_CURSES_WACS_MAP:
@@ -3946,7 +4320,42 @@
 
 2010-10-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_PATH_PROG, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_LIB_RULES, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_WITH_PATHLIST, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_BUNDLED_INTL, AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHECK_DATA, AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_CURSES_SETBEGYX, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_FANCY_CURSES, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_MIN_GETCCHAR, AcSplit/CF_NCURSES_ADDON, AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_TERM_HEADER, AcSplit/CF_TTYTYPE, AcSplit/CF_WIDEC_CURSES, AcSplit/CF_XOPEN_CURSES, AcSplit/CF__CURSES_HEAD, AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_ANSI_CPP, AcSplit/CF_AWK_BIGSTRING, AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNAT_VERSION, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_MAKE_TAGS, AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_MSG_LOG, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_SRC_MAKEFILE, AcSplit/CF_TD_CONFIG, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_WITH_INSTALL_PREFIX, AcSplit/CF_X_ATHENA, AcSplit/CF_YACC_ERROR, AcSplit/CF_GXX_VERSION, AcSplit/CF_MAN_PAGES, AcSplit/CF_WITH_PATH:
+	* AcSplit/CF_PATH_PROG, AcSplit/CF_PROGRAM_FULLPATH,
+	  AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_LIB_RULES,
+	  AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_WITH_PATHLIST,
+	  AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_BUNDLED_INTL,
+	  AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS,
+	  AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_ACS_MAP,
+	  AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHECK_DATA,
+	  AcSplit/CF_CURSES_CHECK_TYPE, AcSplit/CF_CURSES_CHTYPE,
+	  AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_MOUSE,
+	  AcSplit/CF_CURSES_SETBEGYX, AcSplit/CF_CURSES_TERM_H,
+	  AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_CURS_PERFORMANCE,
+	  AcSplit/CF_CURS_TOUCHLINE, AcSplit/CF_FANCY_CURSES,
+	  AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_MIN_GETCCHAR,
+	  AcSplit/CF_NCURSES_ADDON, AcSplit/CF_NCURSES_BROKEN,
+	  AcSplit/CF_NCURSES_EXT_FUNCS, AcSplit/CF_NCURSES_LIBS,
+	  AcSplit/CF_NCURSES_VERSION, AcSplit/CF_STRUCT_SCREEN,
+	  AcSplit/CF_TCAP_CURSOR, AcSplit/CF_TERMIO_AND_CURSES,
+	  AcSplit/CF_TERM_HEADER, AcSplit/CF_TTYTYPE, AcSplit/CF_WIDEC_CURSES,
+	  AcSplit/CF_XOPEN_CURSES, AcSplit/CF__CURSES_HEAD,
+	  AcSplit/CF_ANSI_CC_CHECK, AcSplit/CF_ANSI_CPP,
+	  AcSplit/CF_AWK_BIGSTRING, AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC,
+	  AcSplit/CF_CURSES_FUNCS, AcSplit/CF_FUNC_FORK,
+	  AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM,
+	  AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_GNAT_VERSION, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS,
+	  AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE,
+	  AcSplit/CF_MAKE_TAGS, AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_MSG_LOG,
+	  AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_REGCMP_LIBS,
+	  AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS,
+	  AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_RE_COMP_FUNCS,
+	  AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_SRC_MAKEFILE,
+	  AcSplit/CF_TD_CONFIG, AcSplit/CF_TD_SIG_ARGS,
+	  AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TIOCGWINSZ,
+	  AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_WITH_INSTALL_PREFIX,
+	  AcSplit/CF_X_ATHENA, AcSplit/CF_YACC_ERROR, AcSplit/CF_GXX_VERSION,
+	  AcSplit/CF_WITH_PATH:
 	change obsolete ${name-value} to standard ${name:-value}
 
 	* AcSplit/CF_LDFLAGS_STATIC:
@@ -4000,7 +4409,11 @@
 	add cases for library-name transformation for "t" and "tw" to handle the
 	configurations where tic- and tinfo-libraries are built as shared libraries.
 
-	* AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNAT_TRY_LINK, AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_GXX_WARNINGS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MKSTEMP, AcSplit/CF_PROG_CC_C_O, AcSplit/CF_PROG_LN_S:
+	* AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_CHECK_GPM_WGETCH,
+	  AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GNAT_TRY_LINK,
+	  AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_GXX_WARNINGS,
+	  AcSplit/CF_LIB_SONAME, AcSplit/CF_MKSTEMP, AcSplit/CF_PROG_CC_C_O,
+	  AcSplit/CF_PROG_LN_S:
 	fix for Mac OS X (compiler makes conftest.dSYM directory)
 
 2010-08-13  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4054,7 +4467,8 @@
 
 2010-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB:
+	* AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE,
+	  AcSplit/CF_WITH_ADA_SHAREDLIB:
 	add progress messages
 
 2010-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4066,7 +4480,11 @@
 
 	* AcSplit/CF_GNUTLS: further fixes for with/without gnutls-compat
 
-	* AcSplit/AM_WITH_NLS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_GNUTLS, AcSplit/CF_INET_ADDR, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PDCURSES_X11, AcSplit/CF_SOCKS5, AcSplit/CF_SSL, AcSplit/CF_TERMCAP_LIBS, AcSplit/CF_UTF8_LIB:
+	* AcSplit/AM_WITH_NLS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_GNUTLS,
+	  AcSplit/CF_INET_ADDR, AcSplit/CF_NCURSES_CONFIG,
+	  AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NETLIBS, AcSplit/CF_NSS_COMPAT,
+	  AcSplit/CF_PDCURSES_X11, AcSplit/CF_SOCKS5, AcSplit/CF_SSL,
+	  AcSplit/CF_UTF8_LIB:
 	use CF_ADD_LIBS for consistency
 
 	* AcSplit/CF_GNUTLS:
@@ -4080,7 +4498,9 @@
 
 	* AcSplit/CF_GNAT_VERSION: add AC_SUBST's for variables set here
 
-	* AcSplit/CF_ADD_ADAFLAGS, AcSplit/CF_GNAT_PRAGMA_UNREF, AcSplit/CF_PROG_GNAT, AcSplit/CF_WITH_ADA_COMPILER, AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_OBJECTS:
+	* AcSplit/CF_ADD_ADAFLAGS, AcSplit/CF_GNAT_PRAGMA_UNREF,
+	  AcSplit/CF_PROG_GNAT, AcSplit/CF_WITH_ADA_COMPILER,
+	  AcSplit/CF_WITH_ADA_OBJECTS:
 	ci-aclocal generated header
 
 	* AcSplit/AM_GNU_GETTEXT:
@@ -4122,7 +4542,10 @@
 
 	* AcSplit/CF_ADD_LIBS: RCS_BASE
 
-	* AcSplit/CF_ADD_LIB, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LD_RPATH_OPT, AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_UTEMPTER, AcSplit/CF_WITH_PCRE, AcSplit/CF_X_ATHENA, AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_X_EXT, AcSplit/CF_X_FREETYPE, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/CF_ADD_LIB, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_LD_RPATH_OPT,
+	  AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_UTEMPTER, AcSplit/CF_WITH_PCRE,
+	  AcSplit/CF_X_ATHENA, AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_X_EXT,
+	  AcSplit/CF_X_TOOLKIT:
 	use CF_ADD_LIB/CF_ADD_LIBS
 
 2010-06-01  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4131,7 +4554,10 @@
 
 2010-05-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FUNC_DLSYM, AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MATH_LIB, AcSplit/CF_REGEX, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_WITH_PTHREAD:
+	* AcSplit/CF_FIND_LINKAGE, AcSplit/CF_FUNC_DLSYM,
+	  AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_HASHED_DB,
+	  AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LIB_SONAME, AcSplit/CF_MATH_LIB,
+	  AcSplit/CF_WITH_PTHREAD:
 	use CF_ADD_LIB
 
 	* AcSplit/CF_ADD_LIB: RCS_BASE
@@ -4144,14 +4570,21 @@
 
 	* AcSplit/CF_X_ATHENA_CPPFLAGS: rename variable for consistency
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR, AcSplit/CF_CHECK_ENVIRON, AcSplit/CF_GNUTLS, AcSplit/CF_MATH_LIB, AcSplit/CF_MAWK_DEFINE, AcSplit/CF_PREDEFINE, AcSplit/CF_WCHAR_TYPE:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ADD_LIBDIR,
+	  AcSplit/CF_CHECK_ENVIRON, AcSplit/CF_GNUTLS, AcSplit/CF_MATH_LIB,
+	  AcSplit/CF_WCHAR_TYPE:
 	quote params of ifelse()
 
 	* AcSplit/CF_X_TOOLKIT: use pkg-config if available
 
 	* AcSplit/CF_X_EXT: *** empty log message ***
 
-	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_ARG_OPTION, AcSplit/CF_CHECK_ERRNO, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_INTEL_COMPILER, AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_POSIX_C_SOURCE, AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_WITH_IMAKE_CFLAGS, AcSplit/CF_WITH_PATH, AcSplit/CF_XOPEN_SOURCE, AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_X_ATHENA_LIBS:
+	* AcSplit/CF_ADD_CFLAGS, AcSplit/CF_ARG_OPTION, AcSplit/CF_CHECK_ERRNO,
+	  AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_INTEL_COMPILER,
+	  AcSplit/CF_PATHSEP, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_POSIX_C_SOURCE,
+	  AcSplit/CF_TRY_PKG_CONFIG, AcSplit/CF_WITH_IMAKE_CFLAGS,
+	  AcSplit/CF_WITH_PATH, AcSplit/CF_XOPEN_SOURCE,
+	  AcSplit/CF_X_ATHENA_LIBS:
 	quote params of ifelse()
 
 2010-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4511,7 +4944,9 @@
 
 2009-12-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_MATH_LIB, AcSplit/CF_SHARED_OPTS, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_MAWK_MATHLIB, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_REGEX:
+	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_MATH_LIB, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_MAWK_MATHLIB,
+	  AcSplit/CF_REGEX:
 	put new libraries before $LIBS
 
 	* AcSplit/CF_REGEX:
@@ -4591,7 +5026,8 @@
 
 2009-10-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_WITH_X_APP_DEFAULTS, AcSplit/CF_WITH_X_DESKTOP_UTILS, AcSplit/CF_WITH_X_ICONDIR:
+	* AcSplit/CF_WITH_X_APP_DEFAULTS, AcSplit/CF_WITH_X_DESKTOP_UTILS,
+	  AcSplit/CF_WITH_X_ICONDIR:
 	ci-aclocal generated header
 
 2009-10-06  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4664,7 +5100,8 @@
 
 	* AcSplit/CF_MAWK_RUN_FPE_TESTS: don't add()
 
-	* AcSplit/CF_MAWK_CHECK_FUNC, AcSplit/CF_MAWK_CHECK_HEADER, AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_RUN_FPE_TESTS:
+	* AcSplit/CF_MAWK_CHECK_FUNC, AcSplit/CF_MAWK_CHECK_HEADER,
+	  AcSplit/CF_MAWK_RUN_FPE_TESTS:
 	obsoleting CF_MAWK_DEFINE
 
 	* AcSplit/CF_MAWK_CC_FEATURES: obsoleting CF_MAWK_DEFINE2()
@@ -4813,7 +5250,10 @@
 
 2009-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_PATH_PROG, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_PATHSEP, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_WITH_PATHLIST:
+	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_PATH_PROG,
+	  AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_MANPAGE_FORMAT,
+	  AcSplit/CF_PATHSEP, AcSplit/CF_PROGRAM_FULLPATH,
+	  AcSplit/CF_WITH_PATHLIST:
 	change variable from PATHSEP to PATH_SEPARATOR
 
 2009-01-11  Doug.Kaufman
@@ -4826,7 +5266,9 @@
 	* AcSplit/CF_ADD_LIBDIR:
 	remove spurious dollar-sign, report by José H. Espinosa on lynx-dev.
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_PDCURSES_X11, AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_BUNDLED_INTL:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_X_ATHENA_CPPFLAGS,
+	  AcSplit/CF_PDCURSES_X11, AcSplit/CF_NCURSES_CONFIG,
+	  AcSplit/CF_BUNDLED_INTL:
 	 append (not prepend) to CFLAGS/CPPFLAGS
 
 2009-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4839,7 +5281,9 @@
 
 	* AcSplit/CF_CURSES_STYLE: append (not prepend) to CFLAGS/CPPFLAGS
 
-	* AcSplit/CF_X_FREETYPE, AcSplit/CF_X_FONTENC, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_FUNC_ALLOCA, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_ADD_CFLAGS:
+	* AcSplit/CF_X_FREETYPE, AcSplit/CF_X_FONTENC, AcSplit/CF_INCLUDE_DIRS,
+	  AcSplit/CF_FUNC_ALLOCA, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_ADD_CFLAGS:
 	 append (not prepend) to CFLAGS/CPPFLAGS
 
 2009-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -4875,7 +5319,8 @@
 	* AcSplit/CF_XOPEN_SOURCE:
 	ncurses patch for AIX mentions AIX 6.1 - add aix6 to case for _ALL_SOURCE
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_AWK_BIG_PRINTF, AcSplit/CF_SRC_MODULES:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_AWK_BIG_PRINTF,
+	  AcSplit/CF_SRC_MODULES:
 	tabs
 
 2008-12-25  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -5049,7 +5494,20 @@
 	don't use CF_MAWK_REPEAT_IT, since it's likely to be a problem porting to
 	newer autoconf's
 
-	* AcSplit/CF_MAWK_ADD_NO, AcSplit/CF_MAWK_CC_FEATURES, AcSplit/CF_MAWK_CHECK_FPRINTF, AcSplit/CF_MAWK_CHECK_FUNC, AcSplit/CF_MAWK_CHECK_FUNCS, AcSplit/CF_MAWK_CHECK_HEADER, AcSplit/CF_MAWK_CHECK_HEADERS, AcSplit/CF_MAWK_CHECK_LIMITS_MSG, AcSplit/CF_MAWK_CHECK_SIZE_T, AcSplit/CF_MAWK_CONFIG_H_HEADER, AcSplit/CF_MAWK_CONFIG_H_TRAILER, AcSplit/CF_MAWK_DEFINE, AcSplit/CF_MAWK_DEFINE2, AcSplit/CF_MAWK_FIND_MAX_INT, AcSplit/CF_MAWK_FIND_SIZE_T, AcSplit/CF_MAWK_FPE_SIGINFO, AcSplit/CF_MAWK_GET_CONFIG_USER, AcSplit/CF_MAWK_MAINTAINER, AcSplit/CF_MAWK_MATHLIB, AcSplit/CF_MAWK_MAX__INT_PROGRAM, AcSplit/CF_MAWK_OUTPUT_CONFIG_H, AcSplit/CF_MAWK_PROG_GCC, AcSplit/CF_MAWK_PROG_YACC, AcSplit/CF_MAWK_REPEAT_IT, AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_MAWK_SET_IF_UNSET, AcSplit/CF_MAWK_XADD_NO:
+	* AcSplit/CF_MAWK_ADD_NO, AcSplit/CF_MAWK_CC_FEATURES,
+	  AcSplit/CF_MAWK_CHECK_FPRINTF, AcSplit/CF_MAWK_CHECK_FUNC,
+	  AcSplit/CF_MAWK_CHECK_FUNCS, AcSplit/CF_MAWK_CHECK_HEADER,
+	  AcSplit/CF_MAWK_CHECK_HEADERS, AcSplit/CF_MAWK_CHECK_LIMITS_MSG,
+	  AcSplit/CF_MAWK_CHECK_SIZE_T, AcSplit/CF_MAWK_CONFIG_H_HEADER,
+	  AcSplit/CF_MAWK_CONFIG_H_TRAILER, AcSplit/CF_MAWK_DEFINE,
+	  AcSplit/CF_MAWK_DEFINE2, AcSplit/CF_MAWK_FIND_MAX_INT,
+	  AcSplit/CF_MAWK_FIND_SIZE_T, AcSplit/CF_MAWK_FPE_SIGINFO,
+	  AcSplit/CF_MAWK_GET_CONFIG_USER, AcSplit/CF_MAWK_MAINTAINER,
+	  AcSplit/CF_MAWK_MATHLIB, AcSplit/CF_MAWK_MAX__INT_PROGRAM,
+	  AcSplit/CF_MAWK_OUTPUT_CONFIG_H, AcSplit/CF_MAWK_PROG_GCC,
+	  AcSplit/CF_MAWK_PROG_YACC, AcSplit/CF_MAWK_REPEAT_IT,
+	  AcSplit/CF_MAWK_RUN_FPE_TESTS, AcSplit/CF_MAWK_SET_IF_UNSET,
+	  AcSplit/CF_MAWK_XADD_NO:
 	ci-aclocal generated header
 
 2008-09-08  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -5253,13 +5711,22 @@
 
 2008-03-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_LEX_CHAR_CLASSES, AcSplit/CF_LEX_STATES, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_LEX_CHAR_CLASSES,
+	  AcSplit/CF_X_TOOLKIT:
 	use AC_MSG_WARN (new name works with 2.13)
 
-	* AcSplit/CF_ANSI_CC_REQD, AcSplit/CF_ARG_WITH, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FIND_TDLIB, AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NSS_COMPAT, AcSplit/CF_PDCURSES_X11, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SYS_NAME, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_GPM, AcSplit/CF_WITH_PROGRAM, AcSplit/CF_X_MOTIF, AcSplit/CF_X_OPENLOOK:
+	* AcSplit/CF_ANSI_CC_REQD, AcSplit/CF_ARG_WITH, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FIND_TDLIB,
+	  AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE,
+	  AcSplit/CF_NCURSES_HEADER, AcSplit/CF_NSS_COMPAT,
+	  AcSplit/CF_PDCURSES_X11, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5,
+	  AcSplit/CF_SYS_NAME, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_GPM,
+	  AcSplit/CF_X_OPENLOOK:
 	use AC_MSG_ERROR (new name, works with 2.13)
 
-	* AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_CHECK_CACHE, AcSplit/CF_PATH_SYNTAX:
+	* AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_CHECK_CACHE,
+	  AcSplit/CF_PATH_SYNTAX:
 	use AC_MSG_ERROR
 
 2008-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -5356,7 +5823,8 @@
 
 	* AcSplit/CF_FIND_LINKAGE: in the default case, must update $LIBS too
 
-	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_NCURSES_CPPFLAGS:
+	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH,
+	  AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_NCURSES_CPPFLAGS:
 	use CF_ADD_INCDIR
 
 	* AcSplit/AM_WITH_NLS: use CF_ADD_INCDIR
@@ -5393,7 +5861,8 @@
 
 	* AcSplit/CF_GNUTLS: misc fixes - got this working with lynx.
 
-	* AcSplit/CF_FIND_HEADER, AcSplit/CF_SSL, AcSplit/CF_WITH_BZLIB, AcSplit/CF_WITH_ZLIB:
+	* AcSplit/CF_FIND_HEADER, AcSplit/CF_SSL, AcSplit/CF_WITH_BZLIB,
+	  AcSplit/CF_WITH_ZLIB:
 	use CF_ADD_INCDIR
 
 	* AcSplit/CF_NCURSES_CC_CHECK:
@@ -5410,7 +5879,9 @@
 	change the variable from $LIBS to $LDFLAGS, but allow it to be overridden
 	for macros that collect the options in a separate variable.
 
-	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GNUTLS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_SOCKS, AcSplit/CF_SOCKS5, AcSplit/CF_SSL:
+	* AcSplit/AM_ICONV, AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_FIND_LINKAGE, AcSplit/CF_GNUTLS, AcSplit/CF_NCURSES_LIBS,
+	  AcSplit/CF_SSL:
 	use CF_ADD_LIBDIR
 
 	* AcSplit/CF_ADD_SUBDIR_PATH: make a message clearer
@@ -5497,7 +5968,8 @@
 	add CF_HEADER_PATH also - considered merging the two more closely as in
 	CF_ADD_SEARCHPATH but for the moment too complex.
 
-	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF__ICONV_BODY, AcSplit/CF__ICONV_HEAD:
+	* AcSplit/CF_ADD_SEARCHPATH, AcSplit/CF__ICONV_BODY,
+	  AcSplit/CF__ICONV_HEAD:
 	ci-aclocal generated header
 
 	* AcSplit/AM_ICONV:
@@ -5566,10 +6038,19 @@
 
 	* AcSplit/CF_LDFLAGS_STATIC: typo
 
-	* AcSplit/CF_C_INLINE, AcSplit/CF_CHECK_GPM_WGETCH, AcSplit/CF_LDFLAGS_STATIC:
+	* AcSplit/CF_C_INLINE, AcSplit/CF_CHECK_GPM_WGETCH,
+	  AcSplit/CF_LDFLAGS_STATIC:
 	ci-aclocal generated header
 
-	* AcSplit/CF_ANSI_CPP, AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_POSIX_VDISABLE, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_TD_SIG_ARGS, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_YACC_ERROR:
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_RESTARTABLE_PIPEREAD,
+	  AcSplit/CF_COREFILE, AcSplit/CF_CRYPT_FUNC, AcSplit/CF_CURSES_FUNCS,
+	  AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_FUNC_FORK,
+	  AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_SYSTEM,
+	  AcSplit/CF_NCURSES_VERSION, AcSplit/CF_POSIX_VDISABLE,
+	  AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS,
+	  AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS,
+	  AcSplit/CF_SET_ERRNO, AcSplit/CF_SIG_CONST, AcSplit/CF_TD_SIG_ARGS,
+	  AcSplit/CF_YACC_ERROR:
 	use $cf_cv_main_return
 
 2007-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -5705,12 +6186,14 @@
 
 2007-03-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_TTY_GROUP, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_FUNC_TGETENT:
+	* AcSplit/CF_TTY_GROUP, AcSplit/CF_POSIX_SAVED_IDS,
+	  AcSplit/CF_FUNC_TGETENT:
 	use $cf_cv_main_return
 
 2007-03-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME:
+	* AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME,
+	  AcSplit/CF_UTMP_UT_XTIME:
 	improved message to show utmp or utmpx as appropriate
 
 2007-03-12  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -5910,7 +6393,10 @@
 
 	* AcSplit/CF_DISABLE_LEAKS: ncurses has another way to set -g option
 
-	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_MKSTEMP, AcSplit/CF_TYPEOF_CHTYPE:
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE,
+	  AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL,
+	  AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY,
+	  AcSplit/CF_TYPEOF_CHTYPE:
 	typo
 
 	* AcSplit/CF_DISABLE_LEAKS: ci-aclocal generated header
@@ -5924,14 +6410,18 @@
 	* AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
 	use CF_NO_LEAKS_OPTION
 
-	* AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_WITH_NO_LEAKS, AcSplit/CF_WITH_PURIFY, AcSplit/CF_WITH_VALGRIND:
+	* AcSplit/CF_NO_LEAKS_OPTION, AcSplit/CF_WITH_NO_LEAKS,
+	  AcSplit/CF_WITH_VALGRIND:
 	ci-aclocal generated header
 
 2006-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAIN_RETURN: ci-aclocal generated header
 
-	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_MKSTEMP, AcSplit/CF_TYPEOF_CHTYPE:
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_FUNC_MEMMOVE,
+	  AcSplit/CF_FUNC_NANOSLEEP, AcSplit/CF_FUNC_POLL,
+	  AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_LINK_DATAONLY,
+	  AcSplit/CF_TYPEOF_CHTYPE:
 	use $cf_cv_main_return
 
 2006-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -6106,7 +6596,10 @@
 
 2006-10-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BUILD_CC, AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL:
+	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BUILD_CC,
+	  AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS,
+	  AcSplit/CF_LIB_RULES, AcSplit/CF_MAKEFLAGS, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_WITH_LIBTOOL:
 	use curly-braces in makefile symbols so they can be reused in shell scripts
 
 2006-10-07  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -6186,7 +6679,8 @@
 	don't use the reference to O_CREAT|O_RDWR in db 1.85 test since application
 	should test for fcntl.h separately.
 
-	* AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS, AcSplit/CF_HASHED_DB_VERSION:
+	* AcSplit/CF_HASHED_DB, AcSplit/CF_HASHED_DB_LIBS,
+	  AcSplit/CF_HASHED_DB_VERSION:
 	ci-aclocal generated header
 
 2006-08-14  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -6409,7 +6903,8 @@
 
 2005-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_NCURSES_HEADER, AcSplit/CF_CURSES_HEADER, AcSplit/CF_TERM_HEADER:
+	* AcSplit/CF_NCURSES_HEADER, AcSplit/CF_CURSES_HEADER,
+	  AcSplit/CF_TERM_HEADER:
 	ci-aclocal generated header
 
 	* AcSplit/CF_NCURSES_CPPFLAGS:
@@ -7515,7 +8010,8 @@
 	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_NCURSES_VERSION:
 	require CF_CURSES_CPPFLAGS
 
-	* AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_TCAP_CURSOR:
+	* AcSplit/CF_CURSES_CCHAR_T, AcSplit/CF_CURSES_CHTYPE,
+	  AcSplit/CF_TCAP_CURSOR:
 	require CF_CURSES_CPPFLAGS and use the derived header
 
 	* AcSplit/CF_CURSES_MOUSE, AcSplit/CF_STRUCT_SCREEN:
@@ -7576,7 +8072,8 @@
 
 2003-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_NUMBER_SYNTAX, AcSplit/CF_WITH_ABI_VERSION, AcSplit/CF_WITH_REL_VERSION, AcSplit/CF_PROG_LDCONFIG:
+	* AcSplit/CF_NUMBER_SYNTAX, AcSplit/CF_WITH_ABI_VERSION,
+	  AcSplit/CF_PROG_LDCONFIG:
 	ci-aclocal generated header
 
 	* AcSplit/CF_MIXEDCASE_FILENAMES:
@@ -7807,7 +8304,8 @@
 
 2003-05-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION:
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP,
+	  AcSplit/CF_FUNC_CURSES_VERSION:
 	use $cf_cv_ncurses_header
 
 2003-05-04  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -7891,10 +8389,12 @@
 
 	* AcSplit/CF_CURSES_CHECK_TYPE: ci-aclocal generated header
 
-	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION:
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP,
+	  AcSplit/CF_FUNC_CURSES_VERSION:
 	RCS_BASE
 
-	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP, AcSplit/CF_FUNC_CURSES_VERSION, AcSplit/CF_UTF8_LIB:
+	* AcSplit/CF_CURSES_ACS_MAP, AcSplit/CF_CURSES_WACS_MAP,
+	  AcSplit/CF_UTF8_LIB:
 	ci-aclocal generated header
 
 	* AcSplit/CF_UTF8_LIB: ncurses/test: fix a caching issue with $LIBS
@@ -7927,7 +8427,8 @@
 
 2003-02-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_LINK_FUNCS, AcSplit/CF_SHARED_OPTS:
+	* AcSplit/CF_GPP_LIBRARY, AcSplit/CF_LINK_DATAONLY,
+	  AcSplit/CF_SHARED_OPTS:
 	ci-aclocal generated header
 
 	* AcSplit/CF_SHARED_OPTS:
@@ -7985,10 +8486,12 @@
 	* AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_SUBDIR_PATH:
 	ci-aclocal generated header
 
-	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC,
+	  AcSplit/CF_WITH_DMALLOC:
 	RCS_BASE
 
-	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC, AcSplit/CF_WITH_DMALLOC:
+	* AcSplit/CF_ENABLE_WARNINGS, AcSplit/CF_WITH_DBMALLOC,
+	  AcSplit/CF_WITH_DMALLOC:
 	ci-aclocal generated header
 
 2002-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
@@ -8038,7 +8541,8 @@
 
 	* AcSplit/CF_NCURSES_LIBS: ded: use '%' as sed-delimiter
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_DIRNAME, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_PROG_EXT, AcSplit/CF_STRIP_G_OPT:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_DIRNAME, AcSplit/CF_GCC_ATTRIBUTES,
+	  AcSplit/CF_STRIP_G_OPT:
 	ci-aclocal generated header
 
 	* AcSplit/CF_ADD_INCDIR:
@@ -8086,7 +8590,8 @@
 
 2002-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_ADD_CFLAGS, AcSplit/CF_INCLUDE_DIRS:
+	* AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_ADD_CFLAGS,
+	  AcSplit/CF_INCLUDE_DIRS:
 	ci-aclocal generated header
 
 	* AcSplit/CF_ADA_INCLUDE_DIRS:
@@ -8130,7 +8635,8 @@
 
 	* AcSplit/CF_WITH_CURSES_DIR: RCS_BASE
 
-	* AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_WITH_CURSES_DIR:
+	* AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH,
+	  AcSplit/CF_WITH_CURSES_DIR:
 	ci-aclocal generated header
 
 	* AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_LIBS:
@@ -8169,7 +8675,14 @@
 
 	* AcSplit/jm_GLIBC21: change # to dnl to work properly with ac2.13
 
-	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11, AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME, AcSplit/jm_GLIBC21:
+	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/AM_LC_MESSAGES,
+	  AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/CF_COLOR_CURSES,
+	  AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG,
+	  AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11,
+	  AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST,
+	  AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION,
+	  AcSplit/jm_GLIBC21:
 	ci-aclocal generated header
 
 	* AcSplit/CF_UTF8_LIB:
@@ -8185,17 +8698,29 @@
 
 	* AcSplit/AM_GNU_GETTEXT: lynx: put a dnl on the end
 
-	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CPPFLAGS, AcSplit/CF_CURSES_LIBS, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG, AcSplit/CF_LOCALE, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11, AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XTIME:
+	* AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET,
+	  AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_CPPFLAGS,
+	  AcSplit/CF_CURSES_LIBS, AcSplit/CF_DEFINE_PROG,
+	  AcSplit/CF_FANCY_CURSES, AcSplit/CF_LASTLOG, AcSplit/CF_LOCALE,
+	  AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PDCURSES_X11,
+	  AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP, AcSplit/CF_UTMP_UT_HOST,
+	  AcSplit/CF_UTMP_UT_NAME, AcSplit/CF_UTMP_UT_SESSION,
+	  AcSplit/CF_UTMP_UT_XTIME:
 	lynx: tidy up comments
 
 2002-10-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_ATHENA_CPPFLAGS, AcSplit/CF_X_ATHENA_LIBS: RCS_BASE
 
-	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_MISSING_CHECK, AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_X_ATHENA_CPPFLAGS:
+	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET,
+	  AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT,
+	  AcSplit/CF_MISSING_CHECK, AcSplit/CF_TYPE_OUTCHAR,
+	  AcSplit/CF_X_ATHENA_CPPFLAGS:
 	ci-aclocal generated header
 
-	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT, AcSplit/CF_MISSING_CHECK, AcSplit/CF_TYPE_OUTCHAR:
+	* AcSplit/CF_ANSI_QSORT, AcSplit/CF_CHECK_FD_SET,
+	  AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT,
+	  AcSplit/CF_TYPE_OUTCHAR:
 	vile: change "#if" to "#ifdef"
 
 	* AcSplit/CF_X_ATHENA:
@@ -8226,7 +8751,8 @@
 	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_LIBS, AcSplit/CF_SRAND:
 	ci-aclocal generated header
 
-	* AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_LIBS:
+	* AcSplit/CF_NCURSES_VERSION, AcSplit/CF_PATH_SYNTAX,
+	  AcSplit/CF_SLANG_LIBS:
 	lynx: change sed delimiter to '%'
 
 	* AcSplit/CF_SRAND: lynx; change sed-delimiter to '%'
@@ -8250,7 +8776,8 @@
 
 2002-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_LIBTOOL, AcSplit/CF_WITH_WARNINGS:
+	* AcSplit/CF_VERSION_INFO, AcSplit/CF_WITH_LIBTOOL,
+	  AcSplit/CF_WITH_WARNINGS:
 	RCS_BASE
 
 	* AcSplit/CF_VERSION_INFO: ci-aclocal generated header
@@ -8290,7 +8817,8 @@
 	* AcSplit/AM_PATH_PROG_WITH_TEST: tin: from gettext 0.10.40
 	I merged in my CF_PATHSEP change
 
-	* AcSplit/AC_ISC_POSIX, AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET, AcSplit/jm_GLIBC21:
+	* AcSplit/AC_ISC_POSIX, AcSplit/AM_ICONV, AcSplit/AM_LANGINFO_CODESET,
+	  AcSplit/jm_GLIBC21:
 	RCS_BASE
 
 	* AcSplit/AC_ISC_POSIX, AcSplit/CF_BUNDLED_PCRE:
@@ -8362,7 +8890,9 @@
 	add check for file in $srcdir/man, adjust param if found (makes this easier to use)
 	rename variable from $cf_manpage_renames to MANPAGE_RENAMES, for consistency
 
-	* AcSplit/CF_LIBUTF8, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MANPAGE_SYMLINKS, AcSplit/CF_MANPAGE_TBL, AcSplit/CF_MBSTATE_T, AcSplit/CF_SRC_MODULES:
+	* AcSplit/CF_LIBUTF8, AcSplit/CF_MANPAGE_FORMAT,
+	  AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_MANPAGE_SYMLINKS,
+	  AcSplit/CF_SRC_MODULES:
 	ci-aclocal generated header
 
 	* AcSplit/CF_MAN_PAGES:
@@ -8439,14 +8969,16 @@
 
 	* AcSplit/CF_CURSES_TERMCAP: use AC_CACHE_CHECK
 
-	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS, AcSplit/CF_TYPE_OUTCHAR:
+	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_KILLPG, AcSplit/CF_MAKEFLAGS,
+	  AcSplit/CF_TYPE_OUTCHAR:
 	vile: use CF_CACHE_CHECK
 
 	* AcSplit/CF_CHECK_ERRNO:
 	change to use AC_CACHE_CHECK, which ultimately meant I cannot use eval's to
 	support a loop
 
-	* AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CHECK_EXTERN_DATA, AcSplit/CF_SYS_ERRLIST:
+	* AcSplit/CF_CHECK_ERRNO, AcSplit/CF_CHECK_EXTERN_DATA,
+	  AcSplit/CF_SYS_ERRLIST:
 	ci-aclocal generated header
 
 	* AcSplit/CF_SYS_ERRLIST:
@@ -8472,7 +9004,9 @@
 	* AcSplit/CF_NGROUPS:
 	lynx: ac252 noted I should move an AC_DEFINE outside an AC_CACHE_CHECK
 
-	* AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_HOST, AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XSTATUS, AcSplit/CF_UTMP_UT_XTIME:
+	* AcSplit/CF_SYSV_UTMP, AcSplit/CF_UTMP_UT_HOST,
+	  AcSplit/CF_UTMP_UT_SESSION, AcSplit/CF_UTMP_UT_XSTATUS,
+	  AcSplit/CF_UTMP_UT_XTIME:
 	lynx: ac252 tells me not to require CF_UTMP
 
 	* AcSplit/CF_UTMP:
@@ -8486,7 +9020,8 @@
 
 2001-12-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_FUNC_VSSCANF, AcSplit/CF_SUBST_NCURSES_VERSION:
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_FUNC_VSSCANF,
+	  AcSplit/CF_SUBST_NCURSES_VERSION:
 	ci-aclocal generated header
 
 	* AcSplit/CF_CHECK_CACHE: fix quoting for autoconf 2.52
@@ -8645,7 +9180,8 @@
 	* AcSplit/CF_WITH_PROGRAM:
 	get rid of changequote() because it's broken in autoconf 2.50 & up (tin)
 
-	* AcSplit/CF_BUNDLED_PCRE, AcSplit/CF_DEFAULT_SHELL, AcSplit/CF_DEFINE_STRING:
+	* AcSplit/CF_BUNDLED_PCRE, AcSplit/CF_DEFAULT_SHELL,
+	  AcSplit/CF_DEFINE_STRING:
 	RCS_BASE
 
 	* AcSplit/CF_PATH_SYNTAX: allow "." as a pathname
@@ -8675,7 +9211,8 @@
 
 2001-07-15  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_TOP_SRCDIR:
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_MAKE_INCLUDE,
+	  AcSplit/CF_TOP_SRCDIR:
 	ci-aclocal generated header
 
 	* AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_TOP_SRCDIR: override CDPATH
@@ -8893,12 +9430,14 @@
 
 	* AcSplit/CF_SYSRELV: ci-aclocal generated header
 
-	* AcSplit/CF_PROG_INSTALL, AcSplit/CF_INCLUDE_PATH, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_XTERM_MODE:
+	* AcSplit/CF_PROG_INSTALL, AcSplit/CF_INCLUDE_PATH,
+	  AcSplit/CF_XTERM_MODE:
 	autoconf 2.49c breaks changequote()
 
 	* AcSplit/CF_XTERM_MODE: ci-aclocal generated header
 
-	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_STRIP_O_OPT:
+	* AcSplit/CF_PATH_SYNTAX, AcSplit/CF_SLANG_CPPFLAGS,
+	  AcSplit/CF_STRIP_O_OPT:
 	autoconf 2.49c breaks changequote()
 
 	* AcSplit/CF_STRIP_O_OPT: ci-aclocal generated header
@@ -8912,7 +9451,9 @@
 
 2001-01-29  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_UPPER:
+	* AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_VERSION,
+	  AcSplit/CF_UPPER:
 	autoconf-2.49c-breaks-changequote
 
 	* AcSplit/CF_UPPER: ci-aclocal generated header
@@ -8961,7 +9502,8 @@
 
 	* AcSplit/CF_TERMIO_AND_CURSES: ci-aclocal generated header
 
-	* AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_SOCKS5, AcSplit/CF_TERMIO_AND_CURSES, AcSplit/CF_XOPEN_CURSES:
+	* AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_SOCKS5,
+	  AcSplit/CF_XOPEN_CURSES:
 	lynx: change $CFLAGS to $CPPFLAGS
 
 	* AcSplit/CF_PDCURSES_X11: lynx: use CF_ADD_CFLAGS
@@ -9006,7 +9548,8 @@
 
 	* AcSplit/CF_PROG_EXT: split-out $CPPFLAGS for preprocessor options
 
-	* AcSplit/CF_MISSING_CHECK, AcSplit/CF_CURSES_TERMCAP, AcSplit/CF_CURSES_LIBS:
+	* AcSplit/CF_MISSING_CHECK, AcSplit/CF_CURSES_TERMCAP,
+	  AcSplit/CF_CURSES_LIBS:
 	use $CPPFLAGS for preprocessor options
 
 2000-11-03  Thomas E. Dickey  <dickey@clark.net>
@@ -9105,7 +9648,8 @@
 	add $(AUTO_SRC) dependency for install.includes
 	do a basename of install-target, in case the given $SRC is not in the current directory
 
-	* AcSplit/CF_MAKE_TAGS, AcSplit/CF_MIXEDCASE_FILENAMES, AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_TYPEOF_CHTYPE:
+	* AcSplit/CF_MAKE_TAGS, AcSplit/CF_MIXEDCASE_FILENAMES,
+	  AcSplit/CF_TYPEOF_CHTYPE:
 	ci-aclocal generated header
 
 	* AcSplit/CF_CHECK_CACHE:
@@ -9179,7 +9723,9 @@
 
 	* AcSplit/CF_BOOL_SIZE: boo! autoconf 2.49a changes meaning of AC_LANG
 
-	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_ISASCII, AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_TYPE_SIGACTION:
+	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_ISASCII,
+	  AcSplit/CF_STDCPP_LIBRARY, AcSplit/CF_STRUCT_SIGACTION,
+	  AcSplit/CF_TYPE_SIGACTION:
 	ci-aclocal generated header
 
 	* AcSplit/CF_SIZECHANGE:
@@ -9188,13 +9734,17 @@
 	* AcSplit/CF_LINK_FUNCS:
 	ncurses: autoconf 2.49a warns about AC_DEFINE within an AC_CACHE_CHECK
 
-	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_GPP_LIBRARY, AcSplit/CF_ISASCII, AcSplit/CF_LIB_RULES, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SRC_MODULES, AcSplit/CF_STDCPP_LIBRARY:
+	* AcSplit/CF_CGETENT, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_GPP_LIBRARY,
+	  AcSplit/CF_ISASCII, AcSplit/CF_LIB_RULES, AcSplit/CF_LINK_DATAONLY,
+	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_SRC_MODULES,
+	  AcSplit/CF_STDCPP_LIBRARY:
 	ncurses: quote test-parameters
 
 	* AcSplit/CF_BOOL_DECL: ncurses: quote test-parameters
 	boo! autoconf 2.49a changes meaning of AC_LANG
 
-	* AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS, AcSplit/CF_SYS_TIME_SELECT, AcSplit/CF_TYPE_SIGACTION:
+	* AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS,
+	  AcSplit/CF_TYPE_SIGACTION:
 	quote 'test' parameter
 
 2000-08-03  Thomas E. Dickey  <dickey@clark.net>
@@ -9358,7 +9908,8 @@
 
 2000-05-29  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_POSIX_WAIT, AcSplit/CF_SVR4, AcSplit/CF_SYSV, AcSplit/CF_TERMIO_C_ISPEED:
+	* AcSplit/CF_POSIX_WAIT, AcSplit/CF_SVR4, AcSplit/CF_SYSV,
+	  AcSplit/CF_TERMIO_C_ISPEED:
 	RCS_BASE
 
 	* AcSplit/CF_TTY_GROUP:
@@ -9426,7 +9977,8 @@
 
 	* AcSplit/CF_HEADER_PATH: look in $HOME, too
 
-	* AcSplit/CF_CHECK_IPV6, AcSplit/CF_FIND_IPV6_LIBS, AcSplit/CF_FIND_IPV6_TYPE, AcSplit/CF_FUNC_GETADDRINFO:
+	* AcSplit/CF_CHECK_IPV6, AcSplit/CF_FIND_IPV6_LIBS,
+	  AcSplit/CF_FUNC_GETADDRINFO:
 	RCS_BASE
 
 	* AcSplit/CF_FIND_LIBRARY:
@@ -9786,7 +10338,8 @@
 	* AcSplit/CF_CHECK_FD_SET:
 	integrate more/less with the older CF_TYPE_FD_SET
 
-	* AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE, AcSplit/CF_HEADER_SELECT:
+	* AcSplit/CF_CHECK_FD_SET, AcSplit/CF_HEADER_RESOURCE,
+	  AcSplit/CF_HEADER_SELECT:
 	RCS_BASE
 
 	* AcSplit/CF_TERMCAP_LIBS:
@@ -9889,7 +10442,9 @@
 
 	* AcSplit/CF_CHECK_FUNCDECL, AcSplit/CF_CHECK_FUNCDECLS: brackets
 
-	* AcSplit/CF_ARG_DISABLE, AcSplit/CF_ARG_ENABLE, AcSplit/CF_CHECK_FUNCDECL, AcSplit/CF_CHECK_FUNCDECLS, AcSplit/CF_EBCDIC, AcSplit/CF_INET_ADDR:
+	* AcSplit/CF_ARG_DISABLE, AcSplit/CF_ARG_ENABLE,
+	  AcSplit/CF_CHECK_FUNCDECL, AcSplit/CF_CHECK_FUNCDECLS,
+	  AcSplit/CF_INET_ADDR:
 	ci-aclocal generated header
 
 	* AcSplit/CF_CURSES_LIBS, AcSplit/CF_FIND_LIBRARY:
@@ -9993,7 +10548,8 @@
 
 	* AcSplit/AM_GNU_GETTEXT: remove the po2tbl.sed script when done
 
-	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SYSTEM_MAIL_FLAGS:
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_SLANG_CPPFLAGS,
+	  AcSplit/CF_SYSTEM_MAIL_FLAGS:
 	whitespace
 
 1998-11-16  Thomas E. Dickey  <dickey@clark.net>
@@ -10010,7 +10566,9 @@
 
 1998-11-06  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_TERMIO_AND_CURSES, AcSplit/AM_GNU_GETTEXT, AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST, AcSplit/AM_WITH_NLS:
+	* AcSplit/CF_TERMIO_AND_CURSES, AcSplit/AM_GNU_GETTEXT,
+	  AcSplit/AM_LC_MESSAGES, AcSplit/AM_PATH_PROG_WITH_TEST,
+	  AcSplit/AM_WITH_NLS:
 	RCS_BASE
 
 1998-10-17  Thomas E. Dickey  <dickey@clark.net>
@@ -10099,7 +10657,8 @@
 
 1998-07-18  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_GNAT_TRY_RUN, AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MANPAGE_RENAMES:
+	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_GNAT_TRY_RUN,
+	  AcSplit/CF_MANPAGE_RENAMES:
 	RCS_BASE
 
 	* AcSplit/CF_GNAT_TRY_RUN: ci-aclocal generated header
@@ -10151,7 +10710,8 @@
 	* AcSplit/CF_SRC_MODULES:
 	hack so HPUX gets the -L$(libdir) first, but no other systems.
 
-	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_MAN_PAGES, AcSplit/CF_SED_CONFIG_H, AcSplit/CF_SPEED_TYPE:
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_MAN_PAGES, AcSplit/CF_SED_CONFIG_H,
+	  AcSplit/CF_SPEED_TYPE:
 	trim trailing blanks
 
 1998-05-15  Thomas E. Dickey  <dickey@clark.net>
@@ -10179,7 +10739,8 @@
 	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_CURS_PERFORMANCE:
 	ci-aclocal generated header
 
-	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_FANCY_CURSES:
+	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_CURS_PERFORMANCE,
+	  AcSplit/CF_FANCY_CURSES:
 	fallback for curses.h
 
 1998-04-25  Thomas E. Dickey  <dickey@clark.net>
@@ -10209,7 +10770,8 @@
 
 	* AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PROGRAM: use AC_ERROR
 
-	* AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER, AcSplit/CF_WITH_VALUE:
+	* AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX,
+	  AcSplit/CF_WITH_VALUE:
 	use CF_ARG_WITH
 
 1998-03-21  Thomas E. Dickey  <dickey@clark.net>
@@ -10293,7 +10855,7 @@
 
 1998-02-10  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_PATH_EDITOR, AcSplit/CF_PATH_MAILBOX, AcSplit/CF_PATH_MAILER:
+	* AcSplit/CF_PATH_MAILER:
 	RCS_BASE
 
 1998-02-07  Thomas E. Dickey  <dickey@clark.net>
@@ -10485,7 +11047,8 @@
 	* AcSplit/CF_SHARED_OPTS:
 	extend the rpath option to include Solaris (-R)
 
-	* AcSplit/CF_CGETENT, AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS:
+	* AcSplit/CF_CGETENT, AcSplit/CF_STRUCT_SIGACTION,
+	  AcSplit/CF_STRUCT_TERMIOS:
 	RCS_BASE
 
 1997-11-07  Thomas E. Dickey  <dickey@clark.net>
@@ -10711,12 +11274,14 @@
 	* AcSplit/CF_SED_CONFIG_H:
 	use td_config if available to workaround problems with very long @DEFS@
 
-	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TD_TEST_MODULES:
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_TD_TEST_MAKEFILES,
+	  AcSplit/CF_TD_TEST_MODULES:
 	RCS_BASE
 
 	* AcSplit/CF_DISABLE_ECHO: SHOW_CC is only for .c.o rules
 
-	* AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MAKEFILES, AcSplit/CF_TD_TEST_MODULES:
+	* AcSplit/CF_TD_SRC_MODULES, AcSplit/CF_TD_TEST_MAKEFILES,
+	  AcSplit/CF_TD_TEST_MODULES:
 	ci-aclocal generated header
 
 	* AcSplit/CF_TD_SRC_MAKEFILES: made a workable version
@@ -10781,10 +11346,21 @@
 
 	* AcSplit/CF_FUNC_LSTAT: ci-aclocal generated header
 
-	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_DATA, AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_CURSES_STYLE, AcSplit/CF_GMTOFF, AcSplit/CF_HAVE_FUNCS, AcSplit/CF_INCLUDE_PATH, AcSplit/CF_PROGRAM_FULLPATH, AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_RCS_SCCS, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T, AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_VARARGS, AcSplit/CF_WAIT:
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_CHTYPE, AcSplit/CF_CURSES_DATA,
+	  AcSplit/CF_CURSES_FUNCS, AcSplit/CF_CURSES_MOUSE,
+	  AcSplit/CF_CURSES_STYLE, AcSplit/CF_GMTOFF, AcSplit/CF_HAVE_FUNCS,
+	  AcSplit/CF_INCLUDE_PATH, AcSplit/CF_PROGRAM_FULLPATH,
+	  AcSplit/CF_PROGRAM_PREFIX, AcSplit/CF_RCS_SCCS,
+	  AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGCMP_LIBS,
+	  AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS,
+	  AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_SIZE_T,
+	  AcSplit/CF_STAT_ST_BLOCKS, AcSplit/CF_STRUCT_SCREEN,
+	  AcSplit/CF_WAIT:
 	RCS_BASE
 
-	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_REGCMP_FUNCS, AcSplit/CF_REGCMP_LIBS, AcSplit/CF_RE_COMP_FUNCS, AcSplit/CF_STRUCT_SCREEN, AcSplit/CF_TCAP_CURSOR, AcSplit/CF_WAIT:
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_CURSES_MOUSE, AcSplit/CF_REGCMP_FUNCS,
+	  AcSplit/CF_REGCMP_LIBS, AcSplit/CF_RE_COMP_FUNCS,
+	  AcSplit/CF_WAIT:
 	ci-aclocal generated header
 
 1997-09-06  Thomas E. Dickey  <dickey@clark.net>
@@ -10792,10 +11368,19 @@
 	* AcSplit/CF_SRC_MODULES, AcSplit/CF_LIB_RULES:
 	use CF_UPPER rather than CF_UPPERCASE
 
-	* AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS, AcSplit/CF_SUBST_NCURSES_VERSION, AcSplit/CF_ADA_INCLUDE_DIRS, AcSplit/CF_BOOL_DECL, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CFG_DEFAULTS, AcSplit/CF_CXX_LIBRARY, AcSplit/CF_DIRS_TO_MAKE, AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_TYPE, AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MAN_PAGES, AcSplit/CF_OBJ_SUBDIR, AcSplit/CF_PROG_INSTALL, AcSplit/CF_SPEED_TYPE, AcSplit/CF_SRC_MODULES, AcSplit/CF_SUBST, AcSplit/CF_SYSRELV, AcSplit/CF_SYSTYPE, AcSplit/CF_TYPEOF_CHTYPE, AcSplit/CF_WIDEC_SHIFT:
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_LIB_SUFFIX, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_SUBST_NCURSES_VERSION, AcSplit/CF_ADA_INCLUDE_DIRS,
+	  AcSplit/CF_BOOL_DECL, AcSplit/CF_BOOL_SIZE, AcSplit/CF_CFG_DEFAULTS,
+	  AcSplit/CF_CXX_LIBRARY, AcSplit/CF_DIRS_TO_MAKE,
+	  AcSplit/CF_GNAT_VERSION, AcSplit/CF_INCLUDE_DIRS, AcSplit/CF_LIB_TYPE,
+	  AcSplit/CF_LINK_DATAONLY, AcSplit/CF_MAN_PAGES, AcSplit/CF_OBJ_SUBDIR,
+	  AcSplit/CF_PROG_INSTALL, AcSplit/CF_SPEED_TYPE,
+	  AcSplit/CF_SRC_MODULES, AcSplit/CF_SUBST, AcSplit/CF_SYSRELV,
+	  AcSplit/CF_WIDEC_SHIFT:
 	RCS_BASE
 
-	* AcSplit/CF_CXX_LIBRARY, AcSplit/CF_SUBST, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_MISSING_EXTERN:
+	* AcSplit/CF_CXX_LIBRARY, AcSplit/CF_SUBST, AcSplit/CF_WIDEC_SHIFT,
+	  AcSplit/CF_MISSING_EXTERN:
 	ci-aclocal generated header
 
 	* AcSplit/CF_MISSING_EXTERN: use CF_UPPER rather than CF_UPPERCASE
@@ -10813,7 +11398,9 @@
 
 	* AcSplit/CF_ANSI_CC_REQD: tested with vile 7.2
 
-	* AcSplit/CF_AC_PREREQ, AcSplit/CF_ANSI_QSORT, AcSplit/CF_CURSES_TERM_H, AcSplit/CF_MISSING_CHECK, AcSplit/CF_MISSING_EXTERN, AcSplit/CF_PREREQ_COMPARE:
+	* AcSplit/CF_AC_PREREQ, AcSplit/CF_ANSI_QSORT, AcSplit/CF_CURSES_TERM_H,
+	  AcSplit/CF_MISSING_CHECK, AcSplit/CF_MISSING_EXTERN,
+	  AcSplit/CF_PREREQ_COMPARE:
 	RCS_BASE
 
 	* AcSplit/CF_AC_PREREQ, AcSplit/CF_PREREQ_COMPARE:
@@ -10837,14 +11424,27 @@
 
 	* AcSplit/CF_GCC_ATTRIBUTES: use CF_UPPER rather than CF_UPPERCASE
 
-	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_DISABLE_ECHO, AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT, AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_IMAKE_CFLAGS, AcSplit/CF_UPPERCASE, AcSplit/CF_VERBOSE, AcSplit/CF_X_ATHENA, AcSplit/CF_X_TOOLKIT:
+	* AcSplit/CF_CHECK_CACHE, AcSplit/CF_DISABLE_ECHO,
+	  AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_TGETENT,
+	  AcSplit/CF_GCC_ATTRIBUTES, AcSplit/CF_IMAKE_CFLAGS,
+	  AcSplit/CF_UPPERCASE, AcSplit/CF_VERBOSE, AcSplit/CF_X_ATHENA,
+	  AcSplit/CF_X_TOOLKIT:
 	RCS_BASE
 
 	* AcSplit/CF_VERBOSE: ci-aclocal generated header
 
 1997-08-28  Thomas E. Dickey  <dickey@clark.net>
 
-	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS, AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_LIBS, AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_DEFINE_PROG, AcSplit/CF_FANCY_CURSES, AcSplit/CF_LOCALE, AcSplit/CF_MAKE_INCLUDE, AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NGROUPS, AcSplit/CF_PATH_PROG, AcSplit/CF_REMOVE_BROKEN, AcSplit/CF_SIZECHANGE, AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_LIBS, AcSplit/CF_STRIP_G_OPT, AcSplit/CF_STRIP_O_OPT, AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TERMCAP_LIBS, AcSplit/CF_TERMIO_AND_TERMIOS, AcSplit/CF_TTYTYPE, AcSplit/CF_UTMP:
+	* AcSplit/CF_ALT_CHAR_SET, AcSplit/CF_BOOL_DEFS,
+	  AcSplit/CF_COLOR_CURSES, AcSplit/CF_CURSES_LIBS,
+	  AcSplit/CF_CURS_PERFORMANCE, AcSplit/CF_DEFINE_PROG,
+	  AcSplit/CF_FANCY_CURSES, AcSplit/CF_LOCALE, AcSplit/CF_MAKE_INCLUDE,
+	  AcSplit/CF_NCURSES_BROKEN, AcSplit/CF_NGROUPS, AcSplit/CF_PATH_PROG,
+	  AcSplit/CF_REMOVE_BROKEN, AcSplit/CF_SIZECHANGE,
+	  AcSplit/CF_SLANG_CPPFLAGS, AcSplit/CF_SLANG_LIBS,
+	  AcSplit/CF_STRIP_G_OPT, AcSplit/CF_STRIP_O_OPT,
+	  AcSplit/CF_SYSTEM_MAIL_FLAGS, AcSplit/CF_TERMCAP_LIBS,
+	  AcSplit/CF_UTMP:
 	RCS_BASE
 
 	* AcSplit/CF_NCURSES_LIBS:
@@ -10858,10 +11458,30 @@
 
 	* AcSplit/CF_ERRNO, AcSplit/CF_SYS_ERRLIST: whitespace
 
-	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ARG_DISABLE, AcSplit/CF_ARG_ENABLE, AcSplit/CF_ARG_OPTION, AcSplit/CF_CHECK_1_DECL, AcSplit/CF_CHECK_DECL, AcSplit/CF_CHECK_NESTED_PARAMS, AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS, AcSplit/CF_ERRNO, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_GCC_WARNINGS, AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_MAKEFLAGS, AcSplit/CF_MSG_LOG, AcSplit/CF_NCURSES_CPPFLAGS, AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION, AcSplit/CF_NETLIBS, AcSplit/CF_PROG_SUM_R, AcSplit/CF_RECHECK_FUNC, AcSplit/CF_REGEX, AcSplit/CF_SET_GID_UID, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST, AcSplit/CF_SOCKS5, AcSplit/CF_SYS_ERRLIST, AcSplit/CF_SYS_NAME, AcSplit/CF_TERMIOS, AcSplit/CF_TIOCGWINSZ, AcSplit/CF_TM_GMTOFF, AcSplit/CF_TYPE_OUTCHAR, AcSplit/CF_TYPE_SIGACTION, AcSplit/CF_UNION_WAIT, AcSplit/CF_UPPER, AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PROGRAM, AcSplit/CF_WITH_VALUE:
+	* AcSplit/CF_ADD_INCDIR, AcSplit/CF_ARG_DISABLE, AcSplit/CF_ARG_ENABLE,
+	  AcSplit/CF_ARG_OPTION, AcSplit/CF_CHECK_1_DECL, AcSplit/CF_CHECK_DECL,
+	  AcSplit/CF_CHECK_NESTED_PARAMS, AcSplit/CF_COMPTYPE,
+	  AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS,
+	  AcSplit/CF_ERRNO, AcSplit/CF_FIND_LIBRARY, AcSplit/CF_FUNC_FORK,
+	  AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_GCC_WARNINGS,
+	  AcSplit/CF_HEADER_PATH, AcSplit/CF_LIBRARY_PATH, AcSplit/CF_MAKEFLAGS,
+	  AcSplit/CF_MSG_LOG, AcSplit/CF_NCURSES_CPPFLAGS,
+	  AcSplit/CF_NCURSES_LIBS, AcSplit/CF_NCURSES_VERSION,
+	  AcSplit/CF_NETLIBS, AcSplit/CF_PROG_SUM_R, AcSplit/CF_RECHECK_FUNC,
+	  AcSplit/CF_REGEX, AcSplit/CF_SET_GID_UID, AcSplit/CF_SIG_ARGS,
+	  AcSplit/CF_SIG_CONST, AcSplit/CF_SOCKS5, AcSplit/CF_SYS_ERRLIST,
+	  AcSplit/CF_SYS_NAME, AcSplit/CF_TERMIOS, AcSplit/CF_TIOCGWINSZ,
+	  AcSplit/CF_TM_GMTOFF, AcSplit/CF_TYPE_OUTCHAR,
+	  AcSplit/CF_TYPE_SIGACTION, AcSplit/CF_UNION_WAIT, AcSplit/CF_UPPER,
+	  AcSplit/CF_WITH_DFTENV, AcSplit/CF_WITH_PATH, AcSplit/CF_WITH_PROGRAM,
+	  AcSplit/CF_WITH_VALUE:
 	RCS_BASE
 
-	* AcSplit/CF_CHECK_DECL, AcSplit/CF_CHECK_NESTED_PARAMS, AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS, AcSplit/CF_FUNC_FORK, AcSplit/CF_PROG_SUM_R, AcSplit/CF_SET_GID_UID, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST, AcSplit/CF_SYS_NAME, AcSplit/CF_TERMIOS, AcSplit/CF_TM_GMTOFF:
+	* AcSplit/CF_CHECK_DECL, AcSplit/CF_CHECK_NESTED_PARAMS,
+	  AcSplit/CF_COMPTYPE, AcSplit/CF_COREFILE, AcSplit/CF_CPP_CONCATS,
+	  AcSplit/CF_CPP_EXPANDS, AcSplit/CF_FUNC_FORK, AcSplit/CF_PROG_SUM_R,
+	  AcSplit/CF_SET_GID_UID, AcSplit/CF_SIG_ARGS, AcSplit/CF_SIG_CONST,
+	  AcSplit/CF_TM_GMTOFF:
 	ci-aclocal generated header
 
 1997-05-16  Thomas E. Dickey  <dickey@clark.net>
