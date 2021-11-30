@@ -1,3 +1,48 @@
+2021-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2021-11-30
+	    From: Andreas F. Borchert <github@andreas-borchert.de>
+	    config.guess: x86_64-pc-solaris2.11 is not properly recognized
+
+	    config.guess guesses Solaris 11 to run on a 32-bit platform
+	    despite Solaris 11 no longer supporting any 32-bit platform.
+
+	    See the following code at lines 434 to 445:
+
+	    | SUN_ARCH=i386
+	    | # If there is a compiler, see if it is configured for 64-bit objects.
+	    | # Note that the Sun cc does not turn __LP64__ into 1 like gcc does.
+	    | # This test works for both compilers.
+	    | if test "$CC_FOR_BUILD" != no_compiler_found; then
+	    |     if (echo '#ifdef __amd64'; echo IS_64BIT_ARCH; echo '#endif') | \
+	    |         (CCOPTS="" $CC_FOR_BUILD -E - 2>/dev/null) | \
+	    |         grep IS_64BIT_ARCH >/dev/null
+	    |     then
+	    |         SUN_ARCH=x86_64
+	    |     fi
+	    | fi
+
+	    If "cc" is installed, i.e. the Oracle Studio compiler, this one is
+	    chosen for $CC_FOR_BUILD.  This compiler, the gcc provided by Oracle
+	    and also gcc bootstrapped from sources on that platform with a default
+	    configuration will by default generate 32-bit binaries -- even on
+	    a 64-bit platform.  And __amd64 will not be defined for compilations
+	    targeting a 32-bit platform.  This is different from the corresponding
+	    behaviour on GNU/Linux systems where the local platform is targeted by
+	    default.
+
+	    Thus, as long as you do not add "-m64" or if you have a custom-built
+	    gcc which defaults to 64 bit, you will get 32-bit binaries on Solaris
+	    despite living on a 64-bit platform.
+
+	    * config.guess (i86pc:SunOS:5.*:* || i86xen:SunOS:5.*:*): Adapt the
+	    test by adding the "-m64" flag.  This will work properly for Solaris
+	    10 as well (the last Solaris release that supported x86 32-bit
+	    platforms).
+	    * doc/config.guess.1: Regenerate.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-11-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NO_LEAKS:
