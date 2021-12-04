@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20211130
+MANIFEST for my-autoconf, version t20211204
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -183,6 +183,7 @@ AcSplit/CF_FUNC_DLSYM           test for dlsym()
 AcSplit/CF_FUNC_FORK            check for working 'fork()'
 AcSplit/CF_FUNC_GETADDRINFO     look for getaddrinfo(), for IPV6
 AcSplit/CF_FUNC_GETOPT          portability-checks for getopt()
+AcSplit/CF_FUNC_GETTTYNAM       check for getttynam and related text-file in /etc
 AcSplit/CF_FUNC_GRANTPT         check for pty functions (grantpt, openpty)
 AcSplit/CF_FUNC_ICONV           macro to check for iconv() function and related definitions.
 AcSplit/CF_FUNC_LSTAT           check for lstat() function mis-inlined (td_lib)
