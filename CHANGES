@@ -1,3 +1,7 @@
+2021-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GETTTYNAM: ci-aclocal generated header
+
 2021-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2021-11-30
