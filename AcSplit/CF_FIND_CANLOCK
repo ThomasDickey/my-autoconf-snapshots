@@ -1,4 +1,4 @@
-dnl CF_FIND_CANLOCK version: 1 updated: 2020/01/09 20:03:25
+dnl CF_FIND_CANLOCK version: 2 updated: 2021/12/13 19:52:28
 dnl ---------------
 dnl Look for CANLOCK, to use instead of a bundled copy of CANLOCK.
 dnl
@@ -13,7 +13,7 @@ cf_save_CFLAGS="$CFLAGS"
 cf_save_LIBS="$LIBS"
 cf_find_CANLOCK=yes
 
-CF_TRY_PKG_CONFIG(libcanlock3,,[
+CF_TRY_PKG_CONFIG(libcanlock-3,,[
 	CF_TRY_PKG_CONFIG(libcanlock,,[
 		cf_pkgconfig_incs=
 		cf_pkgconfig_libs=
