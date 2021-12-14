@@ -1,3 +1,21 @@
+2021-12-13  michael.baeuerle
+
+	* AcSplit/CF_FIND_CANLOCK:
+	amend package-name to match that released in libcanlock 3.2.0 (May 18, 2020)
+
+2021-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-10-27
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.sub: fix typo in timestamp
+
+	    * config.sub: Fix timestamp.
+	    * doc/config.sub.1: Regenerate.
+
+	    Reported-by: Jordi Sanfeliu <jordi@fibranet.cat>
+	    Fixes: a013aac61edfa2a03727521508286480010e7bf3
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2021-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GETTTYNAM: ci-aclocal generated header
