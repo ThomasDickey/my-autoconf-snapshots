@@ -1,3 +1,9 @@
+2021-12-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIX_WARNINGS:
+	package-fix for cdk-perl: suppress the fixup for -Werror=format,
+	e.g., -Werror=format-security
+
 2021-12-13  michael.baeuerle
 
 	* AcSplit/CF_FIND_CANLOCK:
