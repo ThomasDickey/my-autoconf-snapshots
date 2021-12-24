@@ -1,3 +1,19 @@
+2021-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-12-24
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.sub: alias aarch64le to aarch64
+
+	    Apparently, QNX reports aarch64 as aarch64le on little-endian machines.
+
+	    * config.sub (aarch64le-*): Set cpu to aarch64.
+	    (timestamp): Update.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (aarch64le-qnx): New test.
+
+	    Reported-by: Elad Lahav <e2lahav@gmail.com>
+	    Link: https://lists.gnu.org/archive/html/config-patches/2021-12/msg00009.html
+
 2021-12-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIX_WARNINGS:
