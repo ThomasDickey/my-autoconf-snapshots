@@ -1,3 +1,16 @@
+2021-12-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2021-12-25
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.sub: alias armh to armv7l
+
+	    ALT uses armh as an alias for armv7l-alt-linux-gnueabihf since 2012.
+
+	    * config.sub (armh-unknown|armh-alt): Set cpu, vendor, and basic_os.
+	    (timestamp): Update.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (armh, armh-alt-linux-gnueabihf): New tests.
+
 2021-12-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-12-24
