@@ -1,3 +1,16 @@
+2022-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2022-01-01
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    Update copyright years
+
+	    * config.guess: Update copyright years.
+	    * config.sub: Likewise.
+	    * testsuite/config-guess.sh: Likewise.
+	    * testsuite/config-sub.sh: Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+
 2021-12-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2021-12-25
