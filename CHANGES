@@ -1,3 +1,16 @@
+2022-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2022-01-09
+	    From: Idan Horowitz <idan.horowitz@gmail.com>
+	    config.guess: recognize SerenityOS
+
+	    * config.guess (*:SerenityOS:*:*): Recognize.
+	    (timestamp): Update.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data: Add test case for SerenityOS.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2022-01-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2022-01-03
