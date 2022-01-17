@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20220109
+MANIFEST for my-autoconf, version t20220117
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -264,6 +264,7 @@ AcSplit/CF_LINK_DATAONLY        test for linker that doesn't link data-only refe
 AcSplit/CF_LINK_FUNCS           macro to check for working link/symlink
 AcSplit/CF_LINK_PREFIX          optional feature for stripping unneeded libs
 AcSplit/CF_LOCALE               check if we have locale stuff
+AcSplit/CF_LOCALECONV           check for working localeconv function
 AcSplit/CF_LOCKFILE             check for file-locking functions (tin).
 AcSplit/CF_MAIN_RETURN          check whether return/exit should be used in test-programs.
 AcSplit/CF_MAKEFLAGS            check for MAKEFLAGS vs MFLAGS

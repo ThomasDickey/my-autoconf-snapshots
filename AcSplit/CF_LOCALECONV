@@ -1,0 +1,17 @@
+dnl CF_LOCALECONV version: 1 updated: 2022/01/17 07:50:12
+dnl -------------
+dnl Check for localeconv, which should at a minimum support numbers.
+AC_DEFUN([CF_LOCALECONV],[
+AC_REQUIRE([CF_LOCALE])
+AC_CACHE_CHECK(for localeconv function,cf_cv_have_localeconv,[
+AC_TRY_LINK([
+#include <stdlib.h>
+#include <locale.h>],
+	[struct lconv *foo = localeconv();
+	 if (foo->decimal_point && foo->thousands_sep)
+	 exit(0)],
+	[cf_cv_have_localeconv=yes],
+	[cf_cv_have_localeconv=no])
+	])
+test "$cf_cv_have_localeconv" = yes && { ifelse($1,,AC_DEFINE(HAVE_LOCALECONV,1,[Define to 1 if we have localeconv support]),[$1]) }
+])dnl
