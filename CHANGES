@@ -1,3 +1,7 @@
+2022-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ABI_DEFAULTS: initial changes for ncurses ABI 7
+
 2022-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS:
