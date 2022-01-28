@@ -1,3 +1,8 @@
+2022-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_WITH_NLS:
+	amend to work with the intl library bundled with tin 2.6.1
+
 2022-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ABI_DEFAULTS: initial changes for ncurses ABI 7
