@@ -1,3 +1,9 @@
+2022-01-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_WITH_NLS:
+	byacc's support for --version is recent (2021/08/02), but both byacc/bison
+	accept "-V" (report by Urs Janßen).
+
 2022-01-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_WITH_NLS:
