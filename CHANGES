@@ -1,3 +1,9 @@
+2022-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	handle the case when either $PKG_CONFIG_LIBDIR or the option value has a
+	colon-separated list of directories (report by Rudi Heitbaum).
+
 2022-01-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_WITH_NLS:
