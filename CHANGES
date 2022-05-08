@@ -1,3 +1,13 @@
+2022-05-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2022-05-08
+	    From: Bruno Haible <bruno@clisp.org>
+	    config.guess (x86_64:Linux:*:*): Detect 32-bit ABI.
+
+	    * config.guess (x86_64:Linux:*:*): Test for the 32-bit ABI. Don't assume that
+	    __ILP32__ is a certain indicator for the x32 ABI; for GCC ≥ 9 it no longer is.
+	    * doc/config.guess.1: Regenerate.
+
 2022-02-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_IMAKE_CFLAGS: corrected quoting
