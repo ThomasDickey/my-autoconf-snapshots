@@ -1,3 +1,16 @@
+2022-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2022-05-25
+	    From: Alexander von Gluck IV <kallisti5@unixzen.com>
+	    config.guess: Update Haiku guesses
+
+	    * config.guess (ppc:Haiku:*:*, *:Haiku:*:*): Recognize.
+	    (timestamp): Update.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data: Add more test cases for Haiku.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2022-05-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2022-05-08
