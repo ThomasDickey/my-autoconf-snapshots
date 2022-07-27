@@ -1,3 +1,7 @@
+2022-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MATH_LIB: ensure that linking with the math-library works
+
 2022-05-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2022-05-25
