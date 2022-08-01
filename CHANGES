@@ -1,3 +1,24 @@
+2022-08-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2022-08-01
+	    From: Xiaotian Wu <wuxiaotian@loongson.cn>
+	    Remove loongarchx32
+
+	    loongarchx32 doesn't exist in the real world, so we can delete it.
+
+	    * config.guess (loongarchx32:Linux:*:*): Remove.
+	    (timestamp): Update.
+	    * config.sub (loongarchx32): Remove.
+	    (timestamp): Update.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+	    * testsuite/config-guess.data (loongarchx32): Remove.
+	    * testsuite/config-sub.data (loongarchx32, loongarchx32-elf,
+	    loongarchx32-linux, loongarchx32-loongson-elf): Likewise.
+
+	    Link: https://loongson.github.io/LoongArch-Documentation/LoongArch-toolchain-conventions-EN.html
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2022-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MATH_LIB: ensure that linking with the math-library works
