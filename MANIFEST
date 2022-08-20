@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20220801
+MANIFEST for my-autoconf, version t20220820
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -104,6 +104,7 @@ AcSplit/CF_COREFILE             see if the application can dump a core file
 AcSplit/CF_CPP_CONCATS          check if cpp can do token-concatenation
 AcSplit/CF_CPP_DOES_COMMENTS    check if C preprocessor accepts -C option
 AcSplit/CF_CPP_EXPANDS          check if cpp can expand #token
+AcSplit/CF_CPP_OVERRIDE         check if c++ compiler supports override
 AcSplit/CF_CPP_PARAM_INIT       check for special C++ problem with param-init
 AcSplit/CF_CPP_STATIC_CAST      configure-check for static_cast c++ (ncurses)
 AcSplit/CF_CPP_VSCAN_FUNC       check for C++ usable vscan function (ncurses)
