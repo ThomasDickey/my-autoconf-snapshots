@@ -1,3 +1,7 @@
+2022-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_LD_SEARCHPATH: use $LD in preference to "ld"
+
 2022-08-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CRYPT_FUNC: crypt() might return null - check for that
