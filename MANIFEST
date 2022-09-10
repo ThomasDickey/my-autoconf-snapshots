@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20220827
+MANIFEST for my-autoconf, version t20220910
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -611,4 +611,6 @@ AcSplit/CF__INTL_HEAD           test-headers for libintl lookup
 AcSplit/CF__SED_TRIMBLANKS      Trim something using sed, then trim extra whitespace
 AcSplit/CF__SSL_BODY            test-code for SSL compiles
 AcSplit/CF__SSL_HEAD            headers for SSL test-compiles
+AcSplit/CF__XOPEN_SOURCE_BODY   body of test-program for _XOPEN_SOURCE definition
+AcSplit/CF__XOPEN_SOURCE_HEAD   headers for test-program for _XOPEN_SOURCE definition
 AcSplit/jm_GLIBC21              from gettext 0.10.40 (tin)

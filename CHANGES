@@ -1,3 +1,18 @@
+2022-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__XOPEN_SOURCE_BODY, AcSplit/CF__XOPEN_SOURCE_HEAD:
+	ci-aclocal generated header
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	allow for case "linux-musl" by making the "linux*" case specific to the
+	GNU library, which lets it fall into the default case.  In that case,
+	add a check in case (as done in musl) defining _POSIX_C_SOURCE turns
+	_XOPEN_SOURCE off (and recover from that by ignoring the _POSIX_C_SOURCE
+	definition).
+
+	* AcSplit/CF_TRY_XOPEN_SOURCE:
+	split-out CF__XOPEN_SOURCE_HEAD and CF__XOPEN_SOURCE_BODY
+
 2022-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_LD_SEARCHPATH: use $LD in preference to "ld"
