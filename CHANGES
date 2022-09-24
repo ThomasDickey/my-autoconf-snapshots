@@ -1,3 +1,9 @@
+2022-09-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	check if the build-compiler actually works, which is better than just checking
+	that it is not identical to the cross-compiler.
+
 2022-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__XOPEN_SOURCE_BODY, AcSplit/CF__XOPEN_SOURCE_HEAD:
