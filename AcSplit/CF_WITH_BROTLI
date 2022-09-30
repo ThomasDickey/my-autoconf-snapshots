@@ -1,0 +1,21 @@
+dnl CF_WITH_BROTLI version: 1 updated: 2022/03/17 15:59:12
+dnl --------------
+dnl Check for Brotli decoder library
+dnl
+dnl $1 = optional path for headers/library
+AC_DEFUN([CF_WITH_BROTLI],[
+  CF_ADD_OPTIONAL_PATH($1)
+
+  CF_FIND_LINKAGE([
+#include <brotli/decode.h>
+],[
+    BrotliDecoderDecompressStream(
+		NULL,	/* BrotliDecoderState* state */
+		NULL,	/* size_t* available_in */
+		NULL,	/* const uint8_t** next_in */
+		NULL,	/* size_t* available_out */
+		NULL,	/* uint8_t** next_out */
+		NULL	/* size_t* total_out */
+	);
+],brotlidec,,,brotlilib)
+])dnl
