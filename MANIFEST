@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20221002
+MANIFEST for my-autoconf, version t20221022
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -341,6 +341,7 @@ AcSplit/CF_NUMBER_SYNTAX        check if a variable is a number
 AcSplit/CF_OBJ_SUBDIR           compute the object-directory name from the model
 AcSplit/CF_OUR_MESSAGES         macro for i18n support (lynx)
 AcSplit/CF_OUTPUT_IF_CHANGED    augment AC_OUTPUT by checking if output changes
+AcSplit/CF_OUTPUT_MANPAGE_RENAMES  output for CF_MANPAGE_RENAMES
 AcSplit/CF_PATHSEP              find $PATH separator
 AcSplit/CF_PATH_EDITOR          tin script to find default-editor
 AcSplit/CF_PATH_MAILBOX         tin script to find default mailbox-directory

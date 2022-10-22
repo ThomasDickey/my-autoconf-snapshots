@@ -1,3 +1,16 @@
+2022-10-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_OUTPUT_MANPAGE_RENAMES:
+	build-fix
+
+	* AcSplit/CF_OUTPUT_MANPAGE_RENAMES: ci-aclocal generated header
+
+	* AcSplit/CF_MANPAGE_RENAMES: split-out CF_OUTPUT_MANPAGE_RENAMES
+
+	* AcSplit/CF_MANPAGE_RENAMES:
+	change man_db.renames to template, i.e., "man_db.renames.in", which is not
+	used directly during configuration.
+
 2022-10-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
