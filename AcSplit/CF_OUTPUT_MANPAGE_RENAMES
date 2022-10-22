@@ -1,0 +1,14 @@
+dnl CF_OUTPUT_MANPAGE_RENAMES version: 2 updated: 2022/10/22 19:12:31
+dnl -------------------------
+dnl This runs in the output step to config.status, after man_db.renames has
+dnl been generated.
+AC_DEFUN([CF_OUTPUT_MANPAGE_RENAMES],
+[
+AC_REQUIRE([CF_MANPAGE_RENAMES])
+if test "$MANPAGE_RENAMES" != no ; then
+	# Construct a sed-script to perform renaming within man-pages
+	test -n "$verbose" && echo "creating edit_man.sed"
+	test ! -d man && mkdir man
+	FGREP="${FGREP-grep -F}" $SHELL "$srcdir/man/make_sed.sh" "$MANPAGE_RENAMES" >./edit_man.sed
+fi
+])dnl
