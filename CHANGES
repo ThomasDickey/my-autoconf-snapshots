@@ -1,3 +1,9 @@
+2022-10-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MANPAGE_RENAMES: ignore if $MANPAGE_RENAMES is disabled
+
+	* AcSplit/CF_MAN_PAGES: defer existence-check for manpage-renames
+
 2022-10-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MANPAGE_RENAMES, AcSplit/CF_OUTPUT_MANPAGE_RENAMES:
