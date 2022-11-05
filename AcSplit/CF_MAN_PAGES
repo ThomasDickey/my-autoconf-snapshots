@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 53 updated: 2022/10/23 07:30:26
+dnl CF_MAN_PAGES version: 54 updated: 2022/11/05 16:12:11
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -36,16 +36,27 @@ test ! -d man && mkdir man
 
 cf_so_strip=
 cf_compress=
-case "$MANPAGE_FORMAT" in
-(*compress*)
+for cf_manpage_format in $MANPAGE_FORMAT
+do
+case "$cf_manpage_format" in
+(compress)
 	cf_so_strip="Z"
 	cf_compress=compress
 	;;
-(*gzip*)
+(gzip)
 	cf_so_strip="gz"
 	cf_compress=gzip
 	;;
+(bzip2)
+	cf_so_strip="bz2"
+	cf_compress=bzip2
+	;;
+(xz)
+	cf_so_strip="xz"
+	cf_compress=xz
+	;;
 esac
+done
 
 cf_edit_man=./edit_man.sh
 cf_man_alias=`pwd`/man_alias.sed

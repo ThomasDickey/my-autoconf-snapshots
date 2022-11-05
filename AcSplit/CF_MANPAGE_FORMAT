@@ -1,10 +1,13 @@
-dnl CF_MANPAGE_FORMAT version: 15 updated: 2021/09/04 06:35:04
+dnl CF_MANPAGE_FORMAT version: 16 updated: 2022/11/05 16:12:11
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
 dnl
-dnl	gzip - man checks for, can display gzip'd files
 dnl	compress - man checks for, can display compressed files
+dnl	bzip2 - man checks for, can display bzip2'd files
+dnl	gzip - man checks for, can display gzip'd files
+dnl	xz - man checks for, can display xz'd files
+dnl
 dnl	BSDI - files in the cat-directories are suffixed ".0"
 dnl	formatted - installer should format (put files in cat-directory)
 dnl	catonly - installer should only format, e.g., for a turnkey system.
@@ -18,8 +21,9 @@ AC_REQUIRE([CF_PATHSEP])
 AC_MSG_CHECKING(format of man-pages)
 
 AC_ARG_WITH(manpage-format,
-	[  --with-manpage-format   specify manpage-format: gzip/compress/BSDI/normal and
-                          optionally formatted/catonly, e.g., gzip,formatted],
+	[  --with-manpage-format   specify manpage-format: gzip/compress/bzip2/xz,
+                          BSDI/normal and optionally formatted/catonly,
+                          e.g., gzip,formatted],
 	[MANPAGE_FORMAT=$withval],
 	[MANPAGE_FORMAT=unknown])
 
@@ -49,10 +53,12 @@ case "$MANPAGE_FORMAT" in
 			if test "x$cf_test" = "x$cf_name" ; then
 
 				case "$cf_name" in
-				(*.gz) MANPAGE_FORMAT="$MANPAGE_FORMAT gzip";;
-				(*.Z)  MANPAGE_FORMAT="$MANPAGE_FORMAT compress";;
-				(*.0)  MANPAGE_FORMAT="$MANPAGE_FORMAT BSDI";;
-				(*)    MANPAGE_FORMAT="$MANPAGE_FORMAT normal";;
+				(*.bz2) MANPAGE_FORMAT="$MANPAGE_FORMAT bzip2";;
+				(*.xz)  MANPAGE_FORMAT="$MANPAGE_FORMAT xz";;
+				(*.gz)  MANPAGE_FORMAT="$MANPAGE_FORMAT gzip";;
+				(*.Z)   MANPAGE_FORMAT="$MANPAGE_FORMAT compress";;
+				(*.0)   MANPAGE_FORMAT="$MANPAGE_FORMAT BSDI";;
+				(*)     MANPAGE_FORMAT="$MANPAGE_FORMAT normal";;
 				esac
 
 				case "$cf_name" in
@@ -91,7 +97,7 @@ case "$MANPAGE_FORMAT" in
 (*)
 	for cf_option in $MANPAGE_FORMAT; do
 	case "$cf_option" in
-	(gzip|compress|BSDI|normal|formatted|catonly)
+	(xz|bzip2|gzip|compress|BSDI|normal|formatted|catonly)
 		;;
 	(*)
 		cf_unknown="$cf_unknown $cf_option"
