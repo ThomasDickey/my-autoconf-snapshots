@@ -1,3 +1,8 @@
+2022-11-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_OPT_RDYNAMIC:
+	some configurations of clang support -rdynamic; allow but still warn.
+
 2022-11-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MANPAGE_FORMAT, AcSplit/CF_MAN_PAGES:
