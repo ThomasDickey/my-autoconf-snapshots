@@ -1,4 +1,4 @@
-dnl CF_TERMCAP_LIBS version: 15 updated: 2015/04/15 19:08:48
+dnl CF_TERMCAP_LIBS version: 16 updated: 2022/12/02 20:06:52
 dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 dnl
@@ -7,8 +7,8 @@ AC_DEFUN([CF_TERMCAP_LIBS],
 [
 AC_CACHE_VAL(cf_cv_termlib,[
 cf_cv_termlib=none
-AC_TRY_LINK([],[char *x=(char*)tgoto("",0,0)],
-[AC_TRY_LINK([],[int x=tigetstr("")],
+AC_TRY_LINK([extern char *tgoto(const char*,int,int);],[char *x=tgoto("",0,0)],
+[AC_TRY_LINK([extern char *tigetstr(const char *)],[char *x=tigetstr("")],
 	[cf_cv_termlib=terminfo],
 	[cf_cv_termlib=termcap])
 	CF_VERBOSE(using functions in predefined $cf_cv_termlib LIBS)
