@@ -1,4 +1,4 @@
-dnl CF_TERMIO_AND_TERMIOS version: 4 updated: 2021/01/02 09:31:20
+dnl CF_TERMIO_AND_TERMIOS version: 5 updated: 2022/12/02 19:55:38
 dnl ---------------------
 dnl Check if including both termio.h and termios.h die like on DG.UX
 AC_DEFUN([CF_TERMIO_AND_TERMIOS],
@@ -6,6 +6,7 @@ AC_DEFUN([CF_TERMIO_AND_TERMIOS],
 AC_MSG_CHECKING([termio.h and termios.h])
 AC_CACHE_VAL(cf_cv_termio_and_termios,[
     AC_TRY_COMPILE([
+#include <stdio.h>
 #if HAVE_TERMIO_H
 #include <termio.h>
 #endif

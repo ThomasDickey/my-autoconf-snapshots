@@ -1,3 +1,30 @@
+2022-12-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_HEADER, AcSplit/CF_CURSES_LIBS:
+	drop tgoto() from the sample code used for checking if a given header declares
+	curses functions, since the prototype for it in X/Open lives in term.h (tested
+	later in configure scripts, to resolve <term.h> vs <ncurses/term.h>, etc).
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	make the try-link checks less likely to generate compiler warnings by
+	providing a suitable prototype for tgoto() and tigetstr().  The former
+	had no header-file in BSD curses, while both (for which there are other
+	configure checks) have prototypes in term.h (AT&T / X/Open / ncurses).
+	Since we only need to check for existence, using our own prototype is okay.
+
+	* AcSplit/CF_FUNC_SIGACTION: fix a compiler-warning
+
+	* AcSplit/CF_TERMIO_AND_CURSES:
+	fix one of the Lynx-specific issues using an optional parameter
+
+	* AcSplit/CF_TERMIO_AND_TERMIOS:
+	include stdio.h, to prototype putchar (report by Florian Weimer)
+
+	* AcSplit/CF_SRAND: prefer $ac_includes_default to just stdlib.h
+
+	* AcSplit/CF_GCC_ATTRIBUTES:
+	include stdio.h to help with getting proper attributes for printflike
+
 2022-11-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_OPT_RDYNAMIC:
