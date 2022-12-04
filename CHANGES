@@ -1,3 +1,12 @@
+2022-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__INET_HEAD:
+	use $ac_includes_default to quiet implicit-function warnings with MinGW
+
+	* AcSplit/CF_BUILD_CC:
+	workaround for Lynx, which sets BUILD_CPPFLAGS to "#", commenting out part
+	of a makefile assignment.
+
 2022-12-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_HEADER, AcSplit/CF_CURSES_LIBS:
