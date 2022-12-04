@@ -1,7 +1,8 @@
-dnl CF__INET_HEAD version: 1 updated: 2013/10/08 17:47:05
+dnl CF__INET_HEAD version: 2 updated: 2022/12/04 16:36:15
 dnl -------------
 dnl Header-files needed for inet.h compile-checks
 define([CF__INET_HEAD],[
+$ac_includes_default
 #if defined(__MINGW32__)
 
 #undef WIN32_LEAN_AND_MEAN

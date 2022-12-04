@@ -1,4 +1,4 @@
-dnl CF_BUILD_CC version: 10 updated: 2022/09/24 16:36:41
+dnl CF_BUILD_CC version: 11 updated: 2022/12/04 15:40:08
 dnl -----------
 dnl If we're cross-compiling, allow the user to override the tools and their
 dnl options.  The configure script is oriented toward identifying the host
@@ -69,7 +69,9 @@ if test "$cross_compiling" = yes ; then
 	cf_save_crossed=$cross_compiling
 	cf_save_ac_link=$ac_link
 	cross_compiling=no
-	ac_link='$BUILD_CC -o "conftest$ac_exeext" $BUILD_CFLAGS $BUILD_CPPFLAGS $BUILD_LDFLAGS "conftest.$ac_ext" $BUILD_LIBS >&AS_MESSAGE_LOG_FD'
+	cf_build_cppflags=$BUILD_CPPFLAGS
+	test "$cf_build_cppflags" = "#" && cf_build_cppflags=
+	ac_link='$BUILD_CC -o "conftest$ac_exeext" $BUILD_CFLAGS $cf_build_cppflags $BUILD_LDFLAGS "conftest.$ac_ext" $BUILD_LIBS >&AS_MESSAGE_LOG_FD'
 
 	AC_TRY_RUN([#include <stdio.h>
 		int main(int argc, char *argv[])
