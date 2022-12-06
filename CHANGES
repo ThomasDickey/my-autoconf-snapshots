@@ -1,3 +1,8 @@
+2022-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FCNTL_VS_IOCTL:
+	include <sys/ioctl.h>, for systems which may define FIONREAD there (Redhat #2151353)
+
 2022-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__INET_HEAD:
