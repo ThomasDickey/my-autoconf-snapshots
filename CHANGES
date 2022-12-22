@@ -1,3 +1,33 @@
+2022-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CURSES_TERMCAP: quiet an unused-variable warning
+
+	* AcSplit/CF_TERMCAP_LIBS: quiet an implicit-function warning
+
+	* AcSplit/CF_PROG_YACC:
+	reduce prototype-related warnings by prototyping yylex/yyerror with the most
+	common signature used in byacc/bison, which works with heirloom yacc.
+
+	* AcSplit/CF_TIOCGWINSZ, AcSplit/CF_SIG_CONST: use prototype for main()
+
+	* AcSplit/CF_FUNC_SYSTEM:
+	fixes for implicit function (adapted from patch by Florian Weimer)
+
+	* AcSplit/CF_FUNC_SYSTEM: use prototype for main()
+
+	* AcSplit/CF_FUNC_FORK:
+	fixes for implicit function (adapted from patch by Florian Weimer)
+
+	* AcSplit/CF_FUNC_FORK: use $ac_includes_default for consistency
+
+	* AcSplit/CF_COREFILE:
+	fixes for implicit function (adapted from patch by Florian Weimer)
+
+	* AcSplit/CF_COREFILE: use $ac_includes_default, for consistency
+
+	* AcSplit/CF_COREFILE, AcSplit/CF_FUNC_FORK, AcSplit/CF_FUNC_SYSTEM:
+	compiler-warning fixes from Florian Weimer forwarded by Urs
+
 2022-12-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FCNTL_VS_IOCTL:

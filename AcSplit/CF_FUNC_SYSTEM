@@ -1,4 +1,4 @@
-dnl CF_FUNC_SYSTEM version: 6 updated: 2019/12/31 20:39:42
+dnl CF_FUNC_SYSTEM version: 7 updated: 2022/12/21 18:52:11
 dnl --------------
 dnl Check if the 'system()' function returns a usable status, or if not, try
 dnl to use the status returned by a SIGCHLD.
@@ -8,7 +8,8 @@ AC_REQUIRE([CF_UNION_WAIT])
 AC_MSG_CHECKING(if the system function returns usable child-status)
 AC_CACHE_VAL(cf_cv_system_status,[
 	AC_TRY_RUN([
-#include <stdio.h>
+$ac_includes_default
+
 #include <signal.h>
 #if HAVE_SYS_WAIT_H
 #include <sys/wait.h>
@@ -27,7 +28,7 @@ RETSIGTYPE signal_handler (int sig)
 	${cf_cv_main_return:-return}(system_status != 23);
 }
 
-int main()
+int main(void)
 {
 	/* this looks weird, but apparently the SIGCHLD gets there first on
 	 * machines where 'system()' doesn't return a usable code, so ...
@@ -38,8 +39,10 @@ int main()
 }
 ],
 	[cf_cv_system_status=no],
-	[AC_TRY_RUN(
-	[int main() { ${cf_cv_main_return:-return}(system("exit 23") != (23 << 8)); }],
+	[AC_TRY_RUN([
+$ac_includes_default
+
+int main(void) { ${cf_cv_main_return:-return}(system("exit 23") != (23 << 8)); }],
 	[cf_cv_system_status=yes],
 	[cf_cv_system_status=unknown],
 	[cf_cv_system_status=unknown])],

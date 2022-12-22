@@ -6,7 +6,8 @@ AC_DEFUN([CF_FUNC_FORK],
 [AC_MSG_CHECKING([for fork])
 AC_CACHE_VAL(cf_cv_func_fork,[
 AC_TRY_RUN([
-int main()
+$ac_includes_default
+int main(void)
 {
 	if (fork() < 0)
 		${cf_cv_main_return:-return}(1);

@@ -1,4 +1,4 @@
-dnl CF_SIG_CONST version: 5 updated: 2019/12/31 20:39:42
+dnl CF_SIG_CONST version: 6 updated: 2022/12/21 18:53:00
 dnl ------------
 dnl Check for systems where the special signal constants aren't prototyped
 dnl (there's a lot of them, and the compiler can generate a lot of warning
@@ -18,7 +18,7 @@ if test -n "$cf_cv_sig_args"; then
 
 #include <signal.h>
 
-int main()
+int main(void)
 {
 	if (NEW_DFL != SIG_DFL
 	 || NEW_IGN != SIG_IGN
