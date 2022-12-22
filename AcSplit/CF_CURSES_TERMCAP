@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERMCAP version: 12 updated: 2015/05/15 19:42:24
+dnl CF_CURSES_TERMCAP version: 13 updated: 2022/12/21 19:46:38
 dnl -----------------
 dnl Check if we should include <curses.h> to pick up prototypes for termcap
 dnl functions.  On terminfo systems, these are normally declared in <curses.h>,
@@ -26,7 +26,7 @@ do
 
     AC_TRY_LINK([/* $cf_c_opts $cf_t_opts */
 $CHECK_DECL_HDRS],
-	[char *x = (char *)tgoto("")],
+	[char *x = (char *)tgoto(""); (void)x],
 	[test "$cf_cv_need_curses_h" = no && {
 	     cf_cv_need_curses_h=maybe
 	     cf_ok_c_opts=$cf_c_opts
@@ -35,7 +35,7 @@ $CHECK_DECL_HDRS],
 	[echo "Recompiling with corrected call (C:$cf_c_opts, T:$cf_t_opts)" >&AC_FD_CC
 	AC_TRY_LINK([
 $CHECK_DECL_HDRS],
-	[char *x = (char *)tgoto("",0,0)],
+	[char *x = (char *)tgoto("",0,0); (void)x],
 	[cf_cv_need_curses_h=yes
 	 cf_ok_c_opts=$cf_c_opts
 	 cf_ok_t_opts=$cf_t_opts])])

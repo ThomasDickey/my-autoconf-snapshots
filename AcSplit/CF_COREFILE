@@ -6,10 +6,12 @@ AC_DEFUN([CF_COREFILE],
 AC_MSG_CHECKING([if application can dump core])
 AC_CACHE_VAL(cf_cv_corefile,[
 	AC_TRY_RUN([
+$ac_includes_default
 #include <signal.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-int found()
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif
+int found(void)
 {
 	struct stat sb;
 	return ((stat("core", &sb) == 0			/* UNIX */
@@ -17,7 +19,7 @@ int found()
 		)
 		&& ((sb.st_mode & S_IFMT) == S_IFREG));
 }
-int main()
+int main(void)
 {
 #ifdef __amiga__
 /* Nicholas d'Alterio (nagd@ic.ac.uk) reports that the check for ability to

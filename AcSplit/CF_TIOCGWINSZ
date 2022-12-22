@@ -1,4 +1,4 @@
-dnl CF_TIOCGWINSZ version: 6 updated: 2019/12/31 20:39:42
+dnl CF_TIOCGWINSZ version: 7 updated: 2022/12/21 18:53:11
 dnl -------------
 dnl On some systems ioctl(fd, TIOCGWINSZ, &size) will always return {0,0} until
 dnl ioctl(fd, TIOCSWINSZ, &size) is called to explicitly set the size of the
@@ -17,7 +17,7 @@ AC_CACHE_VAL(cf_cv_use_tiocgwinsz,[
 	CFLAGS="$CFLAGS -D__CPROTO__ $CHECK_DECL_FLAG"
 	AC_TRY_RUN([
 $CHECK_DECL_HDRS
-int main()
+int main(void)
 {
 	int fd;
 	for (fd = 0; fd <= 2; fd++) {	/* try in/out/err in case redirected */
