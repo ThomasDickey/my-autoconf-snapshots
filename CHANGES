@@ -1,3 +1,9 @@
+2022-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	amend the test for conflict between _XOPEN_SOURCE and _POSIX_C_SOURCE to
+	allow for the former to be undefined because unneeded.
+
 2022-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_TERMCAP: quiet an unused-variable warning
