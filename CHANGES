@@ -1,3 +1,14 @@
+2022-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_TDLIB:
+	add explicit check for "td" subdir of library-directory
+
+	* AcSplit/CF_FIND_TDLIB:
+	correct sed command for configuration without subdirs, which omitted a '/'
+	quote result $cf_td_lib_rules in test, in case it is empty
+
+	* AcSplit/CF_ALL_MAKEFILES: fix misspelled cache-variable name
+
 2022-12-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
