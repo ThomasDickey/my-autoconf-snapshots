@@ -1,4 +1,4 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 9 updated: 2020/09/08 19:32:19
+dnl CF_RESTARTABLE_PIPEREAD version: 10 updated: 2023/01/04 18:06:18
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
@@ -19,6 +19,9 @@ AC_TRY_RUN(
 #endif
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef HAVE_SYS_WAIT_H
+#include <sys/wait.h>
 #endif
 #include <sys/types.h>
 #include <signal.h>
