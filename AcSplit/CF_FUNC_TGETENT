@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 23 updated: 2020/06/02 20:17:00
+dnl CF_FUNC_TGETENT version: 24 updated: 2023/01/05 18:52:37
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -68,7 +68,10 @@ for cf_termlib in '' $cf_TERMLIB ; do
 	AC_TRY_RUN([
 #ifdef HAVE_TERMCAP_H
 #include <termcap.h>
+#else
+extern int tgetent(char *, const char *);
 #endif
+
 /* terminfo implementations ignore the buffer argument, making it useless for
  * the xterm application, which uses this information to make a new TERMCAP
  * environment variable.

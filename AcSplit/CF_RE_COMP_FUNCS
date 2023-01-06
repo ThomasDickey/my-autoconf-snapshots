@@ -1,4 +1,4 @@
-dnl CF_RE_COMP_FUNCS version: 6 updated: 2021/01/10 18:23:00
+dnl CF_RE_COMP_FUNCS version: 7 updated: 2023/01/05 18:55:20
 dnl ----------------
 dnl Tests for the presence of re_comp/re_exec functions (no include-file?)
 AC_DEFUN([CF_RE_COMP_FUNCS],
@@ -6,8 +6,9 @@ AC_DEFUN([CF_RE_COMP_FUNCS],
 AC_MSG_CHECKING(re_comp/re_exec functions)
 AC_CACHE_VAL(cf_cv_RE_COMP_func,[
 	AC_TRY_RUN([
-		int main() {
-		extern char *re_comp();
+extern char *re_comp(char *);
+int main(void)
+{
 		char *e;
 		char *p = "foo";
 		char *s = "foobar";
@@ -15,7 +16,7 @@ AC_CACHE_VAL(cf_cv_RE_COMP_func,[
 		 || re_exec(s) <= 0)
 		 	${cf_cv_main_return:-return}(1);
 		${cf_cv_main_return:-return}(0);
-	}
+}
 	],
 	[cf_cv_RE_COMP_func=yes],
 	[cf_cv_RE_COMP_func=no],

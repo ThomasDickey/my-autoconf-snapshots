@@ -1,4 +1,4 @@
-dnl CF_FOPEN_BIN_R version: 2 updated: 2019/12/31 08:53:54
+dnl CF_FOPEN_BIN_R version: 3 updated: 2023/01/05 18:05:46
 dnl --------------
 dnl Check if fopen works when the "b" (binary) flag is added to the mode
 dnl parameter.  POSIX ignores the "b", which c89 specified.  Some very old
@@ -6,8 +6,10 @@ dnl systems do not accept it.
 AC_DEFUN([CF_FOPEN_BIN_R],[
 AC_CACHE_CHECK(if fopen accepts explicit binary mode,cf_cv_fopen_bin_r,[
 	AC_TRY_RUN([
-#include <stdio.h>
-int main(void) {
+$ac_includes_default
+
+int main(void)
+{
 	FILE *fp = fopen("conftest.tmp", "wb");
 	int rc = 0;
 	if (fp != 0) {

@@ -1,4 +1,4 @@
-dnl CF_POSIX_WAIT version: 4 updated: 2020/03/10 18:53:47
+dnl CF_POSIX_WAIT version: 5 updated: 2023/01/05 19:26:07
 dnl -------------
 dnl Check for POSIX wait support
 AC_DEFUN([CF_POSIX_WAIT],
@@ -6,9 +6,8 @@ AC_DEFUN([CF_POSIX_WAIT],
 AC_REQUIRE([AC_HEADER_SYS_WAIT])
 AC_CACHE_CHECK(for POSIX wait functions,cf_cv_posix_wait,[
 AC_TRY_LINK([
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/types.h>
+$ac_includes_default
+
 #ifdef HAVE_SYS_WAIT_H
 #include <sys/wait.h>
 #endif

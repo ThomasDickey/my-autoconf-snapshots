@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 9 updated: 2020/03/10 18:53:47
+dnl CF_POSIX_SAVED_IDS version: 10 updated: 2023/01/05 17:53:42
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -32,10 +32,8 @@ make an error
 ],[cf_cv_posix_saved_ids=yes
 ],[
 AC_TRY_RUN([
-#ifdef HAVE_STDLIB_H
-#include <stdlib.h>
-#endif
-#include <unistd.h>
+$ac_includes_default
+
 int main(void)
 {
 	void *p = (void *) seteuid;

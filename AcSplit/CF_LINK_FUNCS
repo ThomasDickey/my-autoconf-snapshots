@@ -1,4 +1,4 @@
-dnl CF_LINK_FUNCS version: 11 updated: 2021/04/18 14:08:47
+dnl CF_LINK_FUNCS version: 12 updated: 2023/01/05 17:51:41
 dnl -------------
 dnl Most Unix systems have both link and symlink, a few don't have symlink.
 dnl A few non-Unix systems implement symlink, but not link.
@@ -24,12 +24,8 @@ else
 		cf_cv_link_funcs=
 		for cf_func in link symlink ; do
 			AC_TRY_RUN([
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
+$ac_includes_default
+
 int main(void)
 {
 	int fail = 0;

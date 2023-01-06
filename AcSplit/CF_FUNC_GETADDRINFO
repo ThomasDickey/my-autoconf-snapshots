@@ -1,12 +1,12 @@
-dnl CF_FUNC_GETADDRINFO version: 9 updated: 2017/05/10 18:31:29
+dnl CF_FUNC_GETADDRINFO version: 10 updated: 2023/01/05 18:06:22
 dnl -------------------
 dnl Look for a working version of getaddrinfo(), for IPV6 support.
 AC_DEFUN([CF_FUNC_GETADDRINFO],[
 AC_CACHE_CHECK(working getaddrinfo, cf_cv_getaddrinfo,[
 AC_TRY_RUN([
-#include <sys/types.h>
+$ac_includes_default
+
 #include <netdb.h>
-#include <string.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 

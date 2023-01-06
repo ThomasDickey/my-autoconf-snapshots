@@ -1,11 +1,12 @@
-dnl CF_FUNC_NANOSLEEP version: 5 updated: 2017/01/21 11:06:25
+dnl CF_FUNC_NANOSLEEP version: 6 updated: 2023/01/05 18:51:33
 dnl -----------------
 dnl Check for existence of workable nanosleep() function.  Some systems, e.g.,
 dnl AIX 4.x, provide a non-working version.
 AC_DEFUN([CF_FUNC_NANOSLEEP],[
 AC_CACHE_CHECK(if nanosleep really works,cf_cv_func_nanosleep,[
 AC_TRY_RUN([
-#include <stdio.h>
+$ac_includes_default
+
 #include <errno.h>
 #include <time.h>
 

@@ -1,4 +1,4 @@
-dnl CF_FUNC_GETTTYNAM version: 1 updated: 2021/12/04 18:29:47
+dnl CF_FUNC_GETTTYNAM version: 2 updated: 2023/01/05 18:06:28
 dnl -----------------
 dnl Check if the 4.3BSD function getttyname exists, as well as if <ttyent.h>
 dnl defines the _PATH_TTYS symbol.  If the corresponding file exists, but the
@@ -29,8 +29,10 @@ if test $cf_cv_PATH_TTYS != no
 then
 	AC_CACHE_CHECK(if _PATH_TTYS file exists,cf_cv_have_PATH_TTYS,[
 		AC_TRY_RUN([
-#include <stdio.h>
+$ac_includes_default
+
 #include <ttyent.h>
+
 int main(void) {
 	FILE *fp = fopen(_PATH_TTYS, "r");
 	${cf_cv_main_return:-return} (fp == 0);

@@ -1,4 +1,4 @@
-dnl CF_CHECK_WCWIDTH_GRAPHICS version: 2 updated: 2021/01/02 17:09:14
+dnl CF_CHECK_WCWIDTH_GRAPHICS version: 3 updated: 2023/01/05 18:01:30
 dnl -------------------------
 dnl Most "modern" terminal emulators are based to some degree on VT100, and
 dnl should support line-drawing.  Even with Unicode.  There is a problem.
@@ -96,8 +96,9 @@ cat >conftest.in <<CF_EOF
 0x256c	large plus or crossover
 CF_EOF
 AC_TRY_RUN([
+$ac_includes_default
+
 #include <locale.h>
-#include <stdio.h>
 #include <wchar.h>
 
 #define MY_LEN 80

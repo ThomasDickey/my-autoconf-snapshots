@@ -1,4 +1,4 @@
-dnl CF_REGCMP_LIBS version: 4 updated: 2010/10/23 15:52:32
+dnl CF_REGCMP_LIBS version: 5 updated: 2023/01/05 18:57:15
 dnl --------------
 dnl Tests for the presence of regcmp/regex functions (no include-file?)
 dnl Some systems (CLIX) use <pw.h> for this purpose.  CLIX requires the -lPW,
@@ -10,14 +10,18 @@ dnl "move()" function.
 AC_DEFUN([CF_REGCMP_LIBS],
 [
 AC_TRY_RUN([
-#include <stdio.h>	/* need this for CLIX to define '__' macro */
+$ac_includes_default
+
 #if HAVE_PW_H
 #include <pw.h>		/* _must_ use prototype on CLIX */
 #endif
+
 #if HAVE_LIBGEN_H
 #include <libgen.h>	/* IRIX defines it here */
 #endif
-	int main() {
+
+int main(void)
+{
 		char *e;
 		char *p = "foo";
 		char *s = "foobar";
@@ -26,7 +30,8 @@ AC_TRY_RUN([
 		 	${cf_cv_main_return:-return}(1);
 		free(e);
 		${cf_cv_main_return:-return}(0);
-	} ],
+}
+	],
 	[cf_cv_REGCMP_func=yes],
 	[cf_cv_REGCMP_func=no],
 	[cf_cv_REGCMP_func=unknown])

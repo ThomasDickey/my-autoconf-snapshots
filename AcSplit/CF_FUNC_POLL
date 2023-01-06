@@ -1,4 +1,4 @@
-dnl CF_FUNC_POLL version: 10 updated: 2021/01/04 19:13:57
+dnl CF_FUNC_POLL version: 11 updated: 2023/01/05 18:51:40
 dnl ------------
 dnl See if the poll function really works.  Some platforms have poll(), but
 dnl it does not work for terminals or files.
@@ -6,15 +6,16 @@ AC_DEFUN([CF_FUNC_POLL],[
 tty >/dev/null 2>&1 || { AC_CHECK_FUNCS(posix_openpt) }
 AC_CACHE_CHECK(if poll really works,cf_cv_working_poll,[
 AC_TRY_RUN([
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+$ac_includes_default
+
 #include <fcntl.h>
+
 #ifdef HAVE_POLL_H
 #include <poll.h>
 #else
 #include <sys/poll.h>
 #endif
+
 int main(void) {
 	struct pollfd myfds;
 	int ret;

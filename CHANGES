@@ -1,3 +1,44 @@
+2023-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_WAIT: use $ac_includes_default
+
+	* AcSplit/CF_TD_SIG_ARGS: use prototype for main
+
+	* AcSplit/CF_REGCMP_LIBS, AcSplit/CF_POSIX_VDISABLE:
+	use $ac_includes_default
+
+	* AcSplit/CF_ANSI_CPP, AcSplit/CF_WIDEC_SHIFT, AcSplit/CF_RE_COMP_FUNCS:
+	use prototype for main
+
+	* AcSplit/CF_REGEXPR_H_FUNCS, AcSplit/CF_REGEX_H_FUNCS,
+	  AcSplit/CF_NCURSES_VERSION, AcSplit/CF_MIN_GETCCHAR, AcSplit/CF_KILLPG:
+	use $ac_includes_default
+
+	* AcSplit/CF_FUNC_TGETENT:
+	give tgetent a prototype, to help with bogus compiler warnings
+
+	* AcSplit/CF_FUNC_POLL, AcSplit/CF_FUNC_NANOSLEEP,
+	  AcSplit/CF_FUNC_MEMMOVE, AcSplit/CF_FUNC_GETTTYNAM,
+	  AcSplit/CF_FUNC_GETADDRINFO, AcSplit/CF_FUNC_CURSES_VERSION,
+	  AcSplit/CF_FOPEN_BIN_R:
+	use $ac_includes_default
+
+	* AcSplit/CF_CRYPT_FUNC:
+	use $ac_includes_default, which _may_ provide a prototype for crypt(),
+	and it may/may not agree with this one (ymmv)
+
+	* AcSplit/CF_CHECK_WCWIDTH_GRAPHICS: use $ac_includes_default
+
+	* AcSplit/CF_BROKEN_TGETENT_STATUS:
+	give tgetent a prototype, to help with bogus compiler warnings
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF__CHECK_RUN, AcSplit/CF_TYPEOF_CHTYPE,
+	  AcSplit/CF_TTY_GROUP, AcSplit/CF_SET_ERRNO, AcSplit/CF_STRUCT_LASTLOG,
+	  AcSplit/CF_RESTARTABLE_PIPEREAD, AcSplit/CF_POSIX_SAVED_IDS,
+	  AcSplit/CF_MKSTEMP, AcSplit/CF_MAWK_FIND_MAX_INT,
+	  AcSplit/CF_LINK_FUNCS, AcSplit/CF_CHECK_GETENV:
+	use $ac_includes_default
+
 2023-01-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_RESTARTABLE_PIPEREAD:

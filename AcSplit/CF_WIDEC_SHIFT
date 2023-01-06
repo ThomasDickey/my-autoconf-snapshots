@@ -1,4 +1,4 @@
-dnl CF_WIDEC_SHIFT version: 5 updated: 2015/02/10 04:10:00
+dnl CF_WIDEC_SHIFT version: 6 updated: 2023/01/05 18:56:23
 dnl --------------
 dnl Compute the shift-mask that we'll use for wide-character indices.  We use
 dnl all but the index portion of chtype for storing attributes.
@@ -9,7 +9,7 @@ AC_MSG_CHECKING([for number of bits in chtype])
 AC_CACHE_VAL(cf_cv_shift_limit,[
 	AC_TRY_RUN([
 #include <stdio.h>
-int main()
+int main(void)
 {
 	FILE *fp = fopen("cf_test.out", "w");
 	if (fp != 0) {

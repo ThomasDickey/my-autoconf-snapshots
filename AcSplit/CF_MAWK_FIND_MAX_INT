@@ -1,4 +1,4 @@
-dnl CF_MAWK_FIND_MAX_INT version: 7 updated: 2020/07/30 17:25:18
+dnl CF_MAWK_FIND_MAX_INT version: 8 updated: 2023/01/05 17:52:18
 dnl --------------------
 dnl Try to find a definition of MAX__INT from limits.h else compute.
 AC_DEFUN([CF_MAWK_FIND_MAX_INT],
@@ -8,10 +8,10 @@ else
 AC_CHECK_HEADER(values.h,cf_values_h=yes)
 	if test "x$cf_values_h" = xyes ; then
 	AC_TRY_RUN(
-[#include <values.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+[$ac_includes_default
+
+#include <values.h>
+
 int main(void)
 {   FILE *out = fopen("conftest.out", "w") ;
 	unsigned max_uint = 0;

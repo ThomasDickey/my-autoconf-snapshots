@@ -1,4 +1,4 @@
-dnl CF_BROKEN_TGETENT_STATUS version: 1 updated: 2011/08/11 06:48:05
+dnl CF_BROKEN_TGETENT_STATUS version: 2 updated: 2023/01/05 18:00:52
 dnl ------------------------
 dnl Some implementors read the (incorrect) X/Open documentation when providing
 dnl tgetent as part of the terminfo library.
@@ -14,6 +14,7 @@ AC_DEFUN([CF_BROKEN_TGETENT_STATUS],
 [
 AC_CACHE_CHECK(for broken tgetent status returned, cf_cv_status_tgetent,[
 AC_TRY_RUN([
+extern int tgetent(char *, char *);
 int main(void)
 {
 	char buffer[[1024]];

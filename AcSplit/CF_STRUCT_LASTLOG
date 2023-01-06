@@ -1,4 +1,4 @@
-dnl CF_STRUCT_LASTLOG version: 3 updated: 2020/03/10 18:53:47
+dnl CF_STRUCT_LASTLOG version: 4 updated: 2023/01/05 17:56:31
 dnl -----------------
 dnl Check for header defining struct lastlog, ensure that its .ll_time member
 dnl is compatible with time().
@@ -7,7 +7,8 @@ AC_DEFUN([CF_STRUCT_LASTLOG],
 AC_CHECK_HEADERS(lastlog.h)
 AC_CACHE_CHECK(for struct lastlog,cf_cv_struct_lastlog,[
 AC_TRY_RUN([
-#include <sys/types.h>
+$ac_includes_default
+
 #include <time.h>
 #include <lastlog.h>
 

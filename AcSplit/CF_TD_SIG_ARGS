@@ -1,4 +1,4 @@
-dnl CF_TD_SIG_ARGS version: 7 updated: 2021/01/10 18:23:00
+dnl CF_TD_SIG_ARGS version: 8 updated: 2023/01/05 18:57:38
 dnl --------------
 dnl Test for non-Posix prototype for 'signal()'
 dnl
@@ -21,13 +21,13 @@ AC_CACHE_VAL(cf_cv_sig_args,[
 #include <signal.h>
 		RETSIGTYPE (*signal(int sig, RETSIGTYPE(*func)(int sig)))(int sig2);
 		RETSIGTYPE catch(int sig) { ${cf_cv_main_return:-return}(1); }
-		main() { signal(SIGINT, catch); ${cf_cv_main_return:-return}(0); } ],
+		int main(void) { signal(SIGINT, catch); ${cf_cv_main_return:-return}(0); } ],
 		[cf_cv_sig_args=STANDARD],
 		[AC_TRY_RUN([
 #include <signal.h>
 			RETSIGTYPE (*signal(int sig, RETSIGTYPE(*func)(int sig,...)))(int sig2,...);
 			RETSIGTYPE catch(int sig, ...) { ${cf_cv_main_return:-return}(1); }
-			main() { signal(SIGINT, catch); ${cf_cv_main_return:-return}(0); } ],
+			int main(void) { signal(SIGINT, catch); ${cf_cv_main_return:-return}(0); } ],
 			[cf_cv_sig_args=VARYING],
 			[cf_cv_sig_args=UNKNOWN],
 			[cf_cv_sig_args=UNKNOWN])
@@ -53,7 +53,7 @@ then
 #include <signal.h>
 #undef  NOT
 #define NOT(s,d) ((long)(s) != (long)(d))
-				main() { ${cf_cv_main_return:-return}(NOT(SIG_IGN,1) || NOT(SIG_DFL,0) || NOT(SIG_ERR,-1)); } ],
+				int main(void) { ${cf_cv_main_return:-return}(NOT(SIG_IGN,1) || NOT(SIG_DFL,0) || NOT(SIG_ERR,-1)); } ],
 				[cf_cv_sigs_redef=yes],
 				[cf_cv_sigs_redef=no],
 				[cf_cv_sigs_redef=unknown])

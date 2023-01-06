@@ -1,4 +1,4 @@
-dnl CF_MIN_GETCCHAR version: 3 updated: 2010/10/23 15:54:49
+dnl CF_MIN_GETCCHAR version: 4 updated: 2023/01/05 18:53:43
 dnl ---------------
 dnl CF_MIN_GETCCHAR
 dnl Check whether getcchar's return value counts the trailing null in a wchar_t
@@ -6,11 +6,10 @@ dnl string, or not.  X/Open says it does, but Tru64 and Solaris do not do this.
 AC_DEFUN([CF_MIN_GETCCHAR],[
 AC_CACHE_CHECK(if getcchar counts trailing null,cf_cv_min_getcchar,[
 AC_TRY_RUN([
-#include <stdlib.h>
-#include <stdarg.h>
+$ac_includes_default
 #include <${cf_cv_ncurses_header:-curses.h}>
 
-int main()
+int main(void)
 {
 	wchar_t data[2];
 	cchar_t temp[2];
