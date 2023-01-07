@@ -1,4 +1,4 @@
-dnl CF_ABI_DEFAULTS version: 3 updated: 2022/01/22 19:13:38
+dnl CF_ABI_DEFAULTS version: 4 updated: 2023/01/07 16:32:06
 dnl ---------------
 dnl Provide configure-script defaults for different ncurses ABIs.
 AC_DEFUN([CF_ABI_DEFAULTS],[
@@ -22,7 +22,7 @@ cf_dft_tparm_arg=long
 cf_dft_with_lp64=no
 
 # ABI 6 defaults:
-case x$cf_cv_abi_version in
+case x$cf_cv_abi_default in
 (x[[6789]])
 	cf_dft_chtype=uint32_t
 	cf_dft_ext_colors=yes
@@ -39,7 +39,7 @@ case x$cf_cv_abi_version in
 esac
 
 # ABI 7 defaults:
-case x$cf_cv_abi_version in
+case x$cf_cv_abi_default in
 (x[[789]])
 	cf_dft_ccharw_max=6
 	cf_dft_mmask_t=uint64_t

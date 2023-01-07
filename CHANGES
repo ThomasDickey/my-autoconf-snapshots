@@ -1,3 +1,12 @@
+2023-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ABI_DEFAULTS, AcSplit/CF_LIB_RULES,
+	  AcSplit/CF_NCURSES_ABI_6, AcSplit/CF_SUBST_NCURSES_VERSION,
+	  AcSplit/CF_WITH_ABI_VERSION:
+	added --with-abi-altered, using new symbol $cf_cv_abi_version for interim
+
+	* AcSplit/CF_WITH_ABI_ALTERED: ci-aclocal generated header
+
 2023-01-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_WAIT: use $ac_includes_default
@@ -44,6 +53,19 @@
 	* AcSplit/CF_RESTARTABLE_PIPEREAD:
 	include <sys/wait.h> if it was found, to prototype wait()
 	Redhat #2158163
+
+2023-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2023-01-01
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    Update copyright years
+
+	    * config.guess: Update copyright years.
+	    * config.sub: Likewise.
+	    * testsuite/config-guess.sh: Likewise.
+	    * testsuite/config-sub.sh: Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
 
 2022-12-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
@@ -185,6 +207,57 @@
 	* AcSplit/CF_BUILD_CC:
 	check if the build-compiler actually works, which is better than just checking
 	that it is not identical to the cross-compiler.
+
+2022-09-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2022-09-17
+	    From: Arsen Arsenović <arsen@aarsen.me>
+	    config.sub: add linux-mlibc targets
+
+	    Note: currently, there's no detection method for linux-mlibc in
+	    config.guess, since there's no decided way to detect mlibc.
+
+	    Signed-off-by: Arsen Arsenović <arsen@aarsen.me>
+
+	    * config.sub (linux-mlibc*): Recognize.
+	    * testsuite/config-sub.data (aarch64-linux-mlibc, riscv-linux-mlibc,
+	    x86_64-linux-mlibc): New tests.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.guess: 2022-09-17
+	    From: Arsen Arsenović <arsen@aarsen.me>
+	    config.guess: support running on Managarm systems
+
+	    Signed-off-by: Arsen Arsenović <arsen@aarsen.me>
+
+	    * config.guess (x86_64:[Mm]anagarm:*:*, i?86:[Mm]anagarm:*:*,
+	    *:[Mm]anagarm:*:*): Recognize.
+	    (timestamp): Update.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data: Add tests for managarm targets.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2022-09-17
+	    From: Arsen Arsenović <arsen@aarsen.me>
+	    config.sub: add managarm-{mlibc,kernel} targets
+
+	    To achieve this, the `kernel' pseudo-OS value was added, intended to
+	    identify targets requiring a kernel-specific compiler and base system.
+
+	    Signed-off-by: Arsen Arsenović <arsen@aarsen.me>
+
+	    * config.sub (managarm-*): Recognize.
+	    (mlibc*): Likewise libc.
+	    (timestamp): Update.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (aarch64-managarm, aarch64-managarm-kernel,
+	    aarch64-managarm-mlibc, riscv-managarm, riscv-managarm-kernel,
+	    riscv-managarm-mlibc, x86_64-managarm, x86_64-managarm-kernel,
+	    x86_64-managarm-mlibc): New tests.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2022-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
 

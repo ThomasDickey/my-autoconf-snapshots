@@ -1,4 +1,4 @@
-dnl CF_SUBST_NCURSES_VERSION version: 10 updated: 2021/01/04 18:48:01
+dnl CF_SUBST_NCURSES_VERSION version: 11 updated: 2023/01/07 16:32:06
 dnl ------------------------
 dnl Get the version-number for use in shared-library naming, etc.
 AC_DEFUN([CF_SUBST_NCURSES_VERSION],
@@ -8,10 +8,11 @@ NCURSES_MAJOR="`${EGREP-egrep} '^NCURSES_MAJOR[[ 	]]*=' "$srcdir/dist.mk" | sed 
 NCURSES_MINOR="`${EGREP-egrep} '^NCURSES_MINOR[[ 	]]*=' "$srcdir/dist.mk" | sed -e 's/^[[^0-9]]*//'`"
 NCURSES_PATCH="`${EGREP-egrep} '^NCURSES_PATCH[[ 	]]*=' "$srcdir/dist.mk" | sed -e 's/^[[^0-9]]*//'`"
 cf_cv_abi_version=${NCURSES_MAJOR}
+cf_cv_abi_default=${NCURSES_MAJOR}
 cf_cv_rel_version=${NCURSES_MAJOR}.${NCURSES_MINOR}
 dnl Show the computed version, for logging
 cf_cv_timestamp=`date`
-AC_MSG_RESULT(Configuring NCURSES $cf_cv_rel_version ABI $cf_cv_abi_version ($cf_cv_timestamp))
+AC_MSG_RESULT(Configuring NCURSES $cf_cv_rel_version ABI $cf_cv_abi_default ($cf_cv_timestamp))
 dnl We need these values in the generated headers
 AC_SUBST(NCURSES_MAJOR)
 AC_SUBST(NCURSES_MINOR)
@@ -19,6 +20,7 @@ AC_SUBST(NCURSES_PATCH)
 dnl We need these values in the generated makefiles
 AC_SUBST(cf_cv_rel_version)
 AC_SUBST(cf_cv_abi_version)
+AC_SUBST(cf_cv_abi_default)
 AC_SUBST(cf_cv_builtin_bool)
 AC_SUBST(cf_cv_header_stdbool_h)
 AC_SUBST(cf_cv_type_of_bool)dnl

@@ -1,4 +1,4 @@
-dnl CF_WITH_ABI_VERSION version: 4 updated: 2021/01/01 13:31:04
+dnl CF_WITH_ABI_VERSION version: 5 updated: 2023/01/07 16:32:06
 dnl -------------------
 dnl Allow library's ABI to be overridden.  Generally this happens when a
 dnl packager has incremented the ABI past that used in the original package,
@@ -27,4 +27,5 @@ AC_ARG_WITH(abi-version,
 ifelse($1,,,[
 $1_ABI=$cf_cv_abi_version
 ])
+cf_cv_abi_default=$cf_cv_abi_version
 ])dnl

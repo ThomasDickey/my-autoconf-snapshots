@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 97 updated: 2021/07/17 13:10:54
+dnl CF_LIB_RULES version: 98 updated: 2023/01/07 16:32:06
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -53,11 +53,11 @@ do
 		SHARED_LIB=
 		Libs_To_Make=
 		cf_awk_program=
-		if test -n "${cf_cv_abi_version}" && test "x${cf_cv_abi_version}" != "x5"
+		if test -n "${cf_cv_abi_default}" && test "x${cf_cv_abi_default}" != "x5"
 		then
 			cf_awk_program="$cf_awk_program\
-/deprecated in ABI${cf_cv_abi_version}/ { next; }\
-{ sub(\"NCURSES([[WT]]+)?\", \"&${cf_cv_abi_version}\"); }\
+/deprecated in ABI${cf_cv_abi_default}/ { next; }\
+{ sub(\"NCURSES([[WT]]+)?\", \"&${cf_cv_abi_default}\"); }\
 "
 		fi
 

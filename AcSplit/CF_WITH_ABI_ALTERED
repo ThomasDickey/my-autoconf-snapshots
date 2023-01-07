@@ -1,0 +1,17 @@
+dnl CF_WITH_ABI_ALTERED version: 1 updated: 2023/01/07 16:32:06
+dnl -------------------
+dnl Provide a way to override the displayed ABI version, e.g., in filenames.
+dnl Check this option after using the ABI version in configuration decisions.
+AC_DEFUN([CF_WITH_ABI_ALTERED],[
+AC_REQUIRE([CF_WITH_ABI_VERSION])
+AC_REQUIRE([CF_ABI_DEFAULTS])
+AC_ARG_WITH(abi-altered,
+[  --with-abi-altered=XXX  override visible ABI version, for packaging],[
+	CF_NUMBER_SYNTAX($withval,ABI altered)
+	if test "$cf_cv_abi_version" != "$withval"
+	then
+		AC_MSG_WARN(altering visible ABI from $cf_cv_abi_version to $withval)
+		cf_cv_abi_version=$withval
+	fi
+])dnl
+])dnl
