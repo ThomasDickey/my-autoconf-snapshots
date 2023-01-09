@@ -1,3 +1,9 @@
+2023-01-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_TGETENT:
+	use the same include/fallback in the test for partial support of tgetent,
+	to avoid implicit-declaration in that.  remove redundant check for termcap.h
+
 2023-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ABI_DEFAULTS, AcSplit/CF_LIB_RULES,
