@@ -1,15 +1,19 @@
-dnl CF_CRYPT_FUNC version: 8 updated: 2023/01/05 18:03:58
+dnl CF_CRYPT_FUNC version: 9 updated: 2023/01/09 10:45:04
 dnl -------------
 dnl Check if we have a working crypt() function
 AC_DEFUN([CF_CRYPT_FUNC],
 [
 AC_CACHE_CHECK(for crypt function,cf_cv_crypt_func,[
 cf_cv_crypt_func=
-AC_TRY_LINK([],[crypt()],[
+cf_crypt_headers="\
+$ac_includes_default
+extern char *crypt(const char *, const char *);
+"
+AC_TRY_LINK([$cf_crypt_headers],[crypt(NULL,NULL)],[
 	cf_cv_crypt_func=yes],[
 	cf_save_LIBS="$LIBS"
 	LIBS="-lcrypt $LIBS"
-	AC_TRY_LINK([],[crypt()],[
+	AC_TRY_LINK([$cf_crypt_headers],[crypt(NULL,NULL)],[
 		cf_cv_crypt_func="-lcrypt"],[
 		cf_cv_crypt_func=no])
 	LIBS="$cf_save_LIBS"
@@ -19,10 +23,7 @@ if test "$cf_cv_crypt_func" != no ; then
 	cf_save_LIBS="$LIBS"
 	test "$cf_cv_crypt_func" != yes && LIBS="$cf_cv_crypt_func $LIBS"
 AC_CACHE_CHECK(if crypt works,cf_cv_crypt_works,[
-AC_TRY_RUN([
-$ac_includes_default
-
-extern char *crypt(const char *, const char *);
+AC_TRY_RUN([$cf_crypt_headers
 
 int main(void) {
 	char *s = crypt("vi-crypt", "vi");

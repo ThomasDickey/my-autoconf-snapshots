@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERMCAP version: 13 updated: 2022/12/21 19:46:38
+dnl CF_CURSES_TERMCAP version: 14 updated: 2023/01/09 20:20:18
 dnl -----------------
 dnl Check if we should include <curses.h> to pick up prototypes for termcap
 dnl functions.  On terminfo systems, these are normally declared in <curses.h>,
@@ -23,10 +23,13 @@ do
     CPPFLAGS="$cf_save_CPPFLAGS $CHECK_DECL_FLAG"
     test -n "$cf_c_opts" && CPPFLAGS="$CPPFLAGS -D$cf_c_opts"
     test -n "$cf_t_opts" && CPPFLAGS="$CPPFLAGS -D$cf_t_opts"
+	cf_tgoto_decl="
+	extern char *tgoto(char*,int,int);"
+	test -n "${cf_c_opts}${cf_t_opts}" && cf_tgoto_decl=
 
     AC_TRY_LINK([/* $cf_c_opts $cf_t_opts */
-$CHECK_DECL_HDRS],
-	[char *x = (char *)tgoto(""); (void)x],
+$CHECK_DECL_HDRS $cf_tgoto_decl],
+	[char *x = tgoto(""); (void)x],
 	[test "$cf_cv_need_curses_h" = no && {
 	     cf_cv_need_curses_h=maybe
 	     cf_ok_c_opts=$cf_c_opts
@@ -34,8 +37,8 @@ $CHECK_DECL_HDRS],
 	}],
 	[echo "Recompiling with corrected call (C:$cf_c_opts, T:$cf_t_opts)" >&AC_FD_CC
 	AC_TRY_LINK([
-$CHECK_DECL_HDRS],
-	[char *x = (char *)tgoto("",0,0); (void)x],
+$CHECK_DECL_HDRS $cf_tgoto_decl],
+	[char *x = tgoto("",0,0); (void)x],
 	[cf_cv_need_curses_h=yes
 	 cf_ok_c_opts=$cf_c_opts
 	 cf_ok_t_opts=$cf_t_opts])])
