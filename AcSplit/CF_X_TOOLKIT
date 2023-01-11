@@ -1,4 +1,4 @@
-dnl CF_X_TOOLKIT version: 26 updated: 2021/01/02 09:31:20
+dnl CF_X_TOOLKIT version: 27 updated: 2023/01/11 04:05:23
 dnl ------------
 dnl Check for X Toolkit libraries
 AC_DEFUN([CF_X_TOOLKIT],
@@ -33,6 +33,7 @@ CF_TRY_PKG_CONFIG(xt,[
 # we have an "xt" package, but it may omit Xt's dependency on X11
 AC_CACHE_CHECK(for usable X dependency,cf_cv_xt_x11_compat,[
 AC_TRY_LINK([
+$ac_includes_default
 #include <X11/Xlib.h>
 ],[
 	int rc1 = XDrawLine((Display*) 0, (Drawable) 0, (GC) 0, 0, 0, 0, 0);
@@ -51,6 +52,7 @@ AC_TRY_LINK([
 
 AC_CACHE_CHECK(for usable X Toolkit package,cf_cv_xt_ice_compat,[
 AC_TRY_LINK([
+$ac_includes_default
 #include <X11/Shell.h>
 ],[int num = IceConnectionNumber(0); (void) num
 ],[cf_cv_xt_ice_compat=yes],[cf_cv_xt_ice_compat=no])])

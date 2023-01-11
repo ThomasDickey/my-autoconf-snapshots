@@ -1,3 +1,13 @@
+2023-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HAVE_FUNCS, AcSplit/CF_RE_COMP_FUNCS:
+	quiet implicit-declarations warning
+
+	* AcSplit/AM_LANGINFO_CODESET, AcSplit/CF_FUNC_LSTAT, AcSplit/CF_LOCALE,
+	  AcSplit/CF_UTF8_LIB, AcSplit/CF_XOPEN_CURSES, AcSplit/CF_X_ATHENA,
+	  AcSplit/CF_X_ATHENA_LIBS, AcSplit/CF_X_TOOLKIT:
+	use $ac_includes_default
+
 2023-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BUNDLED_INTL:
