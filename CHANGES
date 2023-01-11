@@ -1,3 +1,9 @@
+2023-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUNDLED_INTL:
+	fix an inconsistency between $USE_INCLUDED_LIBINTL and $nls_cv_use_gnu_gettext
+	which caused build of tin to fail when the host had no libintl.h
+
 2023-01-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CURSES_TERMCAP: work around implicit-declaration warnings
