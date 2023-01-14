@@ -1,4 +1,4 @@
-dnl CF_CRYPT_FUNC version: 9 updated: 2023/01/09 10:45:04
+dnl CF_CRYPT_FUNC version: 10 updated: 2023/01/14 07:48:15
 dnl -------------
 dnl Check if we have a working crypt() function
 AC_DEFUN([CF_CRYPT_FUNC],
@@ -9,11 +9,11 @@ cf_crypt_headers="\
 $ac_includes_default
 extern char *crypt(const char *, const char *);
 "
-AC_TRY_LINK([$cf_crypt_headers],[crypt(NULL,NULL)],[
+AC_TRY_LINK([$cf_crypt_headers],[crypt("","")],[
 	cf_cv_crypt_func=yes],[
 	cf_save_LIBS="$LIBS"
 	LIBS="-lcrypt $LIBS"
-	AC_TRY_LINK([$cf_crypt_headers],[crypt(NULL,NULL)],[
+	AC_TRY_LINK([$cf_crypt_headers],[crypt("","")],[
 		cf_cv_crypt_func="-lcrypt"],[
 		cf_cv_crypt_func=no])
 	LIBS="$cf_save_LIBS"

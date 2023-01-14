@@ -1,4 +1,4 @@
-dnl CF_KILLPG version: 8 updated: 2023/01/05 18:53:19
+dnl CF_KILLPG version: 9 updated: 2023/01/14 07:48:15
 dnl ---------
 dnl Note: relies upon AC_FUNC_SETPGRP, but cannot use AC_REQUIRE, since that
 dnl messes up the messages...
@@ -41,8 +41,7 @@ $ac_includes_default
 #include <signal.h>
 
 RETSIGTYPE
-handler(s)
-    int s;
+handler(int s)
 {
     exit(0);
 }

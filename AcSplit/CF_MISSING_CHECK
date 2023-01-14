@@ -1,4 +1,4 @@
-dnl CF_MISSING_CHECK version: 7 updated: 2020/12/31 20:19:42
+dnl CF_MISSING_CHECK version: 8 updated: 2023/01/14 07:48:15
 dnl ----------------
 dnl
 AC_DEFUN([CF_MISSING_CHECK],
@@ -12,11 +12,11 @@ $CHECK_DECL_HDRS
 
 #undef $1
 struct zowie { int a; double b; struct zowie *c; char d; };
-extern struct zowie *$1();
+extern struct zowie *$1(struct zowie *);
 ],
 [
 #ifdef HAVE_LIBXT		/* needed for SunOS 4.0.3 or 4.1 */
-XtToolkitInitialize();
+XtToolkitInitialize(void);
 #endif
 ],
 [eval 'cf_cv_func_'"$1"'=yes'],

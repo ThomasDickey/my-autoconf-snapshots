@@ -1,4 +1,4 @@
-dnl CF_TERMCAP_LIBS version: 17 updated: 2022/12/21 19:42:05
+dnl CF_TERMCAP_LIBS version: 18 updated: 2023/01/14 07:19:05
 dnl ---------------
 dnl Look for termcap libraries, or the equivalent in terminfo.
 dnl
@@ -37,7 +37,7 @@ if test "$cf_cv_termlib" = none; then
 			AC_MSG_CHECKING(for $cf_func in -l$cf_lib)
 			AC_TRY_LINK(
 				[extern char *$cf_func(const char *);],
-				[int x=$cf_func(""); (void)x],
+				[char *x = $cf_func(""); (void)x],
 				[cf_result=yes],
 				[cf_result=no])
 			AC_MSG_RESULT($cf_result)

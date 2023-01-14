@@ -1,3 +1,20 @@
+2023-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CRYPT_FUNC: appease clang's check for null-parameters
+
+	* AcSplit/CF_FP_ISREADY, AcSplit/CF_WCTYPE: fix unused variable warning
+
+	* AcSplit/CF_CHECK_ENVIRON: fix unused-variable warning
+
+	* AcSplit/CF_WITH_PERL: improve test-stub.
+
+	* AcSplit/CF_KILLPG: use prototype for handler
+
+	* AcSplit/CF_MISSING_CHECK: use prototype in test-declaration
+
+	* AcSplit/CF_TERMCAP_LIBS:
+	fix inconsistency between declaration and use.
+
 2023-01-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HAVE_FUNCS, AcSplit/CF_RE_COMP_FUNCS:

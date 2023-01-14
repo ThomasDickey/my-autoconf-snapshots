@@ -1,4 +1,4 @@
-dnl CF_WCTYPE version: 6 updated: 2012/10/06 11:17:15
+dnl CF_WCTYPE version: 7 updated: 2023/01/14 07:48:15
 dnl ---------
 dnl Look for <wctype.h> and related functions.  This is needed with glibc to
 dnl see the codes above 127.
@@ -20,7 +20,7 @@ AC_TRY_COMPILE([
 		|| iswpunct(temp)
 		|| iswspace(temp)
 		|| iswupper(temp)
-		|| iswxdigit(temp);],
+		|| iswxdigit(temp); (void)test],
 	[cf_cv_have_wctype=yes],
 	[cf_cv_have_wctype=no])
 ])
