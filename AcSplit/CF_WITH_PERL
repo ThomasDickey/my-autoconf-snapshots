@@ -1,4 +1,4 @@
-dnl CF_WITH_PERL version: 10 updated: 2023/01/14 07:48:15
+dnl CF_WITH_PERL version: 11 updated: 2023/01/15 08:35:14
 dnl ------------
 dnl Check if perl-extension (using embedded perl interpreter) is wanted, and
 dnl update symbols if we are able to use the extension.
@@ -38,7 +38,7 @@ if test "$with_perl" = yes ; then
 		PerlInterpreter* interp = perl_alloc();
 		perl_construct(interp);
 		perl_parse(interp, NULL, 0, NULL, NULL);
-		Perl_croak("Why:%s\\n", "Bye!");
+		Perl_croak((void*)"Why:%s\\n", "Bye!");
 ],[
 		eval `$PERL -le 'for $f (qw/xsubpp typemap/) {
 				   @p = grep -f, map "$_/ExtUtils/$f", @INC;

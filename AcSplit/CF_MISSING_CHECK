@@ -1,4 +1,4 @@
-dnl CF_MISSING_CHECK version: 8 updated: 2023/01/14 07:48:15
+dnl CF_MISSING_CHECK version: 9 updated: 2023/01/15 05:38:19
 dnl ----------------
 dnl
 AC_DEFUN([CF_MISSING_CHECK],
@@ -16,7 +16,7 @@ extern struct zowie *$1(struct zowie *);
 ],
 [
 #ifdef HAVE_LIBXT		/* needed for SunOS 4.0.3 or 4.1 */
-XtToolkitInitialize(void);
+extern void XtToolkitInitialize(void);
 #endif
 ],
 [eval 'cf_cv_func_'"$1"'=yes'],

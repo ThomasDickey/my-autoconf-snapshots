@@ -1,3 +1,10 @@
+2023-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PERL: add cast to quiet compiler-warning
+
+	* AcSplit/CF_MISSING_CHECK:
+	corrected prototype for XtToolkitInitialize()
+
 2023-01-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CRYPT_FUNC: appease clang's check for null-parameters
