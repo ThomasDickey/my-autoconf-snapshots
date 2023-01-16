@@ -1,3 +1,9 @@
+2023-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HAVE_FUNCS: add semicolon, fix build
+
+	* AcSplit/CF_WITH_NCURSES_ETC: add cf_cv_screen to cache/substitutions
+
 2023-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PERL: add cast to quiet compiler-warning

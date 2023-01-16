@@ -1,4 +1,4 @@
-dnl CF_HAVE_FUNCS version: 6 updated: 2023/01/11 04:05:23
+dnl CF_HAVE_FUNCS version: 7 updated: 2023/01/16 16:45:15
 dnl -------------
 dnl	Combines AC_HAVE_FUNCS logic with additional test from Kevin Buettner
 dnl	that checks to see if we need a prototype for the given function.
@@ -23,7 +23,7 @@ if test ".$cf_result" != ".no"; then
 	# warnings into errors.  Of course, _this_ assumes that the config is
 	# otherwise ok.
 AC_TRY_LINK([#undef ${cf_func}
-extern void ${cf_func}(void)],[${cf_func}();],[
+extern void ${cf_func}(void);],[${cf_func}();],[
 if test "$WithPrototypes" != yes; then
 	cf_result=yes
 elif test "$cf_opt_with_warnings" = yes; then
