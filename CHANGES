@@ -1,3 +1,7 @@
+2023-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_TDLIB: provide for finding td_lib using pkg-config
+
 2023-01-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HAVE_FUNCS: add semicolon, fix build

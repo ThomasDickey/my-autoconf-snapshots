@@ -1,4 +1,4 @@
-dnl CF_FIND_TDLIB version: 13 updated: 2022/12/31 07:07:05
+dnl CF_FIND_TDLIB version: 14 updated: 2023/01/19 18:06:45
 dnl -------------
 dnl Locate TD_LIB, which is available in one of these configurations:
 dnl a) installed, with headers, library and include-file for make
@@ -13,62 +13,87 @@ dnl Sets:
 dnl	TD_LIB_rules - actual path of td_lib.mk
 dnl
 AC_DEFUN([CF_FIND_TDLIB],
-[
-AC_MSG_CHECKING(for td_lib in side-by-side directory)
-AC_CACHE_VAL(cf_cv_tdlib_devel,[
-	cf_cv_tdlib_devel=no
+[AC_REQUIRE([CF_PKG_CONFIG])
 
-	for cf_path in . ..
-	do
-		test -d $cf_path/td_lib &&
-		test -d $cf_path/td_lib/include &&
-		test -f $cf_path/td_lib/include/td_config.h &&
-		test -d $cf_path/td_lib/lib &&
-		test -f $cf_path/td_lib/lib/${LIB_PREFIX}td.a &&
-		cf_cv_tdlib_devel=`CDPATH=; export CDPATH; cd $cf_path/td_lib;pwd` &&
-		break
-	done
-])
-AC_MSG_RESULT($cf_cv_tdlib_devel)
+if test "$PKG_CONFIG" != none
+then
+	cf_package=td_lib
+	AC_MSG_CHECKING(for $cf_package package file)
+	AC_CACHE_VAL(cf_cv_tdlib_package,[
+		cf_cv_tdlib_package=`"$PKG_CONFIG" --variable=datarootdir $cf_package 2>/dev/null`
+		test -z "$cf_cv_tdlib_package" && cf_cv_tdlib_package=no
+	])dnl
+	AC_MSG_RESULT($cf_cv_tdlib_package)
+fi
 
-if test "$cf_cv_tdlib_devel" = no ; then
-    CF_HEADER_PATH(cf_search,td)
-    # get all matches, since we're including <ptypes.h> and <td/ptypes.h>
-    for cf_incdir in $cf_search
-    do
-	test -f "$cf_incdir/td/td_config.h" && CFLAGS="$CFLAGS -I$cf_incdir"
-    done
-    CF_FIND_LIBRARY(td,td,[
+if test "$cf_cv_tdlib_package" != no ; then
+
+	cf_tdlib_flags=`"$PKG_CONFIG" --cflags $cf_package`
+	CF_ADD_CFLAGS($cf_tdlib_flags)
+	cf_tdlib_flags=`"$PKG_CONFIG" --libs $cf_package`
+	CF_ADD_LIBS($cf_tdlib_flags)
+	TD_LIB_rules=$cf_cv_tdlib_package
+
+else
+
+	cf_dirname=td_lib
+	AC_MSG_CHECKING(for $cf_dirname in side-by-side directory)
+	AC_CACHE_VAL(cf_cv_tdlib_devel,[
+		cf_cv_tdlib_devel=no
+
+		for cf_path in . ..
+		do
+			test -d $cf_path/$cf_dirname &&
+			test -d $cf_path/$cf_dirname/include &&
+			test -f $cf_path/$cf_dirname/include/td_config.h &&
+			test -d $cf_path/$cf_dirname/lib &&
+			test -f $cf_path/$cf_dirname/lib/${LIB_PREFIX}td.a &&
+			cf_cv_tdlib_devel=`CDPATH=; export CDPATH; cd $cf_path/$cf_dirname;pwd` &&
+			break
+		done
+	])
+	AC_MSG_RESULT($cf_cv_tdlib_devel)
+
+	if test "$cf_cv_tdlib_devel" != no ; then
+		CF_HEADER_PATH(cf_search,td)
+		# get all matches, since we're including <ptypes.h> and <td/ptypes.h>
+		for cf_incdir in $cf_search
+		do
+		test -f "$cf_incdir/td/td_config.h" && CFLAGS="$CFLAGS -I$cf_incdir"
+		done
+		CF_FIND_LIBRARY(td,td,[
 #define TESTING_CONFIG_H
 #include <td/ptypes.h>],[
-        char *p = doalloc(0,1)],
-        doalloc)
-	if test -z "$cf_libdir" ; then
-		CF_SUBDIR_PATH(cf_search,td,share)
-		cf_libdir=/usr/local/lib
-		cf_td_lib_rules=no
-		for cf_libdir in $cf_search
-		do
+			char *p = doalloc(0,1)],
+			doalloc)
+		if test -z "$cf_libdir" ; then
+			CF_SUBDIR_PATH(cf_search,td,share)
+			cf_libdir=/usr/local/lib
+			cf_td_lib_rules=no
+			for cf_libdir in $cf_search
+			do
+				if test -f "$cf_libdir/td_lib.mk" ; then
+					cf_td_lib_rules=yes
+					break
+				fi
+			done
+		else
+			cf_libdir=`echo "$cf_libdir" | sed -e 's,/td_lib.mk,,' -e 's,/lib[[^/]]*,/share,'`
 			if test -f "$cf_libdir/td_lib.mk" ; then
 				cf_td_lib_rules=yes
-				break
+			elif test -f "$cf_libdir/td/td_lib.mk" ; then
+				cf_libdir="$cf_libdir/td"
+				cf_td_lib_rules=yes
 			fi
-		done
-	else
-		cf_libdir=`echo "$cf_libdir" | sed -e 's,/td_lib.mk,,' -e 's,/lib[[^/]]*,/share,'`
-		if test -f "$cf_libdir/td_lib.mk" ; then
-			cf_td_lib_rules=yes
-		elif test -f "$cf_libdir/td/td_lib.mk" ; then
-			cf_libdir="$cf_libdir/td"
-			cf_td_lib_rules=yes
 		fi
+		test "$cf_td_lib_rules" = yes || AC_MSG_ERROR(Cannot find td_lib.mk)
+		TD_LIB_rules=$cf_libdir
+	else
+		CPPFLAGS="$CPPFLAGS -I$cf_cv_tdlib_devel/include $CPPFLAGS"
+		LIBS="-L$cf_cv_tdlib_devel/lib $LIBS"
+		TD_LIB_rules=$cf_cv_tdlib_devel/support
 	fi
-	test "$cf_td_lib_rules" = yes || AC_MSG_ERROR(Cannot find td_lib.mk)
-	TD_LIB_rules=$cf_libdir
-else
-	CPPFLAGS="$CPPFLAGS -I$cf_cv_tdlib_devel/include $CPPFLAGS"
-	LIBS="-L$cf_cv_tdlib_devel/lib $LIBS"
-	TD_LIB_rules=$cf_cv_tdlib_devel/support
+
 fi
 
 AC_SUBST(TD_LIB_rules)
