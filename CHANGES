@@ -1,3 +1,25 @@
+2023-01-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	move calculation that ought to be in CF_MANPAGE_FORMAT there, and improve
+	naming convention for its calculated values.
+
+	* AcSplit/CF_MANPAGE_FORMAT:
+	move case-statement from CF_MAN_PAGES here, to make this more reusable.
+
+	* AcSplit/CF_MANPAGE_SYMLINKS: trim extra '$'
+
+	* AcSplit/CF_MAN_PAGES:
+	adjust check for aliases to work in out-of-tree builds (report by Sven Joachim)
+
+	* config.sub: 2023-01-21
+	    From: Paul Eggert <eggert@cs.ucla.edu>
+	    Fix config.sub spelling typo for "athlon"
+
+	    This typo was introduced in commit
+	    fc14426403b6106981d2b3a4666835df29203043
+	    dated Tue Aug 28 09:59:08 2018 +1000.
+
 2023-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_TDLIB: provide for finding td_lib using pkg-config

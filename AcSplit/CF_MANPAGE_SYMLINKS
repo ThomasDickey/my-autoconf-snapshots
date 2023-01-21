@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_SYMLINKS version: 6 updated: 2015/04/17 21:13:04
+dnl CF_MANPAGE_SYMLINKS version: 7 updated: 2023/01/21 16:37:17
 dnl -------------------
 dnl Some people expect each tool to make all aliases for manpages in the
 dnl man-directory.  This accommodates the older, less-capable implementations
@@ -32,7 +32,7 @@ AC_ARG_WITH(manpage-symlinks,
 	[MANPAGE_SYMLINKS=$withval],
 	[MANPAGE_SYMLINKS=$cf_use_symlinks])
 
-if test "$$cf_use_symlinks" = no; then
+if test "$cf_use_symlinks" = no; then
 if test "$MANPAGE_SYMLINKS" = yes ; then
 	AC_MSG_WARN(cannot make symlinks, will use .so files)
 	MANPAGE_SYMLINKS=no

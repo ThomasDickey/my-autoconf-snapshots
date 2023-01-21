@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 16 updated: 2022/11/05 16:12:11
+dnl CF_MANPAGE_FORMAT version: 17 updated: 2023/01/21 16:49:25
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -111,4 +111,40 @@ AC_MSG_RESULT($MANPAGE_FORMAT)
 if test -n "$cf_unknown" ; then
 	AC_MSG_WARN(Unexpected manpage-format $cf_unknown)
 fi
+
+cf_manpage_format=no
+cf_manpage_inboth=no
+cf_manpage_so_strip=
+cf_manpage_compress=
+
+for cf_item in $MANPAGE_FORMAT
+do
+case "$cf_item" in
+(catonly)
+	cf_manpage_format=yes
+	cf_manpage_inboth=no
+	;;
+(formatted)
+	cf_manpage_format=yes
+	cf_manpage_inboth=yes
+	;;
+(compress)
+	cf_manpage_so_strip="Z"
+	cf_manpage_compress=compress
+	;;
+(gzip)
+	cf_manpage_so_strip="gz"
+	cf_manpage_compress=gzip
+	;;
+(bzip2)
+	cf_manpage_so_strip="bz2"
+	cf_manpage_compress=bzip2
+	;;
+(xz)
+	cf_manpage_so_strip="xz"
+	cf_manpage_compress=xz
+	;;
+esac
+done
+
 ])dnl
