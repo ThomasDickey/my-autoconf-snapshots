@@ -1,4 +1,4 @@
-dnl CF_SLANG_CPPFLAGS version: 13 updated: 2021/01/04 17:48:08
+dnl CF_SLANG_CPPFLAGS version: 14 updated: 2023/01/24 04:22:19
 dnl -----------------
 dnl Look for the slang header files in the standard places, adjusting the
 dnl CPPFLAGS variable.
@@ -10,7 +10,7 @@ AC_DEFUN([CF_SLANG_CPPFLAGS],
 AC_CACHE_CHECK(for $1 header file,cf_cv_$1_header,[
 	cf_cv_$1_header=no
 	AC_TRY_COMPILE([#include <slang.h>],
-	[printf("%s\\n", SLANG_VERSION)],
+	[printf("%s\\n", SLANG_VERSION_STRING)],
 	[cf_cv_$1_header=predefined],[
 	CF_HEADER_PATH(cf_search,$1)
 	for cf_incdir in $cf_search

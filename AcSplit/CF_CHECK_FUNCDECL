@@ -1,4 +1,4 @@
-dnl CF_CHECK_FUNCDECL version: 7 updated: 2009/10/15 19:39:18
+dnl CF_CHECK_FUNCDECL version: 8 updated: 2023/01/24 04:22:19
 dnl -----------------
 dnl Check if a function is declared by including a set of include files.
 dnl Invoke the corresponding actions according to whether it is found or not.
@@ -12,13 +12,15 @@ AC_DEFUN([CF_CHECK_FUNCDECL],
 [
 AC_MSG_CHECKING([for $2 declaration])
 AC_CACHE_VAL(ac_cv_func_decl_$2,
-[AC_TRY_COMPILE([$1],
+[AC_TRY_COMPILE([
+$ac_includes_default
+$1],
 [#ifndef $2
-extern	int	$2();
+extern	int	$2(void);
 #endif],[
 AC_TRY_COMPILE([$1],
 [#ifndef $2
-int	(*p)() = $2;
+int	(*p)(struct cf_check_funcdecl*) = $2;
 #endif],[
 eval "ac_cv_func_decl_$2=yes"],[
 eval "ac_cv_func_decl_$2=no"])],[
