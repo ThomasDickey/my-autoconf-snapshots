@@ -1,0 +1,19 @@
+dnl CF_SETITIMER version: 1 updated: 2023/01/25 19:55:24
+dnl ------------
+AC_DEFUN([CF_SETITIMER],
+[
+AC_CACHE_CHECK(if setitimer is available,cf_cv_func_setitimer,[
+AC_TRY_COMPILE([
+$ac_includes_default
+#include <sys/time.h>
+],[
+    struct itimerval it;
+    memset(&it, 0, sizeof(struct itimerval));
+    it.it_value.tv_sec = 1;
+    setitimer(ITIMER_REAL, &it, NULL);
+],
+[cf_cv_func_setitimer=yes],
+[cf_cv_func_setitimer=no])
+])
+test "$cf_cv_func_setitimer" != no && AC_DEFINE(HAVE_SETITIMER,1,[Define to 1 if setitimer is available])
+])dnl
