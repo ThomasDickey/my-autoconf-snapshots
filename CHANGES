@@ -1,3 +1,7 @@
+2023-01-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_KILLPG: fix typo in cross-compile check (Debian #1029956)
+
 2023-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SETITIMER: ci-aclocal generated header
