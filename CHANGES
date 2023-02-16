@@ -1,3 +1,8 @@
+2023-02-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND:
+	use $ac_includes_default in second compile-check, for better consistency
+
 2023-02-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_TGETENT:
