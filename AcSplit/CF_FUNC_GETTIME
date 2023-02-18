@@ -1,0 +1,10 @@
+dnl CF_FUNC_GETTIME version: 1 updated: 2023/02/18 17:41:25
+dnl ---------------
+AC_DEFUN([CF_FUNC_GETTIME],[
+AC_CHECK_FUNC(gettimeofday,
+	AC_DEFINE(HAVE_GETTIMEOFDAY,1,[Define to 1 if we have gettimeofday function]),[
+
+AC_CHECK_LIB(bsd, gettimeofday,
+	AC_DEFINE(HAVE_GETTIMEOFDAY,1,[Define to 1 if we have gettimeofday function])
+	CF_ADD_LIB(bsd))])dnl CLIX: bzero, select, gettimeofday
+])dnl

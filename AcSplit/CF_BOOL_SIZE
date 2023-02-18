@@ -1,4 +1,4 @@
-dnl CF_BOOL_SIZE version: 19 updated: 2023/01/05 18:00:14
+dnl CF_BOOL_SIZE version: 20 updated: 2023/02/18 17:41:25
 dnl ------------
 dnl Test for the size of 'bool' in the configured C++ compiler (e.g., a type).
 dnl Don't bother looking for bool.h, since it has been deprecated.
@@ -8,8 +8,7 @@ dnl from <stdbool.h>.
 AC_DEFUN([CF_BOOL_SIZE],
 [
 AC_CHECK_SIZEOF(bool,,[
-#include <stdlib.h>
-#include <stdio.h>
+$ac_includes_default
 
 #if defined(__cplusplus)
 

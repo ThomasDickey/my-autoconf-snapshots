@@ -1,4 +1,4 @@
-dnl CF_CHECK_ENVIRON version: 4 updated: 2023/01/14 07:48:15
+dnl CF_CHECK_ENVIRON version: 5 updated: 2023/02/18 17:41:25
 dnl ----------------
 dnl Check for data that is usually declared in <unistd.h>, e.g., the 'environ'
 dnl variable.  Define a DECL_xxx symbol if we must declare it ourselves.
@@ -9,10 +9,7 @@ AC_DEFUN([CF_CHECK_ENVIRON],
 [
 AC_CACHE_CHECK(if external $1 is declared, cf_cv_dcl_$1,[
     AC_TRY_COMPILE([
-#ifdef HAVE_STDLIB_H
-#include <stdlib.h>
-#endif
-#include <unistd.h> ],
+$ac_includes_default],
     ifelse([$2],,void*,[$2]) x = (ifelse([$2],,void*,[$2])) $1; (void)x,
     [cf_cv_dcl_$1=yes],
     [cf_cv_dcl_$1=no])

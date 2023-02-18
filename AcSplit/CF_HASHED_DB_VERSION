@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB_VERSION version: 4 updated: 2014/04/12 16:47:01
+dnl CF_HASHED_DB_VERSION version: 5 updated: 2023/02/18 17:41:25
 dnl --------------------
 dnl Given that we have the header file for hashed database, find the version
 dnl information.
@@ -19,13 +19,13 @@ $ac_includes_default
 #if $cf_db_version == DB_VERSION_MAJOR
 	/* ok */
 #else
-	make an error
+	#error $cf_db_version is not DB_VERSION_MAJOR
 #endif
 #else
 #if $cf_db_version == 1
 	/* ok: assuming this is DB 1.8.5 */
 #else
-	make an error
+	#error $cf_db_version is not 1
 #endif
 #endif
 ],[DBT *foo = 0],[

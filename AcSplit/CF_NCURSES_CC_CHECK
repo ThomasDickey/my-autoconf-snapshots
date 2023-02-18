@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CC_CHECK version: 5 updated: 2020/12/31 20:19:42
+dnl CF_NCURSES_CC_CHECK version: 6 updated: 2023/02/18 17:47:58
 dnl -------------------
 dnl Check if we can compile with ncurses' header file
 dnl $1 is the cache variable to set
@@ -15,7 +15,7 @@ AC_DEFUN([CF_NCURSES_CC_CHECK],[
 #ifdef NCURSES_VERSION
 ]ifelse($3,ncursesw,[
 #ifndef WACS_BSSB
-	make an error
+	#error WACS_BSSB is not defined
 #endif
 ])[
 printf("%s\\n", NCURSES_VERSION);
@@ -23,7 +23,7 @@ printf("%s\\n", NCURSES_VERSION);
 #ifdef __NCURSES_H
 printf("old\\n");
 #else
-	make an error
+	#error __NCURSES_H is not defined
 #endif
 #endif
 	]

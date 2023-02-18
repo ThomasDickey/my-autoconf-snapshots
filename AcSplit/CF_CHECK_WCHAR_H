@@ -1,4 +1,4 @@
-dnl CF_CHECK_WCHAR_H version: 3 updated: 2021/01/01 13:31:04
+dnl CF_CHECK_WCHAR_H version: 4 updated: 2023/02/18 17:41:25
 dnl ----------------
 dnl Check if wchar.h can be used, i.e., without defining _XOPEN_SOURCE_EXTENDED
 AC_DEFUN([CF_CHECK_WCHAR_H],[
@@ -9,7 +9,7 @@ wctype.h \
 AC_CACHE_CHECK(if wchar.h can be used as is,cf_cv_wchar_h_okay,[
 AC_TRY_COMPILE(
 [
-#include <stdlib.h>
+$ac_includes_default
 #ifdef HAVE_WCHAR_H
 #include <wchar.h>
 #endif
