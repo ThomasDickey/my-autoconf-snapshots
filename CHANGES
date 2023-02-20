@@ -1,3 +1,9 @@
+2023-02-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_ENV_FLAGS:
+	change check for $cf_flags to eliminate $AWK, to make it simpler to port
+	both byacc and reflex
+
 2023-02-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_CC_CHECK: use #error

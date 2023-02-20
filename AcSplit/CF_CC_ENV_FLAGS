@@ -1,4 +1,4 @@
-dnl CF_CC_ENV_FLAGS version: 10 updated: 2020/12/31 18:40:20
+dnl CF_CC_ENV_FLAGS version: 11 updated: 2023/02/20 11:15:46
 dnl ---------------
 dnl Check for user's environment-breakage by stuffing CFLAGS/CPPFLAGS content
 dnl into CC.  This will not help with broken scripts that wrap the compiler
@@ -39,7 +39,7 @@ case "$CC" in
 	AC_MSG_WARN(your environment uses the CC variable to hold CFLAGS/CPPFLAGS options)
 	# humor him...
 	cf_prog=`echo "$CC" | sed -e 's/	/ /g' -e 's/[[ ]]* / /g' -e 's/[[ ]]*[[ ]]-[[^ ]].*//'`
-	cf_flags=`echo "$CC" | ${AWK:-awk} -v prog="$cf_prog" '{ printf("%s", [substr]([$]0,1+length(prog))); }'`
+	cf_flags=`echo "$CC" | sed -e "s%^$cf_prog%%"`
 	CC="$cf_prog"
 	for cf_arg in $cf_flags
 	do
