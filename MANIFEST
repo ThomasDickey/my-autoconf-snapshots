@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20230220
+MANIFEST for my-autoconf, version t20230222
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -375,6 +375,7 @@ AcSplit/CF_PROG_CPP_COMMENTS    check if preprocessor -C option works
 AcSplit/CF_PROG_EGREP           adapted from autoconf 2.57 (AC_PROG_EGREP comes from 2.53)
 AcSplit/CF_PROG_EXT             macro to setting $PROG_EXT and making it substituted.
 AcSplit/CF_PROG_GNAT            check for gnatmake, ensure that it is complete
+AcSplit/CF_PROG_GPERF           check for gperf tool for optional makefile rules
 AcSplit/CF_PROG_GROFF           check for groff availability versus nroff
 AcSplit/CF_PROG_INSTALL         derive an absolute path for $INSTALL
 AcSplit/CF_PROG_LDCONFIG        check for ldconfig program

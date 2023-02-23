@@ -1,0 +1,13 @@
+dnl CF_PROG_GPERF version: 1 updated: 2023/02/22 19:29:02
+dnl -------------
+dnl Check if gpref is available, for generating symbol lookup functions.
+AC_DEFUN([CF_PROG_GPERF],[
+AC_PATH_PROG(GPERF_PATH,gperf,no)
+if test "x$GPERF_PATH" = xno
+then
+	GPERF_NOTE="#"
+else
+	GPERF_NOTE=
+fi
+AC_SUBST(GPERF_NOTE)
+])dnl
