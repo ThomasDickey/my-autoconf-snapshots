@@ -1,3 +1,7 @@
+2023-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GETTIME: add check for clock_gettime()
+
 2023-02-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_GPERF: ci-aclocal generated header
