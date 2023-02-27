@@ -1,3 +1,7 @@
+2023-02-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TYPE_NFDS_T: ci-aclocal generated header
+
 2023-02-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GETTIME: add check for clock_gettime()

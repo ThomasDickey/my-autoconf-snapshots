@@ -1,0 +1,18 @@
+dnl CF_TYPE_NFDS_T version: 1 updated: 2023/02/26 20:20:10
+dnl --------------
+dnl Check for nfds_t type, used in poll.
+AC_DEFUN([CF_TYPE_NFDS_T],
+[
+AC_MSG_CHECKING(for nfds_t in <poll.h>)
+AC_CACHE_VAL(cf_cv_type_nfds_t,[
+	AC_TRY_COMPILE([
+$ac_includes_default
+#include <poll.h>
+],
+		[nfds_t x; (void)x],
+		[cf_cv_type_nfds_t=yes],
+		[cf_cv_type_nfds_t=no])
+	])
+AC_MSG_RESULT($cf_cv_type_nfds_t)
+test $cf_cv_type_nfds_t = no && AC_DEFINE(nfds_t, unsigned,[Define to nfds_t type used in poll])
+])dnl

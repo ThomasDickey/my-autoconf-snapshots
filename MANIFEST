@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20230225
+MANIFEST for my-autoconf, version t20230226
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -486,6 +486,7 @@ AcSplit/CF_TYPE_CC_T            check for cc_t type
 AcSplit/CF_TYPE_FD_MASK         special tweak for fd_mask type
 AcSplit/CF_TYPE_FD_SET          check for a header that will define fd_set.
 AcSplit/CF_TYPE_LONG_LONG       add check for long-long, to use for lynx to quiet warnings due to error in slang headers
+AcSplit/CF_TYPE_NFDS_T          check for nfds_t type used in poll
 AcSplit/CF_TYPE_OUTCHAR         check for 3rd param of tputs()
 AcSplit/CF_TYPE_SIGACTION       check for type sigaction_t
 AcSplit/CF_UNDO_CFLAGS          script to remove flags from a variable
