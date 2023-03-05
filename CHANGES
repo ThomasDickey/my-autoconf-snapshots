@@ -1,3 +1,11 @@
+2023-03-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_VERSION, AcSplit/CF_GXX_VERSION:
+	improve sed expression, works with MinGW
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	provide for MinGW(32|64) to use _DEFAULT_SOURCE
+
 2023-02-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TYPE_NFDS_T: ci-aclocal generated header
