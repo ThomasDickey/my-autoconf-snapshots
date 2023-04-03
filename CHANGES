@@ -1,3 +1,9 @@
+2023-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	amend default case to avoid undefining _XOPEN_SOURCE if _POSIX_C_SOURCE is
+	defined (report by A. Wilcox)
+
 2023-03-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_VERSION, AcSplit/CF_GXX_VERSION:
