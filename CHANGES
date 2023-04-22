@@ -1,3 +1,12 @@
+2023-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_SRC_MODULES:
+	drop support for tack 1.07 (after 6 years)
+
 2023-04-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:

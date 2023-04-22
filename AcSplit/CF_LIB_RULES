@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 98 updated: 2023/01/07 16:32:06
+dnl CF_LIB_RULES version: 99 updated: 2023/04/22 11:51:06
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -508,18 +508,6 @@ distclean ::
 	rm -f edit_man.* man_alias.*
 	rm -rf \${DIRS_TO_MAKE}
 CF_EOF
-
-# Special case: tack's manpage lives in its own directory.
-if test "x$cf_with_manpages" = xyes; then
-if test "x$cf_with_tack" = "xyes"; then
-cat >> Makefile <<CF_EOF
-
-install.man \\
-uninstall.man ::
-	( cd tack && \${MAKE} \${TOP_MFLAGS} \[$]@ )
-CF_EOF
-fi
-fi
 
 dnl If we're installing into a subdirectory of /usr/include, etc., we should
 dnl prepend the subdirectory's name to the "#include" paths.  It won't hurt
