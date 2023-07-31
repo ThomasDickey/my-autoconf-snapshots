@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 56 updated: 2023/01/21 16:49:25
+dnl CF_MAN_PAGES version: 58 updated: 2023/07/28 20:13:29
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -36,6 +36,7 @@ NCURSES_PATCH="$NCURSES_PATCH"
 
 NCURSES_OSPEED="$NCURSES_OSPEED"
 TERMINFO="$TERMINFO"
+TERMINFO_DIRS="$TERMINFO_DIRS"
 
 INSTALL="$INSTALL"
 INSTALL_DATA="$INSTALL_DATA"
@@ -218,6 +219,14 @@ esac
 
 cat >>$cf_edit_man <<CF_EOF
 	suffix=\`basename "\$cf_target" | sed -e 's%^[[^.]]*%%'\`
+	extra_suffix=
+	if test -n "$EXTRA_SUFFIX" ; then
+		case \$cf_target in
+		(*${EXTRA_SUFFIX}\$suffix)
+			extra_suffix="$EXTRA_SUFFIX"
+			;;
+		esac
+	fi
 	if test "\$verb" = installing ; then
 		echo "\$verb \$cf_target"
 		\$INSTALL_DATA \$TMP "\$cf_target"
@@ -232,6 +241,7 @@ cat >>$cf_edit_man <<CF_EOF
 					if test "\$section" = 1 ; then
 						cf_alias=\`echo "\$cf_alias" |sed "\${transform}"\`
 					fi
+					cf_alias="\${cf_alias}\${extra_suffix}"
 
 					if test "$MANPAGE_SYMLINKS" = yes ; then
 						if test -f "\$cf_alias\${suffix}" ; then
@@ -288,6 +298,7 @@ cat >>$cf_edit_man <<CF_EOF
 					if test "\$section" = 1 ; then
 						cf_alias=\`echo "\$cf_alias" |sed "\${transform}"\`
 					fi
+					cf_alias="\${cf_alias}\${extra_suffix}"
 
 					echo ".. \$verb alias \$cf_alias\${suffix}"
 					rm -f "\$cf_alias\${suffix}"

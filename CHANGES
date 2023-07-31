@@ -1,3 +1,183 @@
+2023-07-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-07-31
+	    From: Maciej W. Rozycki <macro@orcam.me.uk>
+	    config.sub: Handle arbitrary MIPS CPU names
+
+	    GNU binutils support the selection of the default MIPS subtarget via the
+	    configuration triplet, e.g. `mips64octeon+el-unknown-linux-gnu' builds a
+	    Linux/GNU 64-bit MIPS (n32 ABI) little-endian configuration with the CPU
+	    set to Octeon+ by default.  However `config.sub' rejects such a triplet
+	    and indeed it only lets through a random choice of ones people submitted
+	    changes for to support.
+
+	    There is a large number of MIPS CPU configurations, 118 at the moment,
+	    that GNU binutils know, so rather than adding them individually and then
+	    hoping it will be kept up to date from now on accept any `mips*' pattern
+	    for the machine part, just as we already do for a few of other targets.
+
+	            * config.sub: Allow any `mips*' CPU rather than listing a choice
+	            individually.
+	            * doc/config.sub.1: Regenerate.
+	            * testsuite/config-sub.data: Add test cases.
+
+2023-07-28  Sven.Joachim
+
+	* AcSplit/CF_MAN_PAGES:
+	add assignment to provide default value for TERMINFO_DIRS in ncurses manpages
+
+2023-07-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2023-07-20
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.guess (aarch64:Linux:*:*): Detect 32-bit ABI
+
+	    On x86_64 Linux, a C compiler producing 32bit code causes the guessed
+	    CPU to be changed to i686.
+
+	    Adapt this approach for aarch64 Linux, i.e. change the guessed CPU
+	    to armv8l when a compiler producing arm eabi code is detected.
+
+	    * config.guess (aarch64:Linux:*:*): Test for the 32-bit ABI.
+	    * doc/config.guess.1: Regenerate.
+
+	    Suggested-by: David Allsopp <david.allsopp@metastack.com>
+
+2023-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2023-07-19
+	    From: Paul Iannetta <piannetta@kalray.eu>
+	    Add KVX MPPA detection
+
+	    * config.guess (kvx:Linux:*:*, kvx:cos:*:*, kvx:mbr:*:*): Recognize.
+	    * config.sub (kvx): Recognize cpu.
+	    (cos*, mbr*): Recognize os.
+	    * testsuite/config-guess.data: Add tests for kvx targets.
+	    * testsuite/config-sub.data: Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+
+2023-07-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-07-13
+	    From: Luis Campos <luisc@jfrog.com>
+	    config.sub: Add Apple tvOS and watchOS
+
+	    These are distinct from "ios". They are also technically Darwin, so while
+	    something like "aarch64-apple-darwin" could be used when targeting these,
+	    on Apple-silicon based systems there could be cases where `--host` and
+	    `--build` have the same value, and a ./configure script may determine that
+	    we are not cross building, causing it to try to execute test programs for
+	    the target OS that will not run on macOS.
+
+	    These are functionally equivalent to iOS, and targets with "-tvos" and
+	    "-watchos" are already used by clang.
+
+	    * config.sub (tvos*, watchos*): Recognize.
+	    * testsuite/config-sub.data (arm64-apple-tvos, arm64-apple-tvos10.0.0,
+	    arm64-apple-watchos, arm64-apple-watchos5.0): New tests.
+	    * doc/config.sub.1: Regenerate.
+
+2023-07-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-07-04
+	    From: John Ericson <list@JohnEricson.me>
+	    config.sub: Accept $cpu-$vendor-none-{coff,elf}
+
+	    These are not real OSes, they are object file formats. There is a
+	    longstanding tradition of using them for embedded/freestanding
+	    programming, so it makes sense to parse them with `kernel=none`.
+
+	    (I have a WIP future patch that systematizes parsing these non-OSes a
+	    bit more. That also opens the door to parsing a 5th component as LLVM
+	    can do.)
+
+	    This change unblocks an issue we've been having with Nixpkgs (see
+	    https://github.com/NixOS/nixpkgs/issues/165836 for the longer version).
+
+	    * config.sub (none-coff*, none-elf*): Recognize.
+	    * testsuite/config-sub.data (arm-unknown-none-coff,
+	    arm-unknown-none-elf, riscv64-company-none-elf): New tests.
+	    * doc/config.sub.1: Regenerate.
+
+2023-06-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-06-26
+	    From: John Ericson <list@JohnEricson.me>
+	    config.sub: Accept LLVM-style $cpu-$vendor-windows-{gnu,msvc}
+
+	    In older times, MinGW (GCC toolchain with modified windows headers) was
+	    the only free software toolchain for Windows.  But now, LLVM has support
+	    both for MinGW ABI and Microsoft's own.  The distinction matters for C++
+	    more than C.
+
+	    LLVM[1], Rust[2], and other projects have taken to differentiating these
+	    two as `...windows-gnu` vs `...windows-msvc`.  I think that makes a lot
+	    of sense, as it correctly identifiers both their commonalities and their
+	    differences.
+
+	    A lot of MinGW-supporting software, most notably GCC itself, will
+	    presumably continue to use configs like x86_64-pc-mingw32 and
+	    i686-pc-mingw32.  That's fine; this patch doesn't normalize them away
+	    (like LLVM does) or remove them!  If and when that software wants to
+	    support the MSVC ABI without requiring MSVC itself, they can switch to
+	    these newer configurations.
+
+	    [1]: https://github.com/llvm/llvm-project/blob/a18266473be1439d324059afa0e8b124f0466428/llvm/unittests/TargetParser/TripleTest.cpp#L1907-L1951
+	    [2]: https://github.com/rust-lang/rust/blob/36fb58e433c782e27dd41034284e157cf86d587f/compiler/rustc_target/src/spec/mod.rs#L1255-L1271
+
+2023-06-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2023-06-23
+	    From: Paul Eggert <eggert@cs.ucla.edu>
+	    Quote 'like this', not `like this'.
+
+	    In 2012 the GNU Coding Standards changed to recommend quoting
+	    'like this' or "like this" instead of `like this'.
+	    Alter diagnostics and comments accordingly.
+	    Use a more-consistent quoting style in config.sub diagnostics,
+	    preferring 'like this' to "like this" as the former is more
+	    resistant to shell metacharacters.
+
+2023-06-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INSTALL_OPTS: add CF_INSTALL_OPT_STRIP_PROG
+
+	* AcSplit/CF_INSTALL_OPT_STRIP_PROG: ci-aclocal generated header
+
+	* AcSplit/CF_LIB_RULES:
+	in distclean, remove "*.tmp" to catch file created by CF_INSTALL_OPT_STRIP_PROG
+
+2023-05-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INSTALL_MAN:
+	for symlink, use relative form for both source/target
+
+	* AcSplit/CF_INSTALL_MAN: add dependency on AC_LN_S
+
+	* AcSplit/CF_INSTALL_MAN:
+	handle symbolic link needed for reflex, e.g., "reflex++ -> reflex"
+
+	* AcSplit/CF_INSTALL_MAN:
+	provide sed commands for handling --program-transform-name, in byacc.
+
+2023-05-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INSTALL_MAN: ci-aclocal generated header
+
+	* AcSplit/CF_MANPAGE_FORMAT: provide substitutions for CF_INSTALL_MAN
+
+2023-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	account for extra-suffix when deriving aliases from the manpage target
+
+2023-05-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_REL_VERSION: make minor default to zero if not given
+
+	* AcSplit/CF_NUMBER_SYNTAX: improve check for positive-integer
+
 2023-04-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* COPYING.asc: sign

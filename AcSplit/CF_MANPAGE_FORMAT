@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 17 updated: 2023/01/21 16:49:25
+dnl CF_MANPAGE_FORMAT version: 18 updated: 2023/05/19 18:35:02
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -146,5 +146,10 @@ case "$cf_item" in
 	;;
 esac
 done
+
+AC_SUBST(cf_manpage_format)
+AC_SUBST(cf_manpage_inboth)
+AC_SUBST(cf_manpage_so_strip)
+AC_SUBST(cf_manpage_compress)
 
 ])dnl

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20230422
+MANIFEST for my-autoconf, version t20230731
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 COPYING                         copyright notice
@@ -9,8 +9,6 @@ config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 headers-sh                      utility for installing/transforming header files
 install-sh                      generic install-script
-install.sh                      alternate install-script
-mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
 AcSplit/AC_ISC_POSIX            from gettext 0.10.40 (tin)
 AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
@@ -237,10 +235,12 @@ AcSplit/CF_INCLUDE_PATH         adds to the include-path (td_lib)
 AcSplit/CF_INET_ADDR            check for inet_aton or inet_addr function
 AcSplit/CF_INHERIT_SCRIPT       inherit config-scripts from parent directory (ncurses)
 AcSplit/CF_INPUT_METHOD         check if X libraries support input-method
+AcSplit/CF_INSTALL_MAN          use parameters from CF_MANPAGE_FORMAT for simple manpage-install
 AcSplit/CF_INSTALL_OPTS         check for useful options of install-program
 AcSplit/CF_INSTALL_OPT_O        check for -o option of install-program
 AcSplit/CF_INSTALL_OPT_P        check for install "-p" option
 AcSplit/CF_INSTALL_OPT_S        check for -s option of install-program
+AcSplit/CF_INSTALL_OPT_STRIP_PROG  provide a way to use --strip-program option in install program
 AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group
