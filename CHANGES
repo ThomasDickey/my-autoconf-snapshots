@@ -1,3 +1,32 @@
+2023-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-08-07
+	    From: John Ericson <list@JohnEricson.me>
+	    config.sub: Systematize parsing of machine code formats
+
+	    Instead of treating them as OSes, we treat them as their own category.
+	    This is modeled on what LLVM does with its `ObjectFormatType` enum [1],
+	    advancing my long-running project of trying to nudge GNU config and LLVM
+	    towards each other, taking the best ideas of both.
+
+	    Currently, my emphasis is just on code cleanup. There are just a few
+	    tests for newly supported changes that fall out of this. But down the
+	    road, this also opens the door to parsing configs with more than 4
+	    components, like [2].
+
+	    [1]: https://llvm.org/doxygen/classllvm_1_1Triple.html#a83e907e55fa50e093caa96a0aff96201
+
+	    [2]: https://github.com/llvm/llvm-project/blob/a18266473be1439d324059afa0e8b124f0466428/llvm/unittests/TargetParser/TripleTest.cpp#L1873C50-L1873C77
+	    added in
+	    https://github.com/llvm/llvm-project/commit/28b82bc39ef076527c07718724913f70b5d60b69
+
+	    * config.sub: Save machine code format name separately from the OS name.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (arm-unknown-none-aout,
+	    arm-unknown-none-pe): New entries.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-07-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2023-07-31
