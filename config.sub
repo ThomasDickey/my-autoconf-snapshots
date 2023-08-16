@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2023-08-07'
+timestamp='2023-08-16'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1200,6 +1200,7 @@ case $cpu-$vendor in
 			| d10v | d30v | dlx | dsp16xx \
 			| e2k | elxsi | epiphany \
 			| f30[01] | f700 | fido | fr30 | frv | ft32 | fx80 \
+			| javascript \
 			| h8300 | h8500 \
 			| hppa | hppa1.[01] | hppa2.0 | hppa2.0[nw] | hppa64 \
 			| hexagon \
@@ -1728,6 +1729,9 @@ case $os in
 	# VxWorks passes extra cpu info in the 4th filed.
 	simlinux | simwindows | spe)
 		;;
+	# See `case $cpu-$os` validation below
+	ghcjs)
+		;;
 	# Now accept the basic system types.
 	# The portable systems comes first.
 	# Each alternative MUST end in a * to match a version number.
@@ -1793,6 +1797,20 @@ case $obj in
 		;;
 	*)
 		echo "Invalid configuration '$1': Machine code format '$obj' not recognized" 1>&2
+		exit 1
+		;;
+esac
+
+# Here we handle the constraint that a (synthetic) cpu and os are
+# valid only in combination with each other and nowhere else.
+case $cpu-$os in
+	# The "javascript-unknown-ghcjs" triple is used by GHC; we
+	# accept it here in order to tolerate that, but reject any
+	# variations.
+	javascript-ghcjs)
+		;;
+	javascript-* | *-ghcjs)
+		echo "Invalid configuration '$1': cpu '$cpu' is not valid with os '$os$obj'" 1>&2
 		exit 1
 		;;
 esac

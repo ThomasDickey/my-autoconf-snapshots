@@ -1,3 +1,25 @@
+2023-08-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-08-16
+	    From: Adam Joseph <adam@westernsemico.com>
+	    config.sub: add javascript-*-ghcjs
+
+	    GHC has been using a custom triple "javascript-unknown-ghcjs" for
+	    their (non asm.js, non wasm) javascript-emitting kernel-less target.
+
+	    This triple is a bit of an oddball, so the support for it is highly
+	    restricted in order to discourage further proliferation of the
+	    javascript "cpu" or ghcjs "operating system", which are valid only
+	    in combination with each other.
+
+	    * config.sub (javascript-*-ghcjs): Allow.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (javascript-ghcjs,
+	    javascript-unknown-ghcjs): New entries.
+
+	    Link: https://gitlab.haskell.org/ghc/ghc/-/commit/6636b670233522f01d002c9b97827d00289dbf5c
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-08-07  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2023-08-07
