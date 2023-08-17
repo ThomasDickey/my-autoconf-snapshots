@@ -1,3 +1,68 @@
+2023-08-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2023-08-17
+	    From: Bruno Haible <bruno@clisp.org>
+	    config.guess: Detect Android (as opposed to GNU/Linux)
+
+	    Here's a patch to recognize Android environments.
+
+	    Such environments are "apps" with POSIX-like tools. Today, the most frequently
+	    used one is Termux [1][2][3]; on devices with Android versions before 5.0
+	    one can use Terminal-IDE [4][5].
+
+	    config.sub already supports this environment:
+
+	      $ sh config.sub armv7l-linux-androideabi
+	      armv7l-unknown-linux-androideabi
+
+	    I've built many GNU packages in this environment, with the following recipe:
+	      CONFIG_SHELL=$PREFIX/bin/sh; export CONFIG_SHELL
+	      CC="clang -ferror-limit=0" CXX="clang++ -ferror-limit=0"; export CC CXX
+	      ./configure --host=armv7l-linux-androideabi --prefix=$HOME/local
+
+	    The Termux people have compiled or ported more than 1000 packages as well [6].
+
+	    But the requirement to pass the --host parameter each time is an annoyance.
+	    Without it, based only on the results of uname, config.guess guesses
+
+	      $ sh config.guess
+	      armv7l-unknown-linux-gnueabi
+
+	    and many configuration results are wrong (because Android has many functions
+	    in libc without declaring them in the .h files, depending on the so-called
+	    "Android API level"), leading to many compilation errors.
+
+	    With the attached patch, it produces
+
+	      $ sh config.guess
+	      armv7l-unknown-linux-androideabi
+
+	    The patch does not include an addition to the config.guess test suite, since
+	    the uname values are:
+	      $ uname -m
+	      armv7l
+	      $ uname -r
+	      4.19.127
+	      $ uname -s
+	      Linux
+	      $ uname -v
+	      #1 SMP PREEMPT Tue Apr 4 16:54:58 IST 2023
+	      $ uname -p
+	      unknown
+	    which maps to armv7l-unknown-linux-gnueabi.
+
+	    [1] https://github.com/termux/termux-app
+	    [2] https://f-droid.org/en/packages/com.termux/
+	    [3] https://wiki.termux.com/wiki/Main_Page
+	    [4] https://en.wikibooks.org/wiki/Android/Terminal_IDE
+	    [5] http://www.spartacusrex.com/terminalide.htm
+	    [6] https://github.com/termux/termux-packages/tree/master/packages
+
+	    * config.guess (Linux|GNU|GNU/*): Detect Android.
+	    * doc/config.guess.1: Regenerate.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-08-16  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2023-08-16
