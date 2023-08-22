@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2023-08-17'
+timestamp='2023-08-22'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -908,7 +908,7 @@ EOF
 	fi
 	;;
     *:FreeBSD:*:*)
-	UNAME_PROCESSOR=`/usr/bin/uname -p`
+	UNAME_PROCESSOR=`uname -p`
 	case $UNAME_PROCESSOR in
 	    amd64)
 		UNAME_PROCESSOR=x86_64 ;;

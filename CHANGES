@@ -1,3 +1,21 @@
+2023-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2023-08-22
+	    From: Dmitry V. Levin <ldv@altlinux.org>
+	    config.guess: invoke "uname -p" from PATH for non-arm FreeBSD
+
+	    Starting with commit afe1fa96bf32, "uname -p" from PATH is invoked in
+	    case of FreeBSD on arm, while in other FreeBSD cases it was invoked
+	    using a full pathname as "/usr/bin/uname -p".  Fix this inconsistency
+	    and invoke "uname -p" from PATH for all FreeBSD cases.  This also allows
+	    to test non-arm FreeBSD cases.
+
+	    * config.guess (*:FreeBSD:*:*): Invoke "uname -p" from PATH.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data (x86_64-unknown-freebsd5.2,
+	    i586-unknown-freebsd7.0): Reintroduce the tests removed by commit
+	    68873f3c11c6.
+
 2023-08-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2023-08-17
