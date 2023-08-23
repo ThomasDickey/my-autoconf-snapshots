@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2023-08-16'
+timestamp='2023-08-23'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1181,7 +1181,7 @@ case $cpu-$vendor in
 		case $cpu in
 			1750a | 580 \
 			| a29k \
-			| aarch64 | aarch64_be \
+			| aarch64 | aarch64_be | aarch64c \
 			| abacus \
 			| alpha | alphaev[4-8] | alphaev56 | alphaev6[78] \
 			| alpha64 | alpha64ev[4-8] | alpha64ev56 | alpha64ev6[78] \

@@ -1,3 +1,18 @@
+2023-08-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-08-23
+	    From: Urs Janßen <urs@tin.org>
+	    config.sub: allow aarch64c-unknown-freebsd
+
+	    config.guess says aarch64c-unknown-freebsd14.0 (cfarm240.cfarm.net,
+	    an Arm Morello SoC, quad-core aarch64 Neoverse N1-based CPU
+	    implementing CHERI), so let config.sub allow it.
+
+	    * config.sub (aarch64c): Recognize.
+	    * doc/config.sub.1: Regenerate.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-08-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2023-08-22
