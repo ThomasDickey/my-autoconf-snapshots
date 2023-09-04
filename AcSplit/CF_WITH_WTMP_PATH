@@ -1,0 +1,26 @@
+dnl CF_WITH_WTMP_PATH version: 1 updated: 2023/09/04 16:05:17
+dnl -----------------
+dnl Like CF_WITH_UTMP_PATH, but for the wtmp file.
+AC_DEFUN([CF_WITH_WTMP_PATH],[
+AC_ARG_WITH(utmp-path,
+	[  --with-wtmp-path=XXX    use XXX rather than auto for wtmp path],
+	[cf_wtmp_path=$withval],
+	[cf_wtmp_path=auto])
+if test "$cf_wtmp_path" = auto ; then
+	for cf_wtmp_path in /etc/wtmp /var/adm/wtmp /var/run/wtmp /var/log/wtmp
+	do
+		if test -f ${cf_wtmp_path}x ; then
+			cf_wtmp_path=${cf_wtmp_path}x
+			break
+		elif test -f $cf_wtmp_path/wtmp ; then
+			break
+		fi
+	done
+else
+	CF_PATH_SYNTAX(cf_wtmp_path)
+fi
+WTMP_PATH=$cf_wtmp_path
+WTMP_NAME=`echo "$cf_wtmp_path" | sed -e 's,^.*/,,'`
+AC_SUBST(WTMP_NAME)
+AC_SUBST(WTMP_PATH)
+])dnl

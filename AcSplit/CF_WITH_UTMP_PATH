@@ -1,0 +1,29 @@
+dnl CF_WITH_UTMP_PATH version: 1 updated: 2023/09/04 16:05:17
+dnl -----------------
+dnl utmp and wtmp have different pathnames on different systems, but there
+dnl are only a few common choices.  Note that they may not necessarily appear
+dnl in the same directories.  Prefer utmpx/wtmpx to utmp/wtmp, since that's
+dnl the way the configure script is designed.
+AC_DEFUN([CF_WITH_UTMP_PATH],[
+AC_ARG_WITH(utmp-path,
+	[  --with-utmp-path=XXX    use XXX rather than auto for utmp path],
+	[cf_utmp_path=$withval],
+	[cf_utmp_path=auto])
+if test "$cf_utmp_path" = auto ; then
+	for cf_utmp_path in /etc/utmp /var/adm/utmp /var/log/utmp /var/run/utmp
+	do
+		if test -f ${cf_utmp_path}x ; then
+			cf_utmp_path=${cf_utmp_path}x
+			break
+		elif test -f $cf_utmp_path ; then
+			break
+		fi
+	done
+else
+	CF_PATH_SYNTAX(cf_utmp_path)
+fi
+UTMP_PATH=$cf_utmp_path
+UTMP_NAME=`echo "$cf_utmp_path" | sed -e 's,^.*/,,'`
+AC_SUBST(UTMP_NAME)
+AC_SUBST(UTMP_PATH)
+])dnl
