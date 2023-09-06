@@ -1,3 +1,8 @@
+2023-09-06  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	add pattern for uClibc-ng to CF_XOPEN_SOURCE (report/patch by Waldemar Brodkorb)
+
 2023-09-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_UTMP_PATH, AcSplit/CF_WITH_WTMP_PATH: New file.
