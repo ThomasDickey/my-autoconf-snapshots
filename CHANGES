@@ -1,3 +1,20 @@
+2023-09-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-09-15
+	    From: Billy Laws <blaws05@gmail.com>
+	    config.sub: recognise ARM64EC machine type
+
+	    ARM64EC is a custom ABI for AArch64 that allows for interoperability
+	    with x86_64 compiled code. While technically just an ABI, it is treated
+	    as its own machine type, with triples in the format arm64ec-*.
+
+	    * config.sub (arm64ec): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (arm64ec-pc-mingw32, arm64ec-windows): New
+	    entries.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-09-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:
