@@ -1,3 +1,7 @@
+2023-10-02  Sven.Joachim
+
+	* AcSplit/CF_WITH_WTMP_PATH: fix typo
+
 2023-09-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2023-09-15
