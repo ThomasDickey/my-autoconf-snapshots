@@ -1,29 +1,23 @@
-dnl CF_WITH_ADA_SHAREDLIB version: 6 updated: 2023/10/28 11:59:01
+dnl CF_WITH_ADA_SHAREDLIB version: 5 updated: 2018/07/21 19:10:35
 dnl ---------------------
-dnl Command-line option to specify if an Ada95 shared library should be built,
+dnl Command-line option to specify if an Ada95 shared-library should be built,
 dnl and optionally what its soname should be.
 AC_DEFUN([CF_WITH_ADA_SHAREDLIB],[
 AC_REQUIRE([CF_GNAT_PROJECTS])
-AC_MSG_CHECKING(whether to build an Ada95 shared library)
+AC_MSG_CHECKING(if an Ada95 shared-library should be built)
 AC_ARG_WITH(ada-sharedlib,
-	[  --with-ada-sharedlib    build Ada95 shared library; requires GNAT project support],
+	[  --with-ada-sharedlib=soname build shared-library (requires GNAT projects)],
 	[with_ada_sharedlib=$withval],
 	[with_ada_sharedlib=no])
-cf_ada_sharedlib_warn=no
+AC_MSG_RESULT($with_ada_sharedlib)
 
 if test "x$with_ada_sharedlib" != xno
 then
 	if test "x$cf_gnat_projects" != xyes
 	then
+		AC_MSG_WARN(disabling shared-library since GNAT projects are not supported)
 		with_ada_sharedlib=no
-		cf_ada_sharedlib_warn=yes
 	fi
-fi
-
-AC_MSG_RESULT($with_ada_sharedlib)
-if test "x$cf_ada_sharedlib_warn" != xno
-then
-	AC_MSG_WARN(disabling Ada95 shared library since GNAT projects are not supported)
 fi
 
 ADA_SHAREDLIB='lib$(LIB_NAME).so.1'

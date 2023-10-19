@@ -1,0 +1,13 @@
+dnl CF_CYGPATH_W version: 1 updated: 2022/11/13 14:26:50
+dnl ------------
+dnl test whether we have cygpath
+AC_DEFUN([CF_CYGPATH_W],[
+if test -z "$CYGPATH_W"; then
+  if (cygpath --version) >/dev/null 2>/dev/null; then
+    CYGPATH_W='cygpath -w'
+  else
+    CYGPATH_W=echo
+  fi
+fi
+AC_SUBST(CYGPATH_W)
+])

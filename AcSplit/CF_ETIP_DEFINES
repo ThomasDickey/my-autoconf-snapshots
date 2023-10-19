@@ -1,4 +1,4 @@
-dnl CF_ETIP_DEFINES version: 7 updated: 2023/10/28 11:59:01
+dnl CF_ETIP_DEFINES version: 6 updated: 2021/01/02 17:09:14
 dnl ---------------
 dnl Test for conflicting definitions of exception in gcc 2.8.0, etc., between
 dnl math.h and builtin.h, only for ncurses
@@ -30,6 +30,6 @@ AC_TRY_COMPILE([
 ],[])
 done
 done
-AC_MSG_RESULT([${cf_result:-(none)}])
+AC_MSG_RESULT($cf_result)
 CXXFLAGS="$cf_save_CXXFLAGS"
 ])

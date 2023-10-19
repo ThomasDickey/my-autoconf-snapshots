@@ -1,4 +1,4 @@
-dnl CF_WITH_X11_RGB version: 3 updated: 2023/10/28 11:59:01
+dnl CF_WITH_X11_RGB version: 2 updated: 2019/12/31 08:53:54
 dnl ---------------
 dnl Handle configure option "--with-x11-rgb", setting these shell
 dnl variables:
@@ -38,7 +38,7 @@ dnl 	/usr/X11/lib/X11/rgb.txt
 AC_DEFUN([CF_WITH_X11_RGB],[
 AC_MSG_CHECKING(for X11 rgb file)
 AC_ARG_WITH(x11-rgb,
-	[  --with-x11-rgb=FILE     obtain X11 color definitions from FILE (default: EPREFIX/lib/X11/rgb.txt)],
+	[  --with-x11-rgb=FILE   file containing X11 rgb information (EPREFIX/lib/X11/rgb.txt)],
 	[RGB_PATH=$withval],
 	[RGB_PATH=auto])
 

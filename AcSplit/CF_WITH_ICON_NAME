@@ -1,11 +1,11 @@
-dnl CF_WITH_ICON_NAME version: 4 updated: 2023/11/23 06:40:35
+dnl CF_WITH_ICON_NAME version: 3 updated: 2015/04/12 15:39:00
 dnl -----------------
 dnl Allow a default icon-name to be overridden.
 dnl $1 = default icon name
 AC_DEFUN([CF_WITH_ICON_NAME],[
 AC_MSG_CHECKING(for the icon name)
 AC_ARG_WITH(icon-name,
-	[[  --with-icon-name[=XXX]  override icon name (default: $1)]],
+	[  --with-icon-name=XXXX   override icon name (default: $1)],
 	[ICON_NAME="$withval"],
 	[ICON_NAME=$1])
 case "x$ICON_NAME" in

@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 16 updated: 2023/11/23 06:40:35
+dnl CF_TTY_GROUP version: 15 updated: 2023/01/05 17:57:39
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -11,7 +11,7 @@ AC_DEFUN([CF_TTY_GROUP],
 [AC_REQUIRE([AC_PROG_EGREP])dnl
 AC_MSG_CHECKING(for explicit tty group name)
 AC_ARG_WITH(tty-group,
-	[[  --with-tty-group[=XXX]  use XXX for the tty-group]],
+	[  --with-tty-group=XXX    use XXX for the tty-group],
 	[cf_tty_group=$withval],
 	[cf_tty_group=auto...])
 test -z "$cf_tty_group"    && cf_tty_group=auto...

@@ -1,6 +1,7 @@
-MANIFEST for my-autoconf, version t20231123
+MANIFEST for my-autoconf, version t20231019
 --------------------------------------------------------------------------------
 MANIFEST                        this file
+CHANGES                         generated changelog
 COPYING                         copyright notice
 COPYING.asc                     gpg signature for COPYING
 README                          description of "my-autoconf"
@@ -9,7 +10,10 @@ config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
 headers-sh                      utility for installing/transforming header files
 install-sh                      generic install-script
+install.sh                      alternate install-script
+mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
+AcSplit/AC_GNU_SOURCE           check for _GNU_SOURCE from rcs-blame
 AcSplit/AC_ISC_POSIX            from gettext 0.10.40 (tin)
 AcSplit/AM_GNU_GETTEXT          macro to test for GNU gettext
 AcSplit/AM_ICONV                adapted from gettext 0.10.40 (tin)
@@ -134,6 +138,7 @@ AcSplit/CF_CURS_TOUCHLINE       test for curses touchline() function
 AcSplit/CF_CXX_AR_FLAGS         set values for c++ archive- and loader-options
 AcSplit/CF_CXX_IOSTREAM_NAMESPACE  check if c++ iostream header uses the "std::" namespace
 AcSplit/CF_CXX_LIBRARY          check if the C++ compiler has a usable library
+AcSplit/CF_CYGPATH_W            check for cygpath -w from rcs-blame
 AcSplit/CF_C_INLINE             check for inline support in C compiler
 AcSplit/CF_DEFAULT_SHELL        check for a default-shell variable (actually, any shell program from a given
 AcSplit/CF_DEFINE_PATHNAME      convert a shell pathname-expression to a #define

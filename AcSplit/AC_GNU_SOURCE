@@ -1,0 +1,7 @@
+dnl AC_GNU_SOURCE version: 1 updated: 2022/11/13 14:26:50
+dnl -------------
+AC_DEFUN([AC_GNU_SOURCE], [
+	CF_XOPEN_SOURCE
+	dnl AC_MSG_WARN([use CF_XOPEN_SOURCE])
+	dnl CPPFLAGS="$CPPFLAGS -D_DEFAULT_SOURCE"
+] )

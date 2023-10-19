@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_THEME version: 14 updated: 2023/11/23 06:40:35
+dnl CF_WITH_ICON_THEME version: 13 updated: 2020/12/31 10:54:15
 dnl ------------------
 dnl If asked, check for prerequisites and setup symbols to permit installing
 dnl one or more application icons in the Red Hat icon-theme directory
@@ -30,7 +30,7 @@ CF_WITH_ICONDIR
 
 AC_MSG_CHECKING(if icon theme should be used)
 AC_ARG_WITH(icon-theme,
-	[[  --with-icon-theme[=XXX] install icons into desktop theme (hicolor)]],
+	[  --with-icon-theme=XXX   install icons into desktop theme (hicolor)],
 	[ICON_THEME=$withval],
 	[ICON_THEME=no])
 

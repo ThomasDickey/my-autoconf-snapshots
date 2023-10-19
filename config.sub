@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2023-09-15'
+timestamp='2023-10-19'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1721,7 +1721,7 @@ fi
 
 case $os in
 	# Sometimes we do "kernel-libc", so those need to count as OSes.
-	musl* | newlib* | relibc* | uclibc*)
+	llvm* | musl* | newlib* | relibc* | uclibc*)
 		;;
 	# Likewise for "kernel-abi"
 	eabi* | gnueabi*)
@@ -1818,16 +1818,18 @@ esac
 # As a final step for OS-related things, validate the OS-kernel combination
 # (given a valid OS), if there is a kernel.
 case $kernel-$os-$obj in
-	linux-gnu*- | linux-dietlibc*- | linux-android*- | linux-newlib*- \
-		   | linux-musl*- | linux-relibc*- | linux-uclibc*- | linux-mlibc*- )
+	linux-gnu*- | linux-android*- | linux-dietlibc*- | linux-llvm*- \
+		    | linux-mlibc*- | linux-musl*- | linux-newlib*- \
+		    | linux-relibc*- | linux-uclibc*- )
 		;;
 	uclinux-uclibc*- )
 		;;
 	managarm-mlibc*- | managarm-kernel*- )
 		;;
-	windows*-gnu*- | windows*-msvc*-)
+	windows*-msvc*-)
 		;;
-	-dietlibc*- | -newlib*- | -musl*- | -relibc*- | -uclibc*- | -mlibc*- )
+	-dietlibc*- | -llvm*- | -mlibc*- | -musl*- | -newlib*- | -relibc*- \
+		    | -uclibc*- )
 		# These are just libc implementations, not actual OSes, and thus
 		# require a kernel.
 		echo "Invalid configuration '$1': libc '$os' needs explicit kernel." 1>&2

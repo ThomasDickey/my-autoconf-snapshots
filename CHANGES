@@ -1,38 +1,25 @@
-2023-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
+2023-10-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
-	* AcSplit/CF_TTY_GROUP, AcSplit/CF_WITH_ICON_NAME,
-	  AcSplit/CF_WITH_ICON_SYMLINK, AcSplit/CF_WITH_ICON_THEME,
-	  AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_WITH_XPM:
-	modify usage message, bracketing optional values
+	* config.guess: 2023-10-19
+	    From: Alfred Persson Forsberg <cat@catcream.org>
+	    config.guess: detect LLVM-libc via features.h
 
-2023-11-22  Thomas E. Dickey  <dickey@invisible-island.net>
+	    * config.guess (__LLVM_LIBC__): Recognize.
+	    * doc/config.guess.1: Regenerate.
 
-	* AcSplit/CF_WITH_ADA_LIBNAME, AcSplit/CF_WITH_EXPORT_SYMS,
-	  AcSplit/CF_WITH_LIBTOOL_OPTS, AcSplit/CF_WITH_LIB_BASENAME,
-	  AcSplit/CF_WITH_PKG_CONFIG_LIBDIR, AcSplit/CF_WITH_VERSIONED_SYMS,
-	  AcSplit/CF_WITH_SYMLINK, AcSplit/CF_WITH_LOCALE_ALIAS,
-	  AcSplit/CF_WITH_ENCODINGS_DIR:
-	modify usage message, bracketing optional values
+	    Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
-2023-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+	* config.sub: 2023-10-19
+	    From: Alfred Persson Forsberg <cat@catcream.org>
+	    config.sub: add LLVM-libc support
 
-	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
-	modify --with-pkg-config-libdir option to make "libdir" the default,
-	as documented, rather than "auto" (report by Branden Robinson).
+	    * config.sub (*-linux-llvm): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data: Add x86_64-linux-llvm.
 
-	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_PKG_CONFIG,
-	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_ADA_COMPILER,
-	  AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_LIBNAME,
-	  AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB,
-	  AcSplit/CF_WITH_EXPORT_SYMS, AcSplit/CF_WITH_LIBTOOL_OPTS,
-	  AcSplit/CF_WITH_VERSIONED_SYMS, AcSplit/CF_WITH_X11_RGB:
-	improve usage-messages (patch by Branden Robinson)
-
-2023-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
-
-	* AcSplit/CF_ABI_DEFAULTS:
-	add cf_dft_widec and cf_dft_opaque_curses for changing defaults of the
-	configure options for enabling widec and opaqueness.
+	    Signed-off-by: Alfred Persson Forsberg <cat@catcream.org>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2023-10-02  Sven.Joachim
 
@@ -733,6 +720,11 @@
 
 	* AcSplit/CF_GCC_OPT_RDYNAMIC:
 	some configurations of clang support -rdynamic; allow but still warn.
+
+2022-11-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AC_GNU_SOURCE, AcSplit/CF_CYGPATH_W:
+	ci-aclocal generated header
 
 2022-11-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
