@@ -1,3 +1,9 @@
+2023-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ABI_DEFAULTS:
+	add cf_dft_widec and cf_dft_opaque_curses for changing defaults of the
+	configure options for enabling widec and opaqueness.
+
 2023-10-02  Sven.Joachim
 
 	* AcSplit/CF_WITH_WTMP_PATH: fix typo
