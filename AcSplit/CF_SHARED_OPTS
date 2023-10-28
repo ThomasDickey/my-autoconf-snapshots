@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 107 updated: 2021/09/04 06:47:34
+dnl CF_SHARED_OPTS version: 108 updated: 2023/10/28 11:59:01
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -44,9 +44,9 @@ AC_DEFUN([CF_SHARED_OPTS],
 	cf_ld_rpath_opt=
 	test "$cf_cv_enable_rpath" = yes && cf_ld_rpath_opt="$LD_RPATH_OPT"
 
-	AC_MSG_CHECKING(if release/abi version should be used for shared libs)
+	AC_MSG_CHECKING(whether to use release or ABI version in shared library file names)
 	AC_ARG_WITH(shlib-version,
-	[  --with-shlib-version=X  Specify rel or abi version for shared libs],
+	[[  --with-shlib-version[={rel|abi}] use release or ABI version in shared library file names]],
 	[test -z "$withval" && withval=auto
 	case "$withval" in
 	(yes)

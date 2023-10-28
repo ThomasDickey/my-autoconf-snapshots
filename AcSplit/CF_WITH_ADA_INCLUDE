@@ -1,10 +1,10 @@
-dnl CF_WITH_ADA_INCLUDE version: 2 updated: 2010/06/26 17:35:58
+dnl CF_WITH_ADA_INCLUDE version: 3 updated: 2023/10/28 11:59:01
 dnl -------------------
 dnl Command-line option to specify where Ada includes will install.
 AC_DEFUN([CF_WITH_ADA_INCLUDE],[
-AC_MSG_CHECKING(for ada-include)
+AC_MSG_CHECKING(for Ada95 include directory)
 CF_WITH_PATH(ada-include,
-   [  --with-ada-include=DIR  Ada includes are in DIR],
+   [  --with-ada-include=DIR  find Ada95 includes in DIR],
    ADA_INCLUDE,
    PREFIX/share/ada/adainclude,
    [$]prefix/share/ada/adainclude)

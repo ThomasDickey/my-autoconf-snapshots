@@ -1,4 +1,4 @@
-dnl CF_PKG_CONFIG version: 12 updated: 2021/10/10 20:18:09
+dnl CF_PKG_CONFIG version: 13 updated: 2023/10/28 11:59:01
 dnl -------------
 dnl Check for the package-config program, unless disabled by command-line.
 dnl
@@ -7,7 +7,7 @@ AC_DEFUN([CF_PKG_CONFIG],
 [
 AC_MSG_CHECKING(if you want to use pkg-config)
 AC_ARG_WITH(pkg-config,
-	[  --with-pkg-config{=path} enable/disable use of pkg-config],
+	[[  --with-pkg-config[=CMD] enable/disable use of pkg-config and its name CMD]],
 	[cf_pkg_config=$withval],
 	[cf_pkg_config=yes])
 AC_MSG_RESULT($cf_pkg_config)

@@ -1,3 +1,17 @@
+2023-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	modify --with-pkg-config-libdir option to make "libdir" the default,
+	as documented, rather than "auto" (report by Branden Robinson).
+
+	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_PKG_CONFIG,
+	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_ADA_COMPILER,
+	  AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_LIBNAME,
+	  AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB,
+	  AcSplit/CF_WITH_EXPORT_SYMS, AcSplit/CF_WITH_LIBTOOL_OPTS,
+	  AcSplit/CF_WITH_VERSIONED_SYMS, AcSplit/CF_WITH_X11_RGB:
+	improve usage-messages (patch by Branden Robinson)
+
 2023-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ABI_DEFAULTS:
