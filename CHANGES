@@ -1,3 +1,87 @@
+2023-10-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-10-29
+	    From: Adam Joseph <adam@westernsemico.com>
+	    config.sub: recognize *-*-uefi
+
+	    This commit causes gnu-config to recognize the *-*-uefi triples.
+
+	    These triples describe binaries which use the PE object file format
+	    and UEFI calling "convention" (which is actually a family of
+	    completely unrelated calling conventions, one per CPU architecture):
+
+	    - https://uefi.org/specs/UEFI/2.9_A/02_Overview.html#detailed-calling-convention
+	    - https://uefi.org/specs/UEFI/2.9_A/02_Overview.html#detailed-calling-convention-1
+	    - https://uefi.org/specs/UEFI/2.9_A/02_Overview.html#detailed-calling-convention-2
+	    - https://wiki.osdev.org/UEFI#Calling_Conventions
+
+	    This is in contrast to the *-w64-mingw32 triple of GNU-EFI, which
+	    uses the ELF format and cdecl calling convention:
+
+	    - https://wiki.osdev.org/UEFI#Calling_Conventions
+
+	    Because *-*-uefi uses a different object file format (everywhere)
+	    and calling convention (everywhere except x86_32) from
+	    *-w64-mingw32, the resulting binaries cannot be linked against each
+	    other.  This is the primary justification for introducing a new
+	    triple.
+
+	    Since gnu-config does not yet have triples for these builds, we
+	    might as well use the same ones already selected by LLVM.  It
+	    considers uefi to be an operating system:
+
+	    - https://reviews.llvm.org/D131594
+
+	    * config.sub (*-*-uefi): Recognize.
+	    * testsuite/config-sub.data (i686-unknown-uefi, x86_64-unknown-uefi,
+	      aarch64-unknown-uefi): New entries.
+
+	    Signed-off-by: Adam Joseph <adam@westernsemico.com>
+	    X-Disclaimer: This commit shall not be construed as the author's approval of the UEFI boondoggle in any way, shape or form.
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+2023-10-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-10-28
+	    From: John Ericson <list@JohnEricson.me>
+	    Recognize the VideoCore 4 processor
+
+	    This is supported in this GCC fork. [1] It has been packaged in Nixpkgs
+	    since 2019. [2]
+
+	    Their change to `config.sub` [3] is similar, but also includes a `vc4`
+	    -> `vc4-unknown-elf` shorthand; I don't see any reasons to add any new
+	    legacy 1-component short-hands, so I just skipped that part.
+
+	    [1]: https://github.com/itszor/vc4-toolchain
+
+	    [2]: https://github.com/NixOS/nixpkgs/pull/72657
+
+	    [3]: https://github.com/itszor/gcc-vc4/commit/91278afabe61808c0b02078c078e758d69f94aff
+
+	    * config.sub (vc4-*): Recognize.
+	    * testsuite/config-sub.data (vc4-unknown-none-elf): New entry.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	modify --with-pkg-config-libdir option to make "libdir" the default,
+	as documented, rather than "auto" (report by Branden Robinson).
+
+	* AcSplit/CF_ETIP_DEFINES, AcSplit/CF_PKG_CONFIG,
+	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_ADA_COMPILER,
+	  AcSplit/CF_WITH_ADA_INCLUDE, AcSplit/CF_WITH_ADA_LIBNAME,
+	  AcSplit/CF_WITH_ADA_OBJECTS, AcSplit/CF_WITH_ADA_SHAREDLIB,
+	  AcSplit/CF_WITH_EXPORT_SYMS, AcSplit/CF_WITH_LIBTOOL_OPTS,
+	  AcSplit/CF_WITH_VERSIONED_SYMS, AcSplit/CF_WITH_X11_RGB:
+	improve usage-messages (patch by Branden Robinson)
+
+2023-10-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ABI_DEFAULTS:
+	add cf_dft_widec and cf_dft_opaque_curses for changing defaults of the
+	configure options for enabling widec and opaqueness.
+
 2023-10-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2023-10-19

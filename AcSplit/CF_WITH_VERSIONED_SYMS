@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 10 updated: 2021/01/04 18:48:01
+dnl CF_WITH_VERSIONED_SYMS version: 11 updated: 2023/10/28 11:59:01
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -11,7 +11,7 @@ AC_REQUIRE([AC_PROG_EGREP])dnl
 
 AC_MSG_CHECKING(if versioned-symbols file should be used)
 AC_ARG_WITH(versioned-syms,
-	[  --with-versioned-syms=X markup versioned symbols using ld],
+	[  --with-versioned-syms=MAP-FILE version ELF shared library symbols per MAP-FILE],
 	[with_versioned_syms=$withval],
 	[with_versioned_syms=no])
 case "x$with_versioned_syms" in
