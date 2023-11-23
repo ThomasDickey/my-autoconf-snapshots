@@ -1,4 +1,4 @@
-dnl CF_WITH_ICON_SYMLINK version: 2 updated: 2015/04/12 15:39:00
+dnl CF_WITH_ICON_SYMLINK version: 3 updated: 2023/11/23 06:40:35
 dnl --------------------
 dnl Workaround for systems which are (mis)configured to map all icon references
 dnl for xterm into "xterm" name.  For instance, recent (2013) KDE ignores both
@@ -9,7 +9,7 @@ dnl $1 = default icon name to use if symlink is wanted
 AC_DEFUN([CF_WITH_ICON_SYMLINK],[
 AC_MSG_CHECKING(for icon symlink to use)
 AC_ARG_WITH(icon-symlink,
-	[  --with-icon-symlink=XXX make symbolic link for icon name (default: $1)],
+	[[  --with-icon-symlink[=XXX] make symbolic link for icon name (default: $1)]],
 	[ICON_SYMLINK="$withval"],
 	[ICON_SYMLINK=NONE])
 case "x$ICON_SYMLINK" in

@@ -1,3 +1,10 @@
+2023-11-23  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TTY_GROUP, AcSplit/CF_WITH_ICON_NAME,
+	  AcSplit/CF_WITH_ICON_SYMLINK, AcSplit/CF_WITH_ICON_THEME,
+	  AcSplit/CF_WITH_MAN2HTML, AcSplit/CF_WITH_XPM:
+	modify usage message, bracketing optional values
+
 2023-11-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA_LIBNAME, AcSplit/CF_WITH_EXPORT_SYMS,
