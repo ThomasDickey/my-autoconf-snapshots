@@ -1,4 +1,4 @@
-dnl CF_WITH_ADA_LIBNAME version: 2 updated: 2023/10/28 11:59:01
+dnl CF_WITH_ADA_LIBNAME version: 3 updated: 2023/11/22 20:48:30
 dnl -------------------
 dnl CF_WITH_ADA_LIBNAME
 dnl -------------------
@@ -7,7 +7,7 @@ dnl $1 = default value
 AC_DEFUN([CF_WITH_ADA_LIBNAME],[
 AC_MSG_CHECKING(for Ada95 curses library name)
 AC_ARG_WITH(ada-libname,
-   [  --with-ada-libname=XXX  use XXX as Ada95 library name],
+   [[  --with-ada-libname[=XXX]  use XXX as Ada95 library name]],
    ADA_LIBNAME=[$]withval,
    ADA_LIBNAME=$1)
 case "x$ADA_LIBNAME" in

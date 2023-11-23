@@ -1,4 +1,4 @@
-dnl CF_WITH_LIBTOOL_OPTS version: 5 updated: 2023/10/28 11:59:01
+dnl CF_WITH_LIBTOOL_OPTS version: 6 updated: 2023/11/22 20:48:30
 dnl --------------------
 dnl Allow user to pass additional libtool options into the library creation
 dnl and link steps.  The main use for this is to do something like
@@ -8,7 +8,7 @@ dnl	./configure --enable-static
 AC_DEFUN([CF_WITH_LIBTOOL_OPTS],[
 AC_MSG_CHECKING(for additional libtool options)
 AC_ARG_WITH(libtool-opts,
-	[  --with-libtool-opts=XXX give libtool additional options XXX],
+	[[  --with-libtool-opts[=XXX] give libtool additional options XXX]],
 	[with_libtool_opts=$withval],
 	[with_libtool_opts=no])
 AC_MSG_RESULT($with_libtool_opts)

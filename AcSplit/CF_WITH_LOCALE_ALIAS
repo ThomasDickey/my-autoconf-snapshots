@@ -1,4 +1,4 @@
-dnl CF_WITH_LOCALE_ALIAS version: 9 updated: 2020/10/03 12:19:31
+dnl CF_WITH_LOCALE_ALIAS version: 10 updated: 2023/11/22 19:50:11
 dnl --------------------
 dnl Configure option to specify the location of locale.alias, for programs that
 dnl must read it directly.
@@ -6,7 +6,7 @@ AC_DEFUN([CF_WITH_LOCALE_ALIAS],
 [
 AC_MSG_CHECKING(for location of locale alias file)
 AC_ARG_WITH(locale-alias,
-[  --with-locale-alias=XXX file used for locale aliases (default: auto)],
+[[  --with-locale-alias[=XXX] file used for locale aliases (default: auto)]],
 [LOCALE_ALIAS_FILE=$withval],
 [LOCALE_ALIAS_FILE=auto])
 
