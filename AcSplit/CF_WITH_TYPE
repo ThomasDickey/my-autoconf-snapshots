@@ -1,0 +1,20 @@
+dnl CF_WITH_TYPE version: 2 updated: 2023/11/25 16:11:47
+dnl ------------
+dnl Accept a TYPE for substitution:
+dnl $1 = name of type
+dnl $2 = help/usage message
+dnl $3 = symbol to set
+dnl $4 = default value
+AC_DEFUN([CF_WITH_TYPE],[
+AC_MSG_CHECKING(for type of $1)
+AC_ARG_WITH([$1], [$2],
+	[$3="$withval"],
+	[$3=$4])
+AC_MSG_RESULT([$]$3)
+case x[$]$3 in
+(x|xyes|xno)
+	AC_MSG_ERROR(expected a type name for $1)
+	;;
+esac
+AC_SUBST($3)
+])dnl

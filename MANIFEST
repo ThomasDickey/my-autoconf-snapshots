@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20231030
+MANIFEST for my-autoconf, version t20231125
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -573,6 +573,7 @@ AcSplit/CF_WITH_SHARED_OR_LIBTOOL  macro to simplify choice between --with-share
 AcSplit/CF_WITH_SYMLINK         handle --with-XXX-symlink option, originally in xterm, for vile, etc.,
 AcSplit/CF_WITH_SYSMOUSE        check for FreeBSD sysmouse (ncurses)
 AcSplit/CF_WITH_SYSTYPE         the --with-systype option, works for mockups (compare with --host)
+AcSplit/CF_WITH_TYPE            specify a type-name via option, ensuring that no/yes/empty are not given
 AcSplit/CF_WITH_UTMP_PATH       option for xterm's manpage, to specify pathname of utmp
 AcSplit/CF_WITH_VALGRIND        configure --with-valgrind
 AcSplit/CF_WITH_VALUE           wrapper for AC_WITH_VALUE to ensure it gets a value
