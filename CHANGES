@@ -1,3 +1,27 @@
+2023-12-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2023-10-19
+	    From: streaksu <streaksu@protonmail.com>
+	    config.guess: recognize ironclad OS
+
+	    * config.guess (*:Ironclad:*:*): Recognize.
+	    * doc/config.guess.1: Regenerate.
+	    * testsuite/config-guess.data (x86_64-unknown-ironclad): New entry.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2023-12-02
+	    From: streaksu <streaksu@protonmail.com>
+	    config.sub: recognize ironclad OS
+
+	    * config.sub ($os == ironclad*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (x86_64-ironclad): New entry.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* AcSplit/CF_WITH_DESKTOP_CATEGORY: spelling fix
+
 2023-12-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_STRFTIME: improve call on AC_DEFINE

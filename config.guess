@@ -1595,6 +1595,9 @@ EOF
     *:Unleashed:*:*)
 	GUESS=$UNAME_MACHINE-unknown-unleashed$UNAME_RELEASE
 	;;
+    *:Ironclad:*:*)
+	GUESS=$UNAME_MACHINE-unknown-ironclad
+	;;
 esac
 
 # Do we have a guess based on uname results?

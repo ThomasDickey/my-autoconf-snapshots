@@ -1,4 +1,4 @@
-dnl CF_WITH_DESKTOP_CATEGORY version: 9 updated: 2021/01/03 18:30:50
+dnl CF_WITH_DESKTOP_CATEGORY version: 10 updated: 2023/12/02 06:55:40
 dnl ------------------------
 dnl Taking into account the absence of standardization of desktop categories
 dnl take a look to see whether other applications on the current system are
@@ -21,7 +21,7 @@ if test -z "$desktop_utils"
 then
 	AC_MSG_CHECKING(for requested desktop-category)
 	AC_ARG_WITH(desktop-category,
-		[  --with-desktop-category=XXX  one or more desktop catgories or auto],
+		[  --with-desktop-category=XXX  one or more desktop categories or auto],
 		[cf_desktop_want=$withval],
 		[cf_desktop_want=auto])
 	AC_MSG_RESULT($cf_desktop_want)
