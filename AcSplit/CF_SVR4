@@ -1,4 +1,4 @@
-dnl CF_SVR4 version: 5 updated: 2012/10/04 05:24:07
+dnl CF_SVR4 version: 6 updated: 2023/12/01 17:22:50
 dnl -------
 dnl Check if this is an SVR4 system.  We need the definition for xterm
 AC_DEFUN([CF_SVR4],
@@ -7,7 +7,7 @@ AC_CHECK_LIB(elf, elf_begin,[
 AC_CACHE_CHECK(if this is an SVR4 system, cf_cv_svr4,[
 AC_TRY_COMPILE([
 #if defined(__CYGWIN__)
-make an error
+#error Cygwin is not SVr4
 #endif
 #include <elf.h>
 #include <sys/termio.h>

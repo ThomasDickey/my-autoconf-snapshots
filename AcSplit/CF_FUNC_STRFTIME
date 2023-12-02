@@ -1,0 +1,21 @@
+dnl CF_FUNC_STRFTIME version: 2 updated: 2023/12/01 20:44:51
+dnl ----------------
+AC_DEFUN([CF_FUNC_STRFTIME],
+[
+AC_CACHE_CHECK(for strftime function,cf_cv_func_strftime,[
+AC_TRY_LINK([
+$ac_includes_default
+#include <time.h>
+],[
+	time_t now = time((time_t*)0);
+	struct tm *tm = localtime(&now);
+	char buffer[80];
+	size_t result = strftime(buffer, sizeof(buffer), "%c", tm);
+
+	(void)result;
+	(void)buffer;
+],[cf_cv_func_strftime=yes],[cf_cv_func_strftime=no])
+])
+
+test "$cf_cv_func_strftime" = yes && AC_DEFINE(HAVE_STRFTIME,1,[Define to 1 to indicate that strftime function is present])
+])dnl

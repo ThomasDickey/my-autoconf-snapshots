@@ -1,3 +1,21 @@
+2023-12-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_STRFTIME: improve call on AC_DEFINE
+
+	* AcSplit/CF_FUNC_STRFTIME: ci-aclocal generated header
+
+	* AcSplit/CF_XKB_BELL_EXT:
+	correct parameter type for XkbBell() in configure check (patch by Florian
+	Weimer, Redhat #2251945)
+
+	* AcSplit/CF_LASTLOG, AcSplit/CF_MKSTEMP, AcSplit/CF_TTY_GROUP:
+	fix a const-string warning
+
+	* AcSplit/CF_CONST_X_STRING: fix a redefinition warning
+
+	* AcSplit/CF_FUNC_TGETENT, AcSplit/CF_POSIX_SAVED_IDS, AcSplit/CF_SVR4:
+	use "#error"
+
 2023-11-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_TYPE: fix quoting

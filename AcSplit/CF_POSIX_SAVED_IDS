@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 10 updated: 2023/01/05 17:53:42
+dnl CF_POSIX_SAVED_IDS version: 11 updated: 2023/12/01 17:22:50
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -27,7 +27,7 @@ AC_TRY_LINK(
  * However, saved-ids work almost like POSIX (close enough for most uses).
  */
 #else
-make an error
+#error no saved-ids found
 #endif
 ],[cf_cv_posix_saved_ids=yes
 ],[

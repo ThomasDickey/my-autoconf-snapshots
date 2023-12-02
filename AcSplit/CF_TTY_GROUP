@@ -1,4 +1,4 @@
-dnl CF_TTY_GROUP version: 16 updated: 2023/11/23 06:40:35
+dnl CF_TTY_GROUP version: 17 updated: 2023/12/01 17:22:50
 dnl ------------
 dnl Check if the system has a tty-group defined.  This is used in xterm when
 dnl setting pty ownership.
@@ -90,6 +90,7 @@ $ac_includes_default
 
 int main(void)
 {
+	static char default_tty[] = "/dev/tty";
 	struct stat sb;
 	struct group *ttygrp;
 	int fd;
@@ -100,7 +101,7 @@ int main(void)
 			break;
 	}
 	if (name == 0)
-		name = "/dev/tty";
+		name = default_tty;
 
 	ttygrp = getgrnam(TTY_GROUP_NAME);
 	endgrent();

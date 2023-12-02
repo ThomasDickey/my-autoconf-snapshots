@@ -1,4 +1,4 @@
-dnl CF_CONST_X_STRING version: 7 updated: 2021/06/07 17:39:17
+dnl CF_CONST_X_STRING version: 8 updated: 2023/12/01 17:22:50
 dnl -----------------
 dnl The X11R4-X11R6 Xt specification uses an ambiguous String type for most
 dnl character-strings.
@@ -33,6 +33,7 @@ AC_TRY_COMPILE(
 AC_CACHE_CHECK(for X11/Xt const-feature,cf_cv_const_x_string,[
 	AC_TRY_COMPILE(
 		[
+#undef  _CONST_X_STRING
 #define _CONST_X_STRING	/* X11R7.8 (perhaps) */
 #undef  XTSTRINGDEFINES	/* X11R5 and later */
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20231125
+MANIFEST for my-autoconf, version t20231201
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -199,6 +199,7 @@ AcSplit/CF_FUNC_OPENPTY         ncurses - check for openpty function, used for t
 AcSplit/CF_FUNC_POLL            functional test for poll()
 AcSplit/CF_FUNC_POPEN           portability-checks for popen().
 AcSplit/CF_FUNC_SIGACTION       check for sigaction function and related structs
+AcSplit/CF_FUNC_STRFTIME        check if strftime() can be linked
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status
 AcSplit/CF_FUNC_TERMIOS         special check for tcgetattr()
 AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()

@@ -1,4 +1,4 @@
-dnl CF_FUNC_TGETENT version: 26 updated: 2023/02/10 04:11:55
+dnl CF_FUNC_TGETENT version: 27 updated: 2023/12/01 17:22:50
 dnl ---------------
 dnl Check for tgetent function in termcap library.  If we cannot find this,
 dnl we'll use the $LINES and $COLUMNS environment variables to pass screen
@@ -110,7 +110,7 @@ if test "x$cf_cv_lib_tgetent" != xno ; then
 		AC_TRY_COMPILE([
 #include <termcap.h>],[
 #ifdef NCURSES_VERSION
-make an error
+#error do not use ncurses termcap.h
 #endif],[AC_DEFINE(HAVE_TERMCAP_H)])
 	fi
 else
