@@ -1,4 +1,4 @@
-dnl CF_POSIX_SAVED_IDS version: 11 updated: 2023/12/01 17:22:50
+dnl CF_POSIX_SAVED_IDS version: 12 updated: 2023/12/03 19:55:51
 dnl ------------------
 dnl
 dnl Check first if saved-ids are always supported.  Some systems
@@ -18,9 +18,8 @@ AC_TRY_LINK(
 #endif
 ],[
 #if defined(_POSIX_SAVED_IDS) && (_POSIX_SAVED_IDS > 0)
-	void *p = (void *) seteuid;
-	int x = seteuid(geteuid());
-	(void)p;
+	int (*my_seteuid)(uid_t) = seteuid;
+	int x = my_seteuid(geteuid());
 	(void)x;
 #elif defined(BSD) && (BSD >= 199103)
 /* The BSD's may implement the runtime check - and it fails.

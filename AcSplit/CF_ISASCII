@@ -1,11 +1,11 @@
-dnl CF_ISASCII version: 4 updated: 2012/10/06 17:56:13
+dnl CF_ISASCII version: 5 updated: 2023/12/03 09:21:34
 dnl ----------
 dnl Check if we have either a function or macro for 'isascii()'.
 AC_DEFUN([CF_ISASCII],
 [
 AC_MSG_CHECKING(for isascii)
 AC_CACHE_VAL(cf_cv_have_isascii,[
-	AC_TRY_LINK([#include <ctype.h>],[int x = isascii(' ')],
+	AC_TRY_LINK([#include <ctype.h>],[int x = isascii(' '); (void)x],
 	[cf_cv_have_isascii=yes],
 	[cf_cv_have_isascii=no])
 ])dnl

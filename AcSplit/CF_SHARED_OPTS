@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 108 updated: 2023/10/28 11:59:01
+dnl CF_SHARED_OPTS version: 109 updated: 2023/12/03 09:21:34
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -88,7 +88,7 @@ AC_DEFUN([CF_SHARED_OPTS],
 		for CC_SHARED_OPTS in -fPIC -fpic ''
 		do
 			CFLAGS="$cf_save_CFLAGS $CC_SHARED_OPTS"
-			AC_TRY_COMPILE([#include <stdio.h>],[int x = 1],[break],[])
+			AC_TRY_COMPILE([#include <stdio.h>],[int x = 1; (void)x],[break],[])
 		done
 		AC_MSG_RESULT($CC_SHARED_OPTS)
 		CFLAGS="$cf_save_CFLAGS"

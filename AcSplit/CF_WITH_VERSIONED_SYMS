@@ -1,4 +1,4 @@
-dnl CF_WITH_VERSIONED_SYMS version: 12 updated: 2023/11/22 20:48:30
+dnl CF_WITH_VERSIONED_SYMS version: 13 updated: 2023/12/03 09:24:04
 dnl ----------------------
 dnl Use this when building shared library with ELF, to markup symbols with the
 dnl version identifier from the given input file.  Generally that identifier is
@@ -98,15 +98,15 @@ local:
 EOF
 		cat >conftest.$ac_ext <<EOF
 #line __oline__ "configure"
-int	_ismissing(void) { return 1; }
-int	_localf1(void) { return 1; }
-int	_localf2(void) { return 2; }
-int	globalf1(void) { return 1; }
-int	globalf2(void) { return 2; }
-int	_sublocalf1(void) { return 1; }
-int	_sublocalf2(void) { return 2; }
-int	subglobalf1(void) { return 1; }
-int	subglobalf2(void) { return 2; }
+extern int _ismissing(void);    int _ismissing(void)  { return 1; }
+extern int _localf1(void);      int _localf1(void)    { return 1; }
+extern int _localf2(void);      int _localf2(void)    { return 2; }
+extern int globalf1(void);      int globalf1(void)    { return 1; }
+extern int globalf2(void);      int globalf2(void)    { return 2; }
+extern int _sublocalf1(void);   int _sublocalf1(void) { return 1; }
+extern int _sublocalf2(void);   int _sublocalf2(void) { return 2; }
+extern int subglobalf1(void);   int subglobalf1(void) { return 1; }
+extern int subglobalf2(void);   int subglobalf2(void) { return 2; }
 EOF
 		cat >conftest.mk <<EOF
 CC=${CC}

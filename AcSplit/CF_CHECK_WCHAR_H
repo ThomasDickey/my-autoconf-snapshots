@@ -1,4 +1,4 @@
-dnl CF_CHECK_WCHAR_H version: 4 updated: 2023/02/18 17:41:25
+dnl CF_CHECK_WCHAR_H version: 5 updated: 2023/12/03 09:21:34
 dnl ----------------
 dnl Check if wchar.h can be used, i.e., without defining _XOPEN_SOURCE_EXTENDED
 AC_DEFUN([CF_CHECK_WCHAR_H],[
@@ -18,7 +18,7 @@ $ac_includes_default
 #endif
 ],[
 	wint_t foo = 0;
-	int bar = iswpunct(foo)],
+	int bar = iswpunct(foo); (void) bar],
 	[cf_cv_wchar_h_okay=yes],
 	[cf_cv_wchar_h_okay=no])])
 

@@ -1,3 +1,39 @@
+2023-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_POSIX_SAVED_IDS: amend test to reduce compiler warnings
+
+	* AcSplit/CF_STRUCT_TERMIOS: amend fix to split up two assignments
+
+	* AcSplit/CF_LARGEFILE:
+	reduce compiler warnings in configure check, noting that the "transient"
+	feature referred to is handled via the __REDIRECT macro.
+
+	* AcSplit/CF_FUNC_VSSCANF:
+	reduce compiler warnings in configure-check by ensuring the va_list variable
+	is initialized.
+
+	* AcSplit/CF_CHECK_GETENV:
+	sprintf parameter for %p should be void*, per gcc warning
+
+	* AcSplit/CF_CHECK_WCWIDTH_GRAPHICS:
+	fix signed/unsigned warning for sscanf()
+
+	* AcSplit/CF_LINK_DATAONLY: reduce no-previous-prototype warnings
+
+	* AcSplit/CF_UNSIGNED_LITERALS:
+	reduce unused-variable warnings in configure check
+
+	* AcSplit/CF_LINK_DATAONLY, AcSplit/CF_WITH_VERSIONED_SYMS:
+	reduce warnings for no previous prototype
+
+	* AcSplit/CF_LINK_FUNCS: reduce writable-string warnings
+
+	* AcSplit/CF_BOOL_DECL, AcSplit/CF_CHECK_WCHAR_H,
+	  AcSplit/CF_FUNC_OPENPTY, AcSplit/CF_ISASCII, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_STRUCT_SIGACTION, AcSplit/CF_STRUCT_TERMIOS,
+	  AcSplit/CF_TYPE_SIGACTION, AcSplit/CF_WCHAR_TYPE:
+	reduce unused-variable warnings in configure check
+
 2023-12-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess: 2023-10-19

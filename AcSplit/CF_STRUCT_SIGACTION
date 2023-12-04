@@ -1,4 +1,4 @@
-dnl CF_STRUCT_SIGACTION version: 5 updated: 2012/10/06 17:56:13
+dnl CF_STRUCT_SIGACTION version: 6 updated: 2023/12/03 09:21:34
 dnl -------------------
 dnl Check if we need _POSIX_SOURCE defined to use struct sigaction.  We'll only
 dnl do this if we've found the sigaction function.
@@ -10,14 +10,14 @@ AC_MSG_CHECKING(whether sigaction needs _POSIX_SOURCE)
 AC_TRY_COMPILE([
 #include <sys/types.h>
 #include <signal.h>],
-	[struct sigaction act],
+	[struct sigaction act; (void)act],
 	[sigact_bad=no],
 	[
 AC_TRY_COMPILE([
 #define _POSIX_SOURCE
 #include <sys/types.h>
 #include <signal.h>],
-	[struct sigaction act],
+	[struct sigaction act; (void)act],
 	[sigact_bad=yes
 	 AC_DEFINE(_POSIX_SOURCE,1,[Define to 1 if we must define _POSIX_SOURCE])],
 	 [sigact_bad=unknown])])

@@ -1,16 +1,26 @@
-dnl CF_FUNC_VSSCANF version: 7 updated: 2021/01/01 13:31:04
+dnl CF_FUNC_VSSCANF version: 8 updated: 2023/12/03 19:09:59
 dnl ---------------
 dnl Check for vsscanf() function, which is in c9x but generally not in earlier
-dnl versions of C.  It is in the GNU C library, and can often be simulated by
-dnl other functions.
+dnl versions of C.  It can often be simulated by other functions on older
+dnl systems (where FILE is not opaque).
 AC_DEFUN([CF_FUNC_VSSCANF],
 [
 AC_CACHE_CHECK(for vsscanf function or workaround,cf_cv_func_vsscanf,[
 AC_TRY_LINK([
 #include <stdarg.h>
-#include <stdio.h>],[
+#include <stdio.h>
+
+static void
+myfunc(const char *str, const char *fmt, ...)
+{
 	va_list ap;
-	vsscanf("from", "%d", ap)],[cf_cv_func_vsscanf=vsscanf],[
+	va_start(ap, fmt);
+	vsscanf(str, fmt, ap);
+	va_end(ap);
+}
+],[
+	myfunc("55", "%d");
+],[cf_cv_func_vsscanf=vsscanf],[
 AC_TRY_LINK([
 #include <stdarg.h>
 #include <stdio.h>],[

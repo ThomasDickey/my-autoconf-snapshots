@@ -1,4 +1,4 @@
-dnl CF_LARGEFILE version: 12 updated: 2020/03/19 20:23:48
+dnl CF_LARGEFILE version: 13 updated: 2023/12/03 19:09:59
 dnl ------------
 dnl Add checks for large file support.
 AC_DEFUN([CF_LARGEFILE],[
@@ -32,11 +32,15 @@ ifdef([AC_FUNC_FSEEKO],[
 #pragma GCC diagnostic error "-Wincompatible-pointer-types"
 #include <sys/types.h>
 #include <dirent.h>
+
+#ifndef __REDIRECT
+/* if transitional largefile support is setup, this is true */
+extern struct dirent64 * readdir(DIR *);
+#endif
 		],[
-		/* if transitional largefile support is setup, this is true */
-		extern struct dirent64 * readdir(DIR *);
-		struct dirent64 *x = readdir((DIR *)0);
-		struct dirent *y = readdir((DIR *)0);
+		DIR *dp = opendir(".");
+		struct dirent64 *x = readdir(dp);
+		struct dirent *y = readdir(dp);
 		int z = x - y;
 		(void)z;
 		],

@@ -1,4 +1,4 @@
-dnl CF_CHECK_GETENV version: 3 updated: 2023/01/05 17:47:56
+dnl CF_CHECK_GETENV version: 4 updated: 2023/12/03 10:18:09
 dnl ---------------
 dnl Check if repeated getenv calls return the same pointer, e.g., it does not
 dnl discard the previous pointer when returning a new one.
@@ -75,7 +75,7 @@ int main(void)
 				}
 			}
 		} while (found);
-		sprintf(value, "%lu:%p", (unsigned long) k, &mynames[j]);
+		sprintf(value, "%lu:%p", (unsigned long) k, (void*)&mynames[j]);
 		set_value(name, value);
 		mynames[j] = str_alloc(name);
 		myvalues[j] = str_alloc(value);

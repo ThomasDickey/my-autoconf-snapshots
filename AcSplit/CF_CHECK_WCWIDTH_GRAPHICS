@@ -1,4 +1,4 @@
-dnl CF_CHECK_WCWIDTH_GRAPHICS version: 3 updated: 2023/01/05 18:01:30
+dnl CF_CHECK_WCWIDTH_GRAPHICS version: 4 updated: 2023/12/03 10:17:07
 dnl -------------------------
 dnl Most "modern" terminal emulators are based to some degree on VT100, and
 dnl should support line-drawing.  Even with Unicode.  There is a problem.
@@ -107,7 +107,7 @@ int
 main(void)
 {
 	FILE *fp;
-	int value;
+	unsigned value;
 	char buffer[MY_LEN + 1];
 	char notes[MY_LEN + 1];
 	int totals = 0;
@@ -123,9 +123,9 @@ main(void)
 					fprintf(stderr, "\\t%s", buffer);
 				} else if (sscanf(buffer, "%x %s", &value, notes) == 2) {
 					++totals;
-					if (wcwidth(value) == 1)
+					if (wcwidth((int)value) == 1)
 						++passed;
-					fprintf(stderr, "%d\\t%s", wcwidth(value), buffer);
+					fprintf(stderr, "%d\\t%s", wcwidth((int)value), buffer);
 				} else {
 					fprintf(stderr, "?\\t%s", buffer);
 				}
