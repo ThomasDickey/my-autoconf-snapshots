@@ -1,4 +1,4 @@
-dnl CF_TYPE_OUTCHAR version: 15 updated: 2015/05/15 19:42:24
+dnl CF_TYPE_OUTCHAR version: 16 updated: 2023/12/09 10:53:57
 dnl ---------------
 dnl Check for return and param type of 3rd -- OutChar() -- param of tputs().
 dnl
@@ -45,10 +45,11 @@ for Q in int void; do
 for R in int char; do
 for S in "" const; do
 	CF_MSG_LOG(loop variables [P:[$]P, Q:[$]Q, R:[$]R, S:[$]S])
-	AC_TRY_COMPILE([$CHECK_DECL_HDRS],
-	[extern $Q OutChar($R);
+	AC_TRY_COMPILE([$CHECK_DECL_HDRS
+	extern $Q OutChar($R);
 	extern $P tputs ($S char *string, int nlines, $Q (*_f)($R));
-	tputs("", 1, OutChar)],
+	static char fmt[] = "";],
+	[tputs(fmt, 1, OutChar)],
 	[cf_cv_type_outchar="$Q OutChar($R)"
 	 cf_cv_found=yes
 	 break])

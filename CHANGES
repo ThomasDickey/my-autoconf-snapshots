@@ -1,3 +1,13 @@
+2023-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_HEADER_RESOURCE: fix an incorrectly-placed parenthesis
+
+	* AcSplit/CF_CURSES_TERMCAP: quiet a const-mismatch warning
+
+	* AcSplit/CF_KILLPG, AcSplit/CF_RESTARTABLE_PIPEREAD,
+	  AcSplit/CF_TYPE_OUTCHAR:
+	reduce compiler warnings
+
 2023-12-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_POSIX_SAVED_IDS: amend test to reduce compiler warnings

@@ -1,4 +1,4 @@
-dnl CF_RESTARTABLE_PIPEREAD version: 11 updated: 2023/01/05 17:55:18
+dnl CF_RESTARTABLE_PIPEREAD version: 12 updated: 2023/12/09 10:53:57
 dnl -----------------------
 dnl CF_RESTARTABLE_PIPEREAD is a modified version of AC_RESTARTABLE_SYSCALLS
 dnl from acspecific.m4, which uses a read on a pipe (surprise!) rather than a
@@ -37,23 +37,23 @@ static void sigwrapper(int sig, RETSIGTYPE (*disp)(int))
 #else
 # define sigwrapper signal
 #endif
-RETSIGTYPE ucatch (int isig) { }
+static RETSIGTYPE ucatch (int isig) { (void) isig; }
 int main (void) {
   int i, status;
   int fd[2];
   char buff[2];
-  pipe(fd);
+  if (pipe(fd) == -1) ${cf_cv_main_return:-return} (1);
   i = fork();
   if (i == 0) {
       sleep (2);
       kill (getppid (), SIGINT);
       sleep (2);
-      write(fd[1],"done",4);
+      if (write(fd[1],"done",4) == -1) ${cf_cv_main_return:-return} (1);
       close(fd[1]);
       ${cf_cv_main_return:-return} (0);
   }
   sigwrapper (SIGINT, ucatch);
-  status = read(fd[0], buff, sizeof(buff));
+  status = (int) read(fd[0], buff, sizeof(buff));
   wait (&i);
   ${cf_cv_main_return:-return} (status == -1);
 }
