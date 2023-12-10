@@ -1,4 +1,4 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 15 updated: 2020/01/18 12:30:33
+dnl CF_MAWK_RUN_FPE_TESTS version: 16 updated: 2023/12/10 06:52:47
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
@@ -27,6 +27,7 @@ then
     AC_TRY_COMPILE([#include <signal.h>],[
 	struct sigaction foo;
 	foo.sa_sigaction = 0;
+	(void) foo;
 ],[cf_cv_use_sa_sigaction=yes])
 fi
 ])

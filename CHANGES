@@ -1,3 +1,12 @@
+2023-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND:
+	add check for -lbsd needed with Debian to link arc4random
+	add check for limits.h needed to define INT_MAX
+	add default includes (and limits.h) to improve configure checks
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS: fix unused-variable warning
+
 2023-12-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_HEADER_RESOURCE: fix an incorrectly-placed parenthesis
