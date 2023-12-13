@@ -1,3 +1,10 @@
+2023-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_STDIO_UNLOCKED:
+	fix unused-variable warning
+
+	* AcSplit/CF_XOPEN_CURSES: fix writable-strings warning
+
 2023-12-10  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SRAND:

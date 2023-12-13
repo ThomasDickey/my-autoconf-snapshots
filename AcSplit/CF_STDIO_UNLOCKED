@@ -1,4 +1,4 @@
-dnl CF_STDIO_UNLOCKED version: 6 updated: 2020/12/31 20:19:42
+dnl CF_STDIO_UNLOCKED version: 7 updated: 2023/12/13 18:02:34
 dnl -----------------
 dnl The four functions getc_unlocked(), getchar_unlocked(), putc_unlocked(),
 dnl putchar_unlocked() are in POSIX.1-2001.
@@ -20,7 +20,7 @@ if test "$cf_stdio_unlocked" != no ; then
 	AC_CACHE_CHECK(if we should define _REENTRANT,cf_cv_stdio_unlocked,[
 	AC_TRY_COMPILE([#include <stdio.h>],[
 		extern void *$cf_stdio_unlocked(void *);
-		void *dummy = $cf_stdio_unlocked(0)],
+		void *dummy = $cf_stdio_unlocked(0); (void)dummy],
 			[cf_cv_stdio_unlocked=yes],
 			[cf_cv_stdio_unlocked=no])])
 		if test "$cf_cv_stdio_unlocked" = yes ; then
