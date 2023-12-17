@@ -1,4 +1,4 @@
-dnl CF_LOCKFILE version: 2 updated: 2001/05/26 12:41:02
+dnl CF_LOCKFILE version: 3 updated: 2023/12/17 10:59:59
 dnl -----------
 dnl Check for functions that we can use for file-locking.  Simply checking for
 dnl existence is not sufficient, since fcntl, for example, uses definitions
@@ -39,6 +39,7 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 	rc = fcntl(fd, block ? F_SETLKW : F_SETLK, &flk)
 	&& fcntl(fd, F_GETLK, &flk)
 	&& fcntl(fd, F_SETLK, &flk);
+	(void)rc;
 	],,continue)
 		;;
 	lockf) #(vi
@@ -55,6 +56,8 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 	int ret = lockf(fd, block ? F_LOCK : F_TLOCK, 0L)
 	 && lockf(fd, F_TEST, 0L)
 	 && lockf(fd, F_ULOCK, 0L);
+	(void)block;
+	(void)ret;
 	],,[continue])
 		;;
 	flock)
@@ -74,6 +77,8 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 	int ret = flock(fd, (LOCK_EX|LOCK_NB))
 	 && flock(fd, LOCK_UN)
 	 && flock(fd, block ? LOCK_EX : (LOCK_EX | LOCK_NB));
+	(void)block;
+	(void)ret;
 	],,[continue])
 		;;
 	esac

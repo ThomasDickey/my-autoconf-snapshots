@@ -1,4 +1,4 @@
-dnl CF_CPP_EXPANDS version: 3 updated: 2019/12/31 20:39:42
+dnl CF_CPP_EXPANDS version: 4 updated: 2023/12/17 10:59:59
 dnl --------------
 dnl Test for ANSI token expansion (used in 'assert').
 AC_DEFUN([CF_CPP_EXPANDS],
@@ -7,7 +7,7 @@ AC_MSG_CHECKING([for ansi token expansion/substitution])
 AC_CACHE_VAL(cf_cv_cpp_expands,[
 	AC_TRY_COMPILE([
 #define string(n) #n],
-	[char *s = string(token)],
+	[const char *s = string(token); (void)s],
 	[cf_cv_cpp_expands=yes],
 	[cf_cv_cpp_expands=no])
 ])

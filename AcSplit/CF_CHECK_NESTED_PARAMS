@@ -1,12 +1,14 @@
-dnl CF_CHECK_NESTED_PARAMS version: 3 updated: 2019/12/31 20:39:42
+dnl CF_CHECK_NESTED_PARAMS version: 4 updated: 2023/12/17 10:59:59
 dnl ----------------------
 dnl Check if the compiler allows nested parameter lists (some don't)
 AC_DEFUN([CF_CHECK_NESTED_PARAMS],
 [
 AC_MSG_CHECKING([if nested parameters work])
 AC_CACHE_VAL(cf_cv_nested_params,[
-	AC_TRY_COMPILE([],
-	[extern void (*sigdisp(int sig, void (*func)(int sig)))(int sig)],
+	AC_TRY_COMPILE([
+	extern void (*sigdisp(int sig, void (*func)(int sig)))(int sig);
+	],
+	[],
 	[cf_cv_nested_params=yes],
 	[cf_cv_nested_params=no])
 ])

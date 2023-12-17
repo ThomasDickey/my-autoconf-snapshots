@@ -1,4 +1,4 @@
-dnl CF_CPP_CONCATS version: 3 updated: 2019/12/31 20:39:42
+dnl CF_CPP_CONCATS version: 4 updated: 2023/12/17 10:59:59
 dnl --------------
 dnl Test for ANSI token expansion (used in 'assert').
 AC_DEFUN([CF_CPP_CONCATS],
@@ -7,7 +7,9 @@ AC_MSG_CHECKING([for ansi token concatenation])
 AC_CACHE_VAL(cf_cv_cpp_concats,[
 	AC_TRY_COMPILE([
 #define concat(a,b) a ## b],
-	[char *firstlast = "y", *s = concat(first,last)],
+	[static char *firstlast = "y";
+	 const char *s = concat(first,last);
+	 (void)s],
 	[cf_cv_cpp_concats=yes],
 	[cf_cv_cpp_concats=no])
 ])

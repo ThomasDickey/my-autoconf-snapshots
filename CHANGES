@@ -1,3 +1,11 @@
+2023-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_1_DECL, AcSplit/CF_CHECK_NESTED_PARAMS,
+	  AcSplit/CF_COMPTYPE, AcSplit/CF_CPP_CONCATS, AcSplit/CF_CPP_EXPANDS,
+	  AcSplit/CF_FUNC_SYSTEM, AcSplit/CF_LOCKFILE, AcSplit/CF_PW_GECOS,
+	  AcSplit/CF_SYS_SELECT_TIMEVAL:
+	reduce compiler warnings
+
 2023-12-13  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CC_INIT_UNIONS, AcSplit/CF_STDIO_UNLOCKED:

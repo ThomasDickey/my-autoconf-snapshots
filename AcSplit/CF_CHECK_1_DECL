@@ -1,4 +1,4 @@
-dnl CF_CHECK_1_DECL version: 5 updated: 2001/07/22 21:09:16
+dnl CF_CHECK_1_DECL version: 6 updated: 2023/12/17 10:59:59
 dnl ---------------
 dnl Check for missing declarations in the system headers (adapted from vile).
 dnl
@@ -15,7 +15,7 @@ $CHECK_DECL_HDRS
 
 #undef $1
 struct zowie { int a; double b; struct zowie *c; char d; };
-extern struct zowie *$1();
+extern struct zowie *$1(void);
 ],
 [
 ],
@@ -25,7 +25,7 @@ CF_UPPER(cf_1_up,$1)
 AC_TRY_COMPILE([
 #define DECL_${cf_1_up}
 $CHECK_DECL_HDRS
-],[long x = 0],
+],[long x = 0; (void)x],
 [eval 'cf_cv_func_'$1'=yes'],
 [eval 'cf_cv_func_'$1'=no'])
 else

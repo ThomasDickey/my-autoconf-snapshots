@@ -1,4 +1,4 @@
-dnl CF_SYS_SELECT_TIMEVAL version: 5 updated: 2019/12/31 20:39:42
+dnl CF_SYS_SELECT_TIMEVAL version: 6 updated: 2023/12/17 10:59:59
 dnl ---------------------
 dnl Check if there is a conflict between <sys/select.h> and <sys/time.h>.
 dnl This is known to be a problem with SCO.
@@ -29,7 +29,7 @@ AC_TRY_COMPILE([
 #ifdef HAVE_SYS_SELECT_H
 #	include <sys/select.h>
 #endif
-],[struct timeval foo],
+],[struct timeval foo; (void)foo],
 	[cf_cv_sys_select_timeval=$cf_opts
 	 break],
 	[cf_cv_sys_select_timeval=no])
