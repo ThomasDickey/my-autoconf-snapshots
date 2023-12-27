@@ -1,3 +1,14 @@
+2023-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2023-12-02
+	    From: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+	    config.sub: recognize nanoMIPS CPUs
+
+	    * config.sub: Recognize nanoMIPS CPUs.
+	    * testsuite/config-sub.data (nanomips): New entry.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2023-12-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_1_DECL, AcSplit/CF_CHECK_NESTED_PARAMS,

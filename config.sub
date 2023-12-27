@@ -1222,6 +1222,7 @@ case $cpu-$vendor in
 			| moxie \
 			| mt \
 			| msp430 \
+			| nanomips* \
 			| nds32 | nds32le | nds32be \
 			| nfp \
 			| nios | nios2 | nios2eb | nios2el \
@@ -1598,7 +1599,7 @@ case $cpu-$vendor in
 		os=
 		obj=elf
 		;;
-	mips*-*)
+	mips*-*|nanomips*-*)
 		os=
 		obj=elf
 		;;
