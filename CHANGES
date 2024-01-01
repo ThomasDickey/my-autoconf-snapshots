@@ -1,3 +1,7 @@
+2024-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NL_LANGINFO_1STDAY: fix compiler warning
+
 2023-12-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.sub: 2023-12-02
