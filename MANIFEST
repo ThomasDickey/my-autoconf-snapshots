@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240101
+MANIFEST for my-autoconf, version t20240102
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -198,6 +198,7 @@ AcSplit/CF_FUNC_NANOSLEEP       configure check for (working) nanosleep()
 AcSplit/CF_FUNC_OPENPTY         ncurses - check for openpty function, used for test/ditto.c
 AcSplit/CF_FUNC_POLL            functional test for poll()
 AcSplit/CF_FUNC_POPEN           portability-checks for popen().
+AcSplit/CF_FUNC_SETGROUPS       check for getgroups/setgroups
 AcSplit/CF_FUNC_SIGACTION       check for sigaction function and related structs
 AcSplit/CF_FUNC_STRFTIME        check if strftime() can be linked
 AcSplit/CF_FUNC_SYSTEM          check if 'system()' returns usable status

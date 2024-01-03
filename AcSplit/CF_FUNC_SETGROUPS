@@ -1,0 +1,15 @@
+dnl CF_FUNC_SETGROUPS version: 1 updated: 2024/01/02 19:01:22
+dnl -----------------
+dnl Check for getgroups() and setgroups() functions
+AC_DEFUN([CF_FUNC_SETGROUPS],[
+AC_CACHE_CHECK(for getgroups/setgroups,cf_cv_func_setgroups,[
+AC_TRY_LINK([
+$ac_includes_default
+#include <grp.h>
+],[
+gid_t my_list[10];
+if (getgroups(0, my_list)) setgroups(0, NULL);
+],[cf_cv_func_setgroups=yes],[cf_cv_func_setgroups=no])
+])
+test "$cf_cv_func_setgroups" = yes && AC_DEFINE(HAVE_SETGROUPS,1,[Define to 1 if setgroups function exists])
+])dnl

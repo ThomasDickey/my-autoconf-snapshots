@@ -1,3 +1,7 @@
+2024-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_SETGROUPS: ci-aclocal generated header
+
 2024-01-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NL_LANGINFO_1STDAY: fix compiler warning
