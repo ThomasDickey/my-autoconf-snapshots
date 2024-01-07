@@ -1,4 +1,4 @@
-dnl CF_COLOR_CURSES version: 9 updated: 2021/01/02 09:31:20
+dnl CF_COLOR_CURSES version: 10 updated: 2024/01/07 06:54:12
 dnl ---------------
 dnl Check if curses supports color.  (Note that while SVr3 curses supports
 dnl color, it does this differently from SVr4 curses; more work would be needed
@@ -10,14 +10,14 @@ AC_MSG_CHECKING(if curses supports color attributes)
 AC_CACHE_VAL(cf_cv_color_curses,[
 	AC_TRY_LINK([
 #include <${cf_cv_ncurses_header:-curses.h}>
-],
-	[chtype x = COLOR_BLUE;
-	 has_colors();
-	 start_color();
+],[
+	chtype x = COLOR_BLUE; (void)x;
+	has_colors();
+	start_color();
 #ifndef NCURSES_BROKEN
-	 wbkgd(curscr, getbkgd(stdscr)); /* X/Open XPG4 aka SVr4 Curses */
+	wbkgd(curscr, getbkgd(stdscr)); /* X/Open XPG4 aka SVr4 Curses */
 #endif
-	],
+],
 	[cf_cv_color_curses=yes],
 	[cf_cv_color_curses=no])
 	])

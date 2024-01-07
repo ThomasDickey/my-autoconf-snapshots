@@ -1,3 +1,24 @@
+2024-01-07  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_GETPWUID: ci-aclocal generated header
+
+	* AcSplit/CF_COLOR_CURSES, AcSplit/CF_NCURSES_BROKEN:
+	fix unused-variable warnings
+
+	* AcSplit/CF_SLANG_UNIX_DEFS, AcSplit/CF_XOPEN_CURSES:
+	prefer "#error" with standard C
+
+	* AcSplit/CF_SRAND: reduce conversion warnings
+
+	* AcSplit/CF_ANSI_CC_CHECK: fix a nested-extern warning
+
+	* AcSplit/CF_BOOL_DEFS, AcSplit/CF_NGROUPS:
+	fix unused-variable warnings
+
+	* AcSplit/CF_CURSES_TERM_H, AcSplit/CF_NCURSES_BROKEN,
+	  AcSplit/CF_NCURSES_VERSION:
+	prefer "#error" with standard C
+
 2024-01-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_SETGROUPS: ci-aclocal generated header

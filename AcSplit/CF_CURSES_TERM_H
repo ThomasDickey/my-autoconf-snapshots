@@ -1,4 +1,4 @@
-dnl CF_CURSES_TERM_H version: 15 updated: 2021/01/02 09:31:20
+dnl CF_CURSES_TERM_H version: 16 updated: 2024/01/07 06:34:16
 dnl ----------------
 dnl SVr4 curses should have term.h as well (where it puts the definitions of
 dnl the low-level interface).  This may not be true in old/broken implementations,
@@ -44,7 +44,7 @@ case "$cf_cv_term_header" in
 #ifdef NCURSES_VERSION
 #include <${cf_header}>
 #else
-make an error
+#error expected NCURSES_VERSION to be defined
 #endif],
 			[WINDOW *x; (void)x],
 			[cf_cv_term_header=$cf_header

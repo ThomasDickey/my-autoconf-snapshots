@@ -1,0 +1,22 @@
+dnl CF_FUNC_GETPWUID version: 1 updated: 2024/01/07 10:28:51
+dnl ----------------
+dnl Check for getpwuid()
+AC_DEFUN([CF_FUNC_GETPWUID],
+[
+AC_CACHE_CHECK(for getpwuid, ac_cv_func_getpwuid,[
+AC_TRY_LINK([
+$ac_includes_default
+#include <pwd.h>
+],[
+	struct passwd *foo = getpwuid(0);
+	(void) foo
+],
+	[ac_cv_func_getpwuid=yes],
+	[ac_cv_func_getpwuid=no])
+])
+if test "$ac_cv_func_getpwuid" = yes; then
+	ac_cv_header_pwd_h=yes
+	AC_DEFINE(HAVE_PWD_H,1,[Define to 1 if we have pwd.h header])
+	AC_DEFINE(HAVE_GETPWUID,1,[Define to 1 if we have getpwuid function])
+fi
+])dnl

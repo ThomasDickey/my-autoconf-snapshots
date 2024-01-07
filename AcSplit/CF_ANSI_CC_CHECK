@@ -1,4 +1,4 @@
-dnl CF_ANSI_CC_CHECK version: 13 updated: 2012/10/06 11:17:15
+dnl CF_ANSI_CC_CHECK version: 14 updated: 2024/01/07 06:34:16
 dnl ----------------
 dnl This was originally adapted from the macros 'fp_PROG_CC_STDC' and
 dnl 'fp_C_PROTOTYPES' in the sharutils 4.2 distribution.
@@ -33,8 +33,8 @@ do
 choke me
 #endif
 #endif
+extern int test (int i, double x);
 ],[
-	int test (int i, double x);
 	struct s1 {int (*f) (int a);};
 	struct s2 {int (*f) (double a);};],
 	[cf_cv_ansi_cc="$cf_arg"; break])

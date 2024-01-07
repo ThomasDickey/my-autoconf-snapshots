@@ -1,4 +1,4 @@
-dnl CF_SLANG_UNIX_DEFS version: 7 updated: 2021/01/02 09:31:20
+dnl CF_SLANG_UNIX_DEFS version: 8 updated: 2024/01/07 06:54:12
 dnl ------------------
 dnl Slang's header files rely on some predefined symbols to declare variables
 dnl that we might find useful.  This check is needed, because those symbols
@@ -43,7 +43,7 @@ AC_CACHE_CHECK(if we must tell slang this is UNIX,cf_cv_slang_unix,[
 AC_TRY_LINK([#include <slang.h>],
 	[
 #ifdef REAL_UNIX_SYSTEM
-make an error
+#error this may not be a "real" unix system
 #else
 extern int SLang_TT_Baud_Rate;
 SLang_TT_Baud_Rate = 1

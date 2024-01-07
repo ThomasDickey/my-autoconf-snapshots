@@ -1,4 +1,4 @@
-dnl CF_NGROUPS version: 4 updated: 2012/11/08 20:57:52
+dnl CF_NGROUPS version: 5 updated: 2024/01/07 06:34:16
 dnl ----------
 dnl Check for the symbol NGROUPS
 AC_DEFUN([CF_NGROUPS],
@@ -12,7 +12,7 @@ AC_TRY_COMPILE([
 #if HAVE_LIMITS_H
 #include <limits.h>
 #endif
-],[int x = NGROUPS],
+],[int x = NGROUPS; (void)x],
 	[cf_cv_ngroups=yes],
 	[AC_TRY_COMPILE([
 #if HAVE_SYS_PARAM_H
