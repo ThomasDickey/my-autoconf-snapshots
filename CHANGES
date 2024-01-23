@@ -1,3 +1,9 @@
+2024-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND: s/arc2random/arc4random/  (fix typo)
+
+	* AcSplit/CF_SRAND: drop MirOS-specific "arc4random_push()"
+
 2024-01-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_LDFLAGS: ci-aclocal generated header
