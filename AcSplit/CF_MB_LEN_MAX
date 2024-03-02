@@ -1,0 +1,24 @@
+dnl CF_MB_LEN_MAX version: 1 updated: 2024/03/02 15:45:10
+dnl -------------
+dnl Check if <limits.h> defines a usable MB_LEN_MAX.  That may be because it is
+dnl not defined, or it may be a bogus value.
+AC_DEFUN([CF_MB_LEN_MAX],[
+AC_CACHE_CHECK(if MB_LEN_MAX is usable,cf_cv_mb_len_max,[
+AC_TRY_COMPILE([
+$ac_includes_default
+#include <limits.h>],
+[
+#if defined(MB_LEN_MAX) && MB_LEN_MAX >= 6
+	${cf_cv_main_return:-return}(0);
+#else
+#error MB_LEN_MAX is not usable
+#endif
+],	[cf_cv_mb_len_max=yes],
+	[cf_cv_mb_len_max=no])])
+if test "$cf_cv_mb_len_max" = yes
+then
+	AC_DEFINE(HAVE_CONSISTENT_MB_LEN_MAX,1,[Define to 1 if MB_LEN_MAX is usable])
+else
+	AC_MSG_WARN(MB_LEN_MAX is missing/inconsistent in system headers)
+fi
+])dnl

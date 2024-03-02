@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240122
+MANIFEST for my-autoconf, version t20240302
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -319,6 +319,7 @@ AcSplit/CF_MAWK_RUN_FPE_TESTS   mawk autoconf macro
 AcSplit/CF_MAWK_SET_IF_UNSET    mawk autoconf macro
 AcSplit/CF_MAWK_XADD_NO         mawk autoconf macro
 AcSplit/CF_MBSTATE_T            check for mbstate_t in wchar.h
+AcSplit/CF_MB_LEN_MAX           configure check for valid MB_LEN_MAX
 AcSplit/CF_MERGE_EXTRA_CFLAGS   move extra-CFLAGS back into CFLAGS
 AcSplit/CF_MIN_GETCCHAR         check if getcchar() counts trailing null
 AcSplit/CF_MISSING_CHECK        check for missing extern declaration (vile)
