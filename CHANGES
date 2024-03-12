@@ -1,3 +1,12 @@
+2024-03-12  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PIC_HACK: provide for -fPIC being found in $CC_SHARED_OPTS
+	allow for readelf on MinGW (discard error message)
+
+	* AcSplit/CF_SHARED_OPTS:
+	trim a space after "-R" options on Solaris which interferes with builds
+	using clang.  The space might be needed for some older versions of Sun cc.
+
 2024-03-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MB_LEN_MAX: ci-aclocal generated header
