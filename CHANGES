@@ -1,3 +1,14 @@
+2024-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NGROUPS: check for headers needed in compile-checks
+
+	* AcSplit/AM_GNU_GETTEXT, AcSplit/AM_WITH_NLS, AcSplit/CF_BUNDLED_INTL:
+	remove obsolete scripting which supported bundled intl-directory
+
+	* AcSplit/CF_BUILD_CC:
+	allow $BUILD_CPPFLAGS and $BUILD_LIBS to be overridden when not cross compiling,
+	fixes build of Lynx with PDCurses
+
 2024-03-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PIC_HACK: provide for -fPIC being found in $CC_SHARED_OPTS

@@ -1,8 +1,9 @@
-dnl CF_NGROUPS version: 5 updated: 2024/01/07 06:34:16
+dnl CF_NGROUPS version: 6 updated: 2024/03/17 19:34:20
 dnl ----------
 dnl Check for the symbol NGROUPS
 AC_DEFUN([CF_NGROUPS],
 [
+AC_CHECK_HEADERS( sys/param.h limits.h )
 AC_MSG_CHECKING(if NGROUPS is defined)
 AC_CACHE_VAL(cf_cv_ngroups,[
 AC_TRY_COMPILE([

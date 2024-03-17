@@ -1,20 +1,16 @@
-dnl CF_BUNDLED_INTL version: 21 updated: 2023/01/10 19:35:04
+dnl CF_BUNDLED_INTL version: 22 updated: 2024/03/17 19:34:20
 dnl ---------------
 dnl Top-level macro for configuring an application with a bundled copy of
-dnl the intl and po directories for gettext.
+dnl the po directory for gettext.
 dnl
 dnl $1 specifies either Makefile or makefile, defaulting to the former.
 dnl $2 if nonempty sets the option to --enable-nls rather than to --disable-nls
 dnl
 dnl Sets variables which can be used to substitute in makefiles:
-dnl	GT_YES       - "#" comment unless building intl library, otherwise empty
-dnl	GT_NO        - "#" comment if building intl library, otherwise empty
-dnl	INTLDIR_MAKE - to make ./intl directory
-dnl	MSG_DIR_MAKE - to make ./po directory
-dnl	SUB_MAKEFILE - list of makefiles in ./intl, ./po directories
+dnl	MSG_DIR_MAKE - empty to make ./po directory
+dnl	SUB_MAKEFILE - makefile in ./po directory
 dnl
 dnl Defines:
-dnl	HAVE_LIBGETTEXT_H if we're using ./intl
 dnl	NLS_TEXTDOMAIN
 dnl
 dnl Environment:
@@ -59,71 +55,15 @@ if test "$USE_NLS" = yes ; then
 	AC_SUBST(NLS_TEXTDOMAIN)
 fi
 
-INTLDIR_MAKE=
 MSG_DIR_MAKE=
 SUB_MAKEFILE=
 
 dnl this updates SUB_MAKEFILE and MSG_DIR_MAKE:
 CF_OUR_MESSAGES($1)
 
-if test "$USE_INCLUDED_LIBINTL" = yes ; then
-	if test "$nls_cv_force_use_gnu_gettext" = yes ; then
-		:
-	elif test "$nls_cv_use_gnu_gettext" != no ; then
-		:
-	else
-		INTLDIR_MAKE="#"
-	fi
-	if test -z "$INTLDIR_MAKE"; then
-		AC_DEFINE(HAVE_LIBGETTEXT_H,1,[Define to 1 if we have libgettext.h])
-		for cf_makefile in \
-			$srcdir/intl/Makefile.in \
-			$srcdir/intl/makefile.in
-		do
-			if test -f "$cf_makefile" ; then
-				SUB_MAKEFILE="$SUB_MAKEFILE `echo \"${cf_makefile}\"|sed -e 's,^'$srcdir/',,' -e 's/\.in$//'`:${cf_makefile}"
-				break
-			fi
-		done
-	fi
-else
-	INTLDIR_MAKE="#"
-	if test "$USE_NLS" = yes ; then
-		AC_CHECK_HEADERS(libintl.h)
-	fi
+if test "$USE_NLS" = yes ; then
+	AC_CHECK_HEADERS(libintl.h)
 fi
 
-if test -z "$INTLDIR_MAKE" ; then
-	CF_APPEND_TEXT(CPPFLAGS,-I../intl)
-fi
-
-dnl FIXME:  we use this in lynx (the alternative is a spurious dependency upon
-dnl GNU make)
-if test "$BUILD_INCLUDED_LIBINTL" = yes ; then
-	GT_YES="#"
-	GT_NO=
-else
-	GT_YES=
-	GT_NO="#"
-fi
-
-AC_SUBST(INTLDIR_MAKE)
 AC_SUBST(MSG_DIR_MAKE)
-AC_SUBST(GT_YES)
-AC_SUBST(GT_NO)
-
-dnl FIXME:  the underlying AM_GNU_GETTEXT macro either needs some fixes or a
-dnl little documentation.  It doesn't define anything so that we can ifdef our
-dnl own code, except ENABLE_NLS, which is too vague to be of any use.
-
-if test "$USE_INCLUDED_LIBINTL" = yes ; then
-	if test "$nls_cv_force_use_gnu_gettext" = yes ; then
-		AC_DEFINE(HAVE_GETTEXT,1,[Define to 1 if we have gettext function])
-	elif test "$nls_cv_use_gnu_gettext" = yes ; then
-		AC_DEFINE(HAVE_GETTEXT,1,[Define to 1 if we have gettext function])
-	fi
-	if test -n "$nls_cv_header_intl" ; then
-		AC_DEFINE(HAVE_LIBINTL_H,1,[Define to 1 if we have header-file for libintl])
-	fi
-fi
 ])dnl
