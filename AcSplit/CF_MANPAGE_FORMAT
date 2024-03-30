@@ -1,4 +1,4 @@
-dnl CF_MANPAGE_FORMAT version: 18 updated: 2023/05/19 18:35:02
+dnl CF_MANPAGE_FORMAT version: 19 updated: 2024/03/30 08:27:40
 dnl -----------------
 dnl Option to allow user to override automatic configuration of manpage format.
 dnl There are several special cases:
@@ -116,6 +116,7 @@ cf_manpage_format=no
 cf_manpage_inboth=no
 cf_manpage_so_strip=
 cf_manpage_compress=
+cf_manpage_coptions=
 
 for cf_item in $MANPAGE_FORMAT
 do
@@ -135,6 +136,7 @@ case "$cf_item" in
 (gzip)
 	cf_manpage_so_strip="gz"
 	cf_manpage_compress=gzip
+	cf_manpage_coptions=-n
 	;;
 (bzip2)
 	cf_manpage_so_strip="bz2"
@@ -151,5 +153,6 @@ AC_SUBST(cf_manpage_format)
 AC_SUBST(cf_manpage_inboth)
 AC_SUBST(cf_manpage_so_strip)
 AC_SUBST(cf_manpage_compress)
+AC_SUBST(cf_manpage_coptions)
 
 ])dnl

@@ -1,3 +1,10 @@
+2024-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MANPAGE_FORMAT:
+	add symbol $cf_manpage_coptions, to provide for passing gzip "-n"
+
+	* AcSplit/CF_MAN_PAGES: use $cf_manpage_coptions if set
+
 2024-03-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SHARED_OPTS: build-fix for clang on Solaris
