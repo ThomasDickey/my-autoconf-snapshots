@@ -1,3 +1,10 @@
+2024-03-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SHARED_OPTS: build-fix for clang on Solaris
+
+	* AcSplit/CF_CURSES_SETBEGYX:
+	rather than defining ERR on failure, simply define the macro only if successful
+
 2024-03-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NGROUPS: check for headers needed in compile-checks

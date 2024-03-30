@@ -1,4 +1,4 @@
-dnl CF_SHARED_OPTS version: 110 updated: 2024/03/12 19:44:02
+dnl CF_SHARED_OPTS version: 111 updated: 2024/03/29 20:08:49
 dnl --------------
 dnl --------------
 dnl Attempt to determine the appropriate CC/LD options for creating a shared
@@ -474,9 +474,9 @@ CF_EOF
 			done
 			CFLAGS="$cf_save_CFLAGS"
 			CC_SHARED_OPTS=$cf_shared_opts
-			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -dy -G -h '$cf_cv_shared_soname' -o $[@]'
+			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -dy -G -Wl,-h,'$cf_cv_shared_soname' -o $[@]'
 		else
-			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -dy -G -h '$cf_cv_shared_soname' -o $[@]'
+			MK_SHARED_LIB='${CC} ${LDFLAGS} ${CFLAGS} -shared -dy -G -Wl,-h,'$cf_cv_shared_soname' -o $[@]'
 		fi
 		;;
 	(sysv5uw7*|unix_sv*)
