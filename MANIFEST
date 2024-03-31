@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240330
+MANIFEST for my-autoconf, version t20240331
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -209,6 +209,7 @@ AcSplit/CF_FUNC_TGETENT         check for terminfo/termcap versions of tgetent()
 AcSplit/CF_FUNC_VASPRINTF       check for existence and prototype of vasprintf
 AcSplit/CF_FUNC_VSSCANF         check for vsscanf() or ways we can implement it (ncurses)
 AcSplit/CF_FUNC_WAIT            parent macro for testing wait/waitpid config
+AcSplit/CF_FUNC_WORDEXP         check for wordexp
 AcSplit/CF_GCC_ATTRIBUTES       check for gcc __attributes__()
 AcSplit/CF_GCC_OPT_RDYNAMIC     configure check for gcc -rdynamic
 AcSplit/CF_GCC_VERSION          check for version of gcc

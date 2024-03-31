@@ -1,0 +1,20 @@
+dnl CF_FUNC_WORDEXP version: 1 updated: 2024/03/31 09:33:13
+dnl ---------------
+AC_DEFUN([CF_FUNC_WORDEXP],
+[
+AC_MSG_CHECKING(for wordexp)
+AC_CACHE_VAL(ac_cv_func_wordexp,[
+AC_TRY_LINK([$ac_includes_default
+#include <wordexp.h>],[
+	wordexp_t result;
+	int flags = 0;
+	if (wordexp("~", &result, flags))
+		wordfree(&result)],
+	   [ac_cv_func_wordexp=yes],
+	   [ac_cv_func_wordexp=no])
+	   ])
+AC_MSG_RESULT($ac_cv_func_wordexp)
+if test "$ac_cv_func_wordexp" = yes; then
+	AC_DEFINE(HAVE_WORDEXP,1,[Define to 1 if we have wordexp])
+fi
+])dnl

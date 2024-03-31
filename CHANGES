@@ -1,3 +1,7 @@
+2024-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FUNC_WORDEXP: ci-aclocal generated header
+
 2024-03-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MANPAGE_FORMAT:
