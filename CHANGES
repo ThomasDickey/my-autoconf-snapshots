@@ -1,3 +1,9 @@
+2024-04-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_DEFAULT_SHELL: egrep vs grep -E
+
+	* AcSplit/CF_INSTALL_MAN: use "-n" option with gzip'd manpages
+
 2024-03-31  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_WORDEXP: ci-aclocal generated header

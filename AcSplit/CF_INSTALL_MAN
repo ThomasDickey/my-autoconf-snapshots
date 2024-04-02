@@ -1,4 +1,4 @@
-dnl CF_INSTALL_MAN version: 5 updated: 2023/05/21 15:53:07
+dnl CF_INSTALL_MAN version: 6 updated: 2024/04/01 04:21:53
 dnl --------------
 dnl Call this to generate a script "install-man" which uses the detected
 dnl manpage-format to compress the resulting manpage.  Providing this as a
@@ -118,7 +118,7 @@ if test -n "$source" ; then
 			cp "$source" "$interim" || exit 1
 		fi
 		if test -n "@cf_manpage_compress@" ; then
-			@cf_manpage_compress@ "$interim"
+			@cf_manpage_compress@ @cf_manpage_coptions@ "$interim"
 			source="${interim}${suffix}"
 		fi
 		if test -d "$target" ; then

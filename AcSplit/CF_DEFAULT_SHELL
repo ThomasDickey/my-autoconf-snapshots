@@ -1,4 +1,4 @@
-dnl CF_DEFAULT_SHELL version: 7 updated: 2019/12/31 20:39:42
+dnl CF_DEFAULT_SHELL version: 8 updated: 2024/04/01 20:13:36
 dnl ----------------
 dnl Look for a Bourne-shell compatible program from a list that we know about:
 dnl	ash	Almquist Shell (sh based)
@@ -30,7 +30,7 @@ make an error
 ],[$cf_shell_progs="csh tcsh $cf_shell_progs"])
 fi
 CF_MSG_LOG(paths of shell programs: $cf_shell_progs)
-if test -s /etc/shells && test `egrep -c -v '^(#| |    |$)' /etc/shells` -gt 0; then
+if test -s /etc/shells && test `${EGREP-egrep}  -c -v '^(#| |    |$)' /etc/shells` -gt 0; then
 	CF_MSG_LOG(/etc/shells)
 	for cf_prog in $cf_shell_progs
 	do
@@ -45,7 +45,7 @@ if test -s /etc/shells && test `egrep -c -v '^(#| |    |$)' /etc/shells` -gt 0; 
 				cf_pattern="/"$cf_prog"$"
 				;;
 		esac
-		cf_path=`egrep $cf_pattern /etc/shells 2>/dev/null`
+		cf_path=`${EGREP-egrep} $cf_pattern /etc/shells 2>/dev/null`
 		if test -n "$cf_path"
 		then
 			for cf_shell in $cf_path
