@@ -1,4 +1,4 @@
-dnl AM_WITH_NLS version: 38 updated: 2024/04/08 20:27:13
+dnl AM_WITH_NLS version: 39 updated: 2024/04/09 18:37:41
 dnl -----------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -71,7 +71,7 @@ AC_DEFUN([AM_WITH_NLS],
 		CF_ADD_CFLAGS(-DIGNORE_MSGFMT_HACK)
 	fi
 
-	AC_ARG_WITH([libintl],
+	AC_ARG_WITH([libintl-prefix],
 		[  --with-libintl-prefix=DIR
                           search for libintl in DIR/include and DIR/lib],
 		[CF_ADD_OPTIONAL_PATH($withval, libintl)])
