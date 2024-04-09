@@ -1,4 +1,4 @@
-dnl CF_PIC_HACK version: 2 updated: 2024/03/12 19:53:10
+dnl CF_PIC_HACK version: 3 updated: 2024/04/08 18:39:25
 dnl -----------
 dnl First noticed in 2016, some systems have gcc configured with
 dnl --enable-default-pie, which breaks linking of applications which do not
@@ -16,6 +16,10 @@ dnl https://gcc.gnu.org/ml/gcc-patches/2014-07/msg02231.html
 dnl https://stackoverflow.com/questions/6093547/what-do-r-x86-64-32s-and-r-x86-64-64-relocation-mean
 dnl https://unix.stackexchange.com/questions/89211/how-to-test-whether-a-linux-binary-was-compiled-as-position-independent-code
 AC_DEFUN([CF_PIC_HACK],[
+CF_ACVERSION_CHECK(2.52,
+	[AC_PATH_TOOL(READELF, readelf, none)],
+	[AC_PATH_PROG(READELF, readelf, none)])
+
 AC_CACHE_CHECK(if -fPIC option is needed in CFLAGS,cf_cv_pic_hack,[
 cf_cv_pic_hack=unknown
 
@@ -25,12 +29,15 @@ case "${CFLAGS}${CC_SHARED_OPTS}" in
 	;;
 esac
 
-if test $cf_cv_pic_hack = no
+if test "$READELF" = none
+then
+	cf_cv_pic_hack=unknown
+elif test $cf_cv_pic_hack = no
 then
 	:
 elif test "$GCC" = yes
 then
-	if readelf --version >/dev/null 2>/dev/null
+	if $READELF --version >/dev/null 2>/dev/null
 	then
 		cat >conftest.$ac_ext <<EOF
 #line __oline__ "configure"
@@ -39,7 +46,7 @@ int main(void) { FILE *fp = fopen("hello", "w"); return (fp != 0); }
 EOF
 		if AC_TRY_EVAL(ac_compile) ; then
 			cf_cv_pic_hack=no
-			for cf_pie_relocs in `readelf --relocs conftest.$ac_cv_objext 2>/dev/null | awk '[$]3~/^R_/ && [$]5!~/^\.debug/{print [$]3}'`
+			for cf_pie_relocs in `$READELF --relocs conftest.$ac_cv_objext 2>/dev/null | awk '[$]3~/^R_/ && [$]5!~/^\.debug/{print [$]3}'`
 			do
 				case "x$cf_pie_relocs" in
 				xR_X86_64_32|xR_X86_64_32S)

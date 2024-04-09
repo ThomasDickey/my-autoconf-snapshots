@@ -1,3 +1,20 @@
+2024-04-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/AM_WITH_NLS: only define ENABLE_NLS if we found gettext()
+
+	* AcSplit/AM_WITH_NLS: drop $POSUB symbol
+
+	* AcSplit/CF_ADD_OPTIONAL_PATH:
+	add --verbose messages to show the result from this macro
+
+	* AcSplit/AM_WITH_NLS:
+	add "--with-libintl-prefix" option (patch by Urs Janßen)
+
+	* AcSplit/CF_OUR_MESSAGES: correct usage-message (patch by Urs Janßen)
+
+	* AcSplit/CF_PIC_HACK:
+	make "readelf" tool configurable (report by Sam James)
+
 2024-04-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_WITH_NLS: restore a chunk needed for updating $LIBS
