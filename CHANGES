@@ -1,3 +1,8 @@
+2024-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_TD_SIG_ARGS:
+	correct test-program, which was returning a value from a void function
+
 2024-04-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ADD_OPTIONAL_PATH: add --verbose messages to show progress
