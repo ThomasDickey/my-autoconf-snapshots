@@ -1,3 +1,11 @@
+2024-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_FIND_TDLIB:
+	ensure that $cf_cv_tdlib_package is set when --without-pkg-config
+
+	* AcSplit/CF_FIND_TDLIB:
+	correct check for side-by-side library, and add a compile/link check for it
+
 2024-04-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_TD_SIG_ARGS:

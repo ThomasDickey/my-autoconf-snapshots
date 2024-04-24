@@ -1,4 +1,4 @@
-dnl CF_FIND_TDLIB version: 14 updated: 2023/01/19 18:06:45
+dnl CF_FIND_TDLIB version: 16 updated: 2024/04/24 19:42:20
 dnl -------------
 dnl Locate TD_LIB, which is available in one of these configurations:
 dnl a) installed, with headers, library and include-file for make
@@ -24,6 +24,8 @@ then
 		test -z "$cf_cv_tdlib_package" && cf_cv_tdlib_package=no
 	])dnl
 	AC_MSG_RESULT($cf_cv_tdlib_package)
+else
+	cf_cv_tdlib_package=no
 fi
 
 if test "$cf_cv_tdlib_package" != no ; then
@@ -55,6 +57,28 @@ else
 	AC_MSG_RESULT($cf_cv_tdlib_devel)
 
 	if test "$cf_cv_tdlib_devel" != no ; then
+		AC_MSG_CHECKING(if we can use the side-by-side library)
+		cf_save_cppflags="$CPPFLAGS"
+		cf_save_libs="$LIBS"
+		CPPFLAGS="$CPPFLAGS -I$cf_cv_tdlib_devel/include"
+		LIBS="-L$cf_cv_tdlib_devel/lib -ltd $LIBS"
+		AC_TRY_LINK([
+#define TESTING_CONFIG_H
+#include <ptypes.h>],[
+			char *p = doalloc(0,1)],
+			cf_use_tdlib=yes,
+			cf_use_tdlib=no)
+		AC_MSG_RESULT($cf_use_tdlib)
+		if test "$cf_use_tdlib" = no ; then
+			cf_cv_tdlib_devel=no
+			CPPFLAGS="$cf_save_cppflags"
+			LIBS="$cf_save_libs"
+		else
+			TD_LIB_rules=$cf_cv_tdlib_devel/support
+		fi
+	fi
+
+	if test "$cf_cv_tdlib_devel" = no ; then
 		CF_HEADER_PATH(cf_search,td)
 		# get all matches, since we're including <ptypes.h> and <td/ptypes.h>
 		for cf_incdir in $cf_search
@@ -88,10 +112,6 @@ else
 		fi
 		test "$cf_td_lib_rules" = yes || AC_MSG_ERROR(Cannot find td_lib.mk)
 		TD_LIB_rules=$cf_libdir
-	else
-		CPPFLAGS="$CPPFLAGS -I$cf_cv_tdlib_devel/include $CPPFLAGS"
-		LIBS="-L$cf_cv_tdlib_devel/lib $LIBS"
-		TD_LIB_rules=$cf_cv_tdlib_devel/support
 	fi
 
 fi
