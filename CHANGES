@@ -1,3 +1,8 @@
+2024-05-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ANSI_CC_CHECK:
+	reset CFLAGS/CPPFLAGS on each loop, to keep the options from accumulating
+
 2024-04-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FIND_TDLIB:
