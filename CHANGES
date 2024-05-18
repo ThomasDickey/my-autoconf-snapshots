@@ -1,3 +1,7 @@
+2024-05-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ADA: ci-aclocal generated header
+
 2024-05-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GETTIME:

@@ -1,0 +1,49 @@
+dnl CF_WITH_ADA version: 1 updated: 2024/05/18 13:55:23
+dnl -----------
+dnl Check for the Ada compiler (unless requested to not do this), which causes
+dnl a further check for a C compiler which can work with the Ada compiler.
+AC_DEFUN([CF_WITH_ADA],[
+AC_ARG_WITH(ada,
+	[  --without-ada           suppress check for Ada compiler],
+	[cf_with_ada=$withval],
+	[cf_with_ada=yes])
+
+cf_prog_cc="gcc cc"
+if test "x$cf_with_ada" = xyes
+then
+	CF_PROG_GNAT
+	if test	"x$cf_cv_prog_gnat_correct" = xyes; then
+		# gcc's developers chose to deprecate gnatgcc before making gprconfig
+		# work.  They replaced gnatgcc in gcc 13 with a script which spits out
+		# a warning offering advice which could never work.
+		#
+		# Here is a workaround.
+		AC_PATH_PROG(cf_cv_path_gnatgcc,gnatgcc,no)
+		if test "$cf_cv_path_gnatgcc" != no
+		then
+			AC_MSG_CHECKING(for improvement) 
+			cf_file_gnatgcc=`file -L "$cf_cv_path_gnatgcc" 2>/dev/null`
+			case "x$cf_file_gnatgcc" in
+			(*script*)
+				cf_cv_path_gnatgcc=`sh -x "$cf_cv_path_gnatgcc" --version 2>&1 | grep -w exec | sed -e 's/^[[ 	]]*+[[ 	]]*//' -e 's/exec[[ 	]]//' -e 's/ .*//'`
+				;;
+			(*)
+				cf_cv_path_gnatgcc=no
+				;;
+			esac
+			AC_MSG_RESULT($cf_cv_path_gnatgcc)
+			test "$cf_cv_path_gnatgcc" = no && cf_cv_path_gnatgcc=gnatgcc
+			cf_prog_cc="$cf_cv_path_gnatgcc $cf_prog_cc"
+		fi
+	fi
+fi
+case "$cf_prog_cc" in
+(*/*)
+	CC="$cf_prog_cc"
+	AC_SUBST(CC)
+	;;
+(*)
+	CF_PROG_CC($cf_prog_cc)
+	;;
+esac
+])dnl

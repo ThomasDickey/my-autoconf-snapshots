@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240511
+MANIFEST for my-autoconf, version t20240518
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -529,6 +529,7 @@ AcSplit/CF_WIDEC_SHIFT          derive the shift-mask for wide-character type
 AcSplit/CF_WITHOUT_X            cancel X-dependencies which might be embedded in macros, e.g., CF_GCC_WARNINGS
 AcSplit/CF_WITH_ABI_ALTERED     option --with-abi-altered
 AcSplit/CF_WITH_ABI_VERSION     option to allow changing ABI version (ncurses)
+AcSplit/CF_WITH_ADA             optional combined check for Ada and C compilers
 AcSplit/CF_WITH_ADA_COMPILER    command-line option to specify the Ada95 compiler
 AcSplit/CF_WITH_ADA_INCLUDE     command-line option for path of Ada includes
 AcSplit/CF_WITH_ADA_LIBNAME     provide --with-ada-libname option
