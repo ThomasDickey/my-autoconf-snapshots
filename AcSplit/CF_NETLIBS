@@ -1,4 +1,4 @@
-dnl CF_NETLIBS version: 12 updated: 2021/01/02 09:31:20
+dnl CF_NETLIBS version: 13 updated: 2024/06/04 20:31:17
 dnl ----------
 dnl After checking for functions in the default $LIBS, make a further check
 dnl for the functions that are netlib-related (these aren't always in the
@@ -60,7 +60,7 @@ case "$host_os" in
 		CF_RECHECK_FUNC(gethostname,nsl,cf_cv_netlibs,[
 			CF_RECHECK_FUNC(gethostname,socket,cf_cv_netlibs)])])
 
-	AC_CHECK_LIB(inet, main, cf_cv_netlibs="-linet $cf_cv_netlibs")
+	AC_CHECK_LIB(inet, inet_ntoa, cf_cv_netlibs="-linet $cf_cv_netlibs")
 
 	if test "$ac_cv_func_lsocket" != no ; then
 	AC_CHECK_FUNCS(socket,,[
