@@ -1,4 +1,4 @@
-dnl AM_WITH_NLS version: 39 updated: 2024/04/09 18:37:41
+dnl AM_WITH_NLS version: 40 updated: 2024/06/12 19:04:11
 dnl -----------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -64,12 +64,7 @@ AC_DEFUN([AM_WITH_NLS],
 
 	CF_ADD_LIBS($LIBICONV)
 	cf_save_LIBS_1="$LIBS"
-
 	cf_save_OPTS_1="$CPPFLAGS"
-	if test "x$cf_save_msgfmt_path" = "x$MSGFMT" && \
-	   test "x$cf_save_xgettext_path" = "x$XGETTEXT" ; then
-		CF_ADD_CFLAGS(-DIGNORE_MSGFMT_HACK)
-	fi
 
 	AC_ARG_WITH([libintl-prefix],
 		[  --with-libintl-prefix=DIR
@@ -97,6 +92,16 @@ AC_DEFUN([AM_WITH_NLS],
 		INTLLIBS="$cf_cv_library_file_intl"
 		CF_ADD_LIBDIR($cf_cv_library_path_intl,INTLLIBS)
 	  fi
+
+	  AC_MSG_CHECKING(if this is GNU gettext)
+	  AC_TRY_LINK(
+#define USE_MSGFMT_HACK
+CF__INTL_HEAD,
+		  CF__INTL_BODY,
+		  cf_cv_gnu_gettext=yes,
+		  cf_cv_gnu_gettext=no)
+	  AC_MSG_RESULT($cf_cv_gnu_gettext)
+	  test "$" = yes && AC_DEFINE(HAVE__NL_MSG_CAT_CNTR,1,[define to 1 if _nl_msg_cat_cntr is found with gettext/intl])
 
 	  LIBS="$LIBS $INTLLIBS"
 	  AC_CHECK_FUNCS(dcgettext)

@@ -1,4 +1,4 @@
-dnl CF_CHECK_LIBTOOL_VERSION version: 2 updated: 2021/05/01 16:24:34
+dnl CF_CHECK_LIBTOOL_VERSION version: 3 updated: 2024/06/12 04:19:01
 dnl ------------------------
 dnl Show the version of libtool
 dnl
@@ -14,6 +14,7 @@ then
 	AC_MSG_CHECKING(version of $LIBTOOL)
 	CF_LIBTOOL_VERSION
 	AC_MSG_RESULT($cf_cv_libtool_version)
+	ifdef([LT_PACKAGE_VERSION],,[
 	if test -n "$cf_cv_libtool_version"
 	then
 		cf_check_libtool_version=`$LIBTOOL --version 2>&1 | sed -e '/^$/d' -e 's,[[()]],...,g' -e 's,[[ ]],-,g' -e '2,$d'`
@@ -27,6 +28,7 @@ then
 	else
 		AC_MSG_ERROR(No version found for $LIBTOOL)
 	fi
+	])
 else
 	AC_MSG_ERROR(GNU libtool has not been found)
 fi

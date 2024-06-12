@@ -1,4 +1,4 @@
-dnl CF__INTL_BODY version: 4 updated: 2021/05/19 19:35:25
+dnl CF__INTL_BODY version: 5 updated: 2024/06/12 19:04:11
 dnl -------------
 dnl Test-code needed for libintl compile-checks
 dnl $1 = parameter 2 from AM_WITH_NLS
@@ -6,7 +6,7 @@ define([CF__INTL_BODY],[
 	bindtextdomain ("", "");
 	return (gettext ("") != 0)
 			ifelse([$1], need-ngettext, [ + (ngettext ("", "", 0) != 0)], [])
-#ifndef IGNORE_MSGFMT_HACK
+#ifdef USE_MSGFMT_HACK
 			[ + _nl_msg_cat_cntr]
 #endif
 ])
