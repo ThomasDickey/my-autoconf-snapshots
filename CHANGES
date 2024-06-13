@@ -1,3 +1,9 @@
+2024-06-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* COPYING.asc: sign
+
+	* COPYING: bump
+
 2024-06-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/AM_WITH_NLS:
