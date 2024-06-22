@@ -1,4 +1,13 @@
+2024-06-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BUILD_CC:
+	revert - doesn't entirely fix lynx with pdcurses and breaks ncurses
+
 2024-06-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__DEFINE_SHLIB_VARS:
+	eliminate trailing backslashes, to help with Debian #1071581 (needs update
+	to autoconf-252)
 
 	* COPYING.asc: sign
 
@@ -29,6 +38,230 @@
 
 	* AcSplit/CF_NETLIBS: improve symbol used for detecting inet library
 
+2024-06-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: add missing CPUs, vendors, and OSes.
+
+	    Add the following entries to the tables of valid CPUs, vendors, and
+	    operating systems:
+
+	    CPUs:     v810
+
+	    Vendors:  acorn, atari, be, ccur, commodore, digital, intergraph, rebel,
+	              rom68k, rombug, semi, siemens, sni, stratus, tektronix
+
+	    OSes:     atheos, chorusos, psos, syllable, wince
+
+	    Evidence elsewhere in this script, and/or in config.guess, indicates
+	    that these are all supposed to be valid.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: improve consistency of shorthands and X-Y partial names.
+
+	    It seems to me that if ‘fooco’ expands to ‘cpu-fooco-foonlyos’,
+	    where ‘cpu’ is whatever CPU was hip at the time Fooco was making
+	    computers, then ‘cpu-fooco’ should also expand to ‘cpu-fooco-foonlyos’,
+	    and ‘cpu-foonlyos’ should as well, except when ‘foonlyos’ is something
+	    generic like ‘sysv’ or ‘bsd’.  Implement a bunch of cases where we
+	    didn’t do this quite right.  Probably there are more.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: Treat i386-pc-rtmk-nova as a 4-part system name.
+
+	    Handle ‘i386-nova’ as shorthand for a 4-part system name,
+	    kernel=rtmk os=nova, instead of a canonicalized OS name with
+	    a dash in the middle, os=rtmk-nova.
+
+	    RTMK <https://rtmk.sourceforge.net/> is a microkernel.
+	    Nova <https://www.nongnu.org/nova> is an OS written on top of that
+	    microkernel.  The short system name ‘i386-nova’ was therefore defined
+	    to canonicalize to ‘i386-pc-rtmk-nova’, I think prior to the general
+	    introduction of 4-part system names.  ‘i386-pc-rtmk-nova’ still makes
+	    sense under the rules for interpreting 4-part names, but nowadays the
+	    logic for validating canonicalized name components rejects OS names
+	    with a dash in the middle.  Feeding kernel=rtmk os=nova to that logic,
+	    instead, does the Right Thing.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: remove two unreachable case clauses.
+
+	    These attempt to perform normalizations that were already done by
+	    code above this point, so they are unnecessary.  There are already
+	    test cases for these normalizations.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: normalize nextstep/openstep consistently.
+
+	    Normalize the names for NeXT’s operating systems consistently.
+	    The version number bump from 2 to 3 went along with a marketing
+	    name change from “nextstep” to “openstep”, which was being honored,
+	    or not, depending on what shorthand you put in and what CPU you
+	    selected (!)
+
+	    Consistent with the treatment of “Solaris 1” as an alias for sunos4
+	    and “SunOS 5” as an alias for solaris2, and also with what config.guess
+	    appears to do on these machines (which I do not have), config.sub will
+	    now emit CPU-next-nextstep, -nextstep2, -openstep3, -openstep4 no
+	    matter how it was spelled on input.
+
+	    These OSes historically were used with several other CPUs besides m68k
+	    and sparc, but I think one CPU for which they have a single-component
+	    shorthand, and one for which they don’t, is enough testing.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: don’t override OS for blackfin, m68knommu, parisc.
+
+	    A similar issue to the previous patch: make the OS default for the CPU
+	    aliases “blackfin,” “m68knommu,” and “parisc” actually be a default
+	    and not an override.  There have been many OSes for PA/RISC.  Both
+	    blackfin and m68knommu are definitely used in bare-metal configuration
+	    as well as with an OS.  And in general, CPU aliases should behave as
+	    much like the canonical CPU name as possible.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: don’t override OS for c90-cray.
+
+	    Fix a typo in the logic for handling the OS default for c90-cray,
+	    causing c90-cray-[anything] to get overridden to c90-cray-unicos.
+	    I’m not aware of any non-Unicos operating systems for the C90, but
+	    let’s not be a pointless obstacle for anyone who wants to write one.
+	    (For testing purposes I used Linux, because config.sub’s generic logic
+	    accepts it in combination with any CPU whatsoever.)
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: handle cNN-convex and convex-cNN shorthands correctly.
+
+	    convex-cNN and cNN-convex (where NN in 1, 2, 32, 34, 38) are supposed
+	    to be shorthands for cNN-convex-bsd, but the code to handle them
+	    was in the wrong switch statement, making it unreachable.  Fix.
+
+	    https://en.wikipedia.org/wiki/Convex_Computer says there was also a C4
+	    machine in this product line, at least on paper, but it’s not clear to
+	    me whether they ever shipped one.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: accept knetbsd-gnu, netbsd-gnu, uclinux-gnu.
+
+	    There is evidence elsewhere in config.sub, and in config.guess,
+	    indicating that knetbsd-gnu, netbsd-gnu, and uclinux-gnu were
+	    supposed to be acceptable combinations of $kernel and $os, but
+	    they are currently being rejected.  Add them to the list of
+	    acceptable kernel-os combinations, and add test cases for them.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: consistently use sun as default vendor for solaris*.
+
+	    config.sub had a rule that os=sunos* implies vendor=sun unless the
+	    vendor has already been set for some other reason, but no such rule
+	    for os=solaris*, and that meant `./config.sub sparc-solaris2` was
+	    inconsistent with what you’d get from config.guess on that system.
+
+	    Add the missing rule.
+
+	    Unlike the previous patch, this changes config.sub output for some
+	    systems still actually in use today, but hardly anything looks at
+	    the vendor field unless the OS field is something super generic like
+	    “bsd” or “sysv”, so I think we can get away with it.
+
+	    This patch also adds tests for the mapping of ‘sunos5’ to ‘solaris2’
+	    and ‘solaris1’ to ‘sunos4’, which is logically unrelated *except*
+	    that some of those test cases will fail in the absence of the above
+	    change.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-05-27
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: correct Bull DPX/2-[123]00 and DPX/20 canonical names.
+
+	    config.sub was mapping all single-component shorthands matching the
+	    shell glob `dpx2*` to ‘m68k-bull-sysv3’, which is incorrect.  Of the
+	    four different machines once manufactured by Groupe Bull whose model
+	    number can be abbreviated ‘dpx2something’, only two were m68k-based:
+	    the DPX/2-200 and DPX/2-300.  The DPX/2-100, on the other hand, had an
+	    i386 CPU.  And the DPX/20 was a completely different beast, released
+	    years later and based on the POWER architecture.
+
+	    I’ve chosen to keep making ‘dpx2’ map to ‘m68k-bull-sysv3’ as the
+	    DPX/2-200 and /2-300 seem to have been the most widely used.  config.sub
+	    now understands ‘dpx2100’, ‘dpx2200’, and ‘dpx2300’ as shorthands for
+	    ‘i386-bull-sysv3’, ‘m68k-bull-sysv3’, and ‘m68k-bull-sysv3’ respectively.
+	    It also accepts ‘dpx21xx’, ‘dpx22xx’, and ‘dpx22xx’ as equivalent to
+	    these, but no other variations; in particular, ‘dpx2xxx’, which was in
+	    the test suite, no longer works, as it is ambiguous.
+
+	    (As far as I can tell, there weren’t actually any submodels of any of
+	    these systems, so I could be persuaded to remove the …xx aliases.
+	    I kept them mainly because of the test suite formerly testing dpx2xxx.)
+
+	    Finally ‘dpx20’ now maps to ‘rs6000-bull-bosx’.  Both the ‘rs6000’ and
+	    ‘bosx’ components of this name are debatable, but I *think* it is what
+	    config.guess would do on this machine.
+
+	    Sources for Bull DPX/2whatever history:
+
+	     - https://oldskool.silicium.org/stations/bull_dpx20.htm
+	     - https://www.feb-patrimoine.com/english/bull_dpx2.htm
+	     - https://www.feb-patrimoine.com/english/unix_and_bull.htm
+
+	    Note in particular “Que cette machine soit estampillée BULL ou IBM,
+	    elle faisait tourner AIX (l'Unix d'IBM)” on the first of these pages,
+	    which is why I say “bosx” is debatable…
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-03-12
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: flatten and sort long case-alternative lists
+
+	    Several of these lists are going to be modified substantially in the
+	    next few patches, this will make it much easier to see what is going on.
+	    No functional change.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+	* config.sub: 2024-03-12
+	    From: Zack Weinberg <zack@owlfolio.org>
+	    config.sub: disable shellcheck warning SC2162 globally.
+
+	    With the version of shellcheck I have (0.9.0), the existing attempts
+	    to disable SC2162, above each use of read without -r, do not work
+	    because they are not on the line *immediately* previous to the read
+	    command — there’s always a “saved_IFS=$IFS” line in between.  Since
+	    this script must not use read -r at all, we should just be disabling
+	    SC2162 globally.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2024-06-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SOCKS5:
@@ -43,6 +276,34 @@
 2024-05-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_ADA: ci-aclocal generated header
+
+2024-05-13  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2024-04-03
+	    From: Petr Vorel <petr.vorel@gmail.com>
+	    config.guess: Avoid implicit int in definitions of main.
+
+	    Implicit ‘int’ (e.g. ‘extern foo();’ meaning the same thing as
+	    ‘extern int foo();’) was dropped from the C standard in its 1999
+	    edition.  Twenty-five years later, free C compilers are finally
+	    starting to make this an error by default, so let’s not use it
+	    anymore in config.guess probe programs.
+
+	    (Note: As of this writing, GCC 14 and Clang 16 are both more lenient
+	    for ‘main() { … }’ specifically than for other uses of implicit int.
+	    Still, the writing is clearly on the wall.)
+
+	    We continue to use ‘int main() { … }’, instead of ‘int main(void) { … }’,
+	    because these programs may be compiled by truly ancient compilers that
+	    do not recognize the keyword ‘void’.  This leaves open the possibility
+	    of a compiler that errors by default on an empty argument list in a
+	    function definition, which, prior to the 2024 C standard, is technically
+	    still an “old-style” function definition; but we can worry about that
+	    if and when it comes up.
+
+	    Signed-off-by: Petr Vorel <petr.vorel@gmail.com>
+	    Co-authored-by: Zack Weinberg <zack@owlfolio.org>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2024-05-11  Thomas E. Dickey  <dickey@invisible-island.net>
 
@@ -143,9 +404,75 @@
 	trim a space after "-R" options on Solaris which interferes with builds
 	using clang.  The space might be needed for some older versions of Sun cc.
 
+	* config.sub: 2024-03-12
+	    From: Jan Klötzke <jan.kloetzke@kernkonzept.com>
+	    config.sub: recognize L4Re OS
+
+	    * config.sub ($os == l4re*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (aarch64-unknown-l4re, x86_64-pc-l4re): New
+	    entries.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2024-03-02  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MB_LEN_MAX: ci-aclocal generated header
+
+2024-02-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2024-02-24
+	    From: Jonathan Schwender <jonathan.schwender@huawei.com>
+	    config.sub: Recognize OpenHarmony OS
+
+	    Add support for [OpenHarmony] targets.
+	    The `ohos` targets are available [in `LLVM`] and
+	    documented in the [Rust target documentation].
+
+	    Known targets in Rust:
+
+	    - aarch64-unknown-linux-ohos
+	    - armv7-unknown-linux-ohos
+	    - x86_64-unknown-linux-ohos
+
+	    Known targets in Clang:
+	    - arm-linux-ohos
+	    - aarch64-linux-ohos
+	    - x86_64-linux-ohos
+
+	    There are also some additional targets available in clang,
+	    e.g. `liteos-ohos`, but I don't know much about those
+	    targets, so I'm leaving `liteos-ohos` out of scope for this
+	    patch.
+
+	    [OpenHarmony]: https://gitee.com/openharmony/docs/
+	    [in `LLVM`]: https://github.com/llvm/llvm-project/blob/main/clang/lib/Driver/ToolChains/OHOS.cpp
+	    [Rust target documentation]: https://doc.rust-lang.org/rustc/platform-support/openharmony.html
+
+	    * config.sub ($os == ohos*): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (aarch64-linux-ohos): New entry.
+
+	    Signed-off-by: Jonathan Schwender <jonathan.schwender@huawei.com>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+2024-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.sub: 2024-01-26
+	    From: Mike Hommey <mh@glandium.org>
+	    config.sub: recognise ARM64E machine type
+
+	    ARM64E is a custom ABI for AArch64 8.3+ introducing pointer
+	    authentication codes. While technically just an ABI, it is treated
+	    as its own machine type, with triples in the format arm64e-*.
+
+	    * config.sub (arm64e): Recognize.
+	    * doc/config.sub.1: Regenerate.
+	    * testsuite/config-sub.data (arm64e-apple-darwin20.0.0,
+	    arm64e-apple-ios): New entries.
+
+	    Signed-off-by: Mike Hommey <mh@glandium.org>
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
 
 2024-01-22  Thomas E. Dickey  <dickey@invisible-island.net>
 

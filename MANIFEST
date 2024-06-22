@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240613
+MANIFEST for my-autoconf, version t20240622
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -8,10 +8,7 @@ README                          description of "my-autoconf"
 README.asc                      gpg signature for README
 config.guess                    autoconf's config.guess
 config.sub                      autoconf's config.sub
-headers-sh                      utility for installing/transforming header files
 install-sh                      generic install-script
-install.sh                      alternate install-script
-mkdirs.sh                       generic mkdirs script
 AcSplit                         subdirectory
 AcSplit/AC_GNU_SOURCE           check for _GNU_SOURCE from rcs-blame
 AcSplit/AC_ISC_POSIX            from gettext 0.10.40 (tin)
