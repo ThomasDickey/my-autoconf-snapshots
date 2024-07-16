@@ -1,4 +1,4 @@
-dnl CF_SRAND version: 22 updated: 2024/01/22 19:30:53
+dnl CF_SRAND version: 23 updated: 2024/07/16 16:35:55
 dnl --------
 dnl Check for functions similar to srand() and rand().  lrand48() and random()
 dnl return a 31-bit value, while rand() returns a value less than RAND_MAX
@@ -7,12 +7,26 @@ dnl
 dnl $1 = optional prefix for resulting shell variables.  The default "my_"
 dnl      gives $my_srand and $my_rand to the caller, as well as MY_RAND_MAX.
 dnl      These are all AC_SUBST'd and AC_DEFINE'd.
+dnl $2 = default for the arc4random option
 AC_DEFUN([CF_SRAND],[
 AC_CHECK_HEADERS(limits.h)
-AC_CHECK_FUNC(arc4random,,[AC_CHECK_LIB(bsd,arc4random,CF_ADD_LIB(bsd))])
+
+AC_MSG_CHECKING(if you want to use arc4random)
+AC_ARG_ENABLE(arc4random,
+	[  --enable-arc4random     enable arc4random if available],
+	[enable_arc4random=yes],
+	[enable_arc4random=ifelse($2,,yes,$2)])
+AC_MSG_RESULT($enable_arc4random)
+
+cf_srand_arc4random=
+if test "$enable_arc4random" = yes ; then
+	AC_CHECK_FUNC(arc4random,,[AC_CHECK_LIB(bsd,arc4random,CF_ADD_LIB(bsd))])
+	test "$ac_cv_func_arc4random" = yes && cf_srand_arc4random=arc4random_stir/arc4random
+fi
+
 AC_CACHE_CHECK(for random-integer functions, cf_cv_srand_func,[
 cf_cv_srand_func=unknown
-for cf_func in arc4random_stir/arc4random srandom/random srand48/lrand48 srand/rand
+for cf_func in $cf_srand_arc4random srandom/random srand48/lrand48 srand/rand
 do
 	CF_SRAND_PARSE($cf_func,cf_srand_func,cf_rand_func)
 

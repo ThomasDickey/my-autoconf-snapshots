@@ -1,3 +1,9 @@
+2024-07-16  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SRAND:
+	add --enable-arc4random option so that mutt can have the feature normally
+	disabled, while lynx can have it normally enabled
+
 2024-07-06  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_NCURSES_PTHREADS:
