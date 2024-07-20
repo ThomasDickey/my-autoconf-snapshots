@@ -1,0 +1,19 @@
+dnl CF_GLOB_FULLPATH version: 1 updated: 2024/07/20 19:45:17
+dnl ----------------
+dnl Use this in case-statements to check for pathname syntax, i.e., absolute
+dnl pathnames.  The "x" is assumed since we provide an alternate form for DOS.
+AC_DEFUN([CF_GLOB_FULLPATH],[
+AC_REQUIRE([CF_WITH_SYSTYPE])dnl
+case "$cf_cv_system_name" in
+(cygwin*|msys*|mingw32*|mingw64|os2*)
+	GLOB_FULLPATH_ONLY='x/*|x[[a-zA-Z]]:[[\\/]]*'
+	GLOB_FULLPATH_ARGS='x/*\ |x[[a-zA-Z]]:[[\\/]]*\ '
+	;;
+(*)
+	GLOB_FULLPATH_ONLY='x/*'
+	GLOB_FULLPATH_ARGS='x/*\ '
+	;;
+esac
+AC_SUBST(GLOB_FULLPATH_ONLY)
+AC_SUBST(GLOB_FULLPATH_ARGS)
+])dnl

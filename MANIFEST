@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240716
+MANIFEST for my-autoconf, version t20240720
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -212,6 +212,7 @@ AcSplit/CF_GCC_OPT_RDYNAMIC     configure check for gcc -rdynamic
 AcSplit/CF_GCC_VERSION          check for version of gcc
 AcSplit/CF_GCC_WARNINGS         check for gcc warnings
 AcSplit/CF_GETOPT_HEADER        check for getopt variables in header file
+AcSplit/CF_GLOB_FULLPATH        provide shell-substitution for pathname globs
 AcSplit/CF_GMTOFF               check for timezone-related features (td_lib)
 AcSplit/CF_GNATPREP_OPT_T       check for gnatprep's "-T" option
 AcSplit/CF_GNAT_GENERICS        check if GNAT can compile generics
