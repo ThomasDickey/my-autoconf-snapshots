@@ -1,3 +1,32 @@
+2024-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
+	Eli Zaretskii has built a native Windows port of pkg-config which uses
+	DOS/Windows pathnames.  Provide for that in the search-list.
+
+	* AcSplit/CF_LIB_RULES, AcSplit/CF_PATH_SYNTAX, AcSplit/CF_PROG_INSTALL:
+	use CF_GLOB_FULLPATH
+
+	* AcSplit/CF_GLOB_FULLPATH:
+	split the two-part glob into separate variables so that shell variables can
+	be used for the parts in a case-statement.
+
+	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR, AcSplit/CF_WITH_VERSIONED_SYMS:
+	use CF_GLOB_FULLPATH
+
+2024-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess: 2024-07-27
+	    From: Paul Eggert <eggert@cs.ucla.edu>
+	    Port config.guess to strict POSIX.1-2024 c17
+
+	    * config.guess (set_cc_for_build):
+	    Try the c17 compiler, standardized in POSIX.1-2024.  See:
+	    https://pubs.opengroup.org/onlinepubs/9799919799/utilities/c17.html
+	    While we're at it, prefer c99 to c89.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
 2024-07-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GLOB_FULLPATH: ci-aclocal generated header

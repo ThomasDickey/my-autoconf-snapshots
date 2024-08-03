@@ -1,4 +1,4 @@
-dnl CF_LIB_RULES version: 100 updated: 2023/06/03 15:17:30
+dnl CF_LIB_RULES version: 101 updated: 2024/08/03 13:08:58
 dnl ------------
 dnl Append definitions and rules for the given models to the subdirectory
 dnl Makefiles, and the recursion rule for the top-level Makefile.  If the
@@ -16,6 +16,7 @@ dnl Note: Libs_To_Make is mixed case, since it is not a pure autoconf variable.
 AC_DEFUN([CF_LIB_RULES],
 [AC_REQUIRE([AC_PROG_FGREP])dnl
 AC_REQUIRE([CF_MAKE_PHONY])dnl
+AC_REQUIRE([CF_GLOB_FULLPATH])dnl
 
 cf_prefix=$LIB_PREFIX
 AC_REQUIRE([CF_SUBST_NCURSES_VERSION])
@@ -541,7 +542,7 @@ CF_EOF
 if test "$WITH_CURSES_H" = yes; then
 	cat >>headers.sh <<CF_EOF
 case \$DST in
-(/*/include/*)
+($GLOB_FULLPATH_POSIX/include/*)
 	END=\`basename \$DST\`
 	for i in \`cat \$REF/../*/headers |${FGREP-fgrep} -v "#"\`
 	do
@@ -558,7 +559,7 @@ CF_EOF
 else
 	cat >>headers.sh <<CF_EOF
 case \$DST in
-(/*/include/*)
+($GLOB_FULLPATH_POSIX/include/*)
 	END=\`basename \$DST\`
 	for i in \`cat \$REF/../*/headers |${FGREP-fgrep} -v "#"\`
 	do
