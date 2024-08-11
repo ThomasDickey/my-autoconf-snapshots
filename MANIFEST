@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20240803
+MANIFEST for my-autoconf, version t20240810
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -249,6 +249,7 @@ AcSplit/CF_INSTALL_OPT_O        check for -o option of install-program
 AcSplit/CF_INSTALL_OPT_P        check for install "-p" option
 AcSplit/CF_INSTALL_OPT_S        check for -s option of install-program
 AcSplit/CF_INSTALL_OPT_STRIP_PROG  provide a way to use --strip-program option in install program
+AcSplit/CF_INSTALL_PREFIX       options --with-install-prefix and --enable-install-prefix
 AcSplit/CF_INTEL_COMPILER       configure-check for Intel compiler on Linux
 AcSplit/CF_ISASCII              test if 'isascii' is declared
 AcSplit/CF_KILLPG               check if killpg() is needed to kill a process-group

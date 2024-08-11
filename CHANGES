@@ -1,3 +1,13 @@
+2024-08-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_INSTALL_PREFIX: ci-aclocal generated header
+
+	* AcSplit/CF_GETOPT_HEADER:
+	prefer getting unistd.h via AC_HEADER_STDC, which is normally prerequisite
+
+	* AcSplit/CF_UTF8_LIB:
+	s/AC_HAVE_HEADERS/AC_CHECK_HEADERS/, for consistency
+
 2024-08-03  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR:
