@@ -1,9 +1,9 @@
-dnl CF_WITH_MAN2HTML version: 13 updated: 2023/11/23 06:40:35
+dnl CF_WITH_MAN2HTML version: 14 updated: 2024/09/09 17:17:46
 dnl ----------------
 dnl Check for man2html and groff.  Prefer man2html over groff, but use groff
 dnl as a fallback.  See
 dnl
-dnl		http://invisible-island.net/scripts/man2html.html
+dnl		https://invisible-island.net/scripts/man2html.html
 dnl
 dnl Generate a shell script which hides the differences between the two.
 dnl
