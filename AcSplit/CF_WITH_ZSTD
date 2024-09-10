@@ -1,0 +1,20 @@
+dnl CF_WITH_ZSTD version: 1 updated: 2024/08/01 19:58:49
+dnl ------------
+dnl Check for Zstd decoder library
+dnl
+dnl $1 = optional path for headers/library
+AC_DEFUN([CF_WITH_ZSTD],[
+  CF_ADD_OPTIONAL_PATH($1, [zstd library])
+
+  CF_FIND_LINKAGE([
+#include <zstd.h>
+],[
+
+    ZSTD_DStream *izsp = ZSTD_createDStream();
+    ZSTD_inBuffer ib;
+    ZSTD_outBuffer ob;
+    ZSTD_initDStream(izsp);
+    ZSTD_decompressStream(izsp, &ob, &ib);
+    ZSTD_freeDStream(izsp);
+],zstd,,,zstd)
+])dnl

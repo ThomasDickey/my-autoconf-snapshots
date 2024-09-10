@@ -1,0 +1,16 @@
+dnl CF_SIZEOF_TIME_T version: 1 updated: 2024/02/04 18:29:21
+dnl ----------------
+dnl For "recent" (as of 2024) GNU libc, defining _TIME_BITS is a way to select
+dnl a 64-bit time_t.  Report the size of time_t to show systems which might be
+dnl converted.
+AC_DEFUN([CF_SIZEOF_TIME_T],[
+dnl AC_REQUIRE([CF_LARGEFILE])
+dnl CF_VERBOSE(defining _TIME_BITS to 64)
+dnl CF_APPEND_TEXT(CPPFLAGS,-D_TIME_BITS=64)
+cf_save_includes="$ac_includes_default"
+ac_includes_default="$ac_includes_default
+#include <time.h>
+"
+CF_CHECK_SIZEOF(time_t,4)
+ac_includes_default="$cf_save_includes"
+])dnl

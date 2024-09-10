@@ -1,8 +1,10 @@
-dnl CF_WITH_ZLIB version: 5 updated: 2024/04/09 18:37:41
+dnl CF_WITH_ZLIB version: 6 updated: 2024/09/10 19:19:44
 dnl ------------
 dnl check for libz aka "zlib"
+dnl
+dnl $1 if present is yes/no, e.g., from a --with-zlib option.
 AC_DEFUN([CF_WITH_ZLIB],[
-  CF_ADD_OPTIONAL_PATH($1, [zlib])
+  ifelse([$1],,,[CF_ADD_OPTIONAL_PATH($1, [zlib])])
 
   CF_FIND_LINKAGE([
 #include <zlib.h>

@@ -1,3 +1,9 @@
+2024-09-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ADD_OPTIONAL_PATH: provide for empty $1 parameter
+
+	* AcSplit/CF_WITH_ZLIB: provide for missing $1 parameter
+
 2024-09-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_MAN2HTML: s/http/https/
@@ -27,6 +33,10 @@
 
 	* AcSplit/CF_WITH_PKG_CONFIG_LIBDIR, AcSplit/CF_WITH_VERSIONED_SYMS:
 	use CF_GLOB_FULLPATH
+
+2024-08-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_ZSTD: RCS_BASE
 
 2024-07-28  Thomas E. Dickey  <dickey@invisible-island.net>
 
@@ -518,6 +528,10 @@
 
 	    Signed-off-by: Jonathan Schwender <jonathan.schwender@huawei.com>
 	    Signed-off-by: Dmitry V. Levin <ldv@altlinux.org>
+
+2024-02-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SIZEOF_TIME_T: ci-aclocal generated header
 
 2024-01-25  Thomas E. Dickey  <dickey@invisible-island.net>
 

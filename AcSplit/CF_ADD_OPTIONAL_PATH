@@ -1,4 +1,4 @@
-dnl CF_ADD_OPTIONAL_PATH version: 5 updated: 2024/04/09 18:37:41
+dnl CF_ADD_OPTIONAL_PATH version: 6 updated: 2024/09/10 19:19:44
 dnl --------------------
 dnl Add an optional search-path to the compile/link variables.
 dnl See CF_WITH_PATH
@@ -6,8 +6,8 @@ dnl
 dnl $1 = shell variable containing the result of --with-XXX=[DIR]
 dnl $2 = module to look for.
 AC_DEFUN([CF_ADD_OPTIONAL_PATH],[
-case "$1" in
-(no|yes)
+case "x$1" in
+(xno|xyes|x)
 	;;
 (*)
 	CF_ADD_SEARCHPATH([$1], [AC_MSG_ERROR(cannot find $2 under $1)])
