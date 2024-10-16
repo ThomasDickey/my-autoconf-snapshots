@@ -1,4 +1,4 @@
-dnl AM_ICONV version: 12 updated: 2007/07/30 19:12:03
+dnl AM_ICONV version: 13 updated: 2024/10/16 03:56:13
 dnl --------
 dnl Inserted as requested by gettext 0.10.40
 dnl File from /usr/share/aclocal
@@ -51,7 +51,7 @@ size_t iconv();
     if test "$am_cv_proto_iconv_const" = yes ; then
       am_cv_proto_iconv_arg1="const"
     else
-      am_cv_proto_iconv_arg1=""
+      am_cv_proto_iconv_arg1="/* nothing */"
     fi
 
     AC_DEFINE_UNQUOTED(ICONV_CONST, $am_cv_proto_iconv_arg1,
