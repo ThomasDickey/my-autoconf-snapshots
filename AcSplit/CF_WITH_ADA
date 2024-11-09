@@ -1,4 +1,4 @@
-dnl CF_WITH_ADA version: 1 updated: 2024/05/18 13:55:23
+dnl CF_WITH_ADA version: 2 updated: 2024/11/09 18:07:29
 dnl -----------
 dnl Check for the Ada compiler (unless requested to not do this), which causes
 dnl a further check for a C compiler which can work with the Ada compiler.
@@ -21,7 +21,7 @@ then
 		AC_PATH_PROG(cf_cv_path_gnatgcc,gnatgcc,no)
 		if test "$cf_cv_path_gnatgcc" != no
 		then
-			AC_MSG_CHECKING(for improvement) 
+			AC_MSG_CHECKING(for improvement)
 			cf_file_gnatgcc=`file -L "$cf_cv_path_gnatgcc" 2>/dev/null`
 			case "x$cf_file_gnatgcc" in
 			(*script*)

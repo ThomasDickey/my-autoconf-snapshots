@@ -1,3 +1,10 @@
+2024-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	fix for musl library (discussion with Urs Jansen regarding Gentoo #920266)
+
+	* AcSplit/CF_CPP_OVERRIDE, AcSplit/CF_WITH_ADA: trim blanks
+
 2024-10-16  Urs.Jansen
 
 	* AcSplit/AM_ICONV:
