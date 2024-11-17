@@ -1,3 +1,8 @@
+2024-11-17  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAWK_RUN_FPE_TESTS: add check for isinf()
+	remove CPPFLAGS changes for things that are automatically put in config.h
+
 2024-11-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_XOPEN_SOURCE:

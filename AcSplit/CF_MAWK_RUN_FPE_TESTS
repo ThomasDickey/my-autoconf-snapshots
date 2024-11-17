@@ -1,9 +1,9 @@
-dnl CF_MAWK_RUN_FPE_TESTS version: 16 updated: 2023/12/10 06:52:47
+dnl CF_MAWK_RUN_FPE_TESTS version: 17 updated: 2024/11/17 05:12:58
 dnl ---------------------
 dnl These are mawk's dreaded FPE tests.
 AC_DEFUN([CF_MAWK_RUN_FPE_TESTS],
 [
-AC_CHECK_FUNCS(isnan sigaction)
+AC_CHECK_FUNCS(isinf isnan sigaction)
 test "$ac_cv_func_sigaction" = yes && sigaction=1
 
 AC_CHECK_HEADERS(siginfo.h)
@@ -39,12 +39,6 @@ cf_FPE_LIBS="$LIBS"
 cf_FPE_SRCS="$srcdir/fpe_check.c"
 
 CPPFLAGS="$CPPFLAGS -I. -DRETSIGTYPE=$ac_cv_type_signal"
-test "$ac_cv_func_isnan" = yes && CPPFLAGS="$CPPFLAGS -DHAVE_ISNAN"
-test "$ac_cv_func_nanf" = yes && CPPFLAGS="$CPPFLAGS -DHAVE_NANF"
-test "$ac_cv_func_sigaction" = yes && CPPFLAGS="$CPPFLAGS -DHAVE_SIGACTION"
-test "$ac_cv_header_siginfo_h" = yes && CPPFLAGS="$CPPFLAGS -DHAVE_SIGINFO_H"
-test "$cf_cv_use_sa_sigaction" = yes && CPPFLAGS="$CPPFLAGS -DHAVE_SIGACTION_SA_SIGACTION"
-
 LIBS="$MATHLIB $LIBS"
 
 echo checking handling of floating point exceptions
