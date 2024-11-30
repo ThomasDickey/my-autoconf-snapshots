@@ -1,3 +1,8 @@
+2024-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_LINT:
+	add options for lint program on NetBSD (discussion with Roland Illig)
+
 2024-11-25  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_FONTCONFIG:
