@@ -1,4 +1,4 @@
-dnl CF_LOCKFILE version: 3 updated: 2023/12/17 10:59:59
+dnl CF_LOCKFILE version: 4 updated: 2024/12/04 03:42:43
 dnl -----------
 dnl Check for functions that we can use for file-locking.  Simply checking for
 dnl existence is not sufficient, since fcntl, for example, uses definitions
@@ -19,10 +19,7 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 	case $cf_lock in #(vi
 	fcntl) #(vi
 		AC_TRY_COMPILE([
-#include <stdio.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
+$ac_includes_default
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
@@ -44,10 +41,7 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 		;;
 	lockf) #(vi
 		AC_TRY_COMPILE([
-#include <stdio.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
+$ac_includes_default
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif
@@ -62,10 +56,7 @@ if eval 'test ${ac_cv_func_'$cf_lock'+set} = set'; then
 		;;
 	flock)
 		AC_TRY_COMPILE([
-#include <stdio.h>
-#ifdef HAVE_UNISTD_H
-#include <unistd.h>
-#endif
+$ac_includes_default
 #ifdef HAVE_FCNTL_H
 #include <fcntl.h>
 #endif

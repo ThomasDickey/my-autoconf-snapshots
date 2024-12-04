@@ -1,4 +1,4 @@
-dnl CF_CHECK_FD_SET version: 5 updated: 2012/10/06 11:17:15
+dnl CF_CHECK_FD_SET version: 6 updated: 2024/12/04 03:41:57
 dnl ---------------
 dnl Check if the fd_set type and corresponding macros are defined.
 AC_DEFUN([CF_CHECK_FD_SET],
@@ -6,7 +6,7 @@ AC_DEFUN([CF_CHECK_FD_SET],
 AC_REQUIRE([CF_TYPE_FD_SET])
 AC_CACHE_CHECK([for fd_set macros],cf_cv_macros_fd_set,[
 AC_TRY_COMPILE([
-#include <sys/types.h>
+$ac_includes_default
 #if USE_SYS_SELECT_H
 # include <sys/select.h>
 #else

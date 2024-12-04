@@ -1,3 +1,9 @@
+2024-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_LOCKFILE,
+	  AcSplit/CF_CHECK_FD_SET, AcSplit/CF_COMPTYPE:
+	simplify with $ac_includes_default
+
 2024-11-30  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_PROG_LINT:
