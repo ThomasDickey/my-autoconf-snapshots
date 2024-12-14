@@ -1,0 +1,12 @@
+dnl CF_CHECK_TYPE2 version: 2 updated: 2024/12/14 16:33:06
+dnl --------------
+dnl CF_CHECK_TYPE version: 5 updated: 2024/12/14 16:09:34
+dnl -------------
+dnl Check if the given type can be declared via the given header.
+dnl $1 = the type to check
+dnl $2 = the header (i.e., not one of the default includes)
+AC_DEFUN([CF_CHECK_TYPE2],[
+	AC_CHECK_TYPES($1,,,[
+$ac_includes_default
+ifelse($2,,,[#include <$2>])])
+])dnl

@@ -1,4 +1,4 @@
-dnl CF_FOPEN_BIN_R version: 3 updated: 2023/01/05 18:05:46
+dnl CF_FOPEN_BIN_R version: 4 updated: 2024/12/14 16:09:34
 dnl --------------
 dnl Check if fopen works when the "b" (binary) flag is added to the mode
 dnl parameter.  POSIX ignores the "b", which c89 specified.  Some very old
@@ -12,14 +12,14 @@ int main(void)
 {
 	FILE *fp = fopen("conftest.tmp", "wb");
 	int rc = 0;
-	if (fp != 0) {
+	if (fp != NULL) {
 		int p, q;
 		for (p = 0; p < 256; ++p) {
 			fputc(p, fp);
 		}
 		fclose(fp);
 		fp = fopen("conftest.tmp", "rb");
-		if (fp != 0) {
+		if (fp != NULL) {
 			for (p = 0; p < 256; ++p) {
 				q = fgetc(fp);
 				if (q != p) {

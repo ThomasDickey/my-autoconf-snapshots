@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20241204
+MANIFEST for my-autoconf, version t20241214
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -95,6 +95,7 @@ AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_CHECK_SIZEOF         fixup for AC_CHECK_SIZEOF
 AcSplit/CF_CHECK_SSL_X509       check for X509 support in the SSL library
 AcSplit/CF_CHECK_TYPE           AC_CHECK_TYPE extended compatibly with 2.13
+AcSplit/CF_CHECK_TYPE2          check for one type, with 2-params rather than 4
 AcSplit/CF_CHECK_WCHAR_H        check if wchar.h can be used without adding #define's
 AcSplit/CF_CHECK_WCWIDTH_GRAPHICS  check if wcwidth agrees that the line-drawing characters used by ncurses are
 AcSplit/CF_CLANG_COMPILER       check for clang compiler

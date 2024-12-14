@@ -1,4 +1,4 @@
-dnl CF_TYPEOF_CHTYPE version: 11 updated: 2023/01/05 17:57:59
+dnl CF_TYPEOF_CHTYPE version: 12 updated: 2024/12/14 16:09:34
 dnl ----------------
 dnl Determine the type we should use for chtype (and attr_t, which is treated
 dnl as the same thing).  We want around 32 bits, so on most machines want a
@@ -14,7 +14,7 @@ $ac_includes_default
 int main(void)
 {
 	FILE *fp = fopen("cf_test.out", "w");
-	if (fp != 0) {
+	if (fp != NULL) {
 		char *result = "long";
 		if (sizeof(unsigned long) > sizeof(unsigned int)) {
 			int n;

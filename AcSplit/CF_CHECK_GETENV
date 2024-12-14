@@ -1,4 +1,4 @@
-dnl CF_CHECK_GETENV version: 4 updated: 2023/12/03 10:18:09
+dnl CF_CHECK_GETENV version: 5 updated: 2024/12/14 16:09:34
 dnl ---------------
 dnl Check if repeated getenv calls return the same pointer, e.g., it does not
 dnl discard the previous pointer when returning a new one.
@@ -50,7 +50,7 @@ int main(void)
 	for (j = 0; environ[j]; ++j) {
 		mynames[j] = str_alloc(environ[j]);
 		equals = strchr(mynames[j], '=');
-		if (equals != 0) {
+		if (equals != NULL) {
 			*equals++ = '\\0';
 			myvalues[j] = str_alloc(equals);
 		} else {

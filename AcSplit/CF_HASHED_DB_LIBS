@@ -1,4 +1,4 @@
-dnl CF_HASHED_DB_LIBS version: 10 updated: 2021/01/02 17:09:14
+dnl CF_HASHED_DB_LIBS version: 11 updated: 2024/12/14 16:09:34
 dnl -----------------
 dnl Given that we have the header and version for hashed database, find the
 dnl library information.
@@ -20,7 +20,7 @@ $ac_includes_default
 	char *path = "/tmp/foo";
 #ifdef DB_VERSION_MAJOR
 #if DB_VERSION_MAJOR >= 4
-	DB *result = 0;
+	DB *result = NULL;
 	db_create(&result, NULL, 0);
 	result->open(result,
 		NULL,
@@ -30,7 +30,7 @@ $ac_includes_default
 		DB_CREATE,
 		0644);
 #elif DB_VERSION_MAJOR >= 3
-	DB *result = 0;
+	DB *result = NULL;
 	db_create(&result, NULL, 0);
 	result->open(result,
 		path,
@@ -39,7 +39,7 @@ $ac_includes_default
 		DB_CREATE,
 		0644);
 #elif DB_VERSION_MAJOR >= 2
-	DB *result = 0;
+	DB *result = NULL;
 	db_open(path,
 		DB_HASH,
 		DB_CREATE,
@@ -55,7 +55,7 @@ $ac_includes_default
 		     DB_HASH,
 		     0);
 #endif
-	${cf_cv_main_return:-return}(result != 0)
+	${cf_cv_main_return:-return}(result != NULL)
 ],[
 	if test -n "$cf_db_libs" ; then
 		cf_cv_hashed_db_libs=$cf_db_libs

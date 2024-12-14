@@ -1,3 +1,21 @@
+2024-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_TYPE2: fix typo
+
+	* AcSplit/CF_CHECK_TYPE2: ci-aclocal generated header
+
+	* AcSplit/CF_BOOL_SIZE, AcSplit/CF_CHECK_GETENV,
+	  AcSplit/CF_CHECK_WCWIDTH_GRAPHICS, AcSplit/CF_FOPEN_BIN_R,
+	  AcSplit/CF_FUNC_DLSYM, AcSplit/CF_FUNC_GETTTYNAM,
+	  AcSplit/CF_GXX_WARNINGS, AcSplit/CF_HASHED_DB_LIBS,
+	  AcSplit/CF_LINK_FUNCS, AcSplit/CF_REGEX, AcSplit/CF_SHARED_OPTS,
+	  AcSplit/CF_TYPEOF_CHTYPE:
+	gcc15 zero vs null
+
+	* AcSplit/CF_BUILD_CC: gcc15 zero vs null warning
+
+	* AcSplit/CF_GCC_WARNINGS: gcc15 warning for zero vs NULL
+
 2024-12-04  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CONST_X_STRING, AcSplit/CF_LOCKFILE,
