@@ -1,4 +1,4 @@
-dnl CF_GXX_WARNINGS version: 12 updated: 2024/12/14 16:09:34
+dnl CF_GXX_WARNINGS version: 13 updated: 2024/12/21 08:44:12
 dnl ---------------
 dnl Check if the compiler supports useful warning options.
 dnl
@@ -30,7 +30,7 @@ AC_LANG_CPLUSPLUS
 
 cat > conftest.$ac_ext <<EOF
 #line __oline__ "configure"
-int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == (void*)0) ; }
+int main(int argc, char *argv[[]]) { return (argv[[argc-1]] == 0) ; }
 EOF
 
 if test "$INTEL_CPLUSPLUS" = yes

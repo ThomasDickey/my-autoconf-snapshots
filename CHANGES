@@ -1,3 +1,7 @@
+2024-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GXX_WARNINGS: tweak for gcc15
+
 2024-12-14  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_TYPE2: fix typo
