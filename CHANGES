@@ -1,3 +1,19 @@
+2024-12-28  Branden.Robinson
+
+	* AcSplit/CF_MAN_PAGES:
+	"term.h" is generated via multiple levels of indirection, resulting in
+	preprocessor logic that can look like this.
+
+	  #if 0 || 0
+
+	That's less silly than it looks, because those zeroes are the result of
+	textual substitution by an AWK script which is itself created by the
+	configure script.
+
+	But it is pretty unhelpful to people reading the header file.  Disclose
+	the configuration-time selected and computed parameters that influence
+	these substitutions.
+
 2024-12-21  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GCC_WARNINGS, AcSplit/CF_GXX_WARNINGS: tweak for gcc15

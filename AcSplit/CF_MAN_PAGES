@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 59 updated: 2024/03/30 08:27:40
+dnl CF_MAN_PAGES version: 60 updated: 2024/12/28 16:38:35
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -175,14 +175,17 @@ CF_EOF
 
 if test "$with_overwrite" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
-	sed -e "/\\#[    ]*include/s,<curses.h,<ncurses$LIB_SUFFIX/curses.h," < \$TMP >\$TMP.out
+	sed -e "/\\#[    ]*include/s,<curses.h,<ncurses$LIB_SUFFIX/curses.h," \
+	    -e "/\\#[    ]*include/s,<term.h,<ncurses$LIB_SUFFIX/term.h," \
+	  < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
 
 if test "$with_curses_h" != yes ; then
 cat >>$cf_edit_man <<CF_EOF
-	sed -e "/\\#[    ]*include/s,curses.h,ncurses.h," < \$TMP >\$TMP.out
+	sed -e "/\\#[    ]*include/s,curses.h,ncurses.h," \
+	  < \$TMP >\$TMP.out
 	mv \$TMP.out \$TMP
 CF_EOF
 fi
