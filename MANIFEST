@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20241228
+MANIFEST for my-autoconf, version t20250110
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -410,6 +410,7 @@ AcSplit/CF_REMOVE_BROKEN        check if the 'remove()' function is broken (a SC
 AcSplit/CF_REMOVE_CFLAGS        utility for CF_APPEND_CFLAGS
 AcSplit/CF_REMOVE_DEFINE        macro to remove -U/-D options for a given symbol from C compiler options
 AcSplit/CF_REMOVE_LIB           remove a library from the given symbol
+AcSplit/CF_REQUIRE_PKG          maintain $REQUIRE_PKG list for gen-pkgconfig.in
 AcSplit/CF_RESTARTABLE_PIPEREAD test for restartable pipe-reads
 AcSplit/CF_RESTORE_XTRA_FLAGS   restore flags saved in CF_SAVE_XTRA_FLAGS
 AcSplit/CF_RE_COMP_FUNCS        check for re_comp/re_exec functions (td_lib)

@@ -1,4 +1,4 @@
-dnl CF_NCURSES_CONFIG version: 28 updated: 2021/08/28 15:20:37
+dnl CF_NCURSES_CONFIG version: 29 updated: 2025/01/10 19:55:54
 dnl -----------------
 dnl Tie together the configure-script macros for ncurses, preferring these in
 dnl order:
@@ -59,6 +59,7 @@ if test "x${PKG_CONFIG:=none}" != xnone; then
 			;;
 		esac
 
+		CF_REQUIRE_PKG($cf_ncuconfig_root)
 		CF_APPEND_CFLAGS($cf_pkg_cflags)
 		CF_ADD_LIBS($cf_pkg_libs)
 

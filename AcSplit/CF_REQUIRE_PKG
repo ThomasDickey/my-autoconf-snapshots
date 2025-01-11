@@ -1,0 +1,23 @@
+dnl CF_REQUIRE_PKG version: 1 updated: 2025/01/10 19:55:54
+dnl --------------
+dnl Update $REQUIRE_PKG, which lists the known required packages for this
+dnl program.
+dnl
+dnl $1 = package(s) to require, e.g., in the generated ".pc" file
+define([CF_REQUIRE_PKG],
+[
+for cf_required in $1
+do
+	# check for duplicates
+	for cf_require_pkg in $REQUIRE_PKG
+	do
+		if test "$cf_required" = "$cf_require_pkg"
+		then
+			cf_required=
+			break
+		fi
+	done
+	test -n "$cf_required" && REQUIRE_PKG="$REQUIRE_PKG $cf_required"
+done
+AC_SUBST(REQUIRE_PKG)
+])dnl

@@ -1,3 +1,13 @@
+2025-01-10  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_REQUIRE_PKG: ci-aclocal generated header
+
+	* AcSplit/CF_VERSION_INFO:
+	define/substitute $PROGRAM for gen-pkgconfig.in
+
+	* AcSplit/CF_NCURSES_CONFIG, AcSplit/CF_TRY_PKG_CONFIG:
+	use CF_REQUIRE_PKG, for gen-pkgconfig.in
+
 2024-12-28  Branden.Robinson
 
 	* AcSplit/CF_MAN_PAGES:
