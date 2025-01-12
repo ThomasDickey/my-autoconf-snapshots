@@ -1,4 +1,4 @@
-dnl CF_WITH_NCURSES_ETC version: 6 updated: 2023/01/16 10:10:06
+dnl CF_WITH_NCURSES_ETC version: 7 updated: 2025/01/12 13:41:15
 dnl -------------------
 dnl Use this macro for programs which use any variant of "curses", e.g.,
 dnl "ncurses", and "PDCurses".  Programs that can use curses and some unrelated
@@ -49,7 +49,7 @@ case $cf_cv_screen in
 (ncurses*)
 	CF_NCURSES_CONFIG($cf_cv_screen)
 	;;
-(pdcurses)
+(pdcurses*)
 	CF_PDCURSES_X11
 	;;
 (*)
