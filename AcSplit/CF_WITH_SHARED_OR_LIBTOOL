@@ -1,4 +1,4 @@
-dnl CF_WITH_SHARED_OR_LIBTOOL version: 7 updated: 2014/11/02 16:11:49
+dnl CF_WITH_SHARED_OR_LIBTOOL version: 8 updated: 2025/01/15 17:07:11
 dnl -------------------------
 dnl Provide shared libraries using either autoconf macros (--with-shared) or
 dnl using the external libtool script (--with-libtool).
@@ -55,7 +55,7 @@ else
 		LIB_MODEL=shared
 		DFT_LWR_MODEL=$LIB_MODEL
 		CF_SHARED_OPTS
-		CF_WITH_VERSIONED_SYMS
+		dnl CF_WITH_VERSIONED_SYMS was here...
 		LIB_PREP=:
 		LIB_CREATE="[$]MK_SHARED_LIB"
 		CFLAGS="$CFLAGS $CC_SHARED_OPTS"

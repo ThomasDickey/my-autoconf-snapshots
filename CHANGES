@@ -1,3 +1,14 @@
+2025-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL:
+	don't call CF_WITH_VERSIONED_SYMS, because that has to be passed a parameter,
+	which doesn't work since the called macro is expanded before the caller.
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	don't call this directly from CF_WITH_SHARED_OR_LIBTOOL, since it will not
+	be expanded at the point where that was called, but rather before the
+	calling macro.
+
 2025-01-12  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_NCURSES_ETC:
