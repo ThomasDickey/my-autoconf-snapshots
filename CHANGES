@@ -1,3 +1,10 @@
+2025-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_VERSIONED_SYMS:
+	set $LIB_CREATE in case this runs after CF_SHARED_OR_LIBTOOL
+
+	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL: fix typo in comment
+
 2025-01-15  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_SHARED_OR_LIBTOOL:

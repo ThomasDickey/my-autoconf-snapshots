@@ -1,11 +1,11 @@
-dnl CF_WITH_SHARED_OR_LIBTOOL version: 8 updated: 2025/01/15 17:07:11
+dnl CF_WITH_SHARED_OR_LIBTOOL version: 9 updated: 2025/01/19 05:13:05
 dnl -------------------------
 dnl Provide shared libraries using either autoconf macros (--with-shared) or
 dnl using the external libtool script (--with-libtool).
 dnl
 dnl $1 = program name (all caps preferred)
-dnl $1 = release version
-dnl $2 = ABI version
+dnl $2 = release version
+dnl $3 = ABI version
 define([CF_WITH_SHARED_OR_LIBTOOL],[
 
 REL_VERSION=$2
