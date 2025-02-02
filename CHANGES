@@ -1,3 +1,8 @@
+2025-02-01  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_BOOL_DECL:
+	make the check more conservative (Redhat #2342514)
+
 2025-01-19  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_VERSIONED_SYMS:
