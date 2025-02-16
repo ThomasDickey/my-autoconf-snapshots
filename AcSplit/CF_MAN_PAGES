@@ -1,4 +1,4 @@
-dnl CF_MAN_PAGES version: 60 updated: 2024/12/28 16:38:35
+dnl CF_MAN_PAGES version: 61 updated: 2025/02/15 19:13:25
 dnl ------------
 dnl Try to determine if the man-pages on the system are compressed, and if
 dnl so, what format is used.  Use this information to construct a script that
@@ -200,7 +200,7 @@ CF_EOF
 if test -n "$cf_manpage_compress" ; then
 cat >>$cf_edit_man <<CF_EOF
 	if test "\$verb" = installing ; then
-	if ( "$cf_manpage_compress" -f \$TMP )
+	if ( "$cf_manpage_compress" $cf_manpage_coptions -f \$TMP )
 	then
 		mv \$TMP.$cf_manpage_so_strip \$TMP
 	fi

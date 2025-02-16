@@ -1,3 +1,9 @@
+2025-02-15  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAN_PAGES:
+	add overlooked $cf_manpage_coptions to compressing the original file vs the
+	alias links
+
 2025-02-01  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_BOOL_DECL:
