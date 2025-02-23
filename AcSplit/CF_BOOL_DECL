@@ -1,44 +1,17 @@
-dnl CF_BOOL_DECL version: 10 updated: 2025/02/01 19:31:51
+dnl CF_BOOL_DECL version: 11 updated: 2025/02/22 20:49:45
 dnl ------------
 dnl Test if 'bool' is a builtin type in the configured C/C++ compiler.  Some
 dnl older compilers (e.g., gcc 2.5.8) don't support 'bool' directly; gcc
 dnl 2.6.3 does, in anticipation of the ANSI C++ standard.
 dnl
-dnl Treat the configuration-variable specially here, since we're directly
-dnl substituting its value (i.e., 1/0).
-dnl
 dnl $1 is the shell variable to store the result in, if not $cv_cv_builtin_bool
 AC_DEFUN([CF_BOOL_DECL],
 [
-AC_MSG_CHECKING(if we should include stdbool.h)
-
-AC_CACHE_VAL(cf_cv_header_stdbool_h,[
+AC_REQUIRE([CF_C99_STDBOOL_H])
+AC_CACHE_CHECK(for builtin bool type, ifelse($1,,cf_cv_builtin_bool,[$1]),[
 	AC_TRY_COMPILE([
-#ifndef __BEOS__
-#include <stdbool.h>
-#endif
-],[bool foo = false; (void)foo],
-		[cf_cv_header_stdbool_h=1],
-		[AC_TRY_COMPILE([],[bool foo = false; (void)foo],
-			[cf_cv_header_stdbool_h=0])])])
-
-if test "$cf_cv_header_stdbool_h" = 1
-then	AC_MSG_RESULT(yes)
-else	AC_MSG_RESULT(no)
-fi
-
-AC_MSG_CHECKING([for builtin bool type])
-
-AC_CACHE_VAL(ifelse($1,,cf_cv_builtin_bool,[$1]),[
-	AC_TRY_COMPILE([
-#include <stdio.h>
-#include <sys/types.h>
+$ac_includes_default
 ],[bool x = false; (void)x],
-		[ifelse($1,,cf_cv_builtin_bool,[$1])=1],
-		[ifelse($1,,cf_cv_builtin_bool,[$1])=0])])
-
-if test "$ifelse($1,,cf_cv_builtin_bool,[$1])" = 1
-then	AC_MSG_RESULT(yes)
-else	AC_MSG_RESULT(no)
-fi
+		[ifelse($1,,cf_cv_builtin_bool,[$1])=yes],
+		[ifelse($1,,cf_cv_builtin_bool,[$1])=no])])
 ])dnl

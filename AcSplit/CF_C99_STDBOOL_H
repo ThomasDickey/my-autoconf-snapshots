@@ -1,0 +1,20 @@
+dnl CF_C99_STDBOOL_H version: 1 updated: 2025/02/22 20:49:45
+dnl ----------------
+dnl Check if we can compile using <stdbool.h> and get a valid "bool" type.
+AC_DEFUN([CF_C99_STDBOOL_H],
+[
+AC_CACHE_CHECK(if we can include stdbool.h,cf_cv_header_stdbool_h,[
+	AC_TRY_COMPILE([
+$ac_includes_default
+#include <stdbool.h>
+],[bool foo = false; (void)foo],
+		[cf_cv_header_stdbool_h=yes],
+		[AC_TRY_COMPILE([],[bool foo = false; (void)foo],
+			[cf_cv_header_stdbool_h=no])])])
+
+if test "$cf_cv_header_stdbool_h" = yes
+then	USE_STDBOOL_H=1
+else	USE_STDBOOL_H=0
+fi
+AC_SUBST(USE_STDBOOL_H)
+])dnl

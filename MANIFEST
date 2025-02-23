@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20250215
+MANIFEST for my-autoconf, version t20250222
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -65,6 +65,7 @@ AcSplit/CF_BUNDLED_CANLOCK      for tin, configure with/without bundled libcanlo
 AcSplit/CF_BUNDLED_INTL         combine all libintl macros
 AcSplit/CF_BUNDLED_PCRE         macro to setup variables when configuriing for PCRE which may be bundled
 AcSplit/CF_C11_NORETURN         check for C11 _Noreturn keyword
+AcSplit/CF_C99_STDBOOL_H        check if <stdbool.h> can be included
 AcSplit/CF_CC_ENV_FLAGS         check for and repair misuse of $CC which puts $CFLAGS and/or $CPPFLAGS
 AcSplit/CF_CC_INIT_UNIONS       check if C compiler supports initialization of unions
 AcSplit/CF_CC_OFFSETOF_CASES    check if C compiler supports offsetof expressions in switch statements
