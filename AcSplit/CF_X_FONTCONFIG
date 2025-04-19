@@ -1,9 +1,9 @@
-dnl CF_X_FONTCONFIG version: 8 updated: 2024/11/25 04:10:12
+dnl CF_X_FONTCONFIG version: 9 updated: 2025/04/18 20:15:05
 dnl ---------------
 dnl Check for fontconfig library, a dependency of the X FreeType library.
 AC_DEFUN([CF_X_FONTCONFIG],
 [
-AC_REQUIRE([CF_X_FREETYPE])
+AC_REQUIRE([CF_X_XFT])
 
 if test "$cf_cv_found_freetype" = yes ; then
 AC_CACHE_CHECK(for usable Xft/fontconfig package,cf_cv_xft_compat,[

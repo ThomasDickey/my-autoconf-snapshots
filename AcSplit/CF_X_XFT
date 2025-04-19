@@ -1,0 +1,43 @@
+dnl CF_X_XFT version: 1 updated: 2025/04/18 20:15:05
+dnl --------
+AC_DEFUN([CF_X_XFT],
+[
+AC_REQUIRE([CF_PKG_CONFIG])
+AC_REQUIRE([CF_X_FREETYPE])
+
+if test "$cf_cv_found_freetype" = yes
+then
+
+	cf_save_xft_LIBS="$LIBS"
+	cf_save_xft_INCS="$CPPFLAGS"
+	CF_TRY_PKG_CONFIG(xft,,[AC_MSG_WARN(unable to find Xft library)])
+
+	AC_MSG_CHECKING(if we can link with Xft and FreeType libraries)
+	AC_TRY_LINK([
+#include <X11/Xlib.h>
+#include <X11/extensions/Xrender.h>
+#include <X11/Xft/Xft.h>],[
+		XftPattern  *pat = XftNameParse ("name"); (void)pat],
+		[cf_cv_found_xft_libraries=yes],
+		[cf_cv_found_xft_libraries=no])
+	AC_MSG_RESULT($cf_cv_found_xft_libraries)
+
+	if test "$cf_cv_found_xft_libraries" = yes ; then
+		AC_DEFINE(XRENDERFONT,1,[Define to 1 if we can/should link with FreeType libraries])
+
+		AC_CHECK_FUNCS( \
+			XftDrawCharSpec \
+			XftDrawSetClip \
+			XftDrawSetClipRectangles )
+
+	else
+		LIBS="$cf_save_xft_LIBS"
+		CPPFLAGS="$cf_save_xft_INCS"
+	fi
+
+# FIXME: revisit this if needed
+AC_SUBST(HAVE_TYPE_FCCHAR32)
+AC_SUBST(HAVE_TYPE_XFTCHARSPEC)
+
+fi
+])

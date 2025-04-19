@@ -1,4 +1,4 @@
-dnl CF_X_FREETYPE version: 28 updated: 2020/03/10 18:53:47
+dnl CF_X_FREETYPE version: 29 updated: 2025/04/18 20:15:05
 dnl -------------
 dnl Check for X FreeType headers and libraries (XFree86 4.x, etc).
 dnl
@@ -47,14 +47,13 @@ case $cf_cv_x_freetype_cfgs in
 	AC_MSG_RESULT($cf_cv_x_freetype_libs)
 	;;
 (auto)
-	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists xft; then
+	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists freetype2; then
 		FREETYPE_CONFIG=$PKG_CONFIG
-		FREETYPE_PARAMS=xft
+		FREETYPE_PARAMS=freetype2
 	else
 		AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, none)
 		if test "$FREETYPE_CONFIG" != none; then
-			FREETYPE_CONFIG=$FREETYPE_CONFIG
-			cf_extra_freetype_libs="-lXft"
+			cf_extra_freetype_libs="-lfreetype2"
 		else
 			AC_PATH_PROG(FREETYPE_OLD_CONFIG, xft-config, none)
 			if test "$FREETYPE_OLD_CONFIG" != none; then
@@ -64,11 +63,11 @@ case $cf_cv_x_freetype_cfgs in
 	fi
 	;;
 (pkg*)
-	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists xft; then
+	if test "$PKG_CONFIG" != none && "$PKG_CONFIG" --exists freetype2; then
 		FREETYPE_CONFIG=$cf_cv_x_freetype_cfgs
-		FREETYPE_PARAMS=xft
+		FREETYPE_PARAMS=freetype2
 	else
-		AC_MSG_WARN(cannot find pkg-config for Xft)
+		AC_MSG_WARN(cannot find pkg-config for freetype2)
 	fi
 	;;
 (*)
@@ -76,7 +75,7 @@ case $cf_cv_x_freetype_cfgs in
 	if test "$FREETYPE_XFT_CONFIG" != none; then
 		FREETYPE_CONFIG=$FREETYPE_XFT_CONFIG
 	else
-		AC_MSG_WARN(cannot find config script for Xft)
+		AC_MSG_WARN(cannot find config script for freetype2)
 	fi
 	;;
 esac
@@ -103,46 +102,28 @@ if test "$cf_cv_x_freetype_incs" = no ; then
 fi
 
 if test "$cf_cv_x_freetype_libs" = no ; then
-	cf_cv_x_freetype_libs=-lXft
+	cf_cv_x_freetype_libs=-lfreetype2
 fi
 
-AC_MSG_CHECKING(if we can link with FreeType libraries)
+AC_MSG_CHECKING(if we can link with FreeType library)
 
-cf_save_LIBS="$LIBS"
-cf_save_INCS="$CPPFLAGS"
+cf_save_ft_LIBS="$LIBS"
+cf_save_ft_INCS="$CPPFLAGS"
 
 CF_ADD_LIBS($cf_cv_x_freetype_libs)
-CPPFLAGS="$CPPFLAGS $cf_cv_x_freetype_incs"
+CF_ADD_CFLAGS($cf_cv_x_freetype_incs)
 
 AC_TRY_LINK([
-#include <X11/Xlib.h>
-#include <X11/extensions/Xrender.h>
-#include <X11/Xft/Xft.h>],[
-	XftPattern  *pat = XftNameParse ("name"); (void)pat],
+#include <freetype/freetype.h>],[
+	FT_Library alibrary;
+	FT_Init_FreeType( &alibrary );],
 	[cf_cv_found_freetype=yes],
 	[cf_cv_found_freetype=no])
 AC_MSG_RESULT($cf_cv_found_freetype)
 
-LIBS="$cf_save_LIBS"
-CPPFLAGS="$cf_save_INCS"
-
-if test "$cf_cv_found_freetype" = yes ; then
-	CF_ADD_LIBS($cf_cv_x_freetype_libs)
-	CF_ADD_CFLAGS($cf_cv_x_freetype_incs)
-	AC_DEFINE(XRENDERFONT,1,[Define to 1 if we can/should link with FreeType libraries])
-
-AC_CHECK_FUNCS( \
-	XftDrawCharSpec \
-	XftDrawSetClip \
-	XftDrawSetClipRectangles \
-)
-
-else
+if test "$cf_cv_found_freetype" = no ; then
 	AC_MSG_WARN(No libraries found for FreeType)
-	CPPFLAGS=`echo "$CPPFLAGS" | sed -e s/-DXRENDERFONT//`
+	LIBS="$cf_save_ft_LIBS"
+	CPPFLAGS="$cf_save_ft_INCS"
 fi
-
-# FIXME: revisit this if needed
-AC_SUBST(HAVE_TYPE_FCCHAR32)
-AC_SUBST(HAVE_TYPE_XFTCHARSPEC)
 ])

@@ -1,3 +1,11 @@
+2025-04-18  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_XFT: ci-aclocal generated header
+
+	* AcSplit/CF_X_FREETYPE: split-out CF_X_XFT
+
+	* AcSplit/CF_X_FONTCONFIG: split-out CF_X_XFT from CF_X_FREETYPE
+
 2025-02-23  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* README.asc: update signature
@@ -7,6 +15,9 @@
 	* COPYING: bump
 
 2025-02-22  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_NCURSES_ADDON:
+	remove configuration variables not needed in ncurses/Ada95
 
 	* AcSplit/CF_BOOL_SIZE: add dependency on CF_C99_STDBOOL_H
 

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20250223
+MANIFEST for my-autoconf, version t20250418
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -618,6 +618,7 @@ AcSplit/CF_X_FREETYPE           test for x freetype libs
 AcSplit/CF_X_MOTIF              check for Motif/Lesstif libraries
 AcSplit/CF_X_OPENLOOK           check for OpenLook libraries (SunOS-specific)
 AcSplit/CF_X_TOOLKIT            check for Xt library
+AcSplit/CF_X_XFT                check for Xft library
 AcSplit/CF_YACC_ERROR           check for common yacc error-reporting structs
 AcSplit/CF__ADD_SHLIB_DEFS      add shlib-definitions to makefile
 AcSplit/CF__ADD_SHLIB_RULES     add shlib-rules to makefile
