@@ -1,3 +1,12 @@
+2025-04-20  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_FREETYPE:
+	change test-program for FreeType to use the recommended header, since just
+	"freetype.h" can fail with some versions.
+
+	* AcSplit/CF_X_XFT:
+	if pkg-config fails to find the library, check for it directly
+
 2025-04-18  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_X_XFT: ci-aclocal generated header

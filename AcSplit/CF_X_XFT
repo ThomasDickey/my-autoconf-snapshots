@@ -1,4 +1,4 @@
-dnl CF_X_XFT version: 1 updated: 2025/04/18 20:15:05
+dnl CF_X_XFT version: 2 updated: 2025/04/20 17:58:12
 dnl --------
 AC_DEFUN([CF_X_XFT],
 [
@@ -10,7 +10,12 @@ then
 
 	cf_save_xft_LIBS="$LIBS"
 	cf_save_xft_INCS="$CPPFLAGS"
-	CF_TRY_PKG_CONFIG(xft,,[AC_MSG_WARN(unable to find Xft library)])
+	CF_TRY_PKG_CONFIG(xft,,[AC_MSG_WARN(unable to find Xft library with $PKG_CONFIG)])
+
+	if test -z "$cf_pkgconfig_libs"
+	then
+		AC_CHECK_LIB(Xft, XftNameParse, LIBS="-lXft $LIBS")
+	fi
 
 	AC_MSG_CHECKING(if we can link with Xft and FreeType libraries)
 	AC_TRY_LINK([
