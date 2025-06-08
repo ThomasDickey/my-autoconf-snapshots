@@ -1,3 +1,8 @@
+2025-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* install-sh:
+	add note explaining why the copyright statement is questionable
+
 2025-05-17  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ABI_DEFAULTS: adding to ABI 7
