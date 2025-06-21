@@ -1,3 +1,19 @@
+2025-06-21  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_FUNC_GETOPT,
+	  AcSplit/CF_FUNC_POPEN, AcSplit/CF_SRC_MAKEFILE,
+	  AcSplit/CF_LDFLAGS_STATIC, AcSplit/CF_LINK_DATAONLY,
+	  AcSplit/CF_SHARED_OPTS, AcSplit/CF_WITH_LIBTOOL:
+	use $OBJEXT
+
+2025-06-14  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_X_ATHENA:
+	improved CF_ADD_LIB_AFTER so that trimming to compensate is no longer wanted
+
+	* AcSplit/CF_ADD_LIB_AFTER:
+	trim duplicates while adding new (or the same) library
+
 2025-06-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* install-sh:

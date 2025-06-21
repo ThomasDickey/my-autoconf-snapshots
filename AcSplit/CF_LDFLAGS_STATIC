@@ -1,4 +1,4 @@
-dnl CF_LDFLAGS_STATIC version: 14 updated: 2021/01/02 17:09:14
+dnl CF_LDFLAGS_STATIC version: 15 updated: 2025/06/21 06:49:01
 dnl -----------------
 dnl Check for compiler/linker flags used to temporarily force usage of static
 dnl libraries.  This depends on the compiler and platform.  Use this to help
@@ -55,7 +55,7 @@ then
 int cf_ldflags_static(FILE *fp) { return fflush(fp); }
 EOF
 	if AC_TRY_EVAL(ac_compile) ; then
-		( $AR $ARFLAGS libconftest.a conftest.o ) 2>&AC_FD_CC 1>/dev/null
+		( $AR $ARFLAGS libconftest.a conftest.$OBJEXT ) 2>&AC_FD_CC 1>/dev/null
 		( eval $RANLIB libconftest.a ) 2>&AC_FD_CC >/dev/null
 	fi
 	rm -f conftest.*
