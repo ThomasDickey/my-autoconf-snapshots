@@ -4,7 +4,7 @@
 
 # shellcheck disable=SC2006,SC2268 # see below for rationale
 
-timestamp='2024-07-27'
+timestamp='2024-11-20'
 
 # This file is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
@@ -1597,8 +1597,11 @@ EOF
     *:Unleashed:*:*)
 	GUESS=$UNAME_MACHINE-unknown-unleashed$UNAME_RELEASE
 	;;
-    *:Ironclad:*:*)
-	GUESS=$UNAME_MACHINE-unknown-ironclad
+    x86_64:[Ii]ronclad:*:*|i?86:[Ii]ronclad:*:*)
+	GUESS=$UNAME_MACHINE-pc-ironclad-mlibc
+	;;
+    *:[Ii]ronclad:*:*)
+	GUESS=$UNAME_MACHINE-unknown-ironclad-mlibc
 	;;
 esac
 
