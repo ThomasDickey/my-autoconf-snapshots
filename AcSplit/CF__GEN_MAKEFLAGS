@@ -1,0 +1,10 @@
+dnl CF__GEN_MAKEFLAGS version: 1 updated: 2025/07/08 19:13:18
+dnl -----------------
+dnl create test-makefile for CF_MAKEFLAGS
+define([CF__GEN_MAKEFLAGS],[
+		cat >cf_makeflags.tmp <<CF_EOF
+SHELL = $SHELL
+all :
+	@ echo '.$1'
+CF_EOF
+])dnl

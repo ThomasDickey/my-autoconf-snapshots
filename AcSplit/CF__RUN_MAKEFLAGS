@@ -1,0 +1,12 @@
+dnl CF__RUN_MAKEFLAGS version: 1 updated: 2025/07/08 19:13:18
+dnl -----------------
+dnl run testcase for CF_MAKEFLAGS
+define([CF__RUN_MAKEFLAGS],[
+	cf_result=`unset MFLAGS; \
+			unset MAKEFLAGS; \
+			unset MAKELEVEL; \
+			unset GNUMAKEFLAGS; \
+		   ${MAKE:-make} $1 -f cf_makeflags.tmp 2>/dev/null | \
+		   ${FGREP-fgrep} -v "ing directory" | \
+		   sed -e 's,[[ 	]]*$,,' -e 's,^[[.]][[ 	]]*,.,'`
+])dnl

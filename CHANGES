@@ -1,3 +1,8 @@
+2025-07-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF__GEN_MAKEFLAGS, AcSplit/CF__RUN_MAKEFLAGS:
+	ci-aclocal generated header
+
 2025-07-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_MAKEFLAGS:
