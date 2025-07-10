@@ -1,3 +1,19 @@
+2025-07-09  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* config.guess, config.sub: 2025-07-10
+	    From: Collin Funk <collin.funk1@gmail.com>
+	    Adjust 'time-stamp' variables to modern Emacs
+
+	    * config.guess: Make 'add-hook' add 'time-stamp' as buffer-local. Use
+	    "%Y" for 'time-stamp-format' instead of "%:y".
+	    * config.sub: Likewise.
+	    * doc/config.guess.1: Regenerate.
+	    * doc/config.sub.1: Likewise.
+
+	    Signed-off-by: Dmitry V. Levin <ldv@strace.io>
+
+	* AcSplit/CF__DO_SUBMAKE: ci-aclocal generated header
+
 2025-07-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF__GEN_MAKEFLAGS, AcSplit/CF__RUN_MAKEFLAGS:

@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20250708
+MANIFEST for my-autoconf, version t20250709
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -627,6 +627,7 @@ AcSplit/CF__CURSES_DATA         this is the content for CF_CURSES_CHECK_DATA
 AcSplit/CF__CURSES_HEAD         reusable chunk for including curses.h/term.h
 AcSplit/CF__DEFINE_LIB_TARGET   utility for CF__ADD_SHLIB_RULES
 AcSplit/CF__DEFINE_SHLIB_VARS   utility for CF__ADD_SHLIB_RULES
+AcSplit/CF__DO_SUBMAKE          utility script for CF_LIB_RULES, to support --disable-echo option
 AcSplit/CF__GEN_MAKEFLAGS       create test-makefile for CF_MAKEFLAGS
 AcSplit/CF__GRANTPT_BODY        body for workability check of grantpt()
 AcSplit/CF__GRANTPT_HEAD        headers for workability check of grantpt()

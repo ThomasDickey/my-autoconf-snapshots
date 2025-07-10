@@ -1,0 +1,16 @@
+dnl CF__DO_SUBMAKE version: 1 updated: 2025/07/09 20:26:16
+dnl --------------
+dnl $1 = directory
+dnl $2 = prefix (default: empty)
+define([CF__DO_SUBMAKE],[
+(
+if test -n "$ECHO_CC"; then
+cat << CF__EOF
+ifelse($2,,,[$2])	@( echo ".. making \[$]@ in $1"; cd $1 && \${MAKE} \${TOP_MFLAGS} \[$]@ )
+CF__EOF
+else
+cat << CF__EOF
+ifelse($2,,,[$2])	( cd $1 && \${MAKE} \${TOP_MFLAGS} \[$]@ )
+CF__EOF
+fi
+)])dnl
