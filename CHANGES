@@ -1,3 +1,7 @@
+2025-07-19  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_STRUCT_TERMIOS: add a check for sgtty.h, for completeness
+
 2025-07-09  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* config.guess, config.sub: 2025-07-10
