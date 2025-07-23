@@ -1,8 +1,8 @@
-dnl CF__SSL_BODY version: 2 updated: 2008/04/13 10:56:06
+dnl CF__SSL_BODY version: 3 updated: 2025/07/22 20:48:03
 dnl ------------
 dnl Body for test-compile of SSL code.
 define([CF__SSL_BODY],[
-#ifdef USE_GNUTLS_FUNCS
+#ifdef USE_GNUTLS_INCL
     gnutls_global_init();
 #else
     SSL_shutdown((SSL *)0)

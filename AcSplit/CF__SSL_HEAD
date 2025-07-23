@@ -1,14 +1,12 @@
-dnl CF__SSL_HEAD version: 2 updated: 2008/04/13 10:56:06
+dnl CF__SSL_HEAD version: 3 updated: 2025/07/22 20:48:03
 dnl ------------
 dnl Headers for test-compile of SSL code.
 define([CF__SSL_HEAD],[
 #include <stdio.h>
 #if defined(USE_OPENSSL_INCL)
 #include <openssl/ssl.h>
-#elif defined(USE_GNUTLS_FUNCS)
-#include <gnutls/gnutls.h>
 #elif defined(USE_GNUTLS_INCL)
-#include <gnutls/openssl.h>
+#include <gnutls/gnutls.h>
 #else
 #include <ssl.h>
 #endif
