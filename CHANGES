@@ -1,3 +1,8 @@
+2025-07-24  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SSL:
+	check for existence of SSL_clear_options (which is usually a macro)
+
 2025-07-22  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS, AcSplit/CF__SSL_BODY, AcSplit/CF__SSL_HEAD:

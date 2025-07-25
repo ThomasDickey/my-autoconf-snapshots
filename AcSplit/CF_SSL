@@ -1,4 +1,4 @@
-dnl CF_SSL version: 26 updated: 2021/01/02 09:31:20
+dnl CF_SSL version: 27 updated: 2025/07/24 20:06:11
 dnl ------
 dnl Check for ssl library
 dnl $1 = [optional] directory in which the library may be found, set by AC_ARG_WITH
@@ -132,6 +132,7 @@ AC_DEFUN([CF_SSL],[
 				;;
 			esac
 		fi
+		AC_CHECK_FUNCS(SSL_clear_options)
 		CF_CHECK_SSL_X509
 	fi
 ])dnl
