@@ -1,3 +1,10 @@
+2025-07-26  Cosima.Neidahl
+
+	* AcSplit/CF_XOPEN_SOURCE:
+	On 64-bit big-endian POWER linux w/ glibc, the target triple can look like
+	this: `powerpc64-unknown-linux-gnuabielfv{1,2}`. This specifies what ELF ABI
+	version should be used: ELFv1 or ELFv2 (glibc supports using either).
+
 2025-07-24  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SSL:
