@@ -1,3 +1,10 @@
+2025-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_SOCKADDR_LEN: ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_SIZEOF:
+	use AS_TR_SH to allow for sizeof(struct foo) rather than just sizeof(foo)
+
 2025-07-26  Cosima.Neidahl
 
 	* AcSplit/CF_XOPEN_SOURCE:

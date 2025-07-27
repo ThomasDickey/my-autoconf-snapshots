@@ -1,0 +1,31 @@
+dnl CF_SOCKADDR_LEN version: 1 updated: 2025/07/27 19:06:03
+dnl ---------------
+dnl Check if the size of sockaddr_in (INET) is the same as sockaddr (generic).
+dnl That helps with gcc's -Wduplicated-branches for Lynx.
+AC_DEFUN([CF_SOCKADDR_LEN],[
+cf_includes_network="\
+$ac_includes_default
+#include <sys/socket.h>
+#include <netinet/in.h>
+"
+CF_CHECK_SIZEOF([struct sockaddr_in],256,[$cf_includes_network])
+CF_CHECK_SIZEOF(struct sockaddr,256,[$cf_includes_network])
+
+AC_CACHE_CHECK(if SA_LEN can be simplified,cf_cv_sockaddr_len,[
+	cf_cv_sockaddr_len=no
+	if test "x$ac_cv_sizeof_struct_sockaddr" = "x$ac_cv_sizeof_struct_sockaddr_in"
+	then
+		if test "x$ac_cv_sizeof_struct_sockaddr" = "x256" || test -z "$ac_cv_sizeof_struct_sockaddr"
+		then
+			cf_cv_sockaddr_len=unknown
+		else
+			cf_cv_sockaddr_len=yes
+		fi
+	fi
+])
+
+if test "$cf_cv_sockaddr_len" = yes
+then
+	AC_DEFINE(SOCKADDR_LEN_INET,1,[Define to 1 if sizeof(sockaddr) == sizeof(sockaddr_in)])
+fi
+])dnl

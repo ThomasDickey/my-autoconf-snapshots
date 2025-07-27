@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20250726
+MANIFEST for my-autoconf, version t20250727
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -435,6 +435,7 @@ AcSplit/CF_SIZE_T               check for size_t defined in <stdio.h>, etc (td_l
 AcSplit/CF_SLANG_CPPFLAGS       check for slang's compiler flags
 AcSplit/CF_SLANG_LIBS           check for slang library
 AcSplit/CF_SLANG_UNIX_DEFS      slang's header files need a prop on Unix-like systems...
+AcSplit/CF_SOCKADDR_LEN         checks size of sockaddr vs sockaddr_in
 AcSplit/CF_SOCKS                option/test for socks library
 AcSplit/CF_SOCKS5               check for socks5 library
 AcSplit/CF_SPEED_TYPE           derive 'speed_t' type

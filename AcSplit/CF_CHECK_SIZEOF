@@ -1,4 +1,4 @@
-dnl CF_CHECK_SIZEOF version: 4 updated: 2021/01/02 09:31:20
+dnl CF_CHECK_SIZEOF version: 5 updated: 2025/07/27 19:06:03
 dnl ---------------
 dnl Improve on AC_CHECK_SIZEOF for cases when the build-environment is
 dnl deficient, e.g., if someone tries to build in busybox.  Use the second
@@ -8,20 +8,20 @@ dnl By the way, 2.13/2.52 differ in AC_CHECK_SIZEOF regarding the types they
 dnl can detect; the former includes only stdio.h for types while the latter
 dnl includes several header files.
 AC_DEFUN([CF_CHECK_SIZEOF],[
-AC_CHECK_SIZEOF([$1],[$2])
-if test "${ac_cv_type_$1+set}" = set; then
-	cf_cv_sizeof="$ac_cv_sizeof_$1"
-	if test "${ac_cv_sizeof_$1+set}" != set; then
+AC_CHECK_SIZEOF($@)
+if test "${AS_TR_SH([ac_cv_sizeof_$1])+set}" = set; then
+	cf_my_sizeof="$AS_TR_SH([ac_cv_sizeof_$1])"
+	if test "${AS_TR_SH([ac_cv_sizeof_$1])+set}" != set; then
 		AC_MSG_WARN(using $2 for sizeof $1)
-		ac_cv_sizeof_$1=$2
-	elif test "x${ac_cv_sizeof_$1}" = x0; then
+		AS_TR_SH([ac_cv_sizeof_$1])=$2
+	elif test "x${AS_TR_SH([ac_cv_sizeof_$1])}" = x0; then
 		AC_MSG_WARN([sizeof $1 not found, using $2])
-		ac_cv_sizeof_$1=$2
+		AS_TR_SH([ac_cv_sizeof_$1])=$2
 	fi
-	if test "x$ac_cv_sizeof_$1" != "x$cf_cv_sizeof"
+	if test "x$AS_TR_SH([ac_cv_sizeof_$1])" != "x$cf_my_sizeof"
 	then
-		CF_UPPER(cf_cv_type,sizeof_$1)
-		sed -e "s/\\([[ 	]]${cf_cv_type}[[ 	]]\\).*/\\1$ac_cv_sizeof_$1/" confdefs.h >conftest.val
+		CF_UPPER(cf_cv_type,AS_TR_SH([sizeof_$1]))
+		sed -e "s/\\([[ 	]]${cf_cv_type}[[ 	]]\\).*/\\1$AS_TR_SH([ac_cv_sizeof_$1])/" confdefs.h >conftest.val
 		mv conftest.val confdefs.h
 	fi
 fi
