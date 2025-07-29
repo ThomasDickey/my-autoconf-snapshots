@@ -1,4 +1,4 @@
-dnl CF_GNUTLS version: 28 updated: 2025/07/22 20:48:03
+dnl CF_GNUTLS version: 29 updated: 2025/07/29 16:47:04
 dnl ---------
 dnl Check for gnutls library (TLS "is" SSL)
 dnl $1 = the [optional] directory in which the library may be found
@@ -61,11 +61,10 @@ AC_DEFUN([CF_GNUTLS],[
 		esac
 	fi
 
-	AC_DEFINE(USE_GNUTLS_INCL,1,[Define to 1 if we should include gnutls headers])
-
 	if test "$cf_cv_have_gnutls" = no ; then
 		cf_gnutls_CPPFLAGS=$CPPFLAGS
 
+		CPPFLAGS="$CPPFLAGS -DUSE_GNUTLS_INCL"
 		CF_FIND_LINKAGE(CF__SSL_HEAD,
 			CF__SSL_BODY,
 			gnutls,
@@ -78,6 +77,22 @@ AC_DEFUN([CF_GNUTLS],[
 	fi
 
 	if test "$cf_cv_have_gnutls" = yes ; then
+		AC_MSG_CHECKING(if gnutls is usable)
+		AC_TRY_COMPILE([
+$ac_includes_default
+#include <gnutls/gnutls.h>
+],[
+#if defined(GNUTLS_VERSION_NUMBER) && GNUTLS_VERSION_NUMBER >= 0x10000
+#else
+#error gnutls is not usable
+#endif],
+			[AC_MSG_RESULT(perhaps)],
+			[AC_MSG_RESULT(no)
+			 cf_cv_have_gnutls=no])
+	fi
+
+	if test "$cf_cv_have_gnutls" = yes ; then
+		AC_DEFINE(USE_GNUTLS_INCL,1,[Define to 1 if we should include gnutls headers])
 		if test -n "$cf_cv_header_path_gnutls" ; then
 			AC_DEFINE(USE_SSL)
 			case "$cf_cv_header_path_gnutls" in

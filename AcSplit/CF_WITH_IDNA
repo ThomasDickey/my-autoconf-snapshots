@@ -1,4 +1,4 @@
-dnl CF_WITH_IDNA version: 12 updated: 2024/04/09 18:37:41
+dnl CF_WITH_IDNA version: 13 updated: 2025/07/29 16:47:04
 dnl ------------
 dnl Check for libidn2, use it if found.  Otherwise, check for libidn, use that.
 dnl
@@ -7,7 +7,7 @@ AC_DEFUN([CF_WITH_IDNA],[
 CF_ADD_OPTIONAL_PATH($1, [idna library])
 
 CF_FIND_LINKAGE([
-#include <stdio.h>
+$ac_includes_default
 #include <idn2.h>
 ],[
 	char *output = 0;

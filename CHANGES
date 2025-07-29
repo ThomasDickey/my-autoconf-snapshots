@@ -1,3 +1,12 @@
+2025-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_GNUTLS: disallow gnutls before version 1.0
+
+	* AcSplit/CF_CHECK_SIZEOF: fix a copy/paste error
+
+	* AcSplit/CF_WITH_BROTLI, AcSplit/CF_WITH_IDNA:
+	improve test-program includes
+
 2025-07-27  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_SOCKADDR_LEN: ci-aclocal generated header
