@@ -1,3 +1,7 @@
+2025-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_ARG_OPTION: fix typo in comment
+
 2025-07-29  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_GNUTLS: disallow gnutls before version 1.0
