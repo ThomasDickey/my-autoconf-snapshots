@@ -1,3 +1,9 @@
+2025-08-08  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_CHECK_NAMED_PIPES: ci-aclocal generated header
+
+	* AcSplit/CF_CHECK_TYPE2: fix typo
+
 2025-08-05  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_ARG_OPTION: fix typo in comment

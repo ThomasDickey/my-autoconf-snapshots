@@ -1,0 +1,21 @@
+dnl CF_CHECK_NAMED_PIPES version: 1 updated: 2025/08/08 20:44:18
+dnl --------------------
+dnl Check for existence of Windows named-pipe functions, set cache variable
+dnl to reflect the result.
+AC_DEFUN([CF_CHECK_NAMED_PIPES],[
+AC_CACHE_CHECK(for named pipe functions,cf_cv_named_pipes,[
+	cf_save_CPPFLAGS="$CPPFLAGS"
+	CPPFLAGS="$CPPFLAGS -DWINVER=0x0600 -DWIN32_LEAN_AND_MEAN"
+	AC_TRY_LINK([#include <windows.h>],
+	[
+		HANDLE handle = 0;
+		ULONG pPid = 0;
+		if (GetNamedPipeInfo(handle, NULL, NULL, NULL, NULL)) {
+			if (GetNamedPipeServerProcessId(handle, &pPid)) {
+				${cf_cv_main_return:-return} (0);
+			}
+		}
+	],[cf_cv_named_pipes=yes],[cf_cv_named_pipes=no])
+	CPPFLAGS="$cf_save_CPPFLAGS"
+])dnl
+])dnl

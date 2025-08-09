@@ -1,7 +1,5 @@
-dnl CF_CHECK_TYPE2 version: 2 updated: 2024/12/14 16:33:06
+dnl CF_CHECK_TYPE2 version: 3 updated: 2025/08/08 20:44:18
 dnl --------------
-dnl CF_CHECK_TYPE version: 5 updated: 2024/12/14 16:09:34
-dnl -------------
 dnl Check if the given type can be declared via the given header.
 dnl $1 = the type to check
 dnl $2 = the header (i.e., not one of the default includes)

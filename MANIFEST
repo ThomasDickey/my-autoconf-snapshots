@@ -1,4 +1,4 @@
-MANIFEST for my-autoconf, version t20250805
+MANIFEST for my-autoconf, version t20250808
 --------------------------------------------------------------------------------
 MANIFEST                        this file
 CHANGES                         generated changelog
@@ -91,6 +91,7 @@ AcSplit/CF_CHECK_HEADERS        like AC_CHECK_HEADERS, but allow <sys/types.h> d
 AcSplit/CF_CHECK_IPV6           check for IPV6 configuration
 AcSplit/CF_CHECK_LIBSSP         check if ssp library is needed, e.g., for __strcpy_chk
 AcSplit/CF_CHECK_LIBTOOL_VERSION  check if libtool has been found, and obtain its version, ensuring that it
+AcSplit/CF_CHECK_NAMED_PIPES    check for named pipe functions, used in Win32
 AcSplit/CF_CHECK_NESTED_PARAMS  check if the compiler supported nested parameter lists
 AcSplit/CF_CHECK_REGEX          check for regex (td_lib)
 AcSplit/CF_CHECK_SIZEOF         fixup for AC_CHECK_SIZEOF
