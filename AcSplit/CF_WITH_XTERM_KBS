@@ -1,0 +1,51 @@
+dnl CF_WITH_XTERM_KBS version: 1 updated: 2025/08/26 20:50:53
+dnl -----------------
+dnl Configure-option with platform-defaults for the "xterm+kbs" building block
+dnl in the terminfo file.
+dnl
+dnl The terminfo "kbs" value corresponds to "stty erase", and is conventionally
+dnl assigned to the key which has
+dnl
+dnl		a "Backspace" label and/or
+dnl		a backarrow symbol.
+dnl
+dnl See XTerm FAQ "Why doesn't my delete key work?"
+dnl		https://invisible-island.net/xterm/xterm.faq.html#xterm_erase
+AC_DEFUN([CF_WITH_XTERM_KBS],[
+case $host_os in
+(linux*gnu|linux*gnuabi64|linux*gnuabin32|linux*gnuabielfv*|linux*gnueabi|linux*gnueabihf|linux*gnux32|uclinux*|gnu*|mint*|k*bsd*-gnu|cygwin|msys|mingw*|linux*uclibc|linux*musl)
+	want_xterm_kbs=DEL
+	;;
+(*)
+	want_xterm_kbs=BS
+	;;
+esac
+
+AC_MSG_CHECKING(if xterm backspace-key sends BS or DEL)
+AC_ARG_WITH(xterm-kbs,
+	[[  --with-xterm-kbs[=XXX]  specify if xterm backspace-key sends BS or DEL]],
+	[with_xterm_kbs=$withval],
+	[with_xterm_kbs=auto])
+case x$with_xterm_kbs in
+(xyes|xno|xBS|xbs|x8)
+	with_xterm_kbs=BS
+	;;
+(xDEL|xdel|x127)
+	with_xterm_kbs=DEL
+	;;
+(xauto)
+	with_xterm_kbs=$want_xterm_kbs
+	;;
+(*)
+	with_xterm_kbs=$withval
+	;;
+esac
+AC_MSG_RESULT($with_xterm_kbs)
+XTERM_KBS=$with_xterm_kbs
+AC_SUBST(XTERM_KBS)
+
+if test "x$with_xterm_kbs" != "x$want_xterm_kbs"
+then
+	AC_MSG_WARN([expected --with-xterm-kbs=$want_xterm_kbs for $host_os, have $with_xterm_kbs])
+fi
+])dnl

@@ -1,3 +1,7 @@
+2025-08-26  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_XTERM_KBS: ci-aclocal generated header
+
 2025-08-08  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_CHECK_NAMED_PIPES: ci-aclocal generated header
