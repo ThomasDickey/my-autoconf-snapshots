@@ -1,4 +1,4 @@
-dnl CF_WITH_XTERM_KBS version: 1 updated: 2025/08/26 20:50:53
+dnl CF_WITH_XTERM_KBS version: 2 updated: 2025/08/27 20:35:59
 dnl -----------------
 dnl Configure-option with platform-defaults for the "xterm+kbs" building block
 dnl in the terminfo file.
@@ -13,7 +13,7 @@ dnl See XTerm FAQ "Why doesn't my delete key work?"
 dnl		https://invisible-island.net/xterm/xterm.faq.html#xterm_erase
 AC_DEFUN([CF_WITH_XTERM_KBS],[
 case $host_os in
-(linux*gnu|linux*gnuabi64|linux*gnuabin32|linux*gnuabielfv*|linux*gnueabi|linux*gnueabihf|linux*gnux32|uclinux*|gnu*|mint*|k*bsd*-gnu|cygwin|msys|mingw*|linux*uclibc|linux*musl)
+(linux*gnu|linux*gnuabi64|linux*gnuabin32|linux*gnuabielfv*|linux*gnueabi|linux*gnueabihf|linux*gnux32|uclinux*|gnu*|mint*|k*bsd*-gnu|cygwin|msys|mingw*|linux*uclibc|linux*musl|openbsd*|darwin*)
 	want_xterm_kbs=DEL
 	;;
 (*)

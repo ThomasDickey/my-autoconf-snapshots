@@ -1,3 +1,8 @@
+2025-08-27  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_WITH_XTERM_KBS:
+	OpenBSD and MacOS copied Linux in this detail (or OpenBSD copied MacOS)
+
 2025-08-26  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_WITH_XTERM_KBS: ci-aclocal generated header
