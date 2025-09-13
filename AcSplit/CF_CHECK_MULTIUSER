@@ -1,0 +1,21 @@
+dnl CF_CHECK_MULTIUSER version: 1 updated: 2025/09/13 11:43:46
+dnl ------------------
+dnl Runtime features which check for root permissions apply only to multiuser
+dnl systems.  Check for single-user systems by inspecting /etc/passwd.
+AC_DEFUN([CF_CHECK_MULTIUSER],[
+AC_CACHE_CHECK(for conventional multiuser system,cf_cv_multiuser,[
+	cf_cv_multiuser=no
+	if test -f /etc/passwd
+	then
+		sed \
+			-e '/true$/d' \
+			-e '/false$/d' \
+			-e '/nologin$/d' \
+			-e '/^[[^:]]*:[[^:]]*:[[0-9]]:/d' \
+			-e '/^[[^:]]*:[[^:]]*:[[0-9]][[0-9]]:/d' \
+			-e '/:$/d' < /etc/passwd >conftest.tmp
+		test -s conftest.tmp && cf_cv_multiuser=yes
+		rm -f conftest.tmp
+	fi
+])
+])dnl
