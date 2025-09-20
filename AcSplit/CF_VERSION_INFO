@@ -1,4 +1,4 @@
-dnl CF_VERSION_INFO version: 10 updated: 2025/01/10 19:55:54
+dnl CF_VERSION_INFO version: 11 updated: 2025/09/20 13:27:11
 dnl ---------------
 dnl Define several useful symbols derived from the VERSION file.  A separate
 dnl file is preferred to embedding the version numbers in various scripts.
@@ -82,8 +82,8 @@ ifelse($1,,,[
 	AC_SUBST(PROGRAM)
 	AC_SUBST(PACKAGE)
 	AH_TEMPLATE([AS_TR_CPP($1[_VERSION])],[version of package])
-	AC_DEFINE_UNQUOTED(AS_TR_CPP($1[_VERSION]),"${VERSION_MAJOR}.${VERSION_MINOR}")
+	AC_DEFINE_UNQUOTED(AS_TR_CPP($1[_VERSION]),"${VERSION_MAJOR}.${VERSION_MINOR}",[define to version of $1])
 	AH_TEMPLATE([AS_TR_CPP($1[_PATCHDATE])],[patchdate of package])
-	AC_DEFINE_UNQUOTED(AS_TR_CPP($1[_PATCHDATE]),${VERSION_PATCH})
+	AC_DEFINE_UNQUOTED(AS_TR_CPP($1[_PATCHDATE]),${VERSION_PATCH},[define to patchdate of $1])
 ])
 ])dnl
