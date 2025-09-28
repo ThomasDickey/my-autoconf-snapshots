@@ -1,4 +1,4 @@
-dnl CF_SRC_MAKEFILE version: 8 updated: 2025/06/21 07:14:54
+dnl CF_SRC_MAKEFILE version: 9 updated: 2025/09/28 13:52:37
 dnl ---------------
 dnl Append predefined lists to $2/makefile, given a path to a directory that
 dnl has a 'modules' file in $1.
@@ -36,7 +36,7 @@ BEGIN	{
 			printf "\nOBJS="
 			found = 1;
 		}
-		printf " \\\n\t$Z(%s.$OBJEXT)", [$]1
+		printf " \\\n\t$Z(%s.${OBJEXT})", [$]1
 	}
 END	{
 		print ""
@@ -53,7 +53,7 @@ BEGIN	{
 			printf "\nOBJS="
 			found = 1;
 		}
-		printf " \\\n\t%s.$OBJEXT", [$]1
+		printf " \\\n\t%s.${OBJEXT}", [$]1
 	}
 END	{
 		print ""

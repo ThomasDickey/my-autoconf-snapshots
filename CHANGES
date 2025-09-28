@@ -1,3 +1,11 @@
+2025-09-28  Thomas E. Dickey  <dickey@invisible-island.net>
+
+	* AcSplit/CF_PROG_INSTALL:
+	workaround for old/broken vs new/usable versions of 'install'
+
+	* AcSplit/CF_MAKE_AR_RULES, AcSplit/CF_SRC_MAKEFILE:
+	add braces for OBJEXT, needed in makefile
+
 2025-09-20  Thomas E. Dickey  <dickey@invisible-island.net>
 
 	* AcSplit/CF_FUNC_GETTTYNAM, AcSplit/CF_VERSION_INFO:

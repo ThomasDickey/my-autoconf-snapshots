@@ -1,4 +1,4 @@
-dnl CF_MAKE_AR_RULES version: 9 updated: 2025/06/21 07:15:29
+dnl CF_MAKE_AR_RULES version: 10 updated: 2025/09/28 13:52:37
 dnl ----------------
 dnl Check if the 'make' program knows how to interpret archive rules.  Though
 dnl this has been common practice since the mid-80's, there were some holdouts
@@ -30,14 +30,14 @@ AR = ar crv
 CC = $CC
 
 .SUFFIXES:
-.SUFFIXES: .c .$OBJEXT .a
+.SUFFIXES: .c .${OBJEXT} .a
 
 all:  conf.a
 
 .c.a:
 	\$(CC) -c $<
-	\$(AR) \$[]@ \$[]*.$OBJEXT
-conf.a : conf.a(conftest.$OBJEXT)
+	\$(AR) \$[]@ \$[]*.${OBJEXT}
+conf.a : conf.a(conftest.${OBJEXT})
 CF_EOF
 cat >$cf_dir/conftest.c <<CF_EOF
 #include <stdio.h>
@@ -59,21 +59,21 @@ then
 	cf_cv_ar_rules=yes
 else
 	echo ... library-rule did not create an archive >&AC_FD_CC
-	rm -f "$cf_dir/conftest.$OBJEXT"
+	rm -f "$cf_dir/conftest.${OBJEXT}"
 	cat >"$cf_dir/makefile" <<CF_EOF
 SHELL = /bin/sh
 AR = ar crv
 CC = $CC
 
 .SUFFIXES:
-.SUFFIXES: .c .$OBJEXT
+.SUFFIXES: .c .${OBJEXT}
 
 all:  conf.a
 
-.c.$OBJEXT:
+.c.${OBJEXT}:
 	\$(CC) -c $<
 
-conf.a : conftest.$OBJEXT
+conf.a : conftest.${OBJEXT}
 	\$(AR) \$[]@ \$?
 CF_EOF
 	CDPATH=; export CDPATH
